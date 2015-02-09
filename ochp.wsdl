@@ -1,0 +1,2351 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="wsdl-viewer.xsl"?>
+
+<!-- ===================================================================
+
+                  OCHP 1.2 Web Service Description
+
+This document defines a standard interface between different parties in 
+the market of electric vehicle charging infrastructure and a clearing 
+house that provides a common data routing and exchange platform for all 
+these market shareholders.
+
+Please note that the given documentation tags are not holding all
+available information. For a full interface description please refer
+to the OCHP specification PDF you can download from http://ochp.eu.
+
+ 
+ Copyright Information:
+This work is licensed under the Creative Commons 
+Attribution-NoDerivatives 4.0 International License. 
+To view a copy of this license, visit 
+http://creativecommons.org/licenses/by-nd/4.0/.
+
+==================================================================== -->
+
+
+<wsdl:definitions name="OCHP_1.2"
+	targetNamespace="http://ochp.eu/1.2" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:s="http://www.w3.org/2001/XMLSchema"
+	xmlns:p="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://ochp.eu/1.2">
+
+	<wsdl:documentation>
+		Open Clearing House Protocol (OCHP) Version 1.2
+	</wsdl:documentation>
+
+	<wsdl:types>
+		<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.2">
+
+			<s:complexType name="Result" abstract="false">
+				<s:annotation>
+					<s:documentation>
+						General result
+					</s:documentation>
+				</s:annotation>
+				<s:sequence>
+					<s:element minOccurs="1" maxOccurs="1" name="resultCode" type="tns:ResultCodeType">
+						<s:annotation>
+							<s:documentation>
+								The machine-readable result code.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs="1" maxOccurs="1" nillable="true" name="resultDescription">
+						<s:annotation>
+							<s:documentation>
+								The human-readable error description
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:maxLength value="1000"></s:maxLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:element name="AddCDRsRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="unbounded" name="cdrInfoArray" type="tns:CDRInfo">
+							<s:annotation>
+								<s:documentation>
+									This contains one or more Charge
+									Detail Records.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="AddCDRsResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:Result">
+							<s:annotation>
+								<s:documentation>
+									This contains the result of AddCDRs.req
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="implausibleCdrsArray" type="tns:CDRInfo" minOccurs="0" maxOccurs="unbounded">
+							<s:annotation>
+								<s:documentation>
+									This contains the refused Charge Detail Records
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="GetCDRsRequest">
+				<s:complexType>
+					<s:annotation>
+						<s:documentation>
+							Defines the GetCDRs.req.
+						</s:documentation>
+					</s:annotation>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="GetCDRsResponse">
+				<s:complexType>
+					<s:annotation>
+						<s:documentation>
+							This result will be returned on a GetCDRs request.
+						</s:documentation>
+					</s:annotation>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:Result">
+							<s:annotation>
+								<s:documentation>
+									This contains the result of GetCDRs.req
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element minOccurs="0" maxOccurs="unbounded" name="cdrInfoArray" type="tns:CDRInfo">
+							<s:annotation>
+								<s:documentation>
+									This contains the CDRs that have been sent towards the calling provider.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:complexType name="RoamingAuthorisationInfo">
+				<s:annotation>
+					<s:documentation>
+						Authorized card info.
+					</s:documentation>
+				</s:annotation>
+				<s:sequence>
+					<s:element name="EmtId" type="tns:EmtId" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Electrical vehicle contract identifier
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="contractId" type="tns:ContractId" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								EMA-ID the token belongs to
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs="0" maxOccurs="1" name="printedNumber">
+						<s:annotation>
+							<s:documentation>
+								Might be used for manual authorisation
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:minLength value="1"></s:minLength>
+								<s:maxLength value="150"></s:maxLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element minOccurs="1" maxOccurs="1" name="expiryDate" type="tns:DateTimeType">
+						<s:annotation>
+							<s:documentation>
+								Tokens may be used until the date of expiry is reached. To be handled by the partners systems. Expired roaming authorisations may be erased locally by each partner's system.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:element name="GetRoamingAuthorisationListResponse">
+				<s:complexType>
+					<s:annotation>
+						<s:documentation>
+							This result will be returned on a GetRoamingAuthorisationList request.
+						</s:documentation>
+					</s:annotation>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:Result">
+							<s:annotation>
+								<s:documentation>
+									This contains the result of GetRoamingAuthorisationList.req
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element minOccurs="0" maxOccurs="unbounded" name="roamingAuthorisationInfoArray" type="tns:RoamingAuthorisationInfo">
+							<s:annotation>
+								<s:documentation>
+									This contains the roaming authorisation records.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="SetRoamingAuthorisationListRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="unbounded" name="roamingAuthorisationInfoArray" type="tns:RoamingAuthorisationInfo">
+							<s:annotation>
+								<s:documentation>
+									This contains the roaming authorisation records.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="SetRoamingAuthorisationListResponse">
+				<s:complexType>
+					<s:annotation>
+						<s:documentation>
+							This result will be returned on a GetRoamingAuthorisationList request.
+						</s:documentation>
+					</s:annotation>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:Result">
+							<s:annotation>
+								<s:documentation>
+									This contains the result of SetRoamingAuthorisationList.req
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element minOccurs="0" maxOccurs="unbounded" name="refusedRoamingAuthorisationInfo" type="tns:RoamingAuthorisationInfo">
+							<s:annotation>
+								<s:documentation>
+									This contains the roaming authorisation records that could not be set in the clearing house. For error description see the result message.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="GetChargePointListRequest">
+				<s:complexType>
+					<s:annotation>
+						<s:documentation>
+							Defines the GetChargePointList.req.
+						</s:documentation>
+					</s:annotation>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="GetChargePointListResponse">
+				<s:complexType>
+					<s:annotation>
+						<s:documentation>
+							This result will be returned on a GetChargePointList request.
+						</s:documentation>
+					</s:annotation>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:Result">
+							<s:annotation>
+								<s:documentation>
+									This contains the result of GetRoamingAuthorisationList.req
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element minOccurs="0" maxOccurs="unbounded" name="chargePointInfoArray" type="tns:ChargePointInfo">
+							<s:annotation>
+								<s:documentation>
+									This contains the charge point information records
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="SetChargePointListRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="unbounded" name="chargepointInfoArray" type="tns:ChargePointInfo">
+							<s:annotation>
+								<s:documentation>
+									This contains the charge point information records
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="SetChargePointListResponse">
+				<s:complexType>
+					<s:annotation>
+						<s:documentation>
+							This result will be returned on a SetChargePointList request.
+						</s:documentation>
+					</s:annotation>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:Result">
+							<s:annotation>
+								<s:documentation>
+									This contains the result of SetChargePointList.req
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element minOccurs="0" maxOccurs="unbounded" name="refusedChargePointInfo" type="tns:ChargePointInfo">
+							<s:annotation>
+								<s:documentation>
+									This contains the charge point information records that could not be set in the clearing house. For error description see the result message.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:complexType name="CDRInfo">
+				<s:annotation>
+					<s:documentation>CDR info.</s:documentation>
+				</s:annotation>
+				<s:sequence>
+					<s:element name="CdrId" type="tns:CdrId" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Alphanumeric, Charge Data Record number. Unique per EVSE-ID.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="evseId" type="tns:EvseId" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="emtId" type="tns:EmtId" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Utilized token for this charging session.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="contractId" type="tns:ContractId" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Identifies a customer in the electric mobility charging context.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="liveAuthId" type="tns:LiveAuthId" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								References a live authorisation request to the clearing house. Must be specified if the charging process was authorized by the clearing house directly in a call to RequestLiveRoamingAuthorisation.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="status" type="tns:CdrStatusType" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Current status of the CDR. Must be set to "new" by the issuing CMS. Shall not be changed by any partner but only by the CHS.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="startDateTime"
+						type="tns:LocalDateTimeType" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Start date and time of charge session
+								(login with the RFID badge). Local time
+								of the charge point is used.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="endDateTime" type="tns:LocalDateTimeType" maxOccurs="1" minOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								End date and time of the charge session (log-off with the RFID badge or physical disconnect). Must be set in the local time of the charge point.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="duration" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Duration of the charge session. Example "000:18:00"
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:length value="9"></s:length>
+								<s:pattern value="(\d\d\d):(\d\d):(\d\d)"></s:pattern>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="houseNumber" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Hose number at the location of the charge point. Alphanumeric, for example &quot;10&quot;,&quot;255B&quot;
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:minLength value="1"></s:minLength>
+								<s:maxLength value="6"></s:maxLength>
+								<s:pattern value="[A-Z0-9 ]{1,6}"></s:pattern>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="address" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Alphanumeric, for example "Av. Saint-Jean". Optionally also containing the house number if not in field houseNumber
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:minLength value="2"></s:minLength>
+								<s:maxLength value="45"></s:maxLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="zipCode" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Alphanumeric, Examples: "60439", "8011 PK". Without the leading country code
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:minLength value="1"></s:minLength>
+								<s:maxLength value="10"></s:maxLength>
+								<s:pattern value="[A-Z0-9\- ]{1,10}"></s:pattern>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="city" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Alphabetic, in the language defined in locationNameLang
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:minLength value="2"></s:minLength>
+								<s:maxLength value="45"></s:maxLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="country" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Alpha, three characters. ISO 3166 country code
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:length value="3"></s:length>
+								<s:pattern value="[A-Z]{3}"></s:pattern>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="chargePointType" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								The type of the charge point "AC" or "DC"
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:enumeration value="AC"></s:enumeration>
+								<s:enumeration value="DC"></s:enumeration>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="connectorType" type="tns:ConnectorType" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Type of utilized socket or connector
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="maxSocketPower" type="s:float" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Maximum available power at the socket in kilowatts. Example: "3.7", "11", "22"
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="productType" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Identifies the type of the product that was delivered for the charging session. Custom product code.
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:minLength value="1"></s:minLength>
+								<s:maxLength value="2"></s:maxLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="meterId" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Written identification number of the physical energy meter, provided by the manufacturer. For future use.
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:minLength value="1"></s:minLength>
+								<s:maxLength value="20"></s:maxLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="chargingPeriods" type="tns:CdrPeriodType" minOccurs="1" maxOccurs="unbounded">
+						<s:annotation>
+							<s:documentation>
+								One period per item on the bill. At the moment only one period is to be provided
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="DateTimeType">
+				<s:sequence>
+					<s:element name="DateTime">
+						<s:annotation>
+							<s:documentation>
+								Format is according to ISO8601 UTC. The field takes 20 alphanumeric characters
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:length value="20"></s:length>
+								<s:pattern value="(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z"></s:pattern>
+								<s:whiteSpace value="collapse"></s:whiteSpace>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="EmtId">
+				<s:sequence>
+					<s:element name="instance" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								The authorization tokens are defined according to the specification of the EMT-ID (Token ID). Each token consists of an token instance which holds the payload and at least the token type. The sub-type is for further specification of the general token type.
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:minLength value="1"></s:minLength>
+								<s:maxLength value="512"></s:maxLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="tokenType" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								The type of the supplied instance for basic filtering.
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:enumeration value="rfid"></s:enumeration>
+								<s:enumeration value="remote"></s:enumeration>
+								<s:enumeration value="15118"></s:enumeration>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="tokenSubType" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								The exact type of the supplied instance for referencing purpose.
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:enumeration value="mifareCls"></s:enumeration>
+								<s:enumeration value="mifareDes"></s:enumeration>
+								<s:enumeration value="calypso"></s:enumeration>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+				<s:attribute name="representation" default="sha-160">
+					<s:annotation>
+						<s:documentation>
+							Specifies the representation of the token to allow hashed token values.
+								plain:   The token instance is represented in plain text;
+								sha-160: The token instance is represented in its 160bit SHA1 hash in 40 hexadecimal digits;
+								sha-256: The token instance is represented in its 256bit SHA2 hash in 64 hexadecimal digits;
+						</s:documentation>
+					</s:annotation>
+					<s:simpleType>
+						<s:restriction base="s:string">
+							<s:enumeration value="plain"></s:enumeration>
+							<s:enumeration value="sha-160"></s:enumeration>
+							<s:enumeration value="sha-256"></s:enumeration>
+						</s:restriction>
+					</s:simpleType>
+				</s:attribute>
+			</s:complexType>
+
+			<s:element name="GetRoamingAuthorisationListUpdatesRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="lastUpdate" type="tns:DateTimeType" minOccurs="1" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									Date and time since the last successful call of GetRoamingAuthorisationList.req or GetRoamingAuthorisationListUpdate.req
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="GetRoamingAuthorisationListUpdatesResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="result" type="tns:Result" minOccurs="1" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									This contains the result of GetRoamingAuthorisationListUpdate.req
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="roamingAuthorisationInfo" type="tns:RoamingAuthorisationInfo" minOccurs="0" maxOccurs="unbounded">
+							<s:annotation>
+								<s:documentation>
+									This contains the roaming authorisation records changed since the time specified in lastUpdate in the request
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="UpdateRoamingAuthorisationListRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="roamingAuthorisationInfoArray" type="tns:RoamingAuthorisationInfo" minOccurs="1" maxOccurs="unbounded">
+							<s:annotation>
+								<s:documentation>
+									This contains the roaming authorisation records to be updated or added
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="UpdateRoamingAuthorisationListResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="result" type="tns:Result" minOccurs="1" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									This contains the result of UpdateRoamingAuthorisationList.req
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element minOccurs="0" maxOccurs="unbounded" name="refusedRoamingAuthorisationInfo" type="tns:RoamingAuthorisationInfo">
+							<s:annotation>
+								<s:documentation>
+									This contains the roaming authorisation records that could not be set in the clearing house. For error description see the result message.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="ConfirmCDRsRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="approved" type="tns:CDRInfo" minOccurs="0" maxOccurs="unbounded">
+							<s:annotation>
+								<s:documentation>
+									This contains the CDRs that have been approved by the EVSP
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="declined" type="tns:CDRInfo" minOccurs="0" maxOccurs="unbounded">
+							<s:annotation>
+								<s:documentation>
+									This contains the CDRs that have been declined by the EVSP.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="ConfirmCDRsResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="result" type="tns:Result" minOccurs="1" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									This contains the result of ConfirmCDRs.req
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="GetChargePointListUpdatesRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="lastUpdate" type="tns:DateTimeType" minOccurs="1" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									Date and time since the last successful call of GetChargePointList.req of GetChargePointListUpdates.req
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="GetRoamingAuthorisationListRequest">
+				<s:complexType></s:complexType>
+			</s:element>
+
+			<s:element name="GetChargePointListUpdatesResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="result" type="tns:Result" minOccurs="1" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									this contains the result of GetChargePointListUpdates.req
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="chargePointInfoArray" type="tns:ChargePointInfo" minOccurs="0" maxOccurs="unbounded">
+							<s:annotation>
+								<s:documentation>
+									This contains the charge point information records changed since the time specified in lastUpdate in the request
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="UpdateChargePointListRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="chargePointInfoArray" type="tns:ChargePointInfo" minOccurs="1" maxOccurs="unbounded">
+							<s:annotation>
+								<s:documentation>
+									This contains the charge point information records to be updated or added
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="UpdateChargePointListResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="result" type="tns:Result" minOccurs="1" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									This contains the result of UpdateChargePointList.req
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element minOccurs="0" maxOccurs="unbounded" name="refusedChargePointInfo" type="tns:ChargePointInfo">
+							<s:annotation>
+								<s:documentation>
+									This contains the charge point information records that could not be set in the clearing house. For error description see the result message.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="RequestLiveRoamingAuthorisationRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="emtId" type="tns:EmtId" minOccurs="1" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									This contains the ID of the token which is to be validated
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="evseId" type="tns:EvseId" minOccurs="1" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="RequestLiveRoamingAuthorisationResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="result" type="tns:Result" minOccurs="1" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									This contains the result of GetRoamingAuthorisationList.req
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="roamingAuthorisationInfo" type="tns:RoamingAuthorisationInfo" minOccurs="0" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									This contains the roaming authorisation record for the requested token, if the request was valid.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="liveAuthId" type="tns:LiveAuthId" minOccurs="0" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									Unique ID of the live authorisation request to the clearing house. Must be used for the corresponding CDR to reference this request.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:complexType name="LocalDateTimeType">
+				<s:annotation>
+					<s:documentation>
+						Format is according to ISO8601 UTC + Offset. The field takes 25 alphanumeric characters
+					</s:documentation>
+				</s:annotation>
+				<s:sequence>
+					<s:element name="LocalDateTime">
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:length value="25"></s:length>
+								<s:whiteSpace value="collapse"></s:whiteSpace>
+								<s:pattern value="(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)([+\-]\d\d):(\d\d)"></s:pattern>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="CdrStatusType">
+				<s:sequence>
+					<s:element name="CdrStatusType">
+						<s:annotation>
+							<s:documentation>
+								new; A new CDR before upload to the CHS
+								accepted; An uploaded CDR was accepted by the CHS as plausible
+								rejected; The checked CDR again rejected by the CHS and is to be archived.
+								owner declined; The CDR was declined by the owner (EVSP)
+								approved; The CDR was approved by the owner(EVSP)
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:enumeration value="new"></s:enumeration>
+								<s:enumeration value="accepted"></s:enumeration>
+								<s:enumeration value="rejected"></s:enumeration>
+								<s:enumeration value="owner declined"></s:enumeration>
+								<s:enumeration value="approved"></s:enumeration>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="ConnectorType">
+				<s:sequence>
+					<s:element name="connectorStandard" minOccurs="1" maxOccurs="1" type="tns:ConnectorStandard">
+						<s:annotation>
+							<s:documentation>
+								The Standard of the installed connector; 
+									CHADEMO                The connector type is CHAdeMO, DC 
+									IEC-62196-T1           The connector type is IEC 62196 Type 1 “SAE J1772”
+									IEC-62196-T1-COMBO     The connector type is Combo Type 1 based, DC 
+									IEC-62196-T2           The connector type is IEC 62196 Type 2 “Mennekes” 
+									IEC-62196-T2-COMBO     The connector type is Combo Type 2 based, DC
+									IEC-62196-T3A          The connector type is IEC 62196 Type 3A 
+									IEC-62196-T3C          The connector type is IEC 62196 Type 3C “Scame” 
+									DOMESTIC-A             The connector type is Standard/Domestic household, type "A", NEMA 1-15, 2 pins 
+									DOMESTIC-B             The connector type is Standard/Domestic household, type "B", NEMA 5-15, 3 pins
+									DOMESTIC-C             The connector type is Standard/Domestic household, type "C", CEE 7/17, 2 pins 
+									DOMESTIC-D             The connector type is Standard/Domestic household, type "D", 3 pin 
+									DOMESTIC-E             The connector type is Standard/Domestic household, type "E", CEE 7/5 3 pins
+									DOMESTIC-F             The connector type is Standard/Domestic household, type "F", CEE 7/4, Schuko, 3 pins 
+									DOMESTIC-G             The connector type is Standard/Domestic household, type "G", BS 1363, Commonwealth, 3 pins 
+									DOMESTIC-H             The connector type is Standard/Domestic household, type "H", SI-32, 3 pins
+									DOMESTIC-I             The connector type is Standard/Domestic household, type "I", AS 3112, 3 pins 
+									DOMESTIC-J             The connector type is Standard/Domestic household, type "J", SEV 1011, 3 pins 
+									DOMESTIC-K             The connector type is Standard/Domestic household, type "K", DS 60884-2-D1, 3 pins 
+									DOMESTIC-L             The connector type is Standard/Domestic household, type "L", CEI 23-16-VII, 3 pins 
+									TESLA-R                The connector type is Tesla Connector “Roadster”-type (round, 4 pin) 
+									TESLA-S                The connector type is Tesla Connector “Model-S”-type (oval, 5 pin)
+									IEC-60309-2-single-16  The connector type is IEC 60309-2 Industrial Connector single phase 16 Amperes (usually blue)
+									IEC-60309-2-three-16   The connector type is IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
+									IEC-60309-2-three-32   The connector type is IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
+									IEC-60309-2-three-64   The connector type is IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="connectorFormat" minOccurs="1" maxOccurs="1" type="tns:ConnectorFormat">
+						<s:annotation>
+							<s:documentation>
+								The format (socket/ cable) of the installed connector Socket The connector is a socket; the EV user needs to bring a fitting plug. Cable The connector is an attached cable; the EV user car needs to have a fitting inlet.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="CdrPeriodType">
+				<s:sequence>
+					<s:element name="startDateTime" type="tns:LocalDateTimeType" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Starting time of period. Must be equal or later than startDateTime of the CDRInfo
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="endDateTime" type="tns:LocalDateTimeType" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Ending time of the period. Must be equal or earlier than endDateTime of the CDRInfo
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="billingItem" type="tns:BillingItemType" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Defines what the EVSP is charged for during this period
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="billingValue" type="s:float" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								The value the EVSP is charged for. The unit of the value depends on the billingItem
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="currency" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:whiteSpace value="collapse"></s:whiteSpace>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="itemPrice" type="s:float" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Price per unit of the billingItem in the given currency.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="periodCost" type="s:float" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								The cost of the period in the given currency.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="BillingItemType">
+				<s:sequence>
+					<s:element name="BillingItemType">
+						<s:simpleType>
+							<s:annotation>
+								<s:documentation>
+									parkingtime; Price for parking, The billingValue represents the time in hours 
+									usagetime; Price for the time of EVSE usage. The billingValue represents the time in hours 
+									energy; Price for the consumed energy. The billingValue represents the energy in kilowatt-hours. 
+									power; Price for the consumed energy. The billingValue represents the maximum power in kilowatts 
+									serviceFee; General service fee per charging process. The billingValue represents multiplier and thus has to be set to "1.0"
+								</s:documentation>
+							</s:annotation>
+							<s:restriction base="s:string">
+								<s:enumeration value="parkingtime"></s:enumeration>
+								<s:enumeration value="usagetime"></s:enumeration>
+								<s:enumeration value="energy"></s:enumeration>
+								<s:enumeration value="power"></s:enumeration>
+								<s:enumeration value="serviceFee"></s:enumeration>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="GeoPointType">
+				<s:sequence>
+					<s:element name="lat" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Latitude of the Point in decimal degree. Example: 50.104965 Decimal separator: "." Regex: -?[0-9]{1,2}\.[0-9]{6}
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:pattern value="-?[0-9]{1,2}\.[0-9]{6}"></s:pattern>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="lon" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Longitude of the decimal degree Example: -126.104965 Decimal separator: "." Regex: -?[0-9]{1,3}\.[0-9]{6}
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:pattern value="-?[0-9]{1,3}\.[0-9]{6}"></s:pattern>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="ConnectorStandard">
+				<s:sequence>
+					<s:element name="ConnectorStandard">
+						<s:annotation>
+							<s:documentation>
+								The Standard of the installed connector; 
+									CHADEMO                The connector type is CHAdeMO, DC 
+									IEC-62196-T1           The connector type is IEC 62196 Type 1 “SAE J1772”
+									IEC-62196-T1-COMBO     The connector type is Combo Type 1 based, DC 
+									IEC-62196-T2           The connector type is IEC 62196 Type 2 “Mennekes” 
+									IEC-62196-T2-COMBO     The connector type is Combo Type 2 based, DC
+									IEC-62196-T3A          The connector type is IEC 62196 Type 3A 
+									IEC-62196-T3C          The connector type is IEC 62196 Type 3C “Scame” 
+									DOMESTIC-A             The connector type is Standard/Domestic household, type "A", NEMA 1-15, 2 pins 
+									DOMESTIC-B             The connector type is Standard/Domestic household, type "B", NEMA 5-15, 3 pins
+									DOMESTIC-C             The connector type is Standard/Domestic household, type "C", CEE 7/17, 2 pins 
+									DOMESTIC-D             The connector type is Standard/Domestic household, type "D", 3 pin 
+									DOMESTIC-E             The connector type is Standard/Domestic household, type "E", CEE 7/5 3 pins
+									DOMESTIC-F             The connector type is Standard/Domestic household, type "F", CEE 7/4, Schuko, 3 pins 
+									DOMESTIC-G             The connector type is Standard/Domestic household, type "G", BS 1363, Commonwealth, 3 pins 
+									DOMESTIC-H             The connector type is Standard/Domestic household, type "H", SI-32, 3 pins
+									DOMESTIC-I             The connector type is Standard/Domestic household, type "I", AS 3112, 3 pins 
+									DOMESTIC-J             The connector type is Standard/Domestic household, type "J", SEV 1011, 3 pins 
+									DOMESTIC-K             The connector type is Standard/Domestic household, type "K", DS 60884-2-D1, 3 pins 
+									DOMESTIC-L             The connector type is Standard/Domestic household, type "L", CEI 23-16-VII, 3 pins 
+									TESLA-R                The connector type is Tesla Connector “Roadster”-type (round, 4 pin) 
+									TESLA-S                The connector type is Tesla Connector “Model-S”-type (oval, 5 pin)
+									IEC-60309-2-single-16  The connector type is IEC 60309-2 Industrial Connector single phase 16 Amperes (usually blue)
+									IEC-60309-2-three-16   The connector type is IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
+									IEC-60309-2-three-32   The connector type is IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
+									IEC-60309-2-three-64   The connector type is IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:annotation>
+								<s:documentation>
+								The Standard of the installed connector; 
+									CHADEMO                The connector type is CHAdeMO, DC 
+									IEC-62196-T1           The connector type is IEC 62196 Type 1 “SAE J1772”
+									IEC-62196-T1-COMBO     The connector type is Combo Type 1 based, DC 
+									IEC-62196-T2           The connector type is IEC 62196 Type 2 “Mennekes” 
+									IEC-62196-T2-COMBO     The connector type is Combo Type 2 based, DC
+									IEC-62196-T3A          The connector type is IEC 62196 Type 3A 
+									IEC-62196-T3C          The connector type is IEC 62196 Type 3C “Scame” 
+									DOMESTIC-A             The connector type is Standard/Domestic household, type "A", NEMA 1-15, 2 pins 
+									DOMESTIC-B             The connector type is Standard/Domestic household, type "B", NEMA 5-15, 3 pins
+									DOMESTIC-C             The connector type is Standard/Domestic household, type "C", CEE 7/17, 2 pins 
+									DOMESTIC-D             The connector type is Standard/Domestic household, type "D", 3 pin 
+									DOMESTIC-E             The connector type is Standard/Domestic household, type "E", CEE 7/5 3 pins
+									DOMESTIC-F             The connector type is Standard/Domestic household, type "F", CEE 7/4, Schuko, 3 pins 
+									DOMESTIC-G             The connector type is Standard/Domestic household, type "G", BS 1363, Commonwealth, 3 pins 
+									DOMESTIC-H             The connector type is Standard/Domestic household, type "H", SI-32, 3 pins
+									DOMESTIC-I             The connector type is Standard/Domestic household, type "I", AS 3112, 3 pins 
+									DOMESTIC-J             The connector type is Standard/Domestic household, type "J", SEV 1011, 3 pins 
+									DOMESTIC-K             The connector type is Standard/Domestic household, type "K", DS 60884-2-D1, 3 pins 
+									DOMESTIC-L             The connector type is Standard/Domestic household, type "L", CEI 23-16-VII, 3 pins 
+									TESLA-R                The connector type is Tesla Connector “Roadster”-type (round, 4 pin) 
+									TESLA-S                The connector type is Tesla Connector “Model-S”-type (oval, 5 pin)
+									IEC-60309-2-single-16  The connector type is IEC 60309-2 Industrial Connector single phase 16 Amperes (usually blue)
+									IEC-60309-2-three-16   The connector type is IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
+									IEC-60309-2-three-32   The connector type is IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
+									IEC-60309-2-three-64   The connector type is IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
+								</s:documentation>
+							</s:annotation>
+							<s:restriction base="s:string">
+								<s:enumeration value="Chademo"></s:enumeration>
+								<s:enumeration value="IEC-62196-T1"></s:enumeration>
+								<s:enumeration value="IEC-62196-T1-COMBO"></s:enumeration>
+								<s:enumeration value="IEC-62196-T2"></s:enumeration>
+								<s:enumeration value="IEC-62196-T2-COMBO"></s:enumeration>
+								<s:enumeration value="IEC-62196-T3A"></s:enumeration>
+								<s:enumeration value="IEC-62196-T3C"></s:enumeration>
+								<s:enumeration value="DOMESTIC-A"></s:enumeration>
+								<s:enumeration value="DOMESTIC-B"></s:enumeration>
+								<s:enumeration value="DOMESTIC-C"></s:enumeration>
+								<s:enumeration value="DOMESTIC-D"></s:enumeration>
+								<s:enumeration value="DOMESTIC-E"></s:enumeration>
+								<s:enumeration value="DOMESTIC-F"></s:enumeration>
+								<s:enumeration value="DOMESTIC-G"></s:enumeration>
+								<s:enumeration value="DOMESTIC-H"></s:enumeration>
+								<s:enumeration value="DOMESTIC-I"></s:enumeration>
+								<s:enumeration value="DOMESTIC-J"></s:enumeration>
+								<s:enumeration value="DOMESTIC-K"></s:enumeration>
+								<s:enumeration value="DOMESTIC-L"></s:enumeration>
+								<s:enumeration value="TESLA-R"></s:enumeration>
+								<s:enumeration value="TESLA-S"></s:enumeration>
+								<s:enumeration value="IEC-60309-2-single-16"></s:enumeration>
+								<s:enumeration value="IEC-60309-2-three-16"></s:enumeration>
+								<s:enumeration value="IEC-60309-2-three-32"></s:enumeration>
+								<s:enumeration value="IEC-60309-2-three-64"></s:enumeration>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="HoursType">
+				<s:sequence>
+					<s:element name="regularHours" type="tns:RegularHoursType" minOccurs="0" maxOccurs="unbounded">
+						<s:annotation>
+							<s:documentation>
+								Regular hours, weekday based. Should not be set for representing 24/7 as this is the most common case
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="exceptionalOpenings" type="tns:ExceptionalPeriodType" minOccurs="0" maxOccurs="unbounded">
+						<s:annotation>
+							<s:documentation>
+								Exceptions for specific calendar dates, time-range based. Periods the station is operating/accessible. Additional to regular hours. May overlap regular rules.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="exceptionalClosings" type="tns:ExceptionalPeriodType" minOccurs="0" maxOccurs="unbounded">
+						<s:annotation>
+							<s:documentation>
+								Exceptions for specific calendar dates, time-range based. Periods the station is not operating/accessible. Additional to regular hours. Overwriting regularHours and exceptionalOpenings. Should not overlap exceptionalOpenings.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="ChargePointStatusType">
+				<s:sequence>
+					<s:element name="ChargePointStatusType">
+						<s:annotation>
+							<s:documentation>
+								Unknown; No status information available
+								Operative; Charge point is in operation and can be used
+								Inoperative; charge point cannot be used due to maintenance, failure or other restrictions (temporarily) 
+								Planned; planned charge point, will be operating soon 
+								Closed; discontinued charge point, will be deleted soon
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:enumeration value="Unknown"></s:enumeration>
+								<s:enumeration value="Operative"></s:enumeration>
+								<s:enumeration value="Inoperative"></s:enumeration>
+								<s:enumeration value="Planned"></s:enumeration>
+								<s:enumeration value="Closed"></s:enumeration>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="ChargePointScheduleType">
+				<s:sequence>
+					<s:element name="startDate" type="tns:DateTimeType" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Begin of scheduled period.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="endDate" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								End of scheduled period, if known.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="status" type="tns:ChargePointStatusType" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Status value during the scheduled period.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="ParkingRestrictionType">
+				<s:sequence>
+					<s:element name="ParkingRestrictionType">
+						<s:annotation>
+							<s:documentation>
+								* evonly reserved parking spot for electric vehicles plugged parking allowed only while plugged in (charging)
+								* disabled reserved parking spot for disabled people with valid ID
+								* customers parking spot for costumer/guests only, for example in case of a hotel or shop
+								* motorcycles parking spot only suitable for (electric) motorcycles or scooters
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:annotation>
+							</s:annotation>
+							<s:restriction base="s:string">
+								<s:enumeration value="evonly"></s:enumeration>
+								<s:enumeration value="plugged"></s:enumeration>
+								<s:enumeration value="disabled"></s:enumeration>
+								<s:enumeration value="customers"></s:enumeration>
+								<s:enumeration value="motorcycles"></s:enumeration>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="AuthMethodType">
+				<s:annotation>
+					<s:documentation>
+						Public; Public accessible, no authorisation required 
+						LocalKey; A key or token can be received at the location.(i.e. at the hotel reception or in the restaurant) 
+						DirectCash; The EVSE can be accessed through direct payment in cash. DirectCreditcard; The Evse can be accessed through direct payment with credit card
+						RfidMifareCls; Personal RFID token with roaming relation. (Mifare Classic) 
+						RfidMifareDes; Personal token with roaming relation. (Mifare Desfire) 
+						RfidCallypso; Personal RFID token with roaming relation. (Calypso) 
+						Iec15118; In-car access token as specified in IEC-15118
+					</s:documentation>
+				</s:annotation>
+				<s:sequence>
+					<s:element name="AuthMethodType">
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:enumeration value="Public"></s:enumeration>
+								<s:enumeration value="LocalKey"></s:enumeration>
+								<s:enumeration value="DirectCash"></s:enumeration>
+								<s:enumeration value="DirectCreditcard"></s:enumeration>
+								<s:enumeration value="DirectDebitcard"></s:enumeration>
+								<s:enumeration value="RfidMifareCls"></s:enumeration>
+								<s:enumeration value="RfidMifareDes"></s:enumeration>
+								<s:enumeration value="RfidCallypso"></s:enumeration>
+								<s:enumeration value="Iec15118"></s:enumeration>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="RegularHoursType">
+				<s:annotation>
+					<s:documentation>
+						Regular hours, weekday based. Number of day in the week, from Monday(1) till Sunday(7)
+					</s:documentation>
+				</s:annotation>
+				<s:sequence>
+					<s:element name="weekday" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Regular hours, weekday based. Number of day in the week, from Monday(1) till Sunday(7)
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:int">
+								<s:minInclusive value="1"></s:minInclusive>
+								<s:maxInclusive value="7"></s:maxInclusive>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="periodBegin" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Begin of the regular period given in hours and minutes. Must be in 24h format with leading zeros. Example "18:15" Minute/Hour separator is ":"
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:length value="5"></s:length>
+								<s:pattern value="[0-2][0-9]\:[0-5][0-9]"></s:pattern>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="periodEnd" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:pattern value="[0-2][0-9]:[0-5][0-9]"></s:pattern>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="ExceptionalPeriodType">
+				<s:sequence>
+					<s:element name="periodBegin" type="tns:DateTimeType" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Begin of exception
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="periodEnd" type="tns:DateTimeType" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								End of exception
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="ChargePointInfo">
+				<s:annotation>
+					<s:documentation>
+						List of available payment or access methods on site.
+					</s:documentation>
+				</s:annotation>
+				<s:sequence>
+					<s:element name="evseId" type="tns:EvseId" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Globally unique identifier
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="locationId" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Alphanumeric. Identifies a location/pool of EVSEs. Unique within one EVSE Operator
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:minLength value="1"></s:minLength>
+								<s:maxLength value="15"></s:maxLength>
+								<s:pattern value="[A-Z0-9 ]{1,15}"></s:pattern>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="timestamp" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Recommended. Date and time of the latest data update for this ChargePointInfo. When set it must be updated if one of the values changed.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="locationName" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Official name; should be unique in the geographical area
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:minLength value="1"></s:minLength>
+								<s:maxLength value="100"></s:maxLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="locationNameLang" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Alpha, three characters. ISO-639-3 language code defining the language of the location name
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:length value="3"></s:length>
+								<s:pattern value="[A-Z]{3}"></s:pattern>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="images" minOccurs="0" maxOccurs="unbounded" type="tns:EvseImageUrlType"></s:element>
+					<s:element name="houseNumber" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Alphanumeric, for example "10", "255B".
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:minLength value="1"></s:minLength>
+								<s:maxLength value="6"></s:maxLength>
+								<s:pattern value="[A-Z0-9 ]{1,6}"></s:pattern>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="address" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Alphanumeric; for example "Av. Saint-Jean". Optionally also containing the house number if not in field houseNumber.
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:minLength value="2"></s:minLength>
+								<s:maxLength value="45"></s:maxLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="city" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Alphabetic, in the language defined in locationNameLang
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:minLength value="1"></s:minLength>
+								<s:maxLength value="45"></s:maxLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="zipCode" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Alphanumeric, examples: "60439", "8011 PK". Without leading country code.
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:pattern value="[A-Z0-9 \-]{1,10}"></s:pattern>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="country" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Alpha, three characters. Iso 3166 country code
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:pattern value="[A-Z]{3}"></s:pattern>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="geoLocation" type="tns:GeoPointType" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Geographical location of the charge point itself (power outlet).
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="geoUserInterface" type="tns:GeoPointType" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Geographical location of the user interface for authorisation and payment means. If not specified the user interface is assumed to be at the location specified in geoLocation
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="geoSiteEntrance" type="tns:GeoPointType" minOccurs="0" maxOccurs="unbounded">
+						<s:annotation>
+							<s:documentation>
+								For larger sites entrances may be specified for navigation purpose.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="geoSiteExit" type="tns:GeoPointType" minOccurs="0" maxOccurs="unbounded">
+						<s:annotation>
+							<s:documentation>
+								For larger sites exits may be specified for navigation purpose. If only entrances are set, two-direction traffic is assumed.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="operatingTimes" type="tns:HoursType" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								The times the EVSE is operating and can be used for charging. Must nor be provided if operating hours are unsure/unknown
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="accessTimes" type="tns:HoursType" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								The times the EVSE is accessible, if different from operatingTimes. For example if a car park is closed during the night. Must not be provided if access hours are unsure/unknown
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="status" type="tns:ChargePointStatusType" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								The current status of the charge point.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="statusSchedule" type="tns:ChargePointScheduleType" minOccurs="0" maxOccurs="unbounded">
+						<s:annotation>
+							<s:documentation>
+								Planned status changes in the future. If a time span matches with the current or displayed date, the corresponding value overwrites "status"
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="telephoneNumber" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Numeric. Service hotline for charging station to be displayed. to the EV user. Separators recommended.
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:pattern value="[0-9 \-]{1,20}"></s:pattern>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="floorLevel" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Alphanumeric. Level on which the charge station is located (in garage buildings) in the locally displayed numbering scheme. Examples: "-2","P-5", "2", "+5"
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:pattern value="[A-Z0-9\-\+/]{1,4}"></s:pattern>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="parkingSlotNumber" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Alphanumeric. Locally displayed parking slot number. Examples: "10", "251","B25", "P-234"
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:pattern value="[A-Z0-9\-\+/]{1,5}"></s:pattern>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="parkingRestriction" type="tns:ParkingRestrictionType" minOccurs="0" maxOccurs="unbounded">
+						<s:annotation>
+							<s:documentation>
+								This value, if provided, represents the restriction to the parking spot for different purposes.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="authMethods" type="tns:AuthMethodType" minOccurs="1" maxOccurs="unbounded">
+					</s:element>
+					<s:element name="connectors" type="tns:ConnectorType" minOccurs="1" maxOccurs="unbounded">
+						<s:annotation>
+							<s:documentation>
+								Which receptable type is/are present for a power outlet.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="userInterfaceLang" minOccurs="0" maxOccurs="unbounded">
+						<s:annotation>
+							<s:documentation>
+								Alpha, three characters. Language(s) of the user interface or printed on-site instructions. ISO-639-3 language code
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:pattern value="[A-Z]{3}"></s:pattern>
+								<s:length value="3"></s:length>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="ConnectorFormat">
+				<s:sequence>
+					<s:element name="ConnectorFormat">
+						<s:annotation>
+							<s:documentation>
+								The format (socket/ cable) of the installed connector.
+									Socket; The connector is a socket; the EV user needs to bring a fitting plug 
+									Cable; The connector is an attached cable; the EV user car needs to have a fitting inlet
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:enumeration value="Socket"></s:enumeration>
+								<s:enumeration value="Cable"></s:enumeration>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="ResultCodeType">
+				<s:sequence>
+					<s:element name="resultCode">
+						<s:annotation>
+							<s:documentation>
+								ok: Data accepted and processed; 
+								server: Internal server error; 
+								other: Other error type. See description for details;
+								format: Data could not be processed due to formal error in SOAP message;
+								missing: A mandatory value was missing;
+								range: A given value was out of the allowed range;
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:enumeration value="ok"></s:enumeration>
+								<s:enumeration value="server"></s:enumeration>
+								<s:enumeration value="other"></s:enumeration>
+								<s:enumeration value="format"></s:enumeration>
+								<s:enumeration value="missing"></s:enumeration>
+								<s:enumeration value="range"></s:enumeration>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:simpleType name="CdrId">
+				<s:restriction base="s:string">
+					<s:minLength value="1"></s:minLength>
+					<s:maxLength value="36"></s:maxLength>
+					<s:pattern value="[0-9A-Z]{1,36}"></s:pattern>
+				</s:restriction>
+			</s:simpleType>
+
+			<s:complexType name="EvseImageUrlType">
+				<s:sequence>
+					<s:element name="uri" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								uri from where the image data can be fetched. Must begin with a protocol of the list: http, https, file, ftp
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:pattern value="(http|https|ftp|file):\/\/.+"></s:pattern>
+								<s:maxLength value="255"></s:maxLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="thumbUri" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								uri from where a thumbnail of the image can be fetched. Must begin with a protocol of the list: http, https, file, ftp
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:pattern value="(http|https|ftp|file):\/\/.+"></s:pattern>
+								<s:maxLength value="255"></s:maxLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="class" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Image class for usage categorization. Values: 
+									networkLogo: logo of a associated roaming network to be displayed with the EVSE for example in lists, maps and detailed information view; 
+									operatorLogo: logo of the charge points operator, for example a municipal, to be displayed with the EVSEs detailed information view or in lists and maps, if no networkLogo is present; 
+									ownerLogo: logo of the charge points owner, for example a local store, to be displayed with the EVSEs detailed information view; 
+									stationPhoto: full view photo of the station in field. Should show the station only;
+									locationPhoto: location overview photo. Should indicate the location of the station on the site or street.;
+									entrancePhoto: location entrance photo. Should show the car entrance to the location from street side; 
+									otherPhoto: other related photo to be displayed with the stations detailed information view;
+									otherLogo: other related logo to be displayed with the stations detailed information view; 
+									otherGraphic: other related graphic to be displayed with the stations detailed information view;
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:enumeration value="networkLogo"></s:enumeration>
+								<s:enumeration value="operatorLogo"></s:enumeration>
+								<s:enumeration value="ownerLogo"></s:enumeration>
+								<s:enumeration value="stationPhoto"></s:enumeration>
+								<s:enumeration value="locationPhoto"></s:enumeration>
+								<s:enumeration value="entrancePhoto"></s:enumeration>
+								<s:enumeration value="otherPhoto"></s:enumeration>
+								<s:enumeration value="otherLogo"></s:enumeration>
+								<s:enumeration value="otherGraphic"></s:enumeration>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="type" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Image type like: gif, jpeg, png, svg
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:maxLength value="4"></s:maxLength>
+								<s:minLength value="1"></s:minLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="width" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Width of the full scale image
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:int">
+								<s:minExclusive value="0"></s:minExclusive>
+								<s:maxInclusive value="99999"></s:maxInclusive>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="height" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Height of the full scale image
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:int">
+								<s:minExclusive value="0"></s:minExclusive>
+								<s:maxInclusive value="99999"></s:maxInclusive>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:element name="UpdateStatusRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="evse" minOccurs="0" maxOccurs="unbounded" type="tns:EvseStatusType">
+							<s:annotation>
+								<s:documentation>
+									This contains one EVSE id with the current status represented in a major part and a minor part.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="ttl" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									The time to live is set as the deadline till the status values are to be considered valid, where not otherwise specified.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="UpdateStatusResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="result" type="tns:Result" minOccurs="1" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									This contains the result of UpdateStatus.req
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="GetStatusRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="startDateTime" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									If this value is set to a point in the past, the response is limited to status
+information that is more actual than the given value.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="GetStatusResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="evse" type="tns:EvseStatusType" minOccurs="0" maxOccurs="unbounded"></s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:complexType name="EvseStatusType">
+				<s:sequence>
+					<s:element name="evseId" type="tns:EvseId" minOccurs="1" maxOccurs="1"></s:element>
+				</s:sequence>
+				<s:attribute name="major" use="required">
+					<s:annotation>
+						<s:documentation>
+							The major status type reflects the overall status of the EVSE. Values:
+								available: the EVSE is able to start a new charging process;
+								not-available: at the moment no new charging process may be started;
+								unknown: the current status of the EVSE is not known;
+						</s:documentation>
+					</s:annotation>
+					<s:simpleType>
+						<s:restriction base="s:string">
+							<s:enumeration value="available"></s:enumeration>
+							<s:enumeration value="not-available"></s:enumeration>
+							<s:enumeration value="unknown"></s:enumeration>
+						</s:restriction>
+					</s:simpleType>
+				</s:attribute>
+				<s:attribute name="minor" use="optional">
+					<s:annotation>
+						<s:documentation>
+							The optional minor status type reflects the detailed status of the EVSE in addition to the major status. For each minor status value a proposed ttl value is given. However, the ttl should only be set to a value other than default if the expected status change is known or can be predicted. Values:
+								available: the EVSE is able to start a new charging process;
+								reserved: the EVSE is able to start a new charging process for limited duration as a future reservation is present. ttl to be set on the start of the reservation;
+								charging: the EVSE is in use. ttl to be set on the expected end of the charging process;
+								blocked: the EVSE not accessible because of a physical barrier, i.e. a car;
+								outoforder: the EVSE is currently out of order. ttl to be set to the expected re-enabling;
+						</s:documentation>
+					</s:annotation>
+					<s:simpleType>
+						<s:restriction base="s:string">
+							<s:enumeration value="available"></s:enumeration>
+							<s:enumeration value="reserved"></s:enumeration>
+							<s:enumeration value="charging"></s:enumeration>
+							<s:enumeration value="blocked"></s:enumeration>
+							<s:enumeration value="outoforder"></s:enumeration>
+						</s:restriction>
+					</s:simpleType>
+				</s:attribute>
+				<s:attribute name="ttl" type="s:dateTime" use="optional">
+					<s:annotation>
+						<s:documentation>
+							The time to live is set as the deadline till the status value is to be considered valid.  Should be set to the expected status change.
+						</s:documentation>
+					</s:annotation>
+				</s:attribute>
+			</s:complexType>
+
+			<s:simpleType name="EvseId">
+				<s:annotation>
+					<s:documentation>
+						The EVSE-ID is uniquely referencing one charge point.
+					</s:documentation>
+				</s:annotation>
+				<s:restriction base="s:string">
+					<s:pattern value="[A-Za-z]{2}\*[A-Za-z0-9]{3}\*[Ee][A-Za-z0-9][A-Za-z0-9\*]{0,30}"></s:pattern>
+					<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[Ee][A-Za-z0-9][A-Za-z0-9\*]{0,30}"></s:pattern>
+				</s:restriction>
+			</s:simpleType>
+
+			<s:simpleType name="ContractId">
+				<s:annotation>
+					<s:documentation>
+						The Contract-ID or EVCO-ID is uniquely referencing one customer account of a service provider.
+					</s:documentation>
+				</s:annotation>
+				<s:restriction base="s:string">
+					<s:pattern value="[A-Za-z]{2}-[A-Za-z0-9]{3}-[A-Za-z0-9]{9}-[A-Za-z0-9]"></s:pattern>
+					<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[A-Za-z0-9]{9}[A-Za-z0-9]"></s:pattern>
+					<s:pattern value="[A-Za-z]{2}-[A-Za-z0-9]{3}-[A-Za-z0-9]{9}"></s:pattern>
+					<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[A-Za-z0-9]{9}"></s:pattern>
+				</s:restriction>
+			</s:simpleType>
+
+			<s:simpleType name="LiveAuthId">
+				<s:restriction base="s:string">
+					<s:pattern value="[A-Z0-9\-]*"></s:pattern>
+					<s:minLength value="1"></s:minLength>
+					<s:maxLength value="15"></s:maxLength>
+				</s:restriction>
+			</s:simpleType>
+
+		</s:schema>
+	</wsdl:types>
+
+<!-- ===================================================================
+                        Messages
+==================================================================== -->
+
+<!-- Messages for the Exchange of Authorisation Data -->
+
+	<wsdl:message name="GetRoamingAuthorisationListInput">
+		<wsdl:part name="parameters"
+				element="tns:GetRoamingAuthorisationListRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetRoamingAuthorisationListOutput">
+		<wsdl:part name="parameters"
+				element="tns:GetRoamingAuthorisationListResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="SetRoamingAuthorisationListInput">
+		<wsdl:part name="parameters"
+				element="tns:SetRoamingAuthorisationListRequest" />
+	</wsdl:message>
+	<wsdl:message name="SetRoamingAuthorisationListOutput">
+		<wsdl:part name="parameters"
+				element="tns:SetRoamingAuthorisationListResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="GetRoamingAuthorisationListUpdatesRequest">
+		<wsdl:part name="parameters"
+				element="tns:GetRoamingAuthorisationListUpdatesRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetRoamingAuthorisationListUpdatesResponse">
+		<wsdl:part name="parameters"
+				element="tns:GetRoamingAuthorisationListUpdatesResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="UpdateRoamingAuthorisationListResponse">
+		<wsdl:part name="parameters"
+				element="tns:UpdateRoamingAuthorisationListResponse" />
+	</wsdl:message>
+	<wsdl:message name="UpdateRoamingAuthorisationListRequest">
+		<wsdl:part name="parameters"
+				element="tns:UpdateRoamingAuthorisationListRequest" />
+	</wsdl:message>
+
+<!-- Messages for the Exchange of Charge Data -->
+
+	<wsdl:message name="AddCDRsInput">
+		<wsdl:part name="parameters"
+				element="tns:AddCDRsRequest" />
+	</wsdl:message>
+	<wsdl:message name="AddCDRsOutput">
+		<wsdl:part name="parameters"
+				element="tns:AddCDRsResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="GetCDRsInput">
+		<wsdl:part name="parameters"
+				element="tns:GetCDRsRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetCDRsOutput">
+		<wsdl:part name="parameters"
+				element="tns:GetCDRsResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="ConfirmCDRsRequest">
+		<wsdl:part name="parameters"
+				element="tns:ConfirmCDRsRequest" />
+	</wsdl:message>
+	<wsdl:message name="ConfirmCDRsResponse">
+		<wsdl:part name="parameters"
+				element="tns:ConfirmCDRsResponse" />
+	</wsdl:message>
+
+<!-- Messages for the Exchange of Charge Point Information -->
+
+	<wsdl:message name="GetChargepointListInput">
+		<wsdl:part name="parameters"
+				element="tns:GetChargePointListRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetChargepointListOutput">
+		<wsdl:part name="parameters"
+				element="tns:GetChargePointListResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="SetChargepointListInput">
+		<wsdl:part name="parameters"
+				element="tns:SetChargePointListRequest" />
+	</wsdl:message>
+	<wsdl:message name="SetChargepointListOutput">
+		<wsdl:part name="parameters"
+				element="tns:SetChargePointListResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="GetChargePointListUpdatesRequest">
+		<wsdl:part name="parameters"
+				element="tns:GetChargePointListUpdatesRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetChargePointListUpdatesResponse">
+		<wsdl:part name="parameters"
+				element="tns:GetChargePointListUpdatesResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="UpdateChargePointListRequest">
+		<wsdl:part name="parameters"
+				element="tns:UpdateChargePointListRequest" />
+	</wsdl:message>
+	<wsdl:message name="UpdateChargePointListResponse">
+		<wsdl:part name="parameters"
+				element="tns:UpdateChargePointListResponse" />
+	</wsdl:message>
+
+<!-- Messages for live authorisation -->
+
+	<wsdl:message name="RequestLiveRoamingAuthorisationRequest">
+		<wsdl:part name="parameters"
+				element="tns:RequestLiveRoamingAuthorisationRequest" />
+	</wsdl:message>
+	<wsdl:message name="RequestLiveRoamingAuthorisationResponse">
+		<wsdl:part name="parameters"
+				element="tns:RequestLiveRoamingAuthorisationResponse" />
+	</wsdl:message>
+
+<!-- Messages for the Live Status Interface -->
+
+	<wsdl:message name="UpdateStatusRequest">
+		<wsdl:part name="parameters"
+				element="tns:UpdateStatusRequest" />
+	</wsdl:message>
+	<wsdl:message name="UpdateStatusResponse">
+		<wsdl:part name="parameters"
+				element="tns:UpdateStatusResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="GetStatusRequest">
+		<wsdl:part name="parameters"
+				element="tns:GetStatusRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetStatusResponse">
+		<wsdl:part name="parameters"
+				element="tns:GetStatusResponse" />
+	</wsdl:message>
+
+<!-- ===================================================================
+                        Port Definitions
+==================================================================== -->
+
+	<wsdl:portType name="OCHP_1.2">
+
+		<wsdl:documentation>
+			OCHP Version 1.2 Interface
+		</wsdl:documentation>
+
+		<wsdl:operation name="AddCDRs">
+			<wsdl:documentation>
+				Local roaming charge data records are sent from the CMS to the CHS.
+			</wsdl:documentation>
+			<wsdl:input message="tns:AddCDRsInput" />
+			<wsdl:output message="tns:AddCDRsOutput" />
+		</wsdl:operation>
+		<wsdl:operation name="GetCDRs">
+			<wsdl:documentation>
+				Cleared roaming charge data records, held at the CHS are sent from the CHS to the MDM. Note that only cleared CDRs that concern the EVSP are sent.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetCDRsInput" />
+			<wsdl:output message="tns:GetCDRsOutput" />
+		</wsdl:operation>
+		<wsdl:operation name="GetRoamingAuthorisationList">
+			<wsdl:documentation>
+				A CMS downloads the global authorisation data repository from the CHS.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetRoamingAuthorisationListInput" />
+			<wsdl:output message="tns:GetRoamingAuthorisationListOutput" />
+		</wsdl:operation>
+		<wsdl:operation name="SetRoamingAuthorisationList">
+			<wsdl:documentation>
+				The MDM of each EVSP has to exchange the own authorisation data with the Clearing House to share that data with EVSE Operators.
+			</wsdl:documentation>
+			<wsdl:input message="tns:SetRoamingAuthorisationListInput" />
+			<wsdl:output message="tns:SetRoamingAuthorisationListOutput" />
+		</wsdl:operation>
+		<wsdl:operation name="GetChargePointList">
+			<wsdl:documentation>
+				A NPS downloads the global charge point information from the CHS.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetChargepointListInput" />
+			<wsdl:output message="tns:GetChargepointListOutput" />
+		</wsdl:operation>
+		<wsdl:operation name="SetChargepointList">
+			<wsdl:documentation>
+				Local roaming charge data records are sent from the CMS to the CHS.
+			</wsdl:documentation>
+			<wsdl:input message="tns:SetChargepointListInput" />
+			<wsdl:output message="tns:SetChargepointListOutput" />
+		</wsdl:operation>
+		<wsdl:operation name="GetRoamingAuthorisationListUpdates">
+			<wsdl:documentation>
+				A CMS downloads the changes to the global authorisation data repository since the last synchronization from the CHS.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetRoamingAuthorisationListUpdatesRequest"></wsdl:input>
+			<wsdl:output message="tns:GetRoamingAuthorisationListUpdatesResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateRoamingAuthorisationList">
+			<wsdl:documentation>
+				For later updates of authorization data from the MDM to the Clearing House and the EVSE Operators, only the changed entries (delta) have to be transferred.
+			</wsdl:documentation>
+			<wsdl:input message="tns:UpdateRoamingAuthorisationListRequest"></wsdl:input>
+			<wsdl:output message="tns:UpdateRoamingAuthorisationListResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ConfirmCDRs">
+			<wsdl:documentation>
+				Cleared roaming charge data records, downloaded from the CHS are confirmed by the MDM. An EVSE-Operator has to confirm every downloaded CDR either with an accept or a revoke.
+			</wsdl:documentation>
+			<wsdl:input message="tns:ConfirmCDRsRequest"></wsdl:input>
+			<wsdl:output message="tns:ConfirmCDRsResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetChargePointListUpdates">
+			<wsdl:documentation>
+				A NPS downloads the changes to the global charge point information data repository since the last synchronization from the CHS.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetChargePointListUpdatesRequest"></wsdl:input>
+			<wsdl:output message="tns:GetChargePointListUpdatesResponse"></wsdl:output>
+		</wsdl:operation>		<wsdl:operation name="UpdateChargePointList">			<wsdl:documentation>
+				For later updates of charge point information from the CIMS to the Clearing House and the EVSPs, only the changed entries (delta) have to be transferred.			</wsdl:documentation>			<wsdl:input message="tns:UpdateChargePointListRequest"></wsdl:input>			<wsdl:output message="tns:UpdateChargePointListResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="RequestLiveRoamingAuthorisation">
+			<wsdl:documentation>
+				A CMS may request the Clearing House to authorize one single token for a charging session
+			</wsdl:documentation>
+			<wsdl:input message="tns:RequestLiveRoamingAuthorisationRequest"></wsdl:input>
+			<wsdl:output message="tns:RequestLiveRoamingAuthorisationResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:portType name="OCHP_1.2-live">
+
+		<wsdl:documentation>
+			OCHP Version 1.2 Live POI Interface
+		</wsdl:documentation>
+
+		<wsdl:operation name="UpdateStatus">
+			<wsdl:documentation>
+				A CMS may update the current live status of individual charging stations in the Clearing House to allow roaming partners to receive those statuses.
+			</wsdl:documentation>
+			<wsdl:input message="tns:UpdateStatusRequest"></wsdl:input>
+			<wsdl:output message="tns:UpdateStatusResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetStatus">
+			<wsdl:documentation>
+				A NPS may receive the current live status of individual charging stations from the Clearing House.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetStatusRequest"></wsdl:input>
+			<wsdl:output message="tns:GetStatusResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+
+<!-- ===================================================================
+                        Binding Definitions
+==================================================================== -->
+
+	<wsdl:binding name="eCHS-OCHP_1.2" type="tns:OCHP_1.2">
+
+		<wsdl:documentation>
+			OCHP Version 1.2 Interface
+		</wsdl:documentation>
+
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="AddCDRs">
+			<soap:operation soapAction="http://ochp.eu/1.2/AddCDRs" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GetCDRs">
+			<soap:operation soapAction="http://ochp.eu/1.2/GetCDRs" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GetRoamingAuthorisationList">
+			<soap:operation soapAction="http://ochp.eu/1.2/GetRoamingAuthorisationList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="SetRoamingAuthorisationList">
+			<soap:operation soapAction="http://ochp.eu/1.2/SetRoamingAuthorisationList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GetChargePointList">
+			<soap:operation soapAction="http://ochp.eu/1.2/GetChargePointList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="SetChargepointList">
+			<soap:operation soapAction="http://ochp.eu/1.2/SetChargepointList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GetRoamingAuthorisationListUpdates">
+			<soap:operation soapAction="http://ochp.eu/1.2/GetRoamingAuthorisationListUpdates" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="UpdateRoamingAuthorisationList">
+			<soap:operation soapAction="http://ochp.eu/1.2/UpdateRoamingAuthorisationList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="ConfirmCDRs">
+			<soap:operation soapAction="http://ochp.eu/1.2/ConfirmCDRs" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GetChargePointListUpdates">
+			<soap:operation soapAction="http://ochp.eu/1.2/GetChargePointListUpdates" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="UpdateChargePointList">
+			<soap:operation soapAction="http://ochp.eu/1.2/UpdateChargePointList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="RequestLiveRoamingAuthorisation">
+			<soap:operation soapAction="http://ochp.eu/1.2/RequestLiveRoamingAuthorisation" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+
+<!-- Binding to the Live POI Interface -->
+
+	<wsdl:binding name="eCHS-OCHP_1.2-live" type="tns:OCHP_1.2-live">
+
+		<wsdl:documentation>
+			OCHP Version 1.2 Live POI Interface
+		</wsdl:documentation>
+
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="UpdateStatus">
+			<soap:operation soapAction="http://ochp.e-clearing.net/service/UpdateStatus" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GetStatus">
+			<soap:operation soapAction="http://ochp.e-clearing.net/service/GetStatus" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+<!-- ===================================================================
+                        Service Definition
+==================================================================== -->
+
+	<wsdl:service name="e-clearing.net">
+
+		<wsdl:documentation>
+			EEN European Emobility Network - EV Clearing Platform
+		</wsdl:documentation>
+
+		<wsdl:port name="eCHS_P-System" binding="tns:eCHS-OCHP_1.2">
+			<wsdl:documentation>
+				eCHS Productive System Endpoint
+			</wsdl:documentation>
+			<soap:address location="https://echs.e-clearing.net/service/ochp/v1.2" />
+		</wsdl:port>
+
+		<wsdl:port name="eCHS_Q-System" binding="tns:eCHS-OCHP_1.2">
+			<wsdl:documentation>
+				eCHS Quality Ensurance System Endpoint
+			</wsdl:documentation>
+			<soap:address location="https://echs-q.e-clearing.net/service/ochp/v1.2" />
+		</wsdl:port>
+
+<!-- Endpoints for the Live POI Interface -->
+
+		<wsdl:port name="eCHS_P-System-live" binding="tns:eCHS-OCHP_1.2-live">
+			<wsdl:documentation>
+				eCHS Live-POI Productive System Endpoint
+			</wsdl:documentation>
+			<soap:address location="https://echs.e-clearing.net/live/ochp/v1.2" />
+		</wsdl:port>
+
+		<wsdl:port name="eCHS_Q-System-live" binding="tns:eCHS-OCHP_1.2-live">
+			<wsdl:documentation>
+				eCHS Live-POI Quality Ensurance Endpoint
+			</wsdl:documentation>
+			<soap:address location="https://echs-q.e-clearing.net/live/ochp/v1.2" />
+		</wsdl:port>
+
+	</wsdl:service>
+
+</wsdl:definitions>

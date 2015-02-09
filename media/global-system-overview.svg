@@ -1,0 +1,885 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Generiert durch Microsoft Visio 11.0, SVG Export, v1.0 OCHProles.svg System Overview (1) -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="6.14477in" height="5.75967in"
+		viewBox="0 0 442.423 414.696" xml:space="preserve" color-interpolation-filters="sRGB" class="st15">
+	<v:documentProperties v:langID="1031" v:metric="true" v:viewMarkup="false">
+		<v:userDefs>
+			<v:ud v:nameU="msvNoAutoConnect" v:val="VT0(1):26"/>
+		</v:userDefs>
+	</v:documentProperties>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#ffffff}
+		.st2 {stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
+		.st3 {fill:#000000;font-family:Arial;font-size:0.666664em;font-weight:bold}
+		.st4 {fill:#ffffff;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
+		.st5 {marker-end:url(#mrkr20-50);stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
+		.st6 {fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.15384615384615}
+		.st7 {font-size:1em}
+		.st8 {fill:#000000;font-family:Arial;font-size:0.583328em;font-weight:bold}
+		.st9 {fill:none;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st10 {fill:#000000;font-family:Calibri;font-size:0.833336em}
+		.st11 {marker-start:url(#mrkr3-361);stroke:#000000;stroke-dasharray:5.04,3.6;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
+		.st12 {fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.22222222222222}
+		.st13 {fill:#ffffff;stroke:none;stroke-linecap:butt;stroke-width:7.2}
+		.st14 {fill:#000000;font-family:Calibri;font-size:0.666664em}
+		.st15 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Markers">
+		<g id="lend20">
+			<path
+					d="M 0 0.75 C -0.414214 0.75 -0.75 0.414214 -0.75 0 -0.75 -0.414214 -0.414214 -0.75 0 -0.75 0.414214 -0.75 0.75 -0.414214 0.75 0 0.75 0.414214 0.414214 0.75 0 0.75 Z "
+					style="stroke-linecap:round;stroke-linejoin:round;fill:none"/>
+		</g>
+		<marker id="mrkr20-50" class="st6" v:arrowType="20" v:arrowSize="4" v:setback="4.875" refX="-4.875" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend20" transform="scale(-6.5,-6.5) "/>
+		</marker>
+		<g id="lend3">
+			<path d="M 2 1 L 0 0 L 2 -1 " style="stroke-linecap:round;stroke-linejoin:round;fill:none"/>
+		</g>
+		<marker id="mrkr3-361" class="st12" v:arrowType="3" v:arrowSize="2" orient="auto" markerUnits="strokeWidth"
+				overflow="visible">
+			<use xlink:href="#lend3" transform="scale(4.5) "/>
+		</marker>
+	</defs>
+	<g v:mID="6" v:index="4" v:groupContext="foregroundPage">
+		<title>System Overview (1)</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<v:layer v:name="Verbinder" v:index="0"/>
+		<g id="group46-1" transform="translate(18,-18.72)" v:mID="46" v:groupContext="group">
+			<title>Tabelle.46</title>
+			<g id="group2-2" transform="translate(2.65748,-303.307)" v:mID="2" v:groupContext="group">
+				<v:userDefs>
+					<v:ud v:nameU="F"/>
+					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+				</v:userDefs>
+				<title>Node</title>
+				<g id="shape3-3" v:mID="3" v:groupContext="shape">
+					<title>Tabelle.3</title>
+					<path d="M360.07 414.7 L0 414.7 L360.07 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape4-6" v:mID="4" v:groupContext="shape">
+					<title>Tabelle.4</title>
+					<path d="M360.07 414.7 L0 414.7 L360.07 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape5-9" v:mID="5" v:groupContext="shape">
+					<title>Tabelle.5</title>
+					<path d="M360.07 414.7 L0 414.7 L360.07 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape6-12" v:mID="6" v:groupContext="shape" transform="translate(360.071,0)">
+					<title>Tabelle.6</title>
+					<path d="M0 414.7 L0 345.25 L0 414.7 Z" class="st1"/>
+					<path d="" class="st2"/>
+				</g>
+				<g id="shape7-15" v:mID="7" v:groupContext="shape">
+					<title>Tabelle.7</title>
+					<desc>Clearing House (CH)</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
+					<v:textRect cx="180.035" cy="379.971" width="360.08" height="69.4488"/>
+					<path d="M360.07 414.7 L360.07 345.25 L0 345.25 L0 414.7 L360.07 414.7 ZM0 345.25 L4.5 340.75 L364.57 340.75
+								 L360.07 345.25 L0 345.25 ZM360.07 414.7 L364.57 410.2 L364.57 340.75 L360.07 345.25 L360.07 414.7
+								 ZM364.57 410.2 L364.57 340.75 L4.5 340.75 L364.57 340.75 L364.57 410.2 Z" class="st1"/>
+					<path d="M0 345.25 L4.5 340.75 L364.57 340.75 L360.07 345.25 L0 345.25" class="st2"/>
+					<path d="M360.07 414.7 L364.57 410.2 L364.57 340.75" class="st2"/>
+					<path d="M360.07 345.25 L360.07 414.7" class="st2"/>
+					<path d="M0 345.25 L0 414.7 L360.07 414.7" class="st2"/>
+					<text x="4" y="356.45" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>Clearing House (CH)</text>				</g>
+			</g>
+			<g id="group8-22" transform="translate(19.6654,-312.236)" v:mID="8" v:groupContext="group">
+				<v:userDefs>
+					<v:ud v:nameU="F" v:val="VT0(0):26"/>
+					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+					<v:ud v:nameU="ResizeIcon" v:val="VT0(0):26"/>
+				</v:userDefs>
+				<title>Component</title>
+				<g id="shape9-23" v:mID="9" v:groupContext="shape">
+					<title>Tabelle.9</title>
+					<path d="M327.47 414.7 L0 414.7 L327.47 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape10-26" v:mID="10" v:groupContext="shape">
+					<title>Tabelle.10</title>
+					<path d="M327.47 414.7 L0 414.7 L327.47 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape11-29" v:mID="11" v:groupContext="shape">
+					<title>Tabelle.11</title>
+					<path d="M327.47 414.7 L0 414.7 L327.47 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape12-32" v:mID="12" v:groupContext="shape" transform="translate(327.472,0)">
+					<title>Tabelle.12</title>
+					<path d="M0 414.7 L0 378.7 L0 414.7 Z" class="st1"/>
+					<path d="" class="st2"/>
+				</g>
+				<g id="shape13-35" v:mID="13" v:groupContext="shape">
+					<title>Tabelle.13</title>
+					<desc>Clearing House System (CHS)</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
+					<v:textRect cx="163.736" cy="396.696" width="327.48" height="36"/>
+					<path d="M327.47 414.7 L327.47 378.7 L0 378.7 L0 414.7 L327.47 414.7 ZM327.47 414.7 L327.47 378.7 L0 378.7 L327.47
+								 378.7 L327.47 414.7 Z" class="st1"/>
+					<path d="M327.47 414.7 L327.47 378.7" class="st2"/>
+					<path d="M0 414.7 L0 378.7" class="st2"/>
+					<path d="M0 414.7 L327.47 414.7" class="st2"/>
+					<path d="M327.47 414.7 L327.47 378.7" class="st2"/>
+					<path d="M0 378.7 L327.47 378.7" class="st2"/>
+					<text x="4" y="389.9" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>Clearing House System (CHS)</text>				</g>
+				<g id="shape14-43" v:mID="14" v:groupContext="shape" transform="translate(313.972,-22.5)">
+					<title>Tabelle.14</title>
+					<path d="M0 414.7 L9 414.7 L9 405.7 L0 405.7 L0 407.5 L1.8 407.5 L1.8 409.3 L0 409.3 L0 411.1 L1.8 411.1 L1.8
+								 412.9 L0 412.9 L0 414.7 ZM-1.8 412.9 L1.8 412.9 L1.8 411.1 L-1.8 411.1 L-1.8 412.9 ZM-1.8 409.3
+								 L1.8 409.3 L1.8 407.5 L-1.8 407.5 L-1.8 409.3 Z" class="st4"/>
+				</g>
+			</g>
+			<g id="shape15-45" v:mID="15" v:groupContext="shape" transform="translate(298.949,-312.236)">
+				<title>Interface, Socket</title>
+				<v:userDefs>
+					<v:ud v:nameU="Interface" v:val="VT0(1):26"/>
+					<v:ud v:nameU="EndSize" v:val="VT0(0.0425):26"/>
+					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
+					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+				</v:userDefs>
+				<path d="M0 414.7 L0.28 441.38" class="st5"/>
+			</g>
+			<g id="shape16-51" v:mID="16" v:groupContext="shape" transform="translate(296.185,-299.055)">
+				<title>Feld.17</title>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+				</v:userDefs>
+				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
+			</g>
+			<g id="group17-53" transform="translate(254.02,-106.299)" v:mID="17" v:groupContext="group">
+				<v:userDefs>
+					<v:ud v:nameU="F"/>
+					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+				</v:userDefs>
+				<title>Node.18</title>
+				<g id="shape18-54" v:mID="18" v:groupContext="shape">
+					<title>Tabelle.18</title>
+					<path d="M93.54 414.7 L0 414.7 L93.54 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape19-57" v:mID="19" v:groupContext="shape">
+					<title>Tabelle.19</title>
+					<path d="M93.54 414.7 L0 414.7 L93.54 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape20-60" v:mID="20" v:groupContext="shape">
+					<title>Tabelle.20</title>
+					<path d="M93.54 414.7 L0 414.7 L93.54 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape21-63" v:mID="21" v:groupContext="shape" transform="translate(93.5433,0)">
+					<title>Tabelle.21</title>
+					<path d="M0 414.7 L0 264.46 L0 414.7 Z" class="st1"/>
+					<path d="" class="st2"/>
+				</g>
+				<g id="shape22-66" v:mID="22" v:groupContext="shape">
+					<title>Tabelle.22</title>
+					<desc>EVSE Operator</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
+					<v:textRect cx="46.7717" cy="339.578" width="93.55" height="150.236"/>
+					<path d="M93.54 414.7 L93.54 264.46 L0 264.46 L0 414.7 L93.54 414.7 ZM0 264.46 L4.5 259.96 L98.04 259.96 L93.54
+								 264.46 L0 264.46 ZM93.54 414.7 L98.04 410.2 L98.04 259.96 L93.54 264.46 L93.54 414.7 ZM98.04 410.2
+								 L98.04 259.96 L4.5 259.96 L98.04 259.96 L98.04 410.2 Z" class="st1"/>
+					<path d="M0 264.46 L4.5 259.96 L98.04 259.96 L93.54 264.46 L0 264.46" class="st2"/>
+					<path d="M93.54 414.7 L98.04 410.2 L98.04 259.96" class="st2"/>
+					<path d="M93.54 264.46 L93.54 414.7" class="st2"/>
+					<path d="M0 264.46 L0 414.7 L93.54 414.7" class="st2"/>
+					<text x="4" y="275.66" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>EVSE Operator</text>				</g>
+			</g>
+			<g id="group23-73" transform="translate(263.126,-184.677)" v:mID="23" v:groupContext="group">
+				<v:userDefs>
+					<v:ud v:nameU="F" v:val="VT0(0):26"/>
+					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+					<v:ud v:nameU="ResizeIcon" v:val="VT0(0):26"/>
+				</v:userDefs>
+				<title>Component.24</title>
+				<g id="shape24-74" v:mID="24" v:groupContext="shape">
+					<title>Tabelle.24</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape25-77" v:mID="25" v:groupContext="shape">
+					<title>Tabelle.25</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape26-80" v:mID="26" v:groupContext="shape">
+					<title>Tabelle.26</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape27-83" v:mID="27" v:groupContext="shape" transform="translate(72,0)">
+					<title>Tabelle.27</title>
+					<path d="M0 414.7 L0 378.7 L0 414.7 Z" class="st1"/>
+					<path d="" class="st2"/>
+				</g>
+				<g id="shape28-86" v:mID="28" v:groupContext="shape">
+					<title>Tabelle.28</title>
+					<desc>Charge Point Management System (CMS)</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
+					<v:textRect cx="36" cy="396.696" width="72" height="36"/>
+					<path d="M72 414.7 L72 378.7 L0 378.7 L0 414.7 L72 414.7 ZM72 414.7 L72 378.7 L0 378.7 L72 378.7 L72 414.7 Z"
+							class="st1"/>
+					<path d="M72 414.7 L72 378.7" class="st2"/>
+					<path d="M0 414.7 L0 378.7" class="st2"/>
+					<path d="M0 414.7 L72 414.7" class="st2"/>
+					<path d="M72 414.7 L72 378.7" class="st2"/>
+					<path d="M0 378.7 L72 378.7" class="st2"/>
+					<text x="4" y="389.9" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>Charge Point <tspan x="4"
+								dy="1.2em" class="st7">Management </tspan><tspan x="4" dy="1.2em" class="st7">System </tspan>(CMS)</text>				</g>
+				<g id="shape29-96" v:mID="29" v:groupContext="shape" transform="translate(58.5,-22.5)">
+					<title>Tabelle.29</title>
+					<path d="M0 414.7 L9 414.7 L9 405.7 L0 405.7 L0 407.5 L1.8 407.5 L1.8 409.3 L0 409.3 L0 411.1 L1.8 411.1 L1.8
+								 412.9 L0 412.9 L0 414.7 ZM-1.8 412.9 L1.8 412.9 L1.8 411.1 L-1.8 411.1 L-1.8 412.9 ZM-1.8 409.3
+								 L1.8 409.3 L1.8 407.5 L-1.8 407.5 L-1.8 409.3 Z" class="st4"/>
+				</g>
+			</g>
+			<g id="shape30-98" v:mID="30" v:groupContext="shape" transform="translate(299.126,-220.677)">
+				<title>Interface, Socket.29</title>
+				<v:userDefs>
+					<v:ud v:nameU="Interface" v:val="VT0(2):26"/>
+					<v:ud v:nameU="EndSize" v:val="VT0(0.0765):26"/>
+					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
+					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+				</v:userDefs>
+				<path d="M0 414.7 L0.13 358.83" class="st2"/>
+				<path d="M-5.26 352.24 A5.508 5.508 -180 1 0 5.55 352.26" class="st2"/>
+			</g>
+			<g id="shape31-102" v:mID="31" v:groupContext="shape" transform="translate(296.398,-254.551)">
+				<title>Feld.39</title>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+				</v:userDefs>
+				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
+			</g>
+			<g id="group32-104" transform="translate(263.126,-118.488)" v:mID="32" v:groupContext="group">
+				<v:userDefs>
+					<v:ud v:nameU="F" v:val="VT0(0):26"/>
+					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+					<v:ud v:nameU="ResizeIcon" v:val="VT0(0):26"/>
+				</v:userDefs>
+				<title>Component.43</title>
+				<g id="shape33-105" v:mID="33" v:groupContext="shape">
+					<title>Tabelle.33</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape34-108" v:mID="34" v:groupContext="shape">
+					<title>Tabelle.34</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape35-111" v:mID="35" v:groupContext="shape">
+					<title>Tabelle.35</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape36-114" v:mID="36" v:groupContext="shape" transform="translate(72,0)">
+					<title>Tabelle.36</title>
+					<path d="M0 414.7 L0 378.7 L0 414.7 Z" class="st1"/>
+					<path d="" class="st2"/>
+				</g>
+				<g id="shape37-117" v:mID="37" v:groupContext="shape">
+					<title>Tabelle.37</title>
+					<desc>Charge Point (CP)</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
+					<v:textRect cx="36" cy="396.696" width="72" height="36"/>
+					<path d="M72 414.7 L72 378.7 L0 378.7 L0 414.7 L72 414.7 ZM72 414.7 L72 378.7 L0 378.7 L72 378.7 L72 414.7 Z"
+							class="st1"/>
+					<path d="M72 414.7 L72 378.7" class="st2"/>
+					<path d="M0 414.7 L0 378.7" class="st2"/>
+					<path d="M0 414.7 L72 414.7" class="st2"/>
+					<path d="M72 414.7 L72 378.7" class="st2"/>
+					<path d="M0 378.7 L72 378.7" class="st2"/>
+					<text x="4" y="389" class="st8" v:langID="1031"><v:paragraph/><v:tabList/>Charge Point <v:lf/><tspan x="4"
+								dy="1.2em" class="st7">(</tspan>CP)</text>				</g>
+				<g id="shape38-126" v:mID="38" v:groupContext="shape" transform="translate(58.5,-22.5)">
+					<title>Tabelle.38</title>
+					<path d="M0 414.7 L9 414.7 L9 405.7 L0 405.7 L0 407.5 L1.8 407.5 L1.8 409.3 L0 409.3 L0 411.1 L1.8 411.1 L1.8
+								 412.9 L0 412.9 L0 414.7 ZM-1.8 412.9 L1.8 412.9 L1.8 411.1 L-1.8 411.1 L-1.8 412.9 ZM-1.8 409.3
+								 L1.8 409.3 L1.8 407.5 L-1.8 407.5 L-1.8 409.3 Z" class="st4"/>
+				</g>
+			</g>
+			<g id="shape39-128" v:mID="39" v:groupContext="shape" transform="translate(299.126,-154.488)">
+				<title>Interface, Socket.49</title>
+				<v:userDefs>
+					<v:ud v:nameU="Interface" v:val="VT0(1):26"/>
+					<v:ud v:nameU="EndSize" v:val="VT0(0.0425):26"/>
+					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
+					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+				</v:userDefs>
+				<path d="M0 414.7 L0 406.02" class="st5"/>
+			</g>
+			<g id="shape40-133" v:mID="40" v:groupContext="shape" transform="translate(299.126,-184.677)">
+				<title>Interface, Socket.50</title>
+				<v:userDefs>
+					<v:ud v:nameU="Interface" v:val="VT0(2):26"/>
+					<v:ud v:nameU="EndSize" v:val="VT0(0.0765):26"/>
+					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
+					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+				</v:userDefs>
+				<path d="M0 414.7 L-0 427.19" class="st2"/>
+				<path d="M5.4 433.77 A5.508 5.508 -180 1 0 -5.4 433.77" class="st2"/>
+			</g>
+			<g id="shape41-137" v:mID="41" v:groupContext="shape" transform="translate(306.461,-279.213)">
+				<title>Tabelle.41</title>
+				<desc>OCHP Protocol</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="49.6063" cy="410.444" width="99.22" height="8.50394"/>
+				<rect x="0" y="406.192" width="99.2126" height="8.50394" class="st9"/>
+				<text x="4" y="413.44" class="st10" v:langID="1031"><v:paragraph/><v:tabList/>OCHP Protocol</text>			</g>
+			<g id="group61-140" transform="translate(135.354,-170.079)" v:mID="61" v:groupContext="group">
+				<v:userDefs>
+					<v:ud v:nameU="F"/>
+					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+				</v:userDefs>
+				<title>Node.123</title>
+				<g id="shape62-141" v:mID="62" v:groupContext="shape">
+					<title>Tabelle.62</title>
+					<path d="M93.54 414.7 L0 414.7 L93.54 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape63-144" v:mID="63" v:groupContext="shape">
+					<title>Tabelle.63</title>
+					<path d="M93.54 414.7 L0 414.7 L93.54 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape64-147" v:mID="64" v:groupContext="shape">
+					<title>Tabelle.64</title>
+					<path d="M93.54 414.7 L0 414.7 L93.54 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape65-150" v:mID="65" v:groupContext="shape" transform="translate(93.5433,0)">
+					<title>Tabelle.65</title>
+					<path d="M0 414.7 L0 328.24 L0 414.7 Z" class="st1"/>
+					<path d="" class="st2"/>
+				</g>
+				<g id="shape66-153" v:mID="66" v:groupContext="shape">
+					<title>Tabelle.66</title>
+					<desc>EVSP</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
+					<v:textRect cx="46.7717" cy="371.468" width="93.55" height="86.4567"/>
+					<path d="M93.54 414.7 L93.54 328.24 L0 328.24 L0 414.7 L93.54 414.7 ZM0 328.24 L4.5 323.74 L98.04 323.74 L93.54
+								 328.24 L0 328.24 ZM93.54 414.7 L98.04 410.2 L98.04 323.74 L93.54 328.24 L93.54 414.7 ZM98.04 410.2
+								 L98.04 323.74 L4.5 323.74 L98.04 323.74 L98.04 410.2 Z" class="st1"/>
+					<path d="M0 328.24 L4.5 323.74 L98.04 323.74 L93.54 328.24 L0 328.24" class="st2"/>
+					<path d="M93.54 414.7 L98.04 410.2 L98.04 323.74" class="st2"/>
+					<path d="M93.54 328.24 L93.54 414.7" class="st2"/>
+					<path d="M0 328.24 L0 414.7 L93.54 414.7" class="st2"/>
+					<text x="4" y="339.44" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>EVSP</text>				</g>
+			</g>
+			<g id="group67-160" transform="translate(147.472,-184.677)" v:mID="67" v:groupContext="group">
+				<v:userDefs>
+					<v:ud v:nameU="F" v:val="VT0(0):26"/>
+					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+					<v:ud v:nameU="ResizeIcon" v:val="VT0(0):26"/>
+				</v:userDefs>
+				<title>Component.129</title>
+				<g id="shape68-161" v:mID="68" v:groupContext="shape">
+					<title>Tabelle.68</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape69-164" v:mID="69" v:groupContext="shape">
+					<title>Tabelle.69</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape70-167" v:mID="70" v:groupContext="shape">
+					<title>Tabelle.70</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape71-170" v:mID="71" v:groupContext="shape" transform="translate(72,0)">
+					<title>Tabelle.71</title>
+					<path d="M0 414.7 L0 378.7 L0 414.7 Z" class="st1"/>
+					<path d="" class="st2"/>
+				</g>
+				<g id="shape72-173" v:mID="72" v:groupContext="shape">
+					<title>Tabelle.72</title>
+					<desc>Master Data Management System (MDM)</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
+					<v:textRect cx="36" cy="396.696" width="72" height="36"/>
+					<path d="M72 414.7 L72 378.7 L0 378.7 L0 414.7 L72 414.7 ZM72 414.7 L72 378.7 L0 378.7 L72 378.7 L72 414.7 Z"
+							class="st1"/>
+					<path d="M72 414.7 L72 378.7" class="st2"/>
+					<path d="M0 414.7 L0 378.7" class="st2"/>
+					<path d="M0 414.7 L72 414.7" class="st2"/>
+					<path d="M72 414.7 L72 378.7" class="st2"/>
+					<path d="M0 378.7 L72 378.7" class="st2"/>
+					<text x="4" y="389.9" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>Master Data <tspan x="4" dy="1.2em"
+								class="st7">Management </tspan><tspan x="4" dy="1.2em" class="st7">System </tspan>(MDM)</text>				</g>
+				<g id="shape73-183" v:mID="73" v:groupContext="shape" transform="translate(58.5,-22.5)">
+					<title>Tabelle.73</title>
+					<path d="M0 414.7 L9 414.7 L9 405.7 L0 405.7 L0 407.5 L1.8 407.5 L1.8 409.3 L0 409.3 L0 411.1 L1.8 411.1 L1.8
+								 412.9 L0 412.9 L0 414.7 ZM-1.8 412.9 L1.8 412.9 L1.8 411.1 L-1.8 411.1 L-1.8 412.9 ZM-1.8 409.3
+								 L1.8 409.3 L1.8 407.5 L-1.8 407.5 L-1.8 409.3 Z" class="st4"/>
+				</g>
+			</g>
+			<g id="shape74-185" v:mID="74" v:groupContext="shape" transform="translate(183.402,-312.236)">
+				<title>Interface, Socket.136</title>
+				<v:userDefs>
+					<v:ud v:nameU="Interface" v:val="VT0(1):26"/>
+					<v:ud v:nameU="EndSize" v:val="VT0(0.0425):26"/>
+					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
+					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+				</v:userDefs>
+				<path d="M0 414.7 L0.09 441.37" class="st5"/>
+			</g>
+			<g id="shape75-190" v:mID="75" v:groupContext="shape" transform="translate(179.598,-298.772)">
+				<title>Feld.137</title>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+				</v:userDefs>
+				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
+			</g>
+			<g id="shape76-192" v:mID="76" v:groupContext="shape" transform="translate(187.016,-279.213)">
+				<title>Tabelle.76</title>
+				<desc>OCHP Protocol</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="49.6063" cy="410.444" width="99.22" height="8.50394"/>
+				<rect x="0" y="406.192" width="99.2126" height="8.50394" class="st9"/>
+				<text x="4" y="413.44" class="st10" v:langID="1031"><v:paragraph/><v:tabList/>OCHP Protocol</text>			</g>
+			<g id="shape77-195" v:mID="77" v:groupContext="shape" transform="translate(183.472,-220.677)">
+				<title>Interface, Socket.140</title>
+				<v:userDefs>
+					<v:ud v:nameU="Interface" v:val="VT0(2):26"/>
+					<v:ud v:nameU="EndSize" v:val="VT0(0.0765):26"/>
+					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
+					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+				</v:userDefs>
+				<path d="M0 414.7 L0.03 358.83" class="st2"/>
+				<path d="M-5.37 352.25 A5.508 5.508 -180 1 0 5.44 352.25" class="st2"/>
+			</g>
+			<g id="shape78-199" v:mID="78" v:groupContext="shape" transform="translate(180.213,-254.268)">
+				<title>Feld.138</title>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+				</v:userDefs>
+				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
+			</g>
+			<g id="group97-201" transform="translate(11.7992,-170.079)" v:mID="97" v:groupContext="group">
+				<v:userDefs>
+					<v:ud v:nameU="F"/>
+					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+				</v:userDefs>
+				<title>Node.159</title>
+				<g id="shape98-202" v:mID="98" v:groupContext="shape">
+					<title>Tabelle.98</title>
+					<path d="M93.54 414.7 L0 414.7 L93.54 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape99-205" v:mID="99" v:groupContext="shape">
+					<title>Tabelle.99</title>
+					<path d="M93.54 414.7 L0 414.7 L93.54 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape100-208" v:mID="100" v:groupContext="shape">
+					<title>Tabelle.100</title>
+					<path d="M93.54 414.7 L0 414.7 L93.54 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape101-211" v:mID="101" v:groupContext="shape" transform="translate(93.5433,0)">
+					<title>Tabelle.101</title>
+					<path d="M0 414.7 L0 328.24 L0 414.7 Z" class="st1"/>
+					<path d="" class="st2"/>
+				</g>
+				<g id="shape102-214" v:mID="102" v:groupContext="shape">
+					<title>Tabelle.102</title>
+					<desc>NSP</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
+					<v:textRect cx="46.7717" cy="371.468" width="93.55" height="86.4567"/>
+					<path d="M93.54 414.7 L93.54 328.24 L0 328.24 L0 414.7 L93.54 414.7 ZM0 328.24 L4.5 323.74 L98.04 323.74 L93.54
+								 328.24 L0 328.24 ZM93.54 414.7 L98.04 410.2 L98.04 323.74 L93.54 328.24 L93.54 414.7 ZM98.04 410.2
+								 L98.04 323.74 L4.5 323.74 L98.04 323.74 L98.04 410.2 Z" class="st1"/>
+					<path d="M0 328.24 L4.5 323.74 L98.04 323.74 L93.54 328.24 L0 328.24" class="st2"/>
+					<path d="M93.54 414.7 L98.04 410.2 L98.04 323.74" class="st2"/>
+					<path d="M93.54 328.24 L93.54 414.7" class="st2"/>
+					<path d="M0 328.24 L0 414.7 L93.54 414.7" class="st2"/>
+					<text x="4" y="339.44" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>NSP</text>				</g>
+			</g>
+			<g id="group103-221" transform="translate(21.1535,-184.677)" v:mID="103" v:groupContext="group">
+				<v:userDefs>
+					<v:ud v:nameU="F" v:val="VT0(0):26"/>
+					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+					<v:ud v:nameU="ResizeIcon" v:val="VT0(0):26"/>
+				</v:userDefs>
+				<title>Component.165</title>
+				<g id="shape104-222" v:mID="104" v:groupContext="shape">
+					<title>Tabelle.104</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape105-225" v:mID="105" v:groupContext="shape">
+					<title>Tabelle.105</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape106-228" v:mID="106" v:groupContext="shape">
+					<title>Tabelle.106</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape107-231" v:mID="107" v:groupContext="shape" transform="translate(72,0)">
+					<title>Tabelle.107</title>
+					<path d="M0 414.7 L0 378.7 L0 414.7 Z" class="st1"/>
+					<path d="" class="st2"/>
+				</g>
+				<g id="shape108-234" v:mID="108" v:groupContext="shape">
+					<title>Tabelle.108</title>
+					<desc>Navigation Plattform System (NPS)</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
+					<v:textRect cx="36" cy="396.696" width="72" height="36"/>
+					<path d="M72 414.7 L72 378.7 L0 378.7 L0 414.7 L72 414.7 ZM72 414.7 L72 378.7 L0 378.7 L72 378.7 L72 414.7 Z"
+							class="st1"/>
+					<path d="M72 414.7 L72 378.7" class="st2"/>
+					<path d="M0 414.7 L0 378.7" class="st2"/>
+					<path d="M0 414.7 L72 414.7" class="st2"/>
+					<path d="M72 414.7 L72 378.7" class="st2"/>
+					<path d="M0 378.7 L72 378.7" class="st2"/>
+					<text x="4" y="389.9" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>Navigation <tspan x="4" dy="1.2em"
+								class="st7">Plattform </tspan><tspan x="4" dy="1.2em" class="st7">System </tspan>(NPS)</text>				</g>
+				<g id="shape109-244" v:mID="109" v:groupContext="shape" transform="translate(58.5,-22.5)">
+					<title>Tabelle.109</title>
+					<path d="M0 414.7 L9 414.7 L9 405.7 L0 405.7 L0 407.5 L1.8 407.5 L1.8 409.3 L0 409.3 L0 411.1 L1.8 411.1 L1.8
+								 412.9 L0 412.9 L0 414.7 ZM-1.8 412.9 L1.8 412.9 L1.8 411.1 L-1.8 411.1 L-1.8 412.9 ZM-1.8 409.3
+								 L1.8 409.3 L1.8 407.5 L-1.8 407.5 L-1.8 409.3 Z" class="st4"/>
+				</g>
+			</g>
+			<g id="shape110-246" v:mID="110" v:groupContext="shape" transform="translate(56.7992,-312.236)">
+				<title>Interface, Socket.172</title>
+				<v:userDefs>
+					<v:ud v:nameU="Interface" v:val="VT0(1):26"/>
+					<v:ud v:nameU="EndSize" v:val="VT0(0.0425):26"/>
+					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
+					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+				</v:userDefs>
+				<path d="M0 414.7 L0.09 441.37" class="st5"/>
+			</g>
+			<g id="shape111-251" v:mID="111" v:groupContext="shape" transform="translate(53.4685,-298.772)">
+				<title>Feld.173</title>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+				</v:userDefs>
+				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
+			</g>
+			<g id="shape112-253" v:mID="112" v:groupContext="shape" transform="translate(57.1535,-220.677)">
+				<title>Interface, Socket.174</title>
+				<v:userDefs>
+					<v:ud v:nameU="Interface" v:val="VT0(2):26"/>
+					<v:ud v:nameU="EndSize" v:val="VT0(0.0765):26"/>
+					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
+					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+				</v:userDefs>
+				<path d="M0 414.7 L-0.23 358.83" class="st2"/>
+				<path d="M-5.65 352.27 A5.508 5.508 -180 1 0 5.15 352.23" class="st2"/>
+			</g>
+			<g id="shape113-257" v:mID="113" v:groupContext="shape" transform="translate(53.6811,-254.268)">
+				<title>Feld.175</title>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+				</v:userDefs>
+				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
+			</g>
+			<g id="shape132-259" v:mID="132" v:groupContext="shape" transform="translate(60.0591,-279.213)">
+				<title>Tabelle.132</title>
+				<desc>OCHP Protocol</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="49.6063" cy="410.444" width="99.22" height="8.50394"/>
+				<rect x="0" y="406.192" width="99.2126" height="8.50394" class="st9"/>
+				<text x="4" y="413.44" class="st10" v:langID="1031"><v:paragraph/><v:tabList/>OCHP Protocol</text>			</g>
+			<g id="group1-262" transform="translate(2.83465,0)" v:mID="1" v:groupContext="group">
+				<v:userDefs>
+					<v:ud v:nameU="F"/>
+					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+				</v:userDefs>
+				<title>Node.1</title>
+				<g id="shape133-263" v:mID="133" v:groupContext="shape">
+					<title>Tabelle.133</title>
+					<path d="M360.07 414.7 L0 414.7 L360.07 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape134-266" v:mID="134" v:groupContext="shape">
+					<title>Tabelle.134</title>
+					<path d="M360.07 414.7 L0 414.7 L360.07 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape135-269" v:mID="135" v:groupContext="shape">
+					<title>Tabelle.135</title>
+					<path d="M360.07 414.7 L0 414.7 L360.07 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape136-272" v:mID="136" v:groupContext="shape" transform="translate(360.071,0)">
+					<title>Tabelle.136</title>
+					<path d="M0 414.7 L0 345.25 L0 414.7 Z" class="st1"/>
+					<path d="" class="st2"/>
+				</g>
+				<g id="shape137-275" v:mID="137" v:groupContext="shape">
+					<title>Tabelle.137</title>
+					<desc>EV user</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
+					<v:textRect cx="180.035" cy="379.971" width="360.08" height="69.4488"/>
+					<path d="M360.07 414.7 L360.07 345.25 L0 345.25 L0 414.7 L360.07 414.7 ZM0 345.25 L4.5 340.75 L364.57 340.75
+								 L360.07 345.25 L0 345.25 ZM360.07 414.7 L364.57 410.2 L364.57 340.75 L360.07 345.25 L360.07 414.7
+								 ZM364.57 410.2 L364.57 340.75 L4.5 340.75 L364.57 340.75 L364.57 410.2 Z" class="st1"/>
+					<path d="M0 345.25 L4.5 340.75 L364.57 340.75 L360.07 345.25 L0 345.25" class="st2"/>
+					<path d="M360.07 414.7 L364.57 410.2 L364.57 340.75" class="st2"/>
+					<path d="M360.07 345.25 L360.07 414.7" class="st2"/>
+					<path d="M0 345.25 L0 414.7 L360.07 414.7" class="st2"/>
+					<text x="4" y="356.45" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>EV user</text>				</g>
+			</g>
+			<g id="group138-282" transform="translate(20.7638,-11.3386)" v:mID="138" v:groupContext="group">
+				<v:userDefs>
+					<v:ud v:nameU="F" v:val="VT0(0):26"/>
+					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+					<v:ud v:nameU="ResizeIcon" v:val="VT0(0):26"/>
+				</v:userDefs>
+				<title>Component.138</title>
+				<g id="shape139-283" v:mID="139" v:groupContext="shape">
+					<title>Tabelle.139</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape140-286" v:mID="140" v:groupContext="shape">
+					<title>Tabelle.140</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape141-289" v:mID="141" v:groupContext="shape">
+					<title>Tabelle.141</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape142-292" v:mID="142" v:groupContext="shape" transform="translate(72,0)">
+					<title>Tabelle.142</title>
+					<path d="M0 414.7 L0 378.7 L0 414.7 Z" class="st1"/>
+					<path d="" class="st2"/>
+				</g>
+				<g id="shape143-295" v:mID="143" v:groupContext="shape">
+					<title>Tabelle.143</title>
+					<desc>Consumer Navigation System</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
+					<v:textRect cx="36" cy="396.696" width="72" height="36"/>
+					<path d="M72 414.7 L72 378.7 L0 378.7 L0 414.7 L72 414.7 ZM72 414.7 L72 378.7 L0 378.7 L72 378.7 L72 414.7 Z"
+							class="st1"/>
+					<path d="M72 414.7 L72 378.7" class="st2"/>
+					<path d="M0 414.7 L0 378.7" class="st2"/>
+					<path d="M0 414.7 L72 414.7" class="st2"/>
+					<path d="M72 414.7 L72 378.7" class="st2"/>
+					<path d="M0 378.7 L72 378.7" class="st2"/>
+					<text x="4" y="389.9" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>Consumer <tspan x="4" dy="1.2em"
+								class="st7">Navigation </tspan><tspan x="4" dy="1.2em" class="st7">System</tspan></text>				</g>
+				<g id="shape144-305" v:mID="144" v:groupContext="shape" transform="translate(58.5,-22.5)">
+					<title>Tabelle.144</title>
+					<path d="M0 414.7 L9 414.7 L9 405.7 L0 405.7 L0 407.5 L1.8 407.5 L1.8 409.3 L0 409.3 L0 411.1 L1.8 411.1 L1.8
+								 412.9 L0 412.9 L0 414.7 ZM-1.8 412.9 L1.8 412.9 L1.8 411.1 L-1.8 411.1 L-1.8 412.9 ZM-1.8 409.3
+								 L1.8 409.3 L1.8 407.5 L-1.8 407.5 L-1.8 409.3 Z" class="st4"/>
+				</g>
+			</g>
+			<g id="group145-307" transform="translate(148.039,-11.3386)" v:mID="145" v:groupContext="group">
+				<v:userDefs>
+					<v:ud v:nameU="F" v:val="VT0(0):26"/>
+					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+					<v:ud v:nameU="ResizeIcon" v:val="VT0(0):26"/>
+				</v:userDefs>
+				<title>Component.145</title>
+				<g id="shape146-308" v:mID="146" v:groupContext="shape">
+					<title>Tabelle.146</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape147-311" v:mID="147" v:groupContext="shape">
+					<title>Tabelle.147</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape148-314" v:mID="148" v:groupContext="shape">
+					<title>Tabelle.148</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape149-317" v:mID="149" v:groupContext="shape" transform="translate(72,0)">
+					<title>Tabelle.149</title>
+					<path d="M0 414.7 L0 378.7 L0 414.7 Z" class="st1"/>
+					<path d="" class="st2"/>
+				</g>
+				<g id="shape150-320" v:mID="150" v:groupContext="shape">
+					<title>Tabelle.150</title>
+					<desc>Access Token</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
+					<v:textRect cx="36" cy="396.696" width="72" height="36"/>
+					<path d="M72 414.7 L72 378.7 L0 378.7 L0 414.7 L72 414.7 ZM72 414.7 L72 378.7 L0 378.7 L72 378.7 L72 414.7 Z"
+							class="st1"/>
+					<path d="M72 414.7 L72 378.7" class="st2"/>
+					<path d="M0 414.7 L0 378.7" class="st2"/>
+					<path d="M0 414.7 L72 414.7" class="st2"/>
+					<path d="M72 414.7 L72 378.7" class="st2"/>
+					<path d="M0 378.7 L72 378.7" class="st2"/>
+					<text x="4" y="389.9" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>Access<v:lf/><tspan x="4"
+								dy="1.2em" class="st7">Token</tspan></text>				</g>
+				<g id="shape151-329" v:mID="151" v:groupContext="shape" transform="translate(58.5,-22.5)">
+					<title>Tabelle.151</title>
+					<path d="M0 414.7 L9 414.7 L9 405.7 L0 405.7 L0 407.5 L1.8 407.5 L1.8 409.3 L0 409.3 L0 411.1 L1.8 411.1 L1.8
+								 412.9 L0 412.9 L0 414.7 ZM-1.8 412.9 L1.8 412.9 L1.8 411.1 L-1.8 411.1 L-1.8 412.9 ZM-1.8 409.3
+								 L1.8 409.3 L1.8 407.5 L-1.8 407.5 L-1.8 409.3 Z" class="st4"/>
+				</g>
+			</g>
+			<g id="group152-331" transform="translate(263.126,-11.3386)" v:mID="152" v:groupContext="group">
+				<v:userDefs>
+					<v:ud v:nameU="F" v:val="VT0(0):26"/>
+					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+					<v:ud v:nameU="ResizeIcon" v:val="VT0(0):26"/>
+				</v:userDefs>
+				<title>Component.152</title>
+				<g id="shape153-332" v:mID="153" v:groupContext="shape">
+					<title>Tabelle.153</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape154-335" v:mID="154" v:groupContext="shape">
+					<title>Tabelle.154</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape155-338" v:mID="155" v:groupContext="shape">
+					<title>Tabelle.155</title>
+					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
+				</g>
+				<g id="shape156-341" v:mID="156" v:groupContext="shape" transform="translate(72,0)">
+					<title>Tabelle.156</title>
+					<path d="M0 414.7 L0 378.7 L0 414.7 Z" class="st1"/>
+					<path d="" class="st2"/>
+				</g>
+				<g id="shape157-344" v:mID="157" v:groupContext="shape">
+					<title>Tabelle.157</title>
+					<desc>Battery Management System</desc>
+					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
+					<v:textRect cx="36" cy="396.696" width="72" height="36"/>
+					<path d="M72 414.7 L72 378.7 L0 378.7 L0 414.7 L72 414.7 ZM72 414.7 L72 378.7 L0 378.7 L72 378.7 L72 414.7 Z"
+							class="st1"/>
+					<path d="M72 414.7 L72 378.7" class="st2"/>
+					<path d="M0 414.7 L0 378.7" class="st2"/>
+					<path d="M0 414.7 L72 414.7" class="st2"/>
+					<path d="M72 414.7 L72 378.7" class="st2"/>
+					<path d="M0 378.7 L72 378.7" class="st2"/>
+					<text x="4" y="389.9" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>Battery <tspan x="4" dy="1.2em"
+								class="st7">Management </tspan><tspan x="4" dy="1.2em" class="st7">System</tspan></text>				</g>
+				<g id="shape158-354" v:mID="158" v:groupContext="shape" transform="translate(58.5,-22.5)">
+					<title>Tabelle.158</title>
+					<path d="M0 414.7 L9 414.7 L9 405.7 L0 405.7 L0 407.5 L1.8 407.5 L1.8 409.3 L0 409.3 L0 411.1 L1.8 411.1 L1.8
+								 412.9 L0 412.9 L0 414.7 ZM-1.8 412.9 L1.8 412.9 L1.8 411.1 L-1.8 411.1 L-1.8 412.9 ZM-1.8 409.3
+								 L1.8 409.3 L1.8 407.5 L-1.8 407.5 L-1.8 409.3 Z" class="st4"/>
+				</g>
+			</g>
+			<g id="shape159-356" v:mID="159" v:groupContext="shape" v:layerMember="0" transform="translate(190.843,-47.3386)">
+				<title>Dynamischer Verbinder.159</title>
+				<desc>«manage»</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="-7.04291" cy="344.099" width="44.02" height="17.6036"/>
+				<path d="M-6.8 414.7 L-7.37 277.36" class="st11"/>
+				<rect v:rectContext="textBkgnd" x="-24.1422" y="339.299" width="34.1988" height="9.59985" class="st13"/>
+				<text x="-24.14" y="346.5" class="st14" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>«manage»</text>			</g>
+			<g id="shape79-364" v:mID="79" v:groupContext="shape" transform="translate(57.1535,-184.677)">
+				<title>Interface, Socket.79</title>
+				<v:userDefs>
+					<v:ud v:nameU="Interface" v:val="VT0(1):26"/>
+					<v:ud v:nameU="EndSize" v:val="VT0(0.0425):26"/>
+					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
+					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+				</v:userDefs>
+				<path d="M0 414.7 L0.09 441.37" class="st5"/>
+			</g>
+			<g id="shape80-369" v:mID="80" v:groupContext="shape" transform="translate(56.7638,-47.3386)">
+				<title>Interface, Socket.80</title>
+				<v:userDefs>
+					<v:ud v:nameU="Interface" v:val="VT0(2):26"/>
+					<v:ud v:nameU="EndSize" v:val="VT0(0.0765):26"/>
+					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
+					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+				</v:userDefs>
+				<path d="M0 414.7 L0.47 313.05" class="st2"/>
+				<path d="M-4.9 306.45 A5.508 5.508 -180 1 0 5.9 306.5" class="st2"/>
+			</g>
+			<g id="shape115-373" v:mID="115" v:groupContext="shape" transform="translate(53.9646,-165.827)">
+				<title>Feld.177</title>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+				</v:userDefs>
+				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
+			</g>
+			<g id="shape42-375" v:mID="42" v:groupContext="shape" transform="translate(299.126,-118.488)">
+				<title>Interface, Socket.42</title>
+				<v:userDefs>
+					<v:ud v:nameU="Interface" v:val="VT0(1):26"/>
+					<v:ud v:nameU="EndSize" v:val="VT0(0.0425):26"/>
+					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
+					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+				</v:userDefs>
+				<path d="M0 414.7 L0.09 441.37" class="st5"/>
+			</g>
+			<g id="shape114-380" v:mID="114" v:groupContext="shape" transform="translate(299.126,-47.3386)">
+				<title>Interface, Socket.114</title>
+				<v:userDefs>
+					<v:ud v:nameU="Interface" v:val="VT0(2):26"/>
+					<v:ud v:nameU="EndSize" v:val="VT0(0.0765):26"/>
+					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
+					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+				</v:userDefs>
+				<path d="M0 414.7 L0.09 379.24" class="st2"/>
+				<path d="M-5.29 372.65 A5.508 5.508 -180 1 0 5.51 372.68" class="st2"/>
+			</g>
+			<g id="shape43-384" v:mID="43" v:groupContext="shape" transform="translate(296.185,-102.047)">
+				<title>Feld.30</title>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+				</v:userDefs>
+				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
+			</g>
+			<g id="shape44-386" v:mID="44" v:groupContext="shape" transform="translate(296.185,-67.8425)">
+				<title>Feld.44</title>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+				</v:userDefs>
+				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
+			</g>
+			<g id="shape81-388" v:mID="81" v:groupContext="shape" transform="translate(53.4685,-67.5591)">
+				<title>Feld.81</title>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+				</v:userDefs>
+				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
+			</g>
+			<g id="shape45-390" v:mID="45" v:groupContext="shape" transform="translate(62.4331,-148.819)">
+				<title>Tabelle.45</title>
+				<desc>Navigation Data</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="49.6063" cy="410.444" width="99.22" height="8.50394"/>
+				<rect x="0" y="406.192" width="99.2126" height="8.50394" class="st9"/>
+				<text x="4" y="413.44" class="st10" v:langID="1031"><v:paragraph/><v:tabList/>Navigation Data</text>			</g>
+			<g id="shape131-393" v:mID="131" v:groupContext="shape" transform="translate(304.795,-83.622)">
+				<title>Tabelle.131</title>
+				<desc>Energy</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="49.6063" cy="410.444" width="99.22" height="8.50394"/>
+				<rect x="0" y="406.192" width="99.2126" height="8.50394" class="st9"/>
+				<text x="4" y="413.44" class="st10" v:langID="1031"><v:paragraph/><v:tabList/>Energy</text>			</g>
+			<g id="shape160-396" v:mID="160" v:groupContext="shape" transform="translate(281.126,-118.488)">
+				<title>Interface, Socket.160</title>
+				<v:userDefs>
+					<v:ud v:nameU="Interface" v:val="VT0(1):26"/>
+					<v:ud v:nameU="EndSize" v:val="VT0(0.0425):26"/>
+					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
+					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+				</v:userDefs>
+				<path d="M0 414.7 L0.09 441.37" class="st5"/>
+			</g>
+			<g id="shape161-401" v:mID="161" v:groupContext="shape" transform="translate(202.039,-47.3386)">
+				<title>Interface, Socket.161</title>
+				<v:userDefs>
+					<v:ud v:nameU="Interface" v:val="VT0(2):26"/>
+					<v:ud v:nameU="EndSize" v:val="VT0(0.0765):26"/>
+					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
+					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+				</v:userDefs>
+				<path d="M0 414.7 L74.3 376.27" class="st2"/>
+				<path d="M77.67 368.44 A5.508 5.508 -180 1 0 82.63 378.04" class="st2"/>
+			</g>
+			<g id="shape162-405" v:mID="162" v:groupContext="shape" transform="translate(277.157,-102.047)">
+				<title>Feld.162</title>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+				</v:userDefs>
+				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
+			</g>
+			<g id="shape163-407" v:mID="163" v:groupContext="shape" transform="translate(602.988,135.21) rotate(60)">
+				<title>Feld.163</title>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+				</v:userDefs>
+				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
+			</g>
+			<g id="shape164-409" v:mID="164" v:groupContext="shape" transform="translate(175.819,-83.622)">
+				<title>Tabelle.164</title>
+				<desc>Token Data</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="49.6063" cy="410.444" width="99.22" height="8.50394"/>
+				<rect x="0" y="406.192" width="99.2126" height="8.50394" class="st9"/>
+				<text x="48.95" y="413.44" class="st10" v:langID="1031"><v:paragraph v:horizAlign="2"/><v:tabList/>Token Data</text>			</g>
+		</g>
+	</g>
+</svg>

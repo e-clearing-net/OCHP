@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Generiert durch Microsoft Visio 11.0, SVG Export, v1.0 EV-charging-market-overview.svg Role Model -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="8.00115in" height="5.04568in"
+		viewBox="0 0 576.083 363.289" xml:space="preserve" color-interpolation-filters="sRGB" class="st13">
+	<v:documentProperties v:langID="1031" v:metric="true" v:viewMarkup="false">
+		<v:userDefs>
+			<v:ud v:nameU="msvNoAutoConnect" v:val="VT0(1):26"/>
+		</v:userDefs>
+	</v:documentProperties>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {marker-start:url(#mrkr3-6);stroke:#000000;stroke-dasharray:5.04,3.6;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
+		.st2 {fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.22222222222222}
+		.st3 {fill:#ffffff;stroke:none;stroke-linecap:butt;stroke-width:7.2}
+		.st4 {fill:#000000;font-family:Calibri;font-size:0.833336em}
+		.st5 {fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st6 {fill:#000000;font-family:Calibri;font-size:1.16666em;font-weight:bold}
+		.st7 {marker-end:url(#mrkr3-29);marker-start:url(#mrkr3-6);stroke:#000000;stroke-dasharray:5.04,3.6;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
+		.st8 {marker-end:url(#mrkr14-37);stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.75;stroke-width:0.75}
+		.st9 {fill:#000000;fill-opacity:0.75;stroke:#000000;stroke-opacity:0.75;stroke-width:0.29411764705882}
+		.st10 {fill:#ffffff}
+		.st11 {stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
+		.st12 {fill:#000000;font-family:Arial;font-size:0.833336em;font-weight:bold}
+		.st13 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Markers">
+		<g id="lend3">
+			<path d="M 2 1 L 0 0 L 2 -1 " style="stroke-linecap:round;stroke-linejoin:round;fill:none"/>
+		</g>
+		<marker id="mrkr3-6" class="st2" v:arrowType="3" v:arrowSize="2" orient="auto" markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend3" transform="scale(4.5) "/>
+		</marker>
+		<marker id="mrkr3-29" class="st2" v:arrowType="3" v:arrowSize="2" orient="auto" markerUnits="strokeWidth"
+				overflow="visible">
+			<use xlink:href="#lend3" transform="scale(-4.5,-4.5) "/>
+		</marker>
+		<g id="lend14">
+			<path d="M 3 -1 L 0 0 L 3 1 L 3 -1 " style="stroke-linecap:round;stroke-linejoin:round;fill:none"/>
+		</g>
+		<marker id="mrkr14-37" class="st9" v:arrowType="14" v:arrowSize="1" v:setback="10.2" refX="-10.2" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend14" transform="scale(-3.4,-3.4) "/>
+		</marker>
+	</defs>
+	<g v:mID="5" v:index="2" v:groupContext="foregroundPage">
+		<title>Role Model</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<v:layer v:name="Verbinder" v:index="0"/>
+		<g id="shape2-1" v:mID="2" v:groupContext="shape" v:layerMember="0" transform="translate(280.246,-259.499)">
+			<title>Dynamischer Verbinder.59</title>
+			<desc>«consume»</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="90.5904" cy="344.706" width="57.4" height="20.0036"/>
+			<path d="M0 363.29 L178.58 322.19" class="st1"/>
+			<rect v:rectContext="textBkgnd" x="67.0258" y="338.706" width="47.1294" height="12.0001" class="st3"/>
+			<text x="67.03" y="347.71" class="st4" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>«consume»</text>		</g>
+		<g id="shape3-9" v:mID="3" v:groupContext="shape" transform="translate(18.75,-117.767)">
+			<title>Systemgrenze</title>
+			<desc>EV charging infrastructure market</desc>
+			<v:userDefs>
+				<v:ud v:nameU="UMLShapeType" v:val="VT0(71):26"/>
+				<v:ud v:nameU="UMLVersion" v:val="VT0(2):26"/>
+				<v:ud v:nameU="visDescription" v:val="VT4(Dient der Darstellung einer Systemgrenze.)"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+			<v:textRect cx="269.291" cy="142.186" width="538.59" height="11.3386"/>
+			<rect x="0" y="136.517" width="538.583" height="226.772" class="st5"/>
+			<text x="4" y="153.12" class="st6" v:langID="1031"><v:paragraph/><v:tabList/>EV charging infrastructure market</text>		</g>
+		<g id="shape4-12" v:mID="4" v:groupContext="shape" transform="translate(18.75,-18.75)">
+			<title>Systemgrenze.5</title>
+			<desc>Clearing House System</desc>
+			<v:userDefs>
+				<v:ud v:nameU="UMLShapeType" v:val="VT0(71):26"/>
+				<v:ud v:nameU="UMLVersion" v:val="VT0(2):26"/>
+				<v:ud v:nameU="visDescription" v:val="VT4(Dient der Darstellung einer Systemgrenze.)"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+			<v:textRect cx="269.291" cy="266.747" width="538.59" height="4.95085"/>
+			<rect x="0" y="264.272" width="538.583" height="99.017" class="st5"/>
+			<text x="4" y="280.87" class="st6" v:langID="1031"><v:paragraph/><v:tabList/>Clearing House System</text>		</g>
+		<g id="shape17-15" v:mID="17" v:groupContext="shape" v:layerMember="0" transform="translate(403.553,-226.901)">
+			<title>Dynamischer Verbinder.17</title>
+			<desc>«consume»</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="26.2205" cy="344.863" width="57.4" height="20.0036"/>
+			<path d="M0 363.29 L56.69 315.1" class="st1"/>
+			<rect v:rectContext="textBkgnd" x="2.65587" y="338.864" width="47.1294" height="12.0001" class="st3"/>
+			<text x="2.66" y="347.86" class="st4" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>«consume»</text>		</g>
+		<g id="shape18-22" v:mID="18" v:groupContext="shape" v:layerMember="0" transform="translate(524.026,-181.901)">
+			<title>Dynamischer Verbinder.18</title>
+			<desc>«service contract»</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="-22.6192" cy="315.757" width="85.12" height="20.0036"/>
+			<path d="M0 363.29 L-43.94 270.1" class="st7"/>
+			<rect v:rectContext="textBkgnd" x="-60.0462" y="309.757" width="74.8542" height="12.0001" class="st3"/>
+			<text x="-60.05" y="318.76" class="st4" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>«service contract»</text>		</g>
+		<g id="shape13-32" v:mID="13" v:groupContext="shape" v:layerMember="0"
+				transform="translate(6.72956,211.202) rotate(-79.4424)">
+			<title>Linie mit Pfeil  1</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:prompt="" v:val="VT0(1):26"/>
+			</v:userDefs>
+			<path d="M0 363.29 L92.91 363.29" class="st8"/>
+		</g>
+		<g id="shape11-38" v:mID="11" v:groupContext="shape" transform="translate(358.907,-58.2394)">
+			<title>Actor.11</title>
+			<desc>Partner</desc>
+			<v:userDefs>
+				<v:ud v:nameU="F" v:val="VT0(1):26"/>
+				<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+				<v:ud v:nameU="State" v:val="VT0(1):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="2"/>
+			<v:textRect cx="4.96063" cy="378.29" width="37.8" height="12.0036"/>
+			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41 Z" class="st10"/>
+			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41" class="st11"/>
+			<path d="M0 350.89 L4.96 350.89 L9.92 350.89" class="st11"/>
+			<path d="M1.24 363.29 L4.96 355.35 L8.68 363.29" class="st11"/>
+			<path d="M4.96 348.41 L4.96 355.35" class="st11"/>
+			<text x="-12.55" y="381.29" class="st12" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Partner</text>		</g>
+		<g id="shape12-45" v:mID="12" v:groupContext="shape" transform="translate(519.065,-154.617)">
+			<title>Actor.12</title>
+			<desc>EVSP</desc>
+			<v:userDefs>
+				<v:ud v:nameU="F" v:val="VT0(1):26"/>
+				<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+				<v:ud v:nameU="State" v:val="VT0(1):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="2"/>
+			<v:textRect cx="4.96063" cy="378.29" width="29.47" height="12.0036"/>
+			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41 Z" class="st10"/>
+			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41" class="st11"/>
+			<path d="M0 350.89 L4.96 350.89 L9.92 350.89" class="st11"/>
+			<path d="M1.24 363.29 L4.96 355.35 L8.68 363.29" class="st11"/>
+			<path d="M4.96 348.41 L4.96 355.35" class="st11"/>
+			<text x="-8.38" y="381.29" class="st12" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>EVSP</text>		</g>
+		<g id="shape14-52" v:mID="14" v:groupContext="shape" transform="translate(263.947,-253.83)">
+			<title>Actor.14</title>
+			<desc>NSP</desc>
+			<v:userDefs>
+				<v:ud v:nameU="F" v:val="VT0(1):26"/>
+				<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+				<v:ud v:nameU="State" v:val="VT0(1):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="2"/>
+			<v:textRect cx="4.96063" cy="378.29" width="23.35" height="12.0036"/>
+			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41 Z" class="st10"/>
+			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41" class="st11"/>
+			<path d="M0 350.89 L4.96 350.89 L9.92 350.89" class="st11"/>
+			<path d="M1.24 363.29 L4.96 355.35 L8.68 363.29" class="st11"/>
+			<path d="M4.96 348.41 L4.96 355.35" class="st11"/>
+			<text x="-5.32" y="381.29" class="st12" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>NSP</text>		</g>
+		<g id="shape15-59" v:mID="15" v:groupContext="shape" transform="translate(387.254,-204.224)">
+			<title>Actor.15</title>
+			<desc>EVSE Operator</desc>
+			<v:userDefs>
+				<v:ud v:nameU="F" v:val="VT0(1):26"/>
+				<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+				<v:ud v:nameU="State" v:val="VT0(1):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="2"/>
+			<v:textRect cx="4.96063" cy="378.29" width="74.48" height="12.0036"/>
+			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41 Z" class="st10"/>
+			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41" class="st11"/>
+			<path d="M0 350.89 L4.96 350.89 L9.92 350.89" class="st11"/>
+			<path d="M1.24 363.29 L4.96 355.35 L8.68 363.29" class="st11"/>
+			<path d="M4.96 348.41 L4.96 355.35" class="st11"/>
+			<text x="-30.88" y="381.29" class="st12" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>EVSE Operator</text>		</g>
+		<g id="shape1-66" v:mID="1" v:groupContext="shape" transform="translate(465.207,-294.932)">
+			<title>Actor.1</title>
+			<desc>EV User</desc>
+			<v:userDefs>
+				<v:ud v:nameU="F" v:val="VT0(1):26"/>
+				<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+				<v:ud v:nameU="State" v:val="VT0(1):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="2"/>
+			<v:textRect cx="4.96063" cy="378.29" width="41.14" height="12.0036"/>
+			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41 Z" class="st10"/>
+			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41" class="st11"/>
+			<path d="M0 350.89 L4.96 350.89 L9.92 350.89" class="st11"/>
+			<path d="M1.24 363.29 L4.96 355.35 L8.68 363.29" class="st11"/>
+			<path d="M4.96 348.41 L4.96 355.35" class="st11"/>
+			<text x="-14.22" y="381.29" class="st12" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>EV User</text>		</g>
+		<g id="shape8-73" v:mID="8" v:groupContext="shape" transform="translate(110.876,-228.318)">
+			<title>Actor.8</title>
+			<desc>Clearing House Operator</desc>
+			<v:userDefs>
+				<v:ud v:nameU="F" v:val="VT0(1):26"/>
+				<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+				<v:ud v:nameU="State" v:val="VT0(1):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="2"/>
+			<v:textRect cx="4.96063" cy="378.29" width="121.15" height="12.0036"/>
+			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41 Z" class="st10"/>
+			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41" class="st11"/>
+			<path d="M0 350.89 L4.96 350.89 L9.92 350.89" class="st11"/>
+			<path d="M1.24 363.29 L4.96 355.35 L8.68 363.29" class="st11"/>
+			<path d="M4.96 348.41 L4.96 355.35" class="st11"/>
+			<text x="-54.22" y="381.29" class="st12" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Clearing House Operator</text>		</g>
+		<g id="shape10-80" v:mID="10" v:groupContext="shape" transform="translate(214.341,-76.6646)">
+			<title>Actor.10</title>
+			<desc>Administrator</desc>
+			<v:userDefs>
+				<v:ud v:nameU="F" v:val="VT0(1):26"/>
+				<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+				<v:ud v:nameU="State" v:val="VT0(1):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="2"/>
+			<v:textRect cx="4.96063" cy="378.29" width="68.35" height="12.0036"/>
+			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41 Z" class="st10"/>
+			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41" class="st11"/>
+			<path d="M0 350.89 L4.96 350.89 L9.92 350.89" class="st11"/>
+			<path d="M1.24 363.29 L4.96 355.35 L8.68 363.29" class="st11"/>
+			<path d="M4.96 348.41 L4.96 355.35" class="st11"/>
+			<text x="-27.82" y="381.29" class="st12" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Administrator</text>		</g>
+		<g id="shape5-87" v:mID="5" v:groupContext="shape" v:layerMember="0"
+				transform="translate(-69.6403,498.287) rotate(-130.17)">
+			<title>Linie mit Pfeil  1.5</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:prompt="" v:val="VT0(1):26"/>
+			</v:userDefs>
+			<path d="M0 363.29 L135.17 363.29" class="st8"/>
+		</g>
+		<g id="shape6-92" v:mID="6" v:groupContext="shape" v:layerMember="0"
+				transform="translate(243.868,-56.3442) rotate(-21.1941)">
+			<title>Linie mit Pfeil  1.6</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:prompt="" v:val="VT0(1):26"/>
+			</v:userDefs>
+			<path d="M0 363.29 L141.32 363.29" class="st8"/>
+		</g>
+		<g id="shape7-97" v:mID="7" v:groupContext="shape" v:layerMember="0" transform="translate(33.7129,456.54) rotate(-118.648)">
+			<title>Linie mit Pfeil  1.7</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:prompt="" v:val="VT0(1):26"/>
+			</v:userDefs>
+			<path d="M0 363.29 L166.77 363.29" class="st8"/>
+		</g>
+	</g>
+</svg>

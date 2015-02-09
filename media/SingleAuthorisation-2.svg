@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Generiert durch Microsoft Visio 11.0, SVG Export, v1.0 SingleAuthorisation-2.svg Page-2 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="7.12656in" height="3.31217in"
+		viewBox="0 0 513.112 238.476" xml:space="preserve" color-interpolation-filters="sRGB" class="st11">
+	<v:documentProperties v:langID="1031" v:metric="true" v:viewMarkup="false">
+		<v:userDefs>
+			<v:ud v:nameU="msvNoAutoConnect" v:val="VT0(1):26"/>
+		</v:userDefs>
+	</v:documentProperties>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:none;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st2 {fill:#000000;font-family:Calibri;font-size:0.666664em}
+		.st3 {fill:#d8d8d8;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st4 {fill:#000000;font-family:Calibri;font-size:1.00001em}
+		.st5 {fill:#c6d8f0;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st6 {marker-end:url(#mrkr4-24);stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.239976}
+		.st7 {fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.086948582161584}
+		.st8 {font-size:1em}
+		.st9 {stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st10 {fill:#ffffff;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st11 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Markers">
+		<g id="lend4">
+			<path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"/>
+		</g>
+		<marker id="mrkr4-24" class="st7" v:arrowType="4" v:arrowSize="2" v:setback="23.0021" refX="-23.002100210021" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend4" transform="scale(-11.501050105011,-11.501050105011) "/>
+		</marker>
+	</defs>
+	<g v:mID="4" v:index="2" v:groupContext="foregroundPage">
+		<title>Page-2</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<v:layer v:name="Verbinder" v:index="0"/>
+		<g id="shape4-1" v:mID="4" v:groupContext="shape" transform="translate(18.75,-169.427)">
+			<title>Tabelle.4</title>
+			<desc>operator backend</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="33.3071" cy="232.882" width="66.62" height="11.1894"/>
+			<rect x="0" y="227.287" width="66.6142" height="11.1894" class="st1"/>
+			<text x="4" y="235.28" class="st2" v:langID="1031"><v:paragraph/><v:tabList/>operator backend</text>		</g>
+		<g id="shape5-4" v:mID="5" v:groupContext="shape" transform="translate(18.75,-97.0689)">
+			<title>Tabelle.5</title>
+			<desc>clearing house</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="30.4724" cy="232.882" width="60.95" height="11.1894"/>
+			<rect x="0" y="227.287" width="60.9449" height="11.1894" class="st1"/>
+			<text x="4" y="236.48" class="st2" v:langID="1031"><v:paragraph/><v:tabList/>clearing house</text>		</g>
+		<g id="shape7-7" v:mID="7" v:groupContext="shape" transform="translate(100.955,-167.935)">
+			<title>Tabelle.7</title>
+			<desc>Charging Session</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="47.4803" cy="231.39" width="94.97" height="14.1732"/>
+			<rect x="0" y="224.303" width="94.9606" height="14.1732" class="st3"/>
+			<text x="6.5" y="234.99" class="st4" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Charging Session</text>		</g>
+		<g id="shape8-10" v:mID="8" v:groupContext="shape" transform="translate(103.789,-89.9823)">
+			<title>Tabelle.8</title>
+			<desc>LiveAuth Session</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="68.5778" cy="231.39" width="137.16" height="14.1732"/>
+			<rect x="0" y="224.303" width="137.156" height="14.1732" class="st3"/>
+			<text x="27.71" y="234.99" class="st4" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>LiveAuth Session</text>		</g>
+		<g id="group9-13" transform="translate(91.2148,-189.195)" v:mID="9" v:groupContext="group">
+			<title>Tabelle.9</title>
+			<g id="shape10-14" v:mID="10" v:groupContext="shape" transform="translate(402.486,2.84217E-014) scale(-1,1)">
+				<title>Pfeil 60 Grad-Spitze</title>
+				<v:userDefs>
+					<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				</v:userDefs>
+				<path d="M0 227.14 L6.55 215.8 L6.55 223.28 L455.74 223.28 L455.74 230.99 L6.55 230.99 L6.55 238.48 L0 227.14 Z"
+						class="st5"/>
+			</g>
+			<g id="shape11-16" v:mID="11" v:groupContext="shape" transform="translate(305.636,-16.3583)">
+				<title>Tabelle.11</title>
+				<desc>Time</desc>
+				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+				<v:textRect cx="42.5197" cy="231.39" width="85.04" height="14.1732"/>
+				<rect x="0" y="224.303" width="85.0394" height="14.1732" class="st1"/>
+				<text x="56.88" y="234.99" class="st4" v:langID="2057"><v:paragraph v:horizAlign="2"/><v:tabList/>Time</text>			</g>
+		</g>
+		<g id="shape14-19" v:mID="14" v:groupContext="shape" v:layerMember="0" transform="translate(96.7028,-153.762)">
+			<title>Dynamischer Verbinder.16</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<path d="M7.09 238.48 L7.09 282.56" class="st6"/>
+		</g>
+		<g id="shape26-25" v:mID="26" v:groupContext="shape" transform="translate(248.356,-167.935)">
+			<title>Tabelle.26</title>
+			<desc>Send CDR</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="28.3465" cy="231.39" width="56.7" height="14.1732"/>
+			<rect x="0" y="224.303" width="56.6929" height="14.1732" class="st3"/>
+			<text x="4.79" y="234.99" class="st4" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Send CDR</text>		</g>
+		<g id="shape27-28" v:mID="27" v:groupContext="shape" transform="translate(240.986,-89.9409)">
+			<title>Tabelle.27</title>
+			<desc>Charge Data Exchange</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="63.7795" cy="231.39" width="127.56" height="14.1732"/>
+			<rect x="0" y="224.303" width="127.559" height="14.1732" class="st3"/>
+			<text x="9.44" y="234.99" class="st4" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Charge Data Exchange</text>		</g>
+		<g id="shape28-31" v:mID="28" v:groupContext="shape" v:layerMember="0" transform="translate(252.608,-167.935)">
+			<title>Dynamischer Verbinder.28</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<path d="M7.09 238.48 L7.09 296.74" class="st6"/>
+		</g>
+		<g id="shape29-36" v:mID="29" v:groupContext="shape" transform="translate(210.089,-118.004)">
+			<title>Tabelle.29</title>
+			<desc>LiveAuth ID Session ID</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="24.8031" cy="226.975" width="49.61" height="23.002"/>
+			<rect x="0" y="215.474" width="49.6063" height="23.002" class="st1"/>
+			<text x="8.35" y="224.58" class="st2" v:langID="1031"><v:paragraph v:horizAlign="2"/><v:tabList/>LiveAuth ID<v:lf/><tspan
+						x="12.69" dy="1.2em" class="st8">Session ID</tspan></text>		</g>
+		<g id="shape31-40" v:mID="31" v:groupContext="shape" transform="translate(312.945,-40.0098)">
+			<title>Tabelle.31</title>
+			<desc>request</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="21.2598" cy="224.303" width="42.52" height="28.3465"/>
+			<rect x="0" y="210.13" width="42.5197" height="28.3465" class="st1"/>
+			<text x="13.56" y="226.7" class="st2" v:langID="1031"><v:paragraph v:horizAlign="2"/><v:tabList/>request</text>		</g>
+		<g id="group32-43" transform="translate(220.01,-189.195)" v:mID="32" v:groupContext="group">
+			<title>Tabelle.32</title>
+			<g id="shape33-44" v:mID="33" v:groupContext="shape" transform="translate(238.476,217.217) rotate(90)">
+				<title>Tabelle.33</title>
+				<path d="M0 237.06 C0.78 238.38 2.18 238.5 3.4 238.47 C12.5 238.24 12.11 229.62 21.26 237.06" class="st9"/>
+			</g>
+			<g id="shape34-47" v:mID="34" v:groupContext="shape" transform="translate(241.311,217.217) rotate(90)">
+				<title>Tabelle.34</title>
+				<path d="M0 237.06 C0.78 238.38 2.18 238.5 3.4 238.47 C12.5 238.24 12.11 229.62 21.26 237.06" class="st9"/>
+			</g>
+		</g>
+		<g id="shape1-50" v:mID="1" v:groupContext="shape" transform="translate(103.789,-75.8091)">
+			<title>Tabelle.1</title>
+			<desc>LiveAuth ID</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="68.5778" cy="231.39" width="137.16" height="14.1732"/>
+			<rect x="0" y="224.303" width="137.156" height="14.1732" class="st10"/>
+			<text x="49.95" y="234.99" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>LiveAuth ID</text>		</g>
+		<g id="shape3-53" v:mID="3" v:groupContext="shape" transform="translate(61.2697,-118.329)">
+			<title>Tabelle.3</title>
+			<desc>Auth request</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="21.2598" cy="227.846" width="42.52" height="21.2598"/>
+			<rect x="0" y="217.217" width="42.5197" height="21.2598" class="st1"/>
+			<text x="22.81" y="225.45" class="st2" v:langID="1031"><v:paragraph v:horizAlign="2"/><v:tabList/>Auth <tspan x="13.56"
+						dy="1.2em" class="st8">request</tspan></text>		</g>
+		<g id="shape6-57" v:mID="6" v:groupContext="shape" transform="translate(110.876,-128.399)">
+			<title>Tabelle.6</title>
+			<desc>LiveAuth ID</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="23.3858" cy="232.882" width="46.78" height="11.1894"/>
+			<rect x="0" y="227.287" width="46.7717" height="11.1894" class="st1"/>
+			<text x="4" y="235.28" class="st2" v:langID="1031"><v:paragraph/><v:tabList/>LiveAuth ID</text>		</g>
+		<g id="shape12-60" v:mID="12" v:groupContext="shape" transform="translate(100.955,-153.762)">
+			<title>Tabelle.12</title>
+			<desc>Session ID</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="47.4803" cy="231.39" width="94.97" height="14.1732"/>
+			<rect x="0" y="224.303" width="94.9606" height="14.1732" class="st10"/>
+			<text x="31.02" y="233.79" class="st2" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Session ID</text>		</g>
+		<g id="shape2-63" v:mID="2" v:groupContext="shape" v:layerMember="0" transform="translate(103.789,-104.156)">
+			<title>Dynamischer Verbinder</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<path d="M7.09 238.48 L7.09 194.39" class="st6"/>
+		</g>
+		<g id="shape15-68" v:mID="15" v:groupContext="shape" transform="translate(349.795,-18.75)">
+			<title>Tabelle.15</title>
+			<desc>Get CDR</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="28.3465" cy="231.39" width="56.7" height="14.1732"/>
+			<rect x="0" y="224.303" width="56.6929" height="14.1732" class="st3"/>
+			<text x="8.06" y="234.99" class="st4" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Get CDR</text>		</g>
+		<g id="shape16-71" v:mID="16" v:groupContext="shape" v:layerMember="0" transform="translate(358.299,-89.9409)">
+			<title>Dynamischer Verbinder.16</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<path d="M7.09 238.48 L7.09 273.91 L7.09 289.97" class="st6"/>
+		</g>
+		<g id="shape17-76" v:mID="17" v:groupContext="shape" transform="translate(365.386,-40.0098)">
+			<title>Tabelle.17</title>
+			<desc>LiveAuth ID Session ID</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="24.8031" cy="224.303" width="49.61" height="28.3465"/>
+			<rect x="0" y="210.13" width="49.6063" height="28.3465" class="st1"/>
+			<text x="4" y="221.9" class="st2" v:langID="1031"><v:paragraph/><v:tabList/>LiveAuth ID<v:lf/><tspan x="4" dy="1.2em"
+						class="st8">Session ID</tspan></text>		</g>
+		<g id="shape19-80" v:mID="19" v:groupContext="shape" transform="translate(18.75,-23.4427)">
+			<title>Tabelle.19</title>
+			<desc>provider system</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="30.4724" cy="232.882" width="60.95" height="11.1894"/>
+			<rect x="0" y="227.287" width="60.9449" height="11.1894" class="st1"/>
+			<text x="4" y="236.48" class="st2" v:langID="1031"><v:paragraph/><v:tabList/>provider system</text>		</g>
+		<g id="shape18-83" v:mID="18" v:groupContext="shape" v:layerMember="0" transform="translate(349.795,-33.248)">
+			<title>Dynamic connector.16</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<path d="M7.09 238.48 L7.09 187.3" class="st6"/>
+		</g>
+		<g id="shape21-88" v:mID="21" v:groupContext="shape" transform="translate(406.488,-18.75)">
+			<title>Tabelle.21</title>
+			<desc>Customer Billing</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="43.937" cy="231.39" width="87.88" height="14.1732"/>
+			<rect x="0" y="224.303" width="87.874" height="14.1732" class="st3"/>
+			<text x="4.09" y="234.99" class="st4" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Customer Billing</text>		</g>
+		<g id="group22-91" transform="translate(325.984,-188.87)" v:mID="22" v:groupContext="group">
+			<title>Tabelle.22</title>
+			<g id="shape23-92" v:mID="23" v:groupContext="shape" transform="translate(238.476,217.217) rotate(90)">
+				<title>Tabelle.23</title>
+				<path d="M0 237.06 C0.78 238.38 2.18 238.5 3.4 238.47 C12.5 238.24 12.11 229.62 21.26 237.06" class="st9"/>
+			</g>
+			<g id="shape24-95" v:mID="24" v:groupContext="shape" transform="translate(241.311,217.217) rotate(90)">
+				<title>Tabelle.24</title>
+				<path d="M0 237.06 C0.78 238.38 2.18 238.5 3.4 238.47 C12.5 238.24 12.11 229.62 21.26 237.06" class="st9"/>
+			</g>
+		</g>
+	</g>
+</svg>

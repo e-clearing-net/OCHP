@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Generiert durch Microsoft Visio 11.0, SVG Export, v1.0 ChargingSessionDefinition.svg Page-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="6.0374in" height="2.31764in"
+		viewBox="0 0 434.693 166.87" xml:space="preserve" color-interpolation-filters="sRGB" class="st9">
+	<v:documentProperties v:langID="1031" v:metric="true" v:viewMarkup="false">
+		<v:userDefs>
+			<v:ud v:nameU="msvNoAutoConnect" v:val="VT0(1):26"/>
+		</v:userDefs>
+	</v:documentProperties>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#d8d8d8;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st2 {fill:#000000;font-family:Calibri;font-size:1.00001em}
+		.st3 {fill:#c6d8f0;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st4 {fill:none;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st5 {fill:#d7e3bf;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st6 {stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5}
+		.st7 {fill:#000000;font-family:Calibri;font-size:0.666664em}
+		.st8 {font-size:1em}
+		.st9 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<title>Page-1</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<v:layer v:name="Verbinder" v:index="0"/>
+		<v:layer v:name="Anmerkungen" v:index="1"/>
+		<v:layer v:name="Beschriftung" v:index="2"/>
+		<g id="shape5-1" v:mID="5" v:groupContext="shape" transform="translate(47.0965,-111.27)">
+			<title>Tabelle.5</title>
+			<desc>Parking Time</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="139.444" cy="159.783" width="278.89" height="14.1732"/>
+			<rect x="0" y="152.697" width="278.888" height="14.1732" class="st1"/>
+			<text x="107.86" y="163.38" class="st2" v:langID="2057"><v:paragraph v:horizAlign="1"/><v:tabList/>Parking Time</text>		</g>
+		<g id="shape7-4" v:mID="7" v:groupContext="shape" transform="translate(414.892,-116.939) scale(-1,1)">
+			<title>Pfeil 60 Grad-Spitze</title>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<path d="M0 155.53 L6.55 144.19 L6.55 151.68 L396.14 151.68 L396.14 159.39 L6.55 159.39 L6.55 166.87 L0 155.53 Z"
+					class="st3"/>
+		</g>
+		<g id="shape9-6" v:mID="9" v:groupContext="shape" transform="translate(322.057,-133.947)">
+			<title>Tabelle.9</title>
+			<desc>Time</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="42.5197" cy="159.783" width="85.04" height="14.1732"/>
+			<rect x="0" y="152.697" width="85.0394" height="14.1732" class="st4"/>
+			<text x="56.88" y="163.38" class="st2" v:langID="2057"><v:paragraph v:horizAlign="2"/><v:tabList/>Time</text>		</g>
+		<g id="shape3-9" v:mID="3" v:groupContext="shape" transform="translate(61.2697,-97.0964)">
+			<title>Tabelle.3</title>
+			<desc>Connection Time</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="128.105" cy="159.783" width="256.22" height="14.1732"/>
+			<rect x="0" y="152.697" width="256.211" height="14.1732" class="st1"/>
+			<text x="86.78" y="163.38" class="st2" v:langID="2057"><v:paragraph v:horizAlign="1"/><v:tabList/>Connection Time</text>		</g>
+		<g id="shape6-12" v:mID="6" v:groupContext="shape" transform="translate(52.7657,-82.9232)">
+			<title>Tabelle.6</title>
+			<desc>Charging Session</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="128.105" cy="159.783" width="256.22" height="14.1732"/>
+			<rect x="0" y="152.697" width="256.211" height="14.1732" class="st5"/>
+			<text x="87.12" y="163.38" class="st2" v:langID="2057"><v:paragraph v:horizAlign="1"/><v:tabList/>Charging Session</text>		</g>
+		<g id="shape10-15" v:mID="10" v:groupContext="shape" v:layerMember="1" transform="translate(-12.0571,148.87) rotate(-90)">
+			<title>Beschriftung winkl. Linie</title>
+			<desc>successful authorization to connect</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+			<v:textRect cx="15.2018" cy="122.933" width="87.88" height="30.4035" transform="rotate(90)"/>
+			<path d="M22.4 79 L22.4 64.82 L113.11 64.82" class="st6"/>
+			<text x="83" y="-18" transform="rotate(90)" class="st7" v:langID="1031"><v:paragraph v:spLine="-1.4"/><v:tabList/>s<tspan
+						class="st8" v:langID="2057">uccessful </tspan>a<tspan class="st8" v:langID="2057">uthorization </tspan><tspan
+						x="83" dy="1.4em" class="st8" v:langID="2057">to connect</tspan></text>		</g>
+		<g id="shape11-22" v:mID="11" v:groupContext="shape" transform="translate(61.2697,-68.75)">
+			<title>Tabelle.11</title>
+			<desc>Energy Flow</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="87.874" cy="159.783" width="175.75" height="14.1732"/>
+			<rect x="0" y="152.697" width="175.748" height="14.1732" class="st1"/>
+			<text x="58.23" y="163.38" class="st2" v:langID="2057"><v:paragraph v:horizAlign="1"/><v:tabList/>Energy Flow</text>		</g>
+		<g id="shape12-25" v:mID="12" v:groupContext="shape" v:layerMember="1" transform="translate(-20.561,123.497) rotate(-90)">
+			<title>Beschriftung winkl. Linie.12</title>
+			<desc>physical connect</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+			<v:textRect cx="9.60178" cy="131.437" width="70.87" height="19.2036" transform="rotate(90)"/>
+			<path d="M11.2 96 L11.2 81.83 L88.76 81.83" class="st6"/>
+			<text x="100" y="-6.8" transform="rotate(90)" class="st7" v:langID="2057"><v:paragraph v:spLine="-1.4"/><v:tabList/>physical connect  </text>		</g>
+		<g id="shape13-29" v:mID="13" v:groupContext="shape" v:layerMember="1" transform="translate(249.823,147.85) rotate(-90)">
+			<title>Beschriftung winkl. Linie.13</title>
+			<desc>successful authorization to disconnect</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+			<v:textRect cx="15.2018" cy="120.098" width="93.55" height="30.4035" transform="rotate(90)"/>
+			<path d="M22.4 73.33 L22.4 59.15 L113.11 59.15" class="st6"/>
+			<text x="77.33" y="-18" transform="rotate(90)" class="st7" v:langID="2057"><v:paragraph v:spLine="-1.4"/><v:tabList/>successful authorization <tspan
+						x="77.33" dy="1.4em" class="st8">to disconnect</tspan></text>		</g>
+		<g id="shape14-34" v:mID="14" v:groupContext="shape" v:layerMember="1" transform="translate(244.154,123.497) rotate(-90)">
+			<title>Beschriftung winkl. Linie.14</title>
+			<desc>physical disconnect</desc>
+			<v:userDefs>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+			<v:textRect cx="9.60178" cy="127.185" width="79.38" height="19.2036" transform="rotate(90)"/>
+			<path d="M11.2 87.5 L11.2 73.33 L88.76 73.33" class="st6"/>
+			<text x="91.5" y="-6.8" transform="rotate(90)" class="st7" v:langID="2057"><v:paragraph v:spLine="-1.4"/><v:tabList/>physical <tspan
+						class="st8" v:langID="1031">dis</tspan>connect  </text>		</g>
+	</g>
+</svg>

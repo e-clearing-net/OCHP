@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Generiert durch Microsoft Visio 11.0, SVG Export, v1.0 EVSEstructure.svg Page-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="3.72591in" height="3.70634in"
+		viewBox="0 0 268.266 266.856" xml:space="preserve" color-interpolation-filters="sRGB" class="st13">
+	<v:documentProperties v:langID="1031" v:metric="true" v:viewMarkup="false">
+		<v:custProps>
+			<v:cp v:nameU="WantAutoLayout" v:langID="1031" v:cal="0" v:val="VT0(1):26"/>
+			<v:cp v:nameU="CustomLayoutsAllowed" v:langID="1031" v:cal="0" v:val="VT0(0):26"/>
+			<v:cp v:nameU="WantAutoSize" v:langID="1031" v:cal="0" v:val="VT0(1):26"/>
+			<v:cp v:nameU="ShowDivider" v:langID="1031" v:cal="0" v:val="VT0(0):26"/>
+			<v:cp v:nameU="GridGranularity" v:langID="1031" v:cal="0" v:val="VT0(0.039370078740157):24"/>
+			<v:cp v:nameU="Theme" v:langID="1031" v:cal="0" v:val="VT4(Classic)"/>
+			<v:cp v:nameU="TOPLINESTYLE" v:langID="1031" v:cal="0" v:val="VT0(0):26"/>
+			<v:cp v:nameU="TOOLBARLOCATION" v:langID="1031" v:cal="0" v:val="VT0(4):26"/>
+		</v:custProps>
+		<v:userDefs>
+			<v:ud v:nameU="BOXWIDTH" v:val="VT0(1.1811023622047):24"/>
+			<v:ud v:nameU="BOXHEIGHT" v:val="VT0(0.59055118110236):24"/>
+			<v:ud v:nameU="HASSYNCCOPIES" v:val="VT0(1):26"/>
+			<v:ud v:nameU="OCNumDisplayFields" v:val="VT0(2):26"/>
+			<v:ud v:nameU="visPPO" v:val="VT0(2):26"/>
+			<v:ud v:nameU="DocShowPicture" v:prompt="" v:val="VT0(1):26"/>
+			<v:ud v:nameU="DocShowDivider" v:prompt="" v:val="VT0(1):26"/>
+			<v:ud v:nameU="msvNoAutoConnect" v:val="VT0(1):26"/>
+			<v:ud v:nameU="msvNoSubprocess" v:prompt="" v:val="VT0(1):26"/>
+		</v:userDefs>
+	</v:documentProperties>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {visibility:visible}
+		.st2 {fill:#cdcdcd;fill-opacity:0.5}
+		.st3 {stroke:#cdcdcd;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.5;stroke-width:0.25}
+		.st4 {fill:url(#grad30-9)}
+		.st5 {stroke:#404040;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.25}
+		.st6 {fill:#000000;font-family:Calibri;font-size:0.833336em}
+		.st7 {fill:#cdcdcd;fill-opacity:0.5;stroke:#cdcdcd;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.5;stroke-width:0.25}
+		.st8 {fill:url(#grad30-9);stroke:#404040;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.25}
+		.st9 {fill:#000000;font-family:Calibri;font-size:0.666664em}
+		.st10 {stroke:#404040;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st11 {fill:none}
+		.st12 {stroke:#404040;stroke-dasharray:7,5;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st13 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Patterns_And_Gradients">
+		<linearGradient id="grad30-9" v:fillPattern="30" v:foreground="#f0f0f0" v:background="#ffffff" x1="0" y1="1" x2="0" y2="0">
+			<stop offset="0" style="stop-color:#f0f0f0;stop-opacity:1"/>
+			<stop offset="1" style="stop-color:#ffffff;stop-opacity:1"/>
+		</linearGradient>
+	</defs>
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<v:custProps>
+			<v:cp v:nameU="Theme" v:type="1" v:format="Klassisch;Modern;Elegant;Notizblock;Retro" v:invis="true" v:langID="1031"
+					v:cal="0" v:val="VT4(Klassisch)"/>
+			<v:cp v:nameU="ShapeClass" v:lbl="Shape-Klasse" v:type="1" v:format="{52BC4E31-A33B-11d1-B2B9-006008BD347E}"
+					v:invis="true" v:langID="1031" v:cal="0" v:val="VT4({52BC4E31-A33B-11d1-B2B9-006008BD347E})"/>
+		</v:custProps>
+		<v:userDefs>
+			<v:ud v:nameU="DocClass" v:prompt="Organization Chart Document" v:val="VT4({429428D1-A7E7-11d1-B2BD-006008BD347E})"/>
+			<v:ud v:nameU="AllowShapeMoveCallback" v:val="VT0(1):26"/>
+			<v:ud v:nameU="Theme" v:val="VT0(0):26"/>
+			<v:ud v:nameU="AllowCtrlMoveCallback" v:val="VT0(1):26"/>
+			<v:ud v:nameU="SCALECHANGEDEVENT" v:val="VT0(0):26"/>
+			<v:ud v:nameU="BOXWIDTH" v:val="VT0(-0.039370078740157):24"/>
+			<v:ud v:nameU="BOXHEIGHT" v:val="VT0(-0.039370078740157):24"/>
+			<v:ud v:nameU="OCNumDisplayFields" v:val="VT0(2):26"/>
+			<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+			<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			<v:ud v:nameU="msvThemeOrder" v:val="VT0(0):26"/>
+		</v:userDefs>
+		<title>Zeichenblatt-1</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<v:layer v:name="Hidden" v:index="0" visibility="hidden" v:print="false"/>
+		<g id="group1-1" transform="translate(18.25,-220.455)" v:mID="1" v:groupContext="group">
+			<v:custProps>
+				<v:cp v:nameU="Department" v:lbl="Abteilung" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Abteilung)"/>
+				<v:cp v:nameU="Telephone" v:lbl="Telefon" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Telefon)"/>
+				<v:cp v:nameU="Name" v:lbl="Name" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(EVSE-Operator)"/>
+				<v:cp v:nameU="Title" v:lbl="Titel" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4()"/>
+				<v:cp v:nameU="Email" v:lbl="E-Mail" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(E-Mail)"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="Solsh" v:prompt="" v:val="VT14({0BF98B35-200C-41D5-8A23-20EF77CBC94A}):41"/>
+				<v:ud v:nameU="ShapeType" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ShowPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ShowSubordinates" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="DocShowPicture" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="Margin" v:prompt="" v:val="VT0(0.019549325873354):1"/>
+				<v:ud v:nameU="HasSubordinates" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="IsHidingSubs" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="ShowDivider" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ThisLayoutStyle" v:prompt="" v:val="VT0(100):26"/>
+				<v:ud v:nameU="HasPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Width" v:prompt="" v:val="VT0(1.2110947067864):1"/>
+				<v:ud v:nameU="Height" v:prompt="" v:val="VT0(0.39098651746708):1"/>
+				<v:ud v:nameU="Prop" v:prompt="" v:val="VT4(Name;Title)"/>
+				<v:ud v:nameU="PictureAspectRatio" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="PictureID" v:prompt=""/>
+				<v:ud v:nameU="SetWidth" v:prompt=""/>
+				<v:ud v:nameU="SetHeight" v:prompt=""/>
+				<v:ud v:nameU="PositionID" v:prompt="" v:val="VT4({2824F920-84CC-4998-9DA1-512DC1CC8B1B})"/>
+				<v:ud v:nameU="DeltaX" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="DeltaY" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ParLocX" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ParLocY" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="PageLoc" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ParLoc" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="PictureAreaWidth" v:prompt="" v:val="VT0(0.35071069495988):29"/>
+				<v:ud v:nameU="PictureAreaHeight" v:prompt="" v:val="VT0(0.33799897683149):29"/>
+				<v:ud v:nameU="PictureAreaAspectRatio" v:prompt="" v:val="VT0(1.0376087473624):26"/>
+				<v:ud v:nameU="PictureWidth" v:prompt="" v:val="VT0(0.33799897683149):29"/>
+				<v:ud v:nameU="PictureHeight" v:prompt="" v:val="VT0(0.33799897683149):29"/>
+				<v:ud v:nameU="DividerOffset" v:prompt="" v:val="VT0(0.19551876735984):29"/>
+				<v:ud v:nameU="CalcTextLineHeight" v:prompt="" v:val="VT0(0.16666666666667):29"/>
+				<v:ud v:nameU="ExpandedForPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Theme" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<title>Führung</title>
+			<desc>EVSE-Operator</desc>
+			<g id="shape1-2" v:mID="1" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="43.5994" cy="252.781" width="83.79" height="14.0755"/>
+				<g id="shadow1-3" v:groupContext="shadow" v:shadowOffsetX="1.44" v:shadowOffsetY="-1.44" v:shadowType="1"
+						transform="matrix(1,0,0,1,1.44,1.44)" class="st1">
+					<path d="M0 266.86 L0 238.71 L87.2 238.71 L87.2 266.86 L0 266.86 Z" class="st2"/>
+					<path d="M0 266.86 L0 238.71 L87.2 238.71 L87.2 266.86 L0 266.86" class="st3"/>
+					<path d="M1.41 265.45 L1.41 240.11 L85.79 240.11 L85.79 265.45 L1.41 265.45" class="st3"/>
+				</g>
+				<path d="M0 266.86 L0 238.71 L87.2 238.71 L87.2 266.86 L0 266.86 Z" class="st4"/>
+				<path d="M0 266.86 L0 238.71 L87.2 238.71 L87.2 266.86 L0 266.86" class="st5"/>
+				<path d="M1.41 265.45 L1.41 240.11 L85.79 240.11 L85.79 265.45 L1.41 265.45" class="st5"/>
+				<text x="13.43" y="254.74" class="st6" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>EVSE-Operator<v:newlineChar/> </text>			</g>
+		</g>
+		<g id="group18-13" transform="translate(71.4331,-189.079)" v:mID="18" v:groupContext="group">
+			<v:custProps>
+				<v:cp v:nameU="Department" v:lbl="Abteilung" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Abteilung)"/>
+				<v:cp v:nameU="Telephone" v:lbl="Telefon" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Telefon)"/>
+				<v:cp v:nameU="Name" v:lbl="Name" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Station 1)"/>
+				<v:cp v:nameU="Title" v:lbl="Titel" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4()"/>
+				<v:cp v:nameU="Email" v:lbl="E-Mail" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(E-Mail)"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="Solsh" v:prompt="" v:val="VT14({0BF98B35-200C-41D5-8A23-20EF77CBC94A}):41"/>
+				<v:ud v:nameU="ShapeType" v:prompt="" v:val="VT0(2):26"/>
+				<v:ud v:nameU="ShowPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ShowSubordinates" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="DocShowPicture" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="Margin" v:prompt="" v:val="VT0(0.011811023622047):1"/>
+				<v:ud v:nameU="HasSubordinates" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="IsHidingSubs" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="ShowDivider" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ThisLayoutStyle" v:prompt="" v:val="VT0(100):26"/>
+				<v:ud v:nameU="HasPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Width" v:prompt="" v:val="VT0(0.59055118098425):1"/>
+				<v:ud v:nameU="Height" v:prompt="" v:val="VT0(0.23622047244094):1"/>
+				<v:ud v:nameU="Prop" v:prompt="" v:val="VT4(Name;Title)"/>
+				<v:ud v:nameU="PictureAspectRatio" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="PictureID" v:prompt=""/>
+				<v:ud v:nameU="SetWidth" v:prompt=""/>
+				<v:ud v:nameU="SetHeight" v:prompt=""/>
+				<v:ud v:nameU="PositionID" v:prompt="" v:val="VT4({D1DA514D-CD1D-4B94-BB27-54CF255421D4})"/>
+				<v:ud v:nameU="DeltaX" v:prompt="" v:val="VT0(0.42838199947638):26"/>
+				<v:ud v:nameU="DeltaY" v:prompt="" v:val="VT0(-0.51316815825197):26"/>
+				<v:ud v:nameU="ParLocX" v:prompt="" v:val="VT0(0.859019576):1"/>
+				<v:ud v:nameU="ParLocY" v:prompt="" v:val="VT0(3.257372007):1"/>
+				<v:ud v:nameU="PageLoc" v:prompt="" v:val="VT6(PNT(1.2874015754764,2.744203848748)):40"/>
+				<v:ud v:nameU="ParLoc" v:prompt="" v:val="VT6(PNT(0.859019576,3.257372007)):40"/>
+				<v:ud v:nameU="PictureAreaWidth" v:prompt="" v:val="VT0(0.18296150477253):29"/>
+				<v:ud v:nameU="PictureAreaHeight" v:prompt="" v:val="VT0(0.22233158355206):29"/>
+				<v:ud v:nameU="PictureAreaAspectRatio" v:prompt="" v:val="VT0(0.82292179028037):26"/>
+				<v:ud v:nameU="PictureWidth" v:prompt="" v:val="VT0(0.18296150477253):29"/>
+				<v:ud v:nameU="PictureHeight" v:prompt="" v:val="VT0(0.18296150477253):29"/>
+				<v:ud v:nameU="DividerOffset" v:prompt="" v:val="VT0(0.11813472759417):29"/>
+				<v:ud v:nameU="CalcTextLineHeight" v:prompt="" v:val="VT0(0.13333333333333):29"/>
+				<v:ud v:nameU="ExpandedForPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Theme" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<title>Position.18</title>
+			<desc>Station 1</desc>
+			<g id="shape18-14" v:mID="18" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="21.2598" cy="258.352" width="42.38" height="8.50394"/>
+				<g id="shadow18-15" v:groupContext="shadow" v:shadowOffsetX="1.44" v:shadowOffsetY="-1.44" v:shadowType="1"
+						transform="matrix(1,0,0,1,1.44,1.44)" class="st1">
+					<path d="M0 266.86 L0 249.85 L42.52 249.85 L42.52 266.86 L0 266.86 Z" class="st7"/>
+				</g>
+				<path d="M0 266.86 L0 249.85 L42.52 249.85 L42.52 266.86 L0 266.86 Z" class="st8"/>
+				<text x="6.77" y="261.3" class="st9" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Station 1<v:newlineChar/> </text>			</g>
+		</g>
+		<g id="shape23-20" v:mID="23" v:groupContext="shape" transform="translate(59.5546,-220.455)">
+			<title>Dynamischer Verbinder.23</title>
+			<v:userDefs>
+				<v:ud v:nameU="ShapeClass" v:val="VT4({D84F7AF5-C993-11d1-B2E7-006008BD347E})"/>
+				<v:ud v:nameU="OwnerUniqueID" v:val="VT0(-1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<path d="M2.29 266.86 L2.29 289.73 L11.88 289.73" class="st10"/>
+		</g>
+		<g id="group45-24" transform="translate(139.465,-193.331)" v:mID="45" v:groupContext="group">
+			<v:custProps>
+				<v:cp v:nameU="Department" v:lbl="Abteilung" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Abteilung)"/>
+				<v:cp v:nameU="Telephone" v:lbl="Telefon" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Telefon)"/>
+				<v:cp v:nameU="Name" v:lbl="Name" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Station Attributes)"/>
+				<v:cp v:nameU="Title" v:lbl="Titel" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4()"/>
+				<v:cp v:nameU="Email" v:lbl="E-Mail" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(E-Mail)"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="Solsh" v:prompt="" v:val="VT14({0BF98B35-200C-41D5-8A23-20EF77CBC94A}):41"/>
+				<v:ud v:nameU="ShapeType" v:prompt="" v:val="VT0(6):26"/>
+				<v:ud v:nameU="ShowPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ShowSubordinates" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="DocShowPicture" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="Margin" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="HasSubordinates" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="IsHidingSubs" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="ShowDivider" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ThisLayoutStyle" v:prompt="" v:val="VT0(100):26"/>
+				<v:ud v:nameU="HasPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Width" v:prompt="" v:val="VT0(0.91338582677165):1"/>
+				<v:ud v:nameU="Height" v:prompt="" v:val="VT0(0.11811023622047):1"/>
+				<v:ud v:nameU="Prop" v:prompt="" v:val="VT4(Name;Title)"/>
+				<v:ud v:nameU="PictureAspectRatio" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="PictureID" v:prompt=""/>
+				<v:ud v:nameU="SetWidth" v:prompt=""/>
+				<v:ud v:nameU="SetHeight" v:prompt=""/>
+				<v:ud v:nameU="PositionID" v:prompt="" v:val="VT4({8427DDCF-8078-496F-AE12-949A95FF2CD0})"/>
+				<v:ud v:nameU="DeltaX" v:prompt="" v:val="VT0(1.1062992126575):26"/>
+				<v:ud v:nameU="DeltaY" v:prompt="" v:val="VT0(-8.8817841970013E-016):26"/>
+				<v:ud v:nameU="ParLocX" v:prompt="" v:val="VT0(1.2874015754764):1"/>
+				<v:ud v:nameU="ParLocY" v:prompt="" v:val="VT0(2.744203848748):1"/>
+				<v:ud v:nameU="PageLoc" v:prompt="" v:val="VT6(PNT(2.3937007881339,2.744203848748)):40"/>
+				<v:ud v:nameU="ParLoc" v:prompt="" v:val="VT6(PNT(1.2874015754764,2.744203848748)):40"/>
+				<v:ud v:nameU="PictureAreaWidth" v:prompt="" v:val="VT0(0.29057305336833):29"/>
+				<v:ud v:nameU="PictureAreaHeight" v:prompt="" v:val="VT0(0.10422134733158):29"/>
+				<v:ud v:nameU="PictureAreaAspectRatio" v:prompt="" v:val="VT0(2.788037775446):26"/>
+				<v:ud v:nameU="PictureWidth" v:prompt="" v:val="VT0(0.10422134733158):29"/>
+				<v:ud v:nameU="PictureHeight" v:prompt="" v:val="VT0(0.10422134733158):29"/>
+				<v:ud v:nameU="DividerOffset" v:prompt="" v:val="VT0(0.059079609483934):29"/>
+				<v:ud v:nameU="CalcTextLineHeight" v:prompt="" v:val="VT0(0.13333333333333):29"/>
+				<v:ud v:nameU="ExpandedForPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Theme" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<title>Mitarbeiter.45</title>
+			<desc>Station Attributes</desc>
+			<g id="shape45-25" v:mID="45" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(0,0,0,2.83465)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="32.8819" cy="262.604" width="65.54" height="8.50394"/>
+				<path d="M0 266.86 L0 258.35 L65.76 258.35 L65.76 266.86 L0 266.86 Z" class="st11"/>
+				<text x="2.95" y="265.55" class="st9" v:langID="1031"><v:paragraph/><v:tabList/>Station Attributes<v:newlineChar/> </text>			</g>
+		</g>
+		<g id="shape50-29" v:mID="50" v:groupContext="shape" transform="translate(113.953,-190.496)">
+			<title>Dynamischer Verbinder.50</title>
+			<v:userDefs>
+				<v:ud v:nameU="ShapeClass" v:val="VT4({D84F7AF5-C993-11d1-B2E7-006008BD347E})"/>
+				<v:ud v:nameU="OwnerUniqueID" v:val="VT0(-1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<path d="M0 259.77 L25.51 259.77" class="st10"/>
+		</g>
+		<g id="group12-33" transform="translate(71.4331,-36.0079)" v:mID="12" v:groupContext="group">
+			<v:custProps>
+				<v:cp v:nameU="Department" v:lbl="Abteilung" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Abteilung)"/>
+				<v:cp v:nameU="Telephone" v:lbl="Telefon" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Telefon)"/>
+				<v:cp v:nameU="Name" v:lbl="Name" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Station n)"/>
+				<v:cp v:nameU="Title" v:lbl="Titel" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4( )"/>
+				<v:cp v:nameU="Email" v:lbl="E-Mail" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(E-Mail)"/>
+				<v:cp v:nameU="Calendar" v:lbl="" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="0" v:cal="0"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="Solsh" v:prompt="" v:val="VT14({0BF98B35-200C-41D5-8A23-20EF77CBC94A}):41"/>
+				<v:ud v:nameU="ShapeType" v:prompt="" v:val="VT0(2):26"/>
+				<v:ud v:nameU="ShowPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ShowSubordinates" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="DocShowPicture" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="Margin" v:prompt="" v:val="VT0(0.011811023619488):1"/>
+				<v:ud v:nameU="HasSubordinates" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="IsHidingSubs" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="ShowDivider" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ThisLayoutStyle" v:prompt="" v:val="VT0(100):26"/>
+				<v:ud v:nameU="HasPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Width" v:prompt="" v:val="VT0(0.59055118103543):1"/>
+				<v:ud v:nameU="Height" v:prompt="" v:val="VT0(0.23622047238976):1"/>
+				<v:ud v:nameU="Prop" v:prompt="" v:val="VT4(Name;Title)"/>
+				<v:ud v:nameU="PictureAspectRatio" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="PictureID" v:prompt=""/>
+				<v:ud v:nameU="SetWidth" v:prompt=""/>
+				<v:ud v:nameU="SetHeight" v:prompt=""/>
+				<v:ud v:nameU="PositionID" v:prompt="" v:val="VT4({1416F729-19E9-47CE-8CE4-3AAA5B80C35A})"/>
+				<v:ud v:nameU="DeltaX" v:prompt="" v:val="VT0(0.428382):26"/>
+				<v:ud v:nameU="DeltaY" v:prompt="" v:val="VT0(-2.6391524101949):26"/>
+				<v:ud v:nameU="ParLocX" v:prompt="" v:val="VT0(0.859019576):1"/>
+				<v:ud v:nameU="ParLocY" v:prompt="" v:val="VT0(3.257372007):1"/>
+				<v:ud v:nameU="PageLoc" v:prompt="" v:val="VT6(PNT(1.287401576,0.61821959680512)):40"/>
+				<v:ud v:nameU="ParLoc" v:prompt="" v:val="VT6(PNT(0.859019576,3.257372007)):40"/>
+				<v:ud v:nameU="PictureAreaWidth" v:prompt="" v:val="VT0(0.18296150478959):29"/>
+				<v:ud v:nameU="PictureAreaHeight" v:prompt="" v:val="VT0(0.22233158350088):29"/>
+				<v:ud v:nameU="PictureAreaAspectRatio" v:prompt="" v:val="VT0(0.82292179054655):26"/>
+				<v:ud v:nameU="PictureWidth" v:prompt="" v:val="VT0(0.18296150478959):29"/>
+				<v:ud v:nameU="PictureHeight" v:prompt="" v:val="VT0(0.18296150478959):29"/>
+				<v:ud v:nameU="DividerOffset" v:prompt="" v:val="VT0(0.11813472756858):29"/>
+				<v:ud v:nameU="CalcTextLineHeight" v:prompt="" v:val="VT0(0.13333333333333):29"/>
+				<v:ud v:nameU="ExpandedForPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Theme" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<title>Position.12</title>
+			<desc>Station n</desc>
+			<g id="shape12-34" v:mID="12" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="21.2598" cy="258.352" width="42.38" height="8.50394"/>
+				<g id="shadow12-35" v:groupContext="shadow" v:shadowOffsetX="1.44" v:shadowOffsetY="-1.44" v:shadowType="1"
+						transform="matrix(1,0,0,1,1.44,1.44)" class="st1">
+					<path d="M0 266.86 L0 249.85 L42.52 249.85 L42.52 266.86 L0 266.86 Z" class="st7"/>
+				</g>
+				<path d="M0 266.86 L0 249.85 L42.52 249.85 L42.52 266.86 L0 266.86 Z" class="st8"/>
+				<text x="6.69" y="261.3" class="st9" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Station n<v:newlineChar/> </text>			</g>
+		</g>
+		<g id="shape17-40" v:mID="17" v:groupContext="shape" transform="translate(59.5546,-220.455)">
+			<title>Dynamischer Verbinder.17</title>
+			<v:userDefs>
+				<v:ud v:nameU="ShapeClass" v:val="VT4({D84F7AF5-C993-11d1-B2E7-006008BD347E})"/>
+				<v:ud v:nameU="OwnerUniqueID" v:val="VT0(-1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<path d="M2.29 266.86 L2.29 442.8 L11.88 442.8" class="st10"/>
+		</g>
+		<g id="group6-44" transform="translate(130.961,-70.0236)" v:mID="6" v:groupContext="group">
+			<v:custProps>
+				<v:cp v:nameU="Department" v:lbl="Abteilung" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Abteilung)"/>
+				<v:cp v:nameU="Telephone" v:lbl="Telefon" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Telefon)"/>
+				<v:cp v:nameU="Name" v:lbl="Name" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(EVSE 1.2)"/>
+				<v:cp v:nameU="Title" v:lbl="Titel" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4( )"/>
+				<v:cp v:nameU="Email" v:lbl="E-Mail" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(E-Mail)"/>
+				<v:cp v:nameU="Calendar" v:lbl="" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="0" v:cal="0"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="Solsh" v:prompt="" v:val="VT14({0BF98B35-200C-41D5-8A23-20EF77CBC94A}):41"/>
+				<v:ud v:nameU="ShapeType" v:prompt="" v:val="VT0(2):26"/>
+				<v:ud v:nameU="ShowPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ShowSubordinates" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="DocShowPicture" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="Margin" v:prompt="" v:val="VT0(0.011811023600787):1"/>
+				<v:ud v:nameU="HasSubordinates" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="IsHidingSubs" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="ShowDivider" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ThisLayoutStyle" v:prompt="" v:val="VT0(100):26"/>
+				<v:ud v:nameU="HasPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Width" v:prompt="" v:val="VT0(0.47244094529134):1"/>
+				<v:ud v:nameU="Height" v:prompt="" v:val="VT0(0.23622047201575):1"/>
+				<v:ud v:nameU="Prop" v:prompt="" v:val="VT4(Name;Title)"/>
+				<v:ud v:nameU="PictureAspectRatio" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="PictureID" v:prompt=""/>
+				<v:ud v:nameU="SetWidth" v:prompt=""/>
+				<v:ud v:nameU="SetHeight" v:prompt=""/>
+				<v:ud v:nameU="PositionID" v:prompt="" v:val="VT4({A3594589-AD82-4DB0-99EB-6855C1D02569})"/>
+				<v:ud v:nameU="DeltaX" v:prompt="" v:val="VT0(0.76771653552362):26"/>
+				<v:ud v:nameU="DeltaY" v:prompt="" v:val="VT0(-1.653543306874):26"/>
+				<v:ud v:nameU="ParLocX" v:prompt="" v:val="VT0(1.2874015754764):1"/>
+				<v:ud v:nameU="ParLocY" v:prompt="" v:val="VT0(2.744203848748):1"/>
+				<v:ud v:nameU="PageLoc" v:prompt="" v:val="VT6(PNT(2.055118111,1.090660541874)):40"/>
+				<v:ud v:nameU="ParLoc" v:prompt="" v:val="VT6(PNT(1.2874015754764,2.744203848748)):40"/>
+				<v:ud v:nameU="PictureAreaWidth" v:prompt="" v:val="VT0(0.14359142620822):29"/>
+				<v:ud v:nameU="PictureAreaHeight" v:prompt="" v:val="VT0(0.22233158312686):29"/>
+				<v:ud v:nameU="PictureAreaAspectRatio" v:prompt="" v:val="VT0(0.64584358276391):26"/>
+				<v:ud v:nameU="PictureWidth" v:prompt="" v:val="VT0(0.14359142620822):29"/>
+				<v:ud v:nameU="PictureHeight" v:prompt="" v:val="VT0(0.14359142620822):29"/>
+				<v:ud v:nameU="DividerOffset" v:prompt="" v:val="VT0(0.11813472738157):29"/>
+				<v:ud v:nameU="CalcTextLineHeight" v:prompt="" v:val="VT0(0.13333333333333):29"/>
+				<v:ud v:nameU="ExpandedForPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Theme" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<title>Position.6</title>
+			<desc>EVSE 1.2</desc>
+			<g id="shape6-45" v:mID="6" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="17.0079" cy="258.352" width="33.9" height="8.50394"/>
+				<g id="shadow6-46" v:groupContext="shadow" v:shadowOffsetX="1.44" v:shadowOffsetY="-1.44" v:shadowType="1"
+						transform="matrix(1,0,0,1,1.44,1.44)" class="st1">
+					<path d="M0 266.86 L0 249.85 L34.02 249.85 L34.02 266.86 L0 266.86 Z" class="st7"/>
+				</g>
+				<path d="M0 266.86 L0 249.85 L34.02 249.85 L34.02 266.86 L0 266.86 Z" class="st8"/>
+				<text x="3.03" y="261.3" class="st9" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>EVSE 1.2<v:newlineChar/> </text>			</g>
+		</g>
+		<g id="shape11-51" v:mID="11" v:groupContext="shape" transform="translate(92.6929,-189.079)">
+			<title>Dynamischer Verbinder</title>
+			<v:userDefs>
+				<v:ud v:nameU="ShapeClass" v:val="VT4({D84F7AF5-C993-11d1-B2E7-006008BD347E})"/>
+				<v:ud v:nameU="OwnerUniqueID" v:val="VT0(-1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<path d="M0 266.86 L0 283.86 L38.27 283.86" class="st10"/>
+		</g>
+		<g id="shape29-55" v:mID="29" v:groupContext="shape" transform="translate(92.6929,-189.079)">
+			<title>Dynamischer Verbinder.29</title>
+			<v:userDefs>
+				<v:ud v:nameU="ShapeClass" v:val="VT4({D84F7AF5-C993-11d1-B2E7-006008BD347E})"/>
+				<v:ud v:nameU="OwnerUniqueID" v:val="VT0(-1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<path d="M0 266.86 L0 377.41 L38.27 377.41" class="st10"/>
+		</g>
+		<g id="group24-59" transform="translate(130.961,-163.567)" v:mID="24" v:groupContext="group">
+			<v:custProps>
+				<v:cp v:nameU="Department" v:lbl="Abteilung" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Abteilung)"/>
+				<v:cp v:nameU="Telephone" v:lbl="Telefon" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Telefon)"/>
+				<v:cp v:nameU="Name" v:lbl="Name" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(EVSE 1.1)"/>
+				<v:cp v:nameU="Title" v:lbl="Titel" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4( )"/>
+				<v:cp v:nameU="Email" v:lbl="E-Mail" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(E-Mail)"/>
+				<v:cp v:nameU="Calendar" v:lbl="" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="0" v:cal="0"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="Solsh" v:prompt="" v:val="VT14({0BF98B35-200C-41D5-8A23-20EF77CBC94A}):41"/>
+				<v:ud v:nameU="ShapeType" v:prompt="" v:val="VT0(2):26"/>
+				<v:ud v:nameU="ShowPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ShowSubordinates" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="DocShowPicture" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="Margin" v:prompt="" v:val="VT0(0.011811023620965):1"/>
+				<v:ud v:nameU="HasSubordinates" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="IsHidingSubs" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="ShowDivider" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ThisLayoutStyle" v:prompt="" v:val="VT0(100):26"/>
+				<v:ud v:nameU="HasPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Width" v:prompt="" v:val="VT0(0.47244094495275):1"/>
+				<v:ud v:nameU="Height" v:prompt="" v:val="VT0(0.23622047241929):1"/>
+				<v:ud v:nameU="Prop" v:prompt="" v:val="VT4(Name;Title)"/>
+				<v:ud v:nameU="PictureAspectRatio" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="PictureID" v:prompt=""/>
+				<v:ud v:nameU="SetWidth" v:prompt=""/>
+				<v:ud v:nameU="SetHeight" v:prompt=""/>
+				<v:ud v:nameU="PositionID" v:prompt="" v:val="VT4({7F1309B1-B252-4E2D-9C70-C530221CCD2A})"/>
+				<v:ud v:nameU="DeltaX" v:prompt="" v:val="VT0(0.76771653552362):26"/>
+				<v:ud v:nameU="DeltaY" v:prompt="" v:val="VT0(-0.35433070874803):26"/>
+				<v:ud v:nameU="ParLocX" v:prompt="" v:val="VT0(1.2874015754764):1"/>
+				<v:ud v:nameU="ParLocY" v:prompt="" v:val="VT0(2.744203848748):1"/>
+				<v:ud v:nameU="PageLoc" v:prompt="" v:val="VT6(PNT(2.055118111,2.38987314)):40"/>
+				<v:ud v:nameU="ParLoc" v:prompt="" v:val="VT6(PNT(1.2874015754764,2.744203848748)):40"/>
+				<v:ud v:nameU="PictureAreaWidth" v:prompt="" v:val="VT0(0.14359142609536):29"/>
+				<v:ud v:nameU="PictureAreaHeight" v:prompt="" v:val="VT0(0.2223315835304):29"/>
+				<v:ud v:nameU="PictureAreaAspectRatio" v:prompt="" v:val="VT0(0.64584358108405):26"/>
+				<v:ud v:nameU="PictureWidth" v:prompt="" v:val="VT0(0.14359142609536):29"/>
+				<v:ud v:nameU="PictureHeight" v:prompt="" v:val="VT0(0.14359142609536):29"/>
+				<v:ud v:nameU="DividerOffset" v:prompt="" v:val="VT0(0.11813472758334):29"/>
+				<v:ud v:nameU="CalcTextLineHeight" v:prompt="" v:val="VT0(0.13333333333333):29"/>
+				<v:ud v:nameU="ExpandedForPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Theme" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<title>Position.24</title>
+			<desc>EVSE 1.1</desc>
+			<g id="shape24-60" v:mID="24" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="17.0079" cy="258.352" width="33.9" height="8.50394"/>
+				<g id="shadow24-61" v:groupContext="shadow" v:shadowOffsetX="1.44" v:shadowOffsetY="-1.44" v:shadowType="1"
+						transform="matrix(1,0,0,1,1.44,1.44)" class="st1">
+					<path d="M0 266.86 L0 249.85 L34.02 249.85 L34.02 266.86 L0 266.86 Z" class="st7"/>
+				</g>
+				<path d="M0 266.86 L0 249.85 L34.02 249.85 L34.02 266.86 L0 266.86 Z" class="st8"/>
+				<text x="3.03" y="261.3" class="st9" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>EVSE 1.1<v:newlineChar/> </text>			</g>
+		</g>
+		<g id="group30-66" transform="translate(181.984,-167.819)" v:mID="30" v:groupContext="group">
+			<v:custProps>
+				<v:cp v:nameU="Department" v:lbl="Abteilung" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Abteilung)"/>
+				<v:cp v:nameU="Telephone" v:lbl="Telefon" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Telefon)"/>
+				<v:cp v:nameU="Name" v:lbl="Name" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(EVSE Attributes)"/>
+				<v:cp v:nameU="Title" v:lbl="Titel" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4( )"/>
+				<v:cp v:nameU="Email" v:lbl="E-Mail" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(E-Mail)"/>
+				<v:cp v:nameU="Calendar" v:lbl="" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="0" v:cal="0"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="Solsh" v:prompt="" v:val="VT14({0BF98B35-200C-41D5-8A23-20EF77CBC94A}):41"/>
+				<v:ud v:nameU="ShapeType" v:prompt="" v:val="VT0(6):26"/>
+				<v:ud v:nameU="ShowPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ShowSubordinates" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="DocShowPicture" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="Margin" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="HasSubordinates" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="IsHidingSubs" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="ShowDivider" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ThisLayoutStyle" v:prompt="" v:val="VT0(100):26"/>
+				<v:ud v:nameU="HasPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Width" v:prompt="" v:val="VT0(0.94488188976378):1"/>
+				<v:ud v:nameU="Height" v:prompt="" v:val="VT0(0.1181102365748):1"/>
+				<v:ud v:nameU="Prop" v:prompt="" v:val="VT4(Name;Title)"/>
+				<v:ud v:nameU="PictureAspectRatio" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="PictureID" v:prompt=""/>
+				<v:ud v:nameU="SetWidth" v:prompt=""/>
+				<v:ud v:nameU="SetHeight" v:prompt=""/>
+				<v:ud v:nameU="PositionID" v:prompt="" v:val="VT4({B6E9550D-8B99-4682-B7F6-63945CB5165B})"/>
+				<v:ud v:nameU="DeltaX" v:prompt="" v:val="VT0(0.94488189):26"/>
+				<v:ud v:nameU="DeltaY" v:prompt="" v:val="VT0(-8.8817841970013E-016):26"/>
+				<v:ud v:nameU="ParLocX" v:prompt="" v:val="VT0(2.055118111):1"/>
+				<v:ud v:nameU="ParLocY" v:prompt="" v:val="VT0(2.38987314):1"/>
+				<v:ud v:nameU="PageLoc" v:prompt="" v:val="VT6(PNT(3.000000001,2.38987314)):40"/>
+				<v:ud v:nameU="ParLoc" v:prompt="" v:val="VT6(PNT(2.055118111,2.38987314)):40"/>
+				<v:ud v:nameU="PictureAreaWidth" v:prompt="" v:val="VT0(0.30107174103237):29"/>
+				<v:ud v:nameU="PictureAreaHeight" v:prompt="" v:val="VT0(0.10422134768591):29"/>
+				<v:ud v:nameU="PictureAreaAspectRatio" v:prompt="" v:val="VT0(2.8887722881851):26"/>
+				<v:ud v:nameU="PictureWidth" v:prompt="" v:val="VT0(0.10422134768591):29"/>
+				<v:ud v:nameU="PictureHeight" v:prompt="" v:val="VT0(0.10422134768591):29"/>
+				<v:ud v:nameU="DividerOffset" v:prompt="" v:val="VT0(0.0590796096611):29"/>
+				<v:ud v:nameU="CalcTextLineHeight" v:prompt="" v:val="VT0(0.13333333333333):29"/>
+				<v:ud v:nameU="ExpandedForPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Theme" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<title>Mitarbeiter.30</title>
+			<desc>EVSE Attributes</desc>
+			<g id="shape30-67" v:mID="30" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(0,0,0,2.83465)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="34.0157" cy="262.604" width="67.8" height="8.50394"/>
+				<path d="M0 266.86 L0 258.35 L68.03 258.35 L68.03 266.86 L0 266.86 Z" class="st11"/>
+				<text x="2.95" y="265.55" class="st9" v:langID="1031"><v:paragraph/><v:tabList/>EVSE Attributes<v:newlineChar/> </text>			</g>
+		</g>
+		<g id="group35-71" transform="translate(181.984,-155.063)" v:mID="35" v:groupContext="group">
+			<v:custProps>
+				<v:cp v:nameU="Department" v:lbl="Abteilung" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Abteilung)"/>
+				<v:cp v:nameU="Telephone" v:lbl="Telefon" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Telefon)"/>
+				<v:cp v:nameU="Name" v:lbl="Name" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(EVSE-ID)"/>
+				<v:cp v:nameU="Title" v:lbl="Titel" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4( )"/>
+				<v:cp v:nameU="Email" v:lbl="E-Mail" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(E-Mail)"/>
+				<v:cp v:nameU="Calendar" v:lbl="" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="0" v:cal="0"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="Solsh" v:prompt="" v:val="VT14({0BF98B35-200C-41D5-8A23-20EF77CBC94A}):41"/>
+				<v:ud v:nameU="ShapeType" v:prompt="" v:val="VT0(6):26"/>
+				<v:ud v:nameU="ShowPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ShowSubordinates" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="DocShowPicture" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="Margin" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="HasSubordinates" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="IsHidingSubs" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="ShowDivider" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ThisLayoutStyle" v:prompt="" v:val="VT0(100):26"/>
+				<v:ud v:nameU="HasPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Width" v:prompt="" v:val="VT0(0.94488188976378):1"/>
+				<v:ud v:nameU="Height" v:prompt="" v:val="VT0(0.11811023652625):1"/>
+				<v:ud v:nameU="Prop" v:prompt="" v:val="VT4(Name;Title)"/>
+				<v:ud v:nameU="PictureAspectRatio" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="PictureID" v:prompt=""/>
+				<v:ud v:nameU="SetWidth" v:prompt=""/>
+				<v:ud v:nameU="SetHeight" v:prompt=""/>
+				<v:ud v:nameU="PositionID" v:prompt="" v:val="VT4({0B4BEBA3-2990-45F8-9894-9CA3D8F691E2})"/>
+				<v:ud v:nameU="DeltaX" v:prompt="" v:val="VT0(0.94488189):26"/>
+				<v:ud v:nameU="DeltaY" v:prompt="" v:val="VT0(-0.177165354):26"/>
+				<v:ud v:nameU="ParLocX" v:prompt="" v:val="VT0(2.055118111):1"/>
+				<v:ud v:nameU="ParLocY" v:prompt="" v:val="VT0(2.38987314):1"/>
+				<v:ud v:nameU="PageLoc" v:prompt="" v:val="VT6(PNT(3.000000001,2.212707786)):40"/>
+				<v:ud v:nameU="ParLoc" v:prompt="" v:val="VT6(PNT(2.055118111,2.38987314)):40"/>
+				<v:ud v:nameU="PictureAreaWidth" v:prompt="" v:val="VT0(0.30107174103237):29"/>
+				<v:ud v:nameU="PictureAreaHeight" v:prompt="" v:val="VT0(0.10422134763736):29"/>
+				<v:ud v:nameU="PictureAreaAspectRatio" v:prompt="" v:val="VT0(2.8887722895309):26"/>
+				<v:ud v:nameU="PictureWidth" v:prompt="" v:val="VT0(0.10422134763736):29"/>
+				<v:ud v:nameU="PictureHeight" v:prompt="" v:val="VT0(0.10422134763736):29"/>
+				<v:ud v:nameU="DividerOffset" v:prompt="" v:val="VT0(0.059079609636822):29"/>
+				<v:ud v:nameU="CalcTextLineHeight" v:prompt="" v:val="VT0(0.13333333333333):29"/>
+				<v:ud v:nameU="ExpandedForPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Theme" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<title>Mitarbeiter.35</title>
+			<desc>EVSE-ID</desc>
+			<g id="shape35-72" v:mID="35" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(0,0,0,2.83465)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="34.0157" cy="262.604" width="67.8" height="8.50394"/>
+				<path d="M0 266.86 L0 258.35 L68.03 258.35 L68.03 266.86 L0 266.86 Z" class="st11"/>
+				<text x="2.95" y="265.55" class="st9" v:langID="1031"><v:paragraph/><v:tabList/>EVSE-ID<v:newlineChar/> </text>			</g>
+		</g>
+		<g id="shape40-76" v:mID="40" v:groupContext="shape" transform="translate(164.976,-164.984)">
+			<title>Dynamischer Verbinder.40</title>
+			<v:userDefs>
+				<v:ud v:nameU="ShapeClass" v:val="VT4({D84F7AF5-C993-11d1-B2E7-006008BD347E})"/>
+				<v:ud v:nameU="OwnerUniqueID" v:val="VT0(-1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<path d="M0 259.77 L17.01 259.77" class="st10"/>
+		</g>
+		<g id="shape41-80" v:mID="41" v:groupContext="shape" transform="translate(164.976,-172.78)">
+			<title>Dynamischer Verbinder.41</title>
+			<v:userDefs>
+				<v:ud v:nameU="ShapeClass" v:val="VT4({D84F7AF5-C993-11d1-B2E7-006008BD347E})"/>
+				<v:ud v:nameU="OwnerUniqueID" v:val="VT0(-1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<path d="M0 267.56 L8.5 267.56 L8.5 280.32 L17.01 280.32" class="st10"/>
+		</g>
+		<g id="group42-84" transform="translate(164.976,-129.551)" v:mID="42" v:groupContext="group">
+			<v:custProps>
+				<v:cp v:nameU="Department" v:lbl="Abteilung" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Abteilung)"/>
+				<v:cp v:nameU="Telephone" v:lbl="Telefon" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Telefon)"/>
+				<v:cp v:nameU="Name" v:lbl="Name" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Connector A)"/>
+				<v:cp v:nameU="Title" v:lbl="Titel" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4()"/>
+				<v:cp v:nameU="Email" v:lbl="E-Mail" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(E-Mail)"/>
+				<v:cp v:nameU="Calendar" v:lbl="" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="0" v:cal="0"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="Solsh" v:prompt="" v:val="VT14({0BF98B35-200C-41D5-8A23-20EF77CBC94A}):41"/>
+				<v:ud v:nameU="ShapeType" v:prompt="" v:val="VT0(2):26"/>
+				<v:ud v:nameU="ShowPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ShowSubordinates" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="DocShowPicture" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="Margin" v:prompt="" v:val="VT0(0.011811023634055):1"/>
+				<v:ud v:nameU="HasSubordinates" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="IsHidingSubs" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="ShowDivider" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ThisLayoutStyle" v:prompt="" v:val="VT0(100):26"/>
+				<v:ud v:nameU="HasPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Width" v:prompt="" v:val="VT0(0.70866141749606):1"/>
+				<v:ud v:nameU="Height" v:prompt="" v:val="VT0(0.2362204726811):1"/>
+				<v:ud v:nameU="Prop" v:prompt="" v:val="VT4(Name;Title)"/>
+				<v:ud v:nameU="PictureAspectRatio" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="PictureID" v:prompt=""/>
+				<v:ud v:nameU="SetWidth" v:prompt=""/>
+				<v:ud v:nameU="SetHeight" v:prompt=""/>
+				<v:ud v:nameU="PositionID" v:prompt="" v:val="VT4({5C268294-73DC-4742-8560-36CAAD31A5FF})"/>
+				<v:ud v:nameU="DeltaX" v:prompt="" v:val="VT0(0.590551181):26"/>
+				<v:ud v:nameU="DeltaY" v:prompt="" v:val="VT0(-0.472440945):26"/>
+				<v:ud v:nameU="ParLocX" v:prompt="" v:val="VT0(2.055118111):1"/>
+				<v:ud v:nameU="ParLocY" v:prompt="" v:val="VT0(2.38987314):1"/>
+				<v:ud v:nameU="PageLoc" v:prompt="" v:val="VT6(PNT(2.645669292,1.917432195)):40"/>
+				<v:ud v:nameU="ParLoc" v:prompt="" v:val="VT6(PNT(2.055118111,2.38987314)):40"/>
+				<v:ud v:nameU="PictureAreaWidth" v:prompt="" v:val="VT0(0.2223315836098):29"/>
+				<v:ud v:nameU="PictureAreaHeight" v:prompt="" v:val="VT0(0.22233158379221):29"/>
+				<v:ud v:nameU="PictureAreaAspectRatio" v:prompt="" v:val="VT0(0.99999999917953):26"/>
+				<v:ud v:nameU="PictureWidth" v:prompt="" v:val="VT0(0.22233158379221):29"/>
+				<v:ud v:nameU="PictureHeight" v:prompt="" v:val="VT0(0.22233158379221):29"/>
+				<v:ud v:nameU="DividerOffset" v:prompt="" v:val="VT0(0.11813472771425):29"/>
+				<v:ud v:nameU="CalcTextLineHeight" v:prompt="" v:val="VT0(0.13333333333333):29"/>
+				<v:ud v:nameU="ExpandedForPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Theme" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<title>Position.42</title>
+			<desc>Connector A</desc>
+			<g id="shape42-85" v:mID="42" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="25.5118" cy="258.352" width="50.85" height="8.50394"/>
+				<g id="shadow42-86" v:groupContext="shadow" v:shadowOffsetX="1.44" v:shadowOffsetY="-1.44" v:shadowType="1"
+						transform="matrix(1,0,0,1,1.44,1.44)" class="st1">
+					<path d="M0 266.86 L0 249.85 L51.02 249.85 L51.02 266.86 L0 266.86 Z" class="st7"/>
+				</g>
+				<path d="M0 266.86 L0 249.85 L51.02 249.85 L51.02 266.86 L0 266.86 Z" class="st8"/>
+				<text x="5.32" y="261.3" class="st9" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Connector A<v:newlineChar/> </text>			</g>
+		</g>
+		<g id="group53-91" transform="translate(164.976,-104.039)" v:mID="53" v:groupContext="group">
+			<v:custProps>
+				<v:cp v:nameU="Department" v:lbl="Abteilung" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Abteilung)"/>
+				<v:cp v:nameU="Telephone" v:lbl="Telefon" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Telefon)"/>
+				<v:cp v:nameU="Name" v:lbl="Name" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(Connector B)"/>
+				<v:cp v:nameU="Title" v:lbl="Titel" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4( )"/>
+				<v:cp v:nameU="Email" v:lbl="E-Mail" v:type="0" v:invis="false" v:ask="false" v:langID="1031" v:cal="0"
+						v:val="VT4(E-Mail)"/>
+				<v:cp v:nameU="Calendar" v:lbl="" v:prompt="" v:type="0" v:format="" v:sortKey="" v:invis="false" v:ask="false"
+						v:langID="0" v:cal="0"/>
+			</v:custProps>
+			<v:userDefs>
+				<v:ud v:nameU="Solsh" v:prompt="" v:val="VT14({0BF98B35-200C-41D5-8A23-20EF77CBC94A}):41"/>
+				<v:ud v:nameU="ShapeType" v:prompt="" v:val="VT0(2):26"/>
+				<v:ud v:nameU="ShowPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ShowSubordinates" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="DocShowPicture" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="Margin" v:prompt="" v:val="VT0(0.011811023601304):1"/>
+				<v:ud v:nameU="HasSubordinates" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="IsHidingSubs" v:prompt="" v:val="VT0(0):5"/>
+				<v:ud v:nameU="ShowDivider" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="ThisLayoutStyle" v:prompt="" v:val="VT0(100):26"/>
+				<v:ud v:nameU="HasPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Width" v:prompt="" v:val="VT0(0.70866141739567):1"/>
+				<v:ud v:nameU="Height" v:prompt="" v:val="VT0(0.23622047202608):1"/>
+				<v:ud v:nameU="Prop" v:prompt="" v:val="VT4(Name;Title)"/>
+				<v:ud v:nameU="PictureAspectRatio" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud v:nameU="PictureID" v:prompt=""/>
+				<v:ud v:nameU="SetWidth" v:prompt=""/>
+				<v:ud v:nameU="SetHeight" v:prompt=""/>
+				<v:ud v:nameU="PositionID" v:prompt="" v:val="VT4({BC26D12A-3FBD-406B-B298-907C5F8CD980})"/>
+				<v:ud v:nameU="DeltaX" v:prompt="" v:val="VT0(0.590551181):26"/>
+				<v:ud v:nameU="DeltaY" v:prompt="" v:val="VT0(-0.826771654):26"/>
+				<v:ud v:nameU="ParLocX" v:prompt="" v:val="VT0(2.055118111):1"/>
+				<v:ud v:nameU="ParLocY" v:prompt="" v:val="VT0(2.38987314):1"/>
+				<v:ud v:nameU="PageLoc" v:prompt="" v:val="VT6(PNT(2.645669292,1.563101486)):40"/>
+				<v:ud v:nameU="ParLoc" v:prompt="" v:val="VT6(PNT(2.055118111,2.38987314)):40"/>
+				<v:ud v:nameU="PictureAreaWidth" v:prompt="" v:val="VT0(0.22233158357633):29"/>
+				<v:ud v:nameU="PictureAreaHeight" v:prompt="" v:val="VT0(0.22233158313719):29"/>
+				<v:ud v:nameU="PictureAreaAspectRatio" v:prompt="" v:val="VT0(1.0000000019752):26"/>
+				<v:ud v:nameU="PictureWidth" v:prompt="" v:val="VT0(0.22233158313719):29"/>
+				<v:ud v:nameU="PictureHeight" v:prompt="" v:val="VT0(0.22233158313719):29"/>
+				<v:ud v:nameU="DividerOffset" v:prompt="" v:val="VT0(0.11813472738674):29"/>
+				<v:ud v:nameU="CalcTextLineHeight" v:prompt="" v:val="VT0(0.13333333333333):29"/>
+				<v:ud v:nameU="ExpandedForPicture" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Theme" v:prompt="" v:val="VT0(0):26"/>
+				<v:ud v:nameU="visVersion" v:prompt="" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<title>Position.53</title>
+			<desc>Connector B</desc>
+			<g id="shape53-92" v:mID="53" v:groupContext="groupContent">
+				<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+				<v:textRect cx="25.5118" cy="258.352" width="50.85" height="8.50394"/>
+				<g id="shadow53-93" v:groupContext="shadow" v:shadowOffsetX="1.44" v:shadowOffsetY="-1.44" v:shadowType="1"
+						transform="matrix(1,0,0,1,1.44,1.44)" class="st1">
+					<path d="M0 266.86 L0 249.85 L51.02 249.85 L51.02 266.86 L0 266.86 Z" class="st7"/>
+				</g>
+				<path d="M0 266.86 L0 249.85 L51.02 249.85 L51.02 266.86 L0 266.86 Z" class="st8"/>
+				<text x="5.46" y="261.3" class="st9" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Connector B<v:newlineChar/> </text>			</g>
+		</g>
+		<g id="shape58-98" v:mID="58" v:groupContext="shape" transform="translate(147.969,-163.567)">
+			<title>Dynamischer Verbinder.58</title>
+			<v:userDefs>
+				<v:ud v:nameU="ShapeClass" v:val="VT4({D84F7AF5-C993-11d1-B2E7-006008BD347E})"/>
+				<v:ud v:nameU="OwnerUniqueID" v:val="VT0(-1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<path d="M0 266.86 L0 292.37 L17.01 292.37" class="st10"/>
+		</g>
+		<g id="shape59-102" v:mID="59" v:groupContext="shape" transform="translate(147.969,-163.567)">
+			<title>Dynamischer Verbinder.59</title>
+			<v:userDefs>
+				<v:ud v:nameU="ShapeClass" v:val="VT4({D84F7AF5-C993-11d1-B2E7-006008BD347E})"/>
+				<v:ud v:nameU="OwnerUniqueID" v:val="VT0(-1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<path d="M0 266.86 L0 317.88 L17.01 317.88" class="st10"/>
+		</g>
+		<g id="shape60-106" v:mID="60" v:groupContext="shape" transform="translate(99.7795,-36.0079)">
+			<title>Dynamischer Verbinder.60</title>
+			<v:userDefs>
+				<v:ud v:nameU="ShapeClass" v:val="VT4({D84F7AF5-C993-11d1-B2E7-006008BD347E})"/>
+				<v:ud v:nameU="OwnerUniqueID" v:val="VT0(-1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<path d="M-7.09 266.86 L-7.09 283.86" class="st12"/>
+		</g>
+		<g id="shape61-110" v:mID="61" v:groupContext="shape" transform="translate(85.6063,-78.5276)">
+			<title>Dynamischer Verbinder.61</title>
+			<v:userDefs>
+				<v:ud v:nameU="ShapeClass" v:val="VT4({D84F7AF5-C993-11d1-B2E7-006008BD347E})"/>
+				<v:ud v:nameU="OwnerUniqueID" v:val="VT0(-1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<path d="M7.09 266.86 L7.09 281.03" class="st12"/>
+		</g>
+		<g id="shape62-114" v:mID="62" v:groupContext="shape" transform="translate(155.055,-70.0236)">
+			<title>Dynamischer Verbinder.62</title>
+			<v:userDefs>
+				<v:ud v:nameU="ShapeClass" v:val="VT4({D84F7AF5-C993-11d1-B2E7-006008BD347E})"/>
+				<v:ud v:nameU="OwnerUniqueID" v:val="VT0(-1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
+				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
+			</v:userDefs>
+			<path d="M-7.09 266.86 L-7.09 281.03" class="st12"/>
+		</g>
+	</g>
+</svg>
