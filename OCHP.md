@@ -1,13 +1,13 @@
-# ![Open Clearing House Protocol (OCHP)](http://www.ochp.eu/wp-content/uploads/2015/02/OCHPlogo.png)
+![Open Clearing House Protocol (OCHP)](http://www.ochp.eu/wp-content/uploads/2015/02/OCHPlogo.png)
 
 ## Protocol Release Log
 
-Prot. Version | Date       | Author | Comment
-:-------------|:-----------|:-------|:-------
-0.1           | 28-02-2012 | A. Pfeiffer, C. Pestel, smartlab | Concept, Functional specification
-0.2           | 21-05-2012 | C. Pestel, smartlab; L. Janssen, Liandon | VAS data added
-1.0           | 12-12-2013 | S. Schilling, smartlab | Use-case driven structure; Delta-Synchronization; Live-Authorization; CDR-Validation; Alignment to standardization and market development.
-1.2           | 17-06-2014 | S. Schilling, smartlab | Live Status Interface and further enhancements from market requirements.
+Prot. Version | Date       | Commit                                   | Comment
+:-------------|:-----------|:-----------------------------------------|:-------
+0.1           | 28-02-2012 | n/a                                      | Concept, Functional specification
+0.2           | 21-05-2012 | n/a                                      | VAS data added
+1.0           | 12-12-2013 | n/a                                      | Use-case driven structure; Delta-Synchronization; Live-Authorization; CDR-Validation; Alignment to standardization and market development.
+1.2           | 17-06-2014 | 6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5 | Live Status Interface and further enhancements from market requirements.
 
 
 Copyright (c) 2012-2015 smartlab, bluecorner.be, e-laad.nl
@@ -34,6 +34,132 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
  * * *
 
+# Contents
+
+- [Preface](#preface)
+    - [Document Versioning](#document-versioning)
+    - [Conventions](#conventions)
+- [Abbreviations](#abbreviations)
+- [Introduction](#introduction)
+    - [Primary Stakeholders Electric Vehicles](#primary-stakeholders-electric-vehicles)
+        - [Electric Vehicle User (EV User)](#electric-vehicle-user-ev-user)
+        - [Electric Vehicle Service Provider (EVSP)](#electric-vehicle-service-provider-evsp)
+        - [Electric Vehicle Supply Equipment Operator (EVSE Operator)](#electric-vehicle-supply-equipment-operator-evse-operator)
+        - [Navigation Service Provider (NSP)](#navigation-service-provider-nsp)
+        - [Charging Session](#charging-session)
+    - [Clearing House](#clearing-house)
+    - [Clearing House functionality](#clearing-house-functionality)
+    - [Functional principles of an EV Clearing House](#functional-principles-of-an-ev-clearing-house)
+- [CH-Partner Interface description](#ch-partner-interface-description)
+    - [Exchange Authorisation Data](#exchange-authorisation-data)
+        - [Upload own authorisation data (roaming list) to the CHS](#upload-own-authorisation-data-roaming-list-to-the-chs)
+        - [Update own authorisation data (roaming list) in the CHS](#update-own-authorisation-data-roaming-list-in-the-chs)
+        - [Download global roaming authorisation data from CHS](#download-global-roaming-authorisation-data-from-chs)
+        - [Download updates in global roaming authorisation data from CHS](#download-updates-in-global-roaming-authorisation-data-from-chs)
+    - [Exchange Charge Data](#exchange-charge-data)
+        - [Upload Charge Data Records](#upload-charge-data-records)
+        - [Process Charge Data Records](#process-charge-data-records)
+    - [Exchange Charge Point Information](#exchange-charge-point-information)
+        - [Upload own charge point information to the CHS](#upload-own-charge-point-information-to-the-chs)
+        - [Download global charge point information from the CHS](#download-global-charge-point-information-from-the-chs)
+    - [Live Request for a single authorization](#live--request-for-a-single-authorization)
+        - [Request the CHS to authorize one single token for roaming](#-request-the-chs-to-authorize-one-single-token-for-roaming)
+    - [Live Status Interface](#live-status-interface)
+        - [Update the live status of the own stations in the CHS](#update-the-live-status-of-the-own-stations-in-the-chs)
+        - [Download global live status information from the CHS](#download-global-live-status-information-from-the-chs)
+- [Messages](#messages)
+    - [Messages for the Exchange of Authorisation Data](#messages-for-the-exchange-of-authorisation-data)
+        - [GetRoamingAuthorisationList.req](#getroamingauthorisationlist-req)
+        - [GetRoamingAuthorisationList.conf](#getroamingauthorisationlist-conf)
+        - [SetRoamingAuthorisationList.req](#setroamingauthorisationlist-req)
+        - [SetRoamingAuthorisationList.conf](#setroamingauthorisationlist-conf)
+        - [GetRoamingAuthorisationListUpdates.req](#getroamingauthorisationlistupdates-req)
+        - [GetRoamingAuthorisationListUpdates.conf](#getroamingauthorisationlistupdates-conf)
+        - [UpdateRoamingAuthorisationList.req](#updateroamingauthorisationlist-req)
+        - [UpdateRoamingAuthorisationList.conf](#updateroamingauthorisationlist-conf)
+    - [Messages for the Exchange of Charge Data](#messages-for-the-exchange-of-charge-data)
+        - [GetCDRs.req](#getcdrs-req)
+        - [GetCDRs.conf](#getcdrs-conf)
+        - [AddCDRs.req](#addcdrs-req)
+        - [AddCDRs.conf](#addcdrs-conf)
+        - [ConfirmCDRs.req](#-confirmcdrs-req)
+        - [ConfirmCDRs.conf](#-confirmcdrs-conf)
+    - [Messages for the Exchange of Charge Point Information](#messages-for-the-exchange-of-charge-point-information)
+        - [GetChargePointList.req](#getchargepointlist-req)
+        - [GetChargePointList.conf](#getchargepointlist-conf)
+        - [SetChargePointList.req](#setchargepointlist-req)
+        - [SetChargePointList.conf](#setchargepointlist-conf)
+        - [GetChargePointListUpdates.req](#getchargepointlistupdates-req)
+        - [GetChargePointListUpdates.conf](#getchargepointlistupdates-conf)
+        - [UpdateChargePointList.req](#updatechargepointlist-req)
+        - [UpdateChargePointList.conf](#updatechargepointlist-conf)
+    - [Messages for live authorisation](#messages-for-live-authorisation)
+        - [RequestLiveRoamingAuthorisation.req](#-requestliveroamingauthorisation-req)
+        - [RequestLiveRoamingAuthorisation.conf](#-requestliveroamingauthorisation-conf)
+    - [Messages for the Live Status Interface](#messages-for-the-live-status-interface)
+        - [UpdateStatus.req](#updatestatus-req)
+        - [UpdateStatus.conf](#updatestatus-conf)
+        - [GetStatus.req](#getstatus-req)
+        - [GetStatus.conf](#getstatus-conf)
+- [Types](#types)
+    - [General Types](#general-types)
+        - [Result *class*](#result-class)
+        - [ResultCodeType *enum*](#resultcodetype-enum)
+        - [DateTimeType](#datetimetype)
+        - [LocalDateTimeType](#localdatetimetype)
+    - [Types for the Exchange of Authorisation Data](#types-for-the-exchange-of-authorisation-data)
+        - [ContractId (or EVCO-ID)](#contractid-or-evco-id)
+        - [EmtId *class*](#emtid-class)
+        - [tokenType *enum*](#tokentype-enum)
+        - [tokenSubType *enum*](#tokensubtype-enum)
+        - [tokenRepresentation *enum*](#tokenrepresentation-enum)
+        - [RoamingAuthorisationInfo *class*](#roamingauthorisationinfo-class)
+    - [Types for the Exchange of Charge Data](#types-for-the-exchange-of-charge-data)
+        - [BillingItemType *enum*](#billingitemtype-enum)
+        - [CdrPeriodType *class*](#cdrperiodtype-class)
+        - [CdrStatusType *enum*](#cdrstatustype-enum)
+        - [CDRInfo *class*](#cdrinfo-class)
+    - [Types for the Exchange of Charge Point Information](#types-for-the-exchange-of-charge-point-information)
+        - [EvseId](#evseid)
+        - [evseImageUrlType *class*](#evseimageurltype-class)
+        - [ImageClass *enum*](#imageclass-enum)
+        - [GeoPointType *class*](#geopointtype-class)
+        - [ConnectorStandard *enum*](#connectorstandard-enum)
+        - [ConnectorFormat *enum*](#connectorformat-enum)
+        - [ConnectorType *class*](#connectortype-class)
+        - [AuthMethodType *enum*](#authmethodtype-enum)
+        - [ChargePointStatusType *enum*](#chargepointstatustype-enum)
+        - [ChargePointScheduleType *class*](#chargepointscheduletype-class)
+        - [HoursType *class*](#hourstype-class)
+        - [RegularHoursType *class*](#regularhourstype-class)
+        - [ExceptionalPeriodType *class*](#exceptionalperiodtype-class)
+        - [ParkingRestrictionType *enum*](#parkingrestrictiontype-enum)
+        - [ChargePointInfo *class*](#chargepointinfo-class)
+    - [Types for live authorisation](#types-for-live-authorisation)
+        - [LiveAuthId *class*](#liveauthid-class)
+    - [Types for the Live Status Interface](#types-for-the-live-status-interface)
+        - [MajorType *enum*](#majortype-enum)
+        - [MinorType *enum*](#minortype-enum)
+        - [EvseStatusType *class*](#evsestatustype-class)
+- [Binding to Transport Protocol](#binding-to-transport-protocol)
+    - [User Identification](#user-identification)
+- [Annexes](#annexes)
+    - [ID Validation and Transformation Tools](#id-validation-and-transformation-tools)
+        - [Regular expression for EVSE-ID validation](#regular-expression-for-evse-id-validation)
+        - [Regular expression for Contract-ID validation](#regular-expression-for-contract-id-validation)
+        - [Regular expression for Contract-ID normalization](#regular-expression-for-contract-id-normalization)
+    - [List of examples for valid Contract-Ids](#list-of-examples-for-valid-contract-ids)
+    - [Data Field Mapping to OCPP](#data-field-mapping-to-ocpp)
+        - [Connector Types](#connector-types)
+    - [EVSE Infrastructure Model](#evse-infrastructure-model)
+        - [Data Model Structure](#data-model-structure)
+        - [Examples](#examples)
+    - [Charge Point Information Filtering](#charge-point-information-filtering)
+
+
+ * * *
+ 
+
 
 # Preface
 
@@ -50,7 +176,7 @@ enhancements and are not to be confused with the derived protocol
 states labelled by the protocol version numeration. To illustrate this, 
 the following figure shows the development process of this protocol.
 
-![Protocol Versioning](media/ProtocolVersioning.svg)
+![Figure Protocol Versioning](media/ProtocolVersioning.png "Protocol Versioning")
 
 
 ## Conventions
@@ -70,7 +196,7 @@ one or more  | `minOccurs="1" maxOccurs="unbounded"`         | +
 zero or more | `minOccurs="0" maxOccurs="unbounded"`         | *
 exactly one  | *(default)*                                   | 1
 
-For some data fields a [http://en.wikipedia.org/wiki/Regular\_expression](Regular Expression) is
+For some data fields a [http://en.wikipedia.org/wiki/Regular_expression](Regular Expression) is
 provided as an additional but very precise definition of the data
 format.
 
@@ -146,7 +272,7 @@ one or more market roles. The contracts between each actor and the data
 routing are part of the clearing house's business logic and out of scope
 for this protocol description.
 
-![EV charging infrastructure market overview](media/EV-charging-market-overview.svg)
+![Figure EV charging infrastructure market overview](media/EV-charging-market-overview.png "EV charging infrastructure market overview")
 
 
 ### Electric Vehicle User (EV User)
@@ -162,7 +288,7 @@ by the EVSP.
 The EVSP operates as a contract party for the EV user. The EV Service
 Provider takes care of the EV user authentication and billing processes.
 The EV Service Provider provides the EV-customer authorization tokens
-(i.e. RFID-card, Certificates, \ldots ) that give authorisation to use
+(i.e. RFID-card, Certificates, ... ) that give authorisation to use
 the charging stations of contracted EVSE Operators.
 
 
@@ -190,9 +316,9 @@ executed (first figure below) or the car was disconnected from the
 charge point manually (second figure below). This is considered a 
 forced unauthorized ending.
 
-![Example for an authorized end of a charging session](media/ChargingSessionDefinition-1.svg)
+![Figure Example for an authorized end of a charging session](media/ChargingSessionDefinition-1.png "Example for an authorized end of a charging session")
 
-![Example for a forced end of a charging session](media/ChargingSessionDefinition-2.svg)
+![Figure Example for a forced end of a charging session](media/ChargingSessionDefinition-2.png "Example for a forced end of a charging session")
 
 
 
@@ -208,7 +334,7 @@ the Clearing House and the partners. The figure illustrates the overall
 system overview of all partners with their systems and the clearing 
 house system with the EV user as service consumer.
 
-![Global System Overview](media/global-system-overview.svg)
+![Figure Global System Overview](media/global-system-overview.png "Global System Overview")
 
 A different view to the implementation of the described role model gives
 figure below. The clearing house provides here a central
@@ -227,7 +353,7 @@ For the sake of simplification only two layers are shown in this figure.
 The same principles apply to the navigation service layer. Also other 
 additional clearing houses could exist in this model.
 
-![Layer model of clearing house connections](media/ClearingHouseLayerModel.png)
+![Figure Layer model of clearing house connections](media/ClearingHouseLayerModel.png "Layer model of clearing house connections")
 
 
 
@@ -235,7 +361,7 @@ additional clearing houses could exist in this model.
 ## Clearing House functionality
 
 An EV clearing house in the scope of this protocol facilitates the
-mutual exchange of roaming authorisations, charge data \& charge point
+mutual exchange of roaming authorisations, charge data & charge point
 information between its partners. The formal act of clearing - as meant
 here - is the assignment of charge detail records to the corresponding
 EV Service Provider. The financial clearing has to be executed in a
@@ -309,7 +435,7 @@ for certain data types. The figure below gives an overview of
 the exchanged data types, their direction and their particular
 originating and consuming market role.
 
-![Data flow and direction overview](media/DataFlows.svg)
+![Figure Data flow and direction overview](media/DataFlows.png "Data flow and direction overview")
 
 The exchange of data takes place via standardized web services.
 
@@ -395,7 +521,7 @@ try to solve the issue. Upon manual revision the CDRs will be either
 marked as *approved* or *rejected* to be archived in the system. CDRs 
 in status *owner-declined* are not available for download.
 
-![Status flow for CDRs](media/CDRvalidation.svg)
+![Figure Status flow for CDRs](media/CDRvalidation.png "Status flow for CDRs")
 
 
 
@@ -475,7 +601,7 @@ For the end of the charging process the operator backend is able to
 authorise the same token. For the later exchanged CDR the transaction 
 ID of the single authorisation is to be used.
 
-![Message exchange for live authorisation requests for a single charging process.](media/SingleAuthorisation.svg)
+![Figure Message exchange for live authorisation requests for a single charging process.](media/SingleAuthorisation.png "Message exchange for live authorisation requests for a single charging process.")
 
 
 ### Request the CHS to authorize one single token for roaming
@@ -506,7 +632,7 @@ without valid status information.
 The current major and minor status of each EVSE shall be set following 
 the decision flow in figure below.
 
-![Status decision flow for EVSEs.](media/LiveStatusDecision.svg)
+![Figure Status decision flow for EVSEs.](media/LiveStatusDecision.png "Status decision flow for EVSEs.")
 
 Table shows the relationship of the major and minor status values. 
 Other combinations of the status values are must not be set.
@@ -518,7 +644,7 @@ Available     | Available    | A new charging process can be started immediately
 Available     | Reserved     | A new charging process can be started immediately but there is a reservation in the future. TTL is set to a date until when new charging processes may be started. Usually the status will change than to *Not Available--Reserved*.
 Not Available | Charging     | Charging process ongoing, charge point occupied. No new charging process can be started. TTL is set to the expected end of the charging process. For example 20 minutes ahead for quick charging.
 Not Available | Blocked      | Parking spot occupied w/o ongoing charging process. This may be caused by a parked car that is not ambiguous to charge. TTL is set to a date in the near future.
-Not Available | Reserved     | Reserved for now or the near future, no new charging process may be started. TTL is set to the date the reservation will expire. Usually the status will change than to either *Not Available--Charging} or to \emph{Available--Available* if the reservation was not used..
+Not Available | Reserved     | Reserved for now or the near future, no new charging process may be started. TTL is set to the date the reservation will expire. Usually the status will change than to either *Not Available--Charging* or to *Available--Available* if the reservation was not used..
 Not Available | Out Of Order | Unplanned or planned failure of the charge point. TTL is set to the expected end of the failure if known.
 
 
@@ -728,7 +854,8 @@ chargePointInfoArray  |  ChargePointInfo  |  +      |  This contains the charge 
 
 ### SetChargePointList.conf
 
-This contains the field definition of the SetChargePointList.conf sent by the CHS as response to the SetChargePointList.req.
+This contains the field definition of the SetChargePointList.conf sent 
+by the CHS as response to the SetChargePointList.req.
 
  Field Name             |  Field Type       |  Card.  |  Description
 :-----------------------|:------------------|:--------|:------------
@@ -738,7 +865,8 @@ refusedChargePointInfo  |  ChargePointInfo  |  ?      |  This contains the charg
 
 ### GetChargePointListUpdates.req
 
-This contains the field definition of the GetChargePointListUpdates.req sent by a partner's system to the CHS.
+This contains the field definition of the GetChargePointListUpdates.req 
+sent by a partner's system to the CHS.
 
  Field Name   |  Field Type    |  Card.  |  Description
 :-------------|:---------------|:--------|:------------
@@ -747,7 +875,9 @@ lastUpdate    |  DateTimeType  |  1      |  Date and time since the last success
 
 ### GetChargePointListUpdates.conf
 
-This contains the field definition of the GetChargePointListUpdates.conf sent by the CHS as response to the GetChargePointListUpdates.req.
+This contains the field definition of the GetChargePointListUpdates.conf 
+sent by the CHS as response to the GetChargePointListUpdates.req.
+
  Field Name           |  Field Type       |  Card.  |  Description
 :---------------------|:------------------|:--------|:------------
 result                |  Result           |  1      |  This contains the result of GetChargePointListUpdates.req.
@@ -756,7 +886,9 @@ chargePointInfoArray  |  ChargePointInfo  |  *      |  This contains the charge 
 
 ### UpdateChargePointList.req
 
-This contains the field definition of the UpdateChargePointList.req sent by a partner's system to the CHS.
+This contains the field definition of the UpdateChargePointList.req 
+sent by a partner's system to the CHS.
+
  Field Name           |  Field Type       |  Card.  |  Description
 :---------------------|:------------------|:--------|:------------
 chargePointInfoArray  |  ChargePointInfo  |  +      |  This contains the charge point information records to be updated or added.
@@ -764,7 +896,8 @@ chargePointInfoArray  |  ChargePointInfo  |  +      |  This contains the charge 
 
 ### UpdateChargePointList.conf
 
-This contains the field definition of the UpdateChargePointList.conf sent by the CHS as response to the SetChargePointList.req.
+This contains the field definition of the UpdateChargePointList.conf 
+sent by the CHS as response to the SetChargePointList.req.
 
  Field Name             |  Field Type       |  Card.  |  Description
 :-----------------------|:------------------|:--------|:------------
@@ -779,7 +912,11 @@ refusedChargePointInfo  |  ChargePointInfo  |  ?      |  This contains the charg
 
 ### RequestLiveRoamingAuthorisation.req
 
-This contains the field definition of the RequestLiveRoamingAuthorisation.req sent by CMS to the CHS. A authorisation will always generate a unique cdrId to track the transaction. This ID can be generated by the operator or will be issued by the clearing house.
+This contains the field definition of the 
+RequestLiveRoamingAuthorisation.req sent by CMS to the CHS. A 
+authorisation will always generate a unique cdrId to track the 
+transaction. This ID can be generated by the operator or will be issued 
+by the clearing house.
 
  Field Name   |  Field Type  |  Card.  |  Description
 :-------------|:-------------|:--------|:------------
@@ -789,7 +926,9 @@ evseId        |  EvseId      |  1      |  Unique identifier for every EVSE follo
 
 ### RequestLiveRoamingAuthorisation.conf
 
-This contains the field definition of the RequestLiveRoamingAuthorisation.conf sent by the CHS as response to the RequestLiveRoamingAuthorisation.req.
+This contains the field definition of the 
+RequestLiveRoamingAuthorisation.conf sent by the CHS as response to the 
+RequestLiveRoamingAuthorisation.req.
 
  Field Name               |  Field Type                |  Card.  |  Description
 :-------------------------|:---------------------------|:--------|:------------
@@ -834,6 +973,7 @@ startDateTime  |  DateTimeType  |  ?      |  If this value is set to a point in 
 ### GetStatus.conf
 
 This contains the field definition of the GetStatus.conf sent by the CHS as response to the GetStatus.req.
+
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
 evse          |  EvseStatusType  |  *      |  This contains one EVSE id with the current status represented in a major part and a minor part.
@@ -860,6 +1000,7 @@ These data types are used in two or more use cases of this protocol.
 ### Result *class*
 
 Contains result information.
+
  Field Name         |  Field Type      |  Card.  |  Description
 :-------------------|:-----------------|:--------|:------------
  resultCode         |  resultCodeType  |  1      |  The machine-readable result code.
@@ -869,6 +1010,7 @@ Contains result information.
 ### ResultCodeType *enum*
 
 Result and error codes for the class Result as return value for method calls.
+
  Value       |  Description
 :------------|:-------------
  ok          |  Data accepted and processed.
@@ -885,15 +1027,15 @@ Format is according to ISO8601 UTC. The field takes 20 alphanumeric
 characters.
 
 ###### Example
-```
 
+```
 2011-06-01T11:45:30Z
 ```
 
 
 ###### Regular Expression
 
-```regular expression
+```regex
 (\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z
 ```
 
@@ -904,15 +1046,15 @@ characters.
 Format is according to ISO8601 UTC + Offset. The field takes 25 alphanumeric characters.
 
 ###### Example
-```
 
+```
 2011-06-01T11:45:30+02:00
 ```
 
 
 ###### Regular Expression
 
-```regular expression
+```regex
 (\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)([+\-]\d\d):(\d\d)
 ```
 
@@ -928,9 +1070,9 @@ authorisation data from an EVSP to an EVSE Operator.
 ### ContractId (or EVCO-ID)
 
 The data type ContractId must follow the specification for EMAID in
-\textit{ISO/IEC 15118-2 - Annex H "Specification of Identifiers"}.
+*ISO/IEC 15118-2 - Annex H "Specification of Identifiers"*.
 The check digit is optional but highly recommended. For calculation see
-\textit{Annex A}.
+the annex.
 The EMAID must match the following structure (the notation corresponds
 to the augmented Backus-Naur Form (ABNF) as defined in RFC 5234):
 
@@ -986,7 +1128,7 @@ This reflects the situation that one contractual user account can be
 authorized by different tokens. The structure can be illustrated as
 shown in this figure:
 
-![ID-Structure](media/IDstructure.svg)
+![Figure ID-Structure](media/IDstructure.png "ID-Structure")
 
 
 ### EmtId *class*
@@ -1013,7 +1155,7 @@ The type of the supplied instance for basic filtering.
 :------------|:-------------
  rfid        |  All kinds of RFID-Cards. Field tokenInstance holds the hexadecimal representation of the card's UID, Byte order: big endian, no zero-filling.
  remote      |  All means of remote authentication through the backend.
- 15118       |  All authentication means defined by ISO/IEC\,15118 except RFID-cards.
+ 15118       |  All authentication means defined by ISO/IEC 15118 except RFID-cards.
 
 
 ### tokenSubType *enum*
@@ -1035,7 +1177,7 @@ Specifies the representation of the token to allow hashed token values.
 :------------|:-------------
  plain       |  The token instance is represented in plain text.
  sha-160     |  The token instance is represented in its 160bit SHA1 hash in 40 hexadecimal digits. (default)
- sha-256     |  The token instance is represented in its 256bit SHA2 hash in 64 hexadecimal digits.}
+ sha-256     |  The token instance is represented in its 256bit SHA2 hash in 64 hexadecimal digits.
 
 ###### eMT-ID Semantics
 The EMT ID can be used to identify any identification token for
@@ -1073,7 +1215,7 @@ The billing items for charging periods.
  usagetime    |  Price for the time of EVSE usage. The billingValue represents the time in hours.
  energy       |  Price for the consumed energy. The billingValue represents the energy in kilowatt-hours.
  power        |  Price for the used power level. The billingValue represents the maximum power in kilowatts.
- serviceFee   |  General service fee per charging process. The billingValue represents multiplier and thus has to be set to "1.0". }
+ serviceFee   |  General service fee per charging process. The billingValue represents multiplier and thus has to be set to "1.0".
 
 
 ### CdrPeriodType *class*
@@ -1093,7 +1235,7 @@ period prices:
 
 C = sum( billingValue_i * itemPrice_i ) [currency]
 
-![Example for periods in a CDR](media/CDRperiods.svg)
+![Figure Example for periods in a CDR](media/CDRperiods.png "Example for periods in a CDR")
 
  Field Name     |  Field Type         |  Card.  |  Description
 :---------------|:--------------------|:--------|:------------
@@ -1258,7 +1400,7 @@ should have the same orientation than the original.
 
  Field Name  |  Field Type   |  Card.  |  Description
 :------------|:--------------|:--------|:------------
- uri         |  string(255)  |  1      |  uri from where the image data can be fetched. Must begin with a protocol of the list: http, https, file, ftp. Regex: $[$A-Za-z$][$A-Za-z0-9$\backslash$+$\backslash$.$\backslash$-$]$*:($[$A-Za-z0-9$\backslash$.$\backslash$-\_\textasciitilde:/$\backslash$?\#$\backslash[\backslash]$@!$\backslash$\$\&'$\backslash$($\backslash$)$\backslash$*$\backslash$+,;=$]\vert$\%$[$A-Fa-f0-9$]$\{2\})+\$
+ uri         |  string(255)  |  1      |  uri from where the image data can be fetched. Must begin with a protocol of the list: http, https, file, ftp. Regex: <code>[A-Za-z][A-Za-z0-9\+\.\-]*:([A-Za-z0-9\.\-\_~:/\?\#\[\]@!\\\&'\(\)\*\+,;=]&#124;%[A-Fa-f0-9]\{2\})+\</code>
  thumbUri    |  string(255)  |  ?      |  uri from where a thumbnail of the image can be fetched. Must begin with a protocol of the list: http, https, file, ftp
  class       |  ImageClass   |  1      |  Image class for usage categorization
  type        |  string(4)    |  1      |  Image type like: gif, jpeg, png, svg
@@ -1323,7 +1465,7 @@ The socket or plug standard of the charging point.
  IEC-60309-2-single-16 |  IEC 60309-2 Industrial Connector single phase 16 Amperes (usually blue)
  IEC-60309-2-three-16  |  IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
  IEC-60309-2-three-32  |  IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
- IEC-60309-2-three-64  |  IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red) }
+ IEC-60309-2-three-64  |  IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
 
 
 ### ConnectorFormat *enum*
@@ -1333,7 +1475,7 @@ The format of the connector, whether it is a socket or a plug.
  Value       |  Description
 :------------|:-------------
  Socket      |  The connector is a socket; the EV user needs to bring a fitting plug.
- Cable       |  The connector is a attached cable; the EV users car needs to have a fitting inlet. }
+ Cable       |  The connector is a attached cable; the EV users car needs to have a fitting inlet.
 
 
 ### ConnectorType *class*
@@ -1472,7 +1614,7 @@ for different purposes.
  plugged     |  parking allowed only while plugged in (charging)
  disabled    |  reserved parking spot for disabled people with valid ID
  customers   |  parking spot for customers/guests only, for example in case of a hotel or shop
- motorcycles |  parking spot only suitable for (electric) motorcycles or scooters }
+ motorcycles |  parking spot only suitable for (electric) motorcycles or scooters
 
 
 ### ChargePointInfo *class*
@@ -1517,15 +1659,23 @@ The following types are used in the live authorisation methods. For referencing 
 
 ### LiveAuthId *class*
 
-Unique ID for one live authorisation request to the clearing house. Will be returned from a call to RequestLiveRoamingAuthorisation and must be sent back to the clearing house in the corresponding CDRInfo item.
+Unique ID for one live authorisation request to the clearing house. 
+Will be returned from a call to RequestLiveRoamingAuthorisation and 
+must be sent back to the clearing house in the corresponding CDRInfo 
+item.
 
  Field Name  |  Field Type  |  Card.  |  Description
 :------------|:-------------|:--------|:------------
  liveAuthId  |  string(15)  |  1      |  Unique ID for one live authorisation request to the clearing house.
 
-Additionally to the internal session ID that has to be issued by the operator to uniquely identify the charging process in the CDR, the *liveAuthId* is identifying the live authorisation session in the clearing house. Therefore the *liveAuthId* has be referenced in the CDR to close this session. Figure \label{fig:singleAuthorisationId} illustrates the full exchange path of of both IDs.
+Additionally to the internal session ID that has to be issued by the 
+operator to uniquely identify the charging process in the CDR, the 
+*liveAuthId* is identifying the live authorisation session in the 
+clearing house. Therefore the *liveAuthId* has be referenced in the CDR 
+to close this session. The figure below illustrates the full exchange 
+path of of both IDs.
 
-![ID handling for the live authorisation request](media/SingleAuthorisation-2.svg)
+![Figure ID handling for the live authorisation request](media/SingleAuthorisation-2.png "ID handling for the live authorisation request")
 
 
 
@@ -1544,7 +1694,7 @@ The major status type reflects the overall status of the EVSE.
 :---------------|:-------------
  available      |  the EVSE is able to start a new charging process
  not-available  |  at the moment no new charging process may be started
- unknown        |  the current status of the EVSE is not known }
+ unknown        |  the current status of the EVSE is not known
 
 
 ### MinorType *enum*
@@ -1633,7 +1783,7 @@ end has to be changed depending on the usage or implementation.
 
 ###### Regular Expression
 
-```regular expression
+```regex
 [A-Z]\{2\}(\*?)[A-Z0-9]\{3\}(?:\2)[E][A-Z0-9][A-Z0-9\*]\{0,30\}(?=\s)
 ```
 
@@ -1647,7 +1797,7 @@ check digit has to be validated in a separate step.
 
 ###### Regular Expression
 
-```regular expression
+```regex
 [A-Za-z]\{2\}(-?)[A-Za-z0-9]\{3\}(?:\2)[Cc][A-Za-z0-9]\{9\}(?:(?:\2)[A-Za-z0-9])?(?=\s)
 ```
 
@@ -1659,11 +1809,11 @@ This will remove the optional separators from a valid Contract-ID.
 
 ###### Regular Expression
 
-```regular expression
+```regex
 ([A-Za-z]\{2\})(-?)([A-Za-z0-9]\{3\})(?:\2)[Cc]([A-Za-z0-9]\{9\})(?:(?\2)([A-Za-z0-9]))?(?=\s)
 ```
 
-```regular expression
+```regex
 \1\3\4\5\6
 ```
 
@@ -1702,15 +1852,15 @@ Contract-IDs.
 -----------------------|----------------|----------------------------------
  n/a                   | Avcon          | Avcon connector                  
  *multiple choices*    | Domestic       | Domestic plug                    
- n/a                   | IEC60309\_2P   | 60309 Industrial 2P (DC)         
- n/a                   | IEC60309\_3PE  | 60309 Industrial 3P + E (AC)     
- *multiple choices*    | IEC60309\_3PEN | 60309 Industrial 3P + E + N (AC) 
- IEC-60309-2-single-16 | IEC60309\_PNE  | 60309 Industrial P + N + E (AC)  
- IEC-62196-T1          | IEC62196\_1    | Type 1 Yazaki                    
- IEC-62196-T2          | IEC62196\_2    | Type 2 Mennekes                  
- IEC-62196-T3C         | IEC62196\_3    | Type 3 Scame                     
+ n/a                   | IEC60309_2P    | 60309 Industrial 2P (DC)         
+ n/a                   | IEC60309_3PE   | 60309 Industrial 3P + E (AC)     
+ *multiple choices*    | IEC60309_3PEN  | 60309 Industrial 3P + E + N (AC) 
+ IEC-60309-2-single-16 | IEC60309_PNE   | 60309 Industrial P + N + E (AC)  
+ IEC-62196-T1          | IEC62196_1     | Type 1 Yazaki                    
+ IEC-62196-T2          | IEC62196_2     | Type 2 Mennekes                  
+ IEC-62196-T3C         | IEC62196_3     | Type 3 Scame                     
  n/a                   | LPI            | Large Paddle Inductive           
- n/a                   | NEMA5\_20      |                                  
+ n/a                   | NEMA5_20       |                                  
  IEC-62196-T1          | SAEJ1772       | Yazaki                           
  n/a                   | SPI            | Small Paddle Inductive           
  CHADEMO               | Tepco          | CHAdeMO fast charging            
@@ -1760,7 +1910,7 @@ multiple charge points in one pole is not affecting the logical
 relation of those. However, the attributes of the EVSE level may 
 indicate to its existence when two EVSEs share a common user interface.
 
-![EVSE Data Model Structure](media/EVSEstructure.svg)
+![Figure EVSE Data Model Structure](media/EVSEstructure.png "EVSE Data Model Structure")
 
 The architecture of the data model is based on the logical relations of 
 the entities with a focus on the use cases for the EV user. The 
@@ -1796,7 +1946,7 @@ lower levels has to be performed in the connected systems. This allows
 high flexibility in the different data models.
 The used symbols in the examples are:
 
-![Symbols used in example figures](media/EVSEstructureLegend.png)
+![Figure Symbols used in example figures](media/EVSEstructureLegend.png "Symbols used in example figures")
 
  * **User Interface** is used by the EV User to interact with the 
    charging station in terms of authorisation, authentication, payment 
@@ -1833,7 +1983,7 @@ stations. The charging station consists of one single charge pole only.
 Therefore there is a risk to confuse the terms pole and station. The 
 following examples will make the difference clear.
 
-![Example 1](media/EVSEstructureExamples-1.png)
+![Figure Example 1](media/EVSEstructureExamples--1.png "Example 1")
 
 
 ##### Example Two
@@ -1847,7 +1997,7 @@ In fact, the two charging stations in this example are just exactly two
 times example one. Each of the stations is placed at a individual 
 location not related to each other.
 
-![Example 2](media/EVSEstructureExamples-2.png)
+![Figure Example 2](media/EVSEstructureExamples--2.png "Example 2")
 
 
 ##### Example Three
@@ -1865,7 +2015,7 @@ one single charging station to the user. Other circumstances like a
 common electrical connection or a mutual controlling and communication 
 unit is not decisive for this combination.
 
-![Example 3](media/EVSEstructureExamples-3.png)
+![Figure Example 3](media/EVSEstructureExamples--3.png "Example 3")
 
 
 ##### Example Four
@@ -1883,7 +2033,7 @@ charging station may be communicated to the user under one single name.
 In the attributes for the station the user will find the number of 
 charge points which is the same as in example three.
 
-![Example 4](media/EVSEstructureExamples-4.png)
+![Figure Example 4](media/EVSEstructureExamples--4.png "Example 4")
 
 
 
@@ -1932,5 +2082,4 @@ The six steps are:
 The remaining charge points in the data set are operative and available 
 at the current moment and can be displayed to the EV User.
 
-![Filtering for available charge points](media/POIavailabilityFilter.svg)
-
+![Figure Filtering for available charge points](media/POIavailabilityFilter.png "Filtering for available charge points")

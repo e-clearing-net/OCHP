@@ -3,12 +3,14 @@
 The purpose of the Open Clearing House Protocol is to connect market actors in the
 field of electric mobility charging infrastructure.
 
-Further information on http://ochp.eu
+[The current version of the protocol description.](OCHP.md)
+
+Further information on [ochp.eu](http://ochp.eu)
 
 
 ##History
 
-### Version 1.2
+### Version 1.2 [Download](http://www.ochp.eu/wp-content/uploads/2013/12/140617_Open-Clearing-House-Protocol_v1.2_0.18.pdf)
 
 Live Status Interface and further enhancements from market requirements.
 

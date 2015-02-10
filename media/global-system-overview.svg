@@ -1,17 +1,66 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 <!-- Generiert durch Microsoft Visio 11.0, SVG Export, v1.0 OCHProles.svg System Overview (1) -->
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
-		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="6.14477in" height="5.75967in"
-		viewBox="0 0 442.423 414.696" xml:space="preserve" color-interpolation-filters="sRGB" class="st15">
-	<v:documentProperties v:langID="1031" v:metric="true" v:viewMarkup="false">
+
+<svg
+   xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="6.14477in"
+   height="5.75967in"
+   viewBox="0 0 442.423 414.696"
+   xml:space="preserve"
+   color-interpolation-filters="sRGB"
+   class="st15"
+   id="svg4486"
+   version="1.1"
+   inkscape:version="0.48.2 r9819"
+   sodipodi:docname="global-system-overview.svg"
+   inkscape:export-filename="H:\Dokumente\GitHub\OCHP\media\global-system-overview.png"
+   inkscape:export-xdpi="150"
+   inkscape:export-ydpi="150"><metadata
+   id="metadata5347"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1680"
+   inkscape:window-height="988"
+   id="namedview5345"
+   showgrid="false"
+   inkscape:zoom="1.2877065"
+   inkscape:cx="236.47575"
+   inkscape:cy="255.38746"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg4486" />
+	<v:documentProperties
+   v:langID="1031"
+   v:metric="true"
+   v:viewMarkup="false">
 		<v:userDefs>
-			<v:ud v:nameU="msvNoAutoConnect" v:val="VT0(1):26"/>
+			<v:ud
+   v:nameU="msvNoAutoConnect"
+   v:val="VT0(1):26" />
 		</v:userDefs>
 	</v:documentProperties>
 
-	<style type="text/css">
-	<![CDATA[
+	<style
+   type="text/css"
+   id="style4488">
+	
 		.st1 {fill:#ffffff}
 		.st2 {stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
 		.st3 {fill:#000000;font-family:Arial;font-size:0.666664em;font-weight:bold}
@@ -27,859 +76,2373 @@
 		.st13 {fill:#ffffff;stroke:none;stroke-linecap:butt;stroke-width:7.2}
 		.st14 {fill:#000000;font-family:Calibri;font-size:0.666664em}
 		.st15 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
-	]]>
+	
 	</style>
 
-	<defs id="Markers">
-		<g id="lend20">
+	<defs
+   id="Markers">
+		<g
+   id="lend20">
 			<path
-					d="M 0 0.75 C -0.414214 0.75 -0.75 0.414214 -0.75 0 -0.75 -0.414214 -0.414214 -0.75 0 -0.75 0.414214 -0.75 0.75 -0.414214 0.75 0 0.75 0.414214 0.414214 0.75 0 0.75 Z "
-					style="stroke-linecap:round;stroke-linejoin:round;fill:none"/>
+   d="M 0 0.75 C -0.414214 0.75 -0.75 0.414214 -0.75 0 -0.75 -0.414214 -0.414214 -0.75 0 -0.75 0.414214 -0.75 0.75 -0.414214 0.75 0 0.75 0.414214 0.414214 0.75 0 0.75 Z "
+   style="stroke-linecap:round;stroke-linejoin:round;fill:none"
+   id="path4492" />
 		</g>
-		<marker id="mrkr20-50" class="st6" v:arrowType="20" v:arrowSize="4" v:setback="4.875" refX="-4.875" orient="auto"
-				markerUnits="strokeWidth" overflow="visible">
-			<use xlink:href="#lend20" transform="scale(-6.5,-6.5) "/>
+		<marker
+   id="mrkr20-50"
+   class="st6"
+   v:arrowType="20"
+   v:arrowSize="4"
+   v:setback="4.875"
+   refX="-4.875"
+   orient="auto"
+   markerUnits="strokeWidth"
+   overflow="visible">
+			<use
+   xlink:href="#lend20"
+   transform="scale(-6.5,-6.5) "
+   id="use4495" />
 		</marker>
-		<g id="lend3">
-			<path d="M 2 1 L 0 0 L 2 -1 " style="stroke-linecap:round;stroke-linejoin:round;fill:none"/>
+		<g
+   id="lend3">
+			<path
+   d="M 2 1 L 0 0 L 2 -1 "
+   style="stroke-linecap:round;stroke-linejoin:round;fill:none"
+   id="path4498" />
 		</g>
-		<marker id="mrkr3-361" class="st12" v:arrowType="3" v:arrowSize="2" orient="auto" markerUnits="strokeWidth"
-				overflow="visible">
-			<use xlink:href="#lend3" transform="scale(4.5) "/>
+		<marker
+   id="mrkr3-361"
+   class="st12"
+   v:arrowType="3"
+   v:arrowSize="2"
+   orient="auto"
+   markerUnits="strokeWidth"
+   overflow="visible">
+			<use
+   xlink:href="#lend3"
+   transform="scale(4.5) "
+   id="use4501" />
 		</marker>
-	</defs>
-	<g v:mID="6" v:index="4" v:groupContext="foregroundPage">
-		<title>System Overview (1)</title>
-		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
-				v:shadowOffsetY="-8.50394"/>
-		<v:layer v:name="Verbinder" v:index="0"/>
-		<g id="group46-1" transform="translate(18,-18.72)" v:mID="46" v:groupContext="group">
-			<title>Tabelle.46</title>
-			<g id="group2-2" transform="translate(2.65748,-303.307)" v:mID="2" v:groupContext="group">
+	
+		
+		<v:pageProperties
+   v:shadowOffsetY="-8.50394"
+   v:shadowOffsetX="8.50394"
+   v:drawingUnits="24"
+   v:pageScale="0.0393701"
+   v:drawingScale="0.0393701" />
+		<v:layer
+   v:index="0"
+   v:name="Verbinder" />
+		
+	
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		
+				
+				
+				<v:textBlock
+   v:tabSpace="42.5197"
+   v:margins="rect(4,4,4,4)" />
+				<v:textRect
+   height="8.50394"
+   width="99.22"
+   cy="410.444"
+   cx="49.6063" />
+				
+							
+				
 				<v:userDefs>
-					<v:ud v:nameU="F"/>
-					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+					<v:ud
+   v:val="VT0(12):26"
+   v:nameU="visVersion" />
 				</v:userDefs>
-				<title>Node</title>
-				<g id="shape3-3" v:mID="3" v:groupContext="shape">
-					<title>Tabelle.3</title>
-					<path d="M360.07 414.7 L0 414.7 L360.07 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape4-6" v:mID="4" v:groupContext="shape">
-					<title>Tabelle.4</title>
-					<path d="M360.07 414.7 L0 414.7 L360.07 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape5-9" v:mID="5" v:groupContext="shape">
-					<title>Tabelle.5</title>
-					<path d="M360.07 414.7 L0 414.7 L360.07 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape6-12" v:mID="6" v:groupContext="shape" transform="translate(360.071,0)">
-					<title>Tabelle.6</title>
-					<path d="M0 414.7 L0 345.25 L0 414.7 Z" class="st1"/>
-					<path d="" class="st2"/>
-				</g>
-				<g id="shape7-15" v:mID="7" v:groupContext="shape">
-					<title>Tabelle.7</title>
-					<desc>Clearing House (CH)</desc>
-					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
-					<v:textRect cx="180.035" cy="379.971" width="360.08" height="69.4488"/>
-					<path d="M360.07 414.7 L360.07 345.25 L0 345.25 L0 414.7 L360.07 414.7 ZM0 345.25 L4.5 340.75 L364.57 340.75
-								 L360.07 345.25 L0 345.25 ZM360.07 414.7 L364.57 410.2 L364.57 340.75 L360.07 345.25 L360.07 414.7
-								 ZM364.57 410.2 L364.57 340.75 L4.5 340.75 L364.57 340.75 L364.57 410.2 Z" class="st1"/>
-					<path d="M0 345.25 L4.5 340.75 L364.57 340.75 L360.07 345.25 L0 345.25" class="st2"/>
-					<path d="M360.07 414.7 L364.57 410.2 L364.57 340.75" class="st2"/>
-					<path d="M360.07 345.25 L360.07 414.7" class="st2"/>
-					<path d="M0 345.25 L0 414.7 L360.07 414.7" class="st2"/>
-					<text x="4" y="356.45" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>Clearing House (CH)</text>				</g>
-			</g>
-			<g id="group8-22" transform="translate(19.6654,-312.236)" v:mID="8" v:groupContext="group">
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="F" v:val="VT0(0):26"/>
-					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
-					<v:ud v:nameU="ResizeIcon" v:val="VT0(0):26"/>
+					<v:ud
+   v:val="VT0(12):26"
+   v:nameU="visVersion" />
 				</v:userDefs>
-				<title>Component</title>
-				<g id="shape9-23" v:mID="9" v:groupContext="shape">
-					<title>Tabelle.9</title>
-					<path d="M327.47 414.7 L0 414.7 L327.47 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape10-26" v:mID="10" v:groupContext="shape">
-					<title>Tabelle.10</title>
-					<path d="M327.47 414.7 L0 414.7 L327.47 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape11-29" v:mID="11" v:groupContext="shape">
-					<title>Tabelle.11</title>
-					<path d="M327.47 414.7 L0 414.7 L327.47 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape12-32" v:mID="12" v:groupContext="shape" transform="translate(327.472,0)">
-					<title>Tabelle.12</title>
-					<path d="M0 414.7 L0 378.7 L0 414.7 Z" class="st1"/>
-					<path d="" class="st2"/>
-				</g>
-				<g id="shape13-35" v:mID="13" v:groupContext="shape">
-					<title>Tabelle.13</title>
-					<desc>Clearing House System (CHS)</desc>
-					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
-					<v:textRect cx="163.736" cy="396.696" width="327.48" height="36"/>
-					<path d="M327.47 414.7 L327.47 378.7 L0 378.7 L0 414.7 L327.47 414.7 ZM327.47 414.7 L327.47 378.7 L0 378.7 L327.47
-								 378.7 L327.47 414.7 Z" class="st1"/>
-					<path d="M327.47 414.7 L327.47 378.7" class="st2"/>
-					<path d="M0 414.7 L0 378.7" class="st2"/>
-					<path d="M0 414.7 L327.47 414.7" class="st2"/>
-					<path d="M327.47 414.7 L327.47 378.7" class="st2"/>
-					<path d="M0 378.7 L327.47 378.7" class="st2"/>
-					<text x="4" y="389.9" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>Clearing House System (CHS)</text>				</g>
-				<g id="shape14-43" v:mID="14" v:groupContext="shape" transform="translate(313.972,-22.5)">
-					<title>Tabelle.14</title>
-					<path d="M0 414.7 L9 414.7 L9 405.7 L0 405.7 L0 407.5 L1.8 407.5 L1.8 409.3 L0 409.3 L0 411.1 L1.8 411.1 L1.8
-								 412.9 L0 412.9 L0 414.7 ZM-1.8 412.9 L1.8 412.9 L1.8 411.1 L-1.8 411.1 L-1.8 412.9 ZM-1.8 409.3
-								 L1.8 409.3 L1.8 407.5 L-1.8 407.5 L-1.8 409.3 Z" class="st4"/>
-				</g>
-			</g>
-			<g id="shape15-45" v:mID="15" v:groupContext="shape" transform="translate(298.949,-312.236)">
-				<title>Interface, Socket</title>
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="Interface" v:val="VT0(1):26"/>
-					<v:ud v:nameU="EndSize" v:val="VT0(0.0425):26"/>
-					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
-					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+					<v:ud
+   v:val="VT0(2):26"
+   v:nameU="Interface" />
+					<v:ud
+   v:val="VT0(0.0765):26"
+   v:nameU="EndSize" />
+					<v:ud
+   v:val="VT0(0.25):26"
+   v:nameU="MinLength" />
+					<v:ud
+   v:val="VT0(0.1963):26"
+   v:nameU="SocketClosure" />
 				</v:userDefs>
-				<path d="M0 414.7 L0.28 441.38" class="st5"/>
-			</g>
-			<g id="shape16-51" v:mID="16" v:groupContext="shape" transform="translate(296.185,-299.055)">
-				<title>Feld.17</title>
+				
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+					<v:ud
+   v:val="VT0(1):26"
+   v:nameU="Interface" />
+					<v:ud
+   v:val="VT0(0.0425):26"
+   v:nameU="EndSize" />
+					<v:ud
+   v:val="VT0(0.25):26"
+   v:nameU="MinLength" />
+					<v:ud
+   v:val="VT0(0.1963):26"
+   v:nameU="SocketClosure" />
 				</v:userDefs>
-				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
-			</g>
-			<g id="group17-53" transform="translate(254.02,-106.299)" v:mID="17" v:groupContext="group">
+				
+			
+				
+				
+				<v:textBlock
+   v:tabSpace="42.5197"
+   v:margins="rect(4,4,4,4)" />
+				<v:textRect
+   height="8.50394"
+   width="99.22"
+   cy="410.444"
+   cx="49.6063" />
+				
+							
+				
+				
+				<v:textBlock
+   v:tabSpace="42.5197"
+   v:margins="rect(4,4,4,4)" />
+				<v:textRect
+   height="8.50394"
+   width="99.22"
+   cy="410.444"
+   cx="49.6063" />
+				
+							
+				
 				<v:userDefs>
-					<v:ud v:nameU="F"/>
-					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+					<v:ud
+   v:val="VT0(12):26"
+   v:nameU="visVersion" />
 				</v:userDefs>
-				<title>Node.18</title>
-				<g id="shape18-54" v:mID="18" v:groupContext="shape">
-					<title>Tabelle.18</title>
-					<path d="M93.54 414.7 L0 414.7 L93.54 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape19-57" v:mID="19" v:groupContext="shape">
-					<title>Tabelle.19</title>
-					<path d="M93.54 414.7 L0 414.7 L93.54 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape20-60" v:mID="20" v:groupContext="shape">
-					<title>Tabelle.20</title>
-					<path d="M93.54 414.7 L0 414.7 L93.54 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape21-63" v:mID="21" v:groupContext="shape" transform="translate(93.5433,0)">
-					<title>Tabelle.21</title>
-					<path d="M0 414.7 L0 264.46 L0 414.7 Z" class="st1"/>
-					<path d="" class="st2"/>
-				</g>
-				<g id="shape22-66" v:mID="22" v:groupContext="shape">
-					<title>Tabelle.22</title>
-					<desc>EVSE Operator</desc>
-					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
-					<v:textRect cx="46.7717" cy="339.578" width="93.55" height="150.236"/>
-					<path d="M93.54 414.7 L93.54 264.46 L0 264.46 L0 414.7 L93.54 414.7 ZM0 264.46 L4.5 259.96 L98.04 259.96 L93.54
-								 264.46 L0 264.46 ZM93.54 414.7 L98.04 410.2 L98.04 259.96 L93.54 264.46 L93.54 414.7 ZM98.04 410.2
-								 L98.04 259.96 L4.5 259.96 L98.04 259.96 L98.04 410.2 Z" class="st1"/>
-					<path d="M0 264.46 L4.5 259.96 L98.04 259.96 L93.54 264.46 L0 264.46" class="st2"/>
-					<path d="M93.54 414.7 L98.04 410.2 L98.04 259.96" class="st2"/>
-					<path d="M93.54 264.46 L93.54 414.7" class="st2"/>
-					<path d="M0 264.46 L0 414.7 L93.54 414.7" class="st2"/>
-					<text x="4" y="275.66" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>EVSE Operator</text>				</g>
-			</g>
-			<g id="group23-73" transform="translate(263.126,-184.677)" v:mID="23" v:groupContext="group">
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="F" v:val="VT0(0):26"/>
-					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
-					<v:ud v:nameU="ResizeIcon" v:val="VT0(0):26"/>
+					<v:ud
+   v:val="VT0(12):26"
+   v:nameU="visVersion" />
 				</v:userDefs>
-				<title>Component.24</title>
-				<g id="shape24-74" v:mID="24" v:groupContext="shape">
-					<title>Tabelle.24</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape25-77" v:mID="25" v:groupContext="shape">
-					<title>Tabelle.25</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape26-80" v:mID="26" v:groupContext="shape">
-					<title>Tabelle.26</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape27-83" v:mID="27" v:groupContext="shape" transform="translate(72,0)">
-					<title>Tabelle.27</title>
-					<path d="M0 414.7 L0 378.7 L0 414.7 Z" class="st1"/>
-					<path d="" class="st2"/>
-				</g>
-				<g id="shape28-86" v:mID="28" v:groupContext="shape">
-					<title>Tabelle.28</title>
-					<desc>Charge Point Management System (CMS)</desc>
-					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
-					<v:textRect cx="36" cy="396.696" width="72" height="36"/>
-					<path d="M72 414.7 L72 378.7 L0 378.7 L0 414.7 L72 414.7 ZM72 414.7 L72 378.7 L0 378.7 L72 378.7 L72 414.7 Z"
-							class="st1"/>
-					<path d="M72 414.7 L72 378.7" class="st2"/>
-					<path d="M0 414.7 L0 378.7" class="st2"/>
-					<path d="M0 414.7 L72 414.7" class="st2"/>
-					<path d="M72 414.7 L72 378.7" class="st2"/>
-					<path d="M0 378.7 L72 378.7" class="st2"/>
-					<text x="4" y="389.9" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>Charge Point <tspan x="4"
-								dy="1.2em" class="st7">Management </tspan><tspan x="4" dy="1.2em" class="st7">System </tspan>(CMS)</text>				</g>
-				<g id="shape29-96" v:mID="29" v:groupContext="shape" transform="translate(58.5,-22.5)">
-					<title>Tabelle.29</title>
-					<path d="M0 414.7 L9 414.7 L9 405.7 L0 405.7 L0 407.5 L1.8 407.5 L1.8 409.3 L0 409.3 L0 411.1 L1.8 411.1 L1.8
-								 412.9 L0 412.9 L0 414.7 ZM-1.8 412.9 L1.8 412.9 L1.8 411.1 L-1.8 411.1 L-1.8 412.9 ZM-1.8 409.3
-								 L1.8 409.3 L1.8 407.5 L-1.8 407.5 L-1.8 409.3 Z" class="st4"/>
-				</g>
-			</g>
-			<g id="shape30-98" v:mID="30" v:groupContext="shape" transform="translate(299.126,-220.677)">
-				<title>Interface, Socket.29</title>
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="Interface" v:val="VT0(2):26"/>
-					<v:ud v:nameU="EndSize" v:val="VT0(0.0765):26"/>
-					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
-					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+					<v:ud
+   v:val="VT0(12):26"
+   v:nameU="visVersion" />
 				</v:userDefs>
-				<path d="M0 414.7 L0.13 358.83" class="st2"/>
-				<path d="M-5.26 352.24 A5.508 5.508 -180 1 0 5.55 352.26" class="st2"/>
-			</g>
-			<g id="shape31-102" v:mID="31" v:groupContext="shape" transform="translate(296.398,-254.551)">
-				<title>Feld.39</title>
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+					<v:ud
+   v:val="VT0(2):26"
+   v:nameU="Interface" />
+					<v:ud
+   v:val="VT0(0.0765):26"
+   v:nameU="EndSize" />
+					<v:ud
+   v:val="VT0(0.25):26"
+   v:nameU="MinLength" />
+					<v:ud
+   v:val="VT0(0.1963):26"
+   v:nameU="SocketClosure" />
 				</v:userDefs>
-				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
-			</g>
-			<g id="group32-104" transform="translate(263.126,-118.488)" v:mID="32" v:groupContext="group">
+				
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="F" v:val="VT0(0):26"/>
-					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
-					<v:ud v:nameU="ResizeIcon" v:val="VT0(0):26"/>
+					<v:ud
+   v:val="VT0(1):26"
+   v:nameU="Interface" />
+					<v:ud
+   v:val="VT0(0.0425):26"
+   v:nameU="EndSize" />
+					<v:ud
+   v:val="VT0(0.25):26"
+   v:nameU="MinLength" />
+					<v:ud
+   v:val="VT0(0.1963):26"
+   v:nameU="SocketClosure" />
 				</v:userDefs>
-				<title>Component.43</title>
-				<g id="shape33-105" v:mID="33" v:groupContext="shape">
-					<title>Tabelle.33</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape34-108" v:mID="34" v:groupContext="shape">
-					<title>Tabelle.34</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape35-111" v:mID="35" v:groupContext="shape">
-					<title>Tabelle.35</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape36-114" v:mID="36" v:groupContext="shape" transform="translate(72,0)">
-					<title>Tabelle.36</title>
-					<path d="M0 414.7 L0 378.7 L0 414.7 Z" class="st1"/>
-					<path d="" class="st2"/>
-				</g>
-				<g id="shape37-117" v:mID="37" v:groupContext="shape">
-					<title>Tabelle.37</title>
-					<desc>Charge Point (CP)</desc>
-					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
-					<v:textRect cx="36" cy="396.696" width="72" height="36"/>
-					<path d="M72 414.7 L72 378.7 L0 378.7 L0 414.7 L72 414.7 ZM72 414.7 L72 378.7 L0 378.7 L72 378.7 L72 414.7 Z"
-							class="st1"/>
-					<path d="M72 414.7 L72 378.7" class="st2"/>
-					<path d="M0 414.7 L0 378.7" class="st2"/>
-					<path d="M0 414.7 L72 414.7" class="st2"/>
-					<path d="M72 414.7 L72 378.7" class="st2"/>
-					<path d="M0 378.7 L72 378.7" class="st2"/>
-					<text x="4" y="389" class="st8" v:langID="1031"><v:paragraph/><v:tabList/>Charge Point <v:lf/><tspan x="4"
-								dy="1.2em" class="st7">(</tspan>CP)</text>				</g>
-				<g id="shape38-126" v:mID="38" v:groupContext="shape" transform="translate(58.5,-22.5)">
-					<title>Tabelle.38</title>
-					<path d="M0 414.7 L9 414.7 L9 405.7 L0 405.7 L0 407.5 L1.8 407.5 L1.8 409.3 L0 409.3 L0 411.1 L1.8 411.1 L1.8
-								 412.9 L0 412.9 L0 414.7 ZM-1.8 412.9 L1.8 412.9 L1.8 411.1 L-1.8 411.1 L-1.8 412.9 ZM-1.8 409.3
-								 L1.8 409.3 L1.8 407.5 L-1.8 407.5 L-1.8 409.3 Z" class="st4"/>
-				</g>
-			</g>
-			<g id="shape39-128" v:mID="39" v:groupContext="shape" transform="translate(299.126,-154.488)">
-				<title>Interface, Socket.49</title>
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="Interface" v:val="VT0(1):26"/>
-					<v:ud v:nameU="EndSize" v:val="VT0(0.0425):26"/>
-					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
-					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+					<v:ud
+   v:val="VT0(12):26"
+   v:nameU="visVersion" />
 				</v:userDefs>
-				<path d="M0 414.7 L0 406.02" class="st5"/>
-			</g>
-			<g id="shape40-133" v:mID="40" v:groupContext="shape" transform="translate(299.126,-184.677)">
-				<title>Interface, Socket.50</title>
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="Interface" v:val="VT0(2):26"/>
-					<v:ud v:nameU="EndSize" v:val="VT0(0.0765):26"/>
-					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
-					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+					<v:ud
+   v:val="VT0(2):26"
+   v:nameU="Interface" />
+					<v:ud
+   v:val="VT0(0.0765):26"
+   v:nameU="EndSize" />
+					<v:ud
+   v:val="VT0(0.25):26"
+   v:nameU="MinLength" />
+					<v:ud
+   v:val="VT0(0.1963):26"
+   v:nameU="SocketClosure" />
 				</v:userDefs>
-				<path d="M0 414.7 L-0 427.19" class="st2"/>
-				<path d="M5.4 433.77 A5.508 5.508 -180 1 0 -5.4 433.77" class="st2"/>
-			</g>
-			<g id="shape41-137" v:mID="41" v:groupContext="shape" transform="translate(306.461,-279.213)">
-				<title>Tabelle.41</title>
-				<desc>OCHP Protocol</desc>
-				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-				<v:textRect cx="49.6063" cy="410.444" width="99.22" height="8.50394"/>
-				<rect x="0" y="406.192" width="99.2126" height="8.50394" class="st9"/>
-				<text x="4" y="413.44" class="st10" v:langID="1031"><v:paragraph/><v:tabList/>OCHP Protocol</text>			</g>
-			<g id="group61-140" transform="translate(135.354,-170.079)" v:mID="61" v:groupContext="group">
+				
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="F"/>
-					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+					<v:ud
+   v:val="VT0(1):26"
+   v:nameU="Interface" />
+					<v:ud
+   v:val="VT0(0.0425):26"
+   v:nameU="EndSize" />
+					<v:ud
+   v:val="VT0(0.25):26"
+   v:nameU="MinLength" />
+					<v:ud
+   v:val="VT0(0.1963):26"
+   v:nameU="SocketClosure" />
 				</v:userDefs>
-				<title>Node.123</title>
-				<g id="shape62-141" v:mID="62" v:groupContext="shape">
-					<title>Tabelle.62</title>
-					<path d="M93.54 414.7 L0 414.7 L93.54 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape63-144" v:mID="63" v:groupContext="shape">
-					<title>Tabelle.63</title>
-					<path d="M93.54 414.7 L0 414.7 L93.54 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape64-147" v:mID="64" v:groupContext="shape">
-					<title>Tabelle.64</title>
-					<path d="M93.54 414.7 L0 414.7 L93.54 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape65-150" v:mID="65" v:groupContext="shape" transform="translate(93.5433,0)">
-					<title>Tabelle.65</title>
-					<path d="M0 414.7 L0 328.24 L0 414.7 Z" class="st1"/>
-					<path d="" class="st2"/>
-				</g>
-				<g id="shape66-153" v:mID="66" v:groupContext="shape">
-					<title>Tabelle.66</title>
-					<desc>EVSP</desc>
-					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
-					<v:textRect cx="46.7717" cy="371.468" width="93.55" height="86.4567"/>
-					<path d="M93.54 414.7 L93.54 328.24 L0 328.24 L0 414.7 L93.54 414.7 ZM0 328.24 L4.5 323.74 L98.04 323.74 L93.54
-								 328.24 L0 328.24 ZM93.54 414.7 L98.04 410.2 L98.04 323.74 L93.54 328.24 L93.54 414.7 ZM98.04 410.2
-								 L98.04 323.74 L4.5 323.74 L98.04 323.74 L98.04 410.2 Z" class="st1"/>
-					<path d="M0 328.24 L4.5 323.74 L98.04 323.74 L93.54 328.24 L0 328.24" class="st2"/>
-					<path d="M93.54 414.7 L98.04 410.2 L98.04 323.74" class="st2"/>
-					<path d="M93.54 328.24 L93.54 414.7" class="st2"/>
-					<path d="M0 328.24 L0 414.7 L93.54 414.7" class="st2"/>
-					<text x="4" y="339.44" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>EVSP</text>				</g>
-			</g>
-			<g id="group67-160" transform="translate(147.472,-184.677)" v:mID="67" v:groupContext="group">
+				
+			
+				
+				
+				<v:textBlock
+   v:tabSpace="42.5197"
+   v:margins="rect(4,4,4,4)" />
+				<v:textRect
+   height="17.6036"
+   width="44.02"
+   cy="344.099"
+   cx="-7.04291" />
+				
+				
+							
 				<v:userDefs>
-					<v:ud v:nameU="F" v:val="VT0(0):26"/>
-					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
-					<v:ud v:nameU="ResizeIcon" v:val="VT0(0):26"/>
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="F" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="Format" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="ResizeIcon" />
 				</v:userDefs>
-				<title>Component.129</title>
-				<g id="shape68-161" v:mID="68" v:groupContext="shape">
-					<title>Tabelle.68</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape69-164" v:mID="69" v:groupContext="shape">
-					<title>Tabelle.69</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape70-167" v:mID="70" v:groupContext="shape">
-					<title>Tabelle.70</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape71-170" v:mID="71" v:groupContext="shape" transform="translate(72,0)">
-					<title>Tabelle.71</title>
-					<path d="M0 414.7 L0 378.7 L0 414.7 Z" class="st1"/>
-					<path d="" class="st2"/>
-				</g>
-				<g id="shape72-173" v:mID="72" v:groupContext="shape">
-					<title>Tabelle.72</title>
-					<desc>Master Data Management System (MDM)</desc>
-					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
-					<v:textRect cx="36" cy="396.696" width="72" height="36"/>
-					<path d="M72 414.7 L72 378.7 L0 378.7 L0 414.7 L72 414.7 ZM72 414.7 L72 378.7 L0 378.7 L72 378.7 L72 414.7 Z"
-							class="st1"/>
-					<path d="M72 414.7 L72 378.7" class="st2"/>
-					<path d="M0 414.7 L0 378.7" class="st2"/>
-					<path d="M0 414.7 L72 414.7" class="st2"/>
-					<path d="M72 414.7 L72 378.7" class="st2"/>
-					<path d="M0 378.7 L72 378.7" class="st2"/>
-					<text x="4" y="389.9" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>Master Data <tspan x="4" dy="1.2em"
-								class="st7">Management </tspan><tspan x="4" dy="1.2em" class="st7">System </tspan>(MDM)</text>				</g>
-				<g id="shape73-183" v:mID="73" v:groupContext="shape" transform="translate(58.5,-22.5)">
-					<title>Tabelle.73</title>
-					<path d="M0 414.7 L9 414.7 L9 405.7 L0 405.7 L0 407.5 L1.8 407.5 L1.8 409.3 L0 409.3 L0 411.1 L1.8 411.1 L1.8
-								 412.9 L0 412.9 L0 414.7 ZM-1.8 412.9 L1.8 412.9 L1.8 411.1 L-1.8 411.1 L-1.8 412.9 ZM-1.8 409.3
-								 L1.8 409.3 L1.8 407.5 L-1.8 407.5 L-1.8 409.3 Z" class="st4"/>
-				</g>
-			</g>
-			<g id="shape74-185" v:mID="74" v:groupContext="shape" transform="translate(183.402,-312.236)">
-				<title>Interface, Socket.136</title>
+				
+				
+				
+				
+				
+				
+				
+			
 				<v:userDefs>
-					<v:ud v:nameU="Interface" v:val="VT0(1):26"/>
-					<v:ud v:nameU="EndSize" v:val="VT0(0.0425):26"/>
-					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
-					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="F" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="Format" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="ResizeIcon" />
 				</v:userDefs>
-				<path d="M0 414.7 L0.09 441.37" class="st5"/>
-			</g>
-			<g id="shape75-190" v:mID="75" v:groupContext="shape" transform="translate(179.598,-298.772)">
-				<title>Feld.137</title>
+				
+				
+				
+				
+				
+				
+				
+			
 				<v:userDefs>
-					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="F" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="Format" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="ResizeIcon" />
 				</v:userDefs>
-				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
-			</g>
-			<g id="shape76-192" v:mID="76" v:groupContext="shape" transform="translate(187.016,-279.213)">
-				<title>Tabelle.76</title>
-				<desc>OCHP Protocol</desc>
-				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-				<v:textRect cx="49.6063" cy="410.444" width="99.22" height="8.50394"/>
-				<rect x="0" y="406.192" width="99.2126" height="8.50394" class="st9"/>
-				<text x="4" y="413.44" class="st10" v:langID="1031"><v:paragraph/><v:tabList/>OCHP Protocol</text>			</g>
-			<g id="shape77-195" v:mID="77" v:groupContext="shape" transform="translate(183.472,-220.677)">
-				<title>Interface, Socket.140</title>
+				
+				
+				
+				
+				
+				
+				
+			
 				<v:userDefs>
-					<v:ud v:nameU="Interface" v:val="VT0(2):26"/>
-					<v:ud v:nameU="EndSize" v:val="VT0(0.0765):26"/>
-					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
-					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+					<v:ud
+   v:nameU="F" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="Format" />
 				</v:userDefs>
-				<path d="M0 414.7 L0.03 358.83" class="st2"/>
-				<path d="M-5.37 352.25 A5.508 5.508 -180 1 0 5.44 352.25" class="st2"/>
-			</g>
-			<g id="shape78-199" v:mID="78" v:groupContext="shape" transform="translate(180.213,-254.268)">
-				<title>Feld.138</title>
+				
+				
+				
+				
+				
+				
+			
+				
+				
+				<v:textBlock
+   v:tabSpace="42.5197"
+   v:margins="rect(4,4,4,4)" />
+				<v:textRect
+   height="8.50394"
+   width="99.22"
+   cy="410.444"
+   cx="49.6063" />
+				
+							
+				
 				<v:userDefs>
-					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+					<v:ud
+   v:val="VT0(12):26"
+   v:nameU="visVersion" />
 				</v:userDefs>
-				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
-			</g>
-			<g id="group97-201" transform="translate(11.7992,-170.079)" v:mID="97" v:groupContext="group">
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="F"/>
-					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+					<v:ud
+   v:val="VT0(2):26"
+   v:nameU="Interface" />
+					<v:ud
+   v:val="VT0(0.0765):26"
+   v:nameU="EndSize" />
+					<v:ud
+   v:val="VT0(0.25):26"
+   v:nameU="MinLength" />
+					<v:ud
+   v:val="VT0(0.1963):26"
+   v:nameU="SocketClosure" />
 				</v:userDefs>
-				<title>Node.159</title>
-				<g id="shape98-202" v:mID="98" v:groupContext="shape">
-					<title>Tabelle.98</title>
-					<path d="M93.54 414.7 L0 414.7 L93.54 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape99-205" v:mID="99" v:groupContext="shape">
-					<title>Tabelle.99</title>
-					<path d="M93.54 414.7 L0 414.7 L93.54 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape100-208" v:mID="100" v:groupContext="shape">
-					<title>Tabelle.100</title>
-					<path d="M93.54 414.7 L0 414.7 L93.54 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape101-211" v:mID="101" v:groupContext="shape" transform="translate(93.5433,0)">
-					<title>Tabelle.101</title>
-					<path d="M0 414.7 L0 328.24 L0 414.7 Z" class="st1"/>
-					<path d="" class="st2"/>
-				</g>
-				<g id="shape102-214" v:mID="102" v:groupContext="shape">
-					<title>Tabelle.102</title>
-					<desc>NSP</desc>
-					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
-					<v:textRect cx="46.7717" cy="371.468" width="93.55" height="86.4567"/>
-					<path d="M93.54 414.7 L93.54 328.24 L0 328.24 L0 414.7 L93.54 414.7 ZM0 328.24 L4.5 323.74 L98.04 323.74 L93.54
-								 328.24 L0 328.24 ZM93.54 414.7 L98.04 410.2 L98.04 323.74 L93.54 328.24 L93.54 414.7 ZM98.04 410.2
-								 L98.04 323.74 L4.5 323.74 L98.04 323.74 L98.04 410.2 Z" class="st1"/>
-					<path d="M0 328.24 L4.5 323.74 L98.04 323.74 L93.54 328.24 L0 328.24" class="st2"/>
-					<path d="M93.54 414.7 L98.04 410.2 L98.04 323.74" class="st2"/>
-					<path d="M93.54 328.24 L93.54 414.7" class="st2"/>
-					<path d="M0 328.24 L0 414.7 L93.54 414.7" class="st2"/>
-					<text x="4" y="339.44" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>NSP</text>				</g>
-			</g>
-			<g id="group103-221" transform="translate(21.1535,-184.677)" v:mID="103" v:groupContext="group">
+				
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="F" v:val="VT0(0):26"/>
-					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
-					<v:ud v:nameU="ResizeIcon" v:val="VT0(0):26"/>
+					<v:ud
+   v:val="VT0(12):26"
+   v:nameU="visVersion" />
 				</v:userDefs>
-				<title>Component.165</title>
-				<g id="shape104-222" v:mID="104" v:groupContext="shape">
-					<title>Tabelle.104</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape105-225" v:mID="105" v:groupContext="shape">
-					<title>Tabelle.105</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape106-228" v:mID="106" v:groupContext="shape">
-					<title>Tabelle.106</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape107-231" v:mID="107" v:groupContext="shape" transform="translate(72,0)">
-					<title>Tabelle.107</title>
-					<path d="M0 414.7 L0 378.7 L0 414.7 Z" class="st1"/>
-					<path d="" class="st2"/>
-				</g>
-				<g id="shape108-234" v:mID="108" v:groupContext="shape">
-					<title>Tabelle.108</title>
-					<desc>Navigation Plattform System (NPS)</desc>
-					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
-					<v:textRect cx="36" cy="396.696" width="72" height="36"/>
-					<path d="M72 414.7 L72 378.7 L0 378.7 L0 414.7 L72 414.7 ZM72 414.7 L72 378.7 L0 378.7 L72 378.7 L72 414.7 Z"
-							class="st1"/>
-					<path d="M72 414.7 L72 378.7" class="st2"/>
-					<path d="M0 414.7 L0 378.7" class="st2"/>
-					<path d="M0 414.7 L72 414.7" class="st2"/>
-					<path d="M72 414.7 L72 378.7" class="st2"/>
-					<path d="M0 378.7 L72 378.7" class="st2"/>
-					<text x="4" y="389.9" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>Navigation <tspan x="4" dy="1.2em"
-								class="st7">Plattform </tspan><tspan x="4" dy="1.2em" class="st7">System </tspan>(NPS)</text>				</g>
-				<g id="shape109-244" v:mID="109" v:groupContext="shape" transform="translate(58.5,-22.5)">
-					<title>Tabelle.109</title>
-					<path d="M0 414.7 L9 414.7 L9 405.7 L0 405.7 L0 407.5 L1.8 407.5 L1.8 409.3 L0 409.3 L0 411.1 L1.8 411.1 L1.8
-								 412.9 L0 412.9 L0 414.7 ZM-1.8 412.9 L1.8 412.9 L1.8 411.1 L-1.8 411.1 L-1.8 412.9 ZM-1.8 409.3
-								 L1.8 409.3 L1.8 407.5 L-1.8 407.5 L-1.8 409.3 Z" class="st4"/>
-				</g>
-			</g>
-			<g id="shape110-246" v:mID="110" v:groupContext="shape" transform="translate(56.7992,-312.236)">
-				<title>Interface, Socket.172</title>
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="Interface" v:val="VT0(1):26"/>
-					<v:ud v:nameU="EndSize" v:val="VT0(0.0425):26"/>
-					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
-					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+					<v:ud
+   v:val="VT0(1):26"
+   v:nameU="Interface" />
+					<v:ud
+   v:val="VT0(0.0425):26"
+   v:nameU="EndSize" />
+					<v:ud
+   v:val="VT0(0.25):26"
+   v:nameU="MinLength" />
+					<v:ud
+   v:val="VT0(0.1963):26"
+   v:nameU="SocketClosure" />
 				</v:userDefs>
-				<path d="M0 414.7 L0.09 441.37" class="st5"/>
-			</g>
-			<g id="shape111-251" v:mID="111" v:groupContext="shape" transform="translate(53.4685,-298.772)">
-				<title>Feld.173</title>
+				
+			
 				<v:userDefs>
-					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="F" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="Format" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="ResizeIcon" />
 				</v:userDefs>
-				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
-			</g>
-			<g id="shape112-253" v:mID="112" v:groupContext="shape" transform="translate(57.1535,-220.677)">
-				<title>Interface, Socket.174</title>
+				
+				
+				
+				
+				
+				
+				
+			
 				<v:userDefs>
-					<v:ud v:nameU="Interface" v:val="VT0(2):26"/>
-					<v:ud v:nameU="EndSize" v:val="VT0(0.0765):26"/>
-					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
-					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+					<v:ud
+   v:nameU="F" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="Format" />
 				</v:userDefs>
-				<path d="M0 414.7 L-0.23 358.83" class="st2"/>
-				<path d="M-5.65 352.27 A5.508 5.508 -180 1 0 5.15 352.23" class="st2"/>
-			</g>
-			<g id="shape113-257" v:mID="113" v:groupContext="shape" transform="translate(53.6811,-254.268)">
-				<title>Feld.175</title>
+				
+				
+				
+				
+				
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+					<v:ud
+   v:val="VT0(12):26"
+   v:nameU="visVersion" />
 				</v:userDefs>
-				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
-			</g>
-			<g id="shape132-259" v:mID="132" v:groupContext="shape" transform="translate(60.0591,-279.213)">
-				<title>Tabelle.132</title>
-				<desc>OCHP Protocol</desc>
-				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-				<v:textRect cx="49.6063" cy="410.444" width="99.22" height="8.50394"/>
-				<rect x="0" y="406.192" width="99.2126" height="8.50394" class="st9"/>
-				<text x="4" y="413.44" class="st10" v:langID="1031"><v:paragraph/><v:tabList/>OCHP Protocol</text>			</g>
-			<g id="group1-262" transform="translate(2.83465,0)" v:mID="1" v:groupContext="group">
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="F"/>
-					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
+					<v:ud
+   v:val="VT0(2):26"
+   v:nameU="Interface" />
+					<v:ud
+   v:val="VT0(0.0765):26"
+   v:nameU="EndSize" />
+					<v:ud
+   v:val="VT0(0.25):26"
+   v:nameU="MinLength" />
+					<v:ud
+   v:val="VT0(0.1963):26"
+   v:nameU="SocketClosure" />
 				</v:userDefs>
-				<title>Node.1</title>
-				<g id="shape133-263" v:mID="133" v:groupContext="shape">
-					<title>Tabelle.133</title>
-					<path d="M360.07 414.7 L0 414.7 L360.07 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape134-266" v:mID="134" v:groupContext="shape">
-					<title>Tabelle.134</title>
-					<path d="M360.07 414.7 L0 414.7 L360.07 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape135-269" v:mID="135" v:groupContext="shape">
-					<title>Tabelle.135</title>
-					<path d="M360.07 414.7 L0 414.7 L360.07 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape136-272" v:mID="136" v:groupContext="shape" transform="translate(360.071,0)">
-					<title>Tabelle.136</title>
-					<path d="M0 414.7 L0 345.25 L0 414.7 Z" class="st1"/>
-					<path d="" class="st2"/>
-				</g>
-				<g id="shape137-275" v:mID="137" v:groupContext="shape">
-					<title>Tabelle.137</title>
-					<desc>EV user</desc>
-					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
-					<v:textRect cx="180.035" cy="379.971" width="360.08" height="69.4488"/>
-					<path d="M360.07 414.7 L360.07 345.25 L0 345.25 L0 414.7 L360.07 414.7 ZM0 345.25 L4.5 340.75 L364.57 340.75
-								 L360.07 345.25 L0 345.25 ZM360.07 414.7 L364.57 410.2 L364.57 340.75 L360.07 345.25 L360.07 414.7
-								 ZM364.57 410.2 L364.57 340.75 L4.5 340.75 L364.57 340.75 L364.57 410.2 Z" class="st1"/>
-					<path d="M0 345.25 L4.5 340.75 L364.57 340.75 L360.07 345.25 L0 345.25" class="st2"/>
-					<path d="M360.07 414.7 L364.57 410.2 L364.57 340.75" class="st2"/>
-					<path d="M360.07 345.25 L360.07 414.7" class="st2"/>
-					<path d="M0 345.25 L0 414.7 L360.07 414.7" class="st2"/>
-					<text x="4" y="356.45" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>EV user</text>				</g>
-			</g>
-			<g id="group138-282" transform="translate(20.7638,-11.3386)" v:mID="138" v:groupContext="group">
+				
+				
+			
+				
+				
+				<v:textBlock
+   v:tabSpace="42.5197"
+   v:margins="rect(4,4,4,4)" />
+				<v:textRect
+   height="8.50394"
+   width="99.22"
+   cy="410.444"
+   cx="49.6063" />
+				
+							
+				
 				<v:userDefs>
-					<v:ud v:nameU="F" v:val="VT0(0):26"/>
-					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
-					<v:ud v:nameU="ResizeIcon" v:val="VT0(0):26"/>
+					<v:ud
+   v:val="VT0(12):26"
+   v:nameU="visVersion" />
 				</v:userDefs>
-				<title>Component.138</title>
-				<g id="shape139-283" v:mID="139" v:groupContext="shape">
-					<title>Tabelle.139</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape140-286" v:mID="140" v:groupContext="shape">
-					<title>Tabelle.140</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape141-289" v:mID="141" v:groupContext="shape">
-					<title>Tabelle.141</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape142-292" v:mID="142" v:groupContext="shape" transform="translate(72,0)">
-					<title>Tabelle.142</title>
-					<path d="M0 414.7 L0 378.7 L0 414.7 Z" class="st1"/>
-					<path d="" class="st2"/>
-				</g>
-				<g id="shape143-295" v:mID="143" v:groupContext="shape">
-					<title>Tabelle.143</title>
-					<desc>Consumer Navigation System</desc>
-					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
-					<v:textRect cx="36" cy="396.696" width="72" height="36"/>
-					<path d="M72 414.7 L72 378.7 L0 378.7 L0 414.7 L72 414.7 ZM72 414.7 L72 378.7 L0 378.7 L72 378.7 L72 414.7 Z"
-							class="st1"/>
-					<path d="M72 414.7 L72 378.7" class="st2"/>
-					<path d="M0 414.7 L0 378.7" class="st2"/>
-					<path d="M0 414.7 L72 414.7" class="st2"/>
-					<path d="M72 414.7 L72 378.7" class="st2"/>
-					<path d="M0 378.7 L72 378.7" class="st2"/>
-					<text x="4" y="389.9" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>Consumer <tspan x="4" dy="1.2em"
-								class="st7">Navigation </tspan><tspan x="4" dy="1.2em" class="st7">System</tspan></text>				</g>
-				<g id="shape144-305" v:mID="144" v:groupContext="shape" transform="translate(58.5,-22.5)">
-					<title>Tabelle.144</title>
-					<path d="M0 414.7 L9 414.7 L9 405.7 L0 405.7 L0 407.5 L1.8 407.5 L1.8 409.3 L0 409.3 L0 411.1 L1.8 411.1 L1.8
-								 412.9 L0 412.9 L0 414.7 ZM-1.8 412.9 L1.8 412.9 L1.8 411.1 L-1.8 411.1 L-1.8 412.9 ZM-1.8 409.3
-								 L1.8 409.3 L1.8 407.5 L-1.8 407.5 L-1.8 409.3 Z" class="st4"/>
-				</g>
-			</g>
-			<g id="group145-307" transform="translate(148.039,-11.3386)" v:mID="145" v:groupContext="group">
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="F" v:val="VT0(0):26"/>
-					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
-					<v:ud v:nameU="ResizeIcon" v:val="VT0(0):26"/>
+					<v:ud
+   v:val="VT0(1):26"
+   v:nameU="Interface" />
+					<v:ud
+   v:val="VT0(0.0425):26"
+   v:nameU="EndSize" />
+					<v:ud
+   v:val="VT0(0.25):26"
+   v:nameU="MinLength" />
+					<v:ud
+   v:val="VT0(0.1963):26"
+   v:nameU="SocketClosure" />
 				</v:userDefs>
-				<title>Component.145</title>
-				<g id="shape146-308" v:mID="146" v:groupContext="shape">
-					<title>Tabelle.146</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape147-311" v:mID="147" v:groupContext="shape">
-					<title>Tabelle.147</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape148-314" v:mID="148" v:groupContext="shape">
-					<title>Tabelle.148</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape149-317" v:mID="149" v:groupContext="shape" transform="translate(72,0)">
-					<title>Tabelle.149</title>
-					<path d="M0 414.7 L0 378.7 L0 414.7 Z" class="st1"/>
-					<path d="" class="st2"/>
-				</g>
-				<g id="shape150-320" v:mID="150" v:groupContext="shape">
-					<title>Tabelle.150</title>
-					<desc>Access Token</desc>
-					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
-					<v:textRect cx="36" cy="396.696" width="72" height="36"/>
-					<path d="M72 414.7 L72 378.7 L0 378.7 L0 414.7 L72 414.7 ZM72 414.7 L72 378.7 L0 378.7 L72 378.7 L72 414.7 Z"
-							class="st1"/>
-					<path d="M72 414.7 L72 378.7" class="st2"/>
-					<path d="M0 414.7 L0 378.7" class="st2"/>
-					<path d="M0 414.7 L72 414.7" class="st2"/>
-					<path d="M72 414.7 L72 378.7" class="st2"/>
-					<path d="M0 378.7 L72 378.7" class="st2"/>
-					<text x="4" y="389.9" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>Access<v:lf/><tspan x="4"
-								dy="1.2em" class="st7">Token</tspan></text>				</g>
-				<g id="shape151-329" v:mID="151" v:groupContext="shape" transform="translate(58.5,-22.5)">
-					<title>Tabelle.151</title>
-					<path d="M0 414.7 L9 414.7 L9 405.7 L0 405.7 L0 407.5 L1.8 407.5 L1.8 409.3 L0 409.3 L0 411.1 L1.8 411.1 L1.8
-								 412.9 L0 412.9 L0 414.7 ZM-1.8 412.9 L1.8 412.9 L1.8 411.1 L-1.8 411.1 L-1.8 412.9 ZM-1.8 409.3
-								 L1.8 409.3 L1.8 407.5 L-1.8 407.5 L-1.8 409.3 Z" class="st4"/>
-				</g>
-			</g>
-			<g id="group152-331" transform="translate(263.126,-11.3386)" v:mID="152" v:groupContext="group">
+				
+			
 				<v:userDefs>
-					<v:ud v:nameU="F" v:val="VT0(0):26"/>
-					<v:ud v:nameU="Format" v:val="VT0(0):26"/>
-					<v:ud v:nameU="ResizeIcon" v:val="VT0(0):26"/>
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="F" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="Format" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="ResizeIcon" />
 				</v:userDefs>
-				<title>Component.152</title>
-				<g id="shape153-332" v:mID="153" v:groupContext="shape">
-					<title>Tabelle.153</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape154-335" v:mID="154" v:groupContext="shape">
-					<title>Tabelle.154</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape155-338" v:mID="155" v:groupContext="shape">
-					<title>Tabelle.155</title>
-					<path d="M72 414.7 L0 414.7 L72 414.7 Z" class="st1"/>
-				</g>
-				<g id="shape156-341" v:mID="156" v:groupContext="shape" transform="translate(72,0)">
-					<title>Tabelle.156</title>
-					<path d="M0 414.7 L0 378.7 L0 414.7 Z" class="st1"/>
-					<path d="" class="st2"/>
-				</g>
-				<g id="shape157-344" v:mID="157" v:groupContext="shape">
-					<title>Tabelle.157</title>
-					<desc>Battery Management System</desc>
-					<v:textBlock v:margins="rect(4,4,4,4)" v:verticalAlign="0"/>
-					<v:textRect cx="36" cy="396.696" width="72" height="36"/>
-					<path d="M72 414.7 L72 378.7 L0 378.7 L0 414.7 L72 414.7 ZM72 414.7 L72 378.7 L0 378.7 L72 378.7 L72 414.7 Z"
-							class="st1"/>
-					<path d="M72 414.7 L72 378.7" class="st2"/>
-					<path d="M0 414.7 L0 378.7" class="st2"/>
-					<path d="M0 414.7 L72 414.7" class="st2"/>
-					<path d="M72 414.7 L72 378.7" class="st2"/>
-					<path d="M0 378.7 L72 378.7" class="st2"/>
-					<text x="4" y="389.9" class="st3" v:langID="1031"><v:paragraph/><v:tabList/>Battery <tspan x="4" dy="1.2em"
-								class="st7">Management </tspan><tspan x="4" dy="1.2em" class="st7">System</tspan></text>				</g>
-				<g id="shape158-354" v:mID="158" v:groupContext="shape" transform="translate(58.5,-22.5)">
-					<title>Tabelle.158</title>
-					<path d="M0 414.7 L9 414.7 L9 405.7 L0 405.7 L0 407.5 L1.8 407.5 L1.8 409.3 L0 409.3 L0 411.1 L1.8 411.1 L1.8
-								 412.9 L0 412.9 L0 414.7 ZM-1.8 412.9 L1.8 412.9 L1.8 411.1 L-1.8 411.1 L-1.8 412.9 ZM-1.8 409.3
-								 L1.8 409.3 L1.8 407.5 L-1.8 407.5 L-1.8 409.3 Z" class="st4"/>
-				</g>
-			</g>
-			<g id="shape159-356" v:mID="159" v:groupContext="shape" v:layerMember="0" transform="translate(190.843,-47.3386)">
-				<title>Dynamischer Verbinder.159</title>
-				<desc>«manage»</desc>
-				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-				<v:textRect cx="-7.04291" cy="344.099" width="44.02" height="17.6036"/>
-				<path d="M-6.8 414.7 L-7.37 277.36" class="st11"/>
-				<rect v:rectContext="textBkgnd" x="-24.1422" y="339.299" width="34.1988" height="9.59985" class="st13"/>
-				<text x="-24.14" y="346.5" class="st14" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>«manage»</text>			</g>
-			<g id="shape79-364" v:mID="79" v:groupContext="shape" transform="translate(57.1535,-184.677)">
-				<title>Interface, Socket.79</title>
+				
+				
+				
+				
+				
+				
+				
+			
 				<v:userDefs>
-					<v:ud v:nameU="Interface" v:val="VT0(1):26"/>
-					<v:ud v:nameU="EndSize" v:val="VT0(0.0425):26"/>
-					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
-					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+					<v:ud
+   v:nameU="F" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="Format" />
 				</v:userDefs>
-				<path d="M0 414.7 L0.09 441.37" class="st5"/>
-			</g>
-			<g id="shape80-369" v:mID="80" v:groupContext="shape" transform="translate(56.7638,-47.3386)">
-				<title>Interface, Socket.80</title>
+				
+				
+				
+				
+				
+				
+			
+				
+				
+				<v:textBlock
+   v:tabSpace="42.5197"
+   v:margins="rect(4,4,4,4)" />
+				<v:textRect
+   height="8.50394"
+   width="99.22"
+   cy="410.444"
+   cx="49.6063" />
+				
+							
+				
 				<v:userDefs>
-					<v:ud v:nameU="Interface" v:val="VT0(2):26"/>
-					<v:ud v:nameU="EndSize" v:val="VT0(0.0765):26"/>
-					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
-					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+					<v:ud
+   v:val="VT0(2):26"
+   v:nameU="Interface" />
+					<v:ud
+   v:val="VT0(0.0765):26"
+   v:nameU="EndSize" />
+					<v:ud
+   v:val="VT0(0.25):26"
+   v:nameU="MinLength" />
+					<v:ud
+   v:val="VT0(0.1963):26"
+   v:nameU="SocketClosure" />
 				</v:userDefs>
-				<path d="M0 414.7 L0.47 313.05" class="st2"/>
-				<path d="M-4.9 306.45 A5.508 5.508 -180 1 0 5.9 306.5" class="st2"/>
-			</g>
-			<g id="shape115-373" v:mID="115" v:groupContext="shape" transform="translate(53.9646,-165.827)">
-				<title>Feld.177</title>
+				
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+					<v:ud
+   v:val="VT0(1):26"
+   v:nameU="Interface" />
+					<v:ud
+   v:val="VT0(0.0425):26"
+   v:nameU="EndSize" />
+					<v:ud
+   v:val="VT0(0.25):26"
+   v:nameU="MinLength" />
+					<v:ud
+   v:val="VT0(0.1963):26"
+   v:nameU="SocketClosure" />
 				</v:userDefs>
-				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
-			</g>
-			<g id="shape42-375" v:mID="42" v:groupContext="shape" transform="translate(299.126,-118.488)">
-				<title>Interface, Socket.42</title>
+				
+			
 				<v:userDefs>
-					<v:ud v:nameU="Interface" v:val="VT0(1):26"/>
-					<v:ud v:nameU="EndSize" v:val="VT0(0.0425):26"/>
-					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
-					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="F" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="Format" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="ResizeIcon" />
 				</v:userDefs>
-				<path d="M0 414.7 L0.09 441.37" class="st5"/>
-			</g>
-			<g id="shape114-380" v:mID="114" v:groupContext="shape" transform="translate(299.126,-47.3386)">
-				<title>Interface, Socket.114</title>
+				
+				
+				
+				
+				
+				
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="Interface" v:val="VT0(2):26"/>
-					<v:ud v:nameU="EndSize" v:val="VT0(0.0765):26"/>
-					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
-					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+					<v:ud
+   v:val="VT0(12):26"
+   v:nameU="visVersion" />
 				</v:userDefs>
-				<path d="M0 414.7 L0.09 379.24" class="st2"/>
-				<path d="M-5.29 372.65 A5.508 5.508 -180 1 0 5.51 372.68" class="st2"/>
-			</g>
-			<g id="shape43-384" v:mID="43" v:groupContext="shape" transform="translate(296.185,-102.047)">
-				<title>Feld.30</title>
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+					<v:ud
+   v:val="VT0(2):26"
+   v:nameU="Interface" />
+					<v:ud
+   v:val="VT0(0.0765):26"
+   v:nameU="EndSize" />
+					<v:ud
+   v:val="VT0(0.25):26"
+   v:nameU="MinLength" />
+					<v:ud
+   v:val="VT0(0.1963):26"
+   v:nameU="SocketClosure" />
 				</v:userDefs>
-				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
-			</g>
-			<g id="shape44-386" v:mID="44" v:groupContext="shape" transform="translate(296.185,-67.8425)">
-				<title>Feld.44</title>
+				
+				
+			
 				<v:userDefs>
-					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="F" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="Format" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="ResizeIcon" />
 				</v:userDefs>
-				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
-			</g>
-			<g id="shape81-388" v:mID="81" v:groupContext="shape" transform="translate(53.4685,-67.5591)">
-				<title>Feld.81</title>
+				
+				
+				
+				
+				
+				
+				
+			
 				<v:userDefs>
-					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+					<v:ud
+   v:nameU="F" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="Format" />
 				</v:userDefs>
-				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
-			</g>
-			<g id="shape45-390" v:mID="45" v:groupContext="shape" transform="translate(62.4331,-148.819)">
-				<title>Tabelle.45</title>
-				<desc>Navigation Data</desc>
-				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-				<v:textRect cx="49.6063" cy="410.444" width="99.22" height="8.50394"/>
-				<rect x="0" y="406.192" width="99.2126" height="8.50394" class="st9"/>
-				<text x="4" y="413.44" class="st10" v:langID="1031"><v:paragraph/><v:tabList/>Navigation Data</text>			</g>
-			<g id="shape131-393" v:mID="131" v:groupContext="shape" transform="translate(304.795,-83.622)">
-				<title>Tabelle.131</title>
-				<desc>Energy</desc>
-				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-				<v:textRect cx="49.6063" cy="410.444" width="99.22" height="8.50394"/>
-				<rect x="0" y="406.192" width="99.2126" height="8.50394" class="st9"/>
-				<text x="4" y="413.44" class="st10" v:langID="1031"><v:paragraph/><v:tabList/>Energy</text>			</g>
-			<g id="shape160-396" v:mID="160" v:groupContext="shape" transform="translate(281.126,-118.488)">
-				<title>Interface, Socket.160</title>
+				
+				
+				
+				
+				
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="Interface" v:val="VT0(1):26"/>
-					<v:ud v:nameU="EndSize" v:val="VT0(0.0425):26"/>
-					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
-					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+					<v:ud
+   v:val="VT0(12):26"
+   v:nameU="visVersion" />
 				</v:userDefs>
-				<path d="M0 414.7 L0.09 441.37" class="st5"/>
-			</g>
-			<g id="shape161-401" v:mID="161" v:groupContext="shape" transform="translate(202.039,-47.3386)">
-				<title>Interface, Socket.161</title>
+				
+			
+				
 				<v:userDefs>
-					<v:ud v:nameU="Interface" v:val="VT0(2):26"/>
-					<v:ud v:nameU="EndSize" v:val="VT0(0.0765):26"/>
-					<v:ud v:nameU="MinLength" v:val="VT0(0.25):26"/>
-					<v:ud v:nameU="SocketClosure" v:val="VT0(0.1963):26"/>
+					<v:ud
+   v:val="VT0(1):26"
+   v:nameU="Interface" />
+					<v:ud
+   v:val="VT0(0.0425):26"
+   v:nameU="EndSize" />
+					<v:ud
+   v:val="VT0(0.25):26"
+   v:nameU="MinLength" />
+					<v:ud
+   v:val="VT0(0.1963):26"
+   v:nameU="SocketClosure" />
 				</v:userDefs>
-				<path d="M0 414.7 L74.3 376.27" class="st2"/>
-				<path d="M77.67 368.44 A5.508 5.508 -180 1 0 82.63 378.04" class="st2"/>
-			</g>
-			<g id="shape162-405" v:mID="162" v:groupContext="shape" transform="translate(277.157,-102.047)">
-				<title>Feld.162</title>
+				
+			
 				<v:userDefs>
-					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="F" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="Format" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="ResizeIcon" />
 				</v:userDefs>
-				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
-			</g>
-			<g id="shape163-407" v:mID="163" v:groupContext="shape" transform="translate(602.988,135.21) rotate(60)">
-				<title>Feld.163</title>
+				
+				
+				
+				
+				
+				
+				
+			
 				<v:userDefs>
-					<v:ud v:nameU="visVersion" v:val="VT0(12):26"/>
+					<v:ud
+   v:nameU="F" />
+					<v:ud
+   v:val="VT0(0):26"
+   v:nameU="Format" />
 				</v:userDefs>
-				<rect x="0" y="406.192" width="6.37795" height="8.50394" class="st4"/>
-			</g>
-			<g id="shape164-409" v:mID="164" v:groupContext="shape" transform="translate(175.819,-83.622)">
-				<title>Tabelle.164</title>
-				<desc>Token Data</desc>
-				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-				<v:textRect cx="49.6063" cy="410.444" width="99.22" height="8.50394"/>
-				<rect x="0" y="406.192" width="99.2126" height="8.50394" class="st9"/>
-				<text x="48.95" y="413.44" class="st10" v:langID="1031"><v:paragraph v:horizAlign="2"/><v:tabList/>Token Data</text>			</g>
-		</g>
-	</g>
+				
+				
+				
+				
+				
+				
+			
+					
+					
+					<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:verticalAlign="0" />
+					<v:textRect
+   cx="180.035"
+   cy="379.971"
+   width="360.08"
+   height="69.4488" />
+					
+					
+					
+					
+					
+									
+					
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+					<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:verticalAlign="0" />
+					<v:textRect
+   cx="163.736"
+   cy="396.696"
+   width="327.48"
+   height="36" />
+					
+					
+					
+					
+					
+					
+									
+					
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+					<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:verticalAlign="0" />
+					<v:textRect
+   cx="46.7717"
+   cy="339.578"
+   width="93.55"
+   height="150.236" />
+					
+					
+					
+					
+					
+									
+					
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+					<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:verticalAlign="0" />
+					<v:textRect
+   cx="36"
+   cy="396.696"
+   width="72"
+   height="36" />
+					
+					
+					
+					
+					
+					
+									
+					
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+					<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:verticalAlign="0" />
+					<v:textRect
+   cx="36"
+   cy="396.696"
+   width="72"
+   height="36" />
+					
+					
+					
+					
+					
+					
+									
+					
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+					<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:verticalAlign="0" />
+					<v:textRect
+   cx="46.7717"
+   cy="371.468"
+   width="93.55"
+   height="86.4567" />
+					
+					
+					
+					
+					
+									
+					
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+					<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:verticalAlign="0" />
+					<v:textRect
+   cx="36"
+   cy="396.696"
+   width="72"
+   height="36" />
+					
+					
+					
+					
+					
+					
+									
+					
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+					<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:verticalAlign="0" />
+					<v:textRect
+   cx="46.7717"
+   cy="371.468"
+   width="93.55"
+   height="86.4567" />
+					
+					
+					
+					
+					
+									
+					
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+					<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:verticalAlign="0" />
+					<v:textRect
+   cx="36"
+   cy="396.696"
+   width="72"
+   height="36" />
+					
+					
+					
+					
+					
+					
+									
+					
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+					<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:verticalAlign="0" />
+					<v:textRect
+   cx="180.035"
+   cy="379.971"
+   width="360.08"
+   height="69.4488" />
+					
+					
+					
+					
+					
+									
+					
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+					<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:verticalAlign="0" />
+					<v:textRect
+   cx="36"
+   cy="396.696"
+   width="72"
+   height="36" />
+					
+					
+					
+					
+					
+					
+									
+					
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+					<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:verticalAlign="0" />
+					<v:textRect
+   cx="36"
+   cy="396.696"
+   width="72"
+   height="36" />
+					
+					
+					
+					
+					
+					
+									
+					
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+					<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:verticalAlign="0" />
+					<v:textRect
+   cx="36"
+   cy="396.696"
+   width="72"
+   height="36" />
+					
+					
+					
+					
+					
+					
+									
+					
+					
+					
+				
+					
+					
+				
+					
+					
+				
+					
+					
+				</defs>
+	<path
+   d="m 380.72748,92.673 -360.07,0 360.07,0 z"
+   class="st1"
+   id="path4516"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 380.72748,92.673 -360.07,0 360.07,0 z"
+   class="st1"
+   id="path4521"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 380.72748,92.673 -360.07,0 360.07,0 z"
+   class="st1"
+   id="path4526"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 380.72848,92.673 0,-69.45 0,69.45 z"
+   class="st1"
+   id="path4531"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d=""
+   class="st2"
+   id="path4533"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 380.72748,92.673 0,-69.45 -360.07,0 0,69.45 360.07,0 z m -360.07,-69.45 4.5,-4.5 360.07,0 -4.5,4.5 -360.07,0 z m 360.07,69.45 4.5,-4.5 0,-69.45 -4.5,4.5 0,69.45 z m 4.5,-4.5 0,-69.45 -360.07,0 360.07,0 0,69.45 z"
+   class="st1"
+   id="path4540"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 20.65748,23.223 4.5,-4.5 360.07,0 -4.5,4.5 -360.07,0"
+   class="st2"
+   id="path4542"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 380.72748,92.673 4.5,-4.5 0,-69.45"
+   class="st2"
+   id="path4544"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 380.72748,23.223 0,69.45"
+   class="st2"
+   id="path4546"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 20.65748,23.223 0,69.45 360.07,0"
+   class="st2"
+   id="path4548"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><text
+   x="24.65748"
+   y="34.423012"
+   class="st3"
+   v:langID="1031"
+   id="text4550"
+   style="font-weight:normal;fill:#000000;font-family:Calibri;-inkscape-font-specification:Calibri;font-style:normal;font-stretch:normal;font-variant:normal"><v:paragraph /><v:tabList />Clearing House (CH)</text>
+<path
+   d="m 365.1354,83.744 -327.47,0 327.47,0 z"
+   class="st1"
+   id="path4558"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 365.1354,83.744 -327.47,0 327.47,0 z"
+   class="st1"
+   id="path4563"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 365.1354,83.744 -327.47,0 327.47,0 z"
+   class="st1"
+   id="path4568"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 365.1374,83.744 0,-36 0,36 z"
+   class="st1"
+   id="path4573"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d=""
+   class="st2"
+   id="path4575"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 365.1354,83.744 0,-36 -327.47,0 0,36 327.47,0 z m 0,0 0,-36 -327.47,0 327.47,0 0,36 z"
+   class="st1"
+   id="path4582"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 365.1354,83.744 0,-36"
+   class="st2"
+   id="path4584"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 37.6654,83.744 0,-36"
+   class="st2"
+   id="path4586"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 37.6654,83.744 327.47,0"
+   class="st2"
+   id="path4588"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 365.1354,83.744 0,-36"
+   class="st2"
+   id="path4590"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 37.6654,47.744 327.47,0"
+   class="st2"
+   id="path4592"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><text
+   x="41.665401"
+   y="58.943993"
+   class="st3"
+   v:langID="1031"
+   id="text4594"
+   style="font-weight:bold;fill:#000000;font-family:Arial"><tspan
+     style="-inkscape-font-specification:Calibri;font-family:Calibri;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
+     id="tspan6979">Clearing House System (CHS)</tspan></text>
+<path
+   d="m 351.6374,61.244 9,0 0,-9 -9,0 0,1.8 1.8,0 0,1.8 -1.8,0 0,1.8 1.8,0 0,1.8 -1.8,0 0,1.8 z m -1.8,-1.8 3.6,0 0,-1.8 -3.6,0 0,1.8 z m 0,-3.6 3.6,0 0,-1.8 -3.6,0 0,1.8 z"
+   class="st4"
+   id="path4599"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#mrkr20-50)"
+   inkscape:connector-curvature="0"
+   id="path4604"
+   class="st5"
+   d="m 316.949,83.744 0.28,26.68" /><rect
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   id="rect4609"
+   class="st4"
+   height="8.5039396"
+   width="6.3779502"
+   y="88.416985"
+   x="314.185" /><path
+   d="m 365.56,289.681 -93.54,0 93.54,0 z"
+   class="st1"
+   id="path4617"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 365.56,289.681 -93.54,0 93.54,0 z"
+   class="st1"
+   id="path4622"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 365.56,289.681 -93.54,0 93.54,0 z"
+   class="st1"
+   id="path4627"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 365.5633,289.681 0,-150.24 0,150.24 z"
+   class="st1"
+   id="path4632"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d=""
+   class="st2"
+   id="path4634"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 365.56,289.681 0,-150.24 -93.54,0 0,150.24 93.54,0 z m -93.54,-150.24 4.5,-4.5 93.54,0 -4.5,4.5 -93.54,0 z m 93.54,150.24 4.5,-4.5 0,-150.24 -4.5,4.5 0,150.24 z m 4.5,-4.5 0,-150.24 -93.54,0 93.54,0 0,150.24 z"
+   class="st1"
+   id="path4641"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 272.02,139.441 4.5,-4.5 93.54,0 -4.5,4.5 -93.54,0"
+   class="st2"
+   id="path4643"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 365.56,289.681 4.5,-4.5 0,-150.24"
+   class="st2"
+   id="path4645"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 365.56,139.441 0,150.24"
+   class="st2"
+   id="path4647"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 272.02,139.441 0,150.24 93.54,0"
+   class="st2"
+   id="path4649"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><text
+   x="276.01999"
+   y="150.64101"
+   class="st3"
+   v:langID="1031"
+   id="text4651"
+   style="font-weight:bold;fill:#000000;font-family:Arial"><tspan
+     style="-inkscape-font-specification:Calibri;font-family:Calibri;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
+     id="tspan6985">EVSE Operator</tspan></text>
+<path
+   d="m 353.126,211.303 -72,0 72,0 z"
+   class="st1"
+   id="path4659"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 353.126,211.303 -72,0 72,0 z"
+   class="st1"
+   id="path4664"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 353.126,211.303 -72,0 72,0 z"
+   class="st1"
+   id="path4669"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 353.126,211.303 0,-36 0,36 z"
+   class="st1"
+   id="path4674"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d=""
+   class="st2"
+   id="path4676"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 353.126,211.303 0,-36 -72,0 0,36 72,0 z m 0,0 0,-36 -72,0 72,0 0,36 z"
+   class="st1"
+   id="path4683"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 353.126,211.303 0,-36"
+   class="st2"
+   id="path4685"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 281.126,211.303 0,-36"
+   class="st2"
+   id="path4687"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 281.126,211.303 72,0"
+   class="st2"
+   id="path4689"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 353.126,211.303 0,-36"
+   class="st2"
+   id="path4691"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 281.126,175.303 72,0"
+   class="st2"
+   id="path4693"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 339.626,188.803 9,0 0,-9 -9,0 0,1.8 1.8,0 0,1.8 -1.8,0 0,1.8 1.8,0 0,1.8 -1.8,0 0,1.8 z m -1.8,-1.8 3.6,0 0,-1.8 -3.6,0 0,1.8 z m 0,-3.6 3.6,0 0,-1.8 -3.6,0 0,1.8 z"
+   class="st4"
+   id="path4704"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   id="path4709"
+   class="st2"
+   d="m 317.126,175.303 0.13,-55.87" /><path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   id="path4711"
+   class="st2"
+   d="m 311.866,112.843 a 5.508,5.508 0 1 0 10.81,0.02" /><rect
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   id="rect4716"
+   class="st4"
+   height="8.5039396"
+   width="6.3779502"
+   y="132.92099"
+   x="314.39801" /><path
+   d="m 353.126,277.492 -72,0 72,0 z"
+   class="st1"
+   id="path4724"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 353.126,277.492 -72,0 72,0 z"
+   class="st1"
+   id="path4729"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 353.126,277.492 -72,0 72,0 z"
+   class="st1"
+   id="path4734"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 353.126,277.492 0,-36 0,36 z"
+   class="st1"
+   id="path4739"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d=""
+   class="st2"
+   id="path4741"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 353.126,277.492 0,-36 -72,0 0,36 72,0 z m 0,0 0,-36 -72,0 72,0 0,36 z"
+   class="st1"
+   id="path4748"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 353.126,277.492 0,-36"
+   class="st2"
+   id="path4750"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 281.126,277.492 0,-36"
+   class="st2"
+   id="path4752"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 281.126,277.492 72,0"
+   class="st2"
+   id="path4754"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 353.126,277.492 0,-36"
+   class="st2"
+   id="path4756"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 281.126,241.492 72,0"
+   class="st2"
+   id="path4758"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 339.626,254.992 9,0 0,-9 -9,0 0,1.8 1.8,0 0,1.8 -1.8,0 0,1.8 1.8,0 0,1.8 -1.8,0 0,1.8 z m -1.8,-1.8 3.6,0 0,-1.8 -3.6,0 0,1.8 z m 0,-3.6 3.6,0 0,-1.8 -3.6,0 0,1.8 z"
+   class="st4"
+   id="path4767"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#mrkr20-50)"
+   inkscape:connector-curvature="0"
+   id="path4772"
+   class="st5"
+   d="m 317.126,241.492 0,-8.68" /><path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   id="path4777"
+   class="st2"
+   d="m 317.126,211.303 0,12.49" /><path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   id="path4779"
+   class="st2"
+   d="m 322.526,230.373 a 5.508,5.508 0 1 0 -10.8,0" /><rect
+   style="fill:none;stroke:none"
+   id="rect4786"
+   class="st9"
+   height="8.5039396"
+   width="99.212601"
+   y="108.25899"
+   x="324.461" /><text
+   style="font-size:9.59999466px;fill:#000000;font-family:Calibri"
+   id="text4788"
+   v:langID="1031"
+   class="st10"
+   y="115.507"
+   x="325.26099"><v:paragraph /><v:tabList />OCHP Protocol</text>
+<path
+   d="m 246.894,225.901 -93.54,0 93.54,0 z"
+   class="st1"
+   id="path4796"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 246.894,225.901 -93.54,0 93.54,0 z"
+   class="st1"
+   id="path4801"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 246.894,225.901 -93.54,0 93.54,0 z"
+   class="st1"
+   id="path4806"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 246.8973,225.901 0,-86.46 0,86.46 z"
+   class="st1"
+   id="path4811"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d=""
+   class="st2"
+   id="path4813"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 246.894,225.901 0,-86.46 -93.54,0 0,86.46 93.54,0 z m -93.54,-86.46 4.5,-4.5 93.54,0 -4.5,4.5 -93.54,0 z m 93.54,86.46 4.5,-4.5 0,-86.46 -4.5,4.5 0,86.46 z m 4.5,-4.5 0,-86.46 -93.54,0 93.54,0 0,86.46 z"
+   class="st1"
+   id="path4820"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 153.354,139.441 4.5,-4.5 93.54,0 -4.5,4.5 -93.54,0"
+   class="st2"
+   id="path4822"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 246.894,225.901 4.5,-4.5 0,-86.46"
+   class="st2"
+   id="path4824"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 246.894,139.441 0,86.46"
+   class="st2"
+   id="path4826"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 153.354,139.441 0,86.46 93.54,0"
+   class="st2"
+   id="path4828"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><text
+   x="157.354"
+   y="150.64101"
+   class="st3"
+   v:langID="1031"
+   id="text4830"
+   style="font-weight:bold;fill:#000000;font-family:Arial"><tspan
+     style="-inkscape-font-specification:Calibri;font-family:Calibri;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
+     id="tspan6983">EVSP</tspan></text>
+<path
+   d="m 237.472,211.303 -72,0 72,0 z"
+   class="st1"
+   id="path4838"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 237.472,211.303 -72,0 72,0 z"
+   class="st1"
+   id="path4843"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 237.472,211.303 -72,0 72,0 z"
+   class="st1"
+   id="path4848"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 237.472,211.303 0,-36 0,36 z"
+   class="st1"
+   id="path4853"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d=""
+   class="st2"
+   id="path4855"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 237.472,211.303 0,-36 -72,0 0,36 72,0 z m 0,0 0,-36 -72,0 72,0 0,36 z"
+   class="st1"
+   id="path4862"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 237.472,211.303 0,-36"
+   class="st2"
+   id="path4864"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 165.472,211.303 0,-36"
+   class="st2"
+   id="path4866"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 165.472,211.303 72,0"
+   class="st2"
+   id="path4868"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 237.472,211.303 0,-36"
+   class="st2"
+   id="path4870"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 165.472,175.303 72,0"
+   class="st2"
+   id="path4872"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 223.972,188.803 9,0 0,-9 -9,0 0,1.8 1.8,0 0,1.8 -1.8,0 0,1.8 1.8,0 0,1.8 -1.8,0 0,1.8 z m -1.8,-1.8 3.6,0 0,-1.8 -3.6,0 0,1.8 z m 0,-3.6 3.6,0 0,-1.8 -3.6,0 0,1.8 z"
+   class="st4"
+   id="path4883"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#mrkr20-50)"
+   inkscape:connector-curvature="0"
+   id="path4888"
+   class="st5"
+   d="m 201.402,83.744 0.09,26.67" /><rect
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   id="rect4893"
+   class="st4"
+   height="8.5039396"
+   width="6.3779502"
+   y="88.699989"
+   x="197.59801" /><rect
+   style="fill:none;stroke:none"
+   id="rect4900"
+   class="st9"
+   height="8.5039396"
+   width="99.212601"
+   y="108.25899"
+   x="205.01601" /><text
+   style="fill:#000000;font-family:Calibri;font-size:9.59999444px"
+   id="text4902"
+   v:langID="1031"
+   class="st10"
+   y="115.507"
+   x="209.01601"><v:paragraph /><v:tabList />OCHP Protocol</text>
+<path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   id="path4907"
+   class="st2"
+   d="m 201.472,175.303 0.03,-55.87" /><path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   id="path4909"
+   class="st2"
+   d="m 196.102,112.853 a 5.508,5.508 0 1 0 10.81,0" /><rect
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   id="rect4914"
+   class="st4"
+   height="8.5039396"
+   width="6.3779502"
+   y="133.20398"
+   x="198.213" /><path
+   d="m 123.3392,225.901 -93.54,0 93.54,0 z"
+   class="st1"
+   id="path4922"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 123.3392,225.901 -93.54,0 93.54,0 z"
+   class="st1"
+   id="path4927"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 123.3392,225.901 -93.54,0 93.54,0 z"
+   class="st1"
+   id="path4932"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 123.3425,225.901 0,-86.46 0,86.46 z"
+   class="st1"
+   id="path4937"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d=""
+   class="st2"
+   id="path4939"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 123.3392,225.901 0,-86.46 -93.54,0 0,86.46 93.54,0 z m -93.54,-86.46 4.5,-4.5 93.54,0 -4.5,4.5 -93.54,0 z m 93.54,86.46 4.5,-4.5 0,-86.46 -4.5,4.5 0,86.46 z m 4.5,-4.5 0,-86.46 -93.54,0 93.54,0 0,86.46 z"
+   class="st1"
+   id="path4946"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 29.7992,139.441 4.5,-4.5 93.54,0 -4.5,4.5 -93.54,0"
+   class="st2"
+   id="path4948"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 123.3392,225.901 4.5,-4.5 0,-86.46"
+   class="st2"
+   id="path4950"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 123.3392,139.441 0,86.46"
+   class="st2"
+   id="path4952"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 29.7992,139.441 0,86.46 93.54,0"
+   class="st2"
+   id="path4954"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><text
+   x="33.799198"
+   y="150.64101"
+   class="st3"
+   v:langID="1031"
+   id="text4956"
+   style="font-weight:bold;fill:#000000;font-family:Arial"><tspan
+     style="-inkscape-font-specification:Calibri;font-family:Calibri;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
+     id="tspan6981">NSP</tspan></text>
+<path
+   d="m 111.1535,211.303 -72,0 72,0 z"
+   class="st1"
+   id="path4964"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 111.1535,211.303 -72,0 72,0 z"
+   class="st1"
+   id="path4969"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 111.1535,211.303 -72,0 72,0 z"
+   class="st1"
+   id="path4974"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 111.1535,211.303 0,-36 0,36 z"
+   class="st1"
+   id="path4979"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d=""
+   class="st2"
+   id="path4981"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 111.1535,211.303 0,-36 -72,0 0,36 72,0 z m 0,0 0,-36 -72,0 72,0 0,36 z"
+   class="st1"
+   id="path4988"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 111.1535,211.303 0,-36"
+   class="st2"
+   id="path4990"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 39.1535,211.303 0,-36"
+   class="st2"
+   id="path4992"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 39.1535,211.303 72,0"
+   class="st2"
+   id="path4994"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 111.1535,211.303 0,-36"
+   class="st2"
+   id="path4996"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 39.1535,175.303 72,0"
+   class="st2"
+   id="path4998"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 97.6535,188.803 9,0 0,-9 -9,0 0,1.8 1.8,0 0,1.8 -1.8,0 0,1.8 1.8,0 0,1.8 -1.8,0 0,1.8 z m -1.8,-1.8 3.6,0 0,-1.8 -3.6,0 0,1.8 z m 0,-3.6 3.6,0 0,-1.8 -3.6,0 0,1.8 z"
+   class="st4"
+   id="path5009"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#mrkr20-50)"
+   inkscape:connector-curvature="0"
+   id="path5014"
+   class="st5"
+   d="m 74.7992,83.744 0.09,26.67" /><rect
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   id="rect5019"
+   class="st4"
+   height="8.5039396"
+   width="6.3779502"
+   y="88.699989"
+   x="71.468498" /><path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   id="path5024"
+   class="st2"
+   d="m 75.1535,175.303 -0.23,-55.87" /><path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   id="path5026"
+   class="st2"
+   d="m 69.5035,112.873 a 5.508,5.508 0 1 0 10.8,-0.04" /><rect
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   id="rect5031"
+   class="st4"
+   height="8.5039396"
+   width="6.3779502"
+   y="133.20398"
+   x="71.681099" /><rect
+   style="fill:none;stroke:none"
+   id="rect5038"
+   class="st9"
+   height="8.5039396"
+   width="99.212601"
+   y="108.25899"
+   x="78.059097" /><text
+   style="fill:#000000;font-family:Calibri;font-size:9.59999444px"
+   id="text5040"
+   v:langID="1031"
+   class="st10"
+   y="115.507"
+   x="82.059097"><v:paragraph /><v:tabList />OCHP Protocol</text>
+<path
+   d="m 380.90465,395.98 -360.07,0 360.07,0 z"
+   class="st1"
+   id="path5048"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 380.90465,395.98 -360.07,0 360.07,0 z"
+   class="st1"
+   id="path5053"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 380.90465,395.98 -360.07,0 360.07,0 z"
+   class="st1"
+   id="path5058"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 380.90565,395.98 0,-69.45 0,69.45 z"
+   class="st1"
+   id="path5063"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d=""
+   class="st2"
+   id="path5065"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 380.90465,395.98 0,-69.45 -360.07,0 0,69.45 360.07,0 z m -360.07,-69.45 4.5,-4.5 360.07,0 -4.5,4.5 -360.07,0 z m 360.07,69.45 4.5,-4.5 0,-69.45 -4.5,4.5 0,69.45 z m 4.5,-4.5 0,-69.45 -360.07,0 360.07,0 0,69.45 z"
+   class="st1"
+   id="path5072"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 20.83465,326.53 4.5,-4.5 360.07,0 -4.5,4.5 -360.07,0"
+   class="st2"
+   id="path5074"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 380.90465,395.98 4.5,-4.5 0,-69.45"
+   class="st2"
+   id="path5076"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 380.90465,326.53 0,69.45"
+   class="st2"
+   id="path5078"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 20.83465,326.53 0,69.45 360.07,0"
+   class="st2"
+   id="path5080"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><text
+   x="24.83465"
+   y="337.73001"
+   class="st3"
+   v:langID="1031"
+   id="text5082"
+   style="font-weight:bold;fill:#000000;font-family:Arial"><tspan
+     style="-inkscape-font-specification:Calibri;font-family:Calibri;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
+     id="tspan6987">EV user</tspan></text>
+<path
+   d="m 110.7638,384.6414 -72,0 72,0 z"
+   class="st1"
+   id="path5090"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 110.7638,384.6414 -72,0 72,0 z"
+   class="st1"
+   id="path5095"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 110.7638,384.6414 -72,0 72,0 z"
+   class="st1"
+   id="path5100"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 110.7638,384.6414 0,-36 0,36 z"
+   class="st1"
+   id="path5105"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d=""
+   class="st2"
+   id="path5107"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 110.7638,384.6414 0,-36 -72,0 0,36 72,0 z m 0,0 0,-36 -72,0 72,0 0,36 z"
+   class="st1"
+   id="path5114"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 110.7638,384.6414 0,-36"
+   class="st2"
+   id="path5116"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 38.7638,384.6414 0,-36"
+   class="st2"
+   id="path5118"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 38.7638,384.6414 72,0"
+   class="st2"
+   id="path5120"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 110.7638,384.6414 0,-36"
+   class="st2"
+   id="path5122"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 38.7638,348.6414 72,0"
+   class="st2"
+   id="path5124"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 97.2638,362.1414 9,0 0,-9 -9,0 0,1.8 1.8,0 0,1.8 -1.8,0 0,1.8 1.8,0 0,1.8 -1.8,0 0,1.8 z m -1.8,-1.8 3.6,0 0,-1.8 -3.6,0 0,1.8 z m 0,-3.6 3.6,0 0,-1.8 -3.6,0 0,1.8 z"
+   class="st4"
+   id="path5135"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 238.039,384.6414 -72,0 72,0 z"
+   class="st1"
+   id="path5143"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 238.039,384.6414 -72,0 72,0 z"
+   class="st1"
+   id="path5148"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 238.039,384.6414 -72,0 72,0 z"
+   class="st1"
+   id="path5153"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 238.039,384.6414 0,-36 0,36 z"
+   class="st1"
+   id="path5158"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d=""
+   class="st2"
+   id="path5160"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 238.039,384.6414 0,-36 -72,0 0,36 72,0 z m 0,0 0,-36 -72,0 72,0 0,36 z"
+   class="st1"
+   id="path5167"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 238.039,384.6414 0,-36"
+   class="st2"
+   id="path5169"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 166.039,384.6414 0,-36"
+   class="st2"
+   id="path5171"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 166.039,384.6414 72,0"
+   class="st2"
+   id="path5173"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 238.039,384.6414 0,-36"
+   class="st2"
+   id="path5175"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 166.039,348.6414 72,0"
+   class="st2"
+   id="path5177"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 224.539,362.1414 9,0 0,-9 -9,0 0,1.8 1.8,0 0,1.8 -1.8,0 0,1.8 1.8,0 0,1.8 -1.8,0 0,1.8 z m -1.8,-1.8 3.6,0 0,-1.8 -3.6,0 0,1.8 z m 0,-3.6 3.6,0 0,-1.8 -3.6,0 0,1.8 z"
+   class="st4"
+   id="path5186"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 353.126,384.6414 -72,0 72,0 z"
+   class="st1"
+   id="path5194"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 353.126,384.6414 -72,0 72,0 z"
+   class="st1"
+   id="path5199"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 353.126,384.6414 -72,0 72,0 z"
+   class="st1"
+   id="path5204"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 353.126,384.6414 0,-36 0,36 z"
+   class="st1"
+   id="path5209"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d=""
+   class="st2"
+   id="path5211"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 353.126,384.6414 0,-36 -72,0 0,36 72,0 z m 0,0 0,-36 -72,0 72,0 0,36 z"
+   class="st1"
+   id="path5218"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 353.126,384.6414 0,-36"
+   class="st2"
+   id="path5220"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 281.126,384.6414 0,-36"
+   class="st2"
+   id="path5222"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 281.126,384.6414 72,0"
+   class="st2"
+   id="path5224"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 353.126,384.6414 0,-36"
+   class="st2"
+   id="path5226"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 281.126,348.6414 72,0"
+   class="st2"
+   id="path5228"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 339.626,362.1414 9,0 0,-9 -9,0 0,1.8 1.8,0 0,1.8 -1.8,0 0,1.8 1.8,0 0,1.8 -1.8,0 0,1.8 z m -1.8,-1.8 3.6,0 0,-1.8 -3.6,0 0,1.8 z m 0,-3.6 3.6,0 0,-1.8 -3.6,0 0,1.8 z"
+   class="st4"
+   id="path5239"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round" /><path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:5.04000000000000000, 3.60000000000000010;marker-start:url(#mrkr3-361)"
+   inkscape:connector-curvature="0"
+   id="path5246"
+   class="st11"
+   d="m 202.043,348.6414 -0.57,-137.34" /><rect
+   style="fill:#ffffff;stroke:none"
+   id="rect5248"
+   class="st13"
+   height="9.5998497"
+   width="34.198799"
+   y="273.24042"
+   x="184.70081"
+   v:rectContext="textBkgnd" /><text
+   style="fill:#000000;font-family:Calibri;font-size:9.59999444px"
+   id="text5250"
+   v:langID="1031"
+   class="st14"
+   y="280.44141"
+   x="184.703"><v:paragraph
+   v:horizAlign="1" /><v:tabList />«manage»</text>
+<path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#mrkr20-50)"
+   inkscape:connector-curvature="0"
+   id="path5255"
+   class="st5"
+   d="m 75.1535,211.303 0.09,26.67" /><path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   id="path5260"
+   class="st2"
+   d="m 74.7638,348.6414 0.47,-101.65" /><path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   id="path5262"
+   class="st2"
+   d="m 69.8638,240.3914 a 5.508,5.508 0 1 0 10.8,0.05" /><rect
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   id="rect5267"
+   class="st4"
+   height="8.5039396"
+   width="6.3779502"
+   y="221.64499"
+   x="71.9646" /><path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#mrkr20-50)"
+   inkscape:connector-curvature="0"
+   id="path5272"
+   class="st5"
+   d="m 317.126,277.492 0.09,26.67" /><path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   id="path5277"
+   class="st2"
+   d="m 317.126,348.6414 0.09,-35.46" /><path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   id="path5279"
+   class="st2"
+   d="m 311.836,306.5914 a 5.508,5.508 0 1 0 10.8,0.03" /><rect
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   id="rect5284"
+   class="st4"
+   height="8.5039396"
+   width="6.3779502"
+   y="285.42499"
+   x="314.185" /><rect
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   id="rect5289"
+   class="st4"
+   height="8.5039396"
+   width="6.3779502"
+   y="319.62949"
+   x="314.185" /><rect
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   id="rect5294"
+   class="st4"
+   height="8.5039396"
+   width="6.3779502"
+   y="319.91287"
+   x="71.468498" /><rect
+   style="fill:none;stroke:none"
+   id="rect5301"
+   class="st9"
+   height="8.5039396"
+   width="99.212601"
+   y="238.65298"
+   x="80.433098" /><text
+   style="fill:#000000;font-family:Calibri;font-size:9.59999444px"
+   id="text5303"
+   v:langID="1031"
+   class="st10"
+   y="245.901"
+   x="84.433098"><v:paragraph /><v:tabList />Navigation Data</text>
+<rect
+   style="fill:none;stroke:none"
+   id="rect5310"
+   class="st9"
+   height="8.5039396"
+   width="99.212601"
+   y="303.84998"
+   x="322.79501" /><text
+   style="fill:#000000;font-family:Calibri;font-size:9.59999444px"
+   id="text5312"
+   v:langID="1031"
+   class="st10"
+   y="311.09799"
+   x="326.79501"><v:paragraph /><v:tabList />Energy</text>
+<path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#mrkr20-50)"
+   inkscape:connector-curvature="0"
+   id="path5317"
+   class="st5"
+   d="m 299.126,277.492 0.09,26.67" /><path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   id="path5322"
+   class="st2"
+   d="m 220.039,348.6414 74.3,-38.43" /><path
+   style="stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   id="path5324"
+   class="st2"
+   d="m 297.709,302.3814 a 5.508,5.508 0 1 0 4.96,9.6" /><rect
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   id="rect5329"
+   class="st4"
+   height="8.5039396"
+   width="6.3779502"
+   y="285.42499"
+   x="295.15701" /><rect
+   style="fill:#ffffff;stroke:#000000;stroke-width:0.72000003000000001;stroke-linecap:round;stroke-linejoin:round"
+   id="rect5334"
+   class="st4"
+   height="8.5039396"
+   width="6.3779502"
+   y="-73.354401"
+   x="411.37729"
+   transform="matrix(0.5,0.8660254,-0.8660254,0.5,0,0)" /><rect
+   style="fill:none;stroke:none"
+   id="rect5341"
+   class="st9"
+   height="8.5039396"
+   width="99.212601"
+   y="303.84998"
+   x="193.819" /><text
+   style="font-size:9.59999466px;fill:#000000;font-family:Calibri"
+   id="text5343"
+   v:langID="1031"
+   class="st10"
+   y="311.09799"
+   x="241.16899"><v:paragraph
+   v:horizAlign="2" /><v:tabList />Token Data</text>
+
+<text
+   xml:space="preserve"
+   style="font-size:8.79999446999999970px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+   x="42.245541"
+   y="184.20882"
+   id="text6854"
+   sodipodi:linespacing="125%"><tspan
+     sodipodi:role="line"
+     id="tspan6856"
+     x="42.245541"
+     y="184.20882">Navigation </tspan><tspan
+     sodipodi:role="line"
+     x="42.245541"
+     y="195.20882"
+     id="tspan6858">Plattform </tspan><tspan
+     sodipodi:role="line"
+     x="42.245541"
+     y="206.2088"
+     id="tspan6860">System (NPS)</tspan></text>
+<text
+   sodipodi:linespacing="125%"
+   id="text6862"
+   y="184.83008"
+   x="168.36116"
+   style="font-size:8.79999446999999970px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+   xml:space="preserve"><tspan
+     id="tspan6868"
+     y="184.83008"
+     x="168.36116"
+     sodipodi:role="line">Master Data </tspan><tspan
+     y="195.83008"
+     x="168.36116"
+     sodipodi:role="line"
+     id="tspan6883">Management </tspan><tspan
+     y="206.83006"
+     x="168.36116"
+     sodipodi:role="line"
+     id="tspan6885">System (MDM)</tspan></text>
+<text
+   xml:space="preserve"
+   style="font-size:8.79999446999999970px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+   x="283.29413"
+   y="184.83008"
+   id="text6870"
+   sodipodi:linespacing="125%"><tspan
+     sodipodi:role="line"
+     x="283.29413"
+     y="184.83008"
+     id="tspan6876">Charge Point </tspan><tspan
+     sodipodi:role="line"
+     x="283.29413"
+     y="195.83008"
+     id="tspan6892">Management </tspan><tspan
+     sodipodi:role="line"
+     x="283.29413"
+     y="206.83006"
+     id="tspan6894">System (CMS)</tspan></text>
+<text
+   xml:space="preserve"
+   style="font-size:8.79999446999999970px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+   x="41.025337"
+   y="357.30673"
+   id="text6854-1"
+   sodipodi:linespacing="125%"><tspan
+     sodipodi:role="line"
+     x="41.025337"
+     y="357.30673"
+     id="tspan6860-0">Consumer </tspan><tspan
+     sodipodi:role="line"
+     x="41.025337"
+     y="368.30673"
+     id="tspan6975">Navigation </tspan><tspan
+     sodipodi:role="line"
+     x="41.025337"
+     y="379.30673"
+     id="tspan6977">System</tspan></text>
+<text
+   sodipodi:linespacing="125%"
+   id="text6923"
+   y="357.30673"
+   x="169.00473"
+   style="font-size:8.79999446999999970px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+   xml:space="preserve"><tspan
+     id="tspan6929"
+     y="357.30673"
+     x="169.00473"
+     sodipodi:role="line">Access</tspan><tspan
+     y="368.30673"
+     x="169.00473"
+     sodipodi:role="line"
+     id="tspan6968">Token</tspan></text>
+<text
+   xml:space="preserve"
+   style="font-size:8.79999446999999970px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+   x="283.93768"
+   y="357.30673"
+   id="text6931"
+   sodipodi:linespacing="125%"><tspan
+     sodipodi:role="line"
+     x="283.93768"
+     y="357.30673"
+     id="tspan6937">Battery </tspan><tspan
+     sodipodi:role="line"
+     x="283.93768"
+     y="368.30673"
+     id="tspan6959">Management </tspan><tspan
+     sodipodi:role="line"
+     x="283.93768"
+     y="379.30673"
+     id="tspan6961">System</tspan></text>
+<text
+   sodipodi:linespacing="125%"
+   id="text6939"
+   y="250.45015"
+   x="283.93768"
+   style="font-size:8.79999446999999970px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+   xml:space="preserve"><tspan
+     id="tspan6945"
+     y="250.45015"
+     x="283.93768"
+     sodipodi:role="line">Charge </tspan><tspan
+     y="261.45013"
+     x="283.93768"
+     sodipodi:role="line"
+     id="tspan6952">Point (CP)</tspan></text>
 </svg>

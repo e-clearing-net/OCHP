@@ -1,19 +1,78 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 <!-- Generiert durch Microsoft Visio 11.0, SVG Export, v1.0 CDRvalidation.svg CDR States -->
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
-		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="8.01715in" height="2.29521in"
-		viewBox="0 0 577.235 165.255" xml:space="preserve" color-interpolation-filters="sRGB" class="st11">
-	<v:documentProperties v:langID="1031" v:metric="true" v:viewMarkup="false">
+
+<svg
+   xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="8.01715in"
+   height="2.29521in"
+   viewBox="0 0 577.235 165.255"
+   xml:space="preserve"
+   color-interpolation-filters="sRGB"
+   class="st11"
+   id="svg8145"
+   version="1.1"
+   inkscape:version="0.48.2 r9819"
+   sodipodi:docname="CDRvalidation.svg"
+   inkscape:export-filename="H:\Dokumente\GitHub\OCHP\media\CDRvalidation.png"
+   inkscape:export-xdpi="150"
+   inkscape:export-ydpi="150"><metadata
+   id="metadata8384"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1662"
+   inkscape:window-height="970"
+   id="namedview8382"
+   showgrid="false"
+   inkscape:snap-object-midpoints="true"
+   inkscape:snap-center="true"
+   inkscape:snap-bbox="true"
+   inkscape:snap-bbox-midpoints="true"
+   inkscape:zoom="1.37"
+   inkscape:cx="360.77176"
+   inkscape:cy="169.22226"
+   inkscape:window-x="1"
+   inkscape:window-y="1"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg8145" />
+	<v:documentProperties
+   v:langID="1031"
+   v:metric="true"
+   v:viewMarkup="false">
 		<v:userDefs>
-			<v:ud v:nameU="msvNoAutoConnect" v:val="VT0(0):26"/>
-			<v:ud v:nameU="visV14CFF" v:prompt="" v:val="VT0(1):26"/>
-			<v:ud v:nameU="visFlowchartType" v:prompt="" v:val="VT4(CrossFunctional)"/>
+			<v:ud
+   v:nameU="msvNoAutoConnect"
+   v:val="VT0(0):26" />
+			<v:ud
+   v:nameU="visV14CFF"
+   v:prompt=""
+   v:val="VT0(1):26" />
+			<v:ud
+   v:nameU="visFlowchartType"
+   v:prompt=""
+   v:val="VT4(CrossFunctional)" />
 		</v:userDefs>
 	</v:documentProperties>
 
-	<style type="text/css">
-	<![CDATA[
+	<style
+   type="text/css"
+   id="style8147">
+	
 		.st1 {fill:#ffffff;stroke:#404040;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
 		.st2 {fill:none;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
 		.st3 {fill:#000000;font-family:Calibri;font-size:0.666664em}
@@ -25,367 +84,1019 @@
 		.st9 {font-size:1em}
 		.st10 {fill:#ffffff;stroke:#404040;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.24}
 		.st11 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
-	]]>
+	
 	</style>
 
-	<defs id="Patterns_And_Gradients">
-		<linearGradient id="grad30-33" v:fillPattern="30" v:foreground="#f0f0f0" v:background="#ffffff" x1="0" y1="1" x2="0" y2="0">
-			<stop offset="0" style="stop-color:#f0f0f0;stop-opacity:1"/>
-			<stop offset="1" style="stop-color:#ffffff;stop-opacity:1"/>
+	<defs
+   id="Patterns_And_Gradients">
+		<linearGradient
+   id="grad30-33"
+   v:fillPattern="30"
+   v:foreground="#f0f0f0"
+   v:background="#ffffff"
+   x1="0"
+   y1="1"
+   x2="0"
+   y2="0">
+			<stop
+   offset="0"
+   style="stop-color:#f0f0f0;stop-opacity:1"
+   id="stop8151" />
+			<stop
+   offset="1"
+   style="stop-color:#ffffff;stop-opacity:1"
+   id="stop8153" />
 		</linearGradient>
-	</defs>
-	<defs id="Markers">
-		<g id="lend5">
-			<path d="M 2 1 L 0 0 L 1.98117 -0.993387 C 1.67173 -0.364515 1.67301 0.372641 1.98465 1.00043 " style="stroke:none"/>
+	
+		<v:userDefs>
+			<v:ud
+   v:val="VT0(36):26"
+   v:nameU="msvThemeColors" />
+			<v:ud
+   v:val="VT0(16):26"
+   v:nameU="msvThemeEffects" />
+			<v:ud
+   v:val="VT0(0):26"
+   v:nameU="msvThemeOrder" />
+		</v:userDefs>
+		
+		<v:pageProperties
+   v:shadowOffsetY="-8.50394"
+   v:shadowOffsetX="8.50394"
+   v:drawingUnits="24"
+   v:pageScale="0.0393701"
+   v:drawingScale="0.0393701" />
+		<v:layer
+   v:index="0"
+   v:name="Verbinder" />
+		<v:layer
+   v:index="1"
+   v:name="Flussdiagramm" />
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+			<v:userDefs>
+				<v:ud
+   v:nameU="UMLShapeType"
+   v:val="VT0(40):26" />
+				<v:ud
+   v:nameU="UMLObjectGUID"
+   v:val="VT4()" />
+				<v:ud
+   v:nameU="UMLError"
+   v:val="VT0(0):26" />
+				<v:ud
+   v:nameU="UMLPresOption1"
+   v:val="VT0(1):26" />
+				<v:ud
+   v:nameU="UMLSuppressOption"
+   v:val="VT0(32):26" />
+				<v:ud
+   v:nameU="UMLVersion"
+   v:val="VT0(2):26" />
+				<v:ud
+   v:nameU="UMLAutoLockTextEdit"
+   v:val="VT0(1):26" />
+				<v:ud
+   v:nameU="visDescription"
+   v:val="VT4(Stellt eine Bedingung dar, während der ein Objekt eine Bedingung erfüllt, eine Aktion ausführt oder auf ein Ereignis wartet.)" />
+				<v:ud
+   v:nameU="visVersion"
+   v:val="VT0(14):26" />
+				<v:ud
+   v:nameU="msvThemeColors"
+   v:val="VT0(36):26" />
+			</v:userDefs>
+			
+			
+			
+			
+		
+			<v:userDefs>
+				<v:ud
+   v:nameU="UMLShapeType"
+   v:val="VT0(40):26" />
+				<v:ud
+   v:nameU="UMLObjectGUID"
+   v:val="VT4()" />
+				<v:ud
+   v:nameU="UMLError"
+   v:val="VT0(0):26" />
+				<v:ud
+   v:nameU="UMLPresOption1"
+   v:val="VT0(1):26" />
+				<v:ud
+   v:nameU="UMLSuppressOption"
+   v:val="VT0(32):26" />
+				<v:ud
+   v:nameU="UMLVersion"
+   v:val="VT0(2):26" />
+				<v:ud
+   v:nameU="UMLAutoLockTextEdit"
+   v:val="VT0(1):26" />
+				<v:ud
+   v:nameU="visDescription"
+   v:val="VT4(Stellt eine Bedingung dar, während der ein Objekt eine Bedingung erfüllt, eine Aktion ausführt oder auf ein Ereignis wartet.)" />
+				<v:ud
+   v:nameU="visVersion"
+   v:val="VT0(14):26" />
+				<v:ud
+   v:nameU="msvThemeColors"
+   v:val="VT0(36):26" />
+			</v:userDefs>
+			
+			
+			
+			
+		
+			
+			<v:userDefs>
+				<v:ud
+   v:nameU="UMLShapeType"
+   v:val="VT0(43):26" />
+				<v:ud
+   v:nameU="UMLObjectGUID"
+   v:val="VT4()" />
+				<v:ud
+   v:nameU="UMLError"
+   v:val="VT0(0):26" />
+				<v:ud
+   v:nameU="UMLPresOptions"
+   v:val="VT0(3):26" />
+				<v:ud
+   v:nameU="UMLVersion"
+   v:val="VT0(2):26" />
+				<v:ud
+   v:nameU="visDescription"
+   v:val="VT4(Stellt das letzte Vorkommen eines Ereignisses beim Einschließungszustand oder die Beendigung einer Aktivität im Einschließungszustand dar.)" />
+				<v:ud
+   v:nameU="visVersion"
+   v:val="VT0(14):26" />
+				<v:ud
+   v:nameU="msvThemeColors"
+   v:val="VT0(36):26" />
+			</v:userDefs>
+			
+			
+			
+		
+			<v:userDefs>
+				<v:ud
+   v:nameU="UMLShapeType"
+   v:val="VT0(40):26" />
+				<v:ud
+   v:nameU="UMLObjectGUID"
+   v:val="VT4()" />
+				<v:ud
+   v:nameU="UMLError"
+   v:val="VT0(0):26" />
+				<v:ud
+   v:nameU="UMLPresOption1"
+   v:val="VT0(1):26" />
+				<v:ud
+   v:nameU="UMLSuppressOption"
+   v:val="VT0(32):26" />
+				<v:ud
+   v:nameU="UMLVersion"
+   v:val="VT0(2):26" />
+				<v:ud
+   v:nameU="UMLAutoLockTextEdit"
+   v:val="VT0(1):26" />
+				<v:ud
+   v:nameU="visDescription"
+   v:val="VT4(Stellt eine Bedingung dar, während der ein Objekt eine Bedingung erfüllt, eine Aktion ausführt oder auf ein Ereignis wartet.)" />
+				<v:ud
+   v:nameU="visVersion"
+   v:val="VT0(14):26" />
+				<v:ud
+   v:nameU="msvThemeColors"
+   v:val="VT0(36):26" />
+			</v:userDefs>
+			
+			
+			
+			
+		
+			
+			
+			<v:userDefs>
+				<v:ud
+   v:nameU="msvThemeColors"
+   v:val="VT0(36):26" />
+				<v:ud
+   v:nameU="msvThemeEffects"
+   v:val="VT0(16):26" />
+			</v:userDefs>
+			<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:tabSpace="42.5197" />
+			<v:textRect
+   cx="54.1739"
+   cy="124.451"
+   width="51.32"
+   height="27.2035" />
+			
+			
+					
+			
+			
+			<v:userDefs>
+				<v:ud
+   v:nameU="msvThemeColors"
+   v:val="VT0(36):26" />
+				<v:ud
+   v:nameU="msvThemeEffects"
+   v:val="VT0(16):26" />
+			</v:userDefs>
+			<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:tabSpace="42.5197" />
+			<v:textRect
+   cx="33.9619"
+   cy="161.301"
+   width="46.27"
+   height="27.2035" />
+			
+			
+					
+			
+			
+			<v:userDefs>
+				<v:ud
+   v:nameU="msvThemeColors"
+   v:val="VT0(36):26" />
+				<v:ud
+   v:nameU="msvThemeEffects"
+   v:val="VT0(16):26" />
+			</v:userDefs>
+			<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:tabSpace="42.5197" />
+			<v:textRect
+   cx="16.8661"
+   cy="188.1"
+   width="51.71"
+   height="27.2035" />
+			
+			
+					
+			<v:userDefs>
+				<v:ud
+   v:nameU="UMLShapeType"
+   v:val="VT0(40):26" />
+				<v:ud
+   v:nameU="UMLObjectGUID"
+   v:val="VT4()" />
+				<v:ud
+   v:nameU="UMLError"
+   v:val="VT0(0):26" />
+				<v:ud
+   v:nameU="UMLPresOption1"
+   v:val="VT0(1):26" />
+				<v:ud
+   v:nameU="UMLSuppressOption"
+   v:val="VT0(32):26" />
+				<v:ud
+   v:nameU="UMLVersion"
+   v:val="VT0(2):26" />
+				<v:ud
+   v:nameU="UMLAutoLockTextEdit"
+   v:val="VT0(1):26" />
+				<v:ud
+   v:nameU="visDescription"
+   v:val="VT4(Stellt eine Bedingung dar, während der ein Objekt eine Bedingung erfüllt, eine Aktion ausführt oder auf ein Ereignis wartet.)" />
+				<v:ud
+   v:nameU="visVersion"
+   v:val="VT0(14):26" />
+				<v:ud
+   v:nameU="msvThemeColors"
+   v:val="VT0(36):26" />
+			</v:userDefs>
+			
+			
+			
+			
+		
+			
+			
+			<v:userDefs>
+				<v:ud
+   v:nameU="msvThemeColors"
+   v:val="VT0(36):26" />
+				<v:ud
+   v:nameU="msvThemeEffects"
+   v:val="VT0(16):26" />
+			</v:userDefs>
+			<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:tabSpace="42.5197" />
+			<v:textRect
+   cx="40.6179"
+   cy="164.547"
+   width="65.36"
+   height="17.6036" />
+			
+			
+					
+			<v:userDefs>
+				<v:ud
+   v:nameU="UMLShapeType"
+   v:val="VT0(40):26" />
+				<v:ud
+   v:nameU="UMLObjectGUID"
+   v:val="VT4()" />
+				<v:ud
+   v:nameU="UMLError"
+   v:val="VT0(0):26" />
+				<v:ud
+   v:nameU="UMLPresOption1"
+   v:val="VT0(1):26" />
+				<v:ud
+   v:nameU="UMLSuppressOption"
+   v:val="VT0(32):26" />
+				<v:ud
+   v:nameU="UMLVersion"
+   v:val="VT0(2):26" />
+				<v:ud
+   v:nameU="UMLAutoLockTextEdit"
+   v:val="VT0(1):26" />
+				<v:ud
+   v:nameU="visDescription"
+   v:val="VT4(Stellt eine Bedingung dar, während der ein Objekt eine Bedingung erfüllt, eine Aktion ausführt oder auf ein Ereignis wartet.)" />
+				<v:ud
+   v:nameU="visVersion"
+   v:val="VT0(14):26" />
+				<v:ud
+   v:nameU="msvThemeColors"
+   v:val="VT0(36):26" />
+			</v:userDefs>
+			
+			
+			
+			
+		
+			
+			
+			<v:userDefs>
+				<v:ud
+   v:nameU="msvThemeColors"
+   v:val="VT0(36):26" />
+				<v:ud
+   v:nameU="msvThemeEffects"
+   v:val="VT0(16):26" />
+			</v:userDefs>
+			<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:tabSpace="42.5197" />
+			<v:textRect
+   cx="81.2635"
+   cy="151.791"
+   width="78.92"
+   height="17.6036" />
+			
+			
+					
+			
+			<v:userDefs>
+				<v:ud
+   v:nameU="UMLShapeType"
+   v:val="VT0(42):26" />
+				<v:ud
+   v:nameU="UMLObjectGUID"
+   v:val="VT4()" />
+				<v:ud
+   v:nameU="UMLError"
+   v:val="VT0(0):26" />
+				<v:ud
+   v:nameU="UMLPresOptions"
+   v:val="VT0(3):26" />
+				<v:ud
+   v:nameU="UMLVersion"
+   v:val="VT0(2):26" />
+				<v:ud
+   v:nameU="visDescription"
+   v:val="VT4(Stellt den Anfangspunkt eines neu erstellten Objekts dar. )" />
+				<v:ud
+   v:nameU="visVersion"
+   v:val="VT0(14):26" />
+				<v:ud
+   v:nameU="msvThemeColors"
+   v:val="VT0(36):26" />
+			</v:userDefs>
+			
+		
+			
+			
+			<v:userDefs>
+				<v:ud
+   v:nameU="msvThemeColors"
+   v:val="VT0(36):26" />
+				<v:ud
+   v:nameU="msvThemeEffects"
+   v:val="VT0(16):26" />
+			</v:userDefs>
+			<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:tabSpace="42.5197" />
+			<v:textRect
+   cx="29.6414"
+   cy="147.128"
+   width="48.93"
+   height="27.2035" />
+			
+			
+					
+			
+			
+			<v:userDefs>
+				<v:ud
+   v:nameU="msvThemeColors"
+   v:val="VT0(36):26" />
+				<v:ud
+   v:nameU="msvThemeEffects"
+   v:val="VT0(16):26" />
+			</v:userDefs>
+			<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:tabSpace="42.5197" />
+			<v:textRect
+   cx="26.2951"
+   cy="137.224"
+   width="41.91"
+   height="27.2035" />
+			
+			
+					
+			
+			<v:userDefs>
+				<v:ud
+   v:nameU="msvThemeColors"
+   v:val="VT0(36):26" />
+				<v:ud
+   v:nameU="msvThemeEffects"
+   v:val="VT0(16):26" />
+			</v:userDefs>
+			
+		
+				
+				
+				<v:userDefs>
+					<v:ud
+   v:val="VT0(36):26"
+   v:nameU="msvThemeColors" />
+				</v:userDefs>
+				<v:textBlock
+   v:tabSpace="42.5197"
+   v:margins="rect(4,4,4,4)" />
+				<v:textRect
+   height="25.2"
+   width="54"
+   cy="152.655"
+   cx="27" />
+				
+							
+				
+				<v:userDefs>
+					<v:ud
+   v:val="VT0(36):26"
+   v:nameU="msvThemeColors" />
+				</v:userDefs>
+				
+			
+				
+				<v:userDefs>
+					<v:ud
+   v:val="VT0(36):26"
+   v:nameU="msvThemeColors" />
+				</v:userDefs>
+				
+			
+				
+				
+				<v:userDefs>
+					<v:ud
+   v:val="VT0(36):26"
+   v:nameU="msvThemeColors" />
+				</v:userDefs>
+				<v:textBlock
+   v:tabSpace="42.5197"
+   v:margins="rect(4,4,4,4)" />
+				<v:textRect
+   height="25.2"
+   width="60.8"
+   cy="152.655"
+   cx="30.3978" />
+				
+							
+				
+				<v:userDefs>
+					<v:ud
+   v:val="VT0(36):26"
+   v:nameU="msvThemeColors" />
+				</v:userDefs>
+				
+			
+				
+				<v:userDefs>
+					<v:ud
+   v:val="VT0(36):26"
+   v:nameU="msvThemeColors" />
+				</v:userDefs>
+				
+			
+				
+				
+				<v:userDefs>
+					<v:ud
+   v:val="VT0(36):26"
+   v:nameU="msvThemeColors" />
+				</v:userDefs>
+				<v:textBlock
+   v:tabSpace="42.5197"
+   v:margins="rect(4,4,4,4)" />
+				<v:textRect
+   height="25.2"
+   width="54"
+   cy="152.655"
+   cx="27" />
+				
+							
+				
+				<v:userDefs>
+					<v:ud
+   v:val="VT0(36):26"
+   v:nameU="msvThemeColors" />
+				</v:userDefs>
+				
+			
+				
+				<v:userDefs>
+					<v:ud
+   v:val="VT0(36):26"
+   v:nameU="msvThemeColors" />
+				</v:userDefs>
+				
+			
+				
+				
+				<v:userDefs>
+					<v:ud
+   v:val="VT0(36):26"
+   v:nameU="msvThemeColors" />
+				</v:userDefs>
+				<v:textBlock
+   v:tabSpace="42.5197"
+   v:margins="rect(4,4,4,4)" />
+				<v:textRect
+   height="25.2"
+   width="54"
+   cy="152.655"
+   cx="27" />
+				
+							
+				
+				<v:userDefs>
+					<v:ud
+   v:val="VT0(36):26"
+   v:nameU="msvThemeColors" />
+				</v:userDefs>
+				
+			
+				
+				<v:userDefs>
+					<v:ud
+   v:val="VT0(36):26"
+   v:nameU="msvThemeColors" />
+				</v:userDefs>
+				
+			
+				
+				
+				<v:userDefs>
+					<v:ud
+   v:val="VT0(36):26"
+   v:nameU="msvThemeColors" />
+				</v:userDefs>
+				<v:textBlock
+   v:tabSpace="42.5197"
+   v:margins="rect(4,4,4,4)" />
+				<v:textRect
+   height="25.2"
+   width="54"
+   cy="152.655"
+   cx="27" />
+				
+							
+				
+				<v:userDefs>
+					<v:ud
+   v:val="VT0(36):26"
+   v:nameU="msvThemeColors" />
+				</v:userDefs>
+				
+			
+				
+				<v:userDefs>
+					<v:ud
+   v:val="VT0(36):26"
+   v:nameU="msvThemeColors" />
+				</v:userDefs>
+				
+			</defs>
+	<defs
+   id="Markers">
+		<g
+   id="lend5">
+			<path
+   d="M 2 1 L 0 0 L 1.98117 -0.993387 C 1.67173 -0.364515 1.67301 0.372641 1.98465 1.00043 "
+   style="stroke:none"
+   id="path8157" />
 		</g>
-		<marker id="mrkr5-36" class="st7" v:arrowType="5" v:arrowSize="2" v:setback="6.16" refX="-6.16" orient="auto"
-				markerUnits="strokeWidth" overflow="visible">
-			<use xlink:href="#lend5" transform="scale(-3.52,-3.52) "/>
+		<marker
+   id="mrkr5-36"
+   class="st7"
+   v:arrowType="5"
+   v:arrowSize="2"
+   v:setback="6.16"
+   refX="-6.16"
+   orient="auto"
+   markerUnits="strokeWidth"
+   overflow="visible">
+			<use
+   xlink:href="#lend5"
+   transform="scale(-3.52,-3.52) "
+   id="use8160" />
 		</marker>
 	</defs>
-	<g v:mID="5" v:index="1" v:groupContext="foregroundPage">
-		<v:userDefs>
-			<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-			<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
-			<v:ud v:nameU="msvThemeOrder" v:val="VT0(0):26"/>
-		</v:userDefs>
-		<title>CDR States</title>
-		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
-				v:shadowOffsetY="-8.50394"/>
-		<v:layer v:name="Verbinder" v:index="0"/>
-		<v:layer v:name="Flussdiagramm" v:index="1"/>
-		<g id="group5-1" transform="translate(83.9603,-99.5104)" v:mID="5" v:groupContext="group">
-			<v:userDefs>
-				<v:ud v:nameU="UMLShapeType" v:val="VT0(40):26"/>
-				<v:ud v:nameU="UMLObjectGUID" v:val="VT4()"/>
-				<v:ud v:nameU="UMLError" v:val="VT0(0):26"/>
-				<v:ud v:nameU="UMLPresOption1" v:val="VT0(1):26"/>
-				<v:ud v:nameU="UMLSuppressOption" v:val="VT0(32):26"/>
-				<v:ud v:nameU="UMLVersion" v:val="VT0(2):26"/>
-				<v:ud v:nameU="UMLAutoLockTextEdit" v:val="VT0(1):26"/>
-				<v:ud v:nameU="visDescription"
-						v:val="VT4(Stellt eine Bedingung dar, während der ein Objekt eine Bedingung erfüllt, eine Aktion ausführt oder auf ein Ereignis wartet.)"/>
-				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
-				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-			</v:userDefs>
-			<title>Zustand.5</title>
-			<g id="shape6-2" v:mID="6" v:groupContext="shape">
-				<title>Tabelle.6</title>
-				<v:userDefs>
-					<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				</v:userDefs>
-				<path d="M9 165.26 L45 165.26 A9 9 -180 0 0 54 156.26 L54 148.74 A9 9 -180 0 0 45 139.74 L9 139.74 A9 9 -180 0 0
-							 0 148.74 L0 156.26 A9 9 -180 0 0 9 165.26 Z" class="st1"/>
-			</g>
-			<g id="shape7-4" v:mID="7" v:groupContext="shape">
-				<title>Transitions</title>
-				<v:userDefs>
-					<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				</v:userDefs>
-				<path d="M0 165.26 L53.86 165.26 L0 165.26 Z" class="st2"/>
-			</g>
-			<g id="shape8-6" v:mID="8" v:groupContext="shape">
-				<title>Name</title>
-				<desc>new</desc>
-				<v:userDefs>
-					<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				</v:userDefs>
-				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-				<v:textRect cx="27" cy="152.655" width="54" height="25.2"/>
-				<rect x="0" y="140.055" width="54" height="25.2" class="st2"/>
-				<text x="20.05" y="155.06" class="st3" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>new</text>			</g>
-		</g>
-		<g id="group9-9" transform="translate(209.306,-99.5104)" v:mID="9" v:groupContext="group">
-			<v:userDefs>
-				<v:ud v:nameU="UMLShapeType" v:val="VT0(40):26"/>
-				<v:ud v:nameU="UMLObjectGUID" v:val="VT4()"/>
-				<v:ud v:nameU="UMLError" v:val="VT0(0):26"/>
-				<v:ud v:nameU="UMLPresOption1" v:val="VT0(1):26"/>
-				<v:ud v:nameU="UMLSuppressOption" v:val="VT0(32):26"/>
-				<v:ud v:nameU="UMLVersion" v:val="VT0(2):26"/>
-				<v:ud v:nameU="UMLAutoLockTextEdit" v:val="VT0(1):26"/>
-				<v:ud v:nameU="visDescription"
-						v:val="VT4(Stellt eine Bedingung dar, während der ein Objekt eine Bedingung erfüllt, eine Aktion ausführt oder auf ein Ereignis wartet.)"/>
-				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
-				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-			</v:userDefs>
-			<title>Zustand.9</title>
-			<g id="shape10-10" v:mID="10" v:groupContext="shape">
-				<title>Tabelle.10</title>
-				<v:userDefs>
-					<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				</v:userDefs>
-				<path d="M9 165.26 L45 165.26 A9 9 -180 0 0 54 156.26 L54 148.74 A9 9 -180 0 0 45 139.74 L9 139.74 A9 9 -180 0 0
-							 0 148.74 L0 156.26 A9 9 -180 0 0 9 165.26 Z" class="st1"/>
-			</g>
-			<g id="shape11-12" v:mID="11" v:groupContext="shape">
-				<title>Transitions</title>
-				<v:userDefs>
-					<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				</v:userDefs>
-				<path d="M0 165.26 L53.86 165.26 L0 165.26 Z" class="st2"/>
-			</g>
-			<g id="shape12-14" v:mID="12" v:groupContext="shape">
-				<title>Name</title>
-				<desc>accepted</desc>
-				<v:userDefs>
-					<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				</v:userDefs>
-				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-				<v:textRect cx="27" cy="152.655" width="54" height="25.2"/>
-				<rect x="0" y="140.055" width="54" height="25.2" class="st2"/>
-				<text x="12.18" y="155.06" class="st3" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>accepted</text>			</g>
-		</g>
-		<g id="shape21-17" v:mID="21" v:groupContext="shape" transform="translate(538.583,-103.762)">
-			<title>Endzustand</title>
-			<v:userDefs>
-				<v:ud v:nameU="UMLShapeType" v:val="VT0(43):26"/>
-				<v:ud v:nameU="UMLObjectGUID" v:val="VT4()"/>
-				<v:ud v:nameU="UMLError" v:val="VT0(0):26"/>
-				<v:ud v:nameU="UMLPresOptions" v:val="VT0(3):26"/>
-				<v:ud v:nameU="UMLVersion" v:val="VT0(2):26"/>
-				<v:ud v:nameU="visDescription"
-						v:val="VT4(Stellt das letzte Vorkommen eines Ereignisses beim Einschließungszustand oder die Beendigung einer Aktivität im Einschließungszustand dar.)"/>
-				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
-				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-			</v:userDefs>
-			<path d="M1.7 156.75 A6.80315 6.80315 0 0 1 15.31 156.75 A6.80315 6.80315 0 1 1 1.7 156.75 Z" class="st4"/>
-			<path d="M1.7 156.75 A6.80315 6.80315 0 0 1 15.31 156.75 A6.80315 6.80315 0 1 1 1.7 156.75" class="st5"/>
-			<path d="M0 156.75 A8.50394 8.50394 0 0 1 17.01 156.75 A8.50394 8.50394 0 1 1 0 156.75" class="st5"/>
-		</g>
-		<g id="group22-21" transform="translate(438.913,-37.1482)" v:mID="22" v:groupContext="group">
-			<v:userDefs>
-				<v:ud v:nameU="UMLShapeType" v:val="VT0(40):26"/>
-				<v:ud v:nameU="UMLObjectGUID" v:val="VT4()"/>
-				<v:ud v:nameU="UMLError" v:val="VT0(0):26"/>
-				<v:ud v:nameU="UMLPresOption1" v:val="VT0(1):26"/>
-				<v:ud v:nameU="UMLSuppressOption" v:val="VT0(32):26"/>
-				<v:ud v:nameU="UMLVersion" v:val="VT0(2):26"/>
-				<v:ud v:nameU="UMLAutoLockTextEdit" v:val="VT0(1):26"/>
-				<v:ud v:nameU="visDescription"
-						v:val="VT4(Stellt eine Bedingung dar, während der ein Objekt eine Bedingung erfüllt, eine Aktion ausführt oder auf ein Ereignis wartet.)"/>
-				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
-				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-			</v:userDefs>
-			<title>Zustand.22</title>
-			<g id="shape23-22" v:mID="23" v:groupContext="shape">
-				<title>Tabelle.23</title>
-				<v:userDefs>
-					<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				</v:userDefs>
-				<path d="M9 165.26 L45 165.26 A9 9 -180 0 0 54 156.26 L54 148.74 A9 9 -180 0 0 45 139.74 L9 139.74 A9 9 -180 0 0
-							 0 148.74 L0 156.26 A9 9 -180 0 0 9 165.26 Z" class="st1"/>
-			</g>
-			<g id="shape24-24" v:mID="24" v:groupContext="shape">
-				<title>Transitions</title>
-				<v:userDefs>
-					<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				</v:userDefs>
-				<path d="M0 165.26 L53.86 165.26 L0 165.26 Z" class="st2"/>
-			</g>
-			<g id="shape25-26" v:mID="25" v:groupContext="shape">
-				<title>Name</title>
-				<desc>rejected</desc>
-				<v:userDefs>
-					<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				</v:userDefs>
-				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-				<v:textRect cx="27" cy="152.655" width="54" height="25.2"/>
-				<rect x="0" y="140.055" width="54" height="25.2" class="st2"/>
-				<text x="13.55" y="155.06" class="st3" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>rejected</text>			</g>
-		</g>
-		<g id="shape27-29" v:mID="27" v:groupContext="shape" v:layerMember="0" transform="translate(492.913,-49.9041)">
-			<title>Dynamischer Verbinder.27</title>
-			<desc>CHS archives CDR</desc>
-			<v:userDefs>
-				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
-			</v:userDefs>
-			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="54.1739" cy="124.451" width="51.32" height="27.2035"/>
-			<path d="M0 165.26 L13.08 165.26 L13.08 102.89 L39.51 102.89" class="st6"/>
-			<rect v:rectContext="textBkgnd" x="33.4241" y="114.851" width="41.4998" height="19.1997" class="st8"/>
-			<text x="33.42" y="122.05" class="st3" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>CHS archives<v:lf/><tspan
-						x="47.41" dy="1.2em" class="st9">CDR</tspan></text>		</g>
-		<g id="shape30-40" v:mID="30" v:groupContext="shape" v:layerMember="0" transform="translate(137.96,-119.353)">
-			<title>Dynamischer Verbinder.30</title>
-			<desc>CHS checks plausibility</desc>
-			<v:userDefs>
-				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
-			</v:userDefs>
-			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="33.9619" cy="161.301" width="46.27" height="27.2035"/>
-			<path d="M0 172.34 L65.19 172.34" class="st6"/>
-			<rect v:rectContext="textBkgnd" x="15.7376" y="151.701" width="36.4488" height="19.1997" class="st8"/>
-			<text x="15.74" y="158.9" class="st3" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>CHS checks<v:lf/><tspan
-						x="16.44" dy="1.2em" class="st9">plausibility</tspan></text>		</g>
-		<g id="shape34-49" v:mID="34" v:groupContext="shape" v:layerMember="0" transform="translate(263.306,-105.888)">
-			<title>Dynamischer Verbinder.34</title>
-			<desc>Owner declines CDR</desc>
-			<v:userDefs>
-				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
-			</v:userDefs>
-			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="16.8661" cy="188.1" width="51.71" height="27.2035"/>
-			<path d="M0 165.26 L16.87 165.26 L16.87 221.24 L25.66 221.24" class="st6"/>
-			<rect v:rectContext="textBkgnd" x="-4.07877" y="178.5" width="41.89" height="19.1997" class="st8"/>
-			<text x="5.87" y="185.7" class="st3" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Owner <v:lf/><tspan
-						x="-4.08" dy="1.2em" class="st9">declines CDR</tspan></text>		</g>
-		<g id="group35-58" transform="translate(295.129,-37.1482)" v:mID="35" v:groupContext="group">
-			<v:userDefs>
-				<v:ud v:nameU="UMLShapeType" v:val="VT0(40):26"/>
-				<v:ud v:nameU="UMLObjectGUID" v:val="VT4()"/>
-				<v:ud v:nameU="UMLError" v:val="VT0(0):26"/>
-				<v:ud v:nameU="UMLPresOption1" v:val="VT0(1):26"/>
-				<v:ud v:nameU="UMLSuppressOption" v:val="VT0(32):26"/>
-				<v:ud v:nameU="UMLVersion" v:val="VT0(2):26"/>
-				<v:ud v:nameU="UMLAutoLockTextEdit" v:val="VT0(1):26"/>
-				<v:ud v:nameU="visDescription"
-						v:val="VT4(Stellt eine Bedingung dar, während der ein Objekt eine Bedingung erfüllt, eine Aktion ausführt oder auf ein Ereignis wartet.)"/>
-				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
-				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-			</v:userDefs>
-			<title>Zustand.35</title>
-			<g id="shape36-59" v:mID="36" v:groupContext="shape">
-				<title>Tabelle.36</title>
-				<v:userDefs>
-					<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				</v:userDefs>
-				<path d="M9 165.26 L51.8 165.26 A9 9 -180 0 0 60.8 156.26 L60.8 148.74 A9 9 -180 0 0 51.8 139.74 L9 139.74 A9 9 -180
-							 0 0 0 148.74 L0 156.26 A9 9 -180 0 0 9 165.26 Z" class="st1"/>
-			</g>
-			<g id="shape37-61" v:mID="37" v:groupContext="shape">
-				<title>Transitions</title>
-				<v:userDefs>
-					<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				</v:userDefs>
-				<path d="M0 165.26 L53.86 165.26 L0 165.26 Z" class="st2"/>
-			</g>
-			<g id="shape38-63" v:mID="38" v:groupContext="shape">
-				<title>Name</title>
-				<desc>owner-declined</desc>
-				<v:userDefs>
-					<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				</v:userDefs>
-				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-				<v:textRect cx="30.3978" cy="152.655" width="60.8" height="25.2"/>
-				<rect x="0" y="140.055" width="60.7957" height="25.2" class="st2"/>
-				<text x="4.91" y="155.06" class="st3" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>owner-declined</text>			</g>
-		</g>
-		<g id="shape39-66" v:mID="39" v:groupContext="shape" v:layerMember="0" transform="translate(355.925,-36.4396)">
-			<title>Dynamischer Verbinder.39</title>
-			<desc>Manual rejection</desc>
-			<v:userDefs>
-				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
-			</v:userDefs>
-			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="40.6179" cy="164.547" width="65.36" height="17.6036"/>
-			<path d="M0 158.17 L76.83 158.17" class="st6"/>
-			<rect v:rectContext="textBkgnd" x="12.8489" y="159.747" width="55.5384" height="9.59985" class="st8"/>
-			<text x="12.85" y="166.95" class="st3" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Manual rejection</text>		</g>
-		<g id="group40-74" transform="translate(438.913,-99.5104)" v:mID="40" v:groupContext="group">
-			<v:userDefs>
-				<v:ud v:nameU="UMLShapeType" v:val="VT0(40):26"/>
-				<v:ud v:nameU="UMLObjectGUID" v:val="VT4()"/>
-				<v:ud v:nameU="UMLError" v:val="VT0(0):26"/>
-				<v:ud v:nameU="UMLPresOption1" v:val="VT0(1):26"/>
-				<v:ud v:nameU="UMLSuppressOption" v:val="VT0(32):26"/>
-				<v:ud v:nameU="UMLVersion" v:val="VT0(2):26"/>
-				<v:ud v:nameU="UMLAutoLockTextEdit" v:val="VT0(1):26"/>
-				<v:ud v:nameU="visDescription"
-						v:val="VT4(Stellt eine Bedingung dar, während der ein Objekt eine Bedingung erfüllt, eine Aktion ausführt oder auf ein Ereignis wartet.)"/>
-				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
-				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-			</v:userDefs>
-			<title>Zustand.40</title>
-			<g id="shape41-75" v:mID="41" v:groupContext="shape">
-				<title>Tabelle.41</title>
-				<v:userDefs>
-					<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				</v:userDefs>
-				<path d="M9 165.26 L45 165.26 A9 9 -180 0 0 54 156.26 L54 148.74 A9 9 -180 0 0 45 139.74 L9 139.74 A9 9 -180 0 0
-							 0 148.74 L0 156.26 A9 9 -180 0 0 9 165.26 Z" class="st1"/>
-			</g>
-			<g id="shape42-77" v:mID="42" v:groupContext="shape">
-				<title>Transitions</title>
-				<v:userDefs>
-					<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				</v:userDefs>
-				<path d="M0 165.26 L53.86 165.26 L0 165.26 Z" class="st2"/>
-			</g>
-			<g id="shape43-79" v:mID="43" v:groupContext="shape">
-				<title>Name</title>
-				<desc>Approved</desc>
-				<v:userDefs>
-					<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				</v:userDefs>
-				<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-				<v:textRect cx="27" cy="152.655" width="54" height="25.2"/>
-				<rect x="0" y="140.055" width="54" height="25.2" class="st2"/>
-				<text x="11.08" y="155.06" class="st3" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Approved</text>			</g>
-		</g>
-		<g id="shape45-82" v:mID="45" v:groupContext="shape" v:layerMember="0" transform="translate(263.306,-111.558)">
-			<title>Dynamischer Verbinder.45</title>
-			<desc>Owner approves CDR</desc>
-			<v:userDefs>
-				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
-			</v:userDefs>
-			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="81.2635" cy="151.791" width="78.92" height="17.6036"/>
-			<path d="M0 158.17 L169.45 158.17" class="st6"/>
-			<rect v:rectContext="textBkgnd" x="46.7109" y="146.991" width="69.1054" height="9.59985" class="st8"/>
-			<text x="46.71" y="154.19" class="st3" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Owner approves CDR</text>		</g>
-		<g id="shape1-90" v:mID="1" v:groupContext="shape" transform="translate(7.08661,-103.762)">
-			<title>Anfangszustand</title>
-			<v:userDefs>
-				<v:ud v:nameU="UMLShapeType" v:val="VT0(42):26"/>
-				<v:ud v:nameU="UMLObjectGUID" v:val="VT4()"/>
-				<v:ud v:nameU="UMLError" v:val="VT0(0):26"/>
-				<v:ud v:nameU="UMLPresOptions" v:val="VT0(3):26"/>
-				<v:ud v:nameU="UMLVersion" v:val="VT0(2):26"/>
-				<v:ud v:nameU="visDescription" v:val="VT4(Stellt den Anfangspunkt eines neu erstellten Objekts dar. )"/>
-				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
-				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-			</v:userDefs>
-			<path d="M0 156.75 A8.50394 8.50394 0 0 1 17.01 156.75 A8.50394 8.50394 0 1 1 0 156.75 Z" class="st10"/>
-		</g>
-		<g id="shape2-92" v:mID="2" v:groupContext="shape" v:layerMember="0" transform="translate(24.0945,-105.18)">
-			<title>Dynamischer Verbinder.2</title>
-			<desc>Originator creates CDR</desc>
-			<v:userDefs>
-				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
-			</v:userDefs>
-			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="29.6414" cy="147.128" width="48.93" height="27.2035"/>
-			<path d="M0 158.17 L53.71 158.17" class="st6"/>
-			<rect v:rectContext="textBkgnd" x="10.0851" y="137.528" width="39.113" height="19.1997" class="st8"/>
-			<text x="13.02" y="144.73" class="st3" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Originator <v:lf/><tspan
-						x="10.09" dy="1.2em" class="st9">creates CDR</tspan></text>		</g>
-		<g id="shape3-101" v:mID="3" v:groupContext="shape" v:layerMember="0" transform="translate(355.925,-56.2821)">
-			<title>Dynamischer Verbinder.3</title>
-			<desc>Manual validation</desc>
-			<v:userDefs>
-				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
-			</v:userDefs>
-			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="26.2951" cy="137.224" width="41.91" height="27.2035"/>
-			<path d="M0 165.26 L26.3 165.26 L26.3 115.65 L76.83 115.65" class="st6"/>
-			<rect v:rectContext="textBkgnd" x="10.2505" y="127.624" width="32.0894" height="19.1997" class="st8"/>
-			<text x="13.92" y="134.82" class="st3" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Manual<v:lf/><tspan
-						x="10.25" dy="1.2em" class="st9">validation</tspan></text>		</g>
-		<g id="shape51-110" v:mID="51" v:groupContext="shape" v:layerMember="0" transform="translate(492.913,-119.353)">
-			<title>Dynamischer Verbinder.51</title>
-			<v:userDefs>
-				<v:ud v:nameU="msvThemeColors" v:val="VT0(36):26"/>
-				<v:ud v:nameU="msvThemeEffects" v:val="VT0(16):26"/>
-			</v:userDefs>
-			<path d="M0 172.34 L39.51 172.34" class="st6"/>
-		</g>
-	</g>
+	<path
+   style="fill:#ffffff;stroke:#404040;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   id="path8172"
+   class="st1"
+   d="m 92.9603,65.7496 36,0 a 9,9 0 0 0 9,-9 l 0,-7.52 a 9,9 0 0 0 -9,-9 l -36,0 a 9,9 0 0 0 -9,9 l 0,7.52 a 9,9 0 0 0 9,9 z" /><path
+   style="fill:none;stroke:none"
+   inkscape:connector-curvature="0"
+   id="path8177"
+   class="st2"
+   d="m 83.9603,65.7496 53.86,0 -53.86,0 z" /><rect
+   style="fill:none;stroke:none"
+   id="rect8184"
+   class="st2"
+   height="25.200001"
+   width="54"
+   y="40.544594"
+   x="83.960297" /><path
+   style="fill:#ffffff;stroke:#404040;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   id="path8194"
+   class="st1"
+   d="m 218.306,65.7496 36,0 a 9,9 0 0 0 9,-9 l 0,-7.52 a 9,9 0 0 0 -9,-9 l -36,0 a 9,9 0 0 0 -9,9 l 0,7.52 a 9,9 0 0 0 9,9 z" /><path
+   style="fill:none;stroke:none"
+   inkscape:connector-curvature="0"
+   id="path8199"
+   class="st2"
+   d="m 209.306,65.7496 53.86,0 -53.86,0 z" /><rect
+   style="fill:none;stroke:none"
+   id="rect8206"
+   class="st2"
+   height="25.200001"
+   width="54"
+   y="40.544594"
+   x="209.306" /><path
+   d="m 540.283,52.988 a 6.805,6.805 0 1 1 13.61,0 6.805,6.805 0 0 1 -13.61,0 z"
+   class="st4"
+   id="path8213"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 540.283,52.988 a 6.805,6.805 0 1 1 13.61,0 6.805,6.805 0 0 1 -13.61,0"
+   class="st5"
+   id="path8215"
+   inkscape:connector-curvature="0"
+   style="stroke:#404040;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 538.583,52.988 a 8.505,8.505 0 1 1 17.01,0 8.505,8.505 0 0 1 -17.01,0"
+   class="st5"
+   id="path8217"
+   inkscape:connector-curvature="0"
+   style="stroke:#404040;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   style="fill:#ffffff;stroke:#404040;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   id="path8225"
+   class="st1"
+   d="m 447.913,128.1118 36,0 a 9,9 0 0 0 9,-9 l 0,-7.52 a 9,9 0 0 0 -9,-9 l -36,0 a 9,9 0 0 0 -9,9 l 0,7.52 a 9,9 0 0 0 9,9 z" /><path
+   style="fill:none;stroke:none"
+   inkscape:connector-curvature="0"
+   id="path8230"
+   class="st2"
+   d="m 438.913,128.1118 53.86,0 -53.86,0 z" /><rect
+   style="fill:none;stroke:none"
+   id="rect8237"
+   class="st2"
+   height="25.200001"
+   width="54"
+   y="102.90679"
+   x="438.91299" /><path
+   d="m 492.913,115.3559 13.08,0 0,-62.37 26.43,0"
+   class="st6"
+   id="path8246"
+   inkscape:connector-curvature="0"
+   style="stroke:#404040;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#mrkr5-36)" /><rect
+   v:rectContext="textBkgnd"
+   x="526.3371"
+   y="64.946899"
+   width="41.499802"
+   height="19.199699"
+   class="st8"
+   id="rect8248"
+   style="fill:#ffffff;stroke:none" /><path
+   d="m 137.96,52.987 65.19,0"
+   class="st6"
+   id="path8259"
+   inkscape:connector-curvature="0"
+   style="stroke:#404040;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#mrkr5-36)" /><rect
+   v:rectContext="textBkgnd"
+   x="153.6976"
+   y="32.348003"
+   width="36.448799"
+   height="19.199699"
+   class="st8"
+   id="rect8261"
+   style="fill:#ffffff;stroke:none" /><path
+   d="m 263.306,59.372 16.87,0 0,55.98 8.79,0"
+   class="st6"
+   id="path8272"
+   inkscape:connector-curvature="0"
+   style="stroke:#404040;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#mrkr5-36)" /><rect
+   v:rectContext="textBkgnd"
+   x="259.22723"
+   y="72.612"
+   width="41.889999"
+   height="19.199699"
+   class="st8"
+   id="rect8274"
+   style="fill:#ffffff;stroke:none" /><path
+   style="fill:#ffffff;stroke:#404040;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   id="path8286"
+   class="st1"
+   d="m 304.129,128.1118 42.8,0 a 9,9 0 0 0 9,-9 l 0,-7.52 a 9,9 0 0 0 -9,-9 l -42.8,0 a 9,9 0 0 0 -9,9 l 0,7.52 a 9,9 0 0 0 9,9 z" /><path
+   style="fill:none;stroke:none"
+   inkscape:connector-curvature="0"
+   id="path8291"
+   class="st2"
+   d="m 295.129,128.1118 53.86,0 -53.86,0 z" /><rect
+   style="fill:none;stroke:none"
+   id="rect8298"
+   class="st2"
+   height="25.200001"
+   width="60.7957"
+   y="102.90679"
+   x="295.129" /><path
+   d="m 355.925,121.7304 76.83,0"
+   class="st6"
+   id="path8307"
+   inkscape:connector-curvature="0"
+   style="stroke:#404040;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#mrkr5-36)" /><rect
+   v:rectContext="textBkgnd"
+   x="368.7739"
+   y="123.3074"
+   width="55.538399"
+   height="9.5998497"
+   class="st8"
+   id="rect8309"
+   style="fill:#ffffff;stroke:none" /><path
+   style="fill:#ffffff;stroke:#404040;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   id="path8319"
+   class="st1"
+   d="m 447.913,65.7496 36,0 a 9,9 0 0 0 9,-9 l 0,-7.52 a 9,9 0 0 0 -9,-9 l -36,0 a 9,9 0 0 0 -9,9 l 0,7.52 a 9,9 0 0 0 9,9 z" /><path
+   style="fill:none;stroke:none"
+   inkscape:connector-curvature="0"
+   id="path8324"
+   class="st2"
+   d="m 438.913,65.7496 53.86,0 -53.86,0 z" /><rect
+   style="fill:none;stroke:none"
+   id="rect8331"
+   class="st2"
+   height="25.200001"
+   width="54"
+   y="40.544594"
+   x="438.91299" /><path
+   d="m 263.306,46.612 169.45,0"
+   class="st6"
+   id="path8340"
+   inkscape:connector-curvature="0"
+   style="stroke:#404040;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#mrkr5-36)" /><rect
+   v:rectContext="textBkgnd"
+   x="310.01691"
+   y="35.432999"
+   width="69.1054"
+   height="9.5998497"
+   class="st8"
+   id="rect8342"
+   style="fill:#ffffff;stroke:none" /><path
+   d="m 7.08661,52.988 a 8.505,8.505 0 1 1 17.01,0 8.505,8.505 0 0 1 -17.01,0 z"
+   class="st10"
+   id="path8349"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff;stroke:#404040;stroke-width:0.23999999;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 24.0945,52.99 53.71,0"
+   class="st6"
+   id="path8356"
+   inkscape:connector-curvature="0"
+   style="stroke:#404040;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#mrkr5-36)" /><rect
+   v:rectContext="textBkgnd"
+   x="34.1796"
+   y="32.348"
+   width="39.112999"
+   height="19.199699"
+   class="st8"
+   id="rect8358"
+   style="fill:#ffffff;stroke:none" /><path
+   d="m 355.925,108.9779 26.3,0 0,-49.61 50.53,0"
+   class="st6"
+   id="path8369"
+   inkscape:connector-curvature="0"
+   style="stroke:#404040;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#mrkr5-36)" /><rect
+   v:rectContext="textBkgnd"
+   x="366.17551"
+   y="71.341904"
+   width="32.089401"
+   height="19.199699"
+   class="st8"
+   id="rect8371"
+   style="fill:#ffffff;stroke:none" /><path
+   d="m 492.913,52.987 39.51,0"
+   class="st6"
+   id="path8380"
+   inkscape:connector-curvature="0"
+   style="stroke:#404040;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;marker-end:url(#mrkr5-36)" />
+<text
+   xml:space="preserve"
+   style="font-size:9.60000324px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+   x="48.321674"
+   y="36.227299"
+   id="text8642"
+   sodipodi:linespacing="125%"><tspan
+     sodipodi:role="line"
+     id="tspan8644"
+     x="48.321674"
+     y="36.227299">Originator</tspan><tspan
+     sodipodi:role="line"
+     x="48.321674"
+     y="48.227303"
+     id="tspan8717">creates CDR</tspan></text>
+<text
+   sodipodi:linespacing="125%"
+   id="text8646"
+   y="36.227299"
+   x="172.11734"
+   style="font-size:9.60000324px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+   xml:space="preserve"><tspan
+     y="36.227299"
+     x="172.11734"
+     id="tspan8648"
+     sodipodi:role="line">CHS checks</tspan><tspan
+     y="48.227303"
+     x="172.11734"
+     sodipodi:role="line"
+     id="tspan8719">plausibility</tspan></text>
+<text
+   xml:space="preserve"
+   style="font-size:9.60000324px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+   x="340.29257"
+   y="42.627308"
+   id="text8650"
+   sodipodi:linespacing="125%"><tspan
+     sodipodi:role="line"
+     id="tspan8652"
+     x="340.29257"
+     y="42.627308">Owner approves CDR</tspan></text>
+<text
+   sodipodi:linespacing="125%"
+   id="text8654"
+   y="78.427917"
+   x="279.08475"
+   style="font-size:9.60000324px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+   xml:space="preserve"><tspan
+     y="78.427917"
+     x="280.17224"
+     id="tspan8656"
+     sodipodi:role="line">Owner </tspan><tspan
+     y="90.427925"
+     x="279.08475"
+     sodipodi:role="line"
+     id="tspan8723">declines CDR</tspan></text>
+<text
+   xml:space="preserve"
+   style="font-size:9.60000324px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+   x="382.22021"
+   y="77.157822"
+   id="text8658"
+   sodipodi:linespacing="125%"><tspan
+     sodipodi:role="line"
+     id="tspan8660"
+     x="382.22021"
+     y="77.157822">Manual</tspan><tspan
+     sodipodi:role="line"
+     x="382.22021"
+     y="89.157829"
+     id="tspan8721">validation</tspan></text>
+<text
+   sodipodi:linespacing="125%"
+   id="text8662"
+   y="130.21858"
+   x="392.2634"
+   style="font-size:9.60000324px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+   xml:space="preserve"><tspan
+     y="130.21858"
+     x="392.2634"
+     id="tspan8664"
+     sodipodi:role="line">Manual rejection</tspan></text>
+<text
+   xml:space="preserve"
+   style="font-size:11.20000362px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+   x="466.03488"
+   y="118.49507"
+   id="text8666"
+   sodipodi:linespacing="125%"><tspan
+     sodipodi:role="line"
+     id="tspan8668"
+     x="466.03488"
+     y="118.49507">rejected</tspan></text>
+<text
+   sodipodi:linespacing="125%"
+   id="text8674"
+   y="56.630924"
+   x="466.05518"
+   style="font-size:11.20000362px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+   xml:space="preserve"><tspan
+     y="56.630924"
+     x="466.05518"
+     id="tspan8676"
+     sodipodi:role="line">Approved</tspan></text>
+<text
+   sodipodi:linespacing="125%"
+   id="text8674-8"
+   y="110.83813"
+   x="325.67117"
+   style="font-size:11.20000362px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+   xml:space="preserve"><tspan
+     y="110.83813"
+     x="325.67117"
+     id="tspan8676-8"
+     sodipodi:role="line">owner-</tspan><tspan
+     y="124.83814"
+     x="325.67117"
+     sodipodi:role="line"
+     id="tspan8753">declined</tspan></text>
+<text
+   sodipodi:linespacing="125%"
+   id="text8674-2"
+   y="56.630924"
+   x="236.44818"
+   style="font-size:11.20000362px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+   xml:space="preserve"><tspan
+     y="56.630924"
+     x="236.44818"
+     id="tspan8676-4"
+     sodipodi:role="line">accepted</tspan></text>
+<text
+   sodipodi:linespacing="125%"
+   id="text8674-5"
+   y="56.630924"
+   x="111.10249"
+   style="font-size:11.20000362px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+   xml:space="preserve"><tspan
+     y="56.630924"
+     x="111.10249"
+     id="tspan8676-5"
+     sodipodi:role="line">new</tspan></text>
+<text
+   xml:space="preserve"
+   style="font-size:9.60000324px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Calibri;-inkscape-font-specification:Calibri"
+   x="547.08698"
+   y="74.546753"
+   id="text8658-1"
+   sodipodi:linespacing="125%"><tspan
+     sodipodi:role="line"
+     x="547.08698"
+     y="74.546753"
+     id="tspan8721-1">CHS archives</tspan><tspan
+     sodipodi:role="line"
+     x="547.08698"
+     y="86.546761"
+     id="tspan8751">CDR</tspan></text>
 </svg>

@@ -1,17 +1,66 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 <!-- Generiert durch Microsoft Visio 11.0, SVG Export, v1.0 EV-charging-market-overview.svg Role Model -->
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
-		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="8.00115in" height="5.04568in"
-		viewBox="0 0 576.083 363.289" xml:space="preserve" color-interpolation-filters="sRGB" class="st13">
-	<v:documentProperties v:langID="1031" v:metric="true" v:viewMarkup="false">
+
+<svg
+   xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="8.00115in"
+   height="5.04568in"
+   viewBox="0 0 576.083 363.289"
+   xml:space="preserve"
+   color-interpolation-filters="sRGB"
+   class="st13"
+   id="svg9413"
+   version="1.1"
+   inkscape:version="0.48.2 r9819"
+   sodipodi:docname="EV-charging-market-overview.svg"
+   inkscape:export-filename="H:\Dokumente\GitHub\OCHP\media\EV-charging-market-overview.png"
+   inkscape:export-xdpi="150"
+   inkscape:export-ydpi="150"><metadata
+   id="metadata9629"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1680"
+   inkscape:window-height="988"
+   id="namedview9627"
+   showgrid="false"
+   inkscape:zoom="0.50964895"
+   inkscape:cx="360.05176"
+   inkscape:cy="227.0556"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg9413" />
+	<v:documentProperties
+   v:langID="1031"
+   v:metric="true"
+   v:viewMarkup="false">
 		<v:userDefs>
-			<v:ud v:nameU="msvNoAutoConnect" v:val="VT0(1):26"/>
+			<v:ud
+   v:nameU="msvNoAutoConnect"
+   v:val="VT0(1):26" />
 		</v:userDefs>
 	</v:documentProperties>
 
-	<style type="text/css">
-	<![CDATA[
+	<style
+   type="text/css"
+   id="style9415">
+	
 		.st1 {marker-start:url(#mrkr3-6);stroke:#000000;stroke-dasharray:5.04,3.6;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
 		.st2 {fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.22222222222222}
 		.st3 {fill:#ffffff;stroke:none;stroke-linecap:butt;stroke-width:7.2}
@@ -25,229 +74,772 @@
 		.st11 {stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
 		.st12 {fill:#000000;font-family:Arial;font-size:0.833336em;font-weight:bold}
 		.st13 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
-	]]>
+	
 	</style>
 
-	<defs id="Markers">
-		<g id="lend3">
-			<path d="M 2 1 L 0 0 L 2 -1 " style="stroke-linecap:round;stroke-linejoin:round;fill:none"/>
+	<defs
+   id="Markers">
+		<g
+   id="lend3">
+			<path
+   d="M 2 1 L 0 0 L 2 -1 "
+   style="stroke-linecap:round;stroke-linejoin:round;fill:none"
+   id="path9419" />
 		</g>
-		<marker id="mrkr3-6" class="st2" v:arrowType="3" v:arrowSize="2" orient="auto" markerUnits="strokeWidth" overflow="visible">
-			<use xlink:href="#lend3" transform="scale(4.5) "/>
+		<marker
+   id="mrkr3-6"
+   class="st2"
+   v:arrowType="3"
+   v:arrowSize="2"
+   orient="auto"
+   markerUnits="strokeWidth"
+   overflow="visible">
+			<use
+   xlink:href="#lend3"
+   transform="scale(4.5) "
+   id="use9422" />
 		</marker>
-		<marker id="mrkr3-29" class="st2" v:arrowType="3" v:arrowSize="2" orient="auto" markerUnits="strokeWidth"
-				overflow="visible">
-			<use xlink:href="#lend3" transform="scale(-4.5,-4.5) "/>
+		<marker
+   id="mrkr3-29"
+   class="st2"
+   v:arrowType="3"
+   v:arrowSize="2"
+   orient="auto"
+   markerUnits="strokeWidth"
+   overflow="visible">
+			<use
+   xlink:href="#lend3"
+   transform="scale(-4.5,-4.5) "
+   id="use9425" />
 		</marker>
-		<g id="lend14">
-			<path d="M 3 -1 L 0 0 L 3 1 L 3 -1 " style="stroke-linecap:round;stroke-linejoin:round;fill:none"/>
+		<g
+   id="lend14">
+			<path
+   d="M 3 -1 L 0 0 L 3 1 L 3 -1 "
+   style="stroke-linecap:round;stroke-linejoin:round;fill:none"
+   id="path9428" />
 		</g>
-		<marker id="mrkr14-37" class="st9" v:arrowType="14" v:arrowSize="1" v:setback="10.2" refX="-10.2" orient="auto"
-				markerUnits="strokeWidth" overflow="visible">
-			<use xlink:href="#lend14" transform="scale(-3.4,-3.4) "/>
+		<marker
+   id="mrkr14-37"
+   class="st9"
+   v:arrowType="14"
+   v:arrowSize="1"
+   v:setback="10.2"
+   refX="-10.2"
+   orient="auto"
+   markerUnits="strokeWidth"
+   overflow="visible">
+			<use
+   xlink:href="#lend14"
+   transform="scale(-3.4,-3.4) "
+   id="use9431" />
 		</marker>
-	</defs>
-	<g v:mID="5" v:index="2" v:groupContext="foregroundPage">
-		<title>Role Model</title>
-		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
-				v:shadowOffsetY="-8.50394"/>
-		<v:layer v:name="Verbinder" v:index="0"/>
-		<g id="shape2-1" v:mID="2" v:groupContext="shape" v:layerMember="0" transform="translate(280.246,-259.499)">
-			<title>Dynamischer Verbinder.59</title>
-			<desc>«consume»</desc>
-			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="90.5904" cy="344.706" width="57.4" height="20.0036"/>
-			<path d="M0 363.29 L178.58 322.19" class="st1"/>
-			<rect v:rectContext="textBkgnd" x="67.0258" y="338.706" width="47.1294" height="12.0001" class="st3"/>
-			<text x="67.03" y="347.71" class="st4" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>«consume»</text>		</g>
-		<g id="shape3-9" v:mID="3" v:groupContext="shape" transform="translate(18.75,-117.767)">
-			<title>Systemgrenze</title>
-			<desc>EV charging infrastructure market</desc>
+	
+		
+		<v:pageProperties
+   v:shadowOffsetY="-8.50394"
+   v:shadowOffsetX="8.50394"
+   v:drawingUnits="24"
+   v:pageScale="0.0393701"
+   v:drawingScale="0.0393701" />
+		<v:layer
+   v:index="0"
+   v:name="Verbinder" />
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+			
 			<v:userDefs>
-				<v:ud v:nameU="UMLShapeType" v:val="VT0(71):26"/>
-				<v:ud v:nameU="UMLVersion" v:val="VT0(2):26"/>
-				<v:ud v:nameU="visDescription" v:val="VT4(Dient der Darstellung einer Systemgrenze.)"/>
-				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud
+   v:nameU="visVersion"
+   v:val="VT0(14):26" />
+				<v:ud
+   v:nameU="msvThemeEffects"
+   v:prompt=""
+   v:val="VT0(1):26" />
 			</v:userDefs>
-			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
-			<v:textRect cx="269.291" cy="142.186" width="538.59" height="11.3386"/>
-			<rect x="0" y="136.517" width="538.583" height="226.772" class="st5"/>
-			<text x="4" y="153.12" class="st6" v:langID="1031"><v:paragraph/><v:tabList/>EV charging infrastructure market</text>		</g>
-		<g id="shape4-12" v:mID="4" v:groupContext="shape" transform="translate(18.75,-18.75)">
-			<title>Systemgrenze.5</title>
-			<desc>Clearing House System</desc>
+			
+		
+			
 			<v:userDefs>
-				<v:ud v:nameU="UMLShapeType" v:val="VT0(71):26"/>
-				<v:ud v:nameU="UMLVersion" v:val="VT0(2):26"/>
-				<v:ud v:nameU="visDescription" v:val="VT4(Dient der Darstellung einer Systemgrenze.)"/>
-				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+				<v:ud
+   v:nameU="visVersion"
+   v:val="VT0(14):26" />
+				<v:ud
+   v:nameU="msvThemeEffects"
+   v:prompt=""
+   v:val="VT0(1):26" />
 			</v:userDefs>
-			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
-			<v:textRect cx="269.291" cy="266.747" width="538.59" height="4.95085"/>
-			<rect x="0" y="264.272" width="538.583" height="99.017" class="st5"/>
-			<text x="4" y="280.87" class="st6" v:langID="1031"><v:paragraph/><v:tabList/>Clearing House System</text>		</g>
-		<g id="shape17-15" v:mID="17" v:groupContext="shape" v:layerMember="0" transform="translate(403.553,-226.901)">
-			<title>Dynamischer Verbinder.17</title>
-			<desc>«consume»</desc>
-			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="26.2205" cy="344.863" width="57.4" height="20.0036"/>
-			<path d="M0 363.29 L56.69 315.1" class="st1"/>
-			<rect v:rectContext="textBkgnd" x="2.65587" y="338.864" width="47.1294" height="12.0001" class="st3"/>
-			<text x="2.66" y="347.86" class="st4" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>«consume»</text>		</g>
-		<g id="shape18-22" v:mID="18" v:groupContext="shape" v:layerMember="0" transform="translate(524.026,-181.901)">
-			<title>Dynamischer Verbinder.18</title>
-			<desc>«service contract»</desc>
-			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
-			<v:textRect cx="-22.6192" cy="315.757" width="85.12" height="20.0036"/>
-			<path d="M0 363.29 L-43.94 270.1" class="st7"/>
-			<rect v:rectContext="textBkgnd" x="-60.0462" y="309.757" width="74.8542" height="12.0001" class="st3"/>
-			<text x="-60.05" y="318.76" class="st4" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>«service contract»</text>		</g>
-		<g id="shape13-32" v:mID="13" v:groupContext="shape" v:layerMember="0"
-				transform="translate(6.72956,211.202) rotate(-79.4424)">
-			<title>Linie mit Pfeil  1</title>
+			
+		
+			
 			<v:userDefs>
-				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
-				<v:ud v:nameU="msvThemeEffects" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud
+   v:nameU="visVersion"
+   v:val="VT0(14):26" />
+				<v:ud
+   v:nameU="msvThemeEffects"
+   v:prompt=""
+   v:val="VT0(1):26" />
 			</v:userDefs>
-			<path d="M0 363.29 L92.91 363.29" class="st8"/>
-		</g>
-		<g id="shape11-38" v:mID="11" v:groupContext="shape" transform="translate(358.907,-58.2394)">
-			<title>Actor.11</title>
-			<desc>Partner</desc>
+			
+		
+			
+			
 			<v:userDefs>
-				<v:ud v:nameU="F" v:val="VT0(1):26"/>
-				<v:ud v:nameU="Format" v:val="VT0(0):26"/>
-				<v:ud v:nameU="State" v:val="VT0(1):26"/>
+				<v:ud
+   v:nameU="F"
+   v:val="VT0(1):26" />
+				<v:ud
+   v:nameU="Format"
+   v:val="VT0(0):26" />
+				<v:ud
+   v:nameU="State"
+   v:val="VT0(1):26" />
 			</v:userDefs>
-			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="2"/>
-			<v:textRect cx="4.96063" cy="378.29" width="37.8" height="12.0036"/>
-			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41 Z" class="st10"/>
-			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41" class="st11"/>
-			<path d="M0 350.89 L4.96 350.89 L9.92 350.89" class="st11"/>
-			<path d="M1.24 363.29 L4.96 355.35 L8.68 363.29" class="st11"/>
-			<path d="M4.96 348.41 L4.96 355.35" class="st11"/>
-			<text x="-12.55" y="381.29" class="st12" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Partner</text>		</g>
-		<g id="shape12-45" v:mID="12" v:groupContext="shape" transform="translate(519.065,-154.617)">
-			<title>Actor.12</title>
-			<desc>EVSP</desc>
+			<v:textBlock
+   v:margins="rect(0,0,0,0)"
+   v:tabSpace="42.5197"
+   v:verticalAlign="2" />
+			<v:textRect
+   cx="4.96063"
+   cy="378.29"
+   width="68.35"
+   height="12.0036" />
+			
+			
+			
+			
+			
+					
+			
+			
 			<v:userDefs>
-				<v:ud v:nameU="F" v:val="VT0(1):26"/>
-				<v:ud v:nameU="Format" v:val="VT0(0):26"/>
-				<v:ud v:nameU="State" v:val="VT0(1):26"/>
+				<v:ud
+   v:nameU="F"
+   v:val="VT0(1):26" />
+				<v:ud
+   v:nameU="Format"
+   v:val="VT0(0):26" />
+				<v:ud
+   v:nameU="State"
+   v:val="VT0(1):26" />
 			</v:userDefs>
-			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="2"/>
-			<v:textRect cx="4.96063" cy="378.29" width="29.47" height="12.0036"/>
-			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41 Z" class="st10"/>
-			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41" class="st11"/>
-			<path d="M0 350.89 L4.96 350.89 L9.92 350.89" class="st11"/>
-			<path d="M1.24 363.29 L4.96 355.35 L8.68 363.29" class="st11"/>
-			<path d="M4.96 348.41 L4.96 355.35" class="st11"/>
-			<text x="-8.38" y="381.29" class="st12" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>EVSP</text>		</g>
-		<g id="shape14-52" v:mID="14" v:groupContext="shape" transform="translate(263.947,-253.83)">
-			<title>Actor.14</title>
-			<desc>NSP</desc>
+			<v:textBlock
+   v:margins="rect(0,0,0,0)"
+   v:tabSpace="42.5197"
+   v:verticalAlign="2" />
+			<v:textRect
+   cx="4.96063"
+   cy="378.29"
+   width="121.15"
+   height="12.0036" />
+			
+			
+			
+			
+			
+					
+			
+			
 			<v:userDefs>
-				<v:ud v:nameU="F" v:val="VT0(1):26"/>
-				<v:ud v:nameU="Format" v:val="VT0(0):26"/>
-				<v:ud v:nameU="State" v:val="VT0(1):26"/>
+				<v:ud
+   v:nameU="F"
+   v:val="VT0(1):26" />
+				<v:ud
+   v:nameU="Format"
+   v:val="VT0(0):26" />
+				<v:ud
+   v:nameU="State"
+   v:val="VT0(1):26" />
 			</v:userDefs>
-			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="2"/>
-			<v:textRect cx="4.96063" cy="378.29" width="23.35" height="12.0036"/>
-			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41 Z" class="st10"/>
-			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41" class="st11"/>
-			<path d="M0 350.89 L4.96 350.89 L9.92 350.89" class="st11"/>
-			<path d="M1.24 363.29 L4.96 355.35 L8.68 363.29" class="st11"/>
-			<path d="M4.96 348.41 L4.96 355.35" class="st11"/>
-			<text x="-5.32" y="381.29" class="st12" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>NSP</text>		</g>
-		<g id="shape15-59" v:mID="15" v:groupContext="shape" transform="translate(387.254,-204.224)">
-			<title>Actor.15</title>
-			<desc>EVSE Operator</desc>
+			<v:textBlock
+   v:margins="rect(0,0,0,0)"
+   v:tabSpace="42.5197"
+   v:verticalAlign="2" />
+			<v:textRect
+   cx="4.96063"
+   cy="378.29"
+   width="41.14"
+   height="12.0036" />
+			
+			
+			
+			
+			
+					
+			
+			
 			<v:userDefs>
-				<v:ud v:nameU="F" v:val="VT0(1):26"/>
-				<v:ud v:nameU="Format" v:val="VT0(0):26"/>
-				<v:ud v:nameU="State" v:val="VT0(1):26"/>
+				<v:ud
+   v:nameU="F"
+   v:val="VT0(1):26" />
+				<v:ud
+   v:nameU="Format"
+   v:val="VT0(0):26" />
+				<v:ud
+   v:nameU="State"
+   v:val="VT0(1):26" />
 			</v:userDefs>
-			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="2"/>
-			<v:textRect cx="4.96063" cy="378.29" width="74.48" height="12.0036"/>
-			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41 Z" class="st10"/>
-			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41" class="st11"/>
-			<path d="M0 350.89 L4.96 350.89 L9.92 350.89" class="st11"/>
-			<path d="M1.24 363.29 L4.96 355.35 L8.68 363.29" class="st11"/>
-			<path d="M4.96 348.41 L4.96 355.35" class="st11"/>
-			<text x="-30.88" y="381.29" class="st12" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>EVSE Operator</text>		</g>
-		<g id="shape1-66" v:mID="1" v:groupContext="shape" transform="translate(465.207,-294.932)">
-			<title>Actor.1</title>
-			<desc>EV User</desc>
+			<v:textBlock
+   v:margins="rect(0,0,0,0)"
+   v:tabSpace="42.5197"
+   v:verticalAlign="2" />
+			<v:textRect
+   cx="4.96063"
+   cy="378.29"
+   width="74.48"
+   height="12.0036" />
+			
+			
+			
+			
+			
+					
+			
+			
 			<v:userDefs>
-				<v:ud v:nameU="F" v:val="VT0(1):26"/>
-				<v:ud v:nameU="Format" v:val="VT0(0):26"/>
-				<v:ud v:nameU="State" v:val="VT0(1):26"/>
+				<v:ud
+   v:nameU="F"
+   v:val="VT0(1):26" />
+				<v:ud
+   v:nameU="Format"
+   v:val="VT0(0):26" />
+				<v:ud
+   v:nameU="State"
+   v:val="VT0(1):26" />
 			</v:userDefs>
-			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="2"/>
-			<v:textRect cx="4.96063" cy="378.29" width="41.14" height="12.0036"/>
-			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41 Z" class="st10"/>
-			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41" class="st11"/>
-			<path d="M0 350.89 L4.96 350.89 L9.92 350.89" class="st11"/>
-			<path d="M1.24 363.29 L4.96 355.35 L8.68 363.29" class="st11"/>
-			<path d="M4.96 348.41 L4.96 355.35" class="st11"/>
-			<text x="-14.22" y="381.29" class="st12" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>EV User</text>		</g>
-		<g id="shape8-73" v:mID="8" v:groupContext="shape" transform="translate(110.876,-228.318)">
-			<title>Actor.8</title>
-			<desc>Clearing House Operator</desc>
+			<v:textBlock
+   v:margins="rect(0,0,0,0)"
+   v:tabSpace="42.5197"
+   v:verticalAlign="2" />
+			<v:textRect
+   cx="4.96063"
+   cy="378.29"
+   width="23.35"
+   height="12.0036" />
+			
+			
+			
+			
+			
+					
+			
+			
 			<v:userDefs>
-				<v:ud v:nameU="F" v:val="VT0(1):26"/>
-				<v:ud v:nameU="Format" v:val="VT0(0):26"/>
-				<v:ud v:nameU="State" v:val="VT0(1):26"/>
+				<v:ud
+   v:nameU="F"
+   v:val="VT0(1):26" />
+				<v:ud
+   v:nameU="Format"
+   v:val="VT0(0):26" />
+				<v:ud
+   v:nameU="State"
+   v:val="VT0(1):26" />
 			</v:userDefs>
-			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="2"/>
-			<v:textRect cx="4.96063" cy="378.29" width="121.15" height="12.0036"/>
-			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41 Z" class="st10"/>
-			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41" class="st11"/>
-			<path d="M0 350.89 L4.96 350.89 L9.92 350.89" class="st11"/>
-			<path d="M1.24 363.29 L4.96 355.35 L8.68 363.29" class="st11"/>
-			<path d="M4.96 348.41 L4.96 355.35" class="st11"/>
-			<text x="-54.22" y="381.29" class="st12" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Clearing House Operator</text>		</g>
-		<g id="shape10-80" v:mID="10" v:groupContext="shape" transform="translate(214.341,-76.6646)">
-			<title>Actor.10</title>
-			<desc>Administrator</desc>
+			<v:textBlock
+   v:margins="rect(0,0,0,0)"
+   v:tabSpace="42.5197"
+   v:verticalAlign="2" />
+			<v:textRect
+   cx="4.96063"
+   cy="378.29"
+   width="29.47"
+   height="12.0036" />
+			
+			
+			
+			
+			
+					
+			
+			
 			<v:userDefs>
-				<v:ud v:nameU="F" v:val="VT0(1):26"/>
-				<v:ud v:nameU="Format" v:val="VT0(0):26"/>
-				<v:ud v:nameU="State" v:val="VT0(1):26"/>
+				<v:ud
+   v:nameU="F"
+   v:val="VT0(1):26" />
+				<v:ud
+   v:nameU="Format"
+   v:val="VT0(0):26" />
+				<v:ud
+   v:nameU="State"
+   v:val="VT0(1):26" />
 			</v:userDefs>
-			<v:textBlock v:margins="rect(0,0,0,0)" v:tabSpace="42.5197" v:verticalAlign="2"/>
-			<v:textRect cx="4.96063" cy="378.29" width="68.35" height="12.0036"/>
-			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41 Z" class="st10"/>
-			<path d="M4.96 348.41 A1.86411 2.48548 0 1 1 4.96 343.45 A1.86411 2.48548 0 1 1 4.96 348.41" class="st11"/>
-			<path d="M0 350.89 L4.96 350.89 L9.92 350.89" class="st11"/>
-			<path d="M1.24 363.29 L4.96 355.35 L8.68 363.29" class="st11"/>
-			<path d="M4.96 348.41 L4.96 355.35" class="st11"/>
-			<text x="-27.82" y="381.29" class="st12" v:langID="1031"><v:paragraph v:horizAlign="1"/><v:tabList/>Administrator</text>		</g>
-		<g id="shape5-87" v:mID="5" v:groupContext="shape" v:layerMember="0"
-				transform="translate(-69.6403,498.287) rotate(-130.17)">
-			<title>Linie mit Pfeil  1.5</title>
+			<v:textBlock
+   v:margins="rect(0,0,0,0)"
+   v:tabSpace="42.5197"
+   v:verticalAlign="2" />
+			<v:textRect
+   cx="4.96063"
+   cy="378.29"
+   width="37.8"
+   height="12.0036" />
+			
+			
+			
+			
+			
+					
+			
 			<v:userDefs>
-				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
-				<v:ud v:nameU="msvThemeEffects" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud
+   v:nameU="visVersion"
+   v:val="VT0(14):26" />
+				<v:ud
+   v:nameU="msvThemeEffects"
+   v:prompt=""
+   v:val="VT0(1):26" />
 			</v:userDefs>
-			<path d="M0 363.29 L135.17 363.29" class="st8"/>
-		</g>
-		<g id="shape6-92" v:mID="6" v:groupContext="shape" v:layerMember="0"
-				transform="translate(243.868,-56.3442) rotate(-21.1941)">
-			<title>Linie mit Pfeil  1.6</title>
+			
+		
+			
+			
+			<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:tabSpace="42.5197" />
+			<v:textRect
+   cx="-22.6192"
+   cy="315.757"
+   width="85.12"
+   height="20.0036" />
+			
+			
+					
+			
+			
+			<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:tabSpace="42.5197" />
+			<v:textRect
+   cx="26.2205"
+   cy="344.863"
+   width="57.4"
+   height="20.0036" />
+			
+			
+					
+			
+			
 			<v:userDefs>
-				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
-				<v:ud v:nameU="msvThemeEffects" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud
+   v:nameU="UMLShapeType"
+   v:val="VT0(71):26" />
+				<v:ud
+   v:nameU="UMLVersion"
+   v:val="VT0(2):26" />
+				<v:ud
+   v:nameU="visDescription"
+   v:val="VT4(Dient der Darstellung einer Systemgrenze.)" />
+				<v:ud
+   v:nameU="visVersion"
+   v:val="VT0(14):26" />
 			</v:userDefs>
-			<path d="M0 363.29 L141.32 363.29" class="st8"/>
-		</g>
-		<g id="shape7-97" v:mID="7" v:groupContext="shape" v:layerMember="0" transform="translate(33.7129,456.54) rotate(-118.648)">
-			<title>Linie mit Pfeil  1.7</title>
+			<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:tabSpace="42.5197"
+   v:verticalAlign="0" />
+			<v:textRect
+   cx="269.291"
+   cy="266.747"
+   width="538.59"
+   height="4.95085" />
+			
+					
+			
+			
 			<v:userDefs>
-				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
-				<v:ud v:nameU="msvThemeEffects" v:prompt="" v:val="VT0(1):26"/>
+				<v:ud
+   v:nameU="UMLShapeType"
+   v:val="VT0(71):26" />
+				<v:ud
+   v:nameU="UMLVersion"
+   v:val="VT0(2):26" />
+				<v:ud
+   v:nameU="visDescription"
+   v:val="VT4(Dient der Darstellung einer Systemgrenze.)" />
+				<v:ud
+   v:nameU="visVersion"
+   v:val="VT0(14):26" />
 			</v:userDefs>
-			<path d="M0 363.29 L166.77 363.29" class="st8"/>
-		</g>
-	</g>
+			<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:tabSpace="42.5197"
+   v:verticalAlign="0" />
+			<v:textRect
+   cx="269.291"
+   cy="142.186"
+   width="538.59"
+   height="11.3386" />
+			
+					
+			
+			
+			<v:textBlock
+   v:margins="rect(4,4,4,4)"
+   v:tabSpace="42.5197" />
+			<v:textRect
+   cx="90.5904"
+   cy="344.706"
+   width="57.4"
+   height="20.0036" />
+			
+			
+					</defs>
+	<path
+   d="m 280.246,103.791 178.58,-41.1"
+   class="st1"
+   id="path9442"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:5.04, 3.6;marker-start:url(#mrkr3-6)" /><rect
+   v:rectContext="textBkgnd"
+   x="347.27179"
+   y="79.206993"
+   width="47.129398"
+   height="12.0001"
+   class="st3"
+   id="rect9444"
+   style="fill:#ffffff;stroke:none" /><text
+   x="347.276"
+   y="88.210991"
+   class="st4"
+   v:langID="1031"
+   id="text9446"
+   style="fill:#000000;font-family:Calibri"><v:paragraph
+   v:horizAlign="1" /><v:tabList />«consume»</text>
+<rect
+   x="18.75"
+   y="18.749998"
+   width="538.58301"
+   height="226.772"
+   class="st5"
+   id="rect9453"
+   style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round" /><text
+   x="22.75"
+   y="35.352997"
+   class="st6"
+   v:langID="1031"
+   id="text9455"
+   style="font-weight:bold;fill:#000000;font-family:Calibri"><v:paragraph /><v:tabList />EV charging infrastructure market</text>
+<rect
+   x="18.75"
+   y="245.522"
+   width="538.58301"
+   height="99.016998"
+   class="st5"
+   id="rect9462"
+   style="fill:none;stroke:#000000;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round" /><text
+   x="22.75"
+   y="262.12"
+   class="st6"
+   v:langID="1031"
+   id="text9464"
+   style="font-weight:bold;fill:#000000;font-family:Calibri"><v:paragraph /><v:tabList />Clearing House System</text>
+<path
+   d="m 403.553,136.389 56.69,-48.19"
+   class="st1"
+   id="path9471"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:5.04, 3.6;marker-start:url(#mrkr3-6)" /><rect
+   v:rectContext="textBkgnd"
+   x="406.20886"
+   y="111.96301"
+   width="47.129398"
+   height="12.0001"
+   class="st3"
+   id="rect9473"
+   style="fill:#ffffff;stroke:none" /><text
+   x="406.21301"
+   y="120.95898"
+   class="st4"
+   v:langID="1031"
+   id="text9475"
+   style="fill:#000000;font-family:Calibri"><v:paragraph
+   v:horizAlign="1" /><v:tabList />«consume»</text>
+<path
+   d="m 524.026,181.389 -43.94,-93.19"
+   class="st7"
+   id="path9482"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:5.04, 3.6;marker-start:url(#mrkr3-6);marker-end:url(#mrkr3-29)" /><rect
+   v:rectContext="textBkgnd"
+   x="463.9798"
+   y="127.85599"
+   width="74.854202"
+   height="12.0001"
+   class="st3"
+   id="rect9484"
+   style="fill:#ffffff;stroke:none" /><text
+   x="463.97601"
+   y="136.85901"
+   class="st4"
+   v:langID="1031"
+   id="text9486"
+   style="fill:#000000;font-family:Calibri"><v:paragraph
+   v:horizAlign="1" /><v:tabList />«service contract»</text>
+<path
+   d="m 363.8695,277.76541 17.02333,-91.33714"
+   class="st8"
+   id="path9491"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.75;marker-end:url(#mrkr14-37)" /><path
+   d="m 363.867,290.1706 a 1.86411,2.48548 0 1 1 0,-4.96 1.86411,2.48548 0 1 1 0,4.96 z"
+   class="st10"
+   id="path9498"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 363.867,290.1706 a 1.86411,2.48548 0 1 1 0,-4.96 1.86411,2.48548 0 1 1 0,4.96"
+   class="st11"
+   id="path9500"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 358.907,292.6506 4.96,0 4.96,0"
+   class="st11"
+   id="path9502"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 360.147,305.0506 3.72,-7.94 3.72,7.94"
+   class="st11"
+   id="path9504"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 363.867,290.1706 0,6.94"
+   class="st11"
+   id="path9506"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><text
+   x="346.35699"
+   y="323.0506"
+   class="st12"
+   v:langID="1031"
+   id="text9508"
+   style="font-weight:bold;fill:#000000;font-family:Arial"><v:paragraph
+   v:horizAlign="1" /><v:tabList />Partner</text>
+<path
+   d="m 524.025,193.793 a 1.86411,2.48548 0 1 1 0,-4.96 1.86411,2.48548 0 1 1 0,4.96 z"
+   class="st10"
+   id="path9515"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 524.025,193.793 a 1.86411,2.48548 0 1 1 0,-4.96 1.86411,2.48548 0 1 1 0,4.96"
+   class="st11"
+   id="path9517"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 519.065,196.273 4.96,0 4.96,0"
+   class="st11"
+   id="path9519"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 520.305,208.673 3.72,-7.94 3.72,7.94"
+   class="st11"
+   id="path9521"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 524.025,193.793 0,6.94"
+   class="st11"
+   id="path9523"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><text
+   x="510.685"
+   y="226.673"
+   class="st12"
+   v:langID="1031"
+   id="text9525"
+   style="font-weight:bold;fill:#000000;font-family:Arial"><v:paragraph
+   v:horizAlign="1" /><v:tabList />EVSP</text>
+<path
+   d="m 268.907,94.58 a 1.86411,2.48548 0 1 1 0,-4.96 1.86411,2.48548 0 1 1 0,4.96 z"
+   class="st10"
+   id="path9532"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 268.907,94.58 a 1.86411,2.48548 0 1 1 0,-4.96 1.86411,2.48548 0 1 1 0,4.96"
+   class="st11"
+   id="path9534"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 263.947,97.06 4.96,0 4.96,0"
+   class="st11"
+   id="path9536"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 265.187,109.46 3.72,-7.94 3.72,7.94"
+   class="st11"
+   id="path9538"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 268.907,94.58 0,6.94"
+   class="st11"
+   id="path9540"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><text
+   x="258.62701"
+   y="127.46001"
+   class="st12"
+   v:langID="1031"
+   id="text9542"
+   style="font-weight:bold;fill:#000000;font-family:Arial"><v:paragraph
+   v:horizAlign="1" /><v:tabList />NSP</text>
+<path
+   d="m 392.214,144.186 a 1.86411,2.48548 0 1 1 0,-4.96 1.86411,2.48548 0 1 1 0,4.96 z"
+   class="st10"
+   id="path9549"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 392.214,144.186 a 1.86411,2.48548 0 1 1 0,-4.96 1.86411,2.48548 0 1 1 0,4.96"
+   class="st11"
+   id="path9551"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 387.254,146.666 4.96,0 4.96,0"
+   class="st11"
+   id="path9553"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 388.494,159.066 3.72,-7.94 3.72,7.94"
+   class="st11"
+   id="path9555"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 392.214,144.186 0,6.94"
+   class="st11"
+   id="path9557"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><text
+   x="356.37399"
+   y="177.06601"
+   class="st12"
+   v:langID="1031"
+   id="text9559"
+   style="font-weight:bold;fill:#000000;font-family:Arial"><v:paragraph
+   v:horizAlign="1" /><v:tabList />EVSE Operator</text>
+<path
+   d="m 470.167,53.478 a 1.86411,2.48548 0 1 1 0,-4.96 1.86411,2.48548 0 1 1 0,4.96 z"
+   class="st10"
+   id="path9566"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 470.167,53.478 a 1.86411,2.48548 0 1 1 0,-4.96 1.86411,2.48548 0 1 1 0,4.96"
+   class="st11"
+   id="path9568"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 465.207,55.958 4.96,0 4.96,0"
+   class="st11"
+   id="path9570"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 466.447,68.358 3.72,-7.94 3.72,7.94"
+   class="st11"
+   id="path9572"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 470.167,53.478 0,6.94"
+   class="st11"
+   id="path9574"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><text
+   x="450.987"
+   y="86.358009"
+   class="st12"
+   v:langID="1031"
+   id="text9576"
+   style="font-weight:bold;fill:#000000;font-family:Arial"><v:paragraph
+   v:horizAlign="1" /><v:tabList />EV User</text>
+<path
+   d="m 115.836,120.092 a 1.86411,2.48548 0 1 1 0,-4.96 1.86411,2.48548 0 1 1 0,4.96 z"
+   class="st10"
+   id="path9583"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 115.836,120.092 a 1.86411,2.48548 0 1 1 0,-4.96 1.86411,2.48548 0 1 1 0,4.96"
+   class="st11"
+   id="path9585"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 110.876,122.572 4.96,0 4.96,0"
+   class="st11"
+   id="path9587"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 112.116,134.972 3.72,-7.94 3.72,7.94"
+   class="st11"
+   id="path9589"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 115.836,120.092 0,6.94"
+   class="st11"
+   id="path9591"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><text
+   x="56.655998"
+   y="152.97202"
+   class="st12"
+   v:langID="1031"
+   id="text9593"
+   style="font-weight:bold;fill:#000000;font-family:Arial"><v:paragraph
+   v:horizAlign="1" /><v:tabList />Clearing House Operator</text>
+<path
+   d="m 219.301,271.7454 a 1.86411,2.48548 0 1 1 0,-4.96 1.86411,2.48548 0 1 1 0,4.96 z"
+   class="st10"
+   id="path9600"
+   inkscape:connector-curvature="0"
+   style="fill:#ffffff" /><path
+   d="m 219.301,271.7454 a 1.86411,2.48548 0 1 1 0,-4.96 1.86411,2.48548 0 1 1 0,4.96"
+   class="st11"
+   id="path9602"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 214.341,274.2254 4.96,0 4.96,0"
+   class="st11"
+   id="path9604"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 215.581,286.6254 3.72,-7.94 3.72,7.94"
+   class="st11"
+   id="path9606"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><path
+   d="m 219.301,271.7454 0,6.94"
+   class="st11"
+   id="path9608"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.72000003;stroke-linecap:round;stroke-linejoin:round" /><text
+   x="186.521"
+   y="304.6254"
+   class="st12"
+   v:langID="1031"
+   id="text9610"
+   style="font-weight:bold;fill:#000000;font-family:Arial"><v:paragraph
+   v:horizAlign="1" /><v:tabList />Administrator</text>
+<path
+   d="M 207.9619,263.944 120.76945,160.65602"
+   class="st8"
+   id="path9615"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.75;marker-end:url(#mrkr14-37)" /><path
+   d="M 375.20771,282.37324 506.96897,231.28202"
+   class="st8"
+   id="path9620"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.75;marker-end:url(#mrkr14-37)" /><path
+   d="M 352.52953,282.36888 272.57545,136.01459"
+   class="st8"
+   id="path9625"
+   inkscape:connector-curvature="0"
+   style="stroke:#000000;stroke-width:0.75;stroke-linecap:round;stroke-linejoin:round;stroke-opacity:0.75;marker-end:url(#mrkr14-37)" />
 </svg>
