@@ -666,7 +666,9 @@ A CMS may update the current live status of individual charging stations in the 
 
 ### Download global live status information from the CHS
 
-A NPS may receive the current live status of individual charging stations from the Clearing House. The live status download is done in the following way:
+A NSP may receive the current live status of individual charging 
+stations from the Clearing House. The live status download is done in 
+the following way:
 
  * CMS sends the GetStatus.req PDU.
  * CHS responds with a GetStatus.conf PDU.
