@@ -1248,7 +1248,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 						DirectCash; The EVSE can be accessed through direct payment in cash. DirectCreditcard; The Evse can be accessed through direct payment with credit card
 						RfidMifareCls; Personal RFID token with roaming relation. (Mifare Classic) 
 						RfidMifareDes; Personal token with roaming relation. (Mifare Desfire) 
-						RfidCallypso; Personal RFID token with roaming relation. (Calypso) 
+						RfidCalypso; Personal RFID token with roaming relation. (Calypso) 
 						Iec15118; In-car access token as specified in IEC-15118
 					</s:documentation>
 				</s:annotation>
@@ -1263,7 +1263,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 								<s:enumeration value="DirectDebitcard"></s:enumeration>
 								<s:enumeration value="RfidMifareCls"></s:enumeration>
 								<s:enumeration value="RfidMifareDes"></s:enumeration>
-								<s:enumeration value="RfidCallypso"></s:enumeration>
+								<s:enumeration value="RfidCalypso"></s:enumeration>
 								<s:enumeration value="Iec15118"></s:enumeration>
 							</s:restriction>
 						</s:simpleType>
