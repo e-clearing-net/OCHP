@@ -4,10 +4,10 @@
 
 Prot. Version | Date       | Comment
 :-------------|:-----------|:-------
-0.1           | 28-02-2012 | Concept, Functional specification
-0.2           | 21-05-2012 | VAS data added
-1.0           | 12-12-2013 | Use-case driven structure; Delta-Synchronization; Live-Authorization; CDR-Validation; Alignment to standardization and market development.
-1.2           | 17-06-2014 | Live Status Interface and further enhancements from market requirements. Commit: [6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5](../../commit/6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5)
+0.1           | 28‑02‑2012 | Concept, Functional specification
+0.2           | 21‑05‑2012 | VAS data added
+1.0           | 12‑12‑2013 | Use-case driven structure; Delta-Synchronization; Live-Authorization; CDR-Validation; Alignment to standardization and market development.
+1.2           | 17‑06‑2014 | Live Status Interface and further enhancements from market requirements. Commit: [6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5](../../commit/6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5)
 
 
 Copyright (c) 2012-2015 smartlab, bluecorner.be, e-laad.nl
