@@ -1180,13 +1180,22 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 
 			<s:complexType name="HoursType">
 				<s:sequence>
-					<s:element name="regularHours" type="tns:RegularHoursType" minOccurs="0" maxOccurs="unbounded">
-						<s:annotation>
-							<s:documentation>
-								Regular hours, weekday based. Should not be set for representing 24/7 as this is the most common case
-							</s:documentation>
-						</s:annotation>
-					</s:element>
+					<s:choice>
+						<s:element name="regularHours" type="tns:RegularHoursType" minOccurs="1" maxOccurs="7">
+							<s:annotation>
+								<s:documentation>
+									Regular hours, weekday based. This element should not be set for representing 24/7 as this is the most common case.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="twentyfourseven" type="s:boolean" minOccurs="1" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									True to represent 24 hours per day and 7 days per week, except the given exceptions.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:choice>
 					<s:element name="exceptionalOpenings" type="tns:ExceptionalPeriodType" minOccurs="0" maxOccurs="unbounded">
 						<s:annotation>
 							<s:documentation>
@@ -1318,46 +1327,45 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 						Regular hours, weekday based. Number of day in the week, from Monday(1) till Sunday(7)
 					</s:documentation>
 				</s:annotation>
-				<s:sequence>
-					<s:element name="weekday" minOccurs="1" maxOccurs="1">
-						<s:annotation>
-							<s:documentation>
-								Regular hours, weekday based. Number of day in the week, from Monday(1) till Sunday(7)
-							</s:documentation>
-						</s:annotation>
-						<s:simpleType>
-							<s:restriction base="s:int">
-								<s:minInclusive value="1"></s:minInclusive>
-								<s:maxInclusive value="7"></s:maxInclusive>
-							</s:restriction>
-						</s:simpleType>
-					</s:element>
-					<s:element name="periodBegin" minOccurs="1" maxOccurs="1">
-						<s:annotation>
-							<s:documentation>
-								Begin of the regular period given in hours and minutes. Must be in 24h format with leading zeros. Example "18:15" Minute/Hour separator is ":"
-							</s:documentation>
-						</s:annotation>
-						<s:simpleType>
-							<s:restriction base="s:string">
-								<s:length value="5"></s:length>
-								<s:pattern value="[0-2][0-9]\:[0-5][0-9]"></s:pattern>
-							</s:restriction>
-						</s:simpleType>
-					</s:element>
-					<s:element name="periodEnd" minOccurs="1" maxOccurs="1">
-						<s:annotation>
-							<s:documentation>
-								End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
-							</s:documentation>
-						</s:annotation>
-						<s:simpleType>
-							<s:restriction base="s:string">
-								<s:pattern value="[0-2][0-9]:[0-5][0-9]"></s:pattern>
-							</s:restriction>
-						</s:simpleType>
-					</s:element>
-				</s:sequence>
+				<s:attribute name="weekday" use="required">
+					<s:annotation>
+						<s:documentation>
+							Number of day in the week, from Monday(1) till Sunday(7)
+						</s:documentation>
+					</s:annotation>
+					<s:simpleType>
+						<s:restriction base="s:int">
+							<s:maxInclusive value="7"></s:maxInclusive>
+							<s:minInclusive value="1"></s:minInclusive>
+						</s:restriction>
+					</s:simpleType>
+				</s:attribute>
+				<s:attribute name="periodBegin" use="required">
+					<s:annotation>
+						<s:documentation>
+							Begin of the regular period given in hours and minutes. Must be in 24h format with leading zeros. Example 18:15 Minute/Hour separator is :
+						</s:documentation>
+					</s:annotation>
+					<s:simpleType>
+						<s:restriction base="s:string">
+							<s:pattern value="[0-2][0-9]\:[0-5][0-9]"></s:pattern>
+							<s:length value="5"></s:length>
+						</s:restriction>
+					</s:simpleType>
+				</s:attribute>
+				<s:attribute name="periodEnd" use="required">
+					<s:annotation>
+						<s:documentation>
+							End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
+						</s:documentation>
+					</s:annotation>
+					<s:simpleType>
+						<s:restriction base="s:string">
+							<s:pattern value="[0-2][0-9]:[0-5][0-9]"></s:pattern>
+							<s:length value="5"></s:length>
+						</s:restriction>
+					</s:simpleType>
+				</s:attribute>
 			</s:complexType>
 
 			<s:complexType name="ExceptionalPeriodType">

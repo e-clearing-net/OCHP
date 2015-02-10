@@ -185,6 +185,7 @@ The key words *must*, *must not*, *required*, *shall*, *shall
 not*, *should*, *should not*, *recommended*, *may* and
 *optional* in this document are to be interpreted as described in
 [https://tools.ietf.org/html/rfc2119](RFC 2119).
+
 The cardinality is defined by the indicators _*_, *+*, *?* and
 *1*, where the last one is the default. The meaning and mapping to
 XML syntax is as follows:
@@ -199,6 +200,12 @@ exactly one  | *(default)*                                   | 1
 For some data fields a [http://en.wikipedia.org/wiki/Regular_expression](Regular Expression) is
 provided as an additional but very precise definition of the data
 format.
+
+The character *>* in front of any data field indicates a choice of 
+multiple possibilities.
+
+The character *~* appended to any data field indicates the 
+implementation as XML attribute instead of an element.
 
 
 
@@ -1573,18 +1580,28 @@ tomorrow. Today it is still planned and under construction."
 
 Opening and access hours for the charge point.
 
- Field Name           |  Field Type             |  Card.  |  Description
-:---------------------|:------------------------|:--------|:------------
- regularHours         |  regularHoursType       |  *      |  Regular hours, weekday based. Should not be set for representing 24/7 as this is the most common case.
- exceptionalOpenings  |  exceptionalPeriodType  |  *      |  Exceptions for specified calendar dates, time-range based. Periods the station is operating/accessible. Additional to regular hours. May overlap regular rules.
- exceptionalClosings  |  exceptionalPeriodType  |  *      |  Exceptions for specified calendar dates, time-range based. Periods the station is not operating/accessible. Overwriting regularHours and exceptionalOpenings. Should not overlap exceptionalOpenings.
+ Field Name             |  Field Type             |  Card.  |  Description
+:-----------------------|:------------------------|:--------|:------------
+ *Choice: one of two*   |                         |         | 
+  > regularHours        |  regularHoursType       |  *      |  Regular hours, weekday based. Should not be set for representing 24/7 as this is the most common case.
+  > twentyfourseven     |  boolean                |  1      |  True to represent 24 hours per day and 7 days per week, except the given exceptions.
+ exceptionalOpenings    |  exceptionalPeriodType  |  *      |  Exceptions for specified calendar dates, time-range based. Periods the station is operating/accessible. Additional to regular hours. May overlap regular rules.
+ exceptionalClosings    |  exceptionalPeriodType  |  *      |  Exceptions for specified calendar dates, time-range based. Periods the station is not operating/accessible. Overwriting regularHours and exceptionalOpenings. Should not overlap exceptionalOpenings.
 
 ###### Example one
 Operating 24/7 except for New Year 2015:
 
 ```XML
 <operatingTimes>
-     <regularHours>
+   <twentyfourseven>true</twentyfourseven>
+   <exceptionalClosings>
+	  <periodBegin>
+		 <DateTime>2015-01-01T00:00:00Z</DateTime>
+	  </periodBegin>
+	  <periodEnd>
+		 <DateTime>2015-01-02T00:00:00Z</DateTime>
+	  </periodEnd>
+   </exceptionalClosings>
 </operatingTimes>
 ```
 
@@ -1621,11 +1638,11 @@ This represents the following schedule, where ~~stroked out~~ days are without o
 
 Regular recurring operation or access hours
 
- Field Name  |  Field Type  |  Card.  |  Description
-:------------|:-------------|:--------|:------------
- weekday     |  int(1)      |  1      |  Regular hours, weekday based. Number of day in the week, from Monday (1) till Sunday (7)
- periodBegin |  string(5)   |  1      |  Begin of the regular period given in hours and minutes. Must be in 24h format with leading zeros. Example: "18:15". Hour/Minute separator: ":" Regex: $[$0-2$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$
- periodEnd   |  string(5)   |  1      |  End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
+ Field Name   |  Field Type  |  Card.  |  Description
+:-------------|:-------------|:--------|:------------
+ weekday~     |  int(1)      |  1      |  Number of day in the week, from Monday (1) till Sunday (7)
+ periodBegin~ |  string(5)   |  1      |  Begin of the regular period given in hours and minutes. Must be in 24h format with leading zeros. Example: "18:15". Hour/Minute separator: ":" Regex: $[$0-2$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$
+ periodEnd~   |  string(5)   |  1      |  End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
 
 
 ### ExceptionalPeriodType *class*
