@@ -890,7 +890,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 						<s:annotation>
 							<s:documentation>
 								The Standard of the installed connector; 
-									CHADEMO                The connector type is CHAdeMO, DC 
+									Chademo                The connector type is CHAdeMO, DC 
 									IEC-62196-T1           The connector type is IEC 62196 Type 1 “SAE J1772”
 									IEC-62196-T1-COMBO     The connector type is Combo Type 1 based, DC 
 									IEC-62196-T2           The connector type is IEC 62196 Type 2 “Mennekes” 
@@ -1047,7 +1047,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 						<s:annotation>
 							<s:documentation>
 								The Standard of the installed connector; 
-									CHADEMO                The connector type is CHAdeMO, DC 
+									Chademo                The connector type is CHAdeMO, DC 
 									IEC-62196-T1           The connector type is IEC 62196 Type 1 “SAE J1772”
 									IEC-62196-T1-COMBO     The connector type is Combo Type 1 based, DC 
 									IEC-62196-T2           The connector type is IEC 62196 Type 2 “Mennekes” 
@@ -1078,7 +1078,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 							<s:annotation>
 								<s:documentation>
 								The Standard of the installed connector; 
-									CHADEMO                The connector type is CHAdeMO, DC 
+									Chademo                The connector type is CHAdeMO, DC 
 									IEC-62196-T1           The connector type is IEC 62196 Type 1 “SAE J1772”
 									IEC-62196-T1-COMBO     The connector type is Combo Type 1 based, DC 
 									IEC-62196-T2           The connector type is IEC 62196 Type 2 “Mennekes” 

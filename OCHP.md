@@ -1449,7 +1449,7 @@ The socket or plug standard of the charging point.
 
  Value                 |  Description
 :----------------------|:-------------
- CHADEMO               |  The connector type is CHAdeMO, DC
+ Chademo               |  The connector type is CHAdeMO, DC
  IEC-62196-T1          |  IEC 62196 Type 1 "SAE J1772"
  IEC-62196-T1-COMBO    |  Combo Type 1 based, DC
  IEC-62196-T2          |  IEC 62196 Type 2 "Mennekes"
@@ -1874,7 +1874,7 @@ Contract-IDs.
  n/a                   | NEMA5_20       |                                  
  IEC-62196-T1          | SAEJ1772       | Yazaki                           
  n/a                   | SPI            | Small Paddle Inductive           
- CHADEMO               | Tepco          | CHAdeMO fast charging            
+ Chademo               | Tepco          | CHAdeMO fast charging            
  *multiple choices*    | Tesla          | Tesla connector                  
  n/a                   | Unspecified    |                                  
  IEC-62196-T1-COMBO    | n/a            | Not distinguished                
