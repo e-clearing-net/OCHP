@@ -645,7 +645,7 @@ Available     | Reserved     | A new charging process can be started immediately
 Not Available | Charging     | Charging process ongoing, charge point occupied. No new charging process can be started. TTL is set to the expected end of the charging process. For example 20 minutes ahead for quick charging.
 Not Available | Blocked      | Parking spot occupied w/o ongoing charging process. This may be caused by a parked car that is not ambiguous to charge. TTL is set to a date in the near future.
 Not Available | Reserved     | Reserved for now or the near future, no new charging process may be started. TTL is set to the date the reservation will expire. Usually the status will change than to either *Not Available--Charging* or to *Available--Available* if the reservation was not used..
-Not Available | Out Of Order | Unplanned or planned failure of the charge point. TTL is set to the expected end of the failure if known.
+Not Available | Out Of Order | Failure or other inoperability. TTL is set to the expected end of the failure if known. In case of longer service interruptions, the charge point status value should also be set to *Inoperative*, see  [ChargePointStatusType](#ChargePointStatusType).
 
 
 
@@ -1517,13 +1517,16 @@ The authorisation and payment methods available at an EVSE for the EV user
 ### ChargePointStatusType *enum*
 
 This value represents the overall status of a charging point. Not to be
-confused with a live status (available, reserved, occupied, ... )
+confused with a live status (available, reserved, occupied, ... ) This 
+overall status should reflect situations which are valid over several 
+days. The live status indicates shorter valid status.
 
  Value       |  Description
 :------------|:-------------
  Unknown     |  No status information available
  Operative   |  charge point is in operation and can be used
- Inoperative |  charge point cannot be used due to maintenance, failure or other access restrictions (temporarily)
+ Inoperative |  charge point cannot be used due to maintenance, greater 
+ downtime, blocking construction works or other access restrictions (temporarily, will be operative in the future).
  Planned     |  planned charge point, will be operating soon
  Closed      |  discontinued charge point, will be deleted soon 
 

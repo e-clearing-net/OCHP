@@ -1170,7 +1170,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 							<s:documentation>
 								Unknown; No status information available
 								Operative; Charge point is in operation and can be used
-								Inoperative; charge point cannot be used due to maintenance, failure or other restrictions (temporarily) 
+								Inoperative; charge point cannot be used due to maintenance, greater downtime, blocking construction works or other access restrictions (temporarily, will be operative in the future). 
 								Planned; planned charge point, will be operating soon 
 								Closed; discontinued charge point, will be deleted soon
 							</s:documentation>
