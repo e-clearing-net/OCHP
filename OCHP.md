@@ -1013,14 +1013,13 @@ Contains result information.
 
 Result and error codes for the class Result as return value for method calls.
 
- Value       |  Description
-:------------|:-------------
- ok          |  Data accepted and processed.
- server      |  Internal server error.
- other       |  Other error type. See Description for details.
- format      |  Data could not be processed due to formal error in the SOAP message.
- missing     |  A mandatory value was missing.
- range       |  A given value was out of the allowed range.
+ Value          |  Description
+:---------------|:-------------
+ ok             | Data accepted and processed; 
+ partly         | Only part of the data was accepted; 
+ not-authorized | Wrong username and/or password.
+ invalid-id     | One or more ID (EVSE/Contract) were not valid for this user.
+ server         | Internal server error.
 
 
 ### DateTimeType

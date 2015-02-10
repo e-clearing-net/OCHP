@@ -1614,21 +1614,19 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 						<s:annotation>
 							<s:documentation>
 								ok: Data accepted and processed; 
-								server: Internal server error; 
-								other: Other error type. See description for details;
-								format: Data could not be processed due to formal error in SOAP message;
-								missing: A mandatory value was missing;
-								range: A given value was out of the allowed range;
+								partly: Only part of the data was accepted; 
+								not-authorized: Wrong username and/or password;
+								invalid-id: One or more ID (EVSE/Contract) were not valid for this user;
+								server: Internal server error;
 							</s:documentation>
 						</s:annotation>
 						<s:simpleType>
 							<s:restriction base="s:string">
 								<s:enumeration value="ok"></s:enumeration>
+								<s:enumeration value="partly"></s:enumeration>
+								<s:enumeration value="not-authorized"></s:enumeration>
+								<s:enumeration value="invalid-id"></s:enumeration>
 								<s:enumeration value="server"></s:enumeration>
-								<s:enumeration value="other"></s:enumeration>
-								<s:enumeration value="format"></s:enumeration>
-								<s:enumeration value="missing"></s:enumeration>
-								<s:enumeration value="range"></s:enumeration>
 							</s:restriction>
 						</s:simpleType>
 					</s:element>
