@@ -1442,6 +1442,31 @@ This class defines a geo location. The geodetic system to be used is WGS 84.
  lon         |  string(11)  |  1      |  Longitude of the point in decimal degree. Example: -126.104965. Decimal separator: "." Regex: `-?$[$0-9$]$\{1,3\}$\$.$[$0-9$]$\{6\}`
 
 
+### GeoPointType *class*
+
+This class defines a geo location. The geodetic system to be used is WGS 84.
+
+ Field Name  |  Field Type  |  Card.  |  Description
+:------------|:-------------|:--------|:------------
+ lat         |  string(10)  |  1      |  Latitude of the point in decimal degree. Example: 50.770774. Decimal separator: "." Regex: `-?$[$0-9$]$\{1,2\}$\$.$[$0-9$]$\{6\}`
+ lon         |  string(11)  |  1      |  Longitude of the point in decimal degree. Example: -126.104965. Decimal separator: "." Regex: `-?$[$0-9$]$\{1,3\}$\$.$[$0-9$]$\{6\}`
+ name        |  string(255) |  ?      |  Name of the point in local language or as written at the location. For example the street name of a parking lot entrance or it's number.
+ class       |  GeoClass    |  1      |  The class of this geo point  for categorization and right usage.
+
+
+### GeoClassType *enum*
+
+Where the type-enum can be one of the following choices:
+
+ Value       |  Description
+:------------|:-------------
+ entrance    |  For larger sites entrances may be specified for navigation.
+ exit        |  For larger sites exits may be specified for navigation purpose.
+ access      |  Two directional entrance and exit.
+ ui          |  Geographical location of the user interface for authorisation and payment means. If not specified the user interface is assumed to be at the location of the charge point.
+ other       |  Other relevant point. Name recommended.
+
+
 ### ConnectorStandard *enum*
 
 The socket or plug standard of the charging point.
@@ -1644,10 +1669,8 @@ Contains information about the charge points.
  city                |  string(45)               |  1      |  Alphabetic, in the language defined in locationNameLang
  zipCode             |  string(10)               |  1      |  Alphanumeric, Examples: "60439", "8011 PK". Without leading country code. Characters: [A-Z], [0-9], -, <space>
  country             |  string(3)                |  1      |  Alpha, three characters. ISO 3166 country code
- geoLocation         |  GeoPointType             |  1      |  Geographical location of the charge point itself (power outlet).
- geoUserInterface    |  GeoPointType             |  ?      |  Geographical location of the user interface for authorisation and payment means. If not specified the user interface is assumed to be at the location specified in geoLocation.
- geoSiteEntrance     |  GeoPointType             |  *      |  For larger sites entrances may be specified for navigation.
- geoSiteExit         |  GeoPointType             |  *      |  For larger sites exits may be specified for navigation purpose. If only entrances are set, two-direction traffic is assumed.
+ chargePointLocation |  GeoPointType             |  1      |  Geographical location of the charge point itself (power outlet).
+ relatedLocation     |  AdditionalGeoPointType   |  ?      |  Geographical location of related points relevant to the user.
  operatingTimes      |  HoursType                |  ?      |  The times the EVSE is operating and can be used for charging. Must not be provided if operating hours are unsure/unknown.
  accessTimes         |  HoursType                |  ?      |  The times the EVSE is accessible, if different from operatingTimes. For example if a car park is closed during the night. Must not be provided if access hours are unsure/unknown.
  status              |  ChargePointStatusType    |  ?      |  The current status of the charge point.

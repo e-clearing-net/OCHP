@@ -1013,32 +1013,73 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			</s:complexType>
 
 			<s:complexType name="GeoPointType">
-				<s:sequence>
-					<s:element name="lat" minOccurs="1" maxOccurs="1">
-						<s:annotation>
-							<s:documentation>
-								Latitude of the Point in decimal degree. Example: 50.104965 Decimal separator: "." Regex: -?[0-9]{1,2}\.[0-9]{6}
-							</s:documentation>
-						</s:annotation>
-						<s:simpleType>
-							<s:restriction base="s:string">
-								<s:pattern value="-?[0-9]{1,2}\.[0-9]{6}"></s:pattern>
-							</s:restriction>
-						</s:simpleType>
-					</s:element>
-					<s:element name="lon" minOccurs="1" maxOccurs="1">
-						<s:annotation>
-							<s:documentation>
-								Longitude of the decimal degree Example: -126.104965 Decimal separator: "." Regex: -?[0-9]{1,3}\.[0-9]{6}
-							</s:documentation>
-						</s:annotation>
-						<s:simpleType>
-							<s:restriction base="s:string">
-								<s:pattern value="-?[0-9]{1,3}\.[0-9]{6}"></s:pattern>
-							</s:restriction>
-						</s:simpleType>
-					</s:element>
-				</s:sequence>
+				<s:attribute name="lat" use="required">
+					<s:annotation>
+						<s:documentation>
+							Latitude of the Point in decimal degree. Example: 50.104965 Decimal separator: &quot;.&quot; Regex: -?[0-9]{1,2}\.[0-9]{6}
+						</s:documentation>
+					</s:annotation>
+					<s:simpleType>
+						<s:restriction base="s:string">
+							<s:pattern value="-?[0-9]{1,2}\.[0-9]{6}"></s:pattern>
+						</s:restriction>
+					</s:simpleType>
+				</s:attribute>
+				<s:attribute name="lon" use="required">
+					<s:annotation>
+						<s:documentation>
+							Longitude of the decimal degree Example: -126.104965 Decimal separator: "." Regex: -?[0-9]{1,3}\.[0-9]{6}
+						</s:documentation>
+					</s:annotation>
+					<s:simpleType>
+						<s:restriction base="s:string">
+							<s:pattern value="-?[0-9]{1,3}\.[0-9]{6}"></s:pattern>
+						</s:restriction>
+					</s:simpleType>
+				</s:attribute>
+			</s:complexType>
+
+			<s:complexType name="AdditionalGeoPointType">
+				<s:complexContent>
+					<s:extension base="tns:GeoPointType">
+						<s:attribute name="name" use="optional">
+							<s:annotation>
+								<s:documentation>
+									Name of the point in local language or as written at the location. For example the street name of a parking lot entrance or it's number.
+								</s:documentation>
+							</s:annotation>
+							<s:simpleType>
+								<s:restriction base="s:string">
+									<s:maxLength value="255"></s:maxLength>
+								</s:restriction>
+							</s:simpleType>
+						</s:attribute>
+						<s:attribute name="type" use="required">
+							<s:annotation>
+								<s:documentation>
+									The class of this geo point  for categorization and right usage.
+									* entrance: For larger sites entrances may be specified for navigation.
+									* exit: For larger sites exits may be specified for navigation purpose.
+									* access: Two directional entrance and exit.
+									* ui: Geographical location of the user interface for authorisation and payment means. If not specified the user interface is assumed to be at the location of the charge point.
+									* other: Other relevant point. Name recommended.
+								</s:documentation>
+							</s:annotation>
+							<s:simpleType>
+								<s:annotation>
+									<s:documentation></s:documentation>
+								</s:annotation>
+								<s:restriction base="s:string">
+									<s:enumeration value="entrance" />
+									<s:enumeration value="exit" />
+									<s:enumeration value="access" />
+									<s:enumeration value="ui" />
+									<s:enumeration value="other" />
+								</s:restriction>
+							</s:simpleType>
+						</s:attribute>
+					</s:extension>
+				</s:complexContent>
 			</s:complexType>
 
 			<s:complexType name="ConnectorStandard">
@@ -1464,31 +1505,17 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 							</s:restriction>
 						</s:simpleType>
 					</s:element>
-					<s:element name="geoLocation" type="tns:GeoPointType" minOccurs="1" maxOccurs="1">
+					<s:element name="chargePointLocation" type="tns:GeoPointType" minOccurs="1" maxOccurs="1">
 						<s:annotation>
 							<s:documentation>
 								Geographical location of the charge point itself (power outlet).
 							</s:documentation>
 						</s:annotation>
 					</s:element>
-					<s:element name="geoUserInterface" type="tns:GeoPointType" minOccurs="0" maxOccurs="1">
+					<s:element name="relatedLocation" type="tns:AdditionalGeoPointType" minOccurs="0" maxOccurs="unbounded">
 						<s:annotation>
 							<s:documentation>
-								Geographical location of the user interface for authorisation and payment means. If not specified the user interface is assumed to be at the location specified in geoLocation
-							</s:documentation>
-						</s:annotation>
-					</s:element>
-					<s:element name="geoSiteEntrance" type="tns:GeoPointType" minOccurs="0" maxOccurs="unbounded">
-						<s:annotation>
-							<s:documentation>
-								For larger sites entrances may be specified for navigation purpose.
-							</s:documentation>
-						</s:annotation>
-					</s:element>
-					<s:element name="geoSiteExit" type="tns:GeoPointType" minOccurs="0" maxOccurs="unbounded">
-						<s:annotation>
-							<s:documentation>
-								For larger sites exits may be specified for navigation purpose. If only entrances are set, two-direction traffic is assumed.
+								Geographical location of related points relevant to the user
 							</s:documentation>
 						</s:annotation>
 					</s:element>
