@@ -1043,7 +1043,13 @@ characters.
 
 ### LocalDateTimeType
 
-Format is according to ISO8601 UTC + Offset. The field takes 25 alphanumeric characters.
+Format is according to ISO8601 UTC + Offset. The field takes 25 
+alphanumeric characters.
+
+Please note that this type does explicitly not take UTC times. All time 
+values need to be given in local time with a valid offset. A time value 
+with $+0000$ offset represents the Greenwich Mean Time and is 
+semantically not the same as UTC.
 
 ###### Example
 
@@ -1502,7 +1508,7 @@ The authorisation and payment methods available at an EVSE for the EV user
  DirectDebitcard  |  The EVSE can be accessed through direct payment with debit card.
  RfidMifareCls    |  Personal RFID token with roaming relation. (Mifare classic)
  RfidMifareDes    |  Personal RFID token with roaming relation. (Mifare Desfire)
- RfidCallypso     |  Personal RFID token with roaming relation. (Calypso)
+ RfidCalypso      |  Personal RFID token with roaming relation. (Calypso)
  Iec15118         |  In-car access token as specified in IEC-15118. 
 
 
