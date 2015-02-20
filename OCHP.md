@@ -1789,7 +1789,7 @@ The rationale behind using SOAP as a transport is that SOAP already
 provides the infrastructure of sending messages. SOAP has a good support
 in the industry, which results in tools that improve the ease of
 implementing the protocol.
-For this protocol the SOAP Version 1.2 MUST be used.
+For this protocol the SOAP Version 1.1 MUST be used.
 
 
 
