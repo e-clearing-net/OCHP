@@ -1264,6 +1264,35 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 				</s:sequence>
 			</s:complexType>
 
+			<s:complexType name="GeneralLocationType">
+				<s:sequence>
+					<s:element name="GeneralLocationType">
+						<s:annotation>
+							<s:documentation>
+								* on-street parking in public space
+								* parking-garage multistorey car park
+								* underground-garage multistorey car park, mainly underground
+								* parking-lot a cleared area that is intended for parking vehicles, i.e. at super markets, bars, etc.
+								* other none of the given possibilities
+								* unknown parking location type is not known by the operator
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:annotation>
+							</s:annotation>
+							<s:restriction base="s:string">
+								<s:enumeration value="on-street"></s:enumeration>
+								<s:enumeration value="parking-garage"></s:enumeration>
+								<s:enumeration value="underground-garage"></s:enumeration>
+								<s:enumeration value="parking-lot"></s:enumeration>
+								<s:enumeration value="other"></s:enumeration>
+								<s:enumeration value="unknown"></s:enumeration>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
 			<s:complexType name="ParkingRestrictionType">
 				<s:sequence>
 					<s:element name="ParkingRestrictionType">
@@ -1578,6 +1607,13 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 								<s:pattern value="[0-9 \-]{1,20}"></s:pattern>
 							</s:restriction>
 						</s:simpleType>
+					</s:element>
+					<s:element name="location" type="tns:GeneralLocationType" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								The general type of the charge point location.
+							</s:documentation>
+						</s:annotation>
 					</s:element>
 					<s:element name="floorLevel" minOccurs="0" maxOccurs="1">
 						<s:annotation>

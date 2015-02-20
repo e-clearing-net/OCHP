@@ -1655,6 +1655,21 @@ Specifies one exceptional period for opening or access hours.
  periodEnd   |  DateTimeType|  1      |  End of the exception.
 
 
+### GeneralLocationType *enum*
+
+Reflects the general type of the charge points location. May be used 
+for user information.
+
+ Value              |  Description
+:-------------------|:-------------
+ on-street          |  parking in public space
+ parking-garage     |  multistorey car park
+ underground-garage |  multistorey car park, mainly underground
+ parking-lot        |  a cleared area that is intended for parking vehicles, i.e. at super markets, bars, etc.
+ other              |  none of the given possibilities
+ unknown            |  parking location type is not known by the operator
+
+
 ### ParkingRestrictionType *enum*
 
 This value, if provided, represents the restriction to the parking spot
@@ -1694,6 +1709,7 @@ Contains information about the charge points.
  status              |  ChargePointStatusType    |  ?      |  The current status of the charge point.
  statusSchedule      |  ChargePointScheduleType  |  *      |  Planned status changes in the future. If a time span matches with the current or displayed date, the corresponding value overwrites *status*.
  telephoneNumber     |  string(20)               |  ?      |  Numeric. Service hotline to be displayed to the EV user. Separators recommended. Characters: [0-9], -, <space>
+ location            |  GeneralLocationType      |  1      |  The general type of the charge point location.
  floorLevel          |  string(4)                |  ?      |  Alphanumeric. Level on which the charging station is located (in garage buildings) in the locally displayed numbering scheme. Examples: "-2", "P-5", "+5". Characters: [A-Z], [0-9], -, +, /
  parkingSlotNumber   |  string(5)                |  ?      |  Alphanumeric. Locally displayed parking slot number. Examples: "10", "B25", "P-234". Characters: [A-Z], [0-9], -, +, /
  parkingRestriction  |  ParkingRestrictionType   |  *      |  Those parking restrictions apply to the parking spot.
