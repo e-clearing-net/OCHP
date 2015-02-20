@@ -1527,6 +1527,18 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 							</s:documentation>
 						</s:annotation>
 					</s:element>
+					<s:element name="timeZone" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								One of IANA tzdata's TZ-values representing the time zone of the location. Examples: "Europe/Oslo", "Europe/Zurich". (http://www.iana.org/time-zones)
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:length value="255"></s:length>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
 					<s:element name="operatingTimes" type="tns:HoursType" minOccurs="0" maxOccurs="1">
 						<s:annotation>
 							<s:documentation>
