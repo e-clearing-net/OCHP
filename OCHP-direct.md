@@ -113,16 +113,18 @@ This generic main use cases splits up in several sub parts. Those are:
  * **Remote Stop:** A user stops a charging process at an operator‘s 
    charge pole by using a provider‘s app (that was remotely started).
  * **Live Info:** A user requests information about a charging process 
-   at an operator’s charge pole by using a provider’s app (from which 
+   at an operator's charge pole by using a provider's app (from which 
    the process was started).
 
 #### Advanced use cases
- * **Charge Event:** A user gets informed by a provider’s app about 
-   status changes of a charging process at an operator’s charge pole, 
+ * **Charge Event:** A user gets informed by a provider's app about 
+   status changes of a charging process at an operator's charge pole, 
    even if it wasn't started remotely.
  * **Remote Control:** A user controls a charging process at an 
    operator‘s charge pole that was not remotely started by using a 
    provider‘s app.
+ * **Remote Action:** A user triggers advanced and not charging process 
+   related actions at a charge point or charging station of an operator.
 
 The __basic use cases__ require the operator to act as a server in 
 order to receive information and commands from the provider. The
