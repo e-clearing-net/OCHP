@@ -95,9 +95,16 @@ the [OCHP documentation](OCHP.md).
 
 ## Use Cases of OCHP direct
 
-The direct communication between operators and providers allows the 
-implementation of fundamental new use cases between two roaming 
-partners. Those use cases are:
+The overall use case for this interface is to control services like 
+charging sessions in an operator's backend while handling the user 
+authorisation within an (from the operator's point of view) external 
+system.
+
+The customer story can be shortened to: 
+
+> One (provider) app for all charging stations – regardless of their operator.
+
+This generic main use cases splits up in several sub parts. Those are:
 
 #### Basic use cases
  * **Remote Start:** A user starts a charging process at an operator‘s 
@@ -120,6 +127,80 @@ partners. Those use cases are:
 The __basic use cases__ require the operator to act as a server in 
 order to receive information and commands from the provider. The
 __advanced use cases__ require also the provider to act as a server.
+
+
+
+
+## Basic Principles of OCHP direct
+
+The OCHP direct Interface describes a set of methods to control 
+charging sessions in an EVSE operator's backend. While dedicated 
+methods in the clearing house's interface extend its functionality to 
+provide remote services, the actually service requests are sent between 
+the operator and the provider directly. In those cases the operator 
+backend acts as a server, in contrast to pure clients as common for all 
+other OCHP communication. The backward communication, from the operator 
+system to the provider system is also possible. In that case the 
+provider system will act as a SOAP server and the operator system as 
+the client.
+
+The following Figure illustrates the communication paths of OCHP direct.
+The extending messages of OCHP allow the publication of backend 
+specification and the discovery of roaming partner's backends.
+
+![Figure OCHP direct Communication Overview](media/OCHPdirectCommunicationOverview.png "OCHP direct Communication Overview")
+
+
+
+### Trust and authorisation structure
+
+Based on the assumption that _OCHP direct_ is used in addition to a 
+regular OCHP connection via a clearing house, the following trust 
+structure applies. However, _OCHP direct_ may also be used in other 
+combinations, where the OCHP-part of the following description is to be 
+covered by alternative methods.
+
+
+#### The usual situation without OCHP direct
+
+When two roaming partners connect via OCHP and the clearing house, the 
+authorisation and trust structure can be defined as follows:
+
+ * Both roaming partners trust the clearing house
+ * The operator authorises the provider to use their charging stations
+   generally, by setting the roaming connection in the clearing house
+ * The provider authorises and trusts the operator to authorise the
+   provider's customers generally
+ * The operator authorises the provider's customers at their charging
+   stations for inividual charging sessions
+
+In this situation the single authorisation is be done in the operator's 
+backend _on behalf of_ the provider. The provider trusts the operator 
+that all sent customer tokens are getting authorised on all charge 
+points or as based on the contract between both.
+
+
+#### The situation with OCHP direct
+
+When direct authorisation requests come in place, the situation turns 
+around:
+
+ * Both roaming partners trust the clearing house
+ * The operator authorises the provider to use their charging stations
+   generally, by setting the roaming connection in the clearing house
+ * __The operator authorises and trusts the provider to authorise their
+   customers at the operator's charge points generally__
+ * _The provider authorises their own customers at the charging stations 
+   of the operator for inividual charging sessions_
+
+In this new situation the operator gives the responsiblity to authorise 
+charging sessions away to the provider. A operator therefore should not 
+decline an remote authorisation for other than contractual or technical 
+valid reasons.
+
+
+#### Security of the OCHP direct interface
+
 
 
 

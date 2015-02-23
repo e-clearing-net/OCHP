@@ -449,6 +449,8 @@ partners. Those use cases are:
  * **Remote Control:** A user controls a charging process at an 
    operator‘s charge pole that was not remotely started by using a 
    provider‘s app.
+ * **Remote Action:** A user triggers advanced and not charging process 
+   related actions at a charge point or charging station of an operator.
 
 The _basic use cases_ require the operator to act as a server in 
 order to receive information and commands from the provider. The
