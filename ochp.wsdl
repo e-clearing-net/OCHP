@@ -1605,6 +1605,19 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 							</s:restriction>
 						</s:simpleType>
 					</s:element>
+					<s:element name="category" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Charge point category code defined by the operator. Allows different pricing levels in roaming agreements based on the category.
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:minLength value="1"></s:minLength>
+								<s:maxLength value="2"></s:maxLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
 					<s:element name="operatingTimes" type="tns:HoursType" minOccurs="0" maxOccurs="1">
 						<s:annotation>
 							<s:documentation>

@@ -1720,6 +1720,7 @@ Contains information about the charge points.
  chargePointLocation |  GeoPointType             |  1      |  Geographical location of the charge point itself (power outlet).
  relatedLocation     |  AdditionalGeoPointType   |  ?      |  Geographical location of related points relevant to the user.
  timeZone            |  string(255)              |  ?      |  One of IANA tzdata's __TZ__-values representing the time zone of the location. Examples: "Europe/Oslo", "Europe/Zurich". ([http://www.iana.org/time-zones](http://www.iana.org/time-zones))
+ category            |  string(2)                |  ?      |  Charge point category code defined by the operator. Allows different pricing levels in roaming agreements based on the category.
  operatingTimes      |  HoursType                |  ?      |  The times the EVSE is operating and can be used for charging. Must not be provided if operating hours are unsure/unknown.
  accessTimes         |  HoursType                |  ?      |  The times the EVSE is accessible, if different from operatingTimes. For example if a car park is closed during the night. Must not be provided if access hours are unsure/unknown.
  status              |  ChargePointStatusType    |  ?      |  The current status of the charge point.
