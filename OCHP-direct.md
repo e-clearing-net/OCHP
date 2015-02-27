@@ -203,8 +203,50 @@ valid reasons.
 
 #### Security of the OCHP direct interface
 
+Each roaming partner who makes use of OCHP direct needs provide a SOAP 
+server with a public accessible interface. It is obvious that they must secure
+those interfaces to:
+ * restrict usage only to their current roaming partners and
+ * secure the transmitted data.
+
+This applies to the operator and for advanced use cases also to the 
+provider.
+
+Therefore the interfaces must be protected on HTTP transport layer 
+level, using SSL and Basic Authentication. Please note that this 
+mechanism does **not** require client side certificates for 
+authentication, only server side certificates in order to provide a 
+secure SSL connection.
+
+The OCHP direct interface of every roaming partner must be secured via 
+*TLS 1.2* ([RFC6176](http://tools.ietf.org/html/rfc6176)).
+
+The identification of the requester and the access restriction of the 
+interface is done by rotating identification tokens which are 
+distributed via the clearing house. (See 
+[Identification token distribution](#identification-token-distribution) 
+for further information.)
+
+Each request to a OCHP direct interface must contain a *Authorization* 
+HTTP header:
+
+```http
+Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+```
+
+The hash value in this header is composed through the following steps:
+ 1. The identification tokens of sender and receiver are combined into 
+    a string "receiver-token:sender-token"
+ 2. The resulting string is then encoded using the RFC2045-MIME variant 
+    of Base64 ([RFC1945](http://tools.ietf.org/html/rfc1945#section-11)
+ 3. The authorization method and a space i.e. `Basic␣` is then put 
+    before the encoded string.
+
+The OCHP direct endpoint should check for valid authorisation in order 
+to prevent unintended usage of their endpoints or cyber-attacks.
 
 
+#### Identification token distribution
 
 
 
