@@ -1543,6 +1543,8 @@ The authorisation and payment methods available at an EVSE for the EV user
  RfidMifareDes    |  Personal RFID token with roaming relation. (Mifare Desfire)
  RfidCalypso      |  Personal RFID token with roaming relation. (Calypso)
  Iec15118         |  In-car access token as specified in IEC-15118. 
+ OchpDirectAuth   |  The EVSE can be accessed through a OCHP-direct capable provider app.
+ OperatorAuth     |  The EVSE can be accessed through a direct online payment to the operator.
 
 
 ### ChargePointStatusType *enum*

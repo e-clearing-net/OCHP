@@ -1324,11 +1324,14 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 					<s:documentation>
 						Public; Public accessible, no authorisation required 
 						LocalKey; A key or token can be received at the location.(i.e. at the hotel reception or in the restaurant) 
-						DirectCash; The EVSE can be accessed through direct payment in cash. DirectCreditcard; The Evse can be accessed through direct payment with credit card
+						DirectCash; The EVSE can be accessed through direct payment in cash. 
+						DirectCreditcard; The Evse can be accessed through direct payment with credit card
 						RfidMifareCls; Personal RFID token with roaming relation. (Mifare Classic) 
 						RfidMifareDes; Personal token with roaming relation. (Mifare Desfire) 
 						RfidCalypso; Personal RFID token with roaming relation. (Calypso) 
 						Iec15118; In-car access token as specified in IEC-15118
+						OchpDirectAuth; The EVSE can be accessed through a OCHP-direct capable provider app.
+						OperatorAuth; The EVSE can be accessed through a direct online payment to the operator.
 					</s:documentation>
 				</s:annotation>
 				<s:sequence>
@@ -1344,6 +1347,8 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 								<s:enumeration value="RfidMifareDes"></s:enumeration>
 								<s:enumeration value="RfidCalypso"></s:enumeration>
 								<s:enumeration value="Iec15118"></s:enumeration>
+								<s:enumeration value="OchpDirectAuth"></s:enumeration>
+								<s:enumeration value="OperatorAuth"></s:enumeration>
 							</s:restriction>
 						</s:simpleType>
 					</s:element>
