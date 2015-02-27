@@ -928,6 +928,38 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 				</s:sequence>
 			</s:complexType>
 
+			<s:complexType name="RatingsType">
+				<s:sequence>
+					<s:element name="maximumPower" minOccurs="1" maxOccurs="1" type="s:float">
+						<s:annotation>
+							<s:documentation>
+								The maximum available power at this charge point at nominal voltage over all available phases of the line.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="guaranteedPower" minOccurs="0" maxOccurs="1" type="s:float">
+						<s:annotation>
+							<s:documentation>
+								The minimum guaranteed mean power in case of load management. Should be set to maximum when no load management applied.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="nominalVoltage" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								The nominal voltage for the charge point.
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:int">
+								<s:minExclusive value="0"></s:minExclusive>
+								<s:maxInclusive value="1000"></s:maxInclusive>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
 			<s:complexType name="CdrPeriodType">
 				<s:sequence>
 					<s:element name="startDateTime" type="tns:LocalDateTimeType" minOccurs="1" maxOccurs="1">
@@ -1657,6 +1689,13 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 						<s:annotation>
 							<s:documentation>
 								Which receptable type is/are present for a power outlet.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="ratings" type="tns:RatingsType" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Defines the ratings for the charge point.
 							</s:documentation>
 						</s:annotation>
 					</s:element>

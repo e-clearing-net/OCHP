@@ -1528,6 +1528,20 @@ standard and format (socket/cable).
  connectorFormat   |  ConnectorFormatType   |  1      |  The format (socket/cable) of the installed connector.
 
 
+### RatingsType *class*
+
+This class defines the ratings of a charge point. The values can be 
+displayed to the user or used to calculate charge time forecasts. 
+Depending on the used plug type the effective available power might be 
+lower.
+
+ Field Name       |  Field Type  |  Card.  |  Description
+:-----------------|:-------------|:--------|:------------
+ maximumPower     |  float       |  1      |  The maximum available power at this charge point at nominal voltage over all available phases of the line.
+ guaranteedPower  |  float       |  ?      |  The minimum guaranteed mean power in case of load management. Should be set to maximum when no load management applied.
+ nominalVoltage   |  int         |  ?      |  The nominal voltage for the charge point.
+
+
 ### AuthMethodType *enum*
 
 The authorisation and payment methods available at an EVSE for the EV user
@@ -1717,6 +1731,7 @@ Contains information about the charge points.
  parkingRestriction  |  ParkingRestrictionType   |  *      |  Those parking restrictions apply to the parking spot.
  authMethods         |  AuthMethodType           |  +      |  List of available payment or access methods on site.
  connectors          |  ConnectorType            |  +      |  Which receptacle type is/are present for a power outlet.
+ ratings             |  RatingsType              |  ?      |  Defines the ratings for the charge point.
  userInterfaceLang   |  string(3)                |  *      |  Alpha, three characters. Language(s) of the user interface or printed on-site instructions. *ISO-639-3* language code
 
 
