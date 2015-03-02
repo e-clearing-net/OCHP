@@ -152,6 +152,29 @@ specification and the discovery of roaming partner's backends.
 
 ![Figure OCHP direct Communication Overview](media/OCHPdirectCommunicationOverview.png "OCHP direct Communication Overview")
 
+The backend specification is send and updated regularly. It contents 
+all properties that describe the roaming partner's backend:
+
+ * The URL of the backend's OCHP direct endpoint(s).
+ * The security token of the backend. (See chapter [Security of the OCHP direct interface](#security-of-the-OCHP-direct-interface) 
+   for more information.)
+ * All business objects that are operated by this backend, represented 
+   by blacklists and/or whitelists.
+
+This data can be mapped onto a data structure as illustrated in the 
+following figure *OCHP direct ER Model*. The depictured data structure 
+allows for dynamic updates of endpoints and partner-tokens, which is 
+necessary to guaranty an uninterrupted service.
+
+Remarkable about the data model is the absence of an backend entity. 
+All related entities are bound to the roaming partner (operator or 
+provider), identified by their IDs. Thus, each roaming partner is free 
+to operate their services on one or multiple backend systems or even 
+share one backend system with another roaming partner. This should 
+cover all possible market situations. 
+
+![Figure OCHP direct ER Model](media/OCHPdirectErModel.png "OCHP direct ER Model")
+
 
 
 ### Trust and authorisation structure
