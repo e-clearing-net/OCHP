@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="503.38513"
+   height="133.09186"
+   id="svg3510"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="OCHPdirectTokenExchange.svg"
+   inkscape:export-filename="\\Srv19032.admin.local\schilling$\Dokumente\GitHub\OCHP\media\OCHPdirectTokenExchange.png"
+   inkscape:export-xdpi="150"
+   inkscape:export-ydpi="150">
+  <title
+     id="title4278">OCHP direct Token Exchange</title>
+  <defs
+     id="defs3512">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4197">
+      <stop
+         style="stop-color:#d7e3bf;stop-opacity:1;"
+         offset="0"
+         id="stop4199" />
+      <stop
+         style="stop-color:#d7e3bf;stop-opacity:0;"
+         offset="1"
+         id="stop4201" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4189">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop4191" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop4193" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4452">
+      <stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop4454" />
+      <stop
+         style="stop-color:#000000;stop-opacity:0;"
+         offset="1"
+         id="stop4456" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4442">
+      <stop
+         style="stop-color:#d8d8d8;stop-opacity:1;"
+         offset="0"
+         id="stop4444" />
+      <stop
+         style="stop-color:#d8d8d8;stop-opacity:0;"
+         offset="1"
+         id="stop4446" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4442"
+       id="linearGradient4448"
+       x1="363.8548"
+       y1="327.69193"
+       x2="434.34167"
+       y2="327.69193"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(12.142857,77.857143)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4442"
+       id="linearGradient4450"
+       x1="363.8548"
+       y1="309.7449"
+       x2="434.34167"
+       y2="309.7449"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(12.142857,77.857143)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4452"
+       id="linearGradient4458"
+       x1="363.8548"
+       y1="327.69193"
+       x2="434.34167"
+       y2="327.69193"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(12.142857,77.857143)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4452"
+       id="linearGradient4460"
+       x1="363.8548"
+       y1="309.7449"
+       x2="434.34167"
+       y2="309.7449"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(12.142857,77.857143)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4189"
+       id="linearGradient4195"
+       x1="397.56149"
+       y1="433.47925"
+       x2="443.34177"
+       y2="433.47925"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4197"
+       id="linearGradient4203"
+       x1="397.56149"
+       y1="433.47925"
+       x2="443.34177"
+       y2="433.47925"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.064026"
+     inkscape:cx="178.09053"
+     inkscape:cy="54.647189"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1614"
+     inkscape:window-height="779"
+     inkscape:window-x="75"
+     inkscape:window-y="75"
+     inkscape:window-maximized="0"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="true"
+     inkscape:object-nodes="true" />
+  <metadata
+     id="metadata3515">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <cc:license
+           rdf:resource="" />
+        <dc:title>OCHP direct Token Exchange</dc:title>
+        <dc:date>2015-03-02</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Simon Schilling</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>smartlab Innovationsgesellschaft mbH</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:language>en</dc:language>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(56.900616,-342.8302)">
+    <rect
+       x="376.35117"
+       y="378.62854"
+       width="69.779846"
+       height="17.947031"
+       class="st1"
+       id="rect4430"
+       style="fill:url(#linearGradient4450);fill-opacity:1;stroke:url(#linearGradient4460);stroke-width:0.70700002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:5.656, 5.656;stroke-dashoffset:0" />
+    <rect
+       style="fill:url(#linearGradient4448);fill-opacity:1;stroke:url(#linearGradient4458);stroke-width:0.70700002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:5.656, 5.656;stroke-dashoffset:0"
+       id="rect4436"
+       class="st1"
+       height="17.947031"
+       width="69.779846"
+       y="396.57556"
+       x="376.35117" />
+    <path
+       d="m 438.74289,367.63143 -8.18749,-14.17499 0,9.36249 -486.987266,0 0,9.6375 486.987266,0 0,9.34999 8.18749,-14.17499 z"
+       class="st3"
+       id="path3395"
+       inkscape:connector-curvature="0"
+       style="fill:#c6d8f0;stroke:#000000;stroke-width:0.93749952;stroke-linecap:round;stroke-linejoin:round" />
+    <rect
+       x="322.69922"
+       y="342.8302"
+       width="106.29919"
+       height="17.716492"
+       class="st4"
+       id="rect3402"
+       style="fill:none;stroke:none" />
+    <text
+       x="393.79919"
+       y="356.18396"
+       class="st2"
+       v:langID="2057"
+       id="text3404"
+       style="font-size:14.99999237px;font-family:Calibri;fill:#000000"><v:paragraph
+   v:horizAlign="2" />
+<v:tabList />
+
+
+Time</text>
+    <text
+       x="-58.021221"
+       y="411.98404"
+       class="st7"
+       v:langID="2057"
+       id="text3455"
+       style="font-size:14.99999237px;font-family:Calibri;fill:#000000">partner B<v:paragraph
+   v:spLine="-1.4" />
+<v:tabList />
+</text>
+    <g
+       transform="translate(160.55012,67.707546)"
+       id="g4396">
+      <rect
+         x="37.314236"
+         y="310.92099"
+         width="179.77985"
+         height="17.947031"
+         class="st1"
+         id="rect4398"
+         style="fill:#d8d8d8;stroke:#000000;stroke-width:0.70696062;stroke-linecap:round;stroke-linejoin:round" />
+      <text
+         x="93.04734"
+         y="324.39005"
+         class="st2"
+         v:langID="2057"
+         id="text4400"
+         style="font-size:14.99999237px;font-family:Calibri;fill:#000000">Token A2<v:paragraph
+   v:horizAlign="1" />
+<v:tabList />
+</text>
+    </g>
+    <g
+       id="g4402"
+       transform="translate(-19.229728,67.707546)">
+      <rect
+         style="fill:#d8d8d8;stroke:#000000;stroke-width:0.70696062;stroke-linecap:round;stroke-linejoin:round"
+         id="rect4404"
+         class="st1"
+         height="17.947031"
+         width="179.77985"
+         y="310.92099"
+         x="37.314236" />
+      <text
+         style="font-size:14.99999237px;font-family:Calibri;fill:#000000"
+         id="text4406"
+         v:langID="2057"
+         class="st2"
+         y="324.39005"
+         x="93.04734">Token A1<v:paragraph
+   v:horizAlign="1" />
+<v:tabList />
+</text>
+    </g>
+    <text
+       style="font-size:14.99999237px;font-family:Calibri;fill:#000000"
+       id="text4408"
+       v:langID="2057"
+       class="st7"
+       y="391.79654"
+       x="-58.021221">partner A<v:paragraph
+   v:spLine="-1.4" />
+<v:tabList />
+</text>
+    <g
+       id="g4410"
+       transform="translate(160.55012,85.654567)">
+      <rect
+         style="fill:#d8d8d8;stroke:#000000;stroke-width:0.70696062;stroke-linecap:round;stroke-linejoin:round"
+         id="rect4412"
+         class="st1"
+         height="17.947031"
+         width="179.77985"
+         y="310.92099"
+         x="37.314236" />
+      <text
+         style="font-size:14.99999237px;font-family:Calibri;fill:#000000"
+         id="text4414"
+         v:langID="2057"
+         class="st2"
+         y="324.39005"
+         x="93.04734">Token B2<v:paragraph
+   v:horizAlign="1" />
+<v:tabList />
+</text>
+    </g>
+    <g
+       transform="translate(-19.229728,85.654567)"
+       id="g4416">
+      <rect
+         x="37.314236"
+         y="310.92099"
+         width="179.77985"
+         height="17.947031"
+         class="st1"
+         id="rect4418"
+         style="fill:#d8d8d8;stroke:#000000;stroke-width:0.70696062;stroke-linecap:round;stroke-linejoin:round" />
+      <text
+         x="93.04734"
+         y="324.39005"
+         class="st2"
+         v:langID="2057"
+         id="text4420"
+         style="font-size:14.99999237px;font-family:Calibri;fill:#000000">Token B1<v:paragraph
+   v:horizAlign="1" />
+<v:tabList />
+</text>
+    </g>
+    <rect
+       x="18.084507"
+       y="416.52258"
+       width="193.32719"
+       height="17.716492"
+       class="st5"
+       id="rect3420"
+       style="fill:#d7e3bf;stroke:#000000;stroke-width:0.70700002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none" />
+    <g
+       id="g4175"
+       transform="translate(-36,0)">
+      <text
+         sodipodi:linespacing="100%"
+         id="text3259"
+         y="475.7829"
+         x="203.97614"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15.00000095px;line-height:100%;font-family:Calibri;-inkscape-font-specification:Calibri;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           style="line-height:100%"
+           id="tspan3263"
+           y="475.7829"
+           x="203.97614"
+           sodipodi:role="line">download token 2</tspan></text>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1.87499905;stroke-linecap:round;stroke-linejoin:round"
+         inkscape:connector-curvature="0"
+         id="path3429"
+         class="st6"
+         d="m 201.26699,472.61335 -17.72499,0 0,-113.38745" />
+    </g>
+    <rect
+       style="fill:#d7e3bf;stroke:#000000;stroke-width:0.70700002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect4185"
+       class="st5"
+       height="17.716492"
+       width="212.22231"
+       y="420.26059"
+       x="182.31697" />
+    <rect
+       x="360.60928"
+       y="424.621"
+       width="82.378983"
+       height="17.716492"
+       class="st5"
+       id="rect4187"
+       style="fill:url(#linearGradient4203);stroke:url(#linearGradient4195);stroke-width:0.70700002;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1" />
+    <g
+       id="g4180"
+       transform="translate(2,0)">
+      <path
+         style="fill:none;stroke:#000000;stroke-width:1.87499905;stroke-linecap:round;stroke-linejoin:round"
+         inkscape:connector-curvature="0"
+         id="path3473"
+         class="st6"
+         d="m 229.57685,455.57849 -17.71249,0 0,-96.94996" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15.00000095px;line-height:100%;font-family:Calibri;-inkscape-font-specification:Calibri;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         x="232.28601"
+         y="458.74802"
+         id="text4424"
+         sodipodi:linespacing="100%"><tspan
+           sodipodi:role="line"
+           x="232.28601"
+           y="458.74802"
+           id="tspan4426"
+           style="line-height:100%">upload token 3</tspan></text>
+    </g>
+    <g
+       transform="translate(-181.87204,0.59737)"
+       id="g4205">
+      <path
+         d="m 229.57685,455.57849 -17.71249,0 0,-96.94996"
+         class="st6"
+         id="path4207"
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:#000000;stroke-width:1.87499905;stroke-linecap:round;stroke-linejoin:round" />
+      <text
+         sodipodi:linespacing="100%"
+         id="text4209"
+         y="458.74802"
+         x="232.28601"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15.00000095px;line-height:100%;font-family:Calibri;-inkscape-font-specification:Calibri;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         xml:space="preserve"><tspan
+           style="line-height:100%"
+           id="tspan4211"
+           y="458.74802"
+           x="232.28601"
+           sodipodi:role="line">upload token 2</tspan></text>
+    </g>
+    <text
+       x="73.932762"
+       y="430.08237"
+       class="st2"
+       v:langID="2057"
+       id="text4420-8"
+       style="font-size:14.99999237px;font-family:Calibri;fill:#000000">AB1 valid<v:paragraph
+   v:horizAlign="1" />
+<v:tabList />
+</text>
+    <text
+       style="font-size:14.99999237px;font-family:Calibri;fill:#000000"
+       id="text4201"
+       v:langID="2057"
+       class="st2"
+       y="434.44278"
+       x="253.67856">AB2 valid<v:paragraph
+   v:horizAlign="1" />
+<v:tabList />
+</text>
+  </g>
+</svg>

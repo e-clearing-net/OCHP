@@ -271,6 +271,25 @@ to prevent unintended usage of their endpoints or cyber-attacks.
 
 #### Identification token distribution
 
+The partner's tokens for identification and authorisation are exchanged 
+and distributed through the clearing house. Based on the set roaming 
+connections the tokens are made available. Each token is valid for a 
+period of full calendar days, synchronus to the UTC time.
+
+This mechanism is used to guarantee uninterupted service in combination 
+with a high security level and compatibility with the majority of 
+systems. The synchronisation and token-exchange-cycle is as follows.
+On day `N` do:
+
+ 1. *At 00:30 UTC:* Invalidate/delete all tokens of day `N-1`.
+ 2. Generate new own token for day `N+1`.
+ 3. *Before 12:00 UTC:* Send/upload own token for day `N+1`.
+ 4. *After 12:00 UTC:* Fetch/download partner's tokens for day `N+1`.
+ 5. Generate token combinations for day `N+1` from own and partner's 
+    tokens. Here `AB2`.
+ 6. *At 23:50 UTC:* Make token combinations for day `N+1` valid.
+
+![Figure OCHP direct Token Exchange](media/OCHPdirectTokenExchange.png "OCHP direct Token Exchange")
 
 
 
