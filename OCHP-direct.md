@@ -156,7 +156,7 @@ The backend specification is send and updated regularly. It contents
 all properties that describe the roaming partner's backend:
 
  * The URL of the backend's OCHP direct endpoint(s).
- * The security token of the backend. (See chapter [Security of the OCHP direct interface](#security-of-the-OCHP-direct-interface) 
+ * The security token of the backend. (See chapter [Security of the OCHP direct interface](#security-of-the-ochp-direct-interface) 
    for more information.)
  * All business objects that are operated by this backend, represented 
    by blacklists and/or whitelists.
