@@ -124,6 +124,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [evseImageUrlType *class*](#evseimageurltype-class)
         - [ImageClass *enum*](#imageclass-enum)
         - [GeoPointType *class*](#geopointtype-class)
+        - [AdditionalGeoPointType *class*](#additionalgeopointtype-class)
         - [ConnectorStandard *enum*](#connectorstandard-enum)
         - [ConnectorFormat *enum*](#connectorformat-enum)
         - [ConnectorType *class*](#connectortype-class)
@@ -1449,7 +1450,7 @@ This class defines a geo location. The geodetic system to be used is WGS 84.
  lon         |  string(11)  |  1      |  Longitude of the point in decimal degree. Example: -126.104965. Decimal separator: "." Regex: `-?$[$0-9$]$\{1,3\}$\$.$[$0-9$]$\{6\}`
 
 
-### GeoPointType *class*
+### AdditionalGeoPointType *class*
 
 This class defines a geo location. The geodetic system to be used is WGS 84.
 
