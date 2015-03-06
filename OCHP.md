@@ -1417,7 +1417,7 @@ should have the same orientation than the original.
 
  Field Name  |  Field Type   |  Card.  |  Description
 :------------|:--------------|:--------|:------------
- uri         |  string(255)  |  1      |  uri from where the image data can be fetched. Must begin with a protocol of the list: http, https, file, ftp. Regex: <code>(http|https|ftp|file):\/\/.+</code>
+ uri         |  string(255)  |  1      |  uri from where the image data can be fetched. Must begin with a protocol of the list: http, https, file, ftp. Regex: <code>(http&#124;https&#124;ftp&#124;file):\/\/.+</code>
  thumbUri    |  string(255)  |  ?      |  uri from where a thumbnail of the image can be fetched. Must begin with a protocol of the list: http, https, file, ftp
  class       |  ImageClass   |  1      |  Image class for usage categorization
  type        |  string(4)    |  1      |  Image type like: gif, jpeg, png, svg
@@ -1453,7 +1453,7 @@ can find the described information right from the referenced page.
 
  Field Name  |  Field Type   |  Card.  |  Description
 :------------|:--------------|:--------|:------------
- uri         |  string(255)  |  1      |  Referencing uri to the resource. Must begin with a protocol of the list: http, https. Regex: <code>(http|https):\/\/.+</code>
+ uri         |  string(255)  |  1      |  Referencing uri to the resource. Must begin with a protocol of the list: http, https. Regex: <code>(http&#124;https):\/\/.+</code>
  class       |  ImageClass   |  +      |  Class(es) of the related url to indicate the referenced content and/or functionality.
 
 
