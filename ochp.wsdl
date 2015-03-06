@@ -1515,6 +1515,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 						</s:simpleType>
 					</s:element>
 					<s:element name="images" minOccurs="0" maxOccurs="unbounded" type="tns:EvseImageUrlType"></s:element>
+					<s:element name="relatedResource" minOccurs="0" maxOccurs="unbounded" type="tns:RelatedResourceType"></s:element>
 					<s:element name="houseNumber" minOccurs="0" maxOccurs="1">
 						<s:annotation>
 							<s:documentation>
@@ -1874,6 +1875,47 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 							<s:restriction base="s:int">
 								<s:minExclusive value="0"></s:minExclusive>
 								<s:maxInclusive value="99999"></s:maxInclusive>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="RelatedResourceType">
+				<s:sequence>
+					<s:element name="uri" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Referencing uri to the resource. Must begin with a protocol of the list: http, https.
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:pattern value="(http|https):\/\/.+"></s:pattern>
+								<s:maxLength value="255"></s:maxLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="class" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								The class of referenced related resource. Values: 
+									operatorMap: direct link to this charge point on a map of the operator
+									operatorPayment: link to a payment page of the operator for contractless direct payment
+									stationInfo: further information on the charging station
+									surroundingInfo: further information on the surroundings of the charging station e.g. further POIs
+									ownerHomepage: website of the station owner (not operator) in case of hotels, restaurants, etc.
+									feedbackForm: form for user feedback on the charging station service
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:enumeration value="operatorMap"></s:enumeration>
+								<s:enumeration value="operatorPayment"></s:enumeration>
+								<s:enumeration value="stationInfo"></s:enumeration>
+								<s:enumeration value="surroundingInfo"></s:enumeration>
+								<s:enumeration value="ownerHomepage"></s:enumeration>
+								<s:enumeration value="feedbackForm"></s:enumeration>
 							</s:restriction>
 						</s:simpleType>
 					</s:element>

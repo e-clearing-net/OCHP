@@ -123,6 +123,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [EvseId](#evseid)
         - [evseImageUrlType *class*](#evseimageurltype-class)
         - [ImageClass *enum*](#imageclass-enum)
+        - [RelatedResourceType *class*](#evserelatedurltype-class)
+        - [RelatedResourceClass *enum*](#relatedresourceclass-enum)
         - [GeoPointType *class*](#geopointtype-class)
         - [AdditionalGeoPointType *class*](#additionalgeopointtype-class)
         - [ConnectorStandard *enum*](#connectorstandard-enum)
@@ -1440,6 +1442,35 @@ The class of a EVSE image to obtain the correct usage in an user presentation. H
  otherGraphic  |  other related graphic to be displayed with the stations detailed information view 
 
 
+### RelatedResourceType *class*
+
+This class defines a resource related to the charge point or charging 
+station. It is meant to be visited by the user with their web-browser 
+to receive further information or access further functionality. A 
+resource can have multiple classes to indicate a combination of 
+resources on one web site. A class should only be assigned if the user 
+can find the described information right from the referenced page.
+
+ Field Name  |  Field Type   |  Card.  |  Description
+:------------|:--------------|:--------|:------------
+ uri         |  string(255)  |  1      |  Referencing uri to the resource. Must begin with a protocol of the list: http, https. Regex: <code>(http|https):\/\/.+</code>
+ class       |  ImageClass   |  +      |  Class(es) of the related url to indicate the referenced content and/or functionality.
+
+
+### RelatedResourceClass *enum*
+
+The class of referenced related resource.
+
+ Value            |  Description
+:-----------------|:-------------
+ operatorMap      |  direct link to this charge point on a map of the operator
+ operatorPayment  |  link to a payment page of the operator for contractless direct payment
+ stationInfo      |  further information on the charging station
+ surroundingInfo  |  further information on the surroundings of the charging station e.g. further POIs
+ ownerHomepage    |  website of the station owner (not operator) in case of hotels, restaurants, etc.
+ feedbackForm     |  form for user feedback on the charging station service
+
+
 ### GeoPointType *class*
 
 This class defines a geo location. The geodetic system to be used is WGS 84.
@@ -1713,6 +1744,7 @@ Contains information about the charge points.
  locationName        |  string(100)              |  1      |  Official name; should be unique in the geographical area
  locationNameLang    |  string(3)                |  1      |  Alpha, three characters. ISO-639-3 language code defining the language of the location name
  images              |  evseImageUrlType         |  ?      |  Links to images related to the EVSE such as photos or logos.
+ relatedResource     |  RelatedResourceType      |  +      |  Links to be visited by the user, related to the charge point or charging station.
  houseNumber         |  string(6)                |  ?      |  Alphanumeric, for example "10", "255B". Characters: [A-Z], [0-9], <space>
  address             |  string(45)               |  1      |  Alphanumeric, for example "Av. Saint-Jean". Optionally also containing the house number if not in field houseNumber.
  city                |  string(45)               |  1      |  Alphabetic, in the language defined in locationNameLang
