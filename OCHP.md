@@ -1417,7 +1417,7 @@ should have the same orientation than the original.
 
  Field Name  |  Field Type   |  Card.  |  Description
 :------------|:--------------|:--------|:------------
- uri         |  string(255)  |  1      |  uri from where the image data can be fetched. Must begin with a protocol of the list: http, https, file, ftp. Regex: <code>[A-Za-z][A-Za-z0-9\+\.\-]*:([A-Za-z0-9\.\-\_~:/\?\#\[\]@!\\\&'\(\)\*\+,;=]&#124;%[A-Fa-f0-9]\{2\})+\</code>
+ uri         |  string(255)  |  1      |  uri from where the image data can be fetched. Must begin with a protocol of the list: http, https, file, ftp. Regex: <code>(http|https|ftp|file):\/\/.+</code>
  thumbUri    |  string(255)  |  ?      |  uri from where a thumbnail of the image can be fetched. Must begin with a protocol of the list: http, https, file, ftp
  class       |  ImageClass   |  1      |  Image class for usage categorization
  type        |  string(4)    |  1      |  Image type like: gif, jpeg, png, svg
@@ -1743,7 +1743,7 @@ Contains information about the charge points.
  timestamp           |  DateTimeType             |  ?      |  Recommended. Date and time of the latest data update for this ChargePointInfo. When set it must be updated if one of the values changed.
  locationName        |  string(100)              |  1      |  Official name; should be unique in the geographical area
  locationNameLang    |  string(3)                |  1      |  Alpha, three characters. ISO-639-3 language code defining the language of the location name
- images              |  evseImageUrlType         |  ?      |  Links to images related to the EVSE such as photos or logos.
+ images              |  evseImageUrlType         |  +      |  Links to images related to the EVSE such as photos or logos.
  relatedResource     |  RelatedResourceType      |  +      |  Links to be visited by the user, related to the charge point or charging station.
  houseNumber         |  string(6)                |  ?      |  Alphanumeric, for example "10", "255B". Characters: [A-Z], [0-9], <space>
  address             |  string(45)               |  1      |  Alphanumeric, for example "Av. Saint-Jean". Optionally also containing the house number if not in field houseNumber.
