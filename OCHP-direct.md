@@ -306,9 +306,24 @@ methods are available in the interface of the Clearing House.
 
 ### Set own interface definition in the CHS
 
+The backend of each roaming partner has to send the definition of its 
+OCHP direct interface to the Clearing House to share that data with 
+their connected roaming partners. The upload of the own interface 
+definition is done in the following way:
+
+ * CMS or MDM sends the SetNewServiceEndpoints.req PDU.
+ * CHS responds with a SetNewServiceEndpoints.conf PDU.
+
 
 
 ### Get roaming partners interface definitions from the CHS
+
+The backend of each roaming partner has to fetch the global list of
+interface definitions from the CHS. The download of all interface
+of connected partners is done in the following way:
+
+ * CMS or MDM sends the GetServiceEndpoints.req PDU.
+ * CHS responds with GetServiceEndpoints.conf PDU.
 
 
 
@@ -359,6 +374,51 @@ methods are available in the interface of the Clearing House.
 # Messages
 
 
+## Messages for the exchange of interface definitions
+
+These messages are used to exchange the interface definitions of the
+OCHP direct interfaces between roaming partners.
+
+
+### SetNewServiceEndpoints.req
+
+This contains the field definition of the SetNewServiceEndpoints.req 
+sent by the MDM or CMS towards the CHS.
+
+ Field Name            |  Field Type        |  Card.  |  Description
+:----------------------|:-------------------|:--------|:------------
+providerEndpointArray  |  ProviderEndpoint  |  *      |  Array of endpoints of the partners provider system.
+operatorEndpointArray  |  OperatorEndpoint  |  *      |  Array of endpoints of the partners operator system.
+
+
+### SetNewServiceEndpoints.conf
+
+This contains the field definition of the SetNewServiceEndpoints.conf
+sent by the CHS as response to the SetNewServiceEndpoints.req.
+
+ Field Name  |  Field Type  |  Card.  |  Description
+:------------|:-------------|:--------|:------------
+result       |  Result      |  1      |  This contains the result of SetNewServiceEndpoints.req.
+
+
+### GetServiceEndpoints.req
+
+This contains the field definition of the GetServiceEndpoints.req sent
+by a partner's system to the CHS.
+No fields are defined.
+
+
+### GetServiceEndpoints.conf
+
+This contains the field definition of the GetServiceEndpoints.conf
+sent by the CHS as response to the GetServiceEndpoints.req.
+
+ Field Name            |  Field Type        |  Card.  |  Description
+:----------------------|:-------------------|:--------|:------------
+result                 |  Result            |  1      |  This contains the result of GetServiceEndpoints.req.
+providerEndpointArray  |  ProviderEndpoint  |  *      |  Array of endpoints of all providers connected to the requester.
+operatorEndpointArray  |  OperatorEndpoint  |  *      |  Array of endpoints of all operators connected to the requester.
+
 
 
 
@@ -372,10 +432,75 @@ methods are available in the interface of the Clearing House.
 # Types
 
 
+## Types that extend the OCHP interface _Basic_
+
+These data types extend the OCHP interface and are understood by the
+Clearing House.
 
 
+### DirectEndpoint *class*
+
+Contains a generic endpoint definition.
+
+ Field Name    |  Field Type  |  Card.  |  Description
+:--------------|:-------------|:--------|:------------
+ url           | string(255)  | 1       | The endpoint address.
+ namespaceUrl  | string(255)  | ?       | The WSDL namespace definition.
+ accessToken   | string(255)  | 1       | The secret token to access this endpoint.
+ validUntil    | dateTime     | 1       | The date till when this endpoint/token combination is valid.
 
 
+### ProviderEndpoint *class*
+
+Contains the endpoint definition of a provider's MDM system.
+Expands the DirectEndpoint.
+
+ Field Name    |  Field Type      |  Card.  |  Description
+:--------------|:-----------------|:--------|:------------
+ url           | string(255)      | 1       | The endpoint address.
+ namespaceUrl  | string(255)      | ?       | The WSDL namespace definition.
+ accessToken   | string(255)      | 1       | The secret token to access this endpoint.
+ validUntil    | dateTime         | 1       | The date till when this endpoint/token combination is valid.
+ whitelist     | ContractPattern  | +       | List of patterns that match all Contract-IDs the endpoint is responsible for.
+ blacklist     | ContractPattern  | *       | List of patterns that match Contract-IDs the endpoint is not responsible for, but are matched by the whitelist.
+
+
+### OperatorEndpoint *class*
+
+Contains the endpoint definition of an operator's CMS backend.
+Expands the DirectEndpoint.
+
+ Field Name    |  Field Type  |  Card.  |  Description
+:--------------|:-------------|:--------|:------------
+ url           | string(255)  | 1       | The endpoint address.
+ namespaceUrl  | string(255)  | ?       | The WSDL namespace definition.
+ accessToken   | string(255)  | 1       | The secret token to access this endpoint.
+ validUntil    | dateTime     | 1       | The date till when this endpoint/token combination is valid.
+ whitelist     | EvsePattern  | +       | List of patterns that match all EVSE-IDs the endpoint is responsible for.
+ blacklist     | EvsePattern  | *       | List of patterns that match EVSE-IDs the endpoint is not responsible for, but are matched by the whitelist.
+
+
+### ContractPattern *class*
+
+Defines a pattern that matches Contract-IDs. The pattern must be
+specified for IDs without optional seperators. The wildcard character
+for the pattern is `%`. The pattern as well as the ID is case sensitive.
+
+```regex
+[A-Za-z]{2}[A-Za-z0-9]{3}[Cc][A-Za-z0-9]{0,9}%?
+```
+
+
+### EvsePattern *class*
+
+Defines a pattern that matches EVSE-IDs. The pattern must be
+specified for IDs without optional seperators. Seperators in the ID's
+instance are handled as part of the alphabet. The wildcard character
+for the pattern is `%`.
+
+```regex
+[A-Z]{2}[A-Z0-9]{3}[E]([A-Z0-9]?[A-Z0-9\*]{0,30})%?
+```
 
 
 
