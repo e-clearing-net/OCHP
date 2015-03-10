@@ -293,49 +293,29 @@ On day `N` do:
 
 
 
-# Partner-to-partner interface description
+# Partner-to-CHS interface description (Extension to OCHP)
+
+This interface description extends the OCHP protocol. The additional
+methods are available in the interface of the Clearing House.
 
 
 
-
-
-## Exchange operator backend definition _Basic_
-
-
-
-### Update own operator backend definition in the CHS
+## Exchange of interface definition _Basic_
 
 
 
-
-### Download updates in operator backend definitions from the CHS
-
+### Set own interface definition in the CHS
 
 
 
-
-
-## Exchange provider backend definition _Advanced_
-
-
-
-### Update own provider backend definition in the CHS
-
-
-
-
-### Download updates in provider backend definitions from the CHS
+### Get roaming partners interface definitions from the CHS
 
 
 
 
 
 
-## Generate an own backend definition _Basic_
-
-
-
-
+# Partner-to-partner interface description (_OCHP direct_ interface)
 
 
 
