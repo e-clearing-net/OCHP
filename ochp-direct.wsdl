@@ -109,6 +109,28 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 	</wsdl:portType>
 
 
+<!-- Port definition for EVSE-Operator backends -->
+
+	<wsdl:portType name="Operator_OCHP-direct_0.1">
+
+		<wsdl:documentation>
+			OCHP-direct Version 0.1 Interface for the EVSE-Operator backend
+		</wsdl:documentation>
+
+	</wsdl:portType>
+
+
+<!-- Port definition for Service Provider backends -->
+
+	<wsdl:portType name="Provider_OCHP-direct_0.1">
+
+		<wsdl:documentation>
+			OCHP-direct Version 0.1 Interface for the Service Provider backend
+		</wsdl:documentation>
+
+	</wsdl:portType>
+
+
 <!-- ===================================================================
                         Binding Definitions
 ==================================================================== -->
@@ -143,6 +165,31 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 
 	</wsdl:binding>
 
+
+<!-- Binding for EVSE-Operator backends -->
+
+	<wsdl:binding name="Operator_OCHP-direct_0.1" type="tns:Operator_OCHP-direct_0.1">
+
+		<wsdl:documentation>
+			OCHP-direct Version 0.1 Interface for the EVSE-Operator backend
+		</wsdl:documentation>
+
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+
+	</wsdl:binding>
+
+
+<!-- Binding for Service Provider backends -->
+
+	<wsdl:binding name="Provider_OCHP-direct_0.1" type="tns:Provider_OCHP-direct_0.1">
+
+		<wsdl:documentation>
+			OCHP-direct Version 0.1 Interface for the Service Provider backend
+		</wsdl:documentation>
+
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+
+	</wsdl:binding>
 
 <!-- ===================================================================
                         Service Definition
