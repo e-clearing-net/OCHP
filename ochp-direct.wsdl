@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="wsdl-viewer.xsl"?>
+
+<!-- ===================================================================
+
+                  OCHP-direct 0.1 Web Service Description
+
+This document defines a standard interface between different parties in 
+the market of electric vehicle charging infrastructure and a clearing 
+house that provides a common data routing and exchange platform for all 
+these market shareholders.
+
+Please note that the given documentation tags are not holding all
+available information. For a full interface description please refer
+to the OCHP specification PDF you can download from http://ochp.eu.
+
+ 
+ Copyright Information:
+This work is licensed under the Creative Commons 
+Attribution-NoDerivatives 4.0 International License. 
+To view a copy of this license, visit 
+http://creativecommons.org/licenses/by-nd/4.0/.
+
+==================================================================== -->
+
+
+<wsdl:definitions name="OCHP_direct_0.1"
+	targetNamespace="http://ochp.eu/1.3" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:s="http://www.w3.org/2001/XMLSchema"
+	xmlns:p="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://ochp.eu/1.3">
+
+	<wsdl:documentation>
+		Open Clearing House Protocol (OCHP) direct Extension Version 0.1
+	</wsdl:documentation>
+
+	<wsdl:import namespace="http://ochp.eu/1.3" location="ochp.wsdl"/>
+
+	<wsdl:types>
+		<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.3">
+
+			<s:element name="SetNewServiceEndpointsRequest">
+			</s:element>
+
+			<s:element name="SetNewServiceEndpointsResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:Result">
+							<s:annotation>
+								<s:documentation>
+									This contains the result of SetNewServiceEndpoints.req
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+		</s:schema>
+	</wsdl:types>
+
+<!-- ===================================================================
+                        Messages
+==================================================================== -->
+
+	<wsdl:message name="SetNewServiceEndpointsInput">
+		<wsdl:part name="parameters"
+				element="tns:SetNewServiceEndpointsRequest" />
+	</wsdl:message>
+
+	<wsdl:message name="SetNewServiceEndpointsOutput">
+		<wsdl:part name="parameters"
+				element="tns:SetNewServiceEndpointsResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="GetServiceEndpointsInput">
+		<wsdl:part name="parameters"
+				element="tns:SetNewServiceEndpointsRequest" />
+	</wsdl:message>
+
+	<wsdl:message name="GetServiceEndpointsOutput">
+		<wsdl:part name="parameters"
+				element="tns:SetNewServiceEndpointsResponse" />
+	</wsdl:message>
+
+<!-- ===================================================================
+                        Port Definitions
+==================================================================== -->
+
+	<wsdl:portType name="OCHP_1.3-direct">
+
+		<wsdl:documentation>
+			OCHP Version 1.3 Interface + OCHP direct extension
+		</wsdl:documentation>
+
+		<wsdl:operation name="SetNewServiceEndpoints">
+			<wsdl:documentation>
+				The backend of each roaming partner has to send the definition of its OCHP direct interface to the Clearing House to share that data with their connected roaming partners.
+			</wsdl:documentation>
+			<wsdl:input message="tns:SetNewServiceEndpointsInput" />
+			<wsdl:output message="tns:SetNewServiceEndpointsOutput" />
+		</wsdl:operation>
+		<wsdl:operation name="GetServiceEndpoints">
+			<wsdl:documentation>
+				The backend of each roaming partner has to fetch the global list of interface definitions from the CHS.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetServiceEndpointsInput" />
+			<wsdl:output message="tns:GetServiceEndpointsOutput" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+
+<!-- ===================================================================
+                        Binding Definitions
+==================================================================== -->
+
+	<wsdl:binding name="eCHS-OCHP_1.3-direct" type="tns:OCHP_1.3-direct">
+
+		<wsdl:documentation>
+			OCHP Version 1.3 Interface with OCHP direct extension
+		</wsdl:documentation>
+
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="SetNewServiceEndpoints">
+			<soap:operation soapAction="http://ochp.eu/direct/0.1/SetNewServiceEndpoints" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GetServiceEndpoints">
+			<soap:operation soapAction="http://ochp.eu/direct/0.1/GetServiceEndpoints" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+	</wsdl:binding>
+
+
+<!-- ===================================================================
+                        Service Definition
+==================================================================== -->
+
+	<wsdl:service name="e-clearing.net (with OCHP-direct Extension)">
+
+		<wsdl:documentation>
+			EEN European Emobility Network - EV Clearing Platform
+		</wsdl:documentation>
+
+		<wsdl:port name="eCHS_P-System" binding="tns:eCHS-OCHP_1.3">
+			<wsdl:documentation>
+				eCHS Productive System Endpoint
+			</wsdl:documentation>
+			<soap:address location="https://echs.e-clearing.net/service/ochp/v1.3" />
+		</wsdl:port>
+
+		<wsdl:port name="eCHS_Q-System" binding="tns:eCHS-OCHP_1.3">
+			<wsdl:documentation>
+				eCHS Quality Ensurance System Endpoint
+			</wsdl:documentation>
+			<soap:address location="https://echs-q.e-clearing.net/service/ochp/v1.3" />
+		</wsdl:port>
+
+<!-- Endpoints for the Live POI Interface -->
+
+		<wsdl:port name="eCHS_P-System-live" binding="tns:eCHS-OCHP_1.3-live">
+			<wsdl:documentation>
+				eCHS Live-POI Productive System Endpoint
+			</wsdl:documentation>
+			<soap:address location="https://echs.e-clearing.net/live/ochp/v1.3" />
+		</wsdl:port>
+
+		<wsdl:port name="eCHS_Q-System-live" binding="tns:eCHS-OCHP_1.3-live">
+			<wsdl:documentation>
+				eCHS Live-POI Quality Ensurance Endpoint
+			</wsdl:documentation>
+			<soap:address location="https://echs-q.e-clearing.net/live/ochp/v1.3" />
+		</wsdl:port>
+
+<!-- Endpoints for the Direct Extension -->
+
+		<wsdl:port name="eCHS_P-System-direct" binding="tns:eCHS-OCHP_1.3-direct">
+			<wsdl:documentation>
+				eCHS Productive System Endpoint with OCHP direct extension
+			</wsdl:documentation>
+			<soap:address location="https://echs.e-clearing.net/direct/ochp/v1.3" />
+		</wsdl:port>
+
+		<wsdl:port name="eCHS_Q-System-direct" binding="tns:eCHS-OCHP_1.3-direct">
+			<wsdl:documentation>
+				eCHS Quality Ensurance Endpoint with OCHP direct extension
+			</wsdl:documentation>
+			<soap:address location="https://echs-q.e-clearing.net/direct/ochp/v1.3" />
+		</wsdl:port>
+
+	</wsdl:service>
+
+</wsdl:definitions>
