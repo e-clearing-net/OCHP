@@ -3,7 +3,7 @@
 
 <!-- ===================================================================
 
-                  OCHP 1.2 Web Service Description
+                  OCHP 1.3 Web Service Description
 
 This document defines a standard interface between different parties in 
 the market of electric vehicle charging infrastructure and a clearing 
@@ -15,26 +15,41 @@ available information. For a full interface description please refer
 to the OCHP specification PDF you can download from http://ochp.eu.
 
  
- Copyright Information:
-This work is licensed under the Creative Commons 
-Attribution-NoDerivatives 4.0 International License. 
-To view a copy of this license, visit 
-http://creativecommons.org/licenses/by-nd/4.0/.
+Copyright (c) 2012-2015 smartlab, bluecorner.be, e-laad.nl
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==================================================================== -->
 
 
-<wsdl:definitions name="OCHP_1.2"
-	targetNamespace="http://ochp.eu/1.2" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+<wsdl:definitions name="OCHP_1.3"
+	targetNamespace="http://ochp.eu/1.3" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:s="http://www.w3.org/2001/XMLSchema"
-	xmlns:p="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://ochp.eu/1.2">
+	xmlns:p="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://ochp.eu/1.3">
 
 	<wsdl:documentation>
-		Open Clearing House Protocol (OCHP) Version 1.2
+		Open Clearing House Protocol (OCHP) Version 1.3
 	</wsdl:documentation>
 
 	<wsdl:types>
-		<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.2">
+		<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.3">
 
 			<s:complexType name="Result" abstract="false">
 				<s:annotation>
@@ -286,7 +301,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			<s:element name="SetChargePointListRequest">
 				<s:complexType>
 					<s:sequence>
-						<s:element minOccurs="1" maxOccurs="unbounded" name="chargepointInfoArray" type="tns:ChargePointInfo">
+						<s:element minOccurs="1" maxOccurs="unbounded" name="chargePointInfoArray" type="tns:ChargePointInfo">
 							<s:annotation>
 								<s:documentation>
 									This contains the charge point information records
@@ -928,6 +943,38 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 				</s:sequence>
 			</s:complexType>
 
+			<s:complexType name="RatingsType">
+				<s:sequence>
+					<s:element name="maximumPower" minOccurs="1" maxOccurs="1" type="s:float">
+						<s:annotation>
+							<s:documentation>
+								The maximum available power at this charge point at nominal voltage over all available phases of the line.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="guaranteedPower" minOccurs="0" maxOccurs="1" type="s:float">
+						<s:annotation>
+							<s:documentation>
+								The minimum guaranteed mean power in case of load management. Should be set to maximum when no load management applied.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="nominalVoltage" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								The nominal voltage for the charge point.
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:int">
+								<s:minExclusive value="0"></s:minExclusive>
+								<s:maxInclusive value="1000"></s:maxInclusive>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
 			<s:complexType name="CdrPeriodType">
 				<s:sequence>
 					<s:element name="startDateTime" type="tns:LocalDateTimeType" minOccurs="1" maxOccurs="1">
@@ -1324,11 +1371,14 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 					<s:documentation>
 						Public; Public accessible, no authorisation required 
 						LocalKey; A key or token can be received at the location.(i.e. at the hotel reception or in the restaurant) 
-						DirectCash; The EVSE can be accessed through direct payment in cash. DirectCreditcard; The Evse can be accessed through direct payment with credit card
+						DirectCash; The EVSE can be accessed through direct payment in cash. 
+						DirectCreditcard; The Evse can be accessed through direct payment with credit card
 						RfidMifareCls; Personal RFID token with roaming relation. (Mifare Classic) 
 						RfidMifareDes; Personal token with roaming relation. (Mifare Desfire) 
 						RfidCalypso; Personal RFID token with roaming relation. (Calypso) 
 						Iec15118; In-car access token as specified in IEC-15118
+						OchpDirectAuth; The EVSE can be accessed through a OCHP-direct capable provider app.
+						OperatorAuth; The EVSE can be accessed through a direct online payment to the operator.
 					</s:documentation>
 				</s:annotation>
 				<s:sequence>
@@ -1344,6 +1394,8 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 								<s:enumeration value="RfidMifareDes"></s:enumeration>
 								<s:enumeration value="RfidCalypso"></s:enumeration>
 								<s:enumeration value="Iec15118"></s:enumeration>
+								<s:enumeration value="OchpDirectAuth"></s:enumeration>
+								<s:enumeration value="OperatorAuth"></s:enumeration>
 							</s:restriction>
 						</s:simpleType>
 					</s:element>
@@ -1478,6 +1530,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 						</s:simpleType>
 					</s:element>
 					<s:element name="images" minOccurs="0" maxOccurs="unbounded" type="tns:EvseImageUrlType"></s:element>
+					<s:element name="relatedResource" minOccurs="0" maxOccurs="unbounded" type="tns:RelatedResourceType"></s:element>
 					<s:element name="houseNumber" minOccurs="0" maxOccurs="1">
 						<s:annotation>
 							<s:documentation>
@@ -1568,6 +1621,19 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 							</s:restriction>
 						</s:simpleType>
 					</s:element>
+					<s:element name="category" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Charge point category code defined by the operator. Allows different pricing levels in roaming agreements based on the category.
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:minLength value="1"></s:minLength>
+								<s:maxLength value="2"></s:maxLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
 					<s:element name="operatingTimes" type="tns:HoursType" minOccurs="0" maxOccurs="1">
 						<s:annotation>
 							<s:documentation>
@@ -1652,6 +1718,13 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 						<s:annotation>
 							<s:documentation>
 								Which receptable type is/are present for a power outlet.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element name="ratings" type="tns:RatingsType" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Defines the ratings for the charge point.
 							</s:documentation>
 						</s:annotation>
 					</s:element>
@@ -1817,6 +1890,47 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 							<s:restriction base="s:int">
 								<s:minExclusive value="0"></s:minExclusive>
 								<s:maxInclusive value="99999"></s:maxInclusive>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="RelatedResourceType">
+				<s:sequence>
+					<s:element name="uri" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								Referencing uri to the resource. Must begin with a protocol of the list: http, https.
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:pattern value="(http|https):\/\/.+"></s:pattern>
+								<s:maxLength value="255"></s:maxLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="class" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								The class of referenced related resource. Values: 
+									operatorMap: direct link to this charge point on a map of the operator
+									operatorPayment: link to a payment page of the operator for contractless direct payment
+									stationInfo: further information on the charging station
+									surroundingInfo: further information on the surroundings of the charging station e.g. further POIs
+									ownerHomepage: website of the station owner (not operator) in case of hotels, restaurants, etc.
+									feedbackForm: form for user feedback on the charging station service
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:enumeration value="operatorMap"></s:enumeration>
+								<s:enumeration value="operatorPayment"></s:enumeration>
+								<s:enumeration value="stationInfo"></s:enumeration>
+								<s:enumeration value="surroundingInfo"></s:enumeration>
+								<s:enumeration value="ownerHomepage"></s:enumeration>
+								<s:enumeration value="feedbackForm"></s:enumeration>
 							</s:restriction>
 						</s:simpleType>
 					</s:element>
@@ -2113,10 +2227,10 @@ information that is more actual than the given value.
                         Port Definitions
 ==================================================================== -->
 
-	<wsdl:portType name="OCHP_1.2">
+	<wsdl:portType name="OCHP_1.3">
 
 		<wsdl:documentation>
-			OCHP Version 1.2 Interface
+			OCHP Version 1.3 Interface
 		</wsdl:documentation>
 
 		<wsdl:operation name="AddCDRs">
@@ -2200,10 +2314,10 @@ information that is more actual than the given value.
 		</wsdl:operation>
 	</wsdl:portType>
 
-	<wsdl:portType name="OCHP_1.2-live">
+	<wsdl:portType name="OCHP_1.3-live">
 
 		<wsdl:documentation>
-			OCHP Version 1.2 Live POI Interface
+			OCHP Version 1.3 Live POI Interface
 		</wsdl:documentation>
 
 		<wsdl:operation name="UpdateStatus">
@@ -2226,16 +2340,16 @@ information that is more actual than the given value.
                         Binding Definitions
 ==================================================================== -->
 
-	<wsdl:binding name="eCHS-OCHP_1.2" type="tns:OCHP_1.2">
+	<wsdl:binding name="eCHS-OCHP_1.3" type="tns:OCHP_1.3">
 
 		<wsdl:documentation>
-			OCHP Version 1.2 Interface
+			OCHP Version 1.3 Interface
 		</wsdl:documentation>
 
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
 
 		<wsdl:operation name="AddCDRs">
-			<soap:operation soapAction="http://ochp.eu/1.2/AddCDRs" />
+			<soap:operation soapAction="http://ochp.eu/1.3/AddCDRs" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -2245,7 +2359,7 @@ information that is more actual than the given value.
 		</wsdl:operation>
 
 		<wsdl:operation name="GetCDRs">
-			<soap:operation soapAction="http://ochp.eu/1.2/GetCDRs" />
+			<soap:operation soapAction="http://ochp.eu/1.3/GetCDRs" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -2255,7 +2369,7 @@ information that is more actual than the given value.
 		</wsdl:operation>
 
 		<wsdl:operation name="GetRoamingAuthorisationList">
-			<soap:operation soapAction="http://ochp.eu/1.2/GetRoamingAuthorisationList" />
+			<soap:operation soapAction="http://ochp.eu/1.3/GetRoamingAuthorisationList" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -2265,7 +2379,7 @@ information that is more actual than the given value.
 		</wsdl:operation>
 
 		<wsdl:operation name="SetRoamingAuthorisationList">
-			<soap:operation soapAction="http://ochp.eu/1.2/SetRoamingAuthorisationList" />
+			<soap:operation soapAction="http://ochp.eu/1.3/SetRoamingAuthorisationList" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -2275,7 +2389,7 @@ information that is more actual than the given value.
 		</wsdl:operation>
 
 		<wsdl:operation name="GetChargePointList">
-			<soap:operation soapAction="http://ochp.eu/1.2/GetChargePointList" />
+			<soap:operation soapAction="http://ochp.eu/1.3/GetChargePointList" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -2285,7 +2399,7 @@ information that is more actual than the given value.
 		</wsdl:operation>
 
 		<wsdl:operation name="SetChargepointList">
-			<soap:operation soapAction="http://ochp.eu/1.2/SetChargepointList" />
+			<soap:operation soapAction="http://ochp.eu/1.3/SetChargepointList" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -2295,7 +2409,7 @@ information that is more actual than the given value.
 		</wsdl:operation>
 
 		<wsdl:operation name="GetRoamingAuthorisationListUpdates">
-			<soap:operation soapAction="http://ochp.eu/1.2/GetRoamingAuthorisationListUpdates" />
+			<soap:operation soapAction="http://ochp.eu/1.3/GetRoamingAuthorisationListUpdates" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -2305,7 +2419,7 @@ information that is more actual than the given value.
 		</wsdl:operation>
 
 		<wsdl:operation name="UpdateRoamingAuthorisationList">
-			<soap:operation soapAction="http://ochp.eu/1.2/UpdateRoamingAuthorisationList" />
+			<soap:operation soapAction="http://ochp.eu/1.3/UpdateRoamingAuthorisationList" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -2315,7 +2429,7 @@ information that is more actual than the given value.
 		</wsdl:operation>
 
 		<wsdl:operation name="ConfirmCDRs">
-			<soap:operation soapAction="http://ochp.eu/1.2/ConfirmCDRs" />
+			<soap:operation soapAction="http://ochp.eu/1.3/ConfirmCDRs" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -2325,7 +2439,7 @@ information that is more actual than the given value.
 		</wsdl:operation>
 
 		<wsdl:operation name="GetChargePointListUpdates">
-			<soap:operation soapAction="http://ochp.eu/1.2/GetChargePointListUpdates" />
+			<soap:operation soapAction="http://ochp.eu/1.3/GetChargePointListUpdates" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -2335,7 +2449,7 @@ information that is more actual than the given value.
 		</wsdl:operation>
 
 		<wsdl:operation name="UpdateChargePointList">
-			<soap:operation soapAction="http://ochp.eu/1.2/UpdateChargePointList" />
+			<soap:operation soapAction="http://ochp.eu/1.3/UpdateChargePointList" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -2345,7 +2459,7 @@ information that is more actual than the given value.
 		</wsdl:operation>
 
 		<wsdl:operation name="RequestLiveRoamingAuthorisation">
-			<soap:operation soapAction="http://ochp.eu/1.2/RequestLiveRoamingAuthorisation" />
+			<soap:operation soapAction="http://ochp.eu/1.3/RequestLiveRoamingAuthorisation" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -2358,10 +2472,10 @@ information that is more actual than the given value.
 
 <!-- Binding to the Live POI Interface -->
 
-	<wsdl:binding name="eCHS-OCHP_1.2-live" type="tns:OCHP_1.2-live">
+	<wsdl:binding name="eCHS-OCHP_1.3-live" type="tns:OCHP_1.3-live">
 
 		<wsdl:documentation>
-			OCHP Version 1.2 Live POI Interface
+			OCHP Version 1.3 Live POI Interface
 		</wsdl:documentation>
 
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
@@ -2397,34 +2511,34 @@ information that is more actual than the given value.
 			EEN European Emobility Network - EV Clearing Platform
 		</wsdl:documentation>
 
-		<wsdl:port name="eCHS_P-System" binding="tns:eCHS-OCHP_1.2">
+		<wsdl:port name="eCHS_P-System" binding="tns:eCHS-OCHP_1.3">
 			<wsdl:documentation>
 				eCHS Productive System Endpoint
 			</wsdl:documentation>
-			<soap:address location="https://echs.e-clearing.net/service/ochp/v1.2" />
+			<soap:address location="https://echs.e-clearing.net/service/ochp/v1.3" />
 		</wsdl:port>
 
-		<wsdl:port name="eCHS_Q-System" binding="tns:eCHS-OCHP_1.2">
+		<wsdl:port name="eCHS_Q-System" binding="tns:eCHS-OCHP_1.3">
 			<wsdl:documentation>
 				eCHS Quality Ensurance System Endpoint
 			</wsdl:documentation>
-			<soap:address location="https://echs-q.e-clearing.net/service/ochp/v1.2" />
+			<soap:address location="https://echs-q.e-clearing.net/service/ochp/v1.3" />
 		</wsdl:port>
 
 <!-- Endpoints for the Live POI Interface -->
 
-		<wsdl:port name="eCHS_P-System-live" binding="tns:eCHS-OCHP_1.2-live">
+		<wsdl:port name="eCHS_P-System-live" binding="tns:eCHS-OCHP_1.3-live">
 			<wsdl:documentation>
 				eCHS Live-POI Productive System Endpoint
 			</wsdl:documentation>
-			<soap:address location="https://echs.e-clearing.net/live/ochp/v1.2" />
+			<soap:address location="https://echs.e-clearing.net/live/ochp/v1.3" />
 		</wsdl:port>
 
-		<wsdl:port name="eCHS_Q-System-live" binding="tns:eCHS-OCHP_1.2-live">
+		<wsdl:port name="eCHS_Q-System-live" binding="tns:eCHS-OCHP_1.3-live">
 			<wsdl:documentation>
 				eCHS Live-POI Quality Ensurance Endpoint
 			</wsdl:documentation>
-			<soap:address location="https://echs-q.e-clearing.net/live/ochp/v1.2" />
+			<soap:address location="https://echs-q.e-clearing.net/live/ochp/v1.3" />
 		</wsdl:port>
 
 	</wsdl:service>

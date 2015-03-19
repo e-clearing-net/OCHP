@@ -125,7 +125,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [EvseId](#evseid)
         - [evseImageUrlType *class*](#evseimageurltype-class)
         - [ImageClass *enum*](#imageclass-enum)
+        - [RelatedResourceType *class*](#evserelatedurltype-class)
+        - [RelatedResourceClass *enum*](#relatedresourceclass-enum)
         - [GeoPointType *class*](#geopointtype-class)
+        - [AdditionalGeoPointType *class*](#additionalgeopointtype-class)
         - [ConnectorStandard *enum*](#connectorstandard-enum)
         - [ConnectorFormat *enum*](#connectorformat-enum)
         - [ConnectorType *class*](#connectortype-class)
@@ -1460,7 +1463,7 @@ should have the same orientation than the original.
 
  Field Name  |  Field Type   |  Card.  |  Description
 :------------|:--------------|:--------|:------------
- uri         |  string(255)  |  1      |  uri from where the image data can be fetched. Must begin with a protocol of the list: http, https, file, ftp. Regex: <code>[A-Za-z][A-Za-z0-9\+\.\-]*:([A-Za-z0-9\.\-\_~:/\?\#\[\]@!\\\&'\(\)\*\+,;=]&#124;%[A-Fa-f0-9]\{2\})+\</code>
+ uri         |  string(255)  |  1      |  uri from where the image data can be fetched. Must begin with a protocol of the list: http, https, file, ftp. Regex: <code>(http&#124;https&#124;ftp&#124;file):\/\/.+</code>
  thumbUri    |  string(255)  |  ?      |  uri from where a thumbnail of the image can be fetched. Must begin with a protocol of the list: http, https, file, ftp
  class       |  ImageClass   |  1      |  Image class for usage categorization
  type        |  string(4)    |  1      |  Image type like: gif, jpeg, png, svg
@@ -1485,6 +1488,35 @@ The class of a EVSE image to obtain the correct usage in an user presentation. H
  otherGraphic  |  other related graphic to be displayed with the stations detailed information view 
 
 
+### RelatedResourceType *class*
+
+This class defines a resource related to the charge point or charging 
+station. It is meant to be visited by the user with their web-browser 
+to receive further information or access further functionality. A 
+resource can have multiple classes to indicate a combination of 
+resources on one web site. A class should only be assigned if the user 
+can find the described information right from the referenced page.
+
+ Field Name  |  Field Type   |  Card.  |  Description
+:------------|:--------------|:--------|:------------
+ uri         |  string(255)  |  1      |  Referencing uri to the resource. Must begin with a protocol of the list: http, https. Regex: <code>(http&#124;https):\/\/.+</code>
+ class       |  ImageClass   |  +      |  Class(es) of the related url to indicate the referenced content and/or functionality.
+
+
+### RelatedResourceClass *enum*
+
+The class of referenced related resource.
+
+ Value            |  Description
+:-----------------|:-------------
+ operatorMap      |  direct link to this charge point on a map of the operator
+ operatorPayment  |  link to a payment page of the operator for contractless direct payment
+ stationInfo      |  further information on the charging station
+ surroundingInfo  |  further information on the surroundings of the charging station e.g. further POIs
+ ownerHomepage    |  website of the station owner (not operator) in case of hotels, restaurants, etc.
+ feedbackForm     |  form for user feedback on the charging station service
+
+
 ### GeoPointType *class*
 
 This class defines a geo location. The geodetic system to be used is WGS 84.
@@ -1495,7 +1527,7 @@ This class defines a geo location. The geodetic system to be used is WGS 84.
  lon         |  string(11)  |  1      |  Longitude of the point in decimal degree. Example: -126.104965. Decimal separator: "." Regex: `-?$[$0-9$]$\{1,3\}$\$.$[$0-9$]$\{6\}`
 
 
-### GeoPointType *class*
+### AdditionalGeoPointType *class*
 
 This class defines a geo location. The geodetic system to be used is WGS 84.
 
@@ -1574,6 +1606,20 @@ standard and format (socket/cable).
  connectorFormat   |  ConnectorFormatType   |  1      |  The format (socket/cable) of the installed connector.
 
 
+### RatingsType *class*
+
+This class defines the ratings of a charge point. The values can be 
+displayed to the user or used to calculate charge time forecasts. 
+Depending on the used plug type the effective available power might be 
+lower.
+
+ Field Name       |  Field Type  |  Card.  |  Description
+:-----------------|:-------------|:--------|:------------
+ maximumPower     |  float       |  1      |  The maximum available power at this charge point at nominal voltage over all available phases of the line.
+ guaranteedPower  |  float       |  ?      |  The minimum guaranteed mean power in case of load management. Should be set to maximum when no load management applied.
+ nominalVoltage   |  int         |  ?      |  The nominal voltage for the charge point.
+
+
 ### AuthMethodType *enum*
 
 The authorisation and payment methods available at an EVSE for the EV user
@@ -1589,6 +1635,8 @@ The authorisation and payment methods available at an EVSE for the EV user
  RfidMifareDes    |  Personal RFID token with roaming relation. (Mifare Desfire)
  RfidCalypso      |  Personal RFID token with roaming relation. (Calypso)
  Iec15118         |  In-car access token as specified in IEC-15118. 
+ OchpDirectAuth   |  The EVSE can be accessed through a OCHP-direct capable provider app.
+ OperatorAuth     |  The EVSE can be accessed through a direct online payment to the operator.
 
 
 ### ChargePointStatusType *enum*
@@ -1741,7 +1789,8 @@ Contains information about the charge points.
  timestamp           |  DateTimeType             |  ?      |  Recommended. Date and time of the latest data update for this ChargePointInfo. When set it must be updated if one of the values changed.
  locationName        |  string(100)              |  1      |  Official name; should be unique in the geographical area
  locationNameLang    |  string(3)                |  1      |  Alpha, three characters. ISO-639-3 language code defining the language of the location name
- images              |  evseImageUrlType         |  ?      |  Links to images related to the EVSE such as photos or logos.
+ images              |  evseImageUrlType         |  +      |  Links to images related to the EVSE such as photos or logos.
+ relatedResource     |  RelatedResourceType      |  +      |  Links to be visited by the user, related to the charge point or charging station.
  houseNumber         |  string(6)                |  ?      |  Alphanumeric, for example "10", "255B". Characters: [A-Z], [0-9], <space>
  address             |  string(45)               |  1      |  Alphanumeric, for example "Av. Saint-Jean". Optionally also containing the house number if not in field houseNumber.
  city                |  string(45)               |  1      |  Alphabetic, in the language defined in locationNameLang
@@ -1750,6 +1799,7 @@ Contains information about the charge points.
  chargePointLocation |  GeoPointType             |  1      |  Geographical location of the charge point itself (power outlet).
  relatedLocation     |  AdditionalGeoPointType   |  ?      |  Geographical location of related points relevant to the user.
  timeZone            |  string(255)              |  ?      |  One of IANA tzdata's __TZ__-values representing the time zone of the location. Examples: "Europe/Oslo", "Europe/Zurich". ([http://www.iana.org/time-zones](http://www.iana.org/time-zones))
+ category            |  string(2)                |  ?      |  Charge point category code defined by the operator. Allows different pricing levels in roaming agreements based on the category.
  operatingTimes      |  HoursType                |  ?      |  The times the EVSE is operating and can be used for charging. Must not be provided if operating hours are unsure/unknown.
  accessTimes         |  HoursType                |  ?      |  The times the EVSE is accessible, if different from operatingTimes. For example if a car park is closed during the night. Must not be provided if access hours are unsure/unknown.
  status              |  ChargePointStatusType    |  ?      |  The current status of the charge point.
@@ -1761,6 +1811,7 @@ Contains information about the charge points.
  parkingRestriction  |  ParkingRestrictionType   |  *      |  Those parking restrictions apply to the parking spot.
  authMethods         |  AuthMethodType           |  +      |  List of available payment or access methods on site.
  connectors          |  ConnectorType            |  +      |  Which receptacle type is/are present for a power outlet.
+ ratings             |  RatingsType              |  ?      |  Defines the ratings for the charge point.
  userInterfaceLang   |  string(3)                |  *      |  Alpha, three characters. Language(s) of the user interface or printed on-site instructions. *ISO-639-3* language code
 
 
