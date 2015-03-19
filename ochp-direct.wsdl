@@ -38,7 +38,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 	<wsdl:types>
 		<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.3">
 
-			<s:element name="SetNewServiceEndpointsRequest">
+			<s:element name="AddServiceEndpointsRequest">
 				<s:complexType>
 					<s:sequence>
 						<s:element minOccurs="0" maxOccurs="unbounded" name="providerEndpointArray" type="tns:ProviderEndpoint">
@@ -59,13 +59,13 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 				</s:complexType>
 			</s:element>
 
-			<s:element name="SetNewServiceEndpointsResponse">
+			<s:element name="AddServiceEndpointsResponse">
 				<s:complexType>
 					<s:sequence>
 						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:Result">
 							<s:annotation>
 								<s:documentation>
-									This contains the result of SetNewServiceEndpoints.req
+									This contains the result of AddServiceEndpoints.req
 								</s:documentation>
 							</s:annotation>
 						</s:element>
@@ -232,24 +232,24 @@ http://creativecommons.org/licenses/by-nd/4.0/.
                         Messages
 ==================================================================== -->
 
-	<wsdl:message name="SetNewServiceEndpointsInput">
+	<wsdl:message name="AddServiceEndpointsInput">
 		<wsdl:part name="parameters"
-				element="tns:SetNewServiceEndpointsRequest" />
+				element="tns:AddServiceEndpointsRequest" />
 	</wsdl:message>
 
-	<wsdl:message name="SetNewServiceEndpointsOutput">
+	<wsdl:message name="AddServiceEndpointsOutput">
 		<wsdl:part name="parameters"
-				element="tns:SetNewServiceEndpointsResponse" />
+				element="tns:AddServiceEndpointsResponse" />
 	</wsdl:message>
 
 	<wsdl:message name="GetServiceEndpointsInput">
 		<wsdl:part name="parameters"
-				element="tns:SetNewServiceEndpointsRequest" />
+				element="tns:AddServiceEndpointsRequest" />
 	</wsdl:message>
 
 	<wsdl:message name="GetServiceEndpointsOutput">
 		<wsdl:part name="parameters"
-				element="tns:SetNewServiceEndpointsResponse" />
+				element="tns:AddServiceEndpointsResponse" />
 	</wsdl:message>
 
 <!-- ===================================================================
@@ -262,12 +262,12 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			OCHP Version 1.3 Interface + OCHP direct extension
 		</wsdl:documentation>
 
-		<wsdl:operation name="SetNewServiceEndpoints">
+		<wsdl:operation name="AddServiceEndpoints">
 			<wsdl:documentation>
 				The backend of each roaming partner has to send the definition of its OCHP direct interface to the Clearing House to share that data with their connected roaming partners.
 			</wsdl:documentation>
-			<wsdl:input message="tns:SetNewServiceEndpointsInput" />
-			<wsdl:output message="tns:SetNewServiceEndpointsOutput" />
+			<wsdl:input message="tns:AddServiceEndpointsInput" />
+			<wsdl:output message="tns:AddServiceEndpointsOutput" />
 		</wsdl:operation>
 		<wsdl:operation name="GetServiceEndpoints">
 			<wsdl:documentation>
@@ -313,8 +313,8 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
 
-		<wsdl:operation name="SetNewServiceEndpoints">
-			<soap:operation soapAction="http://ochp.eu/direct/0.1/SetNewServiceEndpoints" />
+		<wsdl:operation name="AddServiceEndpoints">
+			<soap:operation soapAction="http://ochp.eu/direct/0.1/AddServiceEndpoints" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>

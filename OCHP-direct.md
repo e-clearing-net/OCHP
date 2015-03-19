@@ -311,8 +311,8 @@ OCHP direct interface to the Clearing House to share that data with
 their connected roaming partners. The upload of the own interface 
 definition is done in the following way:
 
- * CMS or MDM sends the SetNewServiceEndpoints.req PDU.
- * CHS responds with a SetNewServiceEndpoints.conf PDU.
+ * CMS or MDM sends the AddServiceEndpoints.req PDU.
+ * CHS responds with a AddServiceEndpoints.conf PDU.
 
 
 
@@ -380,9 +380,9 @@ These messages are used to exchange the interface definitions of the
 OCHP direct interfaces between roaming partners.
 
 
-### SetNewServiceEndpoints.req
+### AddServiceEndpoints.req
 
-This contains the field definition of the SetNewServiceEndpoints.req 
+This contains the field definition of the AddServiceEndpoints.req 
 sent by the MDM or CMS towards the CHS.
 
  Field Name            |  Field Type        |  Card.  |  Description
@@ -391,14 +391,14 @@ providerEndpointArray  |  ProviderEndpoint  |  *      |  Array of endpoints of t
 operatorEndpointArray  |  OperatorEndpoint  |  *      |  Array of endpoints of the partners operator system.
 
 
-### SetNewServiceEndpoints.conf
+### AddServiceEndpoints.conf
 
-This contains the field definition of the SetNewServiceEndpoints.conf
-sent by the CHS as response to the SetNewServiceEndpoints.req.
+This contains the field definition of the AddServiceEndpoints.conf
+sent by the CHS as response to the AddServiceEndpoints.req.
 
  Field Name  |  Field Type  |  Card.  |  Description
 :------------|:-------------|:--------|:------------
-result       |  Result      |  1      |  This contains the result of SetNewServiceEndpoints.req.
+result       |  Result      |  1      |  This contains the result of AddServiceEndpoints.req.
 
 
 ### GetServiceEndpoints.req
