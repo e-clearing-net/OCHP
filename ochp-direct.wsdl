@@ -39,6 +39,24 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 		<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.3">
 
 			<s:element name="SetNewServiceEndpointsRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="unbounded" name="providerEndpointArray" type="tns:ProviderEndpoint">
+							<s:annotation>
+								<s:documentation>
+									Array of endpoints of the partners provider system.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element minOccurs="0" maxOccurs="unbounded" name="operatorEndpointArray" type="tns:OperatorEndpoint">
+							<s:annotation>
+								<s:documentation>
+									Array of endpoints of the partners operator system.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
 			</s:element>
 
 			<s:element name="SetNewServiceEndpointsResponse">
@@ -54,6 +72,158 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 					</s:sequence>
 				</s:complexType>
 			</s:element>
+
+			<s:element name="GetServiceEndpointsRequest">
+				<s:complexType>
+					<s:annotation>
+						<s:documentation>
+							Defines the GetServiceEndpoints.req.
+						</s:documentation>
+					</s:annotation>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="GetServiceEndpointsResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:Result">
+							<s:annotation>
+								<s:documentation>
+									This contains the result of GetServiceEndpoints.req
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element minOccurs="0" maxOccurs="unbounded" name="providerEndpointArray" type="tns:ProviderEndpoint">
+							<s:annotation>
+								<s:documentation>
+									Array of endpoints of all providers connected to the requester.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element minOccurs="0" maxOccurs="unbounded" name="operatorEndpointArray" type="tns:OperatorEndpoint">
+							<s:annotation>
+								<s:documentation>
+									Array of endpoints of all operators connected to the requester.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:complexType name="DirectEndpoint">
+				<s:sequence>
+					<s:element name="url" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								The endpoint address.
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:pattern value="https:\/\/.+"></s:pattern>
+								<s:maxLength value="255"></s:maxLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="namespaceUrl" minOccurs="0" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								The WSDL namespace definition.
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:maxLength value="255"></s:maxLength>
+								<s:enumeration value="http://ochp.eu/1.3"></s:enumeration>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="accessToken" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								The secret token to access this endpoint.
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:maxLength value="255"></s:maxLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+					<s:element name="validUntil" type="tns:DateTimeType" minOccurs="1" maxOccurs="1">
+						<s:annotation>
+							<s:documentation>
+								The date till when this endpoint/token combination is valid.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="ProviderEndpoint">
+				<s:complexContent>
+					<s:extension base="tns:DirectEndpoint">
+						<s:element name="whitelist" type="tns:ContractPattern" minOccurs="1" maxOccurs="unbounded">
+							<s:annotation>
+								<s:documentation>
+									List of patterns that match all Contract-IDs the endpoint is responsible for.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="blacklist" type="tns:ContractPattern" minOccurs="0" maxOccurs="unbounded">
+							<s:annotation>
+								<s:documentation>
+									List of patterns that match Contract-IDs the endpoint is not responsible for, but are matched by the whitelist.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:extension>
+				</s:complexContent>
+			</s:complexType>
+
+			<s:complexType name="OperatorEndpoint">
+				<s:complexContent>
+					<s:extension base="tns:DirectEndpoint">
+						<s:element name="whitelist" type="tns:EvsePattern" minOccurs="1" maxOccurs="unbounded">
+							<s:annotation>
+								<s:documentation>
+									List of patterns that match all EVSE-IDs the endpoint is responsible for.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="blacklist" type="tns:EvsePattern" minOccurs="0" maxOccurs="unbounded">
+							<s:annotation>
+								<s:documentation>
+									List of patterns that match EVSE-IDs the endpoint is not responsible for, but are matched by the whitelist.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:extension>
+				</s:complexContent>
+			</s:complexType>
+
+			<s:simpleType name="ContractPattern">
+				<s:annotation>
+					<s:documentation>
+						Defines a pattern that matches Contract-IDs. The pattern must be specified for IDs without optional seperators. The wildcard character for the pattern is %. The pattern as well as the ID is case sensitive.
+					</s:documentation>
+				</s:annotation>
+				<s:restriction base="s:string">
+					<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[Cc][A-Za-z0-9]{0,9}%?"></s:pattern>
+				</s:restriction>
+			</s:simpleType>
+
+			<s:simpleType name="EvsePattern">
+				<s:annotation>
+					<s:documentation>
+						Defines a pattern that matches EVSE-IDs. The pattern must be specified for IDs without optional seperators. Seperators in the ID's instance are handled as part of the alphabet. The wildcard character for the pattern is %.
+					</s:documentation>
+				</s:annotation>
+				<s:restriction base="s:string">
+					<s:pattern value="[A-Z]{2}[A-Z0-9]{3}[E]([A-Z0-9]?[A-Z0-9\*]{0,30})%?"></s:pattern>
+				</s:restriction>
+			</s:simpleType>
 
 		</s:schema>
 	</wsdl:types>
