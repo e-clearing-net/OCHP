@@ -513,12 +513,6 @@ For this protocol the SOAP Version 1.1 MUST be used.
 
 
 
-## OCHP direct over JSON
-
-For this protocol JSON and JSON Schema Version 4 MUST be used.
-
-
-
 ## Partner Identification
 
 
