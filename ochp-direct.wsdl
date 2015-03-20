@@ -225,6 +225,23 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 				</s:restriction>
 			</s:simpleType>
 
+
+<!-- Elements and types for the direct communication -->
+
+			<s:element name="DirectEvseStatusRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="requestedEvseId" type="tns:EvseId" minOccurs="1" maxOccurs="unbounded">
+							<s:annotation>
+								<s:documentation>
+									List of EVSE-IDs the live status is requested for.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
 		</s:schema>
 	</wsdl:types>
 
@@ -251,6 +268,19 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 		<wsdl:part name="parameters"
 				element="tns:AddServiceEndpointsResponse" />
 	</wsdl:message>
+
+
+<!-- Messages for the direct communication -->
+
+	<wsdl:message name="GetEvseStatusInput">
+		<wsdl:part name="parameters"
+				element="tns:DirectEvseStatusRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetEvseStatusOutput">
+		<wsdl:part name="parameters"
+				element="tns:GetStatusResponse" />
+	</wsdl:message>
+
 
 <!-- ===================================================================
                         Port Definitions
@@ -287,6 +317,13 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			OCHP-direct Version 0.1 Interface for the EVSE-Operator backend
 		</wsdl:documentation>
 
+		<wsdl:operation name="GetEvseStatus">
+			<wsdl:documentation>
+				Request the live status for a list of EVSEs without latency through the Clearing House.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetEvseStatusInput" />
+			<wsdl:output message="tns:GetEvseStatusOutput" />
+		</wsdl:operation>
 	</wsdl:portType>
 
 
@@ -345,6 +382,16 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 		</wsdl:documentation>
 
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="GetEvseStatus">
+			<soap:operation soapAction="http://ochp.eu/direct/0.1/GetEvseStatus" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
 
 	</wsdl:binding>
 

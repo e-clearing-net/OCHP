@@ -334,6 +334,22 @@ of connected partners is done in the following way:
 
 
 
+## Get status information of charge points _Basic_
+
+
+
+### Request current live status from an Operator
+
+The backend of a provider may request the current live status for a list
+of EVSEs. This allows for a lower latency than the status distribution
+via the Clearing House.
+
+ * MDM sends the GetEvseStatus.req PDU.
+ * CMS responds with a GetStatus.conf PDU.
+   See OCHP/[GetStatus.conf](OCHP.md#getstatus-conf)
+
+
+
 
 ## Start and stop a charging process remotely _Basic_
 
@@ -421,6 +437,22 @@ operatorEndpointArray  |  OperatorEndpoint  |  *      |  Array of endpoints of a
 
 
 
+## Messages for the _OCHP direct_ interface
+
+
+### DirectEvseStatus.req
+
+This contains the field definition of the AddServiceEndpoints.req 
+sent by the MDM or CMS towards the CHS.
+
+ Field Name      |  Field Type  |  Card.  |  Description
+:----------------|:-------------|:--------|:------------
+requestedEvseId  |  EvseId      |  +      |  List of EVSE-IDs the live status is requested for.
+
+
+
+
+
 
 
 
@@ -501,6 +533,11 @@ for the pattern is `%`.
 ```regex
 [A-Z]{2}[A-Z0-9]{3}[E]([A-Z0-9]?[A-Z0-9\*]{0,30})%?
 ```
+
+
+## Types for the _OCHP direct_ interface
+
+
 
 
 
