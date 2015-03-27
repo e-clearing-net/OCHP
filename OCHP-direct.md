@@ -530,7 +530,7 @@ sent by the CMS as a response to SelectEvse.req.
  Field Name  |  Field Type    |  Card.  |  Description
 :------------|:---------------|:--------|:------------
 result       |  DirectResult  |  1      |  This contains the result of SelectEvse.req.
-directId     |  DirectID      |  ?      |  The session id for this direct charging process on success.
+directId     |  DirectId      |  ?      |  The session id for this direct charging process on success.
 ttl          |  DateTimeType  |  ?      |  On success the time until this selection is valid.
 
 
@@ -542,7 +542,7 @@ sent by the MDM towards the CMS.
 
  Field Name   |  Field Type       |  Card.  |  Description
 :-------------|:------------------|:--------|:------------
-directId      |  DirectID         |  1      |  The session id referencing the direct charging process to be controlled.
+directId      |  DirectId         |  1      |  The session id referencing the direct charging process to be controlled.
 operation     |  DirectOperation  |  1      |  The operation to be performed for the selected charge point.
  *Choice: any of the listed*    | |         | 
  > maxPower   |  float            |  ?      |  Maximum authorised power in kilowatts. Example: "3.7", "8", "15"
@@ -558,7 +558,7 @@ sent by the CMS as a response to ControlEvse.req.
  Field Name  |  Field Type    |  Card.  |  Description
 :------------|:---------------|:--------|:------------
 result       |  DirectResult  |  1      |  This contains the result of ControlEvse.req.
-directId     |  DirectID      |  1      |  The session id for this direct charging process.
+directId     |  DirectId      |  1      |  The session id for this direct charging process.
 
 
 
@@ -569,7 +569,7 @@ sent by the MDM towards the CMS.
 
  Field Name  |  Field Type  |  Card.  |  Description
 :------------|:-------------|:--------|:------------
-directId     |  DirectID    |  1      |  The session id referencing the direct charging process to be released.
+directId     |  DirectId    |  1      |  The session id referencing the direct charging process to be released.
 
 
 
@@ -581,7 +581,7 @@ sent by the CMS as a response to ReleaseEvse.req.
  Field Name  |  Field Type    |  Card.  |  Description
 :------------|:---------------|:--------|:------------
 result       |  DirectResult  |  1      |  This contains the result of ReleaseEvse.req.
-directId     |  DirectID      |  1      |  The session id for this direct charging process.
+directId     |  DirectId      |  1      |  The session id for this direct charging process.
 
 
 
