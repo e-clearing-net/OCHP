@@ -411,12 +411,29 @@ prior selected EVSE.
 
 ## Inform a provider about a charging process _Advanced_
 
+The provider should get informed about any status updates to an 
+OCHP-direct charging process. The operator's backend must make use of
+a treashold in order to avoid too many messages.
 
+The information types are:
+ * Start of a charging session
+ * End of a charging session
+ * Metering information (status)
+ * Power management information (status)
+ * Invoicing ready, CDR sent (finish)
+
+ 
+![Figure OCHP direct advanced process](media/OCHPdirectProcess-2.png "OCHP direct advanced process")
 
 
 
 ### Send charging process information of a provider's customer
 
+When a status update to a charging process gets available, the operator
+informs the concerned provider.
+
+ * CMS sends the InformProvider.req PDU.
+ * MDM responds with a InformProvider.conf PDU.
 
 
 
@@ -493,6 +510,105 @@ requestedEvseId  |  EvseId      |  +      |  List of EVSE-IDs the live status is
 
 
 
+## SelectEvse.req
+
+This contains the field definition of the SelectEvse.req 
+sent by the MDM towards the CMS.
+
+ Field Name  |  Field Type  |  Card.  |  Description
+:------------|:-------------|:--------|:------------
+evseId       |  EvseId      |  1      |  The charge point which is selected by the provider.
+contractId   |  ContractId  |  1      |  Contract-ID for which the charge point is selected.
+
+
+
+## SelectEvse.conf
+
+This contains the field definition of the SelectEvse.conf 
+sent by the CMS as a response to SelectEvse.req.
+
+ Field Name  |  Field Type    |  Card.  |  Description
+:------------|:---------------|:--------|:------------
+result       |  DirectResult  |  1      |  This contains the result of SelectEvse.req.
+directId     |  DirectID      |  ?      |  The session id for this direct charging process on success.
+ttl          |  DateTimeType  |  ?      |  On success the time until this selection is valid.
+
+
+
+## ControlEvse.req
+
+This contains the field definition of the ControlEvse.req 
+sent by the MDM towards the CMS.
+
+ Field Name   |  Field Type       |  Card.  |  Description
+:-------------|:------------------|:--------|:------------
+directId      |  DirectID         |  1      |  The session id referencing the direct charging process to be controlled.
+operation     |  DirectOperation  |  1      |  The operation to be performed for the selected charge point.
+ *Choice: any of the listed*    | |         | 
+ > maxPower   |  float            |  ?      |  Maximum authorised power in kilowatts. Example: "3.7", "8", "15"
+ > maxEnergy  |  float            |  ?      |  Maximum authorised energy in kilowatthours. Example: "5.5", "20", "85"
+
+
+
+## ControlEvse.conf
+
+This contains the field definition of the ControlEvse.conf 
+sent by the CMS as a response to ControlEvse.req.
+
+ Field Name  |  Field Type    |  Card.  |  Description
+:------------|:---------------|:--------|:------------
+result       |  DirectResult  |  1      |  This contains the result of ControlEvse.req.
+directId     |  DirectID      |  1      |  The session id for this direct charging process.
+
+
+
+## ReleaseEvse.req
+
+This contains the field definition of the ReleaseEvse.req 
+sent by the MDM towards the CMS.
+
+ Field Name  |  Field Type  |  Card.  |  Description
+:------------|:-------------|:--------|:------------
+directId     |  DirectID    |  1      |  The session id referencing the direct charging process to be released.
+
+
+
+## ReleaseEvse.conf
+
+This contains the field definition of the ReleaseEvse.conf 
+sent by the CMS as a response to ReleaseEvse.req.
+
+ Field Name  |  Field Type    |  Card.  |  Description
+:------------|:---------------|:--------|:------------
+result       |  DirectResult  |  1      |  This contains the result of ReleaseEvse.req.
+directId     |  DirectID      |  1      |  The session id for this direct charging process.
+
+
+
+## InformProvider.req
+
+This contains the field definition of the InformProvider.req 
+sent by the CMS towards the MDM.
+
+ Field Name       |  Field Type     |  Card.  |  Description
+:-----------------|:----------------|:--------|:------------
+message           |  DirectMessage  |  1      |  The operation to be performed for the selected charge point.
+ *Choice: any of the listed*      | |         | 
+ > maxPower       |  float          |  ?      |  Maximum authorised power in kilowatts. Example: "3.7", "8", "15"
+ > maxEnergy      |  float          |  ?      |  Maximum authorised energy in kilowatthours. Example: "5.5", "20", "85"
+ > currentPower   |  float          |  ?      |  The currently supplied power limit in kilowatts in case of load management. Example: "3.7", "8", "15"
+ > chargedEnergy  |  float          |  ?      |  The amount of energy in kilowatthours transferred during this charging process. Example: "5.5", "20", "85"
+
+
+
+## InformProvider.conf
+
+This contains the field definition of the InformProvider.conf 
+sent by the MDM as a response to InformProvider.conf.
+
+ Field Name      |  Field Type    |  Card.  |  Description
+:----------------|:---------------|:--------|:------------
+result           |  DirectResult  |  1      |  This contains the result of InformProvider.req.
 
 
 
