@@ -324,8 +324,31 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			<wsdl:input message="tns:GetEvseStatusInput" />
 			<wsdl:output message="tns:GetEvseStatusOutput" />
 		</wsdl:operation>
-	</wsdl:portType>
 
+		<wsdl:operation name="SelectEvse">
+			<wsdl:documentation>
+				Select an EVSE in an operator's backend. This starts the session and generates the OCHP-direct session ID.
+			</wsdl:documentation>
+			<wsdl:input message="tns:SelectEvseInput" />
+			<wsdl:output message="tns:SelectEvseOutput" />
+		</wsdl:operation>
+
+		<wsdl:operation name="ControlEvse">
+			<wsdl:documentation>
+				Control a selected EVSE in the limits of the charging process.
+			</wsdl:documentation>
+			<wsdl:input message="tns:ControlEvseInput" />
+			<wsdl:output message="tns:ControlEvseOutput" />
+		</wsdl:operation>
+
+		<wsdl:operation name="ReleaseEvse">
+			<wsdl:documentation>
+				The provider should release the prior selected EVSE after the charging process.
+			</wsdl:documentation>
+			<wsdl:input message="tns:ReleaseEvseInput" />
+			<wsdl:output message="tns:ReleaseEvseOutput" />
+		</wsdl:operation>
+	</wsdl:portType>
 
 <!-- Port definition for Service Provider backends -->
 
@@ -335,6 +358,13 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			OCHP-direct Version 0.1 Interface for the Service Provider backend
 		</wsdl:documentation>
 
+		<wsdl:operation name="InformProvider">
+			<wsdl:documentation>
+				When a status update to a charging process gets available, the operator informs the concerned provider.
+			</wsdl:documentation>
+			<wsdl:input message="tns:InformProviderInput" />
+			<wsdl:output message="tns:InformProviderOutput" />
+		</wsdl:operation>
 	</wsdl:portType>
 
 
@@ -393,6 +423,36 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			</wsdl:output>
 		</wsdl:operation>
 
+		<wsdl:operation name="SelectEvse">
+			<soap:operation soapAction="http://ochp.eu/direct/0.1/SelectEvse" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="ControlEvse">
+			<soap:operation soapAction="http://ochp.eu/direct/0.1/ControlEvse" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="ReleaseEvse">
+			<soap:operation soapAction="http://ochp.eu/direct/0.1/ReleaseEvse" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
 	</wsdl:binding>
 
 
@@ -405,6 +465,16 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 		</wsdl:documentation>
 
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="InformProvider">
+			<soap:operation soapAction="http://ochp.eu/direct/0.1/InformProvider" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
 
 	</wsdl:binding>
 
