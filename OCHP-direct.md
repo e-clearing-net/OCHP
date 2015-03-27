@@ -10,7 +10,7 @@
 
 Prot. Version | Date       | Comment
 :-------------|:-----------|:-------
-0.1           | 27‑03‑2012 | Concept, Functional specification
+0.1           | 27‑03‑2012 | Concept, Functional specification. Commit: [77cccd838db692ab6f8b77fb4be8e81d59ec04e2](../../commit/77cccd838db692ab6f8b77fb4be8e81d59ec04e2)
 
 
 Copyright (c) 2015 smartlab, bluecorner.be, e-laad.nl
