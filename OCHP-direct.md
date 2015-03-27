@@ -10,10 +10,10 @@
 
 Prot. Version | Date       | Comment
 :-------------|:-----------|:-------
-0.1           | 28‑02‑2012 | Concept, Functional specification
+0.1           | 27‑03‑2012 | Concept, Functional specification
 
 
-Copyright (c) 2012-2015 smartlab, bluecorner.be, e-laad.nl
+Copyright (c) 2015 smartlab, bluecorner.be, e-laad.nl
 
 Permission is hereby granted, free of charge, to any person obtaining a 
 copy of this software and associated documentation files 
@@ -39,6 +39,66 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # Contents
 
+- [Preface](#preface)
+    - [Conventions](#conventions)
+- [Introduction](#introduction)
+    - [Use Cases of OCHP direct](#use-cases-of-ochp-direct)
+            - [Basic use cases](#basic-use-cases)
+            - [Advanced use cases](#advanced-use-cases)
+    - [Basic Principles of OCHP direct](#basic-principles-of-ochp-direct)
+        - [Trust and authorisation structure](#trust-and-authorisation-structure)
+            - [The usual situation without OCHP direct](#the-usual-situation-without-ochp-direct)
+            - [The situation with OCHP direct](#the-situation-with-ochp-direct)
+            - [Security of the OCHP direct interface](#security-of-the-ochp-direct-interface)
+            - [Identification token distribution](#identification-token-distribution)
+- [Partner-to-CHS interface description (Extension to OCHP)](#partner-to-chs-interface-description-extension-to-ochp)
+    - [Exchange of interface definition _Basic_](#exchange-of-interface-definition-basic)
+        - [Set own interface definition in the CHS](#set-own-interface-definition-in-the-chs)
+        - [Get roaming partners interface definitions from the CHS](#get-roaming-partners-interface-definitions-from-the-chs)
+- [Partner-to-partner interface description (_OCHP direct_ interface)](#partner-to-partner-interface-description-ochp-direct-interface)
+    - [Get status information of charge points _Basic_](#get-status-information-of-charge-points-basic)
+        - [Request current live status from an Operator](#request-current-live-status-from-an-operator)
+        - [Report a data or compatibility discrepancy to an Operator](#report-a-data-or-compatibility-discrepancy-to-an-operator)
+    - [Start, stop and control a charging process remotely _Basic_](#start-stop-and-control-a-charging-process-remotely-basic)
+        - [Select a charge point of an operator](#select-a-charge-point-of-an-operator)
+        - [Control a selected charge point in an operator's backend](#control-a-selected-charge-point-in-an-operators-backend)
+        - [Release a selected charge point in an operator's backend](#release-a-selected-charge-point-in-an-operators-backend)
+    - [Inform a provider about a charging process _Advanced_](#inform-a-provider-about-a-charging-process-advanced)
+        - [Send charging process information of a provider's customer](#send-charging-process-information-of-a-providers-customer)
+- [Messages](#messages)
+    - [Messages for the exchange of interface definitions](#messages-for-the-exchange-of-interface-definitions)
+        - [AddServiceEndpoints.req](#addserviceendpointsreq)
+        - [AddServiceEndpoints.conf](#addserviceendpointsconf)
+        - [GetServiceEndpoints.req](#getserviceendpointsreq)
+        - [GetServiceEndpoints.conf](#getserviceendpointsconf)
+    - [Messages for the _OCHP direct_ interface](#messages-for-the-ochp-direct-interface)
+        - [DirectEvseStatus.req](#directevsestatusreq)
+        - [ReportDiscrepancy.req](#reportdiscrepancyreq)
+        - [ReportDiscrepancy.conf](#reportdiscrepancyconf)
+        - [SelectEvse.req](#selectevsereq)
+        - [SelectEvse.conf](#selectevseconf)
+        - [ControlEvse.req](#controlevsereq)
+        - [ControlEvse.conf](#controlevseconf)
+        - [ReleaseEvse.req](#releaseevsereq)
+        - [ReleaseEvse.conf](#releaseevseconf)
+        - [InformProvider.req](#informproviderreq)
+        - [InformProvider.conf](#informproviderconf)
+- [Types](#types)
+    - [Types that extend the OCHP interface _Basic_](#types-that-extend-the-ochp-interface-basic)
+        - [DirectEndpoint *class*](#directendpoint-class)
+        - [ProviderEndpoint *class*](#providerendpoint-class)
+        - [OperatorEndpoint *class*](#operatorendpoint-class)
+        - [ContractPattern *class*](#contractpattern-class)
+        - [EvsePattern *class*](#evsepattern-class)
+    - [Types for the _OCHP direct_ interface](#types-for-the-ochp-direct-interface)
+        - [DirectResult *enum*](#directresult-enum)
+        - [DirectResultCodeType *enum*](#directresultcodetype-enum)
+        - [DirectId *class*](#directid-class)
+        - [DirectOperation *enum*](#directoperation-enum)
+        - [DirectMessage *enum*](#directmessage-enum)
+- [Binding to Transport Protocol](#binding-to-transport-protocol)
+    - [OCHP direct over SOAP](#ochp-direct-over-soap)
+    - [Partner Identification](#partner-identification)
 
 
  * * *
