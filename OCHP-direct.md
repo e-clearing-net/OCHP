@@ -699,6 +699,71 @@ for the pattern is `%`.
 ## Types for the _OCHP direct_ interface
 
 
+### DirectResult *enum*
+
+Contains result information.
+
+ Field Name         |  Field Type            |  Card.  |  Description
+:-------------------|:-----------------------|:--------|:------------
+ resultCode         |  DirectResultCodeType  |  1      |  The machine-readable result code.
+ resultDescription  |  string                |  1      |  The human-readable error description.
+
+
+### DirectResultCodeType *enum*
+
+Result and error codes for the class Result as return value for method calls.
+
+ Value          |  Description
+:---------------|:-------------
+ ok             | Data accepted and processed.
+ partly         | Not all control parameters could be applied.
+ not-found      | Given EVSE-ID is not known to the operator.
+ not-supported  | Given EVSE-ID does not support OCHP-direct.
+ invalid-id     | The DirectId is not valid or has expired.
+ server         | Internal server error.
+
+
+### DirectId *class*
+
+The session ID for one OCHP-direct charging process. The ID is created
+by the operator and used to reference the session by the provider. Must
+be unique per Operator-ID.
+There are two events that create a new DirectId:
+
+ * A successful call to SelectEvse by the provider
+ * Local start of a charging session (i.e. via RFID) for a OCHP-direct
+   enabled Contract-ID at a OCHP-direct enabled EVSE
+
+```regex
+[A-Z0-9\-]{1,255}
+```
+
+
+### DirectOperation *enum*
+
+Operations to control an OCHP-direct charging process.
+
+ Value   |  Description
+:--------|:-------------
+ start   | Initiate the start. Operator should allow the user to plug in.
+ change  | Change the parameters of the charging process.
+ end     | End the charging process. Operator should allow the user to plug out.
+
+
+### DirectMessage *enum*
+
+Messages to inform a provider about an OCHP-direct charging process.
+
+ Value   |  Description
+:--------|:-------------
+ start   | A OCHP-direct charging process has been started.
+ change  | The parameters of the charging process were changed.
+ info    | A informative update is available, e.g. updated consumed energy value.
+ end     | The charging process has ended, the connector was unplugged.
+ finish  | The session is finished and the CDR was sent out.
+
+
+
 
 
 

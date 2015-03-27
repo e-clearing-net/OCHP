@@ -228,6 +228,62 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 
 <!-- Elements and types for the direct communication -->
 
+			<s:complexType name="DirectResult" abstract="false">
+				<s:annotation>
+					<s:documentation>
+						General result for OCHP-direct
+					</s:documentation>
+				</s:annotation>
+				<s:sequence>
+					<s:element minOccurs="1" maxOccurs="1" name="resultCode" type="tns:DirectResultCodeType">
+						<s:annotation>
+							<s:documentation>
+								The machine-readable result code.
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs="1" maxOccurs="1" nillable="true" name="resultDescription">
+						<s:annotation>
+							<s:documentation>
+								The human-readable error description
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:maxLength value="1000"></s:maxLength>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="DirectResultCodeType">
+				<s:sequence>
+					<s:element name="resultCode">
+						<s:annotation>
+							<s:documentation>
+								ok: Data accepted and processed;
+								partly: Not all control parameters could be applied;
+								not-found: Given EVSE-ID is not known to the operator;
+								not-supported: Given EVSE-ID does not support OCHP-direct;
+								invalid-id: The DirectId is not valid or has expired;
+								server: Internal server error;
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:enumeration value="ok"></s:enumeration>
+								<s:enumeration value="partly"></s:enumeration>
+								<s:enumeration value="not-found"></s:enumeration>
+								<s:enumeration value="not-supported"></s:enumeration>
+								<s:enumeration value="invalid-id"></s:enumeration>
+								<s:enumeration value="server"></s:enumeration>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
 			<s:element name="DirectEvseStatusRequest">
 				<s:complexType>
 					<s:sequence>
@@ -241,6 +297,65 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 					</s:sequence>
 				</s:complexType>
 			</s:element>
+
+			<s:simpleType name="DirectId">
+				<s:annotation>
+					<s:documentation>
+						Defines a pattern that matches EVSE-IDs. The pattern must be specified for IDs without optional seperators. Seperators in the ID's instance are handled as part of the alphabet. The wildcard character for the pattern is %.
+					</s:documentation>
+				</s:annotation>
+				<s:restriction base="s:string">
+					<s:pattern value="[A-Z0-9\-]*"></s:pattern>
+					<s:minLength value="1"></s:minLength>
+					<s:maxLength value="255"></s:maxLength>
+				</s:restriction>
+			</s:simpleType>
+
+			<s:complexType name="DirectOperation">
+				<s:sequence>
+					<s:element name="operation">
+						<s:annotation>
+							<s:documentation>
+								start: Initiate the start. Operator should allow the user to plug in;
+								change: Change the parameters of the charging process;
+								end: End the charging process. Operator should allow the user to plug out;
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:enumeration value="start"></s:enumeration>
+								<s:enumeration value="change"></s:enumeration>
+								<s:enumeration value="end"></s:enumeration>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
+
+			<s:complexType name="DirectOperation">
+				<s:sequence>
+					<s:element name="operation">
+						<s:annotation>
+							<s:documentation>
+								start: A OCHP-direct charging process has been started;
+								change: The parameters of the charging process were changed;
+								info: A informative update is available, e.g. updated consumed energy value;
+								end: The charging process has ended, the connector was unplugged;
+								finish: The session is finished and the CDR was sent out;
+							</s:documentation>
+						</s:annotation>
+						<s:simpleType>
+							<s:restriction base="s:string">
+								<s:enumeration value="start"></s:enumeration>
+								<s:enumeration value="change"></s:enumeration>
+								<s:enumeration value="info"></s:enumeration>
+								<s:enumeration value="end"></s:enumeration>
+								<s:enumeration value="finish"></s:enumeration>
+							</s:restriction>
+						</s:simpleType>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
 
 		</s:schema>
 	</wsdl:types>
