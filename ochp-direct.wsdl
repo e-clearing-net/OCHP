@@ -298,6 +298,36 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 				</s:complexType>
 			</s:element>
 
+			<s:element name="ReportDiscrepancyRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="evseId" type="tns:EvseId" minOccurs="1" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									The charge point which is affected by the report.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element minOccurs="1" maxOccurs="1" nillable="false" name="report">
+							<s:annotation>
+								<s:documentation>
+									Textual or generated report of the discrepancy.
+								</s:documentation>
+							</s:annotation>
+							<s:simpleType>
+								<s:restriction base="s:string">
+									<s:maxLength value="2000"></s:maxLength>
+								</s:restriction>
+							</s:simpleType>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="ReportDiscrepancyResponse">
+				<s:complexType></s:complexType>
+			</s:element>
+
 			<s:element name="SelectEvseRequest">
 				<s:complexType>
 					<s:sequence>
@@ -613,6 +643,15 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 				element="tns:GetStatusResponse" />
 	</wsdl:message>
 
+	<wsdl:message name="ReportDiscrepancyInput">
+		<wsdl:part name="parameters"
+				element="tns:ReportDiscrepancyRequest" />
+	</wsdl:message>
+	<wsdl:message name="ReportDiscrepancyOutput">
+		<wsdl:part name="parameters"
+				element="tns:ReportDiscrepancyResponse" />
+	</wsdl:message>
+
 	<wsdl:message name="SelectEvseInput">
 		<wsdl:part name="parameters"
 				element="tns:SelectEvseRequest" />
@@ -691,6 +730,14 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			</wsdl:documentation>
 			<wsdl:input message="tns:GetEvseStatusInput" />
 			<wsdl:output message="tns:GetEvseStatusOutput" />
+		</wsdl:operation>
+
+		<wsdl:operation name="ReportDiscrepancy">
+			<wsdl:documentation>
+				Report an issue concerning the data or the compatibility or status of an EVSE to the operator to their information.
+			</wsdl:documentation>
+			<wsdl:input message="tns:ReportDiscrepancyInput" />
+			<wsdl:output message="tns:ReportDiscrepancyOutput" />
 		</wsdl:operation>
 
 		<wsdl:operation name="SelectEvse">
@@ -780,6 +827,16 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 		</wsdl:documentation>
 
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="ReportDiscrepancy">
+			<soap:operation soapAction="http://ochp.eu/direct/0.1/ReportDiscrepancy" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
 
 		<wsdl:operation name="GetEvseStatus">
 			<soap:operation soapAction="http://ochp.eu/direct/0.1/GetEvseStatus" />

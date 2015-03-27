@@ -352,6 +352,16 @@ via the Clearing House.
    See OCHP/[GetStatus.conf](OCHP.md#getstatus-conf)
 
 
+### Report a data or compatibility discrepancy to an Operator
+
+The backend of a provider may report an issue concerning the data or
+the compatibility or status of an EVSE to the operator to their
+information. The operator may decide how to handle the report.
+
+ * MDM sends the ReportDiscrepancy.req PDU.
+ * CMS responds with a ReportDiscrepancy.conf PDU.
+
+
 
 
 ## Start, stop and control a charging process remotely _Basic_
@@ -510,7 +520,27 @@ requestedEvseId  |  EvseId      |  +      |  List of EVSE-IDs the live status is
 
 
 
-## SelectEvse.req
+### ReportDiscrepancy.req
+
+This contains the field definition of the ReportDiscrepancy.req 
+sent by the MDM towards the CMS.
+
+ Field Name  |  Field Type    |  Card.  |  Description
+:------------|:---------------|:--------|:------------
+evseId       |  EvseId        |  1      |  The charge point which is affected by the report.
+report       |  string(2000)  |  1      |  Textual or generated report of the discrepancy.
+
+
+
+### ReportDiscrepancy.conf
+
+This contains the field definition of the ReportDiscrepancy.conf 
+sent by the CMS as a response to ReportDiscrepancy.req.
+No fields are defined.
+
+
+
+### SelectEvse.req
 
 This contains the field definition of the SelectEvse.req 
 sent by the MDM towards the CMS.
@@ -522,7 +552,7 @@ contractId   |  ContractId  |  1      |  Contract-ID for which the charge point 
 
 
 
-## SelectEvse.conf
+### SelectEvse.conf
 
 This contains the field definition of the SelectEvse.conf 
 sent by the CMS as a response to SelectEvse.req.
@@ -535,7 +565,7 @@ ttl          |  DateTimeType  |  ?      |  On success the time until this select
 
 
 
-## ControlEvse.req
+### ControlEvse.req
 
 This contains the field definition of the ControlEvse.req 
 sent by the MDM towards the CMS.
@@ -549,7 +579,7 @@ maxEnergy     |  float            |  ?      |  Maximum authorised energy in kilo
 
 
 
-## ControlEvse.conf
+### ControlEvse.conf
 
 This contains the field definition of the ControlEvse.conf 
 sent by the CMS as a response to ControlEvse.req.
@@ -561,7 +591,7 @@ directId     |  DirectId      |  1      |  The session id for this direct chargi
 
 
 
-## ReleaseEvse.req
+### ReleaseEvse.req
 
 This contains the field definition of the ReleaseEvse.req 
 sent by the MDM towards the CMS.
@@ -572,7 +602,7 @@ directId     |  DirectId    |  1      |  The session id referencing the direct c
 
 
 
-## ReleaseEvse.conf
+### ReleaseEvse.conf
 
 This contains the field definition of the ReleaseEvse.conf 
 sent by the CMS as a response to ReleaseEvse.req.
@@ -584,7 +614,7 @@ directId     |  DirectId      |  1      |  The session id for this direct chargi
 
 
 
-## InformProvider.req
+### InformProvider.req
 
 This contains the field definition of the InformProvider.req 
 sent by the CMS towards the MDM.
@@ -602,7 +632,7 @@ chargedEnergy     |  float          |  ?      |  The amount of energy in kilowat
 
 
 
-## InformProvider.conf
+### InformProvider.conf
 
 This contains the field definition of the InformProvider.conf 
 sent by the MDM as a response to InformProvider.conf.
