@@ -501,8 +501,8 @@ operatorEndpointArray  |  OperatorEndpoint  |  *      |  Array of endpoints of a
 
 ### DirectEvseStatus.req
 
-This contains the field definition of the AddServiceEndpoints.req 
-sent by the MDM or CMS towards the CHS.
+This contains the field definition of the DirectEvseStatus.req 
+sent by the MDM towards the CMS.
 
  Field Name      |  Field Type  |  Card.  |  Description
 :----------------|:-------------|:--------|:------------
