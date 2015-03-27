@@ -544,9 +544,8 @@ sent by the MDM towards the CMS.
 :-------------|:------------------|:--------|:------------
 directId      |  DirectId         |  1      |  The session id referencing the direct charging process to be controlled.
 operation     |  DirectOperation  |  1      |  The operation to be performed for the selected charge point.
- *Choice: any of the listed*    | |         | 
- > maxPower   |  float            |  ?      |  Maximum authorised power in kilowatts. Example: "3.7", "8", "15"
- > maxEnergy  |  float            |  ?      |  Maximum authorised energy in kilowatthours. Example: "5.5", "20", "85"
+maxPower      |  float            |  ?      |  Maximum authorised power in kilowatts. Example: "3.7", "8", "15"
+maxEnergy     |  float            |  ?      |  Maximum authorised energy in kilowatthours. Example: "5.5", "20", "85"
 
 
 
@@ -596,11 +595,10 @@ message           |  DirectMessage  |  1      |  The operation to be performed f
 evseId            |  EvseId         |  1      |  The charge point which is used for this charging process.
 contractId        |  ContractId     |  1      |  Contract-ID to which the charge point is assigned.
 directId          |  DirectId       |  1      |  The session id for this direct charging process.
- *Choice: any of the listed*      | |         | 
- > maxPower       |  float          |  ?      |  Maximum authorised power in kilowatts. Example: "3.7", "8", "15"
- > maxEnergy      |  float          |  ?      |  Maximum authorised energy in kilowatthours. Example: "5.5", "20", "85"
- > currentPower   |  float          |  ?      |  The currently supplied power limit in kilowatts in case of load management. Example: "3.7", "8", "15"
- > chargedEnergy  |  float          |  ?      |  The amount of energy in kilowatthours transferred during this charging process. Example: "5.5", "20", "85"
+maxPower          |  float          |  ?      |  Maximum authorised power in kilowatts. Example: "3.7", "8", "15"
+maxEnergy         |  float          |  ?      |  Maximum authorised energy in kilowatthours. Example: "5.5", "20", "85"
+currentPower      |  float          |  ?      |  The currently supplied power limit in kilowatts in case of load management. Example: "3.7", "8", "15"
+chargedEnergy     |  float          |  ?      |  The amount of energy in kilowatthours transferred during this charging process. Example: "5.5", "20", "85"
 
 
 

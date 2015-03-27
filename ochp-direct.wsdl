@@ -298,6 +298,223 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 				</s:complexType>
 			</s:element>
 
+			<s:element name="SelectEvseRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element name="evseId" type="tns:EvseId" minOccurs="1" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									The charge point which is selected by the provider.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="contractId" type="tns:ContractId" minOccurs="1" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									Contract-ID for which the charge point is selected.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="SelectEvseResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:DirectResult">
+							<s:annotation>
+								<s:documentation>
+									This contains the result of SelectEvse.req.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element minOccurs="0" maxOccurs="1" name="directId" type="tns:DirectId">
+							<s:annotation>
+								<s:documentation>
+									The session id for this direct charging process on success.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element minOccurs="0" maxOccurs="1" name="ttl" type="tns:DateTimeType">
+							<s:annotation>
+								<s:documentation>
+									On success the time until this selection is valid.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="ControlEvseRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="directId" type="tns:DirectId">
+							<s:annotation>
+								<s:documentation>
+									The session id referencing the direct charging process to be controlled.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element minOccurs="1" maxOccurs="1" name="operation" type="tns:DirectOperation">
+							<s:annotation>
+								<s:documentation>
+									The operation to be performed for the selected charge point.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="maxPower" type="s:float" minOccurs="0" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									Maximum authorised power in kilowatts. Example: "3.7", "8", "15"
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="maxEnergy" type="s:float" minOccurs="0" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									Maximum authorised energy in kilowatthours. Example: "5.5", "20", "85"
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="ControlEvseResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:DirectResult">
+							<s:annotation>
+								<s:documentation>
+									This contains the result of ControlEvse.req.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element minOccurs="0" maxOccurs="1" name="directId" type="tns:DirectId">
+							<s:annotation>
+								<s:documentation>
+									The session id for this direct charging process.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="ReleaseEvseRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="directId" type="tns:DirectId">
+							<s:annotation>
+								<s:documentation>
+									The session id referencing the direct charging process to be released.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="ReleaseEvseResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:DirectResult">
+							<s:annotation>
+								<s:documentation>
+									This contains the result of ReleaseEvse.req.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element minOccurs="0" maxOccurs="1" name="directId" type="tns:DirectId">
+							<s:annotation>
+								<s:documentation>
+									The session id for this direct charging process.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="InformProviderRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="message" type="tns:DirectMessage">
+							<s:annotation>
+								<s:documentation>
+									The operation to be performed for the selected charge point.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="evseId" type="tns:EvseId" minOccurs="1" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									The charge point which is used for this charging process.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="contractId" type="tns:ContractId" minOccurs="1" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									Contract-ID to which the charge point is assigned.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element minOccurs="1" maxOccurs="1" name="directId" type="tns:DirectId">
+							<s:annotation>
+								<s:documentation>
+									The session id for this direct charging process.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="maxPower" type="s:float" minOccurs="0" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									Maximum authorised power in kilowatts. Example: "3.7", "8", "15"
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="maxEnergy" type="s:float" minOccurs="0" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									Maximum authorised energy in kilowatthours. Example: "5.5", "20", "85"
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="currentPower" type="s:float" minOccurs="0" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									The currently supplied power limit in kilowatts in case of load management. Example: "3.7", "8", "15"
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="chargedEnergy" type="s:float" minOccurs="0" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									The amount of energy in kilowatthours transferred during this charging process. Example: "5.5", "20", "85"
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
+			<s:element name="InformProviderResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:DirectResult">
+							<s:annotation>
+								<s:documentation>
+									This contains the result of InformProvider.req.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+
 			<s:simpleType name="DirectId">
 				<s:annotation>
 					<s:documentation>
@@ -332,9 +549,9 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 				</s:sequence>
 			</s:complexType>
 
-			<s:complexType name="DirectOperation">
+			<s:complexType name="DirectMessage">
 				<s:sequence>
-					<s:element name="operation">
+					<s:element name="message">
 						<s:annotation>
 							<s:documentation>
 								start: A OCHP-direct charging process has been started;
@@ -394,6 +611,42 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 	<wsdl:message name="GetEvseStatusOutput">
 		<wsdl:part name="parameters"
 				element="tns:GetStatusResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="SelectEvseInput">
+		<wsdl:part name="parameters"
+				element="tns:SelectEvseRequest" />
+	</wsdl:message>
+	<wsdl:message name="SelectEvseOutput">
+		<wsdl:part name="parameters"
+				element="tns:SelectEvseResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="ControlEvseInput">
+		<wsdl:part name="parameters"
+				element="tns:ControlEvseRequest" />
+	</wsdl:message>
+	<wsdl:message name="ControlEvseOutput">
+		<wsdl:part name="parameters"
+				element="tns:ControlEvseResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="ReleaseEvseInput">
+		<wsdl:part name="parameters"
+				element="tns:ReleaseEvseRequest" />
+	</wsdl:message>
+	<wsdl:message name="ReleaseEvseOutput">
+		<wsdl:part name="parameters"
+				element="tns:ReleaseEvseResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="InformProviderInput">
+		<wsdl:part name="parameters"
+				element="tns:InformProviderRequest" />
+	</wsdl:message>
+	<wsdl:message name="InformProviderOutput">
+		<wsdl:part name="parameters"
+				element="tns:InformProviderResponse" />
 	</wsdl:message>
 
 
