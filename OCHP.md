@@ -1077,6 +1077,7 @@ Result and error codes for the class Result as return value for method calls.
  not-authorized | Wrong username and/or password.
  invalid-id     | One or more ID (EVSE/Contract) were not valid for this user.
  server         | Internal server error.
+ format         | Data has technical errors.
 
 
 ### DateTimeType

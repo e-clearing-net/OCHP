@@ -1774,6 +1774,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 								not-authorized: Wrong username and/or password;
 								invalid-id: One or more ID (EVSE/Contract) were not valid for this user;
 								server: Internal server error;
+								format: Data has technical errors;
 							</s:documentation>
 						</s:annotation>
 						<s:simpleType>
@@ -1783,6 +1784,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 								<s:enumeration value="not-authorized"></s:enumeration>
 								<s:enumeration value="invalid-id"></s:enumeration>
 								<s:enumeration value="server"></s:enumeration>
+								<s:enumeration value="format"></s:enumeration>
 							</s:restriction>
 						</s:simpleType>
 					</s:element>
