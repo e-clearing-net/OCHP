@@ -648,6 +648,7 @@ sent by the CMS as a response to ControlEvse.req.
 :------------|:---------------|:--------|:------------
 result       |  DirectResult  |  1      |  This contains the result of ControlEvse.req.
 directId     |  DirectId      |  1      |  The session id for this direct charging process.
+ttl          |  DateTimeType  |  ?      |  On success the timeout for this session.
 
 
 
@@ -671,6 +672,7 @@ sent by the CMS as a response to ReleaseEvse.req.
 :------------|:---------------|:--------|:------------
 result       |  DirectResult  |  1      |  This contains the result of ReleaseEvse.req.
 directId     |  DirectId      |  1      |  The session id for this direct charging process.
+ttl          |  DateTimeType  |  ?      |  On success the timeout for this session.
 
 
 
@@ -685,6 +687,7 @@ message           |  DirectMessage  |  1      |  The operation to be performed f
 evseId            |  EvseId         |  1      |  The charge point which is used for this charging process.
 contractId        |  ContractId     |  1      |  Contract-ID to which the charge point is assigned.
 directId          |  DirectId       |  1      |  The session id for this direct charging process.
+ttl               |  DateTimeType   |  ?      |  On success the timeout for this session.
 maxPower          |  float          |  ?      |  Maximum authorised power in kilowatts. Example: "3.7", "8", "15"
 maxEnergy         |  float          |  ?      |  Maximum authorised energy in kilowatthours. Example: "5.5", "20", "85"
 currentPower      |  float          |  ?      |  The currently supplied power limit in kilowatts in case of load management. Example: "3.7", "8", "15"

@@ -429,6 +429,13 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 								</s:documentation>
 							</s:annotation>
 						</s:element>
+						<s:element minOccurs="0" maxOccurs="1" name="ttl" type="tns:DateTimeType">
+							<s:annotation>
+								<s:documentation>
+									On success the timeout for this session.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
 					</s:sequence>
 				</s:complexType>
 			</s:element>
@@ -464,6 +471,13 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 								</s:documentation>
 							</s:annotation>
 						</s:element>
+						<s:element minOccurs="0" maxOccurs="1" name="ttl" type="tns:DateTimeType">
+							<s:annotation>
+								<s:documentation>
+									On success the timeout for this session.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
 					</s:sequence>
 				</s:complexType>
 			</s:element>
@@ -496,6 +510,13 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 							<s:annotation>
 								<s:documentation>
 									The session id for this direct charging process.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element minOccurs="0" maxOccurs="1" name="ttl" type="tns:DateTimeType">
+							<s:annotation>
+								<s:documentation>
+									The timeout for this session.
 								</s:documentation>
 							</s:annotation>
 						</s:element>
