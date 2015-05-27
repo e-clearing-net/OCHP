@@ -1617,7 +1617,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 						</s:annotation>
 						<s:simpleType>
 							<s:restriction base="s:string">
-								<s:length value="255"></s:length>
+								<s:maxLength value="255"></s:maxLength>
 							</s:restriction>
 						</s:simpleType>
 					</s:element>
