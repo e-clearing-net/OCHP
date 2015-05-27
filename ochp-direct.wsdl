@@ -907,7 +907,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
                         Service Definition
 ==================================================================== -->
 
-	<wsdl:service name="e-clearing.net (with OCHP-direct Extension)">
+	<wsdl:service name="e-clearing.net+OCHP-direct">
 
 		<wsdl:documentation>
 			EEN European Emobility Network - EV Clearing Platform
