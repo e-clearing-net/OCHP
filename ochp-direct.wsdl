@@ -623,12 +623,12 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 
 	<wsdl:message name="GetServiceEndpointsInput">
 		<wsdl:part name="parameters"
-				element="tns:AddServiceEndpointsRequest" />
+				element="tns:GetServiceEndpointsRequest" />
 	</wsdl:message>
 
 	<wsdl:message name="GetServiceEndpointsOutput">
 		<wsdl:part name="parameters"
-				element="tns:AddServiceEndpointsResponse" />
+				element="tns:GetServiceEndpointsResponse" />
 	</wsdl:message>
 
 
