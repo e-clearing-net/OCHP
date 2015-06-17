@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.3" xmlns:tns="http://ochp.eu/1.3" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" >
+
+<!-- Messages for the Exchange of Authorisation Data -->
+
+	<wsdl:message name="GetRoamingAuthorisationListInput">
+		<wsdl:part name="parameters"
+				element="tns:GetRoamingAuthorisationListRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetRoamingAuthorisationListOutput">
+		<wsdl:part name="parameters"
+				element="tns:GetRoamingAuthorisationListResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="SetRoamingAuthorisationListInput">
+		<wsdl:part name="parameters"
+				element="tns:SetRoamingAuthorisationListRequest" />
+	</wsdl:message>
+	<wsdl:message name="SetRoamingAuthorisationListOutput">
+		<wsdl:part name="parameters"
+				element="tns:SetRoamingAuthorisationListResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="GetRoamingAuthorisationListUpdatesRequest">
+		<wsdl:part name="parameters"
+				element="tns:GetRoamingAuthorisationListUpdatesRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetRoamingAuthorisationListUpdatesResponse">
+		<wsdl:part name="parameters"
+				element="tns:GetRoamingAuthorisationListUpdatesResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="UpdateRoamingAuthorisationListResponse">
+		<wsdl:part name="parameters"
+				element="tns:UpdateRoamingAuthorisationListResponse" />
+	</wsdl:message>
+	<wsdl:message name="UpdateRoamingAuthorisationListRequest">
+		<wsdl:part name="parameters"
+				element="tns:UpdateRoamingAuthorisationListRequest" />
+	</wsdl:message>
+
+<!-- Messages for the Exchange of Charge Data -->
+
+	<wsdl:message name="AddCDRsInput">
+		<wsdl:part name="parameters"
+				element="tns:AddCDRsRequest" />
+	</wsdl:message>
+	<wsdl:message name="AddCDRsOutput">
+		<wsdl:part name="parameters"
+				element="tns:AddCDRsResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="GetCDRsInput">
+		<wsdl:part name="parameters"
+				element="tns:GetCDRsRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetCDRsOutput">
+		<wsdl:part name="parameters"
+				element="tns:GetCDRsResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="ConfirmCDRsRequest">
+		<wsdl:part name="parameters"
+				element="tns:ConfirmCDRsRequest" />
+	</wsdl:message>
+	<wsdl:message name="ConfirmCDRsResponse">
+		<wsdl:part name="parameters"
+				element="tns:ConfirmCDRsResponse" />
+	</wsdl:message>
+
+<!-- Messages for the Exchange of Charge Point Information -->
+
+	<wsdl:message name="GetChargepointListInput">
+		<wsdl:part name="parameters"
+				element="tns:GetChargePointListRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetChargepointListOutput">
+		<wsdl:part name="parameters"
+				element="tns:GetChargePointListResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="SetChargepointListInput">
+		<wsdl:part name="parameters"
+				element="tns:SetChargePointListRequest" />
+	</wsdl:message>
+	<wsdl:message name="SetChargepointListOutput">
+		<wsdl:part name="parameters"
+				element="tns:SetChargePointListResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="GetChargePointListUpdatesRequest">
+		<wsdl:part name="parameters"
+				element="tns:GetChargePointListUpdatesRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetChargePointListUpdatesResponse">
+		<wsdl:part name="parameters"
+				element="tns:GetChargePointListUpdatesResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="UpdateChargePointListRequest">
+		<wsdl:part name="parameters"
+				element="tns:UpdateChargePointListRequest" />
+	</wsdl:message>
+	<wsdl:message name="UpdateChargePointListResponse">
+		<wsdl:part name="parameters"
+				element="tns:UpdateChargePointListResponse" />
+	</wsdl:message>
+
+<!-- Messages for live authorisation -->
+
+	<wsdl:message name="RequestLiveRoamingAuthorisationRequest">
+		<wsdl:part name="parameters"
+				element="tns:RequestLiveRoamingAuthorisationRequest" />
+	</wsdl:message>
+	<wsdl:message name="RequestLiveRoamingAuthorisationResponse">
+		<wsdl:part name="parameters"
+				element="tns:RequestLiveRoamingAuthorisationResponse" />
+	</wsdl:message>
+
+<!-- Messages for the Live Status Interface -->
+
+	<wsdl:message name="UpdateStatusRequest">
+		<wsdl:part name="parameters"
+				element="tns:UpdateStatusRequest" />
+	</wsdl:message>
+	<wsdl:message name="UpdateStatusResponse">
+		<wsdl:part name="parameters"
+				element="tns:UpdateStatusResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="GetStatusRequest">
+		<wsdl:part name="parameters"
+				element="tns:GetStatusRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetStatusResponse">
+		<wsdl:part name="parameters"
+				element="tns:GetStatusResponse" />
+	</wsdl:message>
+
+</s:schema>

@@ -1,0 +1,531 @@
+<?xml version="1.0"?>
+<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.3" xmlns:tns="http://ochp.eu/1.3" xmlns:s="http://www.w3.org/2001/XMLSchema">
+
+	<s:complexType name="RoamingAuthorisationInfo">
+		<s:annotation>
+			<s:documentation>
+				Authorized card info.
+			</s:documentation>
+		</s:annotation>
+		<s:sequence>
+			<s:element name="EmtId" type="tns:EmtId" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Electrical vehicle contract identifier
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="contractId" type="tns:ContractId" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						EMA-ID the token belongs to
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element minOccurs="0" maxOccurs="1" name="printedNumber">
+				<s:annotation>
+					<s:documentation>
+						Might be used for manual authorisation
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="150"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element minOccurs="1" maxOccurs="1" name="expiryDate" type="tns:DateTimeType">
+				<s:annotation>
+					<s:documentation>
+						Tokens may be used until the date of expiry is reached. To be handled by the partners systems. Expired roaming authorisations may be erased locally by each partner's system.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:complexType name="CDRInfo">
+		<s:annotation>
+			<s:documentation>CDR info.</s:documentation>
+		</s:annotation>
+		<s:sequence>
+			<s:element name="CdrId" type="tns:CdrId" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphanumeric, Charge Data Record number. Unique per EVSE-ID.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="evseId" type="tns:EvseId" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="emtId" type="tns:EmtId" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Utilized token for this charging session.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="contractId" type="tns:ContractId" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Identifies a customer in the electric mobility charging context.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="liveAuthId" type="tns:LiveAuthId" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						References a live authorisation request to the clearing house. Must be specified if the charging process was authorized by the clearing house directly in a call to RequestLiveRoamingAuthorisation.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="status" type="tns:CdrStatusType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Current status of the CDR. Must be set to "new" by the issuing CMS. Shall not be changed by any partner but only by the CHS.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="startDateTime"
+				type="tns:LocalDateTimeType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Start date and time of charge session
+						(login with the RFID badge). Local time
+						of the charge point is used.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="endDateTime" type="tns:LocalDateTimeType" maxOccurs="1" minOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						End date and time of the charge session (log-off with the RFID badge or physical disconnect). Must be set in the local time of the charge point.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="duration" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Duration of the charge session. Example "000:18:00"
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:length value="9"></s:length>
+						<s:pattern value="(\d\d\d):(\d\d):(\d\d)"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="houseNumber" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Hose number at the location of the charge point. Alphanumeric, for example &quot;10&quot;,&quot;255B&quot;
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="6"></s:maxLength>
+						<s:pattern value="[A-Z0-9 ]{1,6}"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="address" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphanumeric, for example "Av. Saint-Jean". Optionally also containing the house number if not in field houseNumber
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="2"></s:minLength>
+						<s:maxLength value="45"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="zipCode" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphanumeric, Examples: "60439", "8011 PK". Without the leading country code
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="10"></s:maxLength>
+						<s:pattern value="[A-Z0-9\- ]{1,10}"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="city" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphabetic, in the language defined in locationNameLang
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="2"></s:minLength>
+						<s:maxLength value="45"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="country" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alpha, three characters. ISO 3166 country code
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:length value="3"></s:length>
+						<s:pattern value="[A-Z]{3}"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="chargePointType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						The type of the charge point "AC" or "DC"
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:enumeration value="AC"></s:enumeration>
+						<s:enumeration value="DC"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="connectorType" type="tns:ConnectorType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Type of utilized socket or connector
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="maxSocketPower" type="s:float" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Maximum available power at the socket in kilowatts. Example: "3.7", "11", "22"
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="productType" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Identifies the type of the product that was delivered for the charging session. Custom product code.
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="2"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="meterId" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Written identification number of the physical energy meter, provided by the manufacturer. For future use.
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="20"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="chargingPeriods" type="tns:CdrPeriodType" minOccurs="1" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						One period per item on the bill. At the moment only one period is to be provided
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:complexType name="ChargePointInfo">
+		<s:annotation>
+			<s:documentation>
+				List of available payment or access methods on site.
+			</s:documentation>
+		</s:annotation>
+		<s:sequence>
+			<s:element name="evseId" type="tns:EvseId" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Globally unique identifier
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="locationId" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphanumeric. Identifies a location/pool of EVSEs. Unique within one EVSE Operator
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="15"></s:maxLength>
+						<s:pattern value="[A-Z0-9 ]{1,15}"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="timestamp" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Recommended. Date and time of the latest data update for this ChargePointInfo. When set it must be updated if one of the values changed.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="locationName" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Official name; should be unique in the geographical area
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="100"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="locationNameLang" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alpha, three characters. ISO-639-3 language code defining the language of the location name
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:length value="3"></s:length>
+						<s:pattern value="[A-Z]{3}"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="images" minOccurs="0" maxOccurs="unbounded" type="tns:EvseImageUrlType"></s:element>
+			<s:element name="relatedResource" minOccurs="0" maxOccurs="unbounded" type="tns:RelatedResourceType"></s:element>
+			<s:element name="houseNumber" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphanumeric, for example "10", "255B".
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="6"></s:maxLength>
+						<s:pattern value="[A-Z0-9 ]{1,6}"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="address" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphanumeric; for example "Av. Saint-Jean". Optionally also containing the house number if not in field houseNumber.
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="2"></s:minLength>
+						<s:maxLength value="45"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="city" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphabetic, in the language defined in locationNameLang
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="45"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="zipCode" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphanumeric, examples: "60439", "8011 PK". Without leading country code.
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:pattern value="[A-Z0-9 \-]{1,10}"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="country" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alpha, three characters. Iso 3166 country code
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:pattern value="[A-Z]{3}"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="chargePointLocation" type="tns:GeoPointType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Geographical location of the charge point itself (power outlet).
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="relatedLocation" type="tns:AdditionalGeoPointType" minOccurs="0" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						Geographical location of related points relevant to the user
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="timeZone" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						One of IANA tzdata's TZ-values representing the time zone of the location. Examples: "Europe/Oslo", "Europe/Zurich". (http://www.iana.org/time-zones)
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:maxLength value="255"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="category" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Charge point category code defined by the operator. Allows different pricing levels in roaming agreements based on the category.
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="2"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="operatingTimes" type="tns:HoursType" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						The times the EVSE is operating and can be used for charging. Must nor be provided if operating hours are unsure/unknown
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="accessTimes" type="tns:HoursType" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						The times the EVSE is accessible, if different from operatingTimes. For example if a car park is closed during the night. Must not be provided if access hours are unsure/unknown
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="status" type="tns:ChargePointStatusType" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						The current status of the charge point.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="statusSchedule" type="tns:ChargePointScheduleType" minOccurs="0" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						Planned status changes in the future. If a time span matches with the current or displayed date, the corresponding value overwrites "status"
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="telephoneNumber" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Numeric. Service hotline for charging station to be displayed. to the EV user. Separators recommended.
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:pattern value="[0-9 \-]{1,20}"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="location" type="tns:GeneralLocationType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						The general type of the charge point location.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="floorLevel" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphanumeric. Level on which the charge station is located (in garage buildings) in the locally displayed numbering scheme. Examples: "-2","P-5", "2", "+5"
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:pattern value="[A-Z0-9\-\+/]{1,4}"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="parkingSlotNumber" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphanumeric. Locally displayed parking slot number. Examples: "10", "251","B25", "P-234"
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:pattern value="[A-Z0-9\-\+/]{1,5}"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="parkingRestriction" type="tns:ParkingRestrictionType" minOccurs="0" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						This value, if provided, represents the restriction to the parking spot for different purposes.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="authMethods" type="tns:AuthMethodType" minOccurs="1" maxOccurs="unbounded">
+			</s:element>
+			<s:element name="connectors" type="tns:ConnectorType" minOccurs="1" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						Which receptable type is/are present for a power outlet.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="ratings" type="tns:RatingsType" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Defines the ratings for the charge point.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="userInterfaceLang" minOccurs="0" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						Alpha, three characters. Language(s) of the user interface or printed on-site instructions. ISO-639-3 language code
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:pattern value="[A-Z]{3}"></s:pattern>
+						<s:length value="3"></s:length>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+</s:schema>

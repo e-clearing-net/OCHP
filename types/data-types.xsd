@@ -1,0 +1,928 @@
+<?xml version="1.0"?>
+<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.3" xmlns:tns="http://ochp.eu/1.3" xmlns:s="http://www.w3.org/2001/XMLSchema">
+
+	<s:complexType name="DateTimeType">
+		<s:sequence>
+			<s:element name="DateTime">
+				<s:annotation>
+					<s:documentation>
+						Format is according to ISO8601 UTC. The field takes 20 alphanumeric characters
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:length value="20"></s:length>
+						<s:pattern value="(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z"></s:pattern>
+						<s:whiteSpace value="collapse"></s:whiteSpace>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:complexType name="EmtId">
+		<s:sequence>
+			<s:element name="instance" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						The authorization tokens are defined according to the specification of the EMT-ID (Token ID). Each token consists of an token instance which holds the payload and at least the token type. The sub-type is for further specification of the general token type.
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="512"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="tokenType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						The type of the supplied instance for basic filtering.
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:enumeration value="rfid"></s:enumeration>
+						<s:enumeration value="remote"></s:enumeration>
+						<s:enumeration value="15118"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="tokenSubType" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						The exact type of the supplied instance for referencing purpose.
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:enumeration value="mifareCls"></s:enumeration>
+						<s:enumeration value="mifareDes"></s:enumeration>
+						<s:enumeration value="calypso"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+		<s:attribute name="representation" default="sha-160">
+			<s:annotation>
+				<s:documentation>
+					Specifies the representation of the token to allow hashed token values.
+						plain:   The token instance is represented in plain text;
+						sha-160: The token instance is represented in its 160bit SHA1 hash in 40 hexadecimal digits;
+						sha-256: The token instance is represented in its 256bit SHA2 hash in 64 hexadecimal digits;
+				</s:documentation>
+			</s:annotation>
+			<s:simpleType>
+				<s:restriction base="s:string">
+					<s:enumeration value="plain"></s:enumeration>
+					<s:enumeration value="sha-160"></s:enumeration>
+					<s:enumeration value="sha-256"></s:enumeration>
+				</s:restriction>
+			</s:simpleType>
+		</s:attribute>
+	</s:complexType>
+
+	<s:complexType name="LocalDateTimeType">
+		<s:annotation>
+			<s:documentation>
+				Format is according to ISO8601 UTC + Offset. The field takes 25 alphanumeric characters
+			</s:documentation>
+		</s:annotation>
+		<s:sequence>
+			<s:element name="LocalDateTime">
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:length value="25"></s:length>
+						<s:whiteSpace value="collapse"></s:whiteSpace>
+						<s:pattern value="(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)([+\-]\d\d):(\d\d)"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:complexType name="CdrStatusType">
+		<s:sequence>
+			<s:element name="CdrStatusType">
+				<s:annotation>
+					<s:documentation>
+						new; A new CDR before upload to the CHS
+						accepted; An uploaded CDR was accepted by the CHS as plausible
+						rejected; The checked CDR again rejected by the CHS and is to be archived.
+						owner declined; The CDR was declined by the owner (EVSP)
+						approved; The CDR was approved by the owner(EVSP)
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:enumeration value="new"></s:enumeration>
+						<s:enumeration value="accepted"></s:enumeration>
+						<s:enumeration value="rejected"></s:enumeration>
+						<s:enumeration value="owner declined"></s:enumeration>
+						<s:enumeration value="approved"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:complexType name="ConnectorType">
+		<s:sequence>
+			<s:element name="connectorStandard" minOccurs="1" maxOccurs="1" type="tns:ConnectorStandard">
+				<s:annotation>
+					<s:documentation>
+						The Standard of the installed connector; 
+							Chademo                The connector type is CHAdeMO, DC 
+							IEC-62196-T1           The connector type is IEC 62196 Type 1 “SAE J1772”
+							IEC-62196-T1-COMBO     The connector type is Combo Type 1 based, DC 
+							IEC-62196-T2           The connector type is IEC 62196 Type 2 “Mennekes” 
+							IEC-62196-T2-COMBO     The connector type is Combo Type 2 based, DC
+							IEC-62196-T3A          The connector type is IEC 62196 Type 3A 
+							IEC-62196-T3C          The connector type is IEC 62196 Type 3C “Scame” 
+							DOMESTIC-A             The connector type is Standard/Domestic household, type "A", NEMA 1-15, 2 pins 
+							DOMESTIC-B             The connector type is Standard/Domestic household, type "B", NEMA 5-15, 3 pins
+							DOMESTIC-C             The connector type is Standard/Domestic household, type "C", CEE 7/17, 2 pins 
+							DOMESTIC-D             The connector type is Standard/Domestic household, type "D", 3 pin 
+							DOMESTIC-E             The connector type is Standard/Domestic household, type "E", CEE 7/5 3 pins
+							DOMESTIC-F             The connector type is Standard/Domestic household, type "F", CEE 7/4, Schuko, 3 pins 
+							DOMESTIC-G             The connector type is Standard/Domestic household, type "G", BS 1363, Commonwealth, 3 pins 
+							DOMESTIC-H             The connector type is Standard/Domestic household, type "H", SI-32, 3 pins
+							DOMESTIC-I             The connector type is Standard/Domestic household, type "I", AS 3112, 3 pins 
+							DOMESTIC-J             The connector type is Standard/Domestic household, type "J", SEV 1011, 3 pins 
+							DOMESTIC-K             The connector type is Standard/Domestic household, type "K", DS 60884-2-D1, 3 pins 
+							DOMESTIC-L             The connector type is Standard/Domestic household, type "L", CEI 23-16-VII, 3 pins 
+							TESLA-R                The connector type is Tesla Connector “Roadster”-type (round, 4 pin) 
+							TESLA-S                The connector type is Tesla Connector “Model-S”-type (oval, 5 pin)
+							IEC-60309-2-single-16  The connector type is IEC 60309-2 Industrial Connector single phase 16 Amperes (usually blue)
+							IEC-60309-2-three-16   The connector type is IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
+							IEC-60309-2-three-32   The connector type is IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
+							IEC-60309-2-three-64   The connector type is IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="connectorFormat" minOccurs="1" maxOccurs="1" type="tns:ConnectorFormat">
+				<s:annotation>
+					<s:documentation>
+						The format (socket/ cable) of the installed connector Socket The connector is a socket; the EV user needs to bring a fitting plug. Cable The connector is an attached cable; the EV user car needs to have a fitting inlet.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:complexType name="RatingsType">
+		<s:sequence>
+			<s:element name="maximumPower" minOccurs="1" maxOccurs="1" type="s:float">
+				<s:annotation>
+					<s:documentation>
+						The maximum available power at this charge point at nominal voltage over all available phases of the line.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="guaranteedPower" minOccurs="0" maxOccurs="1" type="s:float">
+				<s:annotation>
+					<s:documentation>
+						The minimum guaranteed mean power in case of load management. Should be set to maximum when no load management applied.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="nominalVoltage" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						The nominal voltage for the charge point.
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:int">
+						<s:minExclusive value="0"></s:minExclusive>
+						<s:maxInclusive value="1000"></s:maxInclusive>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:complexType name="CdrPeriodType">
+		<s:sequence>
+			<s:element name="startDateTime" type="tns:LocalDateTimeType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Starting time of period. Must be equal or later than startDateTime of the CDRInfo
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="endDateTime" type="tns:LocalDateTimeType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Ending time of the period. Must be equal or earlier than endDateTime of the CDRInfo
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="billingItem" type="tns:BillingItemType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Defines what the EVSP is charged for during this period
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="billingValue" type="s:float" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						The value the EVSP is charged for. The unit of the value depends on the billingItem
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="currency" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:whiteSpace value="collapse"></s:whiteSpace>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="itemPrice" type="s:float" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Price per unit of the billingItem in the given currency.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="periodCost" type="s:float" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						The cost of the period in the given currency.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:complexType name="BillingItemType">
+		<s:sequence>
+			<s:element name="BillingItemType">
+				<s:simpleType>
+					<s:annotation>
+						<s:documentation>
+							parkingtime; Price for parking, The billingValue represents the time in hours 
+							usagetime; Price for the time of EVSE usage. The billingValue represents the time in hours 
+							energy; Price for the consumed energy. The billingValue represents the energy in kilowatt-hours. 
+							power; Price for the consumed energy. The billingValue represents the maximum power in kilowatts 
+							serviceFee; General service fee per charging process. The billingValue represents multiplier and thus has to be set to "1.0"
+						</s:documentation>
+					</s:annotation>
+					<s:restriction base="s:string">
+						<s:enumeration value="parkingtime"></s:enumeration>
+						<s:enumeration value="usagetime"></s:enumeration>
+						<s:enumeration value="energy"></s:enumeration>
+						<s:enumeration value="power"></s:enumeration>
+						<s:enumeration value="serviceFee"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:complexType name="GeoPointType">
+		<s:attribute name="lat" use="required">
+			<s:annotation>
+				<s:documentation>
+					Latitude of the Point in decimal degree. Example: 50.104965 Decimal separator: &quot;.&quot; Regex: -?[0-9]{1,2}\.[0-9]{6}
+				</s:documentation>
+			</s:annotation>
+			<s:simpleType>
+				<s:restriction base="s:string">
+					<s:pattern value="-?[0-9]{1,2}\.[0-9]{6}"></s:pattern>
+				</s:restriction>
+			</s:simpleType>
+		</s:attribute>
+		<s:attribute name="lon" use="required">
+			<s:annotation>
+				<s:documentation>
+					Longitude of the decimal degree Example: -126.104965 Decimal separator: "." Regex: -?[0-9]{1,3}\.[0-9]{6}
+				</s:documentation>
+			</s:annotation>
+			<s:simpleType>
+				<s:restriction base="s:string">
+					<s:pattern value="-?[0-9]{1,3}\.[0-9]{6}"></s:pattern>
+				</s:restriction>
+			</s:simpleType>
+		</s:attribute>
+	</s:complexType>
+
+	<s:complexType name="AdditionalGeoPointType">
+		<s:complexContent>
+			<s:extension base="tns:GeoPointType">
+				<s:attribute name="name" use="optional">
+					<s:annotation>
+						<s:documentation>
+							Name of the point in local language or as written at the location. For example the street name of a parking lot entrance or it's number.
+						</s:documentation>
+					</s:annotation>
+					<s:simpleType>
+						<s:restriction base="s:string">
+							<s:maxLength value="255"></s:maxLength>
+						</s:restriction>
+					</s:simpleType>
+				</s:attribute>
+				<s:attribute name="type" use="required">
+					<s:annotation>
+						<s:documentation>
+							The class of this geo point  for categorization and right usage.
+							* entrance: For larger sites entrances may be specified for navigation.
+							* exit: For larger sites exits may be specified for navigation purpose.
+							* access: Two directional entrance and exit.
+							* ui: Geographical location of the user interface for authorisation and payment means. If not specified the user interface is assumed to be at the location of the charge point.
+							* other: Other relevant point. Name recommended.
+						</s:documentation>
+					</s:annotation>
+					<s:simpleType>
+						<s:annotation>
+							<s:documentation></s:documentation>
+						</s:annotation>
+						<s:restriction base="s:string">
+							<s:enumeration value="entrance" />
+							<s:enumeration value="exit" />
+							<s:enumeration value="access" />
+							<s:enumeration value="ui" />
+							<s:enumeration value="other" />
+						</s:restriction>
+					</s:simpleType>
+				</s:attribute>
+			</s:extension>
+		</s:complexContent>
+	</s:complexType>
+
+	<s:complexType name="ConnectorStandard">
+		<s:sequence>
+			<s:element name="ConnectorStandard">
+				<s:annotation>
+					<s:documentation>
+						The Standard of the installed connector; 
+							Chademo                The connector type is CHAdeMO, DC 
+							IEC-62196-T1           The connector type is IEC 62196 Type 1 “SAE J1772”
+							IEC-62196-T1-COMBO     The connector type is Combo Type 1 based, DC 
+							IEC-62196-T2           The connector type is IEC 62196 Type 2 “Mennekes” 
+							IEC-62196-T2-COMBO     The connector type is Combo Type 2 based, DC
+							IEC-62196-T3A          The connector type is IEC 62196 Type 3A 
+							IEC-62196-T3C          The connector type is IEC 62196 Type 3C “Scame” 
+							DOMESTIC-A             The connector type is Standard/Domestic household, type "A", NEMA 1-15, 2 pins 
+							DOMESTIC-B             The connector type is Standard/Domestic household, type "B", NEMA 5-15, 3 pins
+							DOMESTIC-C             The connector type is Standard/Domestic household, type "C", CEE 7/17, 2 pins 
+							DOMESTIC-D             The connector type is Standard/Domestic household, type "D", 3 pin 
+							DOMESTIC-E             The connector type is Standard/Domestic household, type "E", CEE 7/5 3 pins
+							DOMESTIC-F             The connector type is Standard/Domestic household, type "F", CEE 7/4, Schuko, 3 pins 
+							DOMESTIC-G             The connector type is Standard/Domestic household, type "G", BS 1363, Commonwealth, 3 pins 
+							DOMESTIC-H             The connector type is Standard/Domestic household, type "H", SI-32, 3 pins
+							DOMESTIC-I             The connector type is Standard/Domestic household, type "I", AS 3112, 3 pins 
+							DOMESTIC-J             The connector type is Standard/Domestic household, type "J", SEV 1011, 3 pins 
+							DOMESTIC-K             The connector type is Standard/Domestic household, type "K", DS 60884-2-D1, 3 pins 
+							DOMESTIC-L             The connector type is Standard/Domestic household, type "L", CEI 23-16-VII, 3 pins 
+							TESLA-R                The connector type is Tesla Connector “Roadster”-type (round, 4 pin) 
+							TESLA-S                The connector type is Tesla Connector “Model-S”-type (oval, 5 pin)
+							IEC-60309-2-single-16  The connector type is IEC 60309-2 Industrial Connector single phase 16 Amperes (usually blue)
+							IEC-60309-2-three-16   The connector type is IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
+							IEC-60309-2-three-32   The connector type is IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
+							IEC-60309-2-three-64   The connector type is IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:annotation>
+						<s:documentation>
+						The Standard of the installed connector; 
+							Chademo                The connector type is CHAdeMO, DC 
+							IEC-62196-T1           The connector type is IEC 62196 Type 1 “SAE J1772”
+							IEC-62196-T1-COMBO     The connector type is Combo Type 1 based, DC 
+							IEC-62196-T2           The connector type is IEC 62196 Type 2 “Mennekes” 
+							IEC-62196-T2-COMBO     The connector type is Combo Type 2 based, DC
+							IEC-62196-T3A          The connector type is IEC 62196 Type 3A 
+							IEC-62196-T3C          The connector type is IEC 62196 Type 3C “Scame” 
+							DOMESTIC-A             The connector type is Standard/Domestic household, type "A", NEMA 1-15, 2 pins 
+							DOMESTIC-B             The connector type is Standard/Domestic household, type "B", NEMA 5-15, 3 pins
+							DOMESTIC-C             The connector type is Standard/Domestic household, type "C", CEE 7/17, 2 pins 
+							DOMESTIC-D             The connector type is Standard/Domestic household, type "D", 3 pin 
+							DOMESTIC-E             The connector type is Standard/Domestic household, type "E", CEE 7/5 3 pins
+							DOMESTIC-F             The connector type is Standard/Domestic household, type "F", CEE 7/4, Schuko, 3 pins 
+							DOMESTIC-G             The connector type is Standard/Domestic household, type "G", BS 1363, Commonwealth, 3 pins 
+							DOMESTIC-H             The connector type is Standard/Domestic household, type "H", SI-32, 3 pins
+							DOMESTIC-I             The connector type is Standard/Domestic household, type "I", AS 3112, 3 pins 
+							DOMESTIC-J             The connector type is Standard/Domestic household, type "J", SEV 1011, 3 pins 
+							DOMESTIC-K             The connector type is Standard/Domestic household, type "K", DS 60884-2-D1, 3 pins 
+							DOMESTIC-L             The connector type is Standard/Domestic household, type "L", CEI 23-16-VII, 3 pins 
+							TESLA-R                The connector type is Tesla Connector “Roadster”-type (round, 4 pin) 
+							TESLA-S                The connector type is Tesla Connector “Model-S”-type (oval, 5 pin)
+							IEC-60309-2-single-16  The connector type is IEC 60309-2 Industrial Connector single phase 16 Amperes (usually blue)
+							IEC-60309-2-three-16   The connector type is IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
+							IEC-60309-2-three-32   The connector type is IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
+							IEC-60309-2-three-64   The connector type is IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
+						</s:documentation>
+					</s:annotation>
+					<s:restriction base="s:string">
+						<s:enumeration value="Chademo"></s:enumeration>
+						<s:enumeration value="IEC-62196-T1"></s:enumeration>
+						<s:enumeration value="IEC-62196-T1-COMBO"></s:enumeration>
+						<s:enumeration value="IEC-62196-T2"></s:enumeration>
+						<s:enumeration value="IEC-62196-T2-COMBO"></s:enumeration>
+						<s:enumeration value="IEC-62196-T3A"></s:enumeration>
+						<s:enumeration value="IEC-62196-T3C"></s:enumeration>
+						<s:enumeration value="DOMESTIC-A"></s:enumeration>
+						<s:enumeration value="DOMESTIC-B"></s:enumeration>
+						<s:enumeration value="DOMESTIC-C"></s:enumeration>
+						<s:enumeration value="DOMESTIC-D"></s:enumeration>
+						<s:enumeration value="DOMESTIC-E"></s:enumeration>
+						<s:enumeration value="DOMESTIC-F"></s:enumeration>
+						<s:enumeration value="DOMESTIC-G"></s:enumeration>
+						<s:enumeration value="DOMESTIC-H"></s:enumeration>
+						<s:enumeration value="DOMESTIC-I"></s:enumeration>
+						<s:enumeration value="DOMESTIC-J"></s:enumeration>
+						<s:enumeration value="DOMESTIC-K"></s:enumeration>
+						<s:enumeration value="DOMESTIC-L"></s:enumeration>
+						<s:enumeration value="TESLA-R"></s:enumeration>
+						<s:enumeration value="TESLA-S"></s:enumeration>
+						<s:enumeration value="IEC-60309-2-single-16"></s:enumeration>
+						<s:enumeration value="IEC-60309-2-three-16"></s:enumeration>
+						<s:enumeration value="IEC-60309-2-three-32"></s:enumeration>
+						<s:enumeration value="IEC-60309-2-three-64"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:complexType name="HoursType">
+		<s:sequence>
+			<s:choice>
+				<s:element name="regularHours" type="tns:RegularHoursType" minOccurs="1" maxOccurs="7">
+					<s:annotation>
+						<s:documentation>
+							Regular hours, weekday based. This element should not be set for representing 24/7 as this is the most common case.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element name="twentyfourseven" type="s:boolean" minOccurs="1" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							True to represent 24 hours per day and 7 days per week, except the given exceptions.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:choice>
+			<s:element name="exceptionalOpenings" type="tns:ExceptionalPeriodType" minOccurs="0" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						Exceptions for specific calendar dates, time-range based. Periods the station is operating/accessible. Additional to regular hours. May overlap regular rules.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="exceptionalClosings" type="tns:ExceptionalPeriodType" minOccurs="0" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						Exceptions for specific calendar dates, time-range based. Periods the station is not operating/accessible. Additional to regular hours. Overwriting regularHours and exceptionalOpenings. Should not overlap exceptionalOpenings.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:complexType name="ChargePointStatusType">
+		<s:sequence>
+			<s:element name="ChargePointStatusType">
+				<s:annotation>
+					<s:documentation>
+						Unknown; No status information available
+						Operative; Charge point is in operation and can be used
+						Inoperative; charge point cannot be used due to maintenance, greater downtime, blocking construction works or other access restrictions (temporarily, will be operative in the future). 
+						Planned; planned charge point, will be operating soon 
+						Closed; discontinued charge point, will be deleted soon
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:enumeration value="Unknown"></s:enumeration>
+						<s:enumeration value="Operative"></s:enumeration>
+						<s:enumeration value="Inoperative"></s:enumeration>
+						<s:enumeration value="Planned"></s:enumeration>
+						<s:enumeration value="Closed"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:complexType name="ChargePointScheduleType">
+		<s:sequence>
+			<s:element name="startDate" type="tns:DateTimeType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Begin of scheduled period.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="endDate" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						End of scheduled period, if known.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="status" type="tns:ChargePointStatusType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Status value during the scheduled period.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:complexType name="GeneralLocationType">
+		<s:sequence>
+			<s:element name="GeneralLocationType">
+				<s:annotation>
+					<s:documentation>
+						* on-street parking in public space
+						* parking-garage multistorey car park
+						* underground-garage multistorey car park, mainly underground
+						* parking-lot a cleared area that is intended for parking vehicles, i.e. at super markets, bars, etc.
+						* other none of the given possibilities
+						* unknown parking location type is not known by the operator
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:annotation>
+					</s:annotation>
+					<s:restriction base="s:string">
+						<s:enumeration value="on-street"></s:enumeration>
+						<s:enumeration value="parking-garage"></s:enumeration>
+						<s:enumeration value="underground-garage"></s:enumeration>
+						<s:enumeration value="parking-lot"></s:enumeration>
+						<s:enumeration value="other"></s:enumeration>
+						<s:enumeration value="unknown"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:complexType name="ParkingRestrictionType">
+		<s:sequence>
+			<s:element name="ParkingRestrictionType">
+				<s:annotation>
+					<s:documentation>
+						* evonly reserved parking spot for electric vehicles plugged parking allowed only while plugged in (charging)
+						* disabled reserved parking spot for disabled people with valid ID
+						* customers parking spot for costumer/guests only, for example in case of a hotel or shop
+						* motorcycles parking spot only suitable for (electric) motorcycles or scooters
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:annotation>
+					</s:annotation>
+					<s:restriction base="s:string">
+						<s:enumeration value="evonly"></s:enumeration>
+						<s:enumeration value="plugged"></s:enumeration>
+						<s:enumeration value="disabled"></s:enumeration>
+						<s:enumeration value="customers"></s:enumeration>
+						<s:enumeration value="motorcycles"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:complexType name="AuthMethodType">
+		<s:annotation>
+			<s:documentation>
+				Public; Public accessible, no authorisation required 
+				LocalKey; A key or token can be received at the location.(i.e. at the hotel reception or in the restaurant) 
+				DirectCash; The EVSE can be accessed through direct payment in cash. 
+				DirectCreditcard; The Evse can be accessed through direct payment with credit card
+				RfidMifareCls; Personal RFID token with roaming relation. (Mifare Classic) 
+				RfidMifareDes; Personal token with roaming relation. (Mifare Desfire) 
+				RfidCalypso; Personal RFID token with roaming relation. (Calypso) 
+				Iec15118; In-car access token as specified in IEC-15118
+				OchpDirectAuth; The EVSE can be accessed through a OCHP-direct capable provider app.
+				OperatorAuth; The EVSE can be accessed through a direct online payment to the operator.
+			</s:documentation>
+		</s:annotation>
+		<s:sequence>
+			<s:element name="AuthMethodType">
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:enumeration value="Public"></s:enumeration>
+						<s:enumeration value="LocalKey"></s:enumeration>
+						<s:enumeration value="DirectCash"></s:enumeration>
+						<s:enumeration value="DirectCreditcard"></s:enumeration>
+						<s:enumeration value="DirectDebitcard"></s:enumeration>
+						<s:enumeration value="RfidMifareCls"></s:enumeration>
+						<s:enumeration value="RfidMifareDes"></s:enumeration>
+						<s:enumeration value="RfidCalypso"></s:enumeration>
+						<s:enumeration value="Iec15118"></s:enumeration>
+						<s:enumeration value="OchpDirectAuth"></s:enumeration>
+						<s:enumeration value="OperatorAuth"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:complexType name="RegularHoursType">
+		<s:annotation>
+			<s:documentation>
+				Regular hours, weekday based. Number of day in the week, from Monday(1) till Sunday(7)
+			</s:documentation>
+		</s:annotation>
+		<s:attribute name="weekday" use="required">
+			<s:annotation>
+				<s:documentation>
+					Number of day in the week, from Monday(1) till Sunday(7)
+				</s:documentation>
+			</s:annotation>
+			<s:simpleType>
+				<s:restriction base="s:int">
+					<s:maxInclusive value="7"></s:maxInclusive>
+					<s:minInclusive value="1"></s:minInclusive>
+				</s:restriction>
+			</s:simpleType>
+		</s:attribute>
+		<s:attribute name="periodBegin" use="required">
+			<s:annotation>
+				<s:documentation>
+					Begin of the regular period given in hours and minutes. Must be in 24h format with leading zeros. Example 18:15 Minute/Hour separator is :
+				</s:documentation>
+			</s:annotation>
+			<s:simpleType>
+				<s:restriction base="s:string">
+					<s:pattern value="[0-2][0-9]\:[0-5][0-9]"></s:pattern>
+					<s:length value="5"></s:length>
+				</s:restriction>
+			</s:simpleType>
+		</s:attribute>
+		<s:attribute name="periodEnd" use="required">
+			<s:annotation>
+				<s:documentation>
+					End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
+				</s:documentation>
+			</s:annotation>
+			<s:simpleType>
+				<s:restriction base="s:string">
+					<s:pattern value="[0-2][0-9]:[0-5][0-9]"></s:pattern>
+					<s:length value="5"></s:length>
+				</s:restriction>
+			</s:simpleType>
+		</s:attribute>
+	</s:complexType>
+
+	<s:complexType name="ExceptionalPeriodType">
+		<s:sequence>
+			<s:element name="periodBegin" type="tns:DateTimeType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Begin of exception
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="periodEnd" type="tns:DateTimeType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						End of exception
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:complexType name="ConnectorFormat">
+		<s:sequence>
+			<s:element name="ConnectorFormat">
+				<s:annotation>
+					<s:documentation>
+						The format (socket/ cable) of the installed connector.
+							Socket; The connector is a socket; the EV user needs to bring a fitting plug 
+							Cable; The connector is an attached cable; the EV user car needs to have a fitting inlet
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:enumeration value="Socket"></s:enumeration>
+						<s:enumeration value="Cable"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:complexType name="ResultCodeType">
+		<s:sequence>
+			<s:element name="resultCode">
+				<s:annotation>
+					<s:documentation>
+						ok: Data accepted and processed; 
+						partly: Only part of the data was accepted; 
+						not-authorized: Wrong username and/or password;
+						invalid-id: One or more ID (EVSE/Contract) were not valid for this user;
+						server: Internal server error;
+						format: Data has technical errors;
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:enumeration value="ok"></s:enumeration>
+						<s:enumeration value="partly"></s:enumeration>
+						<s:enumeration value="not-authorized"></s:enumeration>
+						<s:enumeration value="invalid-id"></s:enumeration>
+						<s:enumeration value="server"></s:enumeration>
+						<s:enumeration value="format"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:simpleType name="CdrId">
+		<s:restriction base="s:string">
+			<s:minLength value="1"></s:minLength>
+			<s:maxLength value="36"></s:maxLength>
+			<s:pattern value="[0-9A-Z]{1,36}"></s:pattern>
+		</s:restriction>
+	</s:simpleType>
+
+	<s:complexType name="EvseImageUrlType">
+		<s:sequence>
+			<s:element name="uri" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						uri from where the image data can be fetched. Must begin with a protocol of the list: http, https, file, ftp
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:pattern value="(http|https|ftp|file):\/\/.+"></s:pattern>
+						<s:maxLength value="255"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="thumbUri" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						uri from where a thumbnail of the image can be fetched. Must begin with a protocol of the list: http, https, file, ftp
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:pattern value="(http|https|ftp|file):\/\/.+"></s:pattern>
+						<s:maxLength value="255"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="class" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Image class for usage categorization. Values: 
+							networkLogo: logo of a associated roaming network to be displayed with the EVSE for example in lists, maps and detailed information view; 
+							operatorLogo: logo of the charge points operator, for example a municipal, to be displayed with the EVSEs detailed information view or in lists and maps, if no networkLogo is present; 
+							ownerLogo: logo of the charge points owner, for example a local store, to be displayed with the EVSEs detailed information view; 
+							stationPhoto: full view photo of the station in field. Should show the station only;
+							locationPhoto: location overview photo. Should indicate the location of the station on the site or street.;
+							entrancePhoto: location entrance photo. Should show the car entrance to the location from street side; 
+							otherPhoto: other related photo to be displayed with the stations detailed information view;
+							otherLogo: other related logo to be displayed with the stations detailed information view; 
+							otherGraphic: other related graphic to be displayed with the stations detailed information view;
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:enumeration value="networkLogo"></s:enumeration>
+						<s:enumeration value="operatorLogo"></s:enumeration>
+						<s:enumeration value="ownerLogo"></s:enumeration>
+						<s:enumeration value="stationPhoto"></s:enumeration>
+						<s:enumeration value="locationPhoto"></s:enumeration>
+						<s:enumeration value="entrancePhoto"></s:enumeration>
+						<s:enumeration value="otherPhoto"></s:enumeration>
+						<s:enumeration value="otherLogo"></s:enumeration>
+						<s:enumeration value="otherGraphic"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="type" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Image type like: gif, jpeg, png, svg
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:maxLength value="4"></s:maxLength>
+						<s:minLength value="1"></s:minLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="width" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Width of the full scale image
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:int">
+						<s:minExclusive value="0"></s:minExclusive>
+						<s:maxInclusive value="99999"></s:maxInclusive>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="height" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Height of the full scale image
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:int">
+						<s:minExclusive value="0"></s:minExclusive>
+						<s:maxInclusive value="99999"></s:maxInclusive>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:complexType name="RelatedResourceType">
+		<s:sequence>
+			<s:element name="uri" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Referencing uri to the resource. Must begin with a protocol of the list: http, https.
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:pattern value="(http|https):\/\/.+"></s:pattern>
+						<s:maxLength value="255"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="class" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						The class of referenced related resource. Values: 
+							operatorMap: direct link to this charge point on a map of the operator
+							operatorPayment: link to a payment page of the operator for contractless direct payment
+							stationInfo: further information on the charging station
+							surroundingInfo: further information on the surroundings of the charging station e.g. further POIs
+							ownerHomepage: website of the station owner (not operator) in case of hotels, restaurants, etc.
+							feedbackForm: form for user feedback on the charging station service
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:enumeration value="operatorMap"></s:enumeration>
+						<s:enumeration value="operatorPayment"></s:enumeration>
+						<s:enumeration value="stationInfo"></s:enumeration>
+						<s:enumeration value="surroundingInfo"></s:enumeration>
+						<s:enumeration value="ownerHomepage"></s:enumeration>
+						<s:enumeration value="feedbackForm"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:simpleType name="EvseId">
+		<s:annotation>
+			<s:documentation>
+				The EVSE-ID is uniquely referencing one charge point.
+			</s:documentation>
+		</s:annotation>
+		<s:restriction base="s:string">
+			<s:pattern value="[A-Za-z]{2}\*[A-Za-z0-9]{3}\*[Ee][A-Za-z0-9][A-Za-z0-9\*]{0,30}"></s:pattern>
+			<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[Ee][A-Za-z0-9][A-Za-z0-9\*]{0,30}"></s:pattern>
+		</s:restriction>
+	</s:simpleType>
+
+	<s:simpleType name="ContractId">
+		<s:annotation>
+			<s:documentation>
+				The Contract-ID or EVCO-ID is uniquely referencing one customer account of a service provider.
+			</s:documentation>
+		</s:annotation>
+		<s:restriction base="s:string">
+			<s:pattern value="[A-Za-z]{2}-[A-Za-z0-9]{3}-[A-Za-z0-9]{9}-[A-Za-z0-9]"></s:pattern>
+			<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[A-Za-z0-9]{9}[A-Za-z0-9]"></s:pattern>
+			<s:pattern value="[A-Za-z]{2}-[A-Za-z0-9]{3}-[A-Za-z0-9]{9}"></s:pattern>
+			<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[A-Za-z0-9]{9}"></s:pattern>
+		</s:restriction>
+	</s:simpleType>
+
+	<s:simpleType name="LiveAuthId">
+		<s:restriction base="s:string">
+			<s:pattern value="[A-Z0-9\-]*"></s:pattern>
+			<s:minLength value="1"></s:minLength>
+			<s:maxLength value="15"></s:maxLength>
+		</s:restriction>
+	</s:simpleType>
+
+</s:schema>

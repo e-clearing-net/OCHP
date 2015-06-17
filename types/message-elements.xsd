@@ -1,0 +1,533 @@
+<?xml version="1.0"?>
+<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.3" xmlns:tns="http://ochp.eu/1.3" xmlns:s="http://www.w3.org/2001/XMLSchema">
+
+	<s:complexType name="Result" abstract="false">
+		<s:annotation>
+			<s:documentation>
+				General result
+			</s:documentation>
+		</s:annotation>
+		<s:sequence>
+			<s:element minOccurs="1" maxOccurs="1" name="resultCode" type="tns:ResultCodeType">
+				<s:annotation>
+					<s:documentation>
+						The machine-readable result code.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element minOccurs="1" maxOccurs="1" nillable="true" name="resultDescription">
+				<s:annotation>
+					<s:documentation>
+						The human-readable error description
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:maxLength value="1000"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
+	<s:element name="AddCDRsRequest">
+		<s:complexType>
+			<s:sequence>
+				<s:element minOccurs="1" maxOccurs="unbounded" name="cdrInfoArray" type="tns:CDRInfo">
+					<s:annotation>
+						<s:documentation>
+							This contains one or more Charge
+							Detail Records.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="AddCDRsResponse">
+		<s:complexType>
+			<s:sequence>
+				<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:Result">
+					<s:annotation>
+						<s:documentation>
+							This contains the result of AddCDRs.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element name="implausibleCdrsArray" type="tns:CDRInfo" minOccurs="0" maxOccurs="unbounded">
+					<s:annotation>
+						<s:documentation>
+							This contains the refused Charge Detail Records
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="GetCDRsRequest">
+		<s:complexType>
+			<s:annotation>
+				<s:documentation>
+					Defines the GetCDRs.req.
+				</s:documentation>
+			</s:annotation>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="GetCDRsResponse">
+		<s:complexType>
+			<s:annotation>
+				<s:documentation>
+					This result will be returned on a GetCDRs request.
+				</s:documentation>
+			</s:annotation>
+			<s:sequence>
+				<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:Result">
+					<s:annotation>
+						<s:documentation>
+							This contains the result of GetCDRs.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="unbounded" name="cdrInfoArray" type="tns:CDRInfo">
+					<s:annotation>
+						<s:documentation>
+							This contains the CDRs that have been sent towards the calling provider.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="GetRoamingAuthorisationListResponse">
+		<s:complexType>
+			<s:annotation>
+				<s:documentation>
+					This result will be returned on a GetRoamingAuthorisationList request.
+				</s:documentation>
+			</s:annotation>
+			<s:sequence>
+				<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:Result">
+					<s:annotation>
+						<s:documentation>
+							This contains the result of GetRoamingAuthorisationList.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="unbounded" name="roamingAuthorisationInfoArray" type="tns:RoamingAuthorisationInfo">
+					<s:annotation>
+						<s:documentation>
+							This contains the roaming authorisation records.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="SetRoamingAuthorisationListRequest">
+		<s:complexType>
+			<s:sequence>
+				<s:element minOccurs="1" maxOccurs="unbounded" name="roamingAuthorisationInfoArray" type="tns:RoamingAuthorisationInfo">
+					<s:annotation>
+						<s:documentation>
+							This contains the roaming authorisation records.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="SetRoamingAuthorisationListResponse">
+		<s:complexType>
+			<s:annotation>
+				<s:documentation>
+					This result will be returned on a GetRoamingAuthorisationList request.
+				</s:documentation>
+			</s:annotation>
+			<s:sequence>
+				<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:Result">
+					<s:annotation>
+						<s:documentation>
+							This contains the result of SetRoamingAuthorisationList.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="unbounded" name="refusedRoamingAuthorisationInfo" type="tns:RoamingAuthorisationInfo">
+					<s:annotation>
+						<s:documentation>
+							This contains the roaming authorisation records that could not be set in the clearing house. For error description see the result message.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="GetChargePointListRequest">
+		<s:complexType>
+			<s:annotation>
+				<s:documentation>
+					Defines the GetChargePointList.req.
+				</s:documentation>
+			</s:annotation>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="GetChargePointListResponse">
+		<s:complexType>
+			<s:annotation>
+				<s:documentation>
+					This result will be returned on a GetChargePointList request.
+				</s:documentation>
+			</s:annotation>
+			<s:sequence>
+				<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:Result">
+					<s:annotation>
+						<s:documentation>
+							This contains the result of GetRoamingAuthorisationList.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="unbounded" name="chargePointInfoArray" type="tns:ChargePointInfo">
+					<s:annotation>
+						<s:documentation>
+							This contains the charge point information records
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="SetChargePointListRequest">
+		<s:complexType>
+			<s:sequence>
+				<s:element minOccurs="1" maxOccurs="unbounded" name="chargePointInfoArray" type="tns:ChargePointInfo">
+					<s:annotation>
+						<s:documentation>
+							This contains the charge point information records
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="SetChargePointListResponse">
+		<s:complexType>
+			<s:annotation>
+				<s:documentation>
+					This result will be returned on a SetChargePointList request.
+				</s:documentation>
+			</s:annotation>
+			<s:sequence>
+				<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:Result">
+					<s:annotation>
+						<s:documentation>
+							This contains the result of SetChargePointList.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="unbounded" name="refusedChargePointInfo" type="tns:ChargePointInfo">
+					<s:annotation>
+						<s:documentation>
+							This contains the charge point information records that could not be set in the clearing house. For error description see the result message.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="GetRoamingAuthorisationListUpdatesRequest">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="lastUpdate" type="tns:DateTimeType" minOccurs="1" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							Date and time since the last successful call of GetRoamingAuthorisationList.req or GetRoamingAuthorisationListUpdate.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="GetRoamingAuthorisationListUpdatesResponse">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="result" type="tns:Result" minOccurs="1" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							This contains the result of GetRoamingAuthorisationListUpdate.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element name="roamingAuthorisationInfo" type="tns:RoamingAuthorisationInfo" minOccurs="0" maxOccurs="unbounded">
+					<s:annotation>
+						<s:documentation>
+							This contains the roaming authorisation records changed since the time specified in lastUpdate in the request
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="UpdateRoamingAuthorisationListRequest">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="roamingAuthorisationInfoArray" type="tns:RoamingAuthorisationInfo" minOccurs="1" maxOccurs="unbounded">
+					<s:annotation>
+						<s:documentation>
+							This contains the roaming authorisation records to be updated or added
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="UpdateRoamingAuthorisationListResponse">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="result" type="tns:Result" minOccurs="1" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							This contains the result of UpdateRoamingAuthorisationList.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="unbounded" name="refusedRoamingAuthorisationInfo" type="tns:RoamingAuthorisationInfo">
+					<s:annotation>
+						<s:documentation>
+							This contains the roaming authorisation records that could not be set in the clearing house. For error description see the result message.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="ConfirmCDRsRequest">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="approved" type="tns:CDRInfo" minOccurs="0" maxOccurs="unbounded">
+					<s:annotation>
+						<s:documentation>
+							This contains the CDRs that have been approved by the EVSP
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element name="declined" type="tns:CDRInfo" minOccurs="0" maxOccurs="unbounded">
+					<s:annotation>
+						<s:documentation>
+							This contains the CDRs that have been declined by the EVSP.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="ConfirmCDRsResponse">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="result" type="tns:Result" minOccurs="1" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							This contains the result of ConfirmCDRs.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="GetChargePointListUpdatesRequest">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="lastUpdate" type="tns:DateTimeType" minOccurs="1" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							Date and time since the last successful call of GetChargePointList.req of GetChargePointListUpdates.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="GetRoamingAuthorisationListRequest">
+		<s:complexType></s:complexType>
+	</s:element>
+
+	<s:element name="GetChargePointListUpdatesResponse">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="result" type="tns:Result" minOccurs="1" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							this contains the result of GetChargePointListUpdates.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element name="chargePointInfoArray" type="tns:ChargePointInfo" minOccurs="0" maxOccurs="unbounded">
+					<s:annotation>
+						<s:documentation>
+							This contains the charge point information records changed since the time specified in lastUpdate in the request
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="UpdateChargePointListRequest">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="chargePointInfoArray" type="tns:ChargePointInfo" minOccurs="1" maxOccurs="unbounded">
+					<s:annotation>
+						<s:documentation>
+							This contains the charge point information records to be updated or added
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="UpdateChargePointListResponse">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="result" type="tns:Result" minOccurs="1" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							This contains the result of UpdateChargePointList.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="unbounded" name="refusedChargePointInfo" type="tns:ChargePointInfo">
+					<s:annotation>
+						<s:documentation>
+							This contains the charge point information records that could not be set in the clearing house. For error description see the result message.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="RequestLiveRoamingAuthorisationRequest">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="emtId" type="tns:EmtId" minOccurs="1" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							This contains the ID of the token which is to be validated
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element name="evseId" type="tns:EvseId" minOccurs="1" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="RequestLiveRoamingAuthorisationResponse">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="result" type="tns:Result" minOccurs="1" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							This contains the result of GetRoamingAuthorisationList.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element name="roamingAuthorisationInfo" type="tns:RoamingAuthorisationInfo" minOccurs="0" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							This contains the roaming authorisation record for the requested token, if the request was valid.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element name="liveAuthId" type="tns:LiveAuthId" minOccurs="0" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							Unique ID of the live authorisation request to the clearing house. Must be used for the corresponding CDR to reference this request.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="UpdateStatusRequest">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="evse" minOccurs="0" maxOccurs="unbounded" type="tns:EvseStatusType">
+					<s:annotation>
+						<s:documentation>
+							This contains one EVSE id with the current status represented in a major part and a minor part.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element name="ttl" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							The time to live is set as the deadline till the status values are to be considered valid, where not otherwise specified.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="UpdateStatusResponse">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="result" type="tns:Result" minOccurs="1" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							This contains the result of UpdateStatus.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="GetStatusRequest">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="startDateTime" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							If this value is set to a point in the past, the response is limited to status
+information that is more actual than the given value.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="GetStatusResponse">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="evse" type="tns:EvseStatusType" minOccurs="0" maxOccurs="unbounded"></s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+</s:schema>
