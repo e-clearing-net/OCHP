@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.3" xmlns:tns="http://ochp.eu/1.3" xmlns:s="http://www.w3.org/2001/XMLSchema">
 
+	<s:include schemaLocation="data-types.xsd"/>
+
 	<s:complexType name="RoamingAuthorisationInfo">
 		<s:annotation>
 			<s:documentation>

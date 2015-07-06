@@ -37,6 +37,8 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 
 	<wsdl:types>
 		<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.3">
+	
+			<s:include schemaLocation="types/message-elements.xsd"/>
 
 			<s:element name="AddServiceEndpointsRequest">
 				<s:complexType>
@@ -164,20 +166,22 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			<s:complexType name="ProviderEndpoint">
 				<s:complexContent>
 					<s:extension base="tns:DirectEndpoint">
-						<s:element name="whitelist" type="tns:ContractPattern" minOccurs="1" maxOccurs="unbounded">
-							<s:annotation>
-								<s:documentation>
-									List of patterns that match all Contract-IDs the endpoint is responsible for.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="blacklist" type="tns:ContractPattern" minOccurs="0" maxOccurs="unbounded">
-							<s:annotation>
-								<s:documentation>
-									List of patterns that match Contract-IDs the endpoint is not responsible for, but are matched by the whitelist.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
+						<s:sequence>
+							<s:element name="whitelist" type="tns:ContractPattern" minOccurs="1" maxOccurs="unbounded">
+								<s:annotation>
+									<s:documentation>
+										List of patterns that match all Contract-IDs the endpoint is responsible for.
+									</s:documentation>
+								</s:annotation>
+							</s:element>
+							<s:element name="blacklist" type="tns:ContractPattern" minOccurs="0" maxOccurs="unbounded">
+								<s:annotation>
+									<s:documentation>
+										List of patterns that match Contract-IDs the endpoint is not responsible for, but are matched by the whitelist.
+									</s:documentation>
+								</s:annotation>
+							</s:element>
+						</s:sequence>
 					</s:extension>
 				</s:complexContent>
 			</s:complexType>
@@ -185,20 +189,22 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			<s:complexType name="OperatorEndpoint">
 				<s:complexContent>
 					<s:extension base="tns:DirectEndpoint">
-						<s:element name="whitelist" type="tns:EvsePattern" minOccurs="1" maxOccurs="unbounded">
-							<s:annotation>
-								<s:documentation>
-									List of patterns that match all EVSE-IDs the endpoint is responsible for.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="blacklist" type="tns:EvsePattern" minOccurs="0" maxOccurs="unbounded">
-							<s:annotation>
-								<s:documentation>
-									List of patterns that match EVSE-IDs the endpoint is not responsible for, but are matched by the whitelist.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
+						<s:sequence>
+							<s:element name="whitelist" type="tns:EvsePattern" minOccurs="1" maxOccurs="unbounded">
+								<s:annotation>
+									<s:documentation>
+										List of patterns that match all EVSE-IDs the endpoint is responsible for.
+									</s:documentation>
+								</s:annotation>
+							</s:element>
+							<s:element name="blacklist" type="tns:EvsePattern" minOccurs="0" maxOccurs="unbounded">
+								<s:annotation>
+									<s:documentation>
+										List of patterns that match EVSE-IDs the endpoint is not responsible for, but are matched by the whitelist.
+									</s:documentation>
+								</s:annotation>
+							</s:element>
+						</s:sequence>
 					</s:extension>
 				</s:complexContent>
 			</s:complexType>
@@ -928,7 +934,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
                         Service Definition
 ==================================================================== -->
 
-	<wsdl:service name="e-clearing.net+OCHP-direct">
+	<wsdl:service name="e-clearing.net-OCHP-direct">
 
 		<wsdl:documentation>
 			EEN European Emobility Network - EV Clearing Platform
