@@ -442,7 +442,7 @@ systems.
 
 The following figure gives an overview of the communication. After step
 (3) follows the CDR exchange process as described in OCHP. Calls from
-the operator to the provider (_italiv_) are covered in the advanced use
+the operator to the provider (_italic_) are covered in the advanced use
 cases.
 
 ![Figure OCHP direct basic process](media/OCHPdirectProcess-1.png "OCHP direct basic process")
@@ -467,6 +467,8 @@ charging process by the provider.
  * MDM sends the ControlEvse.req PDU.
  * CMS responds with a ControlEvse.conf PDU.
 
+**Note:** The control method _ControlEvse.req_ can be called one to multiple times during a charging session. It's parameters define weather the provider requests a start or end of the charging session or if they want to change it (in terms of it's parameters). The operator shall handle all three operations and respond to it's capabilities to actually execute the request accordingly. 
+
 
 ### Release a selected charge point in an operator's backend
 
@@ -476,6 +478,8 @@ prior selected EVSE.
  * MDM sends the ReleaseEvse.req PDU.
  * CMS responds with a ReleaseEvse.conf PDU.
 
+**Note:** To end a charging session properly, the provider should always call _ReleaseEvse.req_. Alternatively, they can also call _ControlEvse.req_ with the parameter _operation='end'_ to explicitly end a charging process. A session with no ongoing charging process (_ControlEvse.req_ with _operation='start'_ was not called or not successful) shall always be closed with _ReleaseEvse.req_.
+When the operator receives a valid _ReleaseEvse.req_ for an ongoing charging process which was not ended with a call to _ControlEvse.req_ with parameter _operation='end'_, the operator should implicitly end the process.
 
 
 
@@ -486,8 +490,8 @@ OCHP-direct charging process. The operator's backend must make use of
 a treashold in order to avoid too many messages.
 
 The information types are:
- * Start of a charging session
- * End of a charging session
+ * Start of a charging session. _The car is properly connected and the process was authorized._
+ * End of a charging session. _The charging session has ended by any event and will not be resumed. The car may still be plugged in._
  * Metering information (status)
  * Power management information (status)
  * Invoicing ready, CDR sent (finish)
@@ -864,12 +868,5 @@ Messages to inform a provider about an OCHP-direct charging process.
 ## OCHP direct over SOAP
 
 For this protocol the SOAP Version 1.1 MUST be used.
-
-
-
-## Partner Identification
-
-
-
 
 

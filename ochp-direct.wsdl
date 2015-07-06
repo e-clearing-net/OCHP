@@ -5,20 +5,20 @@
 
                   OCHP-direct 0.1 Web Service Description
 
-This document defines a standard interface between different parties in 
-the market of electric vehicle charging infrastructure and a clearing 
-house that provides a common data routing and exchange platform for all 
+This document defines a standard interface between different parties in
+the market of electric vehicle charging infrastructure and a clearing
+house that provides a common data routing and exchange platform for all
 these market shareholders.
 
 Please note that the given documentation tags are not holding all
 available information. For a full interface description please refer
 to the OCHP specification PDF you can download from http://ochp.eu.
 
- 
+
  Copyright Information:
-This work is licensed under the Creative Commons 
-Attribution-NoDerivatives 4.0 International License. 
-To view a copy of this license, visit 
+This work is licensed under the Creative Commons
+Attribution-NoDerivatives 4.0 International License.
+To view a copy of this license, visit
 http://creativecommons.org/licenses/by-nd/4.0/.
 
 ==================================================================== -->
@@ -37,7 +37,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 
 	<wsdl:types>
 		<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.3">
-	
+
 			<s:include schemaLocation="types/message-elements.xsd"/>
 
 			<s:element name="AddServiceEndpointsRequest">
