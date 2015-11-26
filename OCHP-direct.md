@@ -696,6 +696,8 @@ maxPower          |  float          |  ?      |  Maximum authorised power in kil
 maxEnergy         |  float          |  ?      |  Maximum authorised energy in kilowatthours. Example: "5.5", "20", "85"
 currentPower      |  float          |  ?      |  The currently supplied power limit in kilowatts in case of load management. Example: "3.7", "8", "15"
 chargedEnergy     |  float          |  ?      |  The amount of energy in kilowatthours transferred during this charging process. Example: "5.5", "20", "85"
+meterValue        |  float          |  ?      |  The current meter value (in kWh) as displayed on the meter to enable displaying it to the user. Example: "12345.67"
+localTime         |  LocalDateTimeType |  ?      |  The local time at the charge point.
 
 
 

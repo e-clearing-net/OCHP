@@ -554,6 +554,20 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 								</s:documentation>
 							</s:annotation>
 						</s:element>
+						<s:element name="meterValue" type="s:float" minOccurs="0" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									The current meter value (in kWh) as displayed on the meter to enable displaying it to the user. Example: "12345.67"
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="localTime" type="tns:LocalDateTimeType" minOccurs="0" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									The local time at the charge point.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
 					</s:sequence>
 				</s:complexType>
 			</s:element>
@@ -985,6 +999,22 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			</wsdl:documentation>
 			<soap:address location="https://echs-q.e-clearing.net/direct/ochp/v1.3" />
 		</wsdl:port>
+
+<!-- Example Endpoints for the Direct Extension -->
+
+             <wsdl:port name="eCHS_Q-System-direct-Provider" binding="tns:Provider_OCHP-direct_0.1">
+                    <wsdl:documentation>
+                           eCHS Quality Ensurance OCHP direct Provider-Endpoint (Non-functional example)
+                    </wsdl:documentation>
+                    <soap:address location="https://echs-q.e-clearing.net/direct/provider/ochp/v1.3" />
+             </wsdl:port>
+             
+             <wsdl:port name="eCHS_Q-System-direct-Operator" binding="tns:Operator_OCHP-direct_0.1">
+                    <wsdl:documentation>
+                           eCHS Quality Ensurance OCHP direct Operator-Endpoint (Non-functional example)
+                    </wsdl:documentation>
+                    <soap:address location="https://echs-q.e-clearing.net/direct/operator/ochp/v1.3" />
+             </wsdl:port>
 
 	</wsdl:service>
 
