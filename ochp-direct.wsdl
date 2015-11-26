@@ -1000,6 +1000,22 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			<soap:address location="https://echs-q.e-clearing.net/direct/ochp/v1.3" />
 		</wsdl:port>
 
+<!-- Example Endpoints for the Direct Extension -->
+
+             <wsdl:port name="eCHS_Q-System-direct-Provider" binding="tns:Provider_OCHP-direct_0.1">
+                    <wsdl:documentation>
+                           eCHS Quality Ensurance OCHP direct Provider-Endpoint (Non-functional example)
+                    </wsdl:documentation>
+                    <soap:address location="https://echs-q.e-clearing.net/direct/provider/ochp/v1.3" />
+             </wsdl:port>
+             
+             <wsdl:port name="eCHS_Q-System-direct-Operator" binding="tns:Operator_OCHP-direct_0.1">
+                    <wsdl:documentation>
+                           eCHS Quality Ensurance OCHP direct Operator-Endpoint (Non-functional example)
+                    </wsdl:documentation>
+                    <soap:address location="https://echs-q.e-clearing.net/direct/operator/ochp/v1.3" />
+             </wsdl:port>
+
 	</wsdl:service>
 
 </wsdl:definitions>
