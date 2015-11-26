@@ -490,9 +490,9 @@ OCHP-direct charging process. The operator's backend must make use of
 a treashold in order to avoid too many messages.
 
 The information types are:
- * Start of a charging session. _The car is properly connected and the process was authorized._
- * End of a charging session. _The charging session has ended by any event and will not be resumed. The car may still be plugged in._
- * Metering information (status)
+ * Start of a charging session (including meter value and timestamp). _The car is properly connected and the process was authorized._
+ * End of a charging session (including meter value and timestamp). _The charging session has ended by any event and will not be resumed. The car may still be plugged in._
+ * Metering information (status). This information should also be included in start and end messages.
  * Power management information (status)
  * Invoicing ready, CDR sent (finish)
 
@@ -696,6 +696,8 @@ maxPower          |  float          |  ?      |  Maximum authorised power in kil
 maxEnergy         |  float          |  ?      |  Maximum authorised energy in kilowatthours. Example: "5.5", "20", "85"
 currentPower      |  float          |  ?      |  The currently supplied power limit in kilowatts in case of load management. Example: "3.7", "8", "15"
 chargedEnergy     |  float          |  ?      |  The amount of energy in kilowatthours transferred during this charging process. Example: "5.5", "20", "85"
+meterValue        |  float          |  ?      |  The current meter value (in kWh) as displayed on the meter to enable displaying it to the user. Example: "12345.67"
+localTime         |  LocalDateTimeType |  ?      |  The local time at the charge point.
 
 
 

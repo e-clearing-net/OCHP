@@ -1538,7 +1538,7 @@ This class defines a geo location. The geodetic system to be used is WGS 84.
  lat         |  string(10)  |  1      |  Latitude of the point in decimal degree. Example: 50.770774. Decimal separator: "." Regex: `-?$[$0-9$]$\{1,2\}$\$.$[$0-9$]$\{6\}`
  lon         |  string(11)  |  1      |  Longitude of the point in decimal degree. Example: -126.104965. Decimal separator: "." Regex: `-?$[$0-9$]$\{1,3\}$\$.$[$0-9$]$\{6\}`
  name        |  string(255) |  ?      |  Name of the point in local language or as written at the location. For example the street name of a parking lot entrance or it's number.
- class       |  GeoClass    |  1      |  The class of this geo point  for categorization and right usage.
+ type        |  GeoClass    |  1      |  The class of this geo point  for categorization and right usage.
 
 
 ### GeoClassType *enum*
@@ -1712,10 +1712,22 @@ Operating on Weekdays from 8am till 8pm with one exceptional opening on
      <regularHours weekday="3" periodBegin="08:00" periodEnd="20:00">
      <regularHours weekday="4" periodBegin="08:00" periodEnd="20:00">
      <regularHours weekday="5" periodBegin="08:00" periodEnd="20:00">
-     <exceptionalOpenings
-         periodBegin="2014-06-21T09:00:00Z" periodEnd="2014-06-21T12:00:00Z">
-     <exceptionalClosings
-         periodBegin="2014-06-24T00:00:00Z" periodEnd="2014-06-25T00:00:00Z">
+     <exceptionalOpenings>
+        <periodBegin>
+         	<DateTime>2014-06-21T09:00:00Z</DateTime>
+ 	</periodBegin>
+ 	<periodEnd>
+ 		<DateTime>2014-06-21T12:00:00Z</DateTime>
+ 	</periodEnd>
+     </exceptionalOpenings>
+     <exceptionalClosings>
+        <periodBegin>
+         	<DateTime>2014-06-24T00:00:00Z</DateTime>
+ 	</periodBegin>
+ 	<periodEnd>
+ 		<DateTime>2014-06-25T00:00:00Z</DateTime>
+ 	</periodEnd>
+      </exceptionalClosings>
 </operatingTimes>
 ```
 
