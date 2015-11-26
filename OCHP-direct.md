@@ -490,9 +490,9 @@ OCHP-direct charging process. The operator's backend must make use of
 a treashold in order to avoid too many messages.
 
 The information types are:
- * Start of a charging session. _The car is properly connected and the process was authorized._
- * End of a charging session. _The charging session has ended by any event and will not be resumed. The car may still be plugged in._
- * Metering information (status)
+ * Start of a charging session (including meter value and timestamp). _The car is properly connected and the process was authorized._
+ * End of a charging session (including meter value and timestamp). _The charging session has ended by any event and will not be resumed. The car may still be plugged in._
+ * Metering information (status). This information should also be included in start and end messages.
  * Power management information (status)
  * Invoicing ready, CDR sent (finish)
 
