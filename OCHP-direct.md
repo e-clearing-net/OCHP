@@ -1,6 +1,7 @@
 ![Open Clearing House Protocol (OCHP)](http://www.ochp.eu/wp-content/uploads/2015/02/OCHPlogo.png)
 
- OCHP-direct Extension
+
+ OCHP_direct_ Extension
  
  * * *
 
@@ -42,20 +43,20 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - [Preface](#preface)
     - [Conventions](#conventions)
 - [Introduction](#introduction)
-    - [Use Cases of OCHP direct](#use-cases-of-ochp-direct)
+    - [Use Cases of OCHP_direct_](#use-cases-of-ochp-direct)
             - [Basic use cases](#basic-use-cases)
             - [Advanced use cases](#advanced-use-cases)
-    - [Basic Principles of OCHP direct](#basic-principles-of-ochp-direct)
+    - [Basic Principles of OCHP_direct_](#basic-principles-of-ochp-direct)
         - [Trust and authorisation structure](#trust-and-authorisation-structure)
-            - [The usual situation without OCHP direct](#the-usual-situation-without-ochp-direct)
-            - [The situation with OCHP direct](#the-situation-with-ochp-direct)
-            - [Security of the OCHP direct interface](#security-of-the-ochp-direct-interface)
+            - [The usual situation without OCHP_direct_](#the-usual-situation-without-ochp-direct)
+            - [The situation with OCHP_direct_](#the-situation-with-ochp-direct)
+            - [Security of the OCHP_direct_ interface](#security-of-the-ochp-direct-interface)
             - [Identification token distribution](#identification-token-distribution)
 - [Partner-to-CHS interface description (Extension to OCHP)](#partner-to-chs-interface-description-extension-to-ochp)
     - [Exchange of interface definition _Basic_](#exchange-of-interface-definition-basic)
         - [Set own interface definition in the CHS](#set-own-interface-definition-in-the-chs)
         - [Get roaming partners interface definitions from the CHS](#get-roaming-partners-interface-definitions-from-the-chs)
-- [Partner-to-partner interface description (_OCHP direct_ interface)](#partner-to-partner-interface-description-ochp-direct-interface)
+- [Partner-to-partner interface description (OCHP_direct_ interface)](#partner-to-partner-interface-description-ochp-direct-interface)
     - [Get status information of charge points _Basic_](#get-status-information-of-charge-points-basic)
         - [Request current live status from an Operator](#request-current-live-status-from-an-operator)
         - [Report a data or compatibility discrepancy to an Operator](#report-a-data-or-compatibility-discrepancy-to-an-operator)
@@ -71,7 +72,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [AddServiceEndpoints.conf](#addserviceendpointsconf)
         - [GetServiceEndpoints.req](#getserviceendpointsreq)
         - [GetServiceEndpoints.conf](#getserviceendpointsconf)
-    - [Messages for the _OCHP direct_ interface](#messages-for-the-ochp-direct-interface)
+    - [Messages for the OCHP_direct_ interface](#messages-for-the-ochp-direct-interface)
         - [DirectEvseStatus.req](#directevsestatusreq)
         - [ReportDiscrepancy.req](#reportdiscrepancyreq)
         - [ReportDiscrepancy.conf](#reportdiscrepancyconf)
@@ -90,14 +91,14 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [OperatorEndpoint *class*](#operatorendpoint-class)
         - [ContractPattern *class*](#contractpattern-class)
         - [EvsePattern *class*](#evsepattern-class)
-    - [Types for the _OCHP direct_ interface](#types-for-the-ochp-direct-interface)
+    - [Types for the OCHP_direct_ interface](#types-for-the-ochp-direct-interface)
         - [DirectResult *enum*](#directresult-enum)
         - [DirectResultCodeType *enum*](#directresultcodetype-enum)
         - [DirectId *class*](#directid-class)
         - [DirectOperation *enum*](#directoperation-enum)
         - [DirectMessage *enum*](#directmessage-enum)
 - [Binding to Transport Protocol](#binding-to-transport-protocol)
-    - [OCHP direct over SOAP](#ochp-direct-over-soap)
+    - [OCHP_direct_ over SOAP](#ochp-direct-over-soap)
     - [Partner Identification](#partner-identification)
 
 
@@ -113,7 +114,7 @@ This document defines an extension to the Open Clearing House Protocol
 
 ## Conventions
 
-_This extesnsion follows the same conventions as OCHP:_
+_This extension follows the same conventions as OCHP:_
 
 The key words *must*, *must not*, *required*, *shall*, *shall
 not*, *should*, *should not*, *recommended*, *may* and
@@ -153,7 +154,7 @@ the [OCHP documentation](OCHP.md).
 
 
 
-## Use Cases of OCHP direct
+## Use Cases of OCHP_direct_
 
 The overall use case for this interface is to control services like 
 charging sessions in an operator's backend while handling the user 
@@ -193,9 +194,9 @@ __advanced use cases__ require also the provider to act as a server.
 
 
 
-## Basic Principles of OCHP direct
+## Basic Principles of OCHP_direct_
 
-The OCHP direct Interface describes a set of methods to control 
+The OCHP_direct_ Interface describes a set of methods to control 
 charging sessions in an EVSE operator's backend. While dedicated 
 methods in the clearing house's interface extend its functionality to 
 provide remote services, the actually service requests are sent between 
@@ -206,23 +207,23 @@ system to the provider system is also possible. In that case the
 provider system will act as a SOAP server and the operator system as 
 the client.
 
-The following Figure illustrates the communication paths of OCHP direct.
+The following Figure illustrates the communication paths of OCHP_direct_.
 The extending messages of OCHP allow the publication of backend 
 specification and the discovery of roaming partner's backends.
 
-![Figure OCHP direct Communication Overview](media/OCHPdirectCommunicationOverview.png "OCHP direct Communication Overview")
+![Figure OCHP_direct_ Communication Overview](media/OCHPdirectCommunicationOverview.png "OCHP direct Communication Overview")
 
 The backend specification is send and updated regularly. It contents 
 all properties that describe the roaming partner's backend:
 
- * The URL of the backend's OCHP direct endpoint(s).
- * The security token of the backend. (See chapter [Security of the OCHP direct interface](#security-of-the-ochp-direct-interface) 
+ * The URL of the backend's OCHP_direct_ endpoint(s).
+ * The security token of the backend. (See chapter [Security of the OCHP_direct_ interface](#security-of-the-ochp-direct-interface) 
    for more information.)
  * All business objects that are operated by this backend, represented 
    by blacklists and/or whitelists.
 
 This data can be mapped onto a data structure as illustrated in the 
-following figure *OCHP direct ER Model*. The depictured data structure 
+following figure *OCHP_direct_ ER Model*. The depictured data structure 
 allows for dynamic updates of endpoints and partner-tokens, which is 
 necessary to guaranty an uninterrupted service.
 
@@ -233,20 +234,20 @@ to operate their services on one or multiple backend systems or even
 share one backend system with another roaming partner. This should 
 cover all possible market situations. 
 
-![Figure OCHP direct ER Model](media/OCHPdirectErModel.png "OCHP direct ER Model")
+![Figure OCHP_direct_ ER Model](media/OCHPdirectErModel.png "OCHP direct ER Model")
 
 
 
 ### Trust and authorisation structure
 
-Based on the assumption that _OCHP direct_ is used in addition to a 
+Based on the assumption that OCHP_direct_ is used in addition to a 
 regular OCHP connection via a clearing house, the following trust 
-structure applies. However, _OCHP direct_ may also be used in other 
+structure applies. However, OCHP_direct_ may also be used in other 
 combinations, where the OCHP-part of the following description is to be 
 covered by alternative methods.
 
 
-#### The usual situation without OCHP direct
+#### The usual situation without OCHP_direct_
 
 When two roaming partners connect via OCHP and the clearing house, the 
 authorisation and trust structure can be defined as follows:
@@ -265,7 +266,7 @@ that all sent customer tokens are getting authorised on all charge
 points or as based on the contract between both.
 
 
-#### The situation with OCHP direct
+#### The situation with OCHP_direct_
 
 When direct authorisation requests come in place, the situation turns 
 around:
@@ -284,9 +285,9 @@ decline an remote authorisation for other than contractual or technical
 valid reasons.
 
 
-#### Security of the OCHP direct interface
+#### Security of the OCHP_direct_ interface
 
-Each roaming partner who makes use of OCHP direct needs provide a SOAP 
+Each roaming partner who makes use of OCHP_direct_ needs provide a SOAP 
 server with a public accessible interface. It is obvious that they must secure
 those interfaces to:
  * restrict usage only to their current roaming partners and
@@ -301,7 +302,7 @@ mechanism does **not** require client side certificates for
 authentication, only server side certificates in order to provide a 
 secure SSL connection.
 
-The OCHP direct interface of every roaming partner must be secured via 
+The OCHP_direct_ interface of every roaming partner must be secured via 
 *TLS 1.2* ([RFC6176](http://tools.ietf.org/html/rfc6176)).
 
 The identification of the requester and the access restriction of the 
@@ -310,7 +311,7 @@ distributed via the clearing house. (See
 [Identification token distribution](#identification-token-distribution) 
 for further information.)
 
-Each request to a OCHP direct interface must contain a *Authorization* 
+Each request to a OCHP_direct_ interface must contain a *Authorization* 
 HTTP header:
 
 ```http
@@ -325,7 +326,7 @@ The hash value in this header is composed through the following steps:
  3. The authorization method and a space i.e. `Basic␣` is then put 
     before the encoded string.
 
-The OCHP direct endpoint should check for valid authorisation in order 
+The OCHP_direct_ endpoint should check for valid authorisation in order 
 to prevent unintended usage of their endpoints or cyber-attacks.
 
 
@@ -349,7 +350,7 @@ On day `N` do:
     tokens. Here `AB2`.
  6. *At 23:50 UTC:* Make token combinations for day `N+1` valid.
 
-![Figure OCHP direct Token Exchange](media/OCHPdirectTokenExchange.png "OCHP direct Token Exchange")
+![Figure OCHP_direct_ Token Exchange](media/OCHPdirectTokenExchange.png "OCHP direct Token Exchange")
 
 
 
@@ -367,7 +368,7 @@ methods are available in the interface of the Clearing House.
 ### Set own interface definition in the CHS
 
 The backend of each roaming partner has to send the definition of its 
-OCHP direct interface to the Clearing House to share that data with 
+OCHP_direct_ interface to the Clearing House to share that data with 
 their connected roaming partners. The upload of the own interface 
 definition is done in the following way:
 
@@ -390,9 +391,9 @@ of connected partners is done in the following way:
 
 
 
-# Partner-to-partner interface description (_OCHP direct_ interface)
+# Partner-to-partner interface description (OCHP_direct_ interface)
 
-This interface description is the core of OCHP-direct. The described
+This interface description is the core of OCHP_direct_. The described
 methods must be available at the operator's backend _CMS_ (basic use
 case) and the provider's backend _MDM_ (advanced use case).
 
@@ -433,7 +434,7 @@ beeing done in three steps (basic use cases):
  2. Controling of the charge point
  3. Release of the charge point
 
-In step (1) a OCHP-direct session ID is generated by the operator and
+In step (1) a OCHP_direct_ session ID is generated by the operator and
 returned. This ID must be used in step (2) and (3). Step (2) may be
 repeated to change the parameters. The session is ended in step (3).
 
@@ -445,14 +446,14 @@ The following figure gives an overview of the communication. After step
 the operator to the provider (_italic_) are covered in the advanced use
 cases.
 
-![Figure OCHP direct basic process](media/OCHPdirectProcess-1.png "OCHP direct basic process")
+![Figure OCHP_direct_ basic process](media/OCHPdirectProcess-1.png "OCHP direct basic process")
 
 
 ### Select a charge point of an operator
 
 Before a charging process can be started, the provider needs to select
 an EVSE in an operator's backend. This starts the session and generates
-the OCHP-direct session ID. The operator must reserve the selected
+the OCHP_direct_ session ID. The operator must reserve the selected
 charging station for the communicated Contract-ID.
 
  * MDM sends the SelectEvse.req PDU.
@@ -486,7 +487,7 @@ When the operator receives a valid _ReleaseEvse.req_ for an ongoing charging pro
 ## Inform a provider about a charging process _Advanced_
 
 The provider should get informed about any status updates to an 
-OCHP-direct charging process. The operator's backend must make use of
+OCHP_direct_ charging process. The operator's backend must make use of
 a treashold in order to avoid too many messages.
 
 The information types are:
@@ -497,7 +498,7 @@ The information types are:
  * Invoicing ready, CDR sent (finish)
 
  
-![Figure OCHP direct advanced process](media/OCHPdirectProcess-2.png "OCHP direct advanced process")
+![Figure OCHP_direct_ advanced process](media/OCHPdirectProcess-2.png "OCHP direct advanced process")
 
 
 
@@ -526,7 +527,7 @@ informs the concerned provider.
 ## Messages for the exchange of interface definitions
 
 These messages are used to exchange the interface definitions of the
-OCHP direct interfaces between roaming partners.
+OCHP_direct_ interfaces between roaming partners.
 
 
 ### AddServiceEndpoints.req
@@ -570,7 +571,7 @@ operatorEndpointArray  |  OperatorEndpoint  |  *      |  Array of endpoints of a
 
 
 
-## Messages for the _OCHP direct_ interface
+## Messages for the OCHP_direct_ interface
 
 
 ### DirectEvseStatus.req
@@ -793,7 +794,7 @@ for the pattern is `%`.
 ```
 
 
-## Types for the _OCHP direct_ interface
+## Types for the OCHP_direct_ interface
 
 
 ### DirectResult *enum*
@@ -815,21 +816,21 @@ Result and error codes for the class Result as return value for method calls.
  ok             | Data accepted and processed.
  partly         | Not all control parameters could be applied.
  not-found      | Given EVSE-ID is not known to the operator.
- not-supported  | Given EVSE-ID does not support OCHP-direct.
+ not-supported  | Given EVSE-ID does not support OCHP_direct_.
  invalid-id     | The DirectId is not valid or has expired.
  server         | Internal server error.
 
 
 ### DirectId *class*
 
-The session ID for one OCHP-direct charging process. The ID is created
+The session ID for one OCHP_direct_ charging process. The ID is created
 by the operator and used to reference the session by the provider. Must
 be unique per Operator-ID.
 There are two events that create a new DirectId:
 
  * A successful call to SelectEvse by the provider
- * Local start of a charging session (i.e. via RFID) for a OCHP-direct
-   enabled Contract-ID at a OCHP-direct enabled EVSE
+ * Local start of a charging session (i.e. via RFID) for a OCHP_direct_
+   enabled Contract-ID at a OCHP_direct_ enabled EVSE
 
 ```regex
 [A-Z0-9\-]{1,255}
@@ -838,7 +839,7 @@ There are two events that create a new DirectId:
 
 ### DirectOperation *enum*
 
-Operations to control an OCHP-direct charging process.
+Operations to control an OCHP_direct_ charging process.
 
  Value   |  Description
 :--------|:-------------
@@ -849,11 +850,11 @@ Operations to control an OCHP-direct charging process.
 
 ### DirectMessage *enum*
 
-Messages to inform a provider about an OCHP-direct charging process.
+Messages to inform a provider about an OCHP_direct_ charging process.
 
  Value   |  Description
 :--------|:-------------
- start   | A OCHP-direct charging process has been started.
+ start   | A OCHP_direct_ charging process has been started.
  change  | The parameters of the charging process were changed.
  info    | A informative update is available, e.g. updated consumed energy value.
  end     | The charging process has ended, the connector was unplugged.
@@ -867,7 +868,7 @@ Messages to inform a provider about an OCHP-direct charging process.
 # Binding to Transport Protocol
 
 
-## OCHP direct over SOAP
+## OCHP_direct_ over SOAP
 
 For this protocol the SOAP Version 1.1 MUST be used.
 
