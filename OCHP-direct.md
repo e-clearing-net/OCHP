@@ -2,7 +2,7 @@
 
 
  OCHP_direct_ Extension
- 
+
  * * *
 
 
@@ -16,23 +16,23 @@ Prot. Version | Date       | Comment
 
 Copyright (c) 2015 smartlab, bluecorner.be, e-laad.nl
 
-Permission is hereby granted, free of charge, to any person obtaining a 
-copy of this software and associated documentation files 
-(the "Software"), to deal in the Software without restriction, 
-including without limitation the rights to use, copy, modify, merge, 
-publish, distribute, sublicense, and/or sell copies of the Software, 
-and to permit persons to whom the Software is furnished to do so, 
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files
+(the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so,
 subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included 
+The above copyright notice and this permission notice shall be included
 in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
-OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
@@ -103,12 +103,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
  * * *
- 
+
 
 
 # Preface
 
-This document defines an extension to the Open Clearing House Protocol 
+This document defines an extension to the Open Clearing House Protocol
 (OCHP). For more information visit [ochp.eu](http://ochp.eu).
 
 
@@ -136,10 +136,10 @@ For some data fields a [http://en.wikipedia.org/wiki/Regular_expression](Regular
 provided as an additional but very precise definition of the data
 format.
 
-The character *>* in front of any data field indicates a choice of 
+The character *>* in front of any data field indicates a choice of
 multiple possibilities.
 
-The character *~* appended to any data field indicates the 
+The character *~* appended to any data field indicates the
 implementation as XML attribute instead of an element.
 
 
@@ -149,45 +149,45 @@ implementation as XML attribute instead of an element.
 # Introduction
 
 
-For a general introduction to the OCHP, see the introduction section in 
+For a general introduction to the OCHP, see the introduction section in
 the [OCHP documentation](OCHP.md).
 
 
 
 ## Use Cases of OCHP_direct_
 
-The overall use case for this interface is to control services like 
-charging sessions in an operator's backend while handling the user 
-authorisation within an (from the operator's point of view) external 
+The overall use case for this interface is to control services like
+charging sessions in an operator's backend while handling the user
+authorisation within an (from the operator's point of view) external
 system.
 
-The customer story can be shortened to: 
+The customer story can be shortened to:
 
 > One (provider) app for all charging stations – regardless of their operator.
 
 This generic main use cases splits up in several sub parts. Those are:
 
 #### Basic use cases
- * **Remote Start:** A user starts a charging process at an operator‘s 
-   charge pole by using a provider‘s app. They are starting the process 
+ * **Remote Start:** A user starts a charging process at an operator‘s
+   charge pole by using a provider‘s app. They are starting the process
    from a – of the operator's point of view – remote service.
- * **Remote Stop:** A user stops a charging process at an operator‘s 
+ * **Remote Stop:** A user stops a charging process at an operator‘s
    charge pole by using a provider‘s app (that was remotely started).
- * **Live Info:** A user requests information about a charging process 
-   at an operator's charge pole by using a provider's app (from which 
+ * **Live Info:** A user requests information about a charging process
+   at an operator's charge pole by using a provider's app (from which
    the process was started).
 
 #### Advanced use cases
- * **Charge Event:** A user gets informed by a provider's app about 
-   status changes of a charging process at an operator's charge pole, 
+ * **Charge Event:** A user gets informed by a provider's app about
+   status changes of a charging process at an operator's charge pole,
    even if it wasn't started remotely.
- * **Remote Control:** A user controls a charging process at an 
-   operator‘s charge pole that was not remotely started by using a 
+ * **Remote Control:** A user controls a charging process at an
+   operator‘s charge pole that was not remotely started by using a
    provider‘s app.
- * **Remote Action:** A user triggers advanced and not charging process 
+ * **Remote Action:** A user triggers advanced and not charging process
    related actions at a charge point or charging station of an operator.
 
-The __basic use cases__ require the operator to act as a server in 
+The __basic use cases__ require the operator to act as a server in
 order to receive information and commands from the provider. The
 __advanced use cases__ require also the provider to act as a server.
 
@@ -196,43 +196,43 @@ __advanced use cases__ require also the provider to act as a server.
 
 ## Basic Principles of OCHP_direct_
 
-The OCHP_direct_ Interface describes a set of methods to control 
-charging sessions in an EVSE operator's backend. While dedicated 
-methods in the clearing house's interface extend its functionality to 
-provide remote services, the actually service requests are sent between 
-the operator and the provider directly. In those cases the operator 
-backend acts as a server, in contrast to pure clients as common for all 
-other OCHP communication. The backward communication, from the operator 
-system to the provider system is also possible. In that case the 
-provider system will act as a SOAP server and the operator system as 
+The OCHP_direct_ Interface describes a set of methods to control
+charging sessions in an EVSE operator's backend. While dedicated
+methods in the clearing house's interface extend its functionality to
+provide remote services, the actually service requests are sent between
+the operator and the provider directly. In those cases the operator
+backend acts as a server, in contrast to pure clients as common for all
+other OCHP communication. The backward communication, from the operator
+system to the provider system is also possible. In that case the
+provider system will act as a SOAP server and the operator system as
 the client.
 
 The following Figure illustrates the communication paths of OCHP_direct_.
-The extending messages of OCHP allow the publication of backend 
+The extending messages of OCHP allow the publication of backend
 specification and the discovery of roaming partner's backends.
 
 ![Figure OCHP_direct_ Communication Overview](media/OCHPdirectCommunicationOverview.png "OCHP direct Communication Overview")
 
-The backend specification is send and updated regularly. It contents 
+The backend specification is send and updated regularly. It contents
 all properties that describe the roaming partner's backend:
 
  * The URL of the backend's OCHP_direct_ endpoint(s).
- * The security token of the backend. (See chapter [Security of the OCHP_direct_ interface](#security-of-the-ochp-direct-interface) 
+ * The security token of the backend. (See chapter [Security of the OCHP_direct_ interface](#security-of-the-ochp-direct-interface)
    for more information.)
- * All business objects that are operated by this backend, represented 
+ * All business objects that are operated by this backend, represented
    by blacklists and/or whitelists.
 
-This data can be mapped onto a data structure as illustrated in the 
-following figure *OCHP_direct_ ER Model*. The depictured data structure 
-allows for dynamic updates of endpoints and partner-tokens, which is 
+This data can be mapped onto a data structure as illustrated in the
+following figure *OCHP_direct_ ER Model*. The depictured data structure
+allows for dynamic updates of endpoints and partner-tokens, which is
 necessary to guaranty an uninterrupted service.
 
-Remarkable about the data model is the absence of an backend entity. 
-All related entities are bound to the roaming partner (operator or 
-provider), identified by their IDs. Thus, each roaming partner is free 
-to operate their services on one or multiple backend systems or even 
-share one backend system with another roaming partner. This should 
-cover all possible market situations. 
+Remarkable about the data model is the absence of an backend entity.
+All related entities are bound to the roaming partner (operator or
+provider), identified by their IDs. Thus, each roaming partner is free
+to operate their services on one or multiple backend systems or even
+share one backend system with another roaming partner. This should
+cover all possible market situations.
 
 ![Figure OCHP_direct_ ER Model](media/OCHPdirectErModel.png "OCHP direct ER Model")
 
@@ -240,16 +240,16 @@ cover all possible market situations.
 
 ### Trust and authorisation structure
 
-Based on the assumption that OCHP_direct_ is used in addition to a 
-regular OCHP connection via a clearing house, the following trust 
-structure applies. However, OCHP_direct_ may also be used in other 
-combinations, where the OCHP-part of the following description is to be 
+Based on the assumption that OCHP_direct_ is used in addition to a
+regular OCHP connection via a clearing house, the following trust
+structure applies. However, OCHP_direct_ may also be used in other
+combinations, where the OCHP-part of the following description is to be
 covered by alternative methods.
 
 
 #### The usual situation without OCHP_direct_
 
-When two roaming partners connect via OCHP and the clearing house, the 
+When two roaming partners connect via OCHP and the clearing house, the
 authorisation and trust structure can be defined as follows:
 
  * Both roaming partners trust the clearing house
@@ -260,15 +260,15 @@ authorisation and trust structure can be defined as follows:
  * The operator authorises the provider's customers at their charging
    stations for inividual charging sessions
 
-In this situation the single authorisation is be done in the operator's 
-backend _on behalf of_ the provider. The provider trusts the operator 
-that all sent customer tokens are getting authorised on all charge 
+In this situation the single authorisation is be done in the operator's
+backend _on behalf of_ the provider. The provider trusts the operator
+that all sent customer tokens are getting authorised on all charge
 points or as based on the contract between both.
 
 
 #### The situation with OCHP_direct_
 
-When direct authorisation requests come in place, the situation turns 
+When direct authorisation requests come in place, the situation turns
 around:
 
  * Both roaming partners trust the clearing house
@@ -276,42 +276,42 @@ around:
    generally, by setting the roaming connection in the clearing house
  * __The operator authorises and trusts the provider to authorise their
    customers at the operator's charge points generally__
- * _The provider authorises their own customers at the charging stations 
+ * _The provider authorises their own customers at the charging stations
    of the operator for inividual charging sessions_
 
-In this new situation the operator gives the responsiblity to authorise 
-charging sessions away to the provider. A operator therefore should not 
-decline an remote authorisation for other than contractual or technical 
+In this new situation the operator gives the responsiblity to authorise
+charging sessions away to the provider. A operator therefore should not
+decline an remote authorisation for other than contractual or technical
 valid reasons.
 
 
 #### Security of the OCHP_direct_ interface
 
-Each roaming partner who makes use of OCHP_direct_ needs provide a SOAP 
+Each roaming partner who makes use of OCHP_direct_ needs provide a SOAP
 server with a public accessible interface. It is obvious that they must secure
 those interfaces to:
  * restrict usage only to their current roaming partners and
  * secure the transmitted data.
 
-This applies to the operator and for advanced use cases also to the 
+This applies to the operator and for advanced use cases also to the
 provider.
 
-Therefore the interfaces must be protected on HTTP transport layer 
-level, using SSL and Basic Authentication. Please note that this 
-mechanism does **not** require client side certificates for 
-authentication, only server side certificates in order to provide a 
+Therefore the interfaces must be protected on HTTP transport layer
+level, using SSL and Basic Authentication. Please note that this
+mechanism does **not** require client side certificates for
+authentication, only server side certificates in order to provide a
 secure SSL connection.
 
-The OCHP_direct_ interface of every roaming partner must be secured via 
+The OCHP_direct_ interface of every roaming partner must be secured via
 *TLS 1.2* ([RFC6176](http://tools.ietf.org/html/rfc6176)).
 
-The identification of the requester and the access restriction of the 
-interface is done by rotating identification tokens which are 
-distributed via the clearing house. (See 
-[Identification token distribution](#identification-token-distribution) 
+The identification of the requester and the access restriction of the
+interface is done by rotating identification tokens which are
+distributed via the clearing house. (See
+[Identification token distribution](#identification-token-distribution)
 for further information.)
 
-Each request to a OCHP_direct_ interface must contain a *Authorization* 
+Each request to a OCHP_direct_ interface must contain a *Authorization*
 HTTP header:
 
 ```http
@@ -319,26 +319,26 @@ Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
 ```
 
 The hash value in this header is composed through the following steps:
- 1. The identification tokens of sender and receiver are combined into 
+ 1. The identification tokens of sender and receiver are combined into
     a string "receiver-token:sender-token"
- 2. The resulting string is then encoded using the RFC2045-MIME variant 
+ 2. The resulting string is then encoded using the RFC2045-MIME variant
     of Base64 ([RFC1945](http://tools.ietf.org/html/rfc1945#section-11)
- 3. The authorization method and a space i.e. `Basic␣` is then put 
+ 3. The authorization method and a space i.e. `Basic␣` is then put
     before the encoded string.
 
-The OCHP_direct_ endpoint should check for valid authorisation in order 
+The OCHP_direct_ endpoint should check for valid authorisation in order
 to prevent unintended usage of their endpoints or cyber-attacks.
 
 
 #### Identification token distribution
 
-The partner's tokens for identification and authorisation are exchanged 
-and distributed through the clearing house. Based on the set roaming 
-connections the tokens are made available. Each token is valid for a 
+The partner's tokens for identification and authorisation are exchanged
+and distributed through the clearing house. Based on the set roaming
+connections the tokens are made available. Each token is valid for a
 period of full calendar days, synchronus to the UTC time.
 
-This mechanism is used to guarantee uninterupted service in combination 
-with a high security level and compatibility with the majority of 
+This mechanism is used to guarantee uninterupted service in combination
+with a high security level and compatibility with the majority of
 systems. The synchronisation and token-exchange-cycle is as follows.
 On day `N` do:
 
@@ -346,7 +346,7 @@ On day `N` do:
  2. Generate new own token for day `N+1`.
  3. *Before 12:00 UTC:* Send/upload own token for day `N+1`.
  4. *After 12:00 UTC:* Fetch/download partner's tokens for day `N+1`.
- 5. Generate token combinations for day `N+1` from own and partner's 
+ 5. Generate token combinations for day `N+1` from own and partner's
     tokens. Here `AB2`.
  6. *At 23:50 UTC:* Make token combinations for day `N+1` valid.
 
@@ -367,9 +367,9 @@ methods are available in the interface of the Clearing House.
 
 ### Set own interface definition in the CHS
 
-The backend of each roaming partner has to send the definition of its 
-OCHP_direct_ interface to the Clearing House to share that data with 
-their connected roaming partners. The upload of the own interface 
+The backend of each roaming partner has to send the definition of its
+OCHP_direct_ interface to the Clearing House to share that data with
+their connected roaming partners. The upload of the own interface
 definition is done in the following way:
 
  * CMS or MDM sends the AddServiceEndpoints.req PDU.
@@ -468,7 +468,7 @@ charging process by the provider.
  * MDM sends the ControlEvse.req PDU.
  * CMS responds with a ControlEvse.conf PDU.
 
-**Note:** The control method _ControlEvse.req_ can be called one to multiple times during a charging session. It's parameters define weather the provider requests a start or end of the charging session or if they want to change it (in terms of it's parameters). The operator shall handle all three operations and respond to it's capabilities to actually execute the request accordingly. 
+**Note:** The control method _ControlEvse.req_ can be called one to multiple times during a charging session. It's parameters define weather the provider requests a start or end of the charging session or if they want to change it (in terms of it's parameters). The operator shall handle all three operations and respond to it's capabilities to actually execute the request accordingly.
 
 
 ### Release a selected charge point in an operator's backend
@@ -486,7 +486,7 @@ When the operator receives a valid _ReleaseEvse.req_ for an ongoing charging pro
 
 ## Inform a provider about a charging process _Advanced_
 
-The provider should get informed about any status updates to an 
+The provider should get informed about any status updates to an
 OCHP_direct_ charging process. The operator's backend must make use of
 a treashold in order to avoid too many messages.
 
@@ -497,7 +497,7 @@ The information types are:
  * Power management information (status)
  * Invoicing ready, CDR sent (finish)
 
- 
+
 ![Figure OCHP_direct_ advanced process](media/OCHPdirectProcess-2.png "OCHP direct advanced process")
 
 
@@ -532,7 +532,7 @@ OCHP_direct_ interfaces between roaming partners.
 
 ### AddServiceEndpoints.req
 
-This contains the field definition of the AddServiceEndpoints.req 
+This contains the field definition of the AddServiceEndpoints.req
 sent by the MDM or CMS towards the CHS.
 
  Field Name            |  Field Type        |  Card.  |  Description
@@ -576,7 +576,7 @@ operatorEndpointArray  |  OperatorEndpoint  |  *      |  Array of endpoints of a
 
 ### DirectEvseStatus.req
 
-This contains the field definition of the DirectEvseStatus.req 
+This contains the field definition of the DirectEvseStatus.req
 sent by the MDM towards the CMS.
 
  Field Name      |  Field Type  |  Card.  |  Description
@@ -587,7 +587,7 @@ requestedEvseId  |  EvseId      |  +      |  List of EVSE-IDs the live status is
 
 ### ReportDiscrepancy.req
 
-This contains the field definition of the ReportDiscrepancy.req 
+This contains the field definition of the ReportDiscrepancy.req
 sent by the MDM towards the CMS.
 
  Field Name  |  Field Type    |  Card.  |  Description
@@ -599,7 +599,7 @@ report       |  string(2000)  |  1      |  Textual or generated report of the di
 
 ### ReportDiscrepancy.conf
 
-This contains the field definition of the ReportDiscrepancy.conf 
+This contains the field definition of the ReportDiscrepancy.conf
 sent by the CMS as a response to ReportDiscrepancy.req.
 No fields are defined.
 
@@ -607,7 +607,7 @@ No fields are defined.
 
 ### SelectEvse.req
 
-This contains the field definition of the SelectEvse.req 
+This contains the field definition of the SelectEvse.req
 sent by the MDM towards the CMS.
 
  Field Name  |  Field Type  |  Card.  |  Description
@@ -619,7 +619,7 @@ contractId   |  ContractId  |  1      |  Contract-ID for which the charge point 
 
 ### SelectEvse.conf
 
-This contains the field definition of the SelectEvse.conf 
+This contains the field definition of the SelectEvse.conf
 sent by the CMS as a response to SelectEvse.req.
 
  Field Name  |  Field Type    |  Card.  |  Description
@@ -632,7 +632,7 @@ ttl          |  DateTimeType  |  ?      |  On success the time until this select
 
 ### ControlEvse.req
 
-This contains the field definition of the ControlEvse.req 
+This contains the field definition of the ControlEvse.req
 sent by the MDM towards the CMS.
 
  Field Name   |  Field Type       |  Card.  |  Description
@@ -646,7 +646,7 @@ maxEnergy     |  float            |  ?      |  Maximum authorised energy in kilo
 
 ### ControlEvse.conf
 
-This contains the field definition of the ControlEvse.conf 
+This contains the field definition of the ControlEvse.conf
 sent by the CMS as a response to ControlEvse.req.
 
  Field Name  |  Field Type    |  Card.  |  Description
@@ -659,7 +659,7 @@ ttl          |  DateTimeType  |  ?      |  On success the timeout for this sessi
 
 ### ReleaseEvse.req
 
-This contains the field definition of the ReleaseEvse.req 
+This contains the field definition of the ReleaseEvse.req
 sent by the MDM towards the CMS.
 
  Field Name  |  Field Type  |  Card.  |  Description
@@ -670,7 +670,7 @@ directId     |  DirectId    |  1      |  The session id referencing the direct c
 
 ### ReleaseEvse.conf
 
-This contains the field definition of the ReleaseEvse.conf 
+This contains the field definition of the ReleaseEvse.conf
 sent by the CMS as a response to ReleaseEvse.req.
 
  Field Name  |  Field Type    |  Card.  |  Description
@@ -683,7 +683,7 @@ ttl          |  DateTimeType  |  ?      |  On success the timeout for this sessi
 
 ### InformProvider.req
 
-This contains the field definition of the InformProvider.req 
+This contains the field definition of the InformProvider.req
 sent by the CMS towards the MDM.
 
  Field Name       |  Field Type     |  Card.  |  Description
@@ -704,7 +704,7 @@ localTime         |  LocalDateTimeType |  ?      |  The local time at the charge
 
 ### InformProvider.conf
 
-This contains the field definition of the InformProvider.conf 
+This contains the field definition of the InformProvider.conf
 sent by the MDM as a response to InformProvider.conf.
 
  Field Name      |  Field Type    |  Card.  |  Description

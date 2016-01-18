@@ -13,23 +13,23 @@ Prot. Version | Date       | Comment
 
 Copyright (c) 2012-2015 smartlab, bluecorner.be, e-laad.nl
 
-Permission is hereby granted, free of charge, to any person obtaining a 
-copy of this software and associated documentation files 
-(the "Software"), to deal in the Software without restriction, 
-including without limitation the rights to use, copy, modify, merge, 
-publish, distribute, sublicense, and/or sell copies of the Software, 
-and to permit persons to whom the Software is furnished to do so, 
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files
+(the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so,
 subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included 
+The above copyright notice and this permission notice shall be included
 in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
-OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
@@ -164,7 +164,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
  * * *
- 
+
 
 
 # Preface
@@ -177,9 +177,9 @@ these market shareholders.
 
 ## Document Versioning
 
-The versions of this document refer to the non-functional or proposed 
-enhancements and are not to be confused with the derived protocol 
-states labelled by the protocol version numeration. To illustrate this, 
+The versions of this document refer to the non-functional or proposed
+enhancements and are not to be confused with the derived protocol
+states labelled by the protocol version numeration. To illustrate this,
 the following figure shows the development process of this protocol.
 
 ![Figure Protocol Versioning](media/ProtocolVersioning.png "Protocol Versioning")
@@ -207,10 +207,10 @@ For some data fields a [http://en.wikipedia.org/wiki/Regular_expression](Regular
 provided as an additional but very precise definition of the data
 format.
 
-The character *>* in front of any data field indicates a choice of 
+The character *>* in front of any data field indicates a choice of
 multiple possibilities.
 
-The character *~* appended to any data field indicates the 
+The character *~* appended to any data field indicates the
 implementation as XML attribute instead of an element.
 
 
@@ -254,21 +254,21 @@ VAS          | Value Added Service
 
 The purpose of the Open Clearing House Protocol is to connect market
 actors in the field of electric mobility charging infrastructure. The
-different relevant market roles are as shown in the market overview 
+different relevant market roles are as shown in the market overview
 figure:
- * The *EV user* of the overall system - a human charging an electric 
-   car via the connected infrastructure, having a direct or indirect 
+ * The *EV user* of the overall system - a human charging an electric
+   car via the connected infrastructure, having a direct or indirect
    service contract with an EVSP.
- * The *EVSP* (Electric Vehicle Service Provider) - granting access to 
-   charging stations and thus offering services to the contracted EV 
-   user. The service offer is supported by the market roles EVSE 
+ * The *EVSP* (Electric Vehicle Service Provider) - granting access to
+   charging stations and thus offering services to the contracted EV
+   user. The service offer is supported by the market roles EVSE
    Operator and NSP.
- * The *EVSE Operator* (Electric Vehicle Supply Equipment Operator) - 
+ * The *EVSE Operator* (Electric Vehicle Supply Equipment Operator) -
    operating charging stations.
- * The *NSP* (Navigation Service Provider) - offering relevant 
+ * The *NSP* (Navigation Service Provider) - offering relevant
    navigation services to the EV user.
- * The *Clearing House Operator* - running a software platform called 
-   Clearing House to enable data exchange between the market roles (2) 
+ * The *Clearing House Operator* - running a software platform called
+   Clearing House to enable data exchange between the market roles (2)
    to (4).
 
 In the context of a clearing house system the market roles (2) to (4)
@@ -325,8 +325,8 @@ contracts with EVSE operators or EVSPs.
 A charging session in the scope of this document is defined from the
 successful authorization of the user at the charge point. It is
 considered active until the successful authorized stop command was
-executed (first figure below) or the car was disconnected from the 
-charge point manually (second figure below). This is considered a 
+executed (first figure below) or the car was disconnected from the
+charge point manually (second figure below). This is considered a
 forced unauthorized ending.
 
 ![Figure Example for an authorized end of a charging session](media/ChargingSessionDefinition-1.png "Example for an authorized end of a charging session")
@@ -343,8 +343,8 @@ easily charge their electric vehicle on every charging station of
 different EVSE operators. With roaming support, provided by the Clearing
 House, the complexity of relationships can be reduced: from many-to-many
 bilateral partner connection towards a one-to-many connection between
-the Clearing House and the partners. The figure illustrates the overall 
-system overview of all partners with their systems and the clearing 
+the Clearing House and the partners. The figure illustrates the overall
+system overview of all partners with their systems and the clearing
 house system with the EV user as service consumer.
 
 ![Figure Global System Overview](media/global-system-overview.png "Global System Overview")
@@ -363,7 +363,7 @@ to connect to other roaming partners. The internal data connection
 between the distinct roles of one single partner might or might not be
 routed through the clearing house.
 For the sake of simplification only two layers are shown in this figure.
-The same principles apply to the navigation service layer. Also other 
+The same principles apply to the navigation service layer. Also other
 additional clearing houses could exist in this model.
 
 ![Figure Layer model of clearing house connections](media/ClearingHouseLayerModel.png "Layer model of clearing house connections")
@@ -384,19 +384,19 @@ base to calculate the payment request.
 Normally the following steps are followed, (*highlighted* steps are
 in scope of OCHP):
 
- * *An EVSP (Partner A) uploads authorisation data of its EV users to 
+ * *An EVSP (Partner A) uploads authorisation data of its EV users to
    the Clearing House (CH).*
- * *The EVSE operators that have a roaming contract with (A), download 
+ * *The EVSE operators that have a roaming contract with (A), download
    this authorisation data from the CH.*
- * The EVSE operators enable these authorisations to be used on their 
+ * The EVSE operators enable these authorisations to be used on their
    charge points.
- * The EV users of partner (A) can now charge their electric vehicles 
+ * The EV users of partner (A) can now charge their electric vehicles
    at all charge points of the EVSE operators named in step 2.
- * *The EVSE operator uploads the charge data (using Charge Detail 
+ * *The EVSE operator uploads the charge data (using Charge Detail
    Records) to the CH.*
- * *This charge data is then routed by the CH towards partner (A) using 
+ * *This charge data is then routed by the CH towards partner (A) using
    OCHP.*
- * Partner (A) pays the roaming partner for the charging action done by 
+ * Partner (A) pays the roaming partner for the charging action done by
    its customer.
  * Partner (A) bills its customer.
 
@@ -404,66 +404,66 @@ in scope of OCHP):
 
 ## Functional principles of an EV Clearing House
 
-As an intermediate between two independent roaming partners, a clearing 
-house serves to simplify and unify the data connection. There are few 
-main principles, the business logic of a clearing house for electric 
+As an intermediate between two independent roaming partners, a clearing
+house serves to simplify and unify the data connection. There are few
+main principles, the business logic of a clearing house for electric
 mobility should follow. Those basic rules are:
 
- * *Transparency* The existence of a clearing house should be 
-   completely transparent for the EV user. The roaming connection 
-   between an operator and a provider may or may not be routed through 
+ * *Transparency* The existence of a clearing house should be
+   completely transparent for the EV user. The roaming connection
+   between an operator and a provider may or may not be routed through
    a clearing house.
- * *Independence* Roaming connections between two roaming partners and 
-   their business models or tariffs should not be influenced by the 
+ * *Independence* Roaming connections between two roaming partners and
+   their business models or tariffs should not be influenced by the
    logic of the clearing house.
- * *Anonymity*    The clearing house should require as little private 
+ * *Anonymity*    The clearing house should require as little private
    user data as possible.
 
-OCHP supports those basic principles and aims to be capable to any 
+OCHP supports those basic principles and aims to be capable to any
 business model following them.
 
 
 
 ## OCHP direct Extension
 
-Starting with Protocol Version 1.3, OCHP offers the possibility to 
-open a _direct_ communication between two roaming partners. The 
+Starting with Protocol Version 1.3, OCHP offers the possibility to
+open a _direct_ communication between two roaming partners. The
 following figure illustrates the additional data path.
 
 ![Figure OCHP direct Basic Overview](media/OCHPdirectBasicOverview.png "OCHP direct Basic Overview")
 
-The direct communication between operators and providers allows the 
-implementation of fundamental new use cases between two roaming 
+The direct communication between operators and providers allows the
+implementation of fundamental new use cases between two roaming
 partners. Those use cases are:
 
 #### Basic use cases
- * **Remote Start:** A user starts a charging process at an operator‘s 
-   charge pole by using a provider‘s app. They are starting the process 
+ * **Remote Start:** A user starts a charging process at an operator‘s
+   charge pole by using a provider‘s app. They are starting the process
    from a – of the operator's point of view – remote service.
- * **Remote Stop:** A user stops a charging process at an operator‘s 
+ * **Remote Stop:** A user stops a charging process at an operator‘s
    charge pole by using a provider‘s app (that was remotely started).
- * **Live Info:** A user requests information about a charging process 
-   at an operator’s charge pole by using a provider’s app (from which 
+ * **Live Info:** A user requests information about a charging process
+   at an operator’s charge pole by using a provider’s app (from which
    the process was started).
 
 #### Advanced use cases
- * **Charge Event:** A user gets informed by a provider’s app about 
-   status changes of a charging process at an operator’s charge pole, 
+ * **Charge Event:** A user gets informed by a provider’s app about
+   status changes of a charging process at an operator’s charge pole,
    even if it wasn't started remotely.
- * **Remote Control:** A user controls a charging process at an 
-   operator‘s charge pole that was not remotely started by using a 
+ * **Remote Control:** A user controls a charging process at an
+   operator‘s charge pole that was not remotely started by using a
    provider‘s app.
- * **Remote Action:** A user triggers advanced and not charging process 
+ * **Remote Action:** A user triggers advanced and not charging process
    related actions at a charge point or charging station of an operator.
 
-The _basic use cases_ require the operator to act as a server in 
+The _basic use cases_ require the operator to act as a server in
 order to receive information and commands from the provider. The
 _advanced use cases_ require also the provider to act as a server.
 
 
 ### Definition of OCHP direct
 
-Being an extension to the pure OCHP, the messages and data types used 
+Being an extension to the pure OCHP, the messages and data types used
 for OCHP direct are defined in a [seperated document](OCHP-direct.md).
 Within the current document, only the extension to OCHP is described.
 The complete description of the functionality and implementation of
@@ -479,11 +479,11 @@ _OCHP direct_ can be found in it's seperate documentation.
 The interfaces between the system of the Clearing House and systems of
 the different partners consist of the four following components:
 
- * Exchange of Authorisation Data (Roaming Authorisations, 
+ * Exchange of Authorisation Data (Roaming Authorisations,
    RoamingAuthorisationInfo)
- * Exchange of Charge Data, the raw billing data (Charge Detail 
+ * Exchange of Charge Data, the raw billing data (Charge Detail
    Records, CDRInfo)
- * Exchange of Charge Point Information (Static POI data, 
+ * Exchange of Charge Point Information (Static POI data,
    ChargePointInfo)
  * Live Authorization Requests (Single-Token-Requests)
 
@@ -549,33 +549,33 @@ roaming list can be done in the following way:
 
 ## Exchange Charge Data
 
-The exchange of charge data is be done by sending records containing 
-all billing information from the EVSE-Operator to corresponding the 
-EVSP. The data set is called Charge Detail Record (CDR). Each CDR 
-contains a status value that reflects the processing state of the 
-record within the clearing house roaming connection. The status must 
-not be set directly by the roaming partners' systems. The figure in the 
+The exchange of charge data is be done by sending records containing
+all billing information from the EVSE-Operator to corresponding the
+EVSP. The data set is called Charge Detail Record (CDR). Each CDR
+contains a status value that reflects the processing state of the
+record within the clearing house roaming connection. The status must
+not be set directly by the roaming partners' systems. The figure in the
 next section illustrates the status flow for each CDR.
 
 ##### CDR Validation Process
-In bilateral agreed intervals, the EVSE-Operator or CDR-"Originator" 
-sends all relevant CDRs to the Clearing House. A basic plausibility 
-check is performed by the Clearing House and determines if the CDRs can 
-be accepted. Implausible CDRs will directly be sent back to the 
-CDR-"Originator" and can be adjusted. A corrected version of the CDR 
-can again be uploaded to the Clearing House with the next call. Already 
-uploaded CDRs will have the status *new* set by the Clearing House. 
-Plausible CDRs will be marked as *accepted* and sent to the EV 
+In bilateral agreed intervals, the EVSE-Operator or CDR-"Originator"
+sends all relevant CDRs to the Clearing House. A basic plausibility
+check is performed by the Clearing House and determines if the CDRs can
+be accepted. Implausible CDRs will directly be sent back to the
+CDR-"Originator" and can be adjusted. A corrected version of the CDR
+can again be uploaded to the Clearing House with the next call. Already
+uploaded CDRs will have the status *new* set by the Clearing House.
+Plausible CDRs will be marked as *accepted* and sent to the EV
 Service Provider or CDR-"Owner" for approval.
-The CDR-"Owner" downloads in bilateral agreed intervals the list of 
-CDRs from all providers. After a internal validation check in the 
-backend, the EVSP uploads a list of approved and declined CDRs to the 
-Clearing House. Approved CDRs will be marked as such and their status 
-is set to *approved*. These CDRs will then be archived and are not 
-available for download any more. Declined CDRs will be marked as 
-*owner-declined*, an issue will be filed and the Clearing House will 
-try to solve the issue. Upon manual revision the CDRs will be either 
-marked as *approved* or *rejected* to be archived in the system. CDRs 
+The CDR-"Owner" downloads in bilateral agreed intervals the list of
+CDRs from all providers. After a internal validation check in the
+backend, the EVSP uploads a list of approved and declined CDRs to the
+Clearing House. Approved CDRs will be marked as such and their status
+is set to *approved*. These CDRs will then be archived and are not
+available for download any more. Declined CDRs will be marked as
+*owner-declined*, an issue will be filed and the Clearing House will
+try to solve the issue. Upon manual revision the CDRs will be either
+marked as *approved* or *rejected* to be archived in the system. CDRs
 in status *owner-declined* are not available for download.
 
 ![Figure Status flow for CDRs](media/CDRvalidation.png "Status flow for CDRs")
@@ -647,15 +647,15 @@ way:
 
 ## Live Request for a single authorization
 
-Live requests are sent from the EVSE-Operator backend to the clearing 
-house in the event that the local repository of authorization records 
-was not synchronized from the clearing house. The figure illustrates 
-the steps during a charging session that is authorised live by the 
-clearing house. During the authorisation for the start of the process 
-the operator backend is requesting the clearing house via OCHP. The 
-response contains the authorisation or rejection and a transaction ID. 
-For the end of the charging process the operator backend is able to 
-authorise the same token. For the later exchanged CDR the transaction 
+Live requests are sent from the EVSE-Operator backend to the clearing
+house in the event that the local repository of authorization records
+was not synchronized from the clearing house. The figure illustrates
+the steps during a charging session that is authorised live by the
+clearing house. During the authorisation for the start of the process
+the operator backend is requesting the clearing house via OCHP. The
+response contains the authorisation or rejection and a transaction ID.
+For the end of the charging process the operator backend is able to
+authorise the same token. For the later exchanged CDR the transaction
 ID of the single authorisation is to be used.
 
 ![Figure Message exchange for live authorisation requests for a single charging process.](media/SingleAuthorisation.png "Message exchange for live authorisation requests for a single charging process.")
@@ -664,9 +664,9 @@ ID of the single authorisation is to be used.
 ### Request the CHS to authorize one single token for roaming
 
 A CMS may request the Clearing House to authorize one single token for a
-charging session. The authorization is requested for a single EVSE-ID 
-and a single token. Optional a ID for the single transaction can be 
-added to track the issued CDR in the requester's numbering scheme. The 
+charging session. The authorization is requested for a single EVSE-ID
+and a single token. Optional a ID for the single transaction can be
+added to track the issued CDR in the requester's numbering scheme. The
 request for authorization is done in the following
 way:
 
@@ -678,20 +678,20 @@ way:
 
 ## Live Status Interface
 
-As additional status information to the static POI data of the Charge 
-Point Information, the Live Status Interface builds upon that. Thus, 
-live status data does only contain the status information of each EVSE 
-without further payload data. A additional time to live can be 
-specified until the status information may be considered as actual. 
-Overdue status information will be dropped by the CHS. The Navigation 
-System Providers are asked to request the actual status for stations 
+As additional status information to the static POI data of the Charge
+Point Information, the Live Status Interface builds upon that. Thus,
+live status data does only contain the status information of each EVSE
+without further payload data. A additional time to live can be
+specified until the status information may be considered as actual.
+Overdue status information will be dropped by the CHS. The Navigation
+System Providers are asked to request the actual status for stations
 without valid status information.
-The current major and minor status of each EVSE shall be set following 
+The current major and minor status of each EVSE shall be set following
 the decision flow in figure below.
 
 ![Figure Status decision flow for EVSEs.](media/LiveStatusDecision.png "Status decision flow for EVSEs.")
 
-Table shows the relationship of the major and minor status values. 
+Table shows the relationship of the major and minor status values.
 Other combinations of the status values are must not be set.
 
 Major Status  | Minor Status | Description
@@ -723,8 +723,8 @@ A CMS may update the current live status of individual charging stations in the 
 
 ### Download global live status information from the CHS
 
-A NSP may receive the current live status of individual charging 
-stations from the Clearing House. The live status download is done in 
+A NSP may receive the current live status of individual charging
+stations from the Clearing House. The live status download is done in
 the following way:
 
  * NSP sends the GetStatus.req PDU.
@@ -913,7 +913,7 @@ chargePointInfoArray  |  ChargePointInfo  |  +      |  This contains the charge 
 
 ### SetChargePointList.conf
 
-This contains the field definition of the SetChargePointList.conf sent 
+This contains the field definition of the SetChargePointList.conf sent
 by the CHS as response to the SetChargePointList.req.
 
  Field Name             |  Field Type       |  Card.  |  Description
@@ -924,7 +924,7 @@ refusedChargePointInfo  |  ChargePointInfo  |  ?      |  This contains the charg
 
 ### GetChargePointListUpdates.req
 
-This contains the field definition of the GetChargePointListUpdates.req 
+This contains the field definition of the GetChargePointListUpdates.req
 sent by a partner's system to the CHS.
 
  Field Name   |  Field Type    |  Card.  |  Description
@@ -934,7 +934,7 @@ lastUpdate    |  DateTimeType  |  1      |  Date and time since the last success
 
 ### GetChargePointListUpdates.conf
 
-This contains the field definition of the GetChargePointListUpdates.conf 
+This contains the field definition of the GetChargePointListUpdates.conf
 sent by the CHS as response to the GetChargePointListUpdates.req.
 
  Field Name           |  Field Type       |  Card.  |  Description
@@ -945,7 +945,7 @@ chargePointInfoArray  |  ChargePointInfo  |  *      |  This contains the charge 
 
 ### UpdateChargePointList.req
 
-This contains the field definition of the UpdateChargePointList.req 
+This contains the field definition of the UpdateChargePointList.req
 sent by a partner's system to the CHS.
 
  Field Name           |  Field Type       |  Card.  |  Description
@@ -955,7 +955,7 @@ chargePointInfoArray  |  ChargePointInfo  |  +      |  This contains the charge 
 
 ### UpdateChargePointList.conf
 
-This contains the field definition of the UpdateChargePointList.conf 
+This contains the field definition of the UpdateChargePointList.conf
 sent by the CHS as response to the SetChargePointList.req.
 
  Field Name             |  Field Type       |  Card.  |  Description
@@ -971,10 +971,10 @@ refusedChargePointInfo  |  ChargePointInfo  |  ?      |  This contains the charg
 
 ### RequestLiveRoamingAuthorisation.req
 
-This contains the field definition of the 
-RequestLiveRoamingAuthorisation.req sent by CMS to the CHS. A 
-authorisation will always generate a unique cdrId to track the 
-transaction. This ID can be generated by the operator or will be issued 
+This contains the field definition of the
+RequestLiveRoamingAuthorisation.req sent by CMS to the CHS. A
+authorisation will always generate a unique cdrId to track the
+transaction. This ID can be generated by the operator or will be issued
 by the clearing house.
 
  Field Name   |  Field Type  |  Card.  |  Description
@@ -985,8 +985,8 @@ evseId        |  EvseId      |  1      |  Unique identifier for every EVSE follo
 
 ### RequestLiveRoamingAuthorisation.conf
 
-This contains the field definition of the 
-RequestLiveRoamingAuthorisation.conf sent by the CHS as response to the 
+This contains the field definition of the
+RequestLiveRoamingAuthorisation.conf sent by the CHS as response to the
 RequestLiveRoamingAuthorisation.req.
 
  Field Name               |  Field Type                |  Card.  |  Description
@@ -1072,8 +1072,8 @@ Result and error codes for the class Result as return value for method calls.
 
  Value          |  Description
 :---------------|:-------------
- ok             | Data accepted and processed; 
- partly         | Only part of the data was accepted; 
+ ok             | Data accepted and processed;
+ partly         | Only part of the data was accepted;
  not-authorized | Wrong username and/or password.
  invalid-id     | One or more ID (EVSE/Contract) were not valid for this user.
  server         | Internal server error.
@@ -1102,12 +1102,12 @@ characters.
 
 ### LocalDateTimeType
 
-Format is according to ISO8601 UTC + Offset. The field takes 25 
+Format is according to ISO8601 UTC + Offset. The field takes 25
 alphanumeric characters.
 
-Please note that this type does explicitly not take UTC times. All time 
-values need to be given in local time with a valid offset. A time value 
-with $+0000$ offset represents the Greenwich Mean Time and is 
+Please note that this type does explicitly not take UTC times. All time
+values need to be given in local time with a valid offset. A time value
+with $+0000$ offset represents the Greenwich Mean Time and is
 semantically not the same as UTC.
 
 ###### Example
@@ -1166,7 +1166,7 @@ An example for a valid EMAID therefore is `DE8AACA2B3C4D5N` or with dashes
 The following rules apply:
 
  * The Contract-ID must be interpreted case insensitive.
- * A hyphen ("-") can be used as separator in communication with 
+ * A hyphen ("-") can be used as separator in communication with
    users to allow better reading, spelling and typing. An example for such
    an illustration is `DE-8AA-CA2B3C4D5-N`. If the hyphenated representation
    is chosen, the separators must be set at all three places.
@@ -1184,7 +1184,7 @@ two zeros ("00") at the beginning of the Instance-part and the old
 check digit at position 14. A second check digit as referenced in this
 document may be calculated over the resulting ID and may be added on
 position 15.
-Example: The DIN-Contract-ID `DE-8AA-123A56-3` must be set as EMAID 
+Example: The DIN-Contract-ID `DE-8AA-123A56-3` must be set as EMAID
 `DE-8AA-00123A563-N`.
 
 ###### ID-Structure
@@ -1343,7 +1343,7 @@ while uploading, approving or declining CDRs.
  accepted        |  An uploaded CDR was accepted by the CHS as plausible.
  rejected        |  The checked CDR again rejected by the CHS and is to be archived.
  owner declined  |  The CDR was declined by the owner (EVSP).
- approved        |  The CDR was approved by the owner (EVSP). 
+ approved        |  The CDR was approved by the owner (EVSP).
 
 
 ### CDRInfo *class*
@@ -1428,9 +1428,9 @@ The following rules apply:
 EVSE-IDs as defined in DIN SPEC 91286 MAY be used by applying the
 following mapping:
 
- * The two digit country code "49" in Germany for geographic areas in 
+ * The two digit country code "49" in Germany for geographic areas in
    ITU-T E.164:11/2010 is mapped onto the ISO-3166-1 (Alpha-2-Code).
- * The three digit of spot operator ID is mapped 1:1 into the new 
+ * The three digit of spot operator ID is mapped 1:1 into the new
    alphanumeric scheme.
  * All digits are mapped 1:1 into the new alphanumeric scheme.
 
@@ -1440,27 +1440,27 @@ following mapping:
 
 ### evseImageUrlType *class*
 
-This class references images related to a EVSE in terms of a file name 
-or uri. According to the roaming connection between one EVSE Operator 
-and one or more Navigation Service Providers the hosting or file 
-exchange of image payload data has to be defined. The exchange of this 
-content data is out of scope of OCHP. However, the recommended setup is 
-a public available web server hosted and updated by the EVSE Operator. 
-Per charge point a unlimited number of images of each type is allowed. 
-Recommended are at least two images where one is a network or provider 
-logo and the second is a station photo. If two images of the same type 
+This class references images related to a EVSE in terms of a file name
+or uri. According to the roaming connection between one EVSE Operator
+and one or more Navigation Service Providers the hosting or file
+exchange of image payload data has to be defined. The exchange of this
+content data is out of scope of OCHP. However, the recommended setup is
+a public available web server hosted and updated by the EVSE Operator.
+Per charge point a unlimited number of images of each type is allowed.
+Recommended are at least two images where one is a network or provider
+logo and the second is a station photo. If two images of the same type
 are defined they should be displayed additionally, not optionally.
 
 ###### Photo Dimensions
-The recommended dimensions for all photos are minimum 800 pixels wide 
-and 600 pixels height. Thumbnail representations for photos should 
-always have the same orientation than the original with a size of 200 
+The recommended dimensions for all photos are minimum 800 pixels wide
+and 600 pixels height. Thumbnail representations for photos should
+always have the same orientation than the original with a size of 200
 to 200 pixels.
 
 ###### Logo Dimensions
-The recommended dimensions for logos are exactly 512 pixels wide and 
-512 pixels height. Thumbnail representations for logos should be 
-exactly 128 pixels in with and height. If not squared, thumbnails 
+The recommended dimensions for logos are exactly 512 pixels wide and
+512 pixels height. Thumbnail representations for logos should be
+exactly 128 pixels in with and height. If not squared, thumbnails
 should have the same orientation than the original.
 
  Field Name  |  Field Type   |  Card.  |  Description
@@ -1487,16 +1487,16 @@ The class of a EVSE image to obtain the correct usage in an user presentation. H
  entrancePhoto |  location entrance photo. Should show the car entrance to the location from street side
  otherPhoto    |  other related photo to be displayed with the stations detailed information view
  otherLogo     |  other related logo to be displayed with the stations detailed information view
- otherGraphic  |  other related graphic to be displayed with the stations detailed information view 
+ otherGraphic  |  other related graphic to be displayed with the stations detailed information view
 
 
 ### RelatedResourceType *class*
 
-This class defines a resource related to the charge point or charging 
-station. It is meant to be visited by the user with their web-browser 
-to receive further information or access further functionality. A 
-resource can have multiple classes to indicate a combination of 
-resources on one web site. A class should only be assigned if the user 
+This class defines a resource related to the charge point or charging
+station. It is meant to be visited by the user with their web-browser
+to receive further information or access further functionality. A
+resource can have multiple classes to indicate a combination of
+resources on one web site. A class should only be assigned if the user
 can find the described information right from the referenced page.
 
  Field Name  |  Field Type   |  Card.  |  Description
@@ -1610,9 +1610,9 @@ standard and format (socket/cable).
 
 ### RatingsType *class*
 
-This class defines the ratings of a charge point. The values can be 
-displayed to the user or used to calculate charge time forecasts. 
-Depending on the used plug type the effective available power might be 
+This class defines the ratings of a charge point. The values can be
+displayed to the user or used to calculate charge time forecasts.
+Depending on the used plug type the effective available power might be
 lower.
 
  Field Name       |  Field Type  |  Card.  |  Description
@@ -1636,7 +1636,7 @@ The authorisation and payment methods available at an EVSE for the EV user
  RfidMifareCls    |  Personal RFID token with roaming relation. (Mifare classic)
  RfidMifareDes    |  Personal RFID token with roaming relation. (Mifare Desfire)
  RfidCalypso      |  Personal RFID token with roaming relation. (Calypso)
- Iec15118         |  In-car access token as specified in IEC-15118. 
+ Iec15118         |  In-car access token as specified in IEC-15118.
  OchpDirectAuth   |  The EVSE can be accessed through a OCHP-direct capable provider app.
  OperatorAuth     |  The EVSE can be accessed through a direct online payment to the operator.
 
@@ -1644,8 +1644,8 @@ The authorisation and payment methods available at an EVSE for the EV user
 ### ChargePointStatusType *enum*
 
 This value represents the overall status of a charging point. Not to be
-confused with a live status (available, reserved, occupied, ... ) This 
-overall status should reflect situations which are valid over several 
+confused with a live status (available, reserved, occupied, ... ) This
+overall status should reflect situations which are valid over several
 days. The live status indicates shorter valid status.
 
  Value       |  Description
@@ -1654,7 +1654,7 @@ days. The live status indicates shorter valid status.
  Operative   |  charge point is in operation and can be used
  Inoperative |  charge point cannot be used due to maintenance, greater downtime, blocking construction works or other access restrictions (temporarily, will be operative in the future).
  Planned     |  planned charge point, will be operating soon
- Closed      |  discontinued charge point, will be deleted soon 
+ Closed      |  discontinued charge point, will be deleted soon
 
 
 ### ChargePointScheduleType *class*
@@ -1677,7 +1677,7 @@ Opening and access hours for the charge point.
 
  Field Name             |  Field Type             |  Card.  |  Description
 :-----------------------|:------------------------|:--------|:------------
- *Choice: one of two*   |                         |         | 
+ *Choice: one of two*   |                         |         |
   > regularHours        |  regularHoursType       |  *      |  Regular hours, weekday based. Should not be set for representing 24/7 as this is the most common case.
   > twentyfourseven     |  boolean                |  1      |  True to represent 24 hours per day and 7 days per week, except the given exceptions.
  exceptionalOpenings    |  exceptionalPeriodType  |  *      |  Exceptions for specified calendar dates, time-range based. Periods the station is operating/accessible. Additional to regular hours. May overlap regular rules.
@@ -1764,7 +1764,7 @@ Specifies one exceptional period for opening or access hours.
 
 ### GeneralLocationType *enum*
 
-Reflects the general type of the charge points location. May be used 
+Reflects the general type of the charge points location. May be used
 for user information.
 
  Value              |  Description
@@ -1836,20 +1836,20 @@ The following types are used in the live authorisation methods. For referencing 
 
 ### LiveAuthId *class*
 
-Unique ID for one live authorisation request to the clearing house. 
-Will be returned from a call to RequestLiveRoamingAuthorisation and 
-must be sent back to the clearing house in the corresponding CDRInfo 
+Unique ID for one live authorisation request to the clearing house.
+Will be returned from a call to RequestLiveRoamingAuthorisation and
+must be sent back to the clearing house in the corresponding CDRInfo
 item.
 
  Field Name  |  Field Type  |  Card.  |  Description
 :------------|:-------------|:--------|:------------
  liveAuthId  |  string(15)  |  1      |  Unique ID for one live authorisation request to the clearing house.
 
-Additionally to the internal session ID that has to be issued by the 
-operator to uniquely identify the charging process in the CDR, the 
-*liveAuthId* is identifying the live authorisation session in the 
-clearing house. Therefore the *liveAuthId* has be referenced in the CDR 
-to close this session. The figure below illustrates the full exchange 
+Additionally to the internal session ID that has to be issued by the
+operator to uniquely identify the charging process in the CDR, the
+*liveAuthId* is identifying the live authorisation session in the
+clearing house. Therefore the *liveAuthId* has be referenced in the CDR
+to close this session. The figure below illustrates the full exchange
 path of of both IDs.
 
 ![Figure ID handling for the live authorisation request](media/SingleAuthorisation-2.png "ID handling for the live authorisation request")
@@ -2001,7 +2001,7 @@ This will remove the optional separators from a valid Contract-ID.
 These are different possibilities for syntactically correct
 Contract-IDs.
 
- ID-Example           | Description 
+ ID-Example           | Description
 :---------------------|:------------
 `DE-8AC-C12E456L89-Y` | Separators, Upper Case, Check Digit
 `DE-8AC-C12E456L89`   | Separators, Upper Case
@@ -2025,189 +2025,189 @@ Contract-IDs.
 
 ### Connector Types
 
- OCHP-Value            | OCPP-Value     | OCPP-Description                 
+ OCHP-Value            | OCPP-Value     | OCPP-Description
 -----------------------|----------------|----------------------------------
- n/a                   | Avcon          | Avcon connector                  
- *multiple choices*    | Domestic       | Domestic plug                    
- n/a                   | IEC60309_2P    | 60309 Industrial 2P (DC)         
- n/a                   | IEC60309_3PE   | 60309 Industrial 3P + E (AC)     
- *multiple choices*    | IEC60309_3PEN  | 60309 Industrial 3P + E + N (AC) 
- IEC-60309-2-single-16 | IEC60309_PNE   | 60309 Industrial P + N + E (AC)  
- IEC-62196-T1          | IEC62196_1     | Type 1 Yazaki                    
- IEC-62196-T2          | IEC62196_2     | Type 2 Mennekes                  
- IEC-62196-T3C         | IEC62196_3     | Type 3 Scame                     
- n/a                   | LPI            | Large Paddle Inductive           
- n/a                   | NEMA5_20       |                                  
- IEC-62196-T1          | SAEJ1772       | Yazaki                           
- n/a                   | SPI            | Small Paddle Inductive           
- Chademo               | Tepco          | CHAdeMO fast charging            
- *multiple choices*    | Tesla          | Tesla connector                  
- n/a                   | Unspecified    |                                  
- IEC-62196-T1-COMBO    | n/a            | Not distinguished                
- IEC-62196-T2-COMBO    | n/a            | Not distinguished                
- IEC-62196-T3A         | n/a            | Not distinguished                
- DOMESTIC-A            | n/a            | Not distinguished                
- DOMESTIC-B            | n/a            | Not distinguished                
- DOMESTIC-C            | n/a            | Not distinguished                
- DOMESTIC-D            | n/a            | Not distinguished                
- DOMESTIC-E            | n/a            | Not distinguished                
- DOMESTIC-F            | n/a            | Not distinguished                
- DOMESTIC-G            | n/a            | Not distinguished                
- DOMESTIC-H            | n/a            | Not distinguished                
- DOMESTIC-I            | n/a            | Not distinguished                
- DOMESTIC-J            | n/a            | Not distinguished                
- DOMESTIC-K            | n/a            | Not distinguished                
- DOMESTIC-L            | n/a            | Not distinguished                
- TESLA-R               | n/a            | Not distinguished                
- TESLA-S               | n/a            | Not distinguished                
- IEC-60309-2-three-16  | n/a            | Not distinguished                
- IEC-60309-2-three-32  | n/a            | Not distinguished                
- IEC-60309-2-three-64  | n/a            | Not distinguished                
+ n/a                   | Avcon          | Avcon connector
+ *multiple choices*    | Domestic       | Domestic plug
+ n/a                   | IEC60309_2P    | 60309 Industrial 2P (DC)
+ n/a                   | IEC60309_3PE   | 60309 Industrial 3P + E (AC)
+ *multiple choices*    | IEC60309_3PEN  | 60309 Industrial 3P + E + N (AC)
+ IEC-60309-2-single-16 | IEC60309_PNE   | 60309 Industrial P + N + E (AC)
+ IEC-62196-T1          | IEC62196_1     | Type 1 Yazaki
+ IEC-62196-T2          | IEC62196_2     | Type 2 Mennekes
+ IEC-62196-T3C         | IEC62196_3     | Type 3 Scame
+ n/a                   | LPI            | Large Paddle Inductive
+ n/a                   | NEMA5_20       |
+ IEC-62196-T1          | SAEJ1772       | Yazaki
+ n/a                   | SPI            | Small Paddle Inductive
+ Chademo               | Tepco          | CHAdeMO fast charging
+ *multiple choices*    | Tesla          | Tesla connector
+ n/a                   | Unspecified    |
+ IEC-62196-T1-COMBO    | n/a            | Not distinguished
+ IEC-62196-T2-COMBO    | n/a            | Not distinguished
+ IEC-62196-T3A         | n/a            | Not distinguished
+ DOMESTIC-A            | n/a            | Not distinguished
+ DOMESTIC-B            | n/a            | Not distinguished
+ DOMESTIC-C            | n/a            | Not distinguished
+ DOMESTIC-D            | n/a            | Not distinguished
+ DOMESTIC-E            | n/a            | Not distinguished
+ DOMESTIC-F            | n/a            | Not distinguished
+ DOMESTIC-G            | n/a            | Not distinguished
+ DOMESTIC-H            | n/a            | Not distinguished
+ DOMESTIC-I            | n/a            | Not distinguished
+ DOMESTIC-J            | n/a            | Not distinguished
+ DOMESTIC-K            | n/a            | Not distinguished
+ DOMESTIC-L            | n/a            | Not distinguished
+ TESLA-R               | n/a            | Not distinguished
+ TESLA-S               | n/a            | Not distinguished
+ IEC-60309-2-three-16  | n/a            | Not distinguished
+ IEC-60309-2-three-32  | n/a            | Not distinguished
+ IEC-60309-2-three-64  | n/a            | Not distinguished
 
 
 
 ## EVSE Infrastructure Model
 
-The interface described in this protocol is defined on EVSE level. 
-However, there are more data structure layers to be considered in the 
-connected systems. To allow for correct mapping to other data 
+The interface described in this protocol is defined on EVSE level.
+However, there are more data structure layers to be considered in the
+connected systems. To allow for correct mapping to other data
 structures the following reference is provided.
-Visualisations of different charging stations are given in the section 
+Visualisations of different charging stations are given in the section
 below.
 
 
 ### Data Model Structure
 
-The reference structure for charge point data is shown in the figure 
-below. This hierarchical model maps the entities connector, charge 
-point (or EVSE), charging station and EVSE Operator in four levels. The 
-physical charge pole as a common casing for one multiple charge points 
-is explicitly excluded from the model. The physical combination of 
-multiple charge points in one pole is not affecting the logical 
-relation of those. However, the attributes of the EVSE level may 
+The reference structure for charge point data is shown in the figure
+below. This hierarchical model maps the entities connector, charge
+point (or EVSE), charging station and EVSE Operator in four levels. The
+physical charge pole as a common casing for one multiple charge points
+is explicitly excluded from the model. The physical combination of
+multiple charge points in one pole is not affecting the logical
+relation of those. However, the attributes of the EVSE level may
 indicate to its existence when two EVSEs share a common user interface.
 
 ![Figure EVSE Data Model Structure](media/EVSEstructure.png "EVSE Data Model Structure")
 
-The architecture of the data model is based on the logical relations of 
-the entities with a focus on the use cases for the EV user. The 
-electrical connection of charge points, for example, is not influencing 
+The architecture of the data model is based on the logical relations of
+the entities with a focus on the use cases for the EV user. The
+electrical connection of charge points, for example, is not influencing
 the data structure.
-Each entity may have certain attributes attached. For the mapping to 
-the OCHP data types and messages, the common attributes of parent 
-entities are attached to the EVSE level. This results in repetitive 
+Each entity may have certain attributes attached. For the mapping to
+the OCHP data types and messages, the common attributes of parent
+entities are attached to the EVSE level. This results in repetitive
 data but allows maximum in flexibility.
-Most noteworthy consequences from this data structure are the fact, 
-that all EVSEs in one station should be managed by the same operator 
-and that all charge points of one station should physically be situated 
-in next to each other. It is also necessary that all Navigation Service 
-Provider backends and data models are able to assign multiple 
+Most noteworthy consequences from this data structure are the fact,
+that all EVSEs in one station should be managed by the same operator
+and that all charge points of one station should physically be situated
+in next to each other. It is also necessary that all Navigation Service
+Provider backends and data models are able to assign multiple
 connectors to one charge point.
-Depending on the use case, different inheritance and aggregation of 
-attributes is possible or may be necessary. For example requires the 
-search for a available charging station to find one single available 
-EVSE, what is relatively simple with the flat OCHP data model. If in 
-another use case the search for a station with at least two available 
-EVSEs is required, a aggregation of the data to the station level might 
+Depending on the use case, different inheritance and aggregation of
+attributes is possible or may be necessary. For example requires the
+search for a available charging station to find one single available
+EVSE, what is relatively simple with the flat OCHP data model. If in
+another use case the search for a station with at least two available
+EVSEs is required, a aggregation of the data to the station level might
 be useful.
 Please note that other layers might exist or be added in the future.
 
 
 ### Examples
 
-In order to visualize the different possible situations of supply 
-equipment, this section contains some examples. Of course not all 
-possible cases can be reflected. As OCHP is not modelling the full data 
-structure but only the EVSE level, the aggregation to the higher and 
-lower levels has to be performed in the connected systems. This allows 
+In order to visualize the different possible situations of supply
+equipment, this section contains some examples. Of course not all
+possible cases can be reflected. As OCHP is not modelling the full data
+structure but only the EVSE level, the aggregation to the higher and
+lower levels has to be performed in the connected systems. This allows
 high flexibility in the different data models.
 The used symbols in the examples are:
 
 ![Figure Symbols used in example figures](media/EVSEstructureLegend.png "Symbols used in example figures")
 
- * **User Interface** is used by the EV User to interact with the 
-   charging station in terms of authorisation, authentication, payment 
-   or charging process controlling purpose. Common examples for a user 
-   interface is a RFID card reader and a display. Also a keypad and 
+ * **User Interface** is used by the EV User to interact with the
+   charging station in terms of authorisation, authentication, payment
+   or charging process controlling purpose. Common examples for a user
+   interface is a RFID card reader and a display. Also a keypad and
    direct payment methods are possible additions.
- * **Physical Charge Pole** is the case mounted on the location. In the 
-   scope of this protocol there is no distinction between wall-mounted 
-   and stand-alone charge poles. Even other concepts are possible but 
+ * **Physical Charge Pole** is the case mounted on the location. In the
+   scope of this protocol there is no distinction between wall-mounted
+   and stand-alone charge poles. Even other concepts are possible but
    do not interfere the data model.
- * **EVSE** is one charge point that can independently be used for EV 
-   charging. It may host one or multiple connectors which can be used 
+ * **EVSE** is one charge point that can independently be used for EV
+   charging. It may host one or multiple connectors which can be used
    exclusively.
- * **Connector** is the physical power outlet the electric vehicle is 
+ * **Connector** is the physical power outlet the electric vehicle is
    connected to. May also be inductive.
- * **Parking Spot** offers space for exactly one car. Depending on the 
-   location and physical constraints like the cable, it is possible to 
+ * **Parking Spot** offers space for exactly one car. Depending on the
+   location and physical constraints like the cable, it is possible to
    assign one parking spot to multiple charge points.
- * **Reserved Parking Spot** is for a dedicated user group only. Common 
+ * **Reserved Parking Spot** is for a dedicated user group only. Common
    examples are company fleet cars or car sharing cars.
- * **Pool Grouping Boundaries** illustrate the virtual grouping of 
+ * **Pool Grouping Boundaries** illustrate the virtual grouping of
    multiple EVSEs to one pool.
 
 
 ##### Example One
-is showing one charging station (at one postal address) which itself 
-consists of one physical charge pole. This pole holds two EVSEs or 
-charge points for simultaneous use. Each of those EVSEs offers two 
-different connectors of different type. Those can be used exclusively 
-only. The two EVSEs can be accessed through a mutual user interface. 
+is showing one charging station (at one postal address) which itself
+consists of one physical charge pole. This pole holds two EVSEs or
+charge points for simultaneous use. Each of those EVSEs offers two
+different connectors of different type. Those can be used exclusively
+only. The two EVSEs can be accessed through a mutual user interface.
 For each EVSE one single parking spot is reserved.
-This example represents the most common case for public charging 
-stations. The charging station consists of one single charge pole only. 
-Therefore there is a risk to confuse the terms pole and station. The 
+This example represents the most common case for public charging
+stations. The charging station consists of one single charge pole only.
+Therefore there is a risk to confuse the terms pole and station. The
 following examples will make the difference clear.
 
 ![Figure Example 1](media/EVSEstructureExamples--1.png "Example 1")
 
 
 ##### Example Two
-is showing two charging stations (at two different postal addresses) of 
-which each consists of one physical charge pole. Each of those poles 
-holds two EVSEs or charge points for simultaneous use. Each of those 
-EVSEs offers two different connectors of different type. Those can be 
-used exclusively only. The two EVSEs can be accessed through a mutual 
+is showing two charging stations (at two different postal addresses) of
+which each consists of one physical charge pole. Each of those poles
+holds two EVSEs or charge points for simultaneous use. Each of those
+EVSEs offers two different connectors of different type. Those can be
+used exclusively only. The two EVSEs can be accessed through a mutual
 user interface. For each EVSE one single parking spot is reserved.
-In fact, the two charging stations in this example are just exactly two 
-times example one. Each of the stations is placed at a individual 
+In fact, the two charging stations in this example are just exactly two
+times example one. Each of the stations is placed at a individual
 location not related to each other.
 
 ![Figure Example 2](media/EVSEstructureExamples--2.png "Example 2")
 
 
 ##### Example Three
-is showing one charging station (at one postal address) which consists 
-of two physical charge poles. Each of those poles holds two EVSEs or 
-charge points for simultaneous use. Each of those EVSEs offers two 
-different connectors of different type. Those can be used exclusively 
-only. The two EVSEs can be accessed through a mutual user interface. 
-For each EVSE one single parking spot is reserved. The charging station 
-can be utilized by four cars simultaneously as it has four EVSEs and 
+is showing one charging station (at one postal address) which consists
+of two physical charge poles. Each of those poles holds two EVSEs or
+charge points for simultaneous use. Each of those EVSEs offers two
+different connectors of different type. Those can be used exclusively
+only. The two EVSEs can be accessed through a mutual user interface.
+For each EVSE one single parking spot is reserved. The charging station
+can be utilized by four cars simultaneously as it has four EVSEs and
 hence has four parking spots in total.
-In contrast to example two, both charge poles are located close to each 
-other at the same postal address. Therefore they are communicated as 
-one single charging station to the user. Other circumstances like a 
-common electrical connection or a mutual controlling and communication 
+In contrast to example two, both charge poles are located close to each
+other at the same postal address. Therefore they are communicated as
+one single charging station to the user. Other circumstances like a
+common electrical connection or a mutual controlling and communication
 unit is not decisive for this combination.
 
 ![Figure Example 3](media/EVSEstructureExamples--3.png "Example 3")
 
 
 ##### Example Four
-is showing one charging station (at one address) which consists of four 
-physical charge poles. Each of those poles holds one EVSE or charge 
-point for simultaneous use. Each of those EVSEs offers two different 
-connectors of different type. Those can be used exclusively only. All 
-four EVSEs of the four charge poles can be accessed through a mutual 
-user interface, installed in a separate pole at the charging station. 
-For each EVSE one single parking spot is reserved. The charging station 
-can be utilized by four cars simultaneously as it has four EVSEs and 
+is showing one charging station (at one address) which consists of four
+physical charge poles. Each of those poles holds one EVSE or charge
+point for simultaneous use. Each of those EVSEs offers two different
+connectors of different type. Those can be used exclusively only. All
+four EVSEs of the four charge poles can be accessed through a mutual
+user interface, installed in a separate pole at the charging station.
+For each EVSE one single parking spot is reserved. The charging station
+can be utilized by four cars simultaneously as it has four EVSEs and
 hence has four parking spots in total.
-This example is similar to the previous example three. This one 
-charging station may be communicated to the user under one single name. 
-In the attributes for the station the user will find the number of 
+This example is similar to the previous example three. This one
+charging station may be communicated to the user under one single name.
+In the attributes for the station the user will find the number of
 charge points which is the same as in example three.
 
 ![Figure Example 4](media/EVSEstructureExamples--4.png "Example 4")
@@ -2217,46 +2217,46 @@ charge points which is the same as in example three.
 
 ## Charge Point Information Filtering
 
-The Navigation Service Provider displays charging point information to 
-the EV User. Usually not all charge points are relevant for every user. 
-The most common case is to display only compatible stations to the car 
-that have at least one available charge point. To gain a mutual 
-understanding of the different filtering steps between the EVSE 
+The Navigation Service Provider displays charging point information to
+the EV User. Usually not all charge points are relevant for every user.
+The most common case is to display only compatible stations to the car
+that have at least one available charge point. To gain a mutual
+understanding of the different filtering steps between the EVSE
 Operator and the NSP, the following description is provided.
-Every charge point is represented by a static data set 
-(*ChargePointInfo*) and additional dynamic data (*EvseStatusType*). The 
-filtering for compatible charge points close to the current location of 
-the EV user is performed on the static data which may be stored locally 
-on the navigation device. In a second step the result may be filtered 
+Every charge point is represented by a static data set
+(*ChargePointInfo*) and additional dynamic data (*EvseStatusType*). The
+filtering for compatible charge points close to the current location of
+the EV user is performed on the static data which may be stored locally
+on the navigation device. In a second step the result may be filtered
 for current availability.
 
 ##### Preface
-Based on the characteristics of the user's car and other preferences as 
-well as the current location, a set of possible charge points can be 
-determined. Based on such a set the further filtering for currently 
-available charge points is described in the figure below. 
+Based on the characteristics of the user's car and other preferences as
+well as the current location, a set of possible charge points can be
+determined. Based on such a set the further filtering for currently
+available charge points is described in the figure below.
 The six steps are:
 
- * **A** All charge points that are not operative for various 
-   reasons are to be removed from the set. (status not equal 
+ * **A** All charge points that are not operative for various
+   reasons are to be removed from the set. (status not equal
    *Operative*)
- * **B** Charge points that have no regular operating hours at the 
-   current moment are to be removed from the set. (*now* not in 
+ * **B** Charge points that have no regular operating hours at the
+   current moment are to be removed from the set. (*now* not in
    operatingTimes.regularHours)
- * **C** Charge points that have a exceptional closing at the 
-   current moment are to be removed from the set. (*now* in 
+ * **C** Charge points that have a exceptional closing at the
+   current moment are to be removed from the set. (*now* in
    operatingTimes.exceptionalClosings)
- * **D** Those charge points from step *B* that have exceptional 
-   openings have to be re-added to the set. (*now* in 
+ * **D** Those charge points from step *B* that have exceptional
+   openings have to be re-added to the set. (*now* in
    operatingTimes.exceptionalOpenings)
- * **E** All other charge points that remain in the set and the 
-   charge points from step *D* are considered operative and 
-   accessible at the current moment and may be tested for 
+ * **E** All other charge points that remain in the set and the
+   charge points from step *D* are considered operative and
+   accessible at the current moment and may be tested for
    availability.
- * **F** Charge points with a live status value other than 
+ * **F** Charge points with a live status value other than
    *Available* are to be removed. (liveStatus not eqal *Available*)
 
-The remaining charge points in the data set are operative and available 
+The remaining charge points in the data set are operative and available
 at the current moment and can be displayed to the EV User.
 
 ![Figure Filtering for available charge points](media/POIavailabilityFilter.png "Filtering for available charge points")
