@@ -43,14 +43,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     - [Conventions](#conventions)
 - [Introduction](#introduction)
     - [Use Cases of OCHP direct](#use-cases-of-ochp-direct)
-            - [Basic use cases](#basic-use-cases)
-            - [Advanced use cases](#advanced-use-cases)
+        - [Basic use cases](#basic-use-cases)
+        - [Advanced use cases](#advanced-use-cases)
     - [Basic Principles of OCHP direct](#basic-principles-of-ochp-direct)
         - [Trust and authorisation structure](#trust-and-authorisation-structure)
-            - [The usual situation without OCHP direct](#the-usual-situation-without-ochp-direct)
-            - [The situation with OCHP direct](#the-situation-with-ochp-direct)
-            - [Security of the OCHP direct interface](#security-of-the-ochp-direct-interface)
-            - [Identification token distribution](#identification-token-distribution)
 - [Partner-to-CHS interface description (Extension to OCHP)](#partner-to-chs-interface-description-extension-to-ochp)
     - [Exchange of interface definition _Basic_](#exchange-of-interface-definition-basic)
         - [Set own interface definition in the CHS](#set-own-interface-definition-in-the-chs)
@@ -99,6 +95,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - [Binding to Transport Protocol](#binding-to-transport-protocol)
     - [OCHP direct over SOAP](#ochp-direct-over-soap)
     - [Partner Identification](#partner-identification)
+- [Combining OCHP​_direct_ with classic OCHP](#combining-ochp-direct-with-classic-ochp)
+    - [CDRs for OCHP​_direct_ sessions](#cdrs-for-OCHP-direct-sessions)
 
 
  * * *
@@ -869,4 +867,31 @@ Messages to inform a provider about an OCHP-direct charging process.
 
 For this protocol the SOAP Version 1.1 MUST be used.
 
+
+
+
+# Combining OCHP​_direct_ with classic OCHP
+
+OCHP​_direct_ is made to be used in association with the classic OCHP
+and a clearing house. This section gives additional advice of how
+integrate it.
+
+
+## CDRs for OCHP​_direct_ sessions
+
+
+
+
+ Field Name       |  Field Type         |  Card.  |  Additional advice
+:-----------------|:--------------------|:--------|:--------------------
+ cdrId            |  string(36)         |  1      |
+ evseId           |  EvseId             |  1      |
+ emtId            |  EmtId              |  1      |  The field _tokenType_ should be set to `remote`, the field _instance_ should enhold the _directId_.
+ contractId       |  ContractId         |  1      |
+ liveAuthId       |  LiveAuthId         |  ?      |  Not used with OCHPdirect.
+ status           |  CdrStatusType      |  1      |
+ startDateTime    |  LocalDateTimeType  |  1      |  Start date and time of the direct session (successfull SelectEvse). Must be set in the local time of the charge point.
+ endDateTime      |  LocalDateTimeType  |  1      |  End date and time of the charge session (log-off with the RFID badge, ControlEvse.operation = _end_ or physical disconnect). Must be set in the local time of the charge point.
+ duration         |  string(9)          |  ?      |
+ ...              |  ...                |  ...    |
 
