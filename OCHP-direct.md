@@ -303,8 +303,7 @@ The OCHP direct interface of every roaming partner must be secured via
 *TLS 1.2* ([RFC6176](http://tools.ietf.org/html/rfc6176)).
 
 The identification of the requester and the access restriction of the 
-interface is done by rotating identification tokens which are 
-distributed via the clearing house. (See 
+interface is done by identification token. Requester locally compose identification token from receiver and own tokens into a string "receiver-token:sender-token" with colon as delimiter. (See 
 [Identification token distribution](#identification-token-distribution) 
 for further information.)
 
@@ -343,9 +342,9 @@ On day `N` do:
  2. Generate new own token for day `N+1`.
  3. *Before 12:00 UTC:* Send/upload own token for day `N+1`.
  4. *After 12:00 UTC:* Fetch/download partner's tokens for day `N+1`.
- 5. Generate token combinations for day `N+1` from own and partner's 
+ 5. Generate identification tokens for day `N+1` from own and partner's 
     tokens. Here `AB2`.
- 6. *At 23:50 UTC:* Make token combinations for day `N+1` valid.
+ 6. *At 23:50 UTC:* Make identification tokens for day `N+1` valid.
 
 ![Figure OCHP direct Token Exchange](media/OCHPdirectTokenExchange.png "OCHP direct Token Exchange")
 
