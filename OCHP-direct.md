@@ -341,8 +341,8 @@ On day `N` do:
 
  1. *At 00:30 UTC:* Invalidate/delete all tokens of day `N-1`.
  2. Generate new own token for day `N+1`.
- 3. *Before 12:00 UTC:* Send/upload own token for day `N+1`.
- 4. *After 12:00 UTC:* Fetch/download partner's tokens for day `N+1`.
+ 3. *Before 11:50 UTC:* Send/upload own token for day `N+1`.
+ 4. *After 12:10 UTC:* Fetch/download partner's tokens for day `N+1`.
  5. Generate token combinations for day `N+1` from own and partner's 
     tokens. Here `AB2`.
  6. *At 23:50 UTC:* Make token combinations for day `N+1` valid.
@@ -440,7 +440,7 @@ systems.
 
 The following figure gives an overview of the communication. After step
 (3) follows the CDR exchange process as described in OCHP. Calls from
-the operator to the provider (_italic_) are covered in the advanced use
+the operator to the provider are covered in the advanced use
 cases.
 
 ![Figure OCHP direct basic process](media/OCHPdirectProcess-1.png "OCHP direct basic process")
