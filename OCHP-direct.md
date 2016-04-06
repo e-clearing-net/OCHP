@@ -440,7 +440,7 @@ systems.
 
 The following figure gives an overview of the communication. After step
 (3) follows the CDR exchange process as described in OCHP. Calls from
-the operator to the provider (_italic_) are covered in the advanced use
+the operator to the provider are covered in the advanced use
 cases.
 
 ![Figure OCHP direct basic process](media/OCHPdirectProcess-1.png "OCHP direct basic process")
