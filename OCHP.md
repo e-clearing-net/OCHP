@@ -9,6 +9,7 @@ Prot. Version | Date       | Comment
 1.0           | 12‑12‑2013 | Use-case driven structure; Delta-Synchronization; Live-Authorization; CDR-Validation; Alignment to standardization and market development.
 1.2           | 17‑06‑2014 | Live Status Interface and further enhancements from market requirements. Commit: [6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5](../../commit/6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5)
 1.3           | 27‑03‑2015 | Bug fixes, further enhancements (power ratings, location types, time zones) Commit: [77cccd838db692ab6f8b77fb4be8e81d59ec04e2](../../commit/77cccd838db692ab6f8b77fb4be8e81d59ec04e2)
+1.4	
 
 
 Copyright (c) 2012-2015 smartlab, bluecorner.be, e-laad.nl
@@ -1861,10 +1862,11 @@ These types are used to exchange tariff information between a CPO and an EMP.
 
 #### Examples
 
-##### Simple Tariff example 2 euro per hour
+##### Simple Tariff example
+2 euro per hour
 
 ```XML
-<tariff>
+<tariffInfo>
 	<tariffId>123</tariffId>
 	<currency>EUR</currency>
 	<tariffRefId>A1</tariffRefId>
@@ -1875,7 +1877,7 @@ These types are used to exchange tariff information between a CPO and an EMP.
 			<stepSize>300</stepSize>
 		</priceComponent>
 	</tariffElement>
-</tariff>
+</tariffInfo>
 ```
 
 ##### Complex Tariff example
@@ -1888,7 +1890,7 @@ Parking costs:
 - Saturday: between 10:00 and 17:00 : 6 euro (paid per 5 minutes)
 
 ```XML
-<tariff>
+<tariffInfo>
 	<tariffId>1234</tariffId>
 	<currency>EUR</currency>
 	<tariffRefId>A2</tariffRefId>
@@ -1964,6 +1966,7 @@ Parking costs:
 			<weekday>6</weekday>
 		<restrictions>
 	</tariffElement>
+</tariffInfo>
 ```
 
 ###TariffInfo *class*
@@ -1977,11 +1980,11 @@ none of the TariffElements before this matches the current charging period.
 <div><!-- ---------------------------------------------------------------------------- --></div>
 | Property            | Type                                            | Card. | Description                                                                           |
 |---------------------|-------------------------------------------------|-------|---------------------------------------------------------------------------------------|
-| tariffId            | [string](types.md#15-string-type)(15)           | 1     | Uniquely identifies the tariff within the CPOs platform (and suboperator platforms).  |
-| currency            | [string](types.md#15-string-type)(3)            | 1     | Currency of this tariff, ISO 4217 Code                                                |
-| tariffRefId		  | [string](types.md#15-string-type)(15)			| 1		| ID used to reference tariff on EVSE level												|
-| tariffElement       | [TariffElement](#43-tariffelement-class)        | +     | List of tariff elements                                                               |
-| recipients          | [string](types.md#15-string-type)(5) 			| *     | Details on the energy supplied with this tariff.                                      |
+| tariffId            | string (15)           							| 1     | Uniquely identifies the tariff within the CPOs platform (and suboperator platforms).  |
+| currency            | string (3) 								        | 1     | Currency of this tariff, ISO 4217 Code                                                |
+| tariffRefId		  | string (15)										| 1		| ID used to reference tariff on EVSE level												|
+| tariffElement       | [TariffElement](#tariffelement-class)           | +     | List of tariff elements                                                               |
+| recipients          | string (5)							 			| *     | Details on the energy supplied with this tariff.                                      |
 <div><!-- ---------------------------------------------------------------------------- --></div>
 
 ### weekday *enum*
@@ -1998,14 +2001,13 @@ none of the TariffElements before this matches the current charging period.
 | 7            | Sunday                                               |
 <div><!-- ---------------------------------------------------------------------------- --></div>
 
-
 ### PriceComponent *class*
 
 <div><!-- ---------------------------------------------------------------------------- --></div>
 | Property        | Type                                            | Card. | Description                                      |
 |-----------------|-------------------------------------------------|-------|--------------------------------------------------|
-| billingItem     | [BillingItemType]								| 1     | Type of tariff dimension |
-| itemPrice       | [float]								            | 1     | price per unit for this tariff dimension         |
+| billingItem     | [BillingItemType] (#billingitemtype-enum)		| 1     | Type of tariff dimension |
+| itemPrice       | float								            | 1     | price per unit for this tariff dimension         |
 | stepSize        | int                                             | 1     | Minimum amount to be billed. This unit will be billed in this step_size blocks. For example: if type is time and  step_size is 300, then time will be billed in blocks of 5 minutes, so if 6 minutes is used, 10 minutes (2 blocks of step_size) will be billed. |
 <div><!-- ---------------------------------------------------------------------------- --></div>
 
@@ -2014,25 +2016,23 @@ none of the TariffElements before this matches the current charging period.
 <div><!-- ---------------------------------------------------------------------------- --></div>
 | Property                 | Type                                               | Card. | Description                                                      |
 |--------------------------|----------------------------------------------------|-------|------------------------------------------------------------------|
-| priceComponent           | [PriceComponent](#42-pricecomponent-class)         | +     | List of price components that make up the pricing of this tariff |
-| restrictions             | [TariffRestrictions](#45-tariffrestrictions-class) | ?     | List of tariff restrictions                                      |
-<div><!-- ---------------------------------------------------------------------------- --></div>
-
-    
+| priceComponent           | [PriceComponent](#pricecomponent-class)            | +     | List of price components that make up the pricing of this tariff |
+| restrictions             | [TariffRestrictions](#tariffrestrictions-class)    | ?     | List of tariff restrictions                                      |
+<div><!-- ---------------------------------------------------------------------------- --></div>  
 
 ### TariffRestrictions *class*
 
 <div><!-- ---------------------------------------------------------------------------- --></div>
 | Property                | Type                                  | Card. | Description                                                                           |
 |-------------------------|---------------------------------------|-------|---------------------------------------------------------------------------------------|
-| startTime               | [string](types.md#15-string-type)(5)  | ?     | Start time of day, for example 13:30, valid from this time of the day. Must be in 24h format with leading zeros. Hour/Minute separator: ":" Regex: [0-2][0-9]:[0-5][0-9] |
-| endTime                 | [string](types.md#15-string-type)(5)  | ?     | End time of day, for example 19:45, valid until this time of the day. Same syntax as start_time |
-| startDate               | [string](types.md#15-string-type)(10) | ?     | Start date, for example: 2015-12-24, valid from this day                              |
-| endDate                 | [string](types.md#15-string-type)(10) | ?     | End date, for example: 2015-12-27, valid until this day (excluding this day)          |
-| minEnergy               | [float]   							  | ?     | Minimum used energy in kWh, for example 20, valid from this amount of energy is used  |                             
-| maxEnergy               | [float]  							  | ?     | Maximum used energy in kWh, for example 50, valid until this amount of energy is used |
-| minPower                | [float]   							  | ?     | Minimum power in kW, for example 0, valid from this charging speed                    |
-| maxPower                | [float]							      | ?     | Maximum power in kW, for example 20, valid up to this charging speed                  |
+| startTime               | string (5) 							  | ?     | Start time of day, for example 13:30, valid from this time of the day. Must be in 24h format with leading zeros. Hour/Minute separator: ":" Regex: [0-2][0-9]:[0-5][0-9] |
+| endTime                 | string (5) 							  | ?     | End time of day, for example 19:45, valid until this time of the day. Same syntax as start_time |
+| startDate               | string (10) 						  | ?     | Start date, for example: 2015-12-24, valid from this day                              |
+| endDate                 | string (10) 						  | ?     | End date, for example: 2015-12-27, valid until this day (excluding this day)          |
+| minEnergy               | float   							  | ?     | Minimum used energy in kWh, for example 20, valid from this amount of energy is used  |                             
+| maxEnergy               | float  								  | ?     | Maximum used energy in kWh, for example 50, valid until this amount of energy is used |
+| minPower                | float   							  | ?     | Minimum power in kW, for example 0, valid from this charging speed                    |
+| maxPower                | float							      | ?     | Maximum power in kW, for example 20, valid up to this charging speed                  |
 | minDuration             | int                                   | ?     | Minimum duration in seconds, valid for a duration from x seconds                      |
 | maxDuration             | int                                   | ?     | Maximum duration in seconds, valid for a duration up to x seconds                     |
 | weekday                 | int      							  | *     | Which day(s) of the week this tariff is valid                                         |
