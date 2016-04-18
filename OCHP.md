@@ -1855,6 +1855,189 @@ path of of both IDs.
 
 ![Figure ID handling for the live authorisation request](media/SingleAuthorisation-2.png "ID handling for the live authorisation request")
 
+## Types for Tariff Data Exchange
+
+These types are used to exchange tariff information between a CPO and an EMP.
+
+#### Examples
+
+##### Simple Tariff example 2 euro per hour
+
+```XML
+<tariff>
+	<tariffId>123</tariffId>
+	<currency>EUR</currency>
+	<tariffRefId>A1</tariffRefId>
+	<tariffElement>
+		<priceComponent>
+			<billingItem>usagetime</BillingItem>
+			<itemPrice>2.00</itemPrice>
+			<stepSize>300</stepSize>
+		</priceComponent>
+	</tariffElement>
+</tariff>
+```
+
+##### Complex Tariff example
+2.50 euro start tariff
+1.00 euro per hour charging tariff for less than 32A (paid per 15 minutes)
+2.00 euro per hour charging tariff for more than 32A on weekdays (paid per 10 minutes)
+1.25 euro per hour charging tariff for more than 32A during the weekend (paid per 10 minutes)
+Parking costs:
+- Weekdays: between 09:00 and 18:00 : 5 euro (paid per 5 minutes) 
+- Saturday: between 10:00 and 17:00 : 6 euro (paid per 5 minutes)
+
+```XML
+<tariff>
+	<tariffId>1234</tariffId>
+	<currency>EUR</currency>
+	<tariffRefId>A2</tariffRefId>
+	<tariffElement>
+		<priceComponent>
+			<billingItem>serviceFee</billingItem>
+			<itemPrice>2.50</itemPrice>
+			<stepSize>1</stepSize>
+		</priceComponent>
+	</tariffElement>
+	<tariffElement>
+		<priceComponent>
+			<billingItem>usagetime</billingItem>
+			<itemPrice>1.00</itemPrice>
+			<stepSize>900</stepSize>
+		</priceComponent>
+		<restrictions>
+			<maxPower>32.00</maxPower>
+		<restrictions>
+	</tariffElement>
+	<tariffElement>
+		<priceComponent>
+			<billingItem>usagetime</billingItem>
+			<itemPrice>2.00</itemPrice>
+			<stepSize>600</stepSize>
+		</priceComponent>
+		<restrictions>
+			<minPower>32.00</minPower>
+			<weekday>1</weekday>
+			<weekday>2</weekday>
+			<weekday>3</weekday>
+			<weekday>4</weekday>
+			<weekday>5</weekday>
+		<restrictions>
+	</tariffElement>
+	<tariffElement>
+		<priceComponent>
+			<billingItem>usagetime</billingItem>
+			<itemPrice>1.25</itemPrice>
+			<stepSize>600</stepSize>
+		</priceComponent>
+		<restrictions>
+			<minPower>32.00</minPower>
+			<weekday>6</weekday>
+			<weekday>7</weekday>
+		<restrictions>
+	</tariffElement>
+	<tariffElement>
+		<priceComponent>
+			<billingItem>parkingtime</billingItem>
+			<itemPrice>5.00</itemPrice>
+			<stepSize>300</stepSize>
+		</priceComponent>
+		<restrictions>
+			<startTime>09:00</startTime>
+			<endTime>18:00</endTime>
+			<weekday>1</weekday>
+			<weekday>2</weekday>
+			<weekday>3</weekday>
+			<weekday>4</weekday>
+			<weekday>5</weekday>
+		<restrictions>
+	</tariffElement>
+	<tariffElement>
+		<priceComponent>
+			<billingItem>parkingtime</billingItem>
+			<itemPrice>6.00</itemPrice>
+			<stepSize>300</stepSize>
+		</priceComponent>
+		<restrictions>
+			<startTime>10:00</startTime>
+			<endTime>17:00</endTime>
+			<weekday>6</weekday>
+		<restrictions>
+	</tariffElement>
+```
+
+###TariffInfo *class*
+
+A Tariff Object consists of a list of one or more TariffElements. These elements can be used to create complex Tariff structures. 
+When the list of _elements_ contains more then 1 element, then the first tariff in the list with matching restrictions will be used.
+
+It is advised to always set a "default" tariff, the last tariff in the list of _elements_ with no restriction. This acts as a fallback when
+none of the TariffElements before this matches the current charging period.   
+
+<div><!-- ---------------------------------------------------------------------------- --></div>
+| Property            | Type                                            | Card. | Description                                                                           |
+|---------------------|-------------------------------------------------|-------|---------------------------------------------------------------------------------------|
+| tariffId            | [string](types.md#15-string-type)(15)           | 1     | Uniquely identifies the tariff within the CPOs platform (and suboperator platforms).  |
+| currency            | [string](types.md#15-string-type)(3)            | 1     | Currency of this tariff, ISO 4217 Code                                                |
+| tariffRefId		  | [string](types.md#15-string-type)(15)			| 1		| ID used to reference tariff on EVSE level												|
+| tariffElement       | [TariffElement](#43-tariffelement-class)        | +     | List of tariff elements                                                               |
+| recipients          | [string](types.md#15-string-type)(5) 			| *     | Details on the energy supplied with this tariff.                                      |
+<div><!-- ---------------------------------------------------------------------------- --></div>
+
+### weekday *enum*
+
+<div><!-- ---------------------------------------------------------------------------- --></div>
+| Value        | Description                                          |
+| ------------ | ---------------------------------------------------- |
+| 1			   | Monday                                               |
+| 2            | Tuesday                                              |
+| 3            | Wednesday                                            |
+| 4            | Thursday                                             |
+| 5            | Friday                                               |
+| 6            | Saturday                                             |
+| 7            | Sunday                                               |
+<div><!-- ---------------------------------------------------------------------------- --></div>
+
+
+### PriceComponent *class*
+
+<div><!-- ---------------------------------------------------------------------------- --></div>
+| Property        | Type                                            | Card. | Description                                      |
+|-----------------|-------------------------------------------------|-------|--------------------------------------------------|
+| billingItem     | [BillingItemType]								| 1     | Type of tariff dimension |
+| itemPrice       | [float]								            | 1     | price per unit for this tariff dimension         |
+| stepSize        | int                                             | 1     | Minimum amount to be billed. This unit will be billed in this step_size blocks. For example: if type is time and  step_size is 300, then time will be billed in blocks of 5 minutes, so if 6 minutes is used, 10 minutes (2 blocks of step_size) will be billed. |
+<div><!-- ---------------------------------------------------------------------------- --></div>
+
+### TariffElement *class*
+
+<div><!-- ---------------------------------------------------------------------------- --></div>
+| Property                 | Type                                               | Card. | Description                                                      |
+|--------------------------|----------------------------------------------------|-------|------------------------------------------------------------------|
+| priceComponent           | [PriceComponent](#42-pricecomponent-class)         | +     | List of price components that make up the pricing of this tariff |
+| restrictions             | [TariffRestrictions](#45-tariffrestrictions-class) | ?     | List of tariff restrictions                                      |
+<div><!-- ---------------------------------------------------------------------------- --></div>
+
+    
+
+### TariffRestrictions *class*
+
+<div><!-- ---------------------------------------------------------------------------- --></div>
+| Property                | Type                                  | Card. | Description                                                                           |
+|-------------------------|---------------------------------------|-------|---------------------------------------------------------------------------------------|
+| startTime               | [string](types.md#15-string-type)(5)  | ?     | Start time of day, for example 13:30, valid from this time of the day. Must be in 24h format with leading zeros. Hour/Minute separator: ":" Regex: [0-2][0-9]:[0-5][0-9] |
+| endTime                 | [string](types.md#15-string-type)(5)  | ?     | End time of day, for example 19:45, valid until this time of the day. Same syntax as start_time |
+| startDate               | [string](types.md#15-string-type)(10) | ?     | Start date, for example: 2015-12-24, valid from this day                              |
+| endDate                 | [string](types.md#15-string-type)(10) | ?     | End date, for example: 2015-12-27, valid until this day (excluding this day)          |
+| minEnergy               | [float]   							  | ?     | Minimum used energy in kWh, for example 20, valid from this amount of energy is used  |                             
+| maxEnergy               | [float]  							  | ?     | Maximum used energy in kWh, for example 50, valid until this amount of energy is used |
+| minPower                | [float]   							  | ?     | Minimum power in kW, for example 0, valid from this charging speed                    |
+| maxPower                | [float]							      | ?     | Maximum power in kW, for example 20, valid up to this charging speed                  |
+| minDuration             | int                                   | ?     | Minimum duration in seconds, valid for a duration from x seconds                      |
+| maxDuration             | int                                   | ?     | Maximum duration in seconds, valid for a duration up to x seconds                     |
+| weekday                 | int      							  | *     | Which day(s) of the week this tariff is valid                                         |
+<div><!-- ---------------------------------------------------------------------------- --></div>
+
 
 
 ## Types for the Live Status Interface
