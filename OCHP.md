@@ -981,7 +981,7 @@ by the clearing house.
  Field Name   |  Field Type  |  Card.  |  Description
 :-------------|:-------------|:--------|:------------
 emtId         |  EmtId       |  1      |  This contains the ID of the token which is to be validated.
-evseId        |  EvseId      |  1      |  Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it.
+
 
 
 ### RequestLiveRoamingAuthorisation.conf
