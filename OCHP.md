@@ -636,12 +636,42 @@ following way:
 
 ### Download global charge point information from the CHS
 
-A NPS downloads the global charge point information from the CHS. The
+An NSP downloads the global charge point information from the CHS. The
 download of the global charge point information is done in the following
 way:
 
  * NPS sends the GetChargePointList.req PDU.
  * CHS responds with GetChargePointList.conf PDU.
+
+
+
+
+## Exchange Tariff Information
+
+The eCHS enables CPOs to upload tariffs and tariff-groups for each charge
+point they operate. These tariffs can be sent to individual EMPs. This is
+to ensure a quick and automated change in tariffs for certain charge points
+without having to alter bilateral agreements every time and without having
+a very large annex.
+
+
+### Upload and Update Tariff Information to the CHS
+
+Each CMS has to upload their tariff information to the Clearing House.
+The upload and update of tariff information is done in the following way:
+
+ * CMS sends UpdateTariffs.req PDU.
+ * CHS responds with UpdateTariffs.conf PDU.
+
+
+### Download Tariff Information from the CHS
+
+An MDM has to regularly download tariff information for their roaming
+partners' charge points from the Clearing House. This is done in the
+following way:
+
+ * MDM sends GetTariffs.req PDU.
+ * CHS responds with GetTariffs.conf PDU.
 
 
 
@@ -658,6 +688,10 @@ response contains the authorisation or rejection and a transaction ID.
 For the end of the charging process the operator backend is able to 
 authorise the same token. For the later exchanged CDR the transaction 
 ID of the single authorisation is to be used.
+Note: OCHP only allows the internal repository of authorization records
+in the CHS to be checked against, which is the same list of tokens that
+also gets returned when downloading roaming authorization data into the
+CMS.
 
 ![Figure Message exchange for live authorisation requests for a single charging process.](media/SingleAuthorisation.png "Message exchange for live authorisation requests for a single charging process.")
 
@@ -665,11 +699,10 @@ ID of the single authorisation is to be used.
 ### Request the CHS to authorize one single token for roaming
 
 A CMS may request the Clearing House to authorize one single token for a
-charging session. The authorization is requested for a single EVSE-ID 
-and a single token. Optional a ID for the single transaction can be 
-added to track the issued CDR in the requester's numbering scheme. The 
-request for authorization is done in the following
-way:
+charging session. The authorization is requested for a single token.
+Optional a ID for the single transaction can be added to track the issued
+CDR in the requester's numbering scheme. The request for authorization is
+done in the following way:
 
  * CMS sends the RequestLiveRoamingAuthorisation.req PDU.
  * CHS responds with a RequestLiveRoamingAuthorisation.conf PDU.
@@ -714,7 +747,7 @@ Consuming systems should request for new status updates whenever an loaded statu
 
 
 
-### Update the live status of the own stations in the CHS
+### Update the live status of stations in the CHS
 
 A CMS may update the current live status of individual charging stations in the Clearing House to allow roaming partners to receive those statuses. The live status update is done in the following way:
 
@@ -868,8 +901,12 @@ This contains the field definition of the ConfirmCDRs.req sent by a partner's sy
 
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
-approved      |  Array(CDRInfo)  |  *      |  This contains the CDRs that have been approved by the EVSP.
-declined      |  Array(CDRInfo)  |  *      |  This contains the CDRs that have been declined by the EVSP.
+approved      |  CdrId		 |  *      |  This contains the CDR-IDs for CDRs that have been approved by the EVSP.
+declined      |  CdrId   	 |  *      |  This contains the CDR-IDs for CDRs that have been declined by the EVSP.
+cleared	      |  CdrId		 |  *      |  This contains the CDR-IDs for CDRs that have been cleared by the EVSP.
+rated	      |  CdrId		 |  *      |  This contains the CDR-IDs for CDRs that have been rated by the EVSP.
+rejected      |  CdrId		 |  *      |  This contains the CDR-IDs for CDRs to be marked finally rejected by the CPO.
+
 
 
 ### ConfirmCDRs.conf
@@ -1343,8 +1380,11 @@ while uploading, approving or declining CDRs.
  new             |  A new CDR before upload to the CHS.
  accepted        |  An uploaded CDR was accepted by the CHS as plausible.
  rejected        |  The checked CDR again rejected by the CHS and is to be archived.
- owner declined  |  The CDR was declined by the owner (EVSP).
- approved        |  The CDR was approved by the owner (EVSP). 
+ declined	 |  The CDR was declined by the owner (EVSP).
+ approved        |  The CDR was approved by the owner (EVSP).
+ revised	 |  The CDR was revised by the CPO and uploaded again. Only previously accepted or declined CDRs can be revised.
+ cleared	 |  
+ rated		 |  
 
 
 ### CDRInfo *class*
@@ -1503,7 +1543,7 @@ can find the described information right from the referenced page.
  Field Name  |  Field Type   |  Card.  |  Description
 :------------|:--------------|:--------|:------------
  uri         |  string(255)  |  1      |  Referencing uri to the resource. Must begin with a protocol of the list: http, https. Regex: <code>(http&#124;https):\/\/.+</code>
- class       |  ImageClass   |  +      |  Class(es) of the related url to indicate the referenced content and/or functionality.
+ class       |  RelatedResourceClass   |  +      |  Class(es) of the related url to indicate the referenced content and/or functionality.
 
 
 ### RelatedResourceClass *enum*
@@ -1518,6 +1558,7 @@ The class of referenced related resource.
  surroundingInfo  |  further information on the surroundings of the charging station e.g. further POIs
  ownerHomepage    |  website of the station owner (not operator) in case of hotels, restaurants, etc.
  feedbackForm     |  form for user feedback on the charging station service
+ openingTimes	  |  link to a calendar or info page containing opening times in case they are irregular.
 
 
 ### GeoPointType *class*
@@ -1679,18 +1720,28 @@ Opening and access hours for the charge point.
 
  Field Name             |  Field Type             |  Card.  |  Description
 :-----------------------|:------------------------|:--------|:------------
- *Choice: one of two*   |                         |         | 
-  > regularHours        |  regularHoursType       |  *      |  Regular hours, weekday based. Should not be set for representing 24/7 as this is the most common case.
-  > twentyfourseven     |  boolean                |  1      |  True to represent 24 hours per day and 7 days per week, except the given exceptions.
+ model~			|  HoursModelType	  |  1	    |  Denotes what model of opening hours is used, i.e. 24/7, regular hours or irregular hours.
+ regularHours           |  RegularHoursType       |  *      |  Regular hours, weekday based. Should not be set for representing 24/7 as this is the most common case.
  exceptionalOpenings    |  exceptionalPeriodType  |  *      |  Exceptions for specified calendar dates, time-range based. Periods the station is operating/accessible. Additional to regular hours. May overlap regular rules.
  exceptionalClosings    |  exceptionalPeriodType  |  *      |  Exceptions for specified calendar dates, time-range based. Periods the station is not operating/accessible. Overwriting regularHours and exceptionalOpenings. Should not overlap exceptionalOpenings.
+ 
+ 
+### HoursModelType *enum*
+
+Denotes what model of opening hours is used for this charge point.
+
+ Value       |  Description
+:------------|:-------------
+ twentyfourseven     |  The charge point is open to the public 24 hours per day, 7 days per week (i.e. always).
+ regular   |  The opening times of the charge point are defined by the regularHours elements as provided.
+ irregular |  The opening times do not follow a regular pattern and are defined through the exceptionalOpenings elements only or via a relatedResource of the corresponding type.
+ 
 
 ###### Example one
 Operating 24/7 except for New Year 2015:
 
 ```XML
-<operatingTimes>
-   <twentyfourseven>true</twentyfourseven>
+<operatingTimes model="twentyfourseven">
    <exceptionalClosings>
 	  <periodBegin>
 		 <DateTime>2015-01-01T00:00:00Z</DateTime>
@@ -1708,7 +1759,7 @@ Operating on Weekdays from 8am till 8pm with one exceptional opening on
 22/6/2014 and one exceptional closing the Monday after:
 
 ```XML
-<operatingTimes>
+<operatingTimes model="regular">
      <regularHours weekday="1" periodBegin="08:00" periodEnd="20:00">
      <regularHours weekday="2" periodBegin="08:00" periodEnd="20:00">
      <regularHours weekday="3" periodBegin="08:00" periodEnd="20:00">
@@ -1741,6 +1792,23 @@ This represents the following schedule, where ~~stroked out~~ days are without o
 | Date      | 16 | 17 | 18 | 19 | 20 | **21** | ~~22~~ | 23 | **~~24~~** | 25 | 26 | 27 | ~~28~~ | ~~29~~ |
 | Open from | 08 | 08 | 08 | 08 | 08 | 09     | -      | 08 | -          | 08 | 08 | 08 | -      | -      |
 | Open till | 20 | 20 | 20 | 20 | 20 | 12     | -      | 20 | -          | 20 | 20 | 20 | -      | -      |
+
+
+###### Example three
+Irregular operating hours, open only on one weekend in April 2016 from Friday 16:00h until Sunday 20:00h:
+
+```XML
+<operatingTimes model="irregular">
+     <exceptionalOpenings>
+        <periodBegin>
+         	<DateTime>2016-04-22T16:00:00Z</DateTime>
+ 	</periodBegin>
+ 	<periodEnd>
+ 		<DateTime>2014-06-24T20:00:00Z</DateTime>
+ 	</periodEnd>
+     </exceptionalOpenings>
+</operatingTimes>
+```
 
 
 ### RegularHoursType *class*
@@ -1779,18 +1847,32 @@ for user information.
  unknown            |  parking location type is not known by the operator
 
 
-### ParkingRestrictionType *enum*
+### RestrictionType *enum*
 
-This value, if provided, represents the restriction to the parking spot
+This value, if provided, represents the restrictions to the usage of the charging station or parking spot
 for different purposes.
 
  Value       |  Description
 :------------|:-------------
  evonly      |  reserved parking spot for electric vehicles
  plugged     |  parking allowed only while plugged in (charging)
- disabled    |  reserved parking spot for disabled people with valid ID
- customers   |  parking spot for customers/guests only, for example in case of a hotel or shop
- motorcycles |  parking spot only suitable for (electric) motorcycles or scooters
+ disabled    |  reserved parking spot for disabled persons with valid ID
+ customers   |  charging / parking for customers / guests only, for example in case of a hotel or shop
+ motorcycles |  parking spot only suitable for (electric) motorcycles, scooters or bicycles
+ carsharing  |  charging / parking only for carsharing vehicles
+
+
+### AdressType *class*
+
+This class contains all address related information to be used in charge point, CDR and other data.
+
+ Field Name          |  Field Type               |  Card.  |  Description
+:--------------------|:--------------------------|:--------|:------------
+ houseNumber         |  string(6)                |  ?      |  Alphanumeric, for example "10", "255B". Characters: [A-Z], [0-9], -, <space>
+ address             |  string(45)               |  1      |  Alphanumeric, for example "Av. Saint-Jean". Optionally also containing the house number if not in field houseNumber.
+ city                |  string(45)               |  1      |  Alphabetic, in the language defined in locationNameLang
+ zipCode             |  string(10)               |  1      |  Alphanumeric, Examples: "60439", "8011 PK". Without leading country code. Characters: [A-Z], [0-9], -, <space>
+ country             |  string(3)                |  1      |  Alpha, three characters. ISO 3166 country code
 
 
 ### ChargePointInfo *class*
@@ -1806,24 +1888,20 @@ Contains information about the charge points.
  locationNameLang    |  string(3)                |  1      |  Alpha, three characters. ISO-639-3 language code defining the language of the location name
  images              |  evseImageUrlType         |  *      |  Links to images related to the EVSE such as photos or logos.
  relatedResource     |  RelatedResourceType      |  *      |  Links to be visited by the user, related to the charge point or charging station.
- houseNumber         |  string(6)                |  ?      |  Alphanumeric, for example "10", "255B". Characters: [A-Z], [0-9], <space>
- address             |  string(45)               |  1      |  Alphanumeric, for example "Av. Saint-Jean". Optionally also containing the house number if not in field houseNumber.
- city                |  string(45)               |  1      |  Alphabetic, in the language defined in locationNameLang
- zipCode             |  string(10)               |  1      |  Alphanumeric, Examples: "60439", "8011 PK". Without leading country code. Characters: [A-Z], [0-9], -, <space>
- country             |  string(3)                |  1      |  Alpha, three characters. ISO 3166 country code
+ address	     |  AddressType		 |  1      |  Contains the address of the charging station.
  chargePointLocation |  GeoPointType             |  1      |  Geographical location of the charge point itself (power outlet).
  relatedLocation     |  AdditionalGeoPointType   |  ?      |  Geographical location of related points relevant to the user.
  timeZone            |  string(255)              |  ?      |  One of IANA tzdata's __TZ__-values representing the time zone of the location. Examples: "Europe/Oslo", "Europe/Zurich". ([http://www.iana.org/time-zones](http://www.iana.org/time-zones))
  category            |  string(2)                |  ?      |  Charge point category code defined by the operator. Allows different pricing levels in roaming agreements based on the category.
- operatingTimes      |  HoursType                |  ?      |  The times the EVSE is operating and can be used for charging. Must not be provided if operating hours are unsure/unknown.
- accessTimes         |  HoursType                |  ?      |  The times the EVSE is accessible, if different from operatingTimes. For example if a car park is closed during the night. Must not be provided if access hours are unsure/unknown.
+ openingTimes        |  HoursType                |  1      |  The times the EVSE is operating and can be used for charging. Must not be provided if operating hours are unsure/unknown.
+ closedCharging      |  boolean                  |  ?      |  Specifies whether the charge points is capable of charging even when it is not currently opened, i.e. a parking garage that can not be entered during the night but will still supply a charge if connected.
  status              |  ChargePointStatusType    |  ?      |  The current status of the charge point.
  statusSchedule      |  ChargePointScheduleType  |  *      |  Planned status changes in the future. If a time span matches with the current or displayed date, the corresponding value overwrites *status*.
- telephoneNumber     |  string(20)               |  ?      |  Numeric. Service hotline to be displayed to the EV user. Separators recommended. Characters: [0-9], -, <space>
+ telephoneNumber     |  string(20)               |  ?      |  Numeric. Service hotline to be displayed to the EV user. Separators recommended. Characters: [0-9], -, +, <space>
  location            |  GeneralLocationType      |  1      |  The general type of the charge point location.
  floorLevel          |  string(4)                |  ?      |  Alphanumeric. Level on which the charging station is located (in garage buildings) in the locally displayed numbering scheme. Examples: "-2", "P-5", "+5". Characters: [A-Z], [0-9], -, +, /
  parkingSlotNumber   |  string(5)                |  ?      |  Alphanumeric. Locally displayed parking slot number. Examples: "10", "B25", "P-234". Characters: [A-Z], [0-9], -, +, /
- parkingRestriction  |  ParkingRestrictionType   |  *      |  Those parking restrictions apply to the parking spot.
+ Restriction	     |  RestrictionType		 |  *      |  Those parking restrictions apply to the parking spot.
  authMethods         |  AuthMethodType           |  +      |  List of available payment or access methods on site.
  connectors          |  ConnectorType            |  +      |  Which receptacle type is/are present for a power outlet.
  ratings             |  RatingsType              |  ?      |  Defines the ratings for the charge point.
