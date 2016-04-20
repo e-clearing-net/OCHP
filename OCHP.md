@@ -204,7 +204,7 @@ one or more  | `minOccurs="1" maxOccurs="unbounded"`         | +
 zero or more | `minOccurs="0" maxOccurs="unbounded"`         | *
 exactly one  | *(default)*                                   | 1
 
-For some data fields a [http://en.wikipedia.org/wiki/Regular_expression](Regular Expression) is
+For some data fields a [http://en.wikipedia.org/wiki/Regular_expression](http://en.wikipedia.org/wiki/Regular_expression) is
 provided as an additional but very precise definition of the data
 format.
 
