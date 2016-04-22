@@ -90,7 +90,7 @@
 			<s:element name="status" type="tns:CdrStatusType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Current status of the CDR. Must be set to "new" by the issuing CMS. Shall not be changed by any partner but only by the CHS.
+						Current status of the CDR. Must be set to "new" or "revised" by the issuing CMS. Shall not be changed by any partner but only by the CHS. "Revised" status is only possible for CDRs that have either status "accepted" or "declined".
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -124,72 +124,12 @@
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
-			<s:element name="houseNumber" minOccurs="0" maxOccurs="1">
+			<s:element name="address" type="tns:AddressType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Hose number at the location of the charge point. Alphanumeric, for example &quot;10&quot;,&quot;255B&quot;
+						Address of the charge point.
 					</s:documentation>
 				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:minLength value="1"></s:minLength>
-						<s:maxLength value="6"></s:maxLength>
-						<s:pattern value="[A-Z0-9 ]{1,6}"></s:pattern>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
-			<s:element name="address" minOccurs="0" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						Alphanumeric, for example "Av. Saint-Jean". Optionally also containing the house number if not in field houseNumber
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:minLength value="2"></s:minLength>
-						<s:maxLength value="45"></s:maxLength>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
-			<s:element name="zipCode" minOccurs="0" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						Alphanumeric, Examples: "60439", "8011 PK". Without the leading country code
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:minLength value="1"></s:minLength>
-						<s:maxLength value="10"></s:maxLength>
-						<s:pattern value="[A-Z0-9\- ]{1,10}"></s:pattern>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
-			<s:element name="city" minOccurs="0" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						Alphabetic, in the language defined in locationNameLang
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:minLength value="2"></s:minLength>
-						<s:maxLength value="45"></s:maxLength>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
-			<s:element name="country" minOccurs="1" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						Alpha, three characters. ISO 3166 country code
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:length value="3"></s:length>
-						<s:pattern value="[A-Z]{3}"></s:pattern>
-					</s:restriction>
-				</s:simpleType>
 			</s:element>
 			<s:element name="chargePointType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
@@ -317,69 +257,12 @@
 			</s:element>
 			<s:element name="images" minOccurs="0" maxOccurs="unbounded" type="tns:EvseImageUrlType"></s:element>
 			<s:element name="relatedResource" minOccurs="0" maxOccurs="unbounded" type="tns:RelatedResourceType"></s:element>
-			<s:element name="houseNumber" minOccurs="0" maxOccurs="1">
+			<s:element name="address" type="tns:AddressType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Alphanumeric, for example "10", "255B".
+						Address of the charge point.
 					</s:documentation>
 				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:minLength value="1"></s:minLength>
-						<s:maxLength value="6"></s:maxLength>
-						<s:pattern value="[A-Z0-9 ]{1,6}"></s:pattern>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
-			<s:element name="address" minOccurs="1" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						Alphanumeric; for example "Av. Saint-Jean". Optionally also containing the house number if not in field houseNumber.
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:minLength value="2"></s:minLength>
-						<s:maxLength value="45"></s:maxLength>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
-			<s:element name="city" minOccurs="1" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						Alphabetic, in the language defined in locationNameLang
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:minLength value="1"></s:minLength>
-						<s:maxLength value="45"></s:maxLength>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
-			<s:element name="zipCode" minOccurs="1" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						Alphanumeric, examples: "60439", "8011 PK". Without leading country code.
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:pattern value="[A-Z0-9 \-]{1,10}"></s:pattern>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
-			<s:element name="country" minOccurs="1" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						Alpha, three characters. Iso 3166 country code
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:pattern value="[A-Z]{3}"></s:pattern>
-					</s:restriction>
-				</s:simpleType>
 			</s:element>
 			<s:element name="chargePointLocation" type="tns:GeoPointType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
@@ -420,17 +303,17 @@
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
-			<s:element name="operatingTimes" type="tns:HoursType" minOccurs="0" maxOccurs="1">
+			<s:element name="openingTimes" type="tns:HoursType" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						The times the EVSE is operating and can be used for charging. Must nor be provided if operating hours are unsure/unknown
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="accessTimes" type="tns:HoursType" minOccurs="0" maxOccurs="1">
+			<s:element name="closedCharging" type="tns:boolean" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						The times the EVSE is accessible, if different from operatingTimes. For example if a car park is closed during the night. Must not be provided if access hours are unsure/unknown
+						Should be set to true in case an EV can be charged when plugged in during off-times (i.e. when the location is closed according to openingTimes).
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -456,7 +339,7 @@
 				</s:annotation>
 				<s:simpleType>
 					<s:restriction base="s:string">
-						<s:pattern value="[0-9 \-]{1,20}"></s:pattern>
+						<s:pattern value="[0-9 \-\+]{1,20}"></s:pattern>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
@@ -491,10 +374,10 @@
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
-			<s:element name="parkingRestriction" type="tns:ParkingRestrictionType" minOccurs="0" maxOccurs="unbounded">
+			<s:element name="restriction" type="tns:RestrictionType" minOccurs="0" maxOccurs="unbounded">
 				<s:annotation>
 					<s:documentation>
-						This value, if provided, represents the restriction to the parking spot for different purposes.
+						This value, if provided, represents the restriction to the parking spot or EVSE for different purposes.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -506,6 +389,19 @@
 						Which receptable type is/are present for a power outlet.
 					</s:documentation>
 				</s:annotation>
+			</s:element>
+			<s:element name="chargePointType" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						The type of the charge point "AC" or "DC"
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:enumeration value="AC"></s:enumeration>
+						<s:enumeration value="DC"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
 			</s:element>
 			<s:element name="ratings" type="tns:RatingsType" minOccurs="0" maxOccurs="1">
 				<s:annotation>
