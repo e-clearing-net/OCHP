@@ -863,7 +863,9 @@ These messages are used for the purpose of the exchange of charge data from an E
 ### GetCDRs.req
 
 This contains the field definition of the GetCDRs.req sent by a partner's system to the CHS.
-No fields are defined.
+ Field Name   |  Field Type      |  Card.  |  Description
+:-------------|:-----------------|:--------|:------------
+cdrStatus        |  CdrStatusType          |  ?      | Defines which status of CDRs to return, depending on the role of the partner (Provider: accepted, revised, rejected; Operator: approved, declined, rejected). If not defined, will return accepted and revised CDRs for Providers.
 
 
 ### GetCDRs.conf
@@ -903,8 +905,6 @@ This contains the field definition of the ConfirmCDRs.req sent by a partner's sy
 :-------------|:-----------------|:--------|:------------
 approved      |  CdrId		 |  *      |  This contains the CDR-IDs for CDRs that have been approved by the EVSP.
 declined      |  CdrId   	 |  *      |  This contains the CDR-IDs for CDRs that have been declined by the EVSP.
-cleared	      |  CdrId		 |  *      |  This contains the CDR-IDs for CDRs that have been cleared by the EVSP.
-rated	      |  CdrId		 |  *      |  This contains the CDR-IDs for CDRs that have been rated by the EVSP.
 rejected      |  CdrId		 |  *      |  This contains the CDR-IDs for CDRs to be marked finally rejected by the CPO.
 
 
