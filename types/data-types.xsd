@@ -795,7 +795,7 @@
 					<s:restriction base="s:string">
 						<s:minLength value="1"></s:minLength>
 						<s:maxLength value="6"></s:maxLength>
-						<s:pattern value="[A-Z0-9 ]{1,6}"></s:pattern>
+						<s:pattern value="[A-Z0-9 \-]{1,6}"></s:pattern>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
