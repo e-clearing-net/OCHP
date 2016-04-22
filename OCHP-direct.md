@@ -626,11 +626,11 @@ sent by the MDM towards the CMS.
 evseId       |  EvseId      |  1      |  The charge point which is selected by the provider.
 contractId   |  ContractId  |  1      |  Contract-ID for which the charge point is selected.
 reserveUntil |  DateTimeType|  ?      |  The desired TTL for the reservation created for the selected EVSE.
-reserveEmtId |  EmtId       |  ?      |  If defined, a reservation can be made for a specific physical that is to be used to start the charging process.
+reserveEmtId |  EmtId       |  ?      |  If defined, a reservation can be made for a specific physical token that is to be used to start the charging process.
 
 **Note:** If no reserveUntil is defined in the request, it is up to the CPO to set a pre-defined TTL for the reservation and the session established. Once that TTL expires, the session and reservation should be invalidated.
 
-**Note:** A specific token may be defined for a reservation, which would enable access to the charging station with the customers RFID card as well. If this is the case, the operator should still accept all ControlEvse requests coming in for that session ID.
+**Note:** A specific token may be defined for a reservation, which would enable access to the charging station with the customers RFID card as well. If this is the case, the operator must still accept all ControlEvse requests coming in for that session ID.
 
 
 
@@ -645,7 +645,7 @@ result       |  DirectResult  |  1      |  This contains the result of SelectEvs
 directId     |  DirectId      |  ?      |  The session id for this direct charging process on success.
 ttl          |  DateTimeType  |  ?      |  On success the time until this selection is valid.
 
-**Note:** Should the CPO not accept the extended duration of reservation for the selected EVSE, they should still create the session and return the maximum TTL they are willing to grant the provider. It is then up to provider or their customer to accept this proposed TTL / reservation or not (in which case the session should be closed by calling _ReleaseEvse.req_).
+**Note:** Should the CPO not accept the extended duration of reservation for the selected EVSE, they should still create the session and return the maximum TTL they are willing to grant the provider. It is then up to provider or their customer to accept this proposed TTL / reservation or to reject it (in which case the session should be closed by calling _ReleaseEvse.req_).
 
 
 
@@ -718,6 +718,8 @@ currentPower      |  float          |  ?      |  The currently supplied power li
 chargedEnergy     |  float          |  ?      |  The amount of energy in kilowatthours transferred during this charging process. Example: "5.5", "20", "85"
 meterValue        |  float          |  ?      |  The current meter value (in kWh) as displayed on the meter to enable displaying it to the user. Example: "12345.67"
 localTime         |  LocalDateTimeType |  ?      |  The local time at the charge point.
+currentCost       |  float          |  ?      |  The total cost of the charging process up to this point.
+currency          |  string(3)      |  ?      |  The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
 
 
 
@@ -757,7 +759,8 @@ Contains a generic endpoint definition.
  url           | string(255)  | 1       | The endpoint address.
  namespaceUrl  | string(255)  | ?       | The WSDL namespace definition.
  accessToken   | string(255)  | 1       | The secret token to access this endpoint.
- validDay      | date         | 1       | The day on which this endpoint/token combination is valid.
+ validDate     | DateType     | 1       | The day on which this endpoint/token combination is valid.
+ useProxy      | boolean      | ?       | To be set to "true" in case a proxy system is being used to handle all OCHPdirect requests.
  
  **Note:** Any token for day N has to be treated as valid from day N-1 23:50 UTC to day N+1 0:30 UTC.
 
@@ -772,7 +775,8 @@ Expands the DirectEndpoint.
  url           | string(255)      | 1       | The endpoint address.
  namespaceUrl  | string(255)      | ?       | The WSDL namespace definition.
  accessToken   | string(255)      | 1       | The secret token to access this endpoint.
- validDay      | date             | 1       | The day on which this endpoint/token combination is valid.
+ validDate     | DateType         | 1       | The day on which this endpoint/token combination is valid.
+ useProxy      | boolean          | ?       | To be set to "true" in case a proxy system is being used to handle all OCHPdirect requests.
  whitelist     | ContractPattern  | +       | List of patterns that match all Contract-IDs the endpoint is responsible for.
  blacklist     | ContractPattern  | *       | List of patterns that match Contract-IDs the endpoint is not responsible for, but are matched by the whitelist.
 
@@ -788,7 +792,8 @@ Expands the DirectEndpoint.
  url           | string(255)  | 1       | The endpoint address.
  namespaceUrl  | string(255)  | ?       | The WSDL namespace definition.
  accessToken   | string(255)  | 1       | The secret token to access this endpoint.
- validDay      | date         | 1       | The day on which this endpoint/token combination is valid.
+ validDate     | DateType     | 1       | The day on which this endpoint/token combination is valid.
+ useProxy      | boolean      | ?       | To be set to "true" in case a proxy system is being used to handle all OCHPdirect requests.
  whitelist     | EvsePattern  | +       | List of patterns that match all EVSE-IDs the endpoint is responsible for.
  blacklist     | EvsePattern  | *       | List of patterns that match EVSE-IDs the endpoint is not responsible for, but are matched by the whitelist.
 
