@@ -568,6 +568,25 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 								</s:documentation>
 							</s:annotation>
 						</s:element>
+						<s:element name="currentCost" type="s:float" minOccurs="0" maxOccurs="1">
+							<s:annotation>
+								<s:documentation>
+									The total cost of the charging process up to this point.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+						<s:element name="currency" type="s:string" minOccurs="0" maxOccurs="1" nillable="true">
+							<s:annotation>
+								<s:documentation>
+									Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
+								</s:documentation>
+							</s:annotation>
+							<s:restriction base="s:string">
+								<s:pattern value="[A-Z]*"></s:pattern>
+								<s:minLength value="3"></s:minLength>
+								<s:maxLength value="3"></s:maxLength>
+							</s:restriction>
+						</s:element>
 					</s:sequence>
 				</s:complexType>
 			</s:element>
