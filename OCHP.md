@@ -1319,6 +1319,7 @@ The billing items for charging periods.
  energy       |  Price for the consumed energy. The billingValue represents the energy in kilowatt-hours.
  power        |  Price for the used power level. The billingValue represents the maximum power in kilowatts.
  serviceFee   |  General service fee per charging process. The billingValue represents multiplier and thus has to be set to "1.0".
+ reservation  |  Price for a reservation of the EVSE. The billingValue represents the time in hours. If instead a flat fee is charged per reservation, the billingValue should be set to "1.0".
 
 
 ### CdrPeriodType *class*
@@ -1987,7 +1988,7 @@ Parking costs:
 		</priceComponent>
 		<restrictions>
 			<maxPower>32.00</maxPower>
-		<restrictions>
+		</restrictions>
 	</tariffElement>
 	<tariffElement>
 		<priceComponent>
@@ -2002,7 +2003,7 @@ Parking costs:
 			<weekday>3</weekday>
 			<weekday>4</weekday>
 			<weekday>5</weekday>
-		<restrictions>
+		</restrictions>
 	</tariffElement>
 	<tariffElement>
 		<priceComponent>
@@ -2014,7 +2015,7 @@ Parking costs:
 			<minPower>32.00</minPower>
 			<weekday>6</weekday>
 			<weekday>7</weekday>
-		<restrictions>
+		</restrictions>
 	</tariffElement>
 	<tariffElement>
 		<priceComponent>
@@ -2030,7 +2031,7 @@ Parking costs:
 			<weekday>3</weekday>
 			<weekday>4</weekday>
 			<weekday>5</weekday>
-		<restrictions>
+		</restrictions>
 	</tariffElement>
 	<tariffElement>
 		<priceComponent>
@@ -2042,7 +2043,7 @@ Parking costs:
 			<startTime>10:00</startTime>
 			<endTime>17:00</endTime>
 			<weekday>6</weekday>
-		<restrictions>
+		</restrictions>
 	</tariffElement>
 </tariffInfo>
 ```
