@@ -294,6 +294,7 @@
 							energy; Price for the consumed energy. The billingValue represents the energy in kilowatt-hours. 
 							power; Price for the consumed energy. The billingValue represents the maximum power in kilowatts 
 							serviceFee; General service fee per charging process. The billingValue represents multiplier and thus has to be set to "1.0"
+							reservation; Price for a reservation of the EVSE. The billingValue represents the time in hours. If instead a flat fee is charged per reservation, the billingValue should be set to "1.0".
 						</s:documentation>
 					</s:annotation>
 					<s:restriction base="s:string">
@@ -302,6 +303,7 @@
 						<s:enumeration value="energy"></s:enumeration>
 						<s:enumeration value="power"></s:enumeration>
 						<s:enumeration value="serviceFee"></s:enumeration>
+						<s:enumeration value="reservation"></s:enumeration>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
