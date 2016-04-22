@@ -77,6 +77,18 @@
 					Defines the GetCDRs.req.
 				</s:documentation>
 			</s:annotation>
+			<s:sequence>
+				<s:element minOccurs="0" maxOccurs="1" name="cdrStatus" type="tns:CdrStatusType">
+					<s:annotation>
+						<s:documentation>
+							Defines which status of CDRs to return, depending on the role of the partner:
+							Provider: accepted, revised, rejected
+							Operator: approved, declined, rejected
+							If not defined, will return accepted and revised CDRs for Providers.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
 		</s:complexType>
 	</s:element>
 
@@ -321,17 +333,24 @@
 	<s:element name="ConfirmCDRsRequest">
 		<s:complexType>
 			<s:sequence>
-				<s:element name="approved" type="tns:CDRInfo" minOccurs="0" maxOccurs="unbounded">
+				<s:element name="approved" type="tns:CdrId" minOccurs="0" maxOccurs="unbounded">
 					<s:annotation>
 						<s:documentation>
 							This contains the CDRs that have been approved by the EVSP
 						</s:documentation>
 					</s:annotation>
 				</s:element>
-				<s:element name="declined" type="tns:CDRInfo" minOccurs="0" maxOccurs="unbounded">
+				<s:element name="declined" type="tns:CdrId" minOccurs="0" maxOccurs="unbounded">
 					<s:annotation>
 						<s:documentation>
 							This contains the CDRs that have been declined by the EVSP.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element name="rejected" type="tns:CdrId" minOccurs="0" maxOccurs="unbounded">
+					<s:annotation>
+						<s:documentation>
+							This contains the CDRs that have been finally rejected by the CPO.
 						</s:documentation>
 					</s:annotation>
 				</s:element>
@@ -434,13 +453,6 @@
 					<s:annotation>
 						<s:documentation>
 							This contains the ID of the token which is to be validated
-						</s:documentation>
-					</s:annotation>
-				</s:element>
-				<s:element name="evseId" type="tns:EvseId" minOccurs="1" maxOccurs="1">
-					<s:annotation>
-						<s:documentation>
-							Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it
 						</s:documentation>
 					</s:annotation>
 				</s:element>
