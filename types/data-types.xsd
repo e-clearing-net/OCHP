@@ -254,18 +254,6 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="currency" minOccurs="1" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:whiteSpace value="collapse"></s:whiteSpace>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
 			<s:element name="itemPrice" type="s:float" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
@@ -519,16 +507,16 @@
 		</s:sequence>
 	</s:complexType>
 
-	<s:complexType name="ChargePointStatusType">
+	<s:complexType name="GeneralStatusType">
 		<s:sequence>
-			<s:element name="ChargePointStatusType">
+			<s:element name="GeneralStatusType">
 				<s:annotation>
 					<s:documentation>
 						Unknown; No status information available
-						Operative; Charge point is in operation and can be used
-						Inoperative; charge point cannot be used due to maintenance, greater downtime, blocking construction works or other access restrictions (temporarily, will be operative in the future). 
-						Planned; planned charge point, will be operating soon 
-						Closed; discontinued charge point, will be deleted soon
+						Operative; in operation and can be used
+						Inoperative; cannot be used due to maintenance, greater downtime, blocking construction works or other access restrictions (temporarily, will be operative in the future). 
+						Planned; planned, will be operating soon 
+						Closed; discontinued, will be deleted soon
 					</s:documentation>
 				</s:annotation>
 				<s:simpleType>
@@ -560,7 +548,7 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="status" type="tns:ChargePointStatusType" minOccurs="1" maxOccurs="1">
+			<s:element name="status" type="tns:GeneralStatusType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						Status value during the scheduled period.
@@ -994,6 +982,139 @@
 		</s:sequence>
 	</s:complexType>
 
+	<s:complexType name="TariffElementType">
+		<s:sequence>
+			<s:element name="priceComponent" type="tns:PriceComponentType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Contains information about the pricing structure of the tariff element.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="tariffRestriction" type="TariffRestrictionType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Contains information about when to apply the defined priceComponent.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+	
+	<s:complexType name="PriceComponentType">
+		<s:sequence>
+			<s:element name="billingItem" type="tns:BillingItemType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						What dimension is part of this tariff element.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="itemPrice" type="s:float" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Price per unit of the billingItem in the given currency.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="stepSize" type="s:int" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Minimum amount to be billed (billing will happen in stepSize blocks).
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+	
+	<s:complexType name="TariffRestrictionType">
+		<s:sequence>
+			<s:element name="startTime" type="tns:TimeType" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Start time of day.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="endTime" type="tns:TimeType" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						End time of day.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="startDate" type="tns:DateType" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Start date.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="endDate" type="tns:DateType" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						End date.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="minEnergy" type="s:float" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Minimum energy used in kWh. Valid from this amount used.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="maxEnergy" type="s:float" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Maximum energy used in kWh. Valid up to this amount used.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="minPower" type="s:float" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Minimum power in kW. Valid from this power.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="maxPower" type="s:float" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Maximum power in kW. Valid up to this power.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="minDuration" type="s:int" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Minimum duration in seconds. Valid from this duration.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="maxDuration" type="s:int" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Maximum duration in seconds. Valid up to this duration.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="weekday" minOccurs="0" maxOccurs="7">
+				<s:annotation>
+					<s:documentation>
+						Number of day in the week, from Monday(1) till Sunday(7)
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:int">
+						<s:maxInclusive value="7"></s:maxInclusive>
+						<s:minInclusive value="1"></s:minInclusive>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
 	<s:simpleType name="EvseId">
 		<s:annotation>
 			<s:documentation>
@@ -1027,5 +1148,16 @@
 			<s:maxLength value="15"></s:maxLength>
 		</s:restriction>
 	</s:simpleType>
-
+	
+	<s:simpleType name="ParkingId">
+		<s:annotation>
+			<s:documentation>
+				The Paking-ID uniquely references one parking spot.
+			</s:documentation>
+		</s:annotation>
+		<s:restriction base="s:string">
+			<s:pattern value="[A-Za-z]{2}\*[A-Za-z0-9]{3}\*[Pp][A-Za-z0-9][A-Za-z0-9\*]{0,30}"></s:pattern>
+			<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[Pp][A-Za-z0-9][A-Za-z0-9\*]{0,30}"></s:pattern>
+		</s:restriction>
+	</s:simpleType>
 </s:schema>
