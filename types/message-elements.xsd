@@ -118,6 +118,10 @@
 		</s:complexType>
 	</s:element>
 
+	<s:element name="GetRoamingAuthorisationListRequest">
+		<s:complexType></s:complexType>
+	</s:element>
+
 	<s:element name="GetRoamingAuthorisationListResponse">
 		<s:complexType>
 			<s:annotation>
@@ -386,10 +390,6 @@
 		</s:complexType>
 	</s:element>
 
-	<s:element name="GetRoamingAuthorisationListRequest">
-		<s:complexType></s:complexType>
-	</s:element>
-
 	<s:element name="GetChargePointListUpdatesResponse">
 		<s:complexType>
 			<s:sequence>
@@ -439,6 +439,76 @@
 					<s:annotation>
 						<s:documentation>
 							This contains the charge point information records that could not be set in the clearing house. For error description see the result message.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+	
+	<s:element name="GetParkingSpotListUpdatesRequest">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="lastUpdate" type="tns:DateTimeType" minOccurs="1" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							Date and time since the last successful call of GetParkingSpotList.req or GetParkingSpotListUpdates.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="GetParkingSpotListUpdatesResponse">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="result" type="tns:Result" minOccurs="1" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							this contains the result of GetParkingSpotListUpdates.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element name="parkingSpotInfoArray" type="tns:ParkingSpotInfo" minOccurs="0" maxOccurs="unbounded">
+					<s:annotation>
+						<s:documentation>
+							This contains the parking spot information records changed since the time specified in lastUpdate in the request
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="UpdateParkingSpotListRequest">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="parkingSpotInfoArray" type="tns:ParkingSpotInfo" minOccurs="1" maxOccurs="unbounded">
+					<s:annotation>
+						<s:documentation>
+							This contains the parking spot information records to be updated or added
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+		</s:complexType>
+	</s:element>
+
+	<s:element name="UpdateParkingSpotListResponse">
+		<s:complexType>
+			<s:sequence>
+				<s:element name="result" type="tns:Result" minOccurs="1" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							This contains the result of UpdateParkingSpotList.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="unbounded" name="refusedparkingSpotInfo" type="tns:ParkingSpotInfo">
+					<s:annotation>
+						<s:documentation>
+							This contains the parking spot information records that could not be set in the clearing house. For error description see the result message.
 						</s:documentation>
 					</s:annotation>
 				</s:element>
@@ -498,6 +568,13 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
+				<s:element name="parking" minOccurs="0" maxOccurs="unbounded" type="tns:ParkingStatusType">
+					<s:annotation>
+						<s:documentation>
+							This contains one parking-ID with the current corresponding status.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
 				<s:element name="ttl" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
 					<s:annotation>
 						<s:documentation>
@@ -529,8 +606,7 @@
 				<s:element name="startDateTime" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
 					<s:annotation>
 						<s:documentation>
-							If this value is set to a point in the past, the response is limited to status
-information that is more actual than the given value.
+							If this value is set to a point in the past, the response is limited to status information that younger than the given value.
 						</s:documentation>
 					</s:annotation>
 				</s:element>
@@ -542,6 +618,7 @@ information that is more actual than the given value.
 		<s:complexType>
 			<s:sequence>
 				<s:element name="evse" type="tns:EvseStatusType" minOccurs="0" maxOccurs="unbounded"></s:element>
+				<s:element name="parking" type="tns:ParkingStatusType" minOccurs="0" maxOccurs="unbounded"></s:element>
 			</s:sequence>
 		</s:complexType>
 	</s:element>
