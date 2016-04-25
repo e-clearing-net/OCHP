@@ -191,13 +191,39 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
+			<s:element name="totalCost" type="s:float" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Total cost for the entire charging process. Must equal the sum of the individual periodCosts.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="currency" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:whiteSpace value="collapse"></s:whiteSpace>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="taxrate" type="s:float" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Tax rate that is to be paid for charging processes in the country of origin.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
 		</s:sequence>
 	</s:complexType>
 
 	<s:complexType name="ChargePointInfo">
 		<s:annotation>
 			<s:documentation>
-				List of available payment or access methods on site.
+				Static POI data regarding a charge point / EVSE.
 			</s:documentation>
 		</s:annotation>
 		<s:sequence>
@@ -221,6 +247,13 @@
 						<s:pattern value="[A-Z0-9 ]{1,15}"></s:pattern>
 					</s:restriction>
 				</s:simpleType>
+			</s:element>
+			<s:element name="parkingId" type="ParkingId" minOccurs="0" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						Parking-ID to reference parking spots associated with this EVSE.
+					</s:documentation>
+				</s:annotation>
 			</s:element>
 			<s:element name="timestamp" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
 				<s:annotation>
@@ -290,7 +323,7 @@
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
-			<s:element name="category" minOccurs="0" maxOccurs="1">
+			<s:element name="productType" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						Charge point category code defined by the operator. Allows different pricing levels in roaming agreements based on the category.
@@ -317,7 +350,7 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="status" type="tns:ChargePointStatusType" minOccurs="0" maxOccurs="1">
+			<s:element name="status" type="tns:GeneralStatusType" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						The current status of the charge point.
@@ -390,7 +423,7 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="chargePointType" minOccurs="0" maxOccurs="1">
+			<s:element name="chargePointType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						The type of the charge point "AC" or "DC"
@@ -425,5 +458,127 @@
 			</s:element>
 		</s:sequence>
 	</s:complexType>
-
+	<s:complexType name="ParkingSpotInfo">
+		<s:annotation>
+			<s:documentation>
+				Static POI data regarding a parking spot.
+			</s:documentation>
+		</s:annotation>
+		<s:sequence>
+			<s:element name="parkingId" type="tns:ParkingId" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Globally unique identifier for this parking spot.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="restrictions" type="tns:RestrictionType" minOccurs="0" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						Restrictions to the usage of this parking spot.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="floorLevel" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphanumeric. Level on which the charge station is located (in garage buildings) in the locally displayed numbering scheme. Examples: "-2","P-5", "2", "+5"
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:pattern value="[A-Z0-9\-\+/]{1,4}"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="parkingSlotNumber" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphanumeric. Locally displayed parking slot number. Examples: "10", "251","B25", "P-234"
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:pattern value="[A-Z0-9\-\+/]{1,5}"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="status" type="tns:GeneralStatusType" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						The current status of the charge point.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+	<s:complexType name="TariffInfo">
+		<s:annotation>
+			<s:documentation>
+				Information about a tariff referenced at EVSE level.
+			</s:documentation>
+		</s:annotation>
+		<s:sequence>
+			<s:element name="tariffId" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphanumeric. Identifies a tariff. Unique within one EVSE Operator
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="15"></s:maxLength>
+						<s:pattern value="[A-Z0-9 ]{1,15}"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="recipient" minOccurs="0" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						Alphanumeric. Identifies a recipient EMSP according to EMSP-ID without separators. If left blank, tariff is valid for all.
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="5"></s:maxLength>
+						<s:pattern value="[A-Z0-9 ]{1,5}"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="currency" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:whiteSpace value="collapse"></s:whiteSpace>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="productType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Allows referencing of this tariff object at EVSE level. May be used across multiple tariffs if unique per recipient-EMSP.
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="2"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="tariffElement" type="tns:TariffElementType" minOccurs="1" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						Element describing this tariff and restrictions.ö
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
 </s:schema>
