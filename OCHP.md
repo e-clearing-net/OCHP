@@ -225,6 +225,7 @@ CH           | Clearing House
 CHS          | Clearing House System
 CMS          | Charge Point Management System
 Contract-ID  | Contract (or Account) Identifier
+CPO	     | Charge Point Operator
 EMP          | Electric Mobility Provider
 EMT-ID       | Electric Mobility Token Identifier
 EV           | Electrical Vehicle
@@ -238,6 +239,7 @@ MDM          | Master Data Management System
 NSP          | Navigation Service Provider
 OCHP         | Open Clearing House Protocol
 PDU          | Protocol Data Unit
+PSO	     | Parking Spot Operator
 RA           | Roaming Authorisation
 RFID         | Radio-frequency identification
 VAS          | Value Added Service
@@ -268,6 +270,9 @@ figure:
    operating charging stations.
  * The *NSP* (Navigation Service Provider) - offering relevant 
    navigation services to the EV user.
+ * The *PSO* (Parking Spot Operator) - owning and/or operating the parking
+   spots that allow access to the charging infrastructure owned/operated
+   by the EVSE Operator.
  * The *Clearing House Operator* - running a software platform called 
    Clearing House to enable data exchange between the market roles (2) 
    to (4).
@@ -319,6 +324,15 @@ the charging services received by its contracted EV users.
 The NSP offers service towards the EV user for searching, locating and
 routing to EVSEs of the contracted EVSE operators. It therefore may have
 contracts with EVSE operators or EVSPs.
+
+
+### Parking Spot Operator (PSO)
+
+The PSO offers multiple services to the CPO as well as the EV Driver and
+NSP. They offer access to a parking spot associated with an EVSE to the
+EV driver and sometimes the location for the EVSE to the CPO. Furthermore,
+they may operate services that allow detailed tracking of the occupation
+of single parking spots, thus enhancing CPO data sent to an NSP.
 
 
 ### Charging Session
@@ -484,9 +498,10 @@ the different partners consist of the four following components:
    RoamingAuthorisationInfo)
  * Exchange of Charge Data, the raw billing data (Charge Detail 
    Records, CDRInfo)
- * Exchange of Charge Point Information (Static POI data, 
+ * Exchange of Charge Point Information (Static and live POI data, 
    ChargePointInfo)
  * Live Authorization Requests (Single-Token-Requests)
+ * Exchange of Parking Spot Information (Static and live data)
 
 From the data flow perspective, each market role is a source or a sink
 for certain data types. The figure below gives an overview of
@@ -1948,7 +1963,7 @@ These types are used to exchange tariff information between a CPO and an EMP.
 <tariffInfo>
 	<tariffId>123</tariffId>
 	<currency>EUR</currency>
-	<tariffRefId>A1</tariffRefId>
+	<productType>A1</productType>
 	<tariffElement>
 		<priceComponent>
 			<billingItem>usagetime</BillingItem>
@@ -1972,7 +1987,7 @@ Parking costs:
 <tariffInfo>
 	<tariffId>1234</tariffId>
 	<currency>EUR</currency>
-	<tariffRefId>A2</tariffRefId>
+	<productType>A2</productType>
 	<tariffElement>
 		<priceComponent>
 			<billingItem>serviceFee</billingItem>
@@ -1986,9 +2001,9 @@ Parking costs:
 			<itemPrice>1.00</itemPrice>
 			<stepSize>900</stepSize>
 		</priceComponent>
-		<restrictions>
+		<tariffRestriction>
 			<maxPower>32.00</maxPower>
-		</restrictions>
+		</tariffRestriction>
 	</tariffElement>
 	<tariffElement>
 		<priceComponent>
@@ -1996,14 +2011,14 @@ Parking costs:
 			<itemPrice>2.00</itemPrice>
 			<stepSize>600</stepSize>
 		</priceComponent>
-		<restrictions>
+		<tariffRestriction>
 			<minPower>32.00</minPower>
 			<weekday>1</weekday>
 			<weekday>2</weekday>
 			<weekday>3</weekday>
 			<weekday>4</weekday>
 			<weekday>5</weekday>
-		</restrictions>
+		</tariffRestriction>
 	</tariffElement>
 	<tariffElement>
 		<priceComponent>
@@ -2011,11 +2026,11 @@ Parking costs:
 			<itemPrice>1.25</itemPrice>
 			<stepSize>600</stepSize>
 		</priceComponent>
-		<restrictions>
+		<tariffRestriction>
 			<minPower>32.00</minPower>
 			<weekday>6</weekday>
 			<weekday>7</weekday>
-		</restrictions>
+		</tariffRestriction>
 	</tariffElement>
 	<tariffElement>
 		<priceComponent>
@@ -2023,7 +2038,7 @@ Parking costs:
 			<itemPrice>5.00</itemPrice>
 			<stepSize>300</stepSize>
 		</priceComponent>
-		<restrictions>
+		<tariffRestriction>
 			<startTime>09:00</startTime>
 			<endTime>18:00</endTime>
 			<weekday>1</weekday>
@@ -2031,7 +2046,7 @@ Parking costs:
 			<weekday>3</weekday>
 			<weekday>4</weekday>
 			<weekday>5</weekday>
-		</restrictions>
+		</tariffRestriction>
 	</tariffElement>
 	<tariffElement>
 		<priceComponent>
@@ -2039,11 +2054,11 @@ Parking costs:
 			<itemPrice>6.00</itemPrice>
 			<stepSize>300</stepSize>
 		</priceComponent>
-		<restrictions>
+		<tariffRestriction>
 			<startTime>10:00</startTime>
 			<endTime>17:00</endTime>
 			<weekday>6</weekday>
-		</restrictions>
+		</tariffRestriction>
 	</tariffElement>
 </tariffInfo>
 ```
@@ -2061,7 +2076,7 @@ none of the TariffElements before this matches the current charging period.
 |---------------------|-------------------------------------------------|-------|---------------------------------------------------------------------------------------|
 | tariffId            | string (15)           							| 1     | Uniquely identifies the tariff within the CPOs platform (and suboperator platforms).  |
 | currency            | string (3) 								        | 1     | Currency of this tariff, ISO 4217 Code                                                |
-| tariffRefId		  | string (15)										| 1		| ID used to reference tariff on EVSE level												|
+| productType		  | string (15)										| 1		| ID used to reference tariff on EVSE level												|
 | tariffElement       | [TariffElement](#tariffelement-class)           | +     | List of tariff elements                                                               |
 | recipients          | string (5)							 			| *     | Details on the energy supplied with this tariff.                                      |
 <div><!-- ---------------------------------------------------------------------------- --></div>
@@ -2071,7 +2086,7 @@ none of the TariffElements before this matches the current charging period.
 <div><!-- ---------------------------------------------------------------------------- --></div>
 | Value        | Description                                          |
 | ------------ | ---------------------------------------------------- |
-| 1			   | Monday                                               |
+| 1	       | Monday                                               |
 | 2            | Tuesday                                              |
 | 3            | Wednesday                                            |
 | 4            | Thursday                                             |
@@ -2087,7 +2102,7 @@ none of the TariffElements before this matches the current charging period.
 |-----------------|-------------------------------------------------|-------|--------------------------------------------------|
 | billingItem     | [BillingItemType] (#billingitemtype-enum)		| 1     | Type of tariff dimension |
 | itemPrice       | float								            | 1     | price per unit for this tariff dimension         |
-| stepSize        | int                                             | 1     | Minimum amount to be billed. This unit will be billed in this step_size blocks. For example: if type is time and  step_size is 300, then time will be billed in blocks of 5 minutes, so if 6 minutes is used, 10 minutes (2 blocks of step_size) will be billed. |
+| stepSize        | int                                             | 1     | Minimum amount to be billed. This unit will be billed in this stepSize blocks. For example: if type is time and  stepSize is 300, then time will be billed in blocks of 5 minutes, so if 6 minutes is used, 10 minutes (2 blocks of stepSize) will be billed. |
 <div><!-- ---------------------------------------------------------------------------- --></div>
 
 ### TariffElement *class*
@@ -2096,7 +2111,7 @@ none of the TariffElements before this matches the current charging period.
 | Property                 | Type                                               | Card. | Description                                                      |
 |--------------------------|----------------------------------------------------|-------|------------------------------------------------------------------|
 | priceComponent           | [PriceComponent](#pricecomponent-class)            | +     | List of price components that make up the pricing of this tariff |
-| restrictions             | [TariffRestrictions](#tariffrestrictions-class)    | ?     | List of tariff restrictions                                      |
+| tariffRestrictions       | [TariffRestrictions](#tariffrestrictions-class)    | ?     | List of tariff restrictions                                      |
 <div><!-- ---------------------------------------------------------------------------- --></div>  
 
 ### TariffRestrictions *class*
@@ -2104,10 +2119,10 @@ none of the TariffElements before this matches the current charging period.
 <div><!-- ---------------------------------------------------------------------------- --></div>
 | Property                | Type                                  | Card. | Description                                                                           |
 |-------------------------|---------------------------------------|-------|---------------------------------------------------------------------------------------|
-| startTime               | string (5) 							  | ?     | Start time of day, for example 13:30, valid from this time of the day. Must be in 24h format with leading zeros. Hour/Minute separator: ":" Regex: [0-2][0-9]:[0-5][0-9] |
-| endTime                 | string (5) 							  | ?     | End time of day, for example 19:45, valid until this time of the day. Same syntax as start_time |
-| startDate               | string (10) 						  | ?     | Start date, for example: 2015-12-24, valid from this day                              |
-| endDate                 | string (10) 						  | ?     | End date, for example: 2015-12-27, valid until this day (excluding this day)          |
+| startTime               | TimeType 							  | ?     | Start time of day, for example 13:30, valid from this time of the day. Must be in 24h format with leading zeros. Hour/Minute separator: ":" Regex: [0-2][0-9]:[0-5][0-9] |
+| endTime                 | TimeType 							  | ?     | End time of day, for example 19:45, valid until this time of the day. Same syntax as start_time |
+| startDate               | DateType						  | ?     | Start date, for example: 2015-12-24, valid from this day                              |
+| endDate                 | DateType 						  | ?     | End date, for example: 2015-12-27, valid until this day (excluding this day)          |
 | minEnergy               | float   							  | ?     | Minimum used energy in kWh, for example 20, valid from this amount of energy is used  |                             
 | maxEnergy               | float  								  | ?     | Maximum used energy in kWh, for example 50, valid until this amount of energy is used |
 | minPower                | float   							  | ?     | Minimum power in kW, for example 0, valid from this charging speed                    |
