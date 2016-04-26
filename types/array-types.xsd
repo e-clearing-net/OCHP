@@ -6,7 +6,7 @@
 	<s:complexType name="RoamingAuthorisationInfo">
 		<s:annotation>
 			<s:documentation>
-				Authorized card info.
+				Whitelisted authorisation card info.
 			</s:documentation>
 		</s:annotation>
 		<s:sequence>
@@ -151,10 +151,10 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="maxSocketPower" type="s:float" minOccurs="1" maxOccurs="1">
+			<s:element name="ratings" type="tns:RatingsType" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Maximum available power at the socket in kilowatts. Example: "3.7", "11", "22"
+						Defines the ratings for the charge point.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -167,7 +167,7 @@
 				<s:simpleType>
 					<s:restriction base="s:string">
 						<s:minLength value="1"></s:minLength>
-						<s:maxLength value="2"></s:maxLength>
+						<s:maxLength value="15"></s:maxLength>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
@@ -194,7 +194,7 @@
 			<s:element name="totalCost" type="s:float" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Total cost for the entire charging process. Must equal the sum of the individual periodCosts.
+						Total cost for the entire charging process. Should always equal the sum of the individual periodCosts.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -213,7 +213,7 @@
 			<s:element name="taxrate" type="s:float" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Tax rate that is to be paid for charging processes in the country of origin.
+						Tax rate in percent that is to be paid for charging processes in the country of origin.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -251,7 +251,7 @@
 			<s:element name="parkingId" type="ParkingId" minOccurs="0" maxOccurs="unbounded">
 				<s:annotation>
 					<s:documentation>
-						Parking-ID to reference parking spots associated with this EVSE.
+						Parking-ID to reference parking spots operated and monitored by a PSO. Ideally, list all parking spots that can access this EVSE.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -332,7 +332,7 @@
 				<s:simpleType>
 					<s:restriction base="s:string">
 						<s:minLength value="1"></s:minLength>
-						<s:maxLength value="2"></s:maxLength>
+						<s:maxLength value="15"></s:maxLength>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
@@ -568,7 +568,7 @@
 				<s:simpleType>
 					<s:restriction base="s:string">
 						<s:minLength value="1"></s:minLength>
-						<s:maxLength value="2"></s:maxLength>
+						<s:maxLength value="15"></s:maxLength>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
