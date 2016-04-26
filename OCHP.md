@@ -9,7 +9,7 @@ Prot. Version | Date       | Comment
 1.0           | 12‑12‑2013 | Use-case driven structure; Delta-Synchronization; Live-Authorization; CDR-Validation; Alignment to standardization and market development.
 1.2           | 17‑06‑2014 | Live Status Interface and further enhancements from market requirements. Commit: [6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5](../../commit/6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5)
 1.3           | 27‑03‑2015 | Bug fixes, further enhancements (power ratings, location types, time zones) Commit: [77cccd838db692ab6f8b77fb4be8e81d59ec04e2](../../commit/77cccd838db692ab6f8b77fb4be8e81d59ec04e2)
-1.4	
+1.4	      |		   |
 
 
 Copyright (c) 2012-2015 smartlab, bluecorner.be, e-laad.nl
@@ -1426,7 +1426,7 @@ Contains all information concerning a Charge Data Record
  chargePointType  |  string(2)          |  1      |  The type of the charge point "AC" or "DC"
  connectorType    |  ConnectorType      |  1      |  Type of the utilized socket or connector.
  maxSocketPower   |  float              |  1      |  Maximum available power at the socket in kilowatts. Example: "3.7", "11", "22"
- productType      |  string(2)          |  ?      |  Identifies the type of the product that was delivered for the charging session. Custom product code.
+ productType      |  string(15)         |  ?      |  Identifies the type of the product and tariff that was delivered for the charging session. Custom product code.
  meterId          |  string(20)         |  ?      |  Written identification number of the physical energy meter, provided by the manufacturer. For future use.
  chargingPeriods  |  CdrPeriodType      |  +      |  One period per item on the bill. At the moment only one period is to be provided.
 
@@ -1502,8 +1502,8 @@ or uri. According to the roaming connection between one EVSE Operator
 and one or more Navigation Service Providers the hosting or file 
 exchange of image payload data has to be defined. The exchange of this 
 content data is out of scope of OCHP. However, the recommended setup is 
-a public available web server hosted and updated by the EVSE Operator. 
-Per charge point a unlimited number of images of each type is allowed. 
+a publicly available web server hosted and updated by the EVSE Operator. 
+Per charge point an unlimited number of images of each type is allowed. 
 Recommended are at least two images where one is a network or provider 
 logo and the second is a station photo. If two images of the same type 
 are defined they should be displayed additionally, not optionally.
@@ -1574,7 +1574,7 @@ The class of referenced related resource.
  surroundingInfo  |  further information on the surroundings of the charging station e.g. further POIs
  ownerHomepage    |  website of the station owner (not operator) in case of hotels, restaurants, etc.
  feedbackForm     |  form for user feedback on the charging station service
- openingTimes	  |  link to a calendar or info page containing opening times in case they are irregular.
+ openingTimes	  |  link to a calendar or info page containing opening times (only if they are defined as irregular).
 
 
 ### GeoPointType *class*
@@ -1619,30 +1619,30 @@ The socket or plug standard of the charging point.
  Value                 |  Description
 :----------------------|:-------------
  Chademo               |  The connector type is CHAdeMO, DC
- IEC-62196-T1          |  IEC 62196 Type 1 "SAE J1772"
- IEC-62196-T1-COMBO    |  Combo Type 1 based, DC
- IEC-62196-T2          |  IEC 62196 Type 2 "Mennekes"
- IEC-62196-T2-COMBO    |  Combo Type 2 based, DC
- IEC-62196-T3A         |  IEC 62196 Type 3A
- IEC-62196-T3C         |  IEC 62196 Type 3C "Scame"
- DOMESTIC-A            |  Standard/Domestic household, type "A", NEMA 1-15, 2 pins
- DOMESTIC-B            |  Standard/Domestic household, type "B", NEMA 5-15, 3 pins
- DOMESTIC-C            |  Standard/Domestic household, type "C", CEE 7/17, 2 pins
- DOMESTIC-D            |  Standard/Domestic household, type "D", 3 pin
- DOMESTIC-E            |  Standard/Domestic household, type "E", CEE 7/5 3 pins
- DOMESTIC-F            |  Standard/Domestic household, type "F", CEE 7/4, Schuko, 3 pins
- DOMESTIC-G            |  Standard/Domestic household, type "G", BS 1363, Commonwealth, 3 pins
- DOMESTIC-H            |  Standard/Domestic household, type "H", SI-32, 3 pins
- DOMESTIC-I            |  Standard/Domestic household, type "I", AS 3112, 3 pins
- DOMESTIC-J            |  Standard/Domestic household, type "J", SEV 1011, 3 pins
- DOMESTIC-K            |  Standard/Domestic household, type "K", DS 60884-2-D1, 3 pins
- DOMESTIC-L            |  Standard/Domestic household, type "L", CEI 23-16-VII, 3 pins
- TESLA-R               |  Tesla Connector "Roadster"-type (round, 4 pin)
- TESLA-S               |  Tesla Connector "Model-S"-type (oval, 5 pin)
- IEC-60309-2-single-16 |  IEC 60309-2 Industrial Connector single phase 16 Amperes (usually blue)
- IEC-60309-2-three-16  |  IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
- IEC-60309-2-three-32  |  IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
- IEC-60309-2-three-64  |  IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
+ IEC_62196_T1          |  IEC 62196 Type 1 "SAE J1772"
+ IEC_62196_T1_COMBO    |  Combo Type 1 based, DC
+ IEC_62196_T2          |  IEC 62196 Type 2 "Mennekes"
+ IEC_62196_T2_COMBO    |  Combo Type 2 based, DC
+ IEC_62196_T3A         |  IEC 62196 Type 3A
+ IEC_62196_T3C         |  IEC 62196 Type 3C "Scame"
+ DOMESTIC_A            |  Standard/Domestic household, type "A", NEMA 1-15, 2 pins
+ DOMESTIC_B            |  Standard/Domestic household, type "B", NEMA 5-15, 3 pins
+ DOMESTIC_C            |  Standard/Domestic household, type "C", CEE 7/17, 2 pins
+ DOMESTIC_D            |  Standard/Domestic household, type "D", 3 pin
+ DOMESTIC_E            |  Standard/Domestic household, type "E", CEE 7/5 3 pins
+ DOMESTIC_F            |  Standard/Domestic household, type "F", CEE 7/4, Schuko, 3 pins
+ DOMESTIC_G            |  Standard/Domestic household, type "G", BS 1363, Commonwealth, 3 pins
+ DOMESTIC_H            |  Standard/Domestic household, type "H", SI-32, 3 pins
+ DOMESTIC_I            |  Standard/Domestic household, type "I", AS 3112, 3 pins
+ DOMESTIC_J            |  Standard/Domestic household, type "J", SEV 1011, 3 pins
+ DOMESTIC_K            |  Standard/Domestic household, type "K", DS 60884-2-D1, 3 pins
+ DOMESTIC_L            |  Standard/Domestic household, type "L", CEI 23-16-VII, 3 pins
+ TESLA_R               |  Tesla Connector "Roadster"-type (round, 4 pin)
+ TESLA_S               |  Tesla Connector "Model-S"-type (oval, 5 pin)
+ IEC_60309_2_single_16 |  IEC 60309-2 Industrial Connector single phase 16 Amperes (usually blue)
+ IEC_60309_2_three_16  |  IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
+ IEC_60309_2_three_32  |  IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
+ IEC_60309_2_three_64  |  IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
 
 
 ### ConnectorFormat *enum*
@@ -1651,8 +1651,8 @@ The format of the connector, whether it is a socket or a plug.
 
  Value       |  Description
 :------------|:-------------
- Socket      |  The connector is a socket; the EV user needs to bring a fitting plug.
- Cable       |  The connector is a attached cable; the EV users car needs to have a fitting inlet.
+ Socket      |  The connector is a socket; the EV user needs to bring a fitting plug/cable.
+ Cable       |  The connector is an attached cable; the EV users car needs to have a corresponding inlet.
 
 
 ### ConnectorType *class*
@@ -1737,9 +1737,9 @@ Opening and access hours for the charge point.
  Field Name             |  Field Type             |  Card.  |  Description
 :-----------------------|:------------------------|:--------|:------------
  model~			|  HoursModelType	  |  1	    |  Denotes what model of opening hours is used, i.e. 24/7, regular hours or irregular hours.
- regularHours           |  RegularHoursType       |  *      |  Regular hours, weekday based. Should not be set for representing 24/7 as this is the most common case.
- exceptionalOpenings    |  exceptionalPeriodType  |  *      |  Exceptions for specified calendar dates, time-range based. Periods the station is operating/accessible. Additional to regular hours. May overlap regular rules.
- exceptionalClosings    |  exceptionalPeriodType  |  *      |  Exceptions for specified calendar dates, time-range based. Periods the station is not operating/accessible. Overwriting regularHours and exceptionalOpenings. Should not overlap exceptionalOpenings.
+ regularHours           |  RegularHoursType       |  *      |  Regular hours, weekday based. Should not be set for representing 24/7 as this is the most common case. No more than two periods per weekday should be set.
+ exceptionalOpenings    |  exceptionalPeriodType  |  *      |  Exceptions for specified calendar dates, time-range based. Periods the station is operating/accessible. For irregular hours or as addition to regular hours. May overlap regular rules.
+ exceptionalClosings    |  exceptionalPeriodType  |  *      |  Exceptions for specified calendar dates, time-range based. Periods the station is not operating/accessible. Overwriting regularHours and twentyfourseven. Should not overlap exceptionalOpenings.
  
  
 ### HoursModelType *enum*
@@ -1829,13 +1829,14 @@ Irregular operating hours, open only on one weekend in April 2016 from Friday 16
 
 ### RegularHoursType *class*
 
-Regular recurring operation or access hours
+Regular recurring operation or access hours. Consecutive days can be combined using weekdayTo, single days can be defined using only weekdayFrom.
 
  Field Name   |  Field Type  |  Card.  |  Description
 :-------------|:-------------|:--------|:------------
- weekday~     |  int(1)      |  1      |  Number of day in the week, from Monday (1) till Sunday (7)
- periodBegin~ |  string(5)   |  1      |  Begin of the regular period given in hours and minutes. Must be in 24h format with leading zeros. Example: "18:15". Hour/Minute separator: ":" Regex: $[$0-2$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$
- periodEnd~   |  string(5)   |  1      |  End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
+ weekdayFrom~ |  int(1)      |  1      |  Number of day in the week, beginning with Monday (1), ending with Sunday (7).
+ weekdayTo~   |  int(1)      |  ?      |  Number of day in the week, beginning with Monday (1), ending with Sunday (7).
+ periodBegin~ |  TimeType    |  1      |  Begin of the regular period given in hours:minutes:seconds. Must be in 24h format with leading zeros. Example: "18:15:00". Hour/Minute/Second separator: ":" Regex: $[$0-2$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$
+ periodEnd~   |  TimeType   |  1      |  End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
 
 
 ### ExceptionalPeriodType *class*
@@ -1898,7 +1899,7 @@ Contains information about the charge points.
  Field Name          |  Field Type               |  Card.  |  Description
 :--------------------|:--------------------------|:--------|:------------
  evseId              |  EvseId                   |  1      |  Globally unique identifier
- locationId          |  string(15)               |  1      |  Alphanumeric. Identifies a location/pool of EVSEs. Unique within one EVSE Operator. Characters: [A-Z], [0-9], <space>
+ locationId          |  string(15)               |  1      |  Alphanumeric. Identifies a location/pool of EVSEs. Unique within one EVSE Operator. All EVSEs of one locationId have to have the same address and Geocoordinates. Characters: [A-Z], [0-9], <space>
  timestamp           |  DateTimeType             |  ?      |  Recommended. Date and time of the latest data update for this ChargePointInfo. When set it must be updated if one of the values changed.
  locationName        |  string(100)              |  1      |  Official name; should be unique in the geographical area
  locationNameLang    |  string(3)                |  1      |  Alpha, three characters. ISO-639-3 language code defining the language of the location name
@@ -1908,18 +1909,19 @@ Contains information about the charge points.
  chargePointLocation |  GeoPointType             |  1      |  Geographical location of the charge point itself (power outlet).
  relatedLocation     |  AdditionalGeoPointType   |  ?      |  Geographical location of related points relevant to the user.
  timeZone            |  string(255)              |  ?      |  One of IANA tzdata's __TZ__-values representing the time zone of the location. Examples: "Europe/Oslo", "Europe/Zurich". ([http://www.iana.org/time-zones](http://www.iana.org/time-zones))
- category            |  string(2)                |  ?      |  Charge point category code defined by the operator. Allows different pricing levels in roaming agreements based on the category.
+ productType         |  string(15)               |  ?      |  Charge point category code defined by the operator. Allows different pricing levels in roaming agreements based on the category and references a tariff.
  openingTimes        |  HoursType                |  1      |  The times the EVSE is operating and can be used for charging. Must not be provided if operating hours are unsure/unknown.
- closedCharging      |  boolean                  |  ?      |  Specifies whether the charge points is capable of charging even when it is not currently opened, i.e. a parking garage that can not be entered during the night but will still supply a charge if connected.
- status              |  ChargePointStatusType    |  ?      |  The current status of the charge point.
+ closedCharging      |  boolean                  |  ?      |  Specifies whether the charge point can be used for charging even when it is not currently open according to openingTimes.
+ status              |  ChargePointStatusType    |  ?      |  The current status of the charge point (static, not live-status!)
  statusSchedule      |  ChargePointScheduleType  |  *      |  Planned status changes in the future. If a time span matches with the current or displayed date, the corresponding value overwrites *status*.
  telephoneNumber     |  string(20)               |  ?      |  Numeric. Service hotline to be displayed to the EV user. Separators recommended. Characters: [0-9], -, +, <space>
  location            |  GeneralLocationType      |  1      |  The general type of the charge point location.
  floorLevel          |  string(4)                |  ?      |  Alphanumeric. Level on which the charging station is located (in garage buildings) in the locally displayed numbering scheme. Examples: "-2", "P-5", "+5". Characters: [A-Z], [0-9], -, +, /
  parkingSlotNumber   |  string(5)                |  ?      |  Alphanumeric. Locally displayed parking slot number. Examples: "10", "B25", "P-234". Characters: [A-Z], [0-9], -, +, /
- Restriction	     |  RestrictionType		 |  *      |  Those parking restrictions apply to the parking spot.
+ Restriction	     |  RestrictionType		 |  *      |  Restrictions applying to the usage of the charging station or parking spot.
  authMethods         |  AuthMethodType           |  +      |  List of available payment or access methods on site.
  connectors          |  ConnectorType            |  +      |  Which receptacle type is/are present for a power outlet.
+ chargePointType     |  string(2)                |  1      |  The type of the charge point "AC" or "DC"
  ratings             |  RatingsType              |  ?      |  Defines the ratings for the charge point.
  userInterfaceLang   |  string(3)                |  *      |  Alpha, three characters. Language(s) of the user interface or printed on-site instructions. *ISO-639-3* language code
 
@@ -2072,13 +2074,13 @@ It is advised to always set a "default" tariff, the last tariff in the list of _
 none of the TariffElements before this matches the current charging period.   
 
 <div><!-- ---------------------------------------------------------------------------- --></div>
-| Property            | Type                                            | Card. | Description                                                                           |
-|---------------------|-------------------------------------------------|-------|---------------------------------------------------------------------------------------|
-| tariffId            | string (15)           							| 1     | Uniquely identifies the tariff within the CPOs platform (and suboperator platforms).  |
-| currency            | string (3) 								        | 1     | Currency of this tariff, ISO 4217 Code                                                |
-| productType		  | string (15)										| 1		| ID used to reference tariff on EVSE level												|
-| tariffElement       | [TariffElement](#tariffelement-class)           | +     | List of tariff elements                                                               |
-| recipients          | string (5)							 			| *     | Details on the energy supplied with this tariff.                                      |
+ Field Name          |  Field Type               |  Card.  |  Description
+:--------------------|:--------------------------|:--------|:------------
+ tariffId            | string (15)           	 | 1       | Uniquely identifies the tariff within the CPOs platform (and suboperator platforms).  
+ currency            | string (3)                | 1       | Currency of this tariff, ISO 4217 Code
+ productTyp	     | string (15)   		 | 1	   | ID used to reference tariff on EVSE level
+ tariffElement       | [TariffElement](#tariffelement-class) | +     | List of tariff elements
+ recipients          | string (5) 	 	 | *       | Details on the energy supplied with this tariff.
 <div><!-- ---------------------------------------------------------------------------- --></div>
 
 ### weekday *enum*
@@ -2098,38 +2100,38 @@ none of the TariffElements before this matches the current charging period.
 ### PriceComponent *class*
 
 <div><!-- ---------------------------------------------------------------------------- --></div>
-| Property        | Type                                            | Card. | Description                                      |
-|-----------------|-------------------------------------------------|-------|--------------------------------------------------|
-| billingItem     | [BillingItemType] (#billingitemtype-enum)		| 1     | Type of tariff dimension |
-| itemPrice       | float								            | 1     | price per unit for this tariff dimension         |
-| stepSize        | int                                             | 1     | Minimum amount to be billed. This unit will be billed in this stepSize blocks. For example: if type is time and  stepSize is 300, then time will be billed in blocks of 5 minutes, so if 6 minutes is used, 10 minutes (2 blocks of stepSize) will be billed. |
+ Field Name          |  Field Type               |  Card.  |  Description
+:--------------------|:--------------------------|:--------|:------------
+ billingItem     | [BillingItemType] (#billingitemtype-enum) | 1     | Type of tariff dimension
+ itemPrice       | float	                 | 1     | price per unit for this tariff dimension
+ stepSize        | int                           | 1     | Minimum amount to be billed. This unit will be billed in this stepSize blocks. For example: if type is time and  stepSize is 300, then time will be billed in blocks of 5 minutes, so if 6 minutes is used, 10 minutes (2 blocks of stepSize) will be billed.
 <div><!-- ---------------------------------------------------------------------------- --></div>
 
 ### TariffElement *class*
 
 <div><!-- ---------------------------------------------------------------------------- --></div>
-| Property                 | Type                                               | Card. | Description                                                      |
-|--------------------------|----------------------------------------------------|-------|------------------------------------------------------------------|
-| priceComponent           | [PriceComponent](#pricecomponent-class)            | +     | List of price components that make up the pricing of this tariff |
-| tariffRestrictions       | [TariffRestrictions](#tariffrestrictions-class)    | ?     | List of tariff restrictions                                      |
+ Field Name          |  Field Type               |  Card.  |  Description
+:--------------------|:--------------------------|:--------|:------------
+ priceComponent      | [PriceComponent](#pricecomponent-class) | +     | List of price components that make up the pricing of this tariff
+ tariffRestrictions  | [TariffRestrictions](#tariffrestrictions-class) | ?     | List of tariff restrictions
 <div><!-- ---------------------------------------------------------------------------- --></div>  
 
 ### TariffRestrictions *class*
 
 <div><!-- ---------------------------------------------------------------------------- --></div>
-| Property                | Type                                  | Card. | Description                                                                           |
-|-------------------------|---------------------------------------|-------|---------------------------------------------------------------------------------------|
-| startTime               | TimeType 							  | ?     | Start time of day, for example 13:30, valid from this time of the day. Must be in 24h format with leading zeros. Hour/Minute separator: ":" Regex: [0-2][0-9]:[0-5][0-9] |
-| endTime                 | TimeType 							  | ?     | End time of day, for example 19:45, valid until this time of the day. Same syntax as start_time |
-| startDate               | DateType						  | ?     | Start date, for example: 2015-12-24, valid from this day                              |
-| endDate                 | DateType 						  | ?     | End date, for example: 2015-12-27, valid until this day (excluding this day)          |
-| minEnergy               | float   							  | ?     | Minimum used energy in kWh, for example 20, valid from this amount of energy is used  |                             
-| maxEnergy               | float  								  | ?     | Maximum used energy in kWh, for example 50, valid until this amount of energy is used |
-| minPower                | float   							  | ?     | Minimum power in kW, for example 0, valid from this charging speed                    |
-| maxPower                | float							      | ?     | Maximum power in kW, for example 20, valid up to this charging speed                  |
-| minDuration             | int                                   | ?     | Minimum duration in seconds, valid for a duration from x seconds                      |
-| maxDuration             | int                                   | ?     | Maximum duration in seconds, valid for a duration up to x seconds                     |
-| weekday                 | int      							  | *     | Which day(s) of the week this tariff is valid                                         |
+ Field Name          |  Field Type               |  Card.  |  Description
+:--------------------|:--------------------------|:--------|:------------
+ startTime           | TimeType 		 | ?     | Start time of day, for example 13:30, valid from this time of the day. Must be in 24h format with leading zeros. Hour/Minute separator: ":" Regex: [0-2][0-9]:[0-5][0-9] 
+ endTime             | TimeType                  | ?     | End time of day, for example 19:45, valid until this time of the day. Same syntax as start_time
+ startDate           | DateType			 | ?     | Start date, for example: 2015-12-24, valid from this day
+ endDate             | DateType 		 | ?     | End date, for example: 2015-12-27, valid until this day (excluding this day)          
+ minEnergy           | float   			 | ?     | Minimum used energy in kWh, for example 20, valid from this amount of energy is used                       
+ maxEnergy           | float  			 | ?     | Maximum used energy in kWh, for example 50, valid until this amount of energy is used 
+ minPower            | float   			 | ?     | Minimum power in kW, for example 0, valid from this charging speed
+ maxPower            | float			 | ?     | Maximum power in kW, for example 20, valid up to this charging speed
+ minDuration         | int                       | ?     | Minimum duration in seconds, valid for a duration from x seconds
+ maxDuration         | int                       | ?     | Maximum duration in seconds, valid for a duration up to x seconds
+ weekday             | int      		 | *     | Which day(s) of the week this tariff is valid
 <div><!-- ---------------------------------------------------------------------------- --></div>
 
 
