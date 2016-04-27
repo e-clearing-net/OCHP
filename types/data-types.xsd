@@ -49,8 +49,8 @@
 				</s:annotation>
 				<s:simpleType>
 					<s:restriction base="s:string">
-						<s:length value="8"></s:length>
-						<s:pattern value="(\d\d):(\d\d):(\d\d)"></s:pattern>
+						<s:length value="9"></s:length>
+						<s:pattern value="(\d\d):(\d\d):(\d\d)Z"></s:pattern>
 						<s:whiteSpace value="collapse"></s:whiteSpace>
 					</s:restriction>
 				</s:simpleType>
@@ -58,6 +58,25 @@
 		</s:sequence>
 	</s:complexType>
 
+	<s:complexType name="LocalDateTimeType">
+		<s:annotation>
+			<s:documentation>
+				Format is according to ISO8601 UTC + Offset. The field takes 25 alphanumeric characters
+			</s:documentation>
+		</s:annotation>
+		<s:sequence>
+			<s:element name="LocalDateTime">
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:length value="25"></s:length>
+						<s:whiteSpace value="collapse"></s:whiteSpace>
+						<s:pattern value="(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)([+\-]\d\d):(\d\d)"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+	
 	<s:complexType name="EmtId">
 		<s:sequence>
 			<s:element name="instance" minOccurs="1" maxOccurs="1">
@@ -102,7 +121,7 @@
 				</s:simpleType>
 			</s:element>
 		</s:sequence>
-		<s:attribute name="representation" default="sha-160">
+		<s:attribute name="representation" default="plain">
 			<s:annotation>
 				<s:documentation>
 					Specifies the representation of the token to allow hashed token values.
@@ -119,25 +138,6 @@
 				</s:restriction>
 			</s:simpleType>
 		</s:attribute>
-	</s:complexType>
-
-	<s:complexType name="LocalDateTimeType">
-		<s:annotation>
-			<s:documentation>
-				Format is according to ISO8601 UTC + Offset. The field takes 25 alphanumeric characters
-			</s:documentation>
-		</s:annotation>
-		<s:sequence>
-			<s:element name="LocalDateTime">
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:length value="25"></s:length>
-						<s:whiteSpace value="collapse"></s:whiteSpace>
-						<s:pattern value="(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)([+\-]\d\d):(\d\d)"></s:pattern>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
-		</s:sequence>
 	</s:complexType>
 
 	<s:complexType name="CdrStatusType">
@@ -243,6 +243,54 @@
 		</s:sequence>
 	</s:complexType>
 
+	<s:complexType name="ParkingSpotInfo">
+		<s:annotation>
+			<s:documentation>
+				Static POI data regarding a parking spot.
+			</s:documentation>
+		</s:annotation>
+		<s:sequence>
+			<s:element name="parkingId" type="tns:ParkingId" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Globally unique identifier for this parking spot.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="restrictions" type="tns:RestrictionType" minOccurs="0" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						Restrictions to the usage of this parking spot.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="floorLevel" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphanumeric. Level on which the charge station is located (in garage buildings) in the locally displayed numbering scheme. Examples: "-2","P-5", "2", "+5"
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:pattern value="[A-Z0-9\-\+/]{1,4}"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="parkingSlotNumber" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphanumeric. Locally displayed parking slot number. Examples: "10", "251","B25", "P-234"
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:pattern value="[A-Z0-9\-\+/]{1,5}"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+	
 	<s:complexType name="CdrPeriodType">
 		<s:sequence>
 			<s:element name="startDateTime" type="tns:LocalDateTimeType" minOccurs="1" maxOccurs="1">
@@ -1051,17 +1099,10 @@
 	
 	<s:complexType name="TariffRestrictionType">
 		<s:sequence>
-			<s:element name="startTime" type="tns:TimeType" minOccurs="0" maxOccurs="1">
+			<s:element name="regularHours" type="tns:RegularHoursType" minOccurs="0" maxOccurs="14">
 				<s:annotation>
 					<s:documentation>
-						Start time of day.
-					</s:documentation>
-				</s:annotation>
-			</s:element>
-			<s:element name="endTime" type="tns:TimeType" minOccurs="0" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						End time of day.
+						Regular hours, weekday based. No more than two periods per weekday.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -1120,19 +1161,6 @@
 						Maximum duration in seconds. Valid up to this duration.
 					</s:documentation>
 				</s:annotation>
-			</s:element>
-			<s:element name="weekday" minOccurs="0" maxOccurs="7">
-				<s:annotation>
-					<s:documentation>
-						Number of day in the week, from Monday(1) till Sunday(7)
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:int">
-						<s:maxInclusive value="7"></s:maxInclusive>
-						<s:minInclusive value="1"></s:minInclusive>
-					</s:restriction>
-				</s:simpleType>
 			</s:element>
 		</s:sequence>
 	</s:complexType>

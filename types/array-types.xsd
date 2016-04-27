@@ -383,29 +383,12 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="floorLevel" minOccurs="0" maxOccurs="1">
+			<s:element name="parkingSpot" type="tns:ParkingSpotInfo" minOccurs="0" maxOccurs="unbounded">
 				<s:annotation>
 					<s:documentation>
-						Alphanumeric. Level on which the charge station is located (in garage buildings) in the locally displayed numbering scheme. Examples: "-2","P-5", "2", "+5"
+						Information regarding a parking spot that can be used to access the EVSE.
 					</s:documentation>
 				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:pattern value="[A-Z0-9\-\+/]{1,4}"></s:pattern>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
-			<s:element name="parkingSlotNumber" minOccurs="0" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						Alphanumeric. Locally displayed parking slot number. Examples: "10", "251","B25", "P-234"
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:pattern value="[A-Z0-9\-\+/]{1,5}"></s:pattern>
-					</s:restriction>
-				</s:simpleType>
 			</s:element>
 			<s:element name="restriction" type="tns:RestrictionType" minOccurs="0" maxOccurs="unbounded">
 				<s:annotation>
@@ -455,60 +438,6 @@
 						<s:length value="3"></s:length>
 					</s:restriction>
 				</s:simpleType>
-			</s:element>
-		</s:sequence>
-	</s:complexType>
-	<s:complexType name="ParkingSpotInfo">
-		<s:annotation>
-			<s:documentation>
-				Static POI data regarding a parking spot.
-			</s:documentation>
-		</s:annotation>
-		<s:sequence>
-			<s:element name="parkingId" type="tns:ParkingId" minOccurs="1" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						Globally unique identifier for this parking spot.
-					</s:documentation>
-				</s:annotation>
-			</s:element>
-			<s:element name="restrictions" type="tns:RestrictionType" minOccurs="0" maxOccurs="unbounded">
-				<s:annotation>
-					<s:documentation>
-						Restrictions to the usage of this parking spot.
-					</s:documentation>
-				</s:annotation>
-			</s:element>
-			<s:element name="floorLevel" minOccurs="0" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						Alphanumeric. Level on which the charge station is located (in garage buildings) in the locally displayed numbering scheme. Examples: "-2","P-5", "2", "+5"
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:pattern value="[A-Z0-9\-\+/]{1,4}"></s:pattern>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
-			<s:element name="parkingSlotNumber" minOccurs="0" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						Alphanumeric. Locally displayed parking slot number. Examples: "10", "251","B25", "P-234"
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:pattern value="[A-Z0-9\-\+/]{1,5}"></s:pattern>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
-			<s:element name="status" type="tns:GeneralStatusType" minOccurs="0" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						The current status of the charge point.
-					</s:documentation>
-				</s:annotation>
 			</s:element>
 		</s:sequence>
 	</s:complexType>

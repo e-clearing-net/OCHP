@@ -12,7 +12,7 @@ Prot. Version | Date       | Comment
 1.4	      |		   |
 
 
-Copyright (c) 2012-2015 smartlab, bluecorner.be, e-laad.nl
+Copyright (c) 2012-2016 smartlab, bluecorner.be, e-laad.nl
 
 Permission is hereby granted, free of charge, to any person obtaining a 
 copy of this software and associated documentation files 
@@ -205,14 +205,14 @@ zero or more | `minOccurs="0" maxOccurs="unbounded"`         | *
 exactly one  | *(default)*                                   | 1
 
 For some data fields a [http://en.wikipedia.org/wiki/Regular_expression](http://en.wikipedia.org/wiki/Regular_expression) is
-provided as an additional but very precise definition of the data
+provided as an additional and very precise definition of the data
 format.
 
 The character *>* in front of any data field indicates a choice of 
 multiple possibilities.
 
 The character *~* appended to any data field indicates the 
-implementation as XML attribute instead of an element.
+implementation as an XML attribute instead of an element.
 
 
 
@@ -225,7 +225,7 @@ CH           | Clearing House
 CHS          | Clearing House System
 CMS          | Charge Point Management System
 Contract-ID  | Contract (or Account) Identifier
-CPO	     | Charge Point Operator
+CPO	         | Charge Point Operator
 EMP          | Electric Mobility Provider
 EMT-ID       | Electric Mobility Token Identifier
 EV           | Electrical Vehicle
@@ -239,7 +239,7 @@ MDM          | Master Data Management System
 NSP          | Navigation Service Provider
 OCHP         | Open Clearing House Protocol
 PDU          | Protocol Data Unit
-PSO	     | Parking Spot Operator
+PSO	         | Parking Spot Operator
 RA           | Roaming Authorisation
 RFID         | Radio-frequency identification
 VAS          | Value Added Service
@@ -1061,6 +1061,7 @@ This contains the field definition of the UpdateStatus.req sent by a CMS to the 
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
 evse          |  EvseStatusType  |  *      |  This contains one EVSE id with the current status represented in a major part and a minor part.
+parkingspot	  |  ParkingStatusType |  *    |  This contains one parking spot ID with the current status.
 ttl           |  DateTimeType    |  ?      |  The time to live is set as the deadline till the status values are to be considered valid, where not otherwise specified.
 
 
@@ -1089,6 +1090,7 @@ This contains the field definition of the GetStatus.conf sent by the CHS as resp
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
 evse          |  EvseStatusType  |  *      |  This contains one EVSE id with the current status represented in a major part and a minor part.
+parkingspot   |  ParkingStatusType |  *    |  This contains one parking spot ID with the current status.
 
 
 
@@ -1152,7 +1154,6 @@ characters.
 ```
 
 
-
 ### LocalDateTimeType
 
 Format is according to ISO8601 UTC + Offset. The field takes 25 
@@ -1166,7 +1167,7 @@ semantically not the same as UTC.
 ###### Example
 
 ```
-2011-06-01T11:45:30+02:00
+2011-06-01T13:45:30+02:00
 ```
 
 
@@ -1177,6 +1178,42 @@ semantically not the same as UTC.
 ```
 
 
+### DateType
+
+Format is according to ISO8601 UTC. The field takes 10 alphanumeric
+characters.
+
+###### Example
+
+```
+2011-06-01
+```
+
+
+###### Regular Expression
+
+```regex
+(\d\d\d\d)-(\d\d)-(\d\d)
+```
+
+
+### TimeType
+
+Format is according to ISO8601 UTC. The field takes 9 alphanumeric
+characters.
+
+###### Example
+
+```
+11:45:30Z
+```
+
+
+###### Regular Expression
+
+```regex
+(\d\d):(\d\d):(\d\d)Z
+```
 
 
 ## Types for the Exchange of Authorisation Data
@@ -1776,27 +1813,23 @@ Operating on Weekdays from 8am till 8pm with one exceptional opening on
 
 ```XML
 <operatingTimes model="regular">
-     <regularHours weekday="1" periodBegin="08:00" periodEnd="20:00">
-     <regularHours weekday="2" periodBegin="08:00" periodEnd="20:00">
-     <regularHours weekday="3" periodBegin="08:00" periodEnd="20:00">
-     <regularHours weekday="4" periodBegin="08:00" periodEnd="20:00">
-     <regularHours weekday="5" periodBegin="08:00" periodEnd="20:00">
+     <regularHours weekdayFrom="1" weekdayTo="5" periodBegin="08:00" periodEnd="20:00">
      <exceptionalOpenings>
         <periodBegin>
-         	<DateTime>2014-06-21T09:00:00Z</DateTime>
- 	</periodBegin>
- 	<periodEnd>
- 		<DateTime>2014-06-21T12:00:00Z</DateTime>
- 	</periodEnd>
+         	<DateTime>2014-06-22T09:00:00Z</DateTime>
+		</periodBegin>
+		<periodEnd>
+			<DateTime>2014-06-22T12:00:00Z</DateTime>
+		</periodEnd>
      </exceptionalOpenings>
      <exceptionalClosings>
         <periodBegin>
          	<DateTime>2014-06-24T00:00:00Z</DateTime>
- 	</periodBegin>
- 	<periodEnd>
- 		<DateTime>2014-06-25T00:00:00Z</DateTime>
- 	</periodEnd>
-      </exceptionalClosings>
+		</periodBegin>
+		<periodEnd>
+			<DateTime>2014-06-25T00:00:00Z</DateTime>
+		</periodEnd>
+	 </exceptionalClosings>
 </operatingTimes>
 ```
 
@@ -1818,10 +1851,10 @@ Irregular operating hours, open only on one weekend in April 2016 from Friday 16
      <exceptionalOpenings>
         <periodBegin>
          	<DateTime>2016-04-22T16:00:00Z</DateTime>
- 	</periodBegin>
- 	<periodEnd>
- 		<DateTime>2014-06-24T20:00:00Z</DateTime>
- 	</periodEnd>
+		</periodBegin>
+		<periodEnd>
+			<DateTime>2014-06-24T20:00:00Z</DateTime>
+		</periodEnd>
      </exceptionalOpenings>
 </operatingTimes>
 ```
@@ -1836,7 +1869,7 @@ Regular recurring operation or access hours. Consecutive days can be combined us
  weekdayFrom~ |  int(1)      |  1      |  Number of day in the week, beginning with Monday (1), ending with Sunday (7).
  weekdayTo~   |  int(1)      |  ?      |  Number of day in the week, beginning with Monday (1), ending with Sunday (7).
  periodBegin~ |  TimeType    |  1      |  Begin of the regular period given in hours:minutes:seconds. Must be in 24h format with leading zeros. Example: "18:15:00". Hour/Minute/Second separator: ":" Regex: $[$0-2$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$
- periodEnd~   |  TimeType   |  1      |  End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
+ periodEnd~   |  TimeType    |  1      |  End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
 
 
 ### ExceptionalPeriodType *class*
@@ -1954,7 +1987,7 @@ path of of both IDs.
 
 ## Types for Tariff Data Exchange
 
-These types are used to exchange tariff information between a CPO and an EMP.
+These types are used to exchange tariff information between an operator and one or more providers.
 
 #### Examples
 
@@ -1978,9 +2011,9 @@ These types are used to exchange tariff information between a CPO and an EMP.
 
 ##### Complex Tariff example
 2.50 euro start tariff
-1.00 euro per hour charging tariff for less than 32A (paid per 15 minutes)
-2.00 euro per hour charging tariff for more than 32A on weekdays (paid per 10 minutes)
-1.25 euro per hour charging tariff for more than 32A during the weekend (paid per 10 minutes)
+1.00 euro per hour charging tariff for less than 11kW (paid per 15 minutes)
+2.00 euro per hour charging tariff for more than 11kW on weekdays (paid per 10 minutes)
+1.25 euro per hour charging tariff for more than 11kW during the weekend (paid per 10 minutes)
 Parking costs:
 - Weekdays: between 09:00 and 18:00 : 5 euro (paid per 5 minutes) 
 - Saturday: between 10:00 and 17:00 : 6 euro (paid per 5 minutes)
@@ -2004,7 +2037,7 @@ Parking costs:
 			<stepSize>900</stepSize>
 		</priceComponent>
 		<tariffRestriction>
-			<maxPower>32.00</maxPower>
+			<maxPower>11.00</maxPower>
 		</tariffRestriction>
 	</tariffElement>
 	<tariffElement>
@@ -2014,12 +2047,8 @@ Parking costs:
 			<stepSize>600</stepSize>
 		</priceComponent>
 		<tariffRestriction>
-			<minPower>32.00</minPower>
-			<weekday>1</weekday>
-			<weekday>2</weekday>
-			<weekday>3</weekday>
-			<weekday>4</weekday>
-			<weekday>5</weekday>
+			<minPower>11.00</minPower>
+			<regularHours weekdayFrom="1" weekdayTo="5">
 		</tariffRestriction>
 	</tariffElement>
 	<tariffElement>
@@ -2029,9 +2058,8 @@ Parking costs:
 			<stepSize>600</stepSize>
 		</priceComponent>
 		<tariffRestriction>
-			<minPower>32.00</minPower>
-			<weekday>6</weekday>
-			<weekday>7</weekday>
+			<minPower>11.00</minPower>
+			<regularHours weekdayFrom="6" weekdayTo="7">
 		</tariffRestriction>
 	</tariffElement>
 	<tariffElement>
@@ -2041,13 +2069,7 @@ Parking costs:
 			<stepSize>300</stepSize>
 		</priceComponent>
 		<tariffRestriction>
-			<startTime>09:00</startTime>
-			<endTime>18:00</endTime>
-			<weekday>1</weekday>
-			<weekday>2</weekday>
-			<weekday>3</weekday>
-			<weekday>4</weekday>
-			<weekday>5</weekday>
+			<regularHours weekdayFrom="1" weekdayTo="5" periodBegin="09:00" periodEnd="18:00">
 		</tariffRestriction>
 	</tariffElement>
 	<tariffElement>
@@ -2057,13 +2079,12 @@ Parking costs:
 			<stepSize>300</stepSize>
 		</priceComponent>
 		<tariffRestriction>
-			<startTime>10:00</startTime>
-			<endTime>17:00</endTime>
-			<weekday>6</weekday>
+			<regularHours weekdayFrom="6" periodBegin="10:00" periodEnd="17:00">
 		</tariffRestriction>
 	</tariffElement>
 </tariffInfo>
 ```
+
 
 ###TariffInfo *class*
 
@@ -2078,24 +2099,11 @@ none of the TariffElements before this matches the current charging period.
 :--------------------|:--------------------------|:--------|:------------
  tariffId            | string (15)           	 | 1       | Uniquely identifies the tariff within the CPOs platform (and suboperator platforms).  
  currency            | string (3)                | 1       | Currency of this tariff, ISO 4217 Code
- productTyp	     | string (15)   		 | 1	   | ID used to reference tariff on EVSE level
+ productType	     | string (15)   			 | 1	   | ID used to reference tariff on EVSE level
  tariffElement       | [TariffElement](#tariffelement-class) | +     | List of tariff elements
- recipients          | string (5) 	 	 | *       | Details on the energy supplied with this tariff.
+ recipients          | string (5) 		    	 | *       | Provider-IDs of the intended recipients for this tariff.
 <div><!-- ---------------------------------------------------------------------------- --></div>
 
-### weekday *enum*
-
-<div><!-- ---------------------------------------------------------------------------- --></div>
-| Value        | Description                                          |
-| ------------ | ---------------------------------------------------- |
-| 1	       | Monday                                               |
-| 2            | Tuesday                                              |
-| 3            | Wednesday                                            |
-| 4            | Thursday                                             |
-| 5            | Friday                                               |
-| 6            | Saturday                                             |
-| 7            | Sunday                                               |
-<div><!-- ---------------------------------------------------------------------------- --></div>
 
 ### PriceComponent *class*
 
@@ -2121,17 +2129,15 @@ none of the TariffElements before this matches the current charging period.
 <div><!-- ---------------------------------------------------------------------------- --></div>
  Field Name          |  Field Type               |  Card.  |  Description
 :--------------------|:--------------------------|:--------|:------------
- startTime           | TimeType 		 | ?     | Start time of day, for example 13:30, valid from this time of the day. Must be in 24h format with leading zeros. Hour/Minute separator: ":" Regex: [0-2][0-9]:[0-5][0-9] 
- endTime             | TimeType                  | ?     | End time of day, for example 19:45, valid until this time of the day. Same syntax as start_time
- startDate           | DateType			 | ?     | Start date, for example: 2015-12-24, valid from this day
- endDate             | DateType 		 | ?     | End date, for example: 2015-12-27, valid until this day (excluding this day)          
- minEnergy           | float   			 | ?     | Minimum used energy in kWh, for example 20, valid from this amount of energy is used                       
- maxEnergy           | float  			 | ?     | Maximum used energy in kWh, for example 50, valid until this amount of energy is used 
- minPower            | float   			 | ?     | Minimum power in kW, for example 0, valid from this charging speed
- maxPower            | float			 | ?     | Maximum power in kW, for example 20, valid up to this charging speed
- minDuration         | int                       | ?     | Minimum duration in seconds, valid for a duration from x seconds
- maxDuration         | int                       | ?     | Maximum duration in seconds, valid for a duration up to x seconds
- weekday             | int      		 | *     | Which day(s) of the week this tariff is valid
+ regularHours		 | RegularHoursType			 | *	   | regular hours that this tariff element should be valid for (maximum of 14 entries)
+ startDate           | DateType					 | ?       | Start date, for example: 2015-12-24, valid from this day
+ endDate             | DateType 				 | ?       | End date, for example: 2015-12-27, valid until this day (excluding this day)          
+ minEnergy           | float   					 | ?       | Minimum used energy in kWh, for example 20, valid from this amount of energy is used                       
+ maxEnergy           | float  					 | ?       | Maximum used energy in kWh, for example 50, valid until this amount of energy is used 
+ minPower            | float   					 | ?       | Minimum power in kW, for example 0, valid from this charging speed
+ maxPower            | float			 		 | ?       | Maximum power in kW, for example 20, valid up to this charging speed
+ minDuration         | int                       | ?       | Minimum duration in seconds, valid for a duration from x seconds
+ maxDuration         | int                       | ?       | Maximum duration in seconds, valid for a duration up to x seconds
 <div><!-- ---------------------------------------------------------------------------- --></div>
 
 
