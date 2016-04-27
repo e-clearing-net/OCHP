@@ -10,7 +10,8 @@
 
 Prot. Version | Date       | Comment
 :-------------|:-----------|:-------
-0.1           | 27‑03‑2012 | Concept, Functional specification. Commit: [77cccd838db692ab6f8b77fb4be8e81d59ec04e2](../../commit/77cccd838db692ab6f8b77fb4be8e81d59ec04e2)
+0.1           | 27‑03‑2015 | Concept, Functional specification. Commit: [77cccd838db692ab6f8b77fb4be8e81d59ec04e2](../../commit/77cccd838db692ab6f8b77fb4be8e81d59ec04e2)
+0.2			  | 		   | 
 
 
 Copyright (c) 2015 smartlab, bluecorner.be, e-laad.nl
@@ -284,7 +285,8 @@ decline a remote authorisation for other than contractual or technically
 valid reasons. Essentially, the situation is the same with a whitelist
 exchange of RFID tokens - the operator trusts the provider to only send
 those tokens to the Clearing House that are authorised to access the 
-charging infrastructure.
+charging infrastructure. Here, those trusted tokens / contracts get sent
+via OCHPdirect instead of through the CHS whitelist.
 
 
 #### Security of the OCHP direct interface
@@ -320,11 +322,12 @@ Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
 
 The hash value in this header is composed through the following steps:
  1. The identification tokens of sender and receiver are combined into 
-    a string "receiver-token:sender-token" (further called token combination)
+    a string "receiver-token:sender-token"
  2. The resulting string is then encoded using the RFC2045-MIME variant 
     of Base64 ([RFC1945](http://tools.ietf.org/html/rfc1945#section-11)
+	This encoded string shall further be called (encoded) token combination.
  3. The authorization method and a space i.e. `Basic␣` is then put 
-    before the encoded string.
+    before the encoded token combination.
 
 The OCHP direct endpoint should check for valid authorisation in order 
 to prevent unintended usage of their endpoints or cyber-attacks.
@@ -335,25 +338,29 @@ to prevent unintended usage of their endpoints or cyber-attacks.
 The partner's tokens for identification and authorisation are exchanged 
 and distributed through the clearing house. Based on the set roaming 
 connections the tokens are made available. Each token is valid for a 
-period of full calendar days, synchronus to the UTC time.
+period of one full calendar day, synchronus to the UTC time, with an
+additional short overlap for token exchange.
 
 This mechanism is used to guarantee uninterupted service in combination 
 with a high security level and compatibility with the majority of 
 systems. The synchronisation and token-exchange-cycle is as follows.
 On day `N` do:
 
- 1. *At 00:30 UTC:* Invalidate/delete all tokens of day `N-1`.
+ 1. *At 00:30 UTC:* Invalidate/delete all token combinations of day `N-1`.
  2. Generate new own token for day `N+1`.
- 3. *Before 11:55 UTC:* Send/upload own token for day `N+1`.
- 4. *After 12:05 UTC:* Fetch/download partner's tokens for day `N+1`.
+ 3. *Before 11:55 UTC:* Send/upload own token for day `N+1` to the clearing house.
+ 4. *After 12:05 UTC:* Fetch/download partner's tokens for day `N+1` from the clearing house.
  5. Generate token combinations for day `N+1` from own and partner's 
     tokens. Here `AB2`.
  6. *At 23:50 UTC:* Make token combinations for day `N+1` valid.
  
 This means that each night from 23:50 UTC to 0:30 UTC, a set of two
-token combinations is valid. Each token that is set to expire at
-0:30 UTC of any given day N+1 should be considered valid from 23:50 UTC
-on day N-1, giving it a total validity of 24:40 hours.
+token combinations is valid. Each token that is valid for a given day `N`
+shall be considered valid from 23:50 UTC on day `N-1` until 00:30 UTC
+on day `N+1`, giving it a total validity of 24:40 hours.
+When communicating with another partners OCHPdirect system, the token
+combination for day `N` shall be used from 00:00 UTC (day `N`)until 
+00:00 UTC of day `N+1`.
 
 ![Figure OCHP direct Token Exchange](media/OCHPdirectTokenExchange.png "OCHP direct Token Exchange")
 
@@ -401,6 +408,12 @@ of connected partners is done in the following way:
 This interface description is the core of OCHP-direct. The described
 methods must be available at the provider's backend _MDM_ (InformProvider)
 and the operator's backend _CMS_ (all other methods).
+The partners have to make sure they only connect to other partners'
+endpoints which their endpoint is compatible with. Partners may 
+operate multiple endpoints and versions to allow connectivity to a 
+higher number of roaming partners. In the case of two partners running 
+multiple compatible versions, it is advised to use the most advanced 
+version.
 
 
 ## Get status information of charge points (_CMS_ interface)
@@ -435,8 +448,8 @@ information. The operator may decide how to handle the report (optional).
 The remote operation of a charging process in an operator backend is
 done in three steps:
 
- 1. Selection (and reservation) of the charge point
- 2. Controling of the charge point
+ 1. Selection and reservation of the charge point
+ 2. Controlling of the charge point
  3. Release of the charge point
 
 In step (1) an OCHP-direct session ID is generated by the operator and
@@ -459,9 +472,16 @@ interface at the provider backend (using the InformProvider method).
 Before a charging process can be started, the provider needs to select
 an EVSE in an operator's backend. This establishes the session and generates
 the OCHP-direct session ID. The operator must reserve the selected
-charging station for the communicated Contract-ID. It is up to the
-operator to decide whether or not to accept the provider's request
-for a reservation (duration).
+charging station for the communicated Contract-ID.
+
+The provider may request reservation until a certain time and for a 
+specific RFID token. It is up to the operator to decide whether or not 
+to accept the provider's request for a reservation (duration). If the 
+reservation request cannot be fulfilled the operator should return the 
+maximum TTL for the reservation they would accept, but establish the 
+session nonetheless. It is then up to the provider to decide whether 
+to accept this offer from the operator (and otherwise release the EVSE, 
+cancelling the reservation).
 
  * MDM sends the SelectEvse.req PDU.
  * CMS responds with a SelectEvse.conf PDU.
@@ -469,8 +489,8 @@ for a reservation (duration).
 
 ### Control a selected charge point in an operator's backend
 
-When a EVSE was selected and a session successfully established, the 
-EVSEcan be controlled in the limits of the charging process by the 
+When an EVSE was selected and a session successfully established, the 
+EVSE can be controlled in the limits of the charging process by the 
 provider.
 
  * MDM sends the ControlEvse.req PDU.
@@ -489,27 +509,28 @@ prior selected EVSE.
 
 **Note:** To end a charging session properly, the provider should always call _ReleaseEvse.req_. Alternatively, they can also call _ControlEvse.req_ with the parameter _operation='end'_ to explicitly end a charging process. A session with no ongoing charging process (_ControlEvse.req_ with _operation='start'_ was not called or not successful) shall always be closed with _ReleaseEvse.req_.
 When the operator receives a valid _ReleaseEvse.req_ for an ongoing charging process which was not ended with a call to _ControlEvse.req_ with parameter _operation='end'_, the operator should implicitly end the process.
-It is up to the operator to decide how long to keep OCHPdirect session open and valid when there is no longer an active charging process attached to it (i.e. the charging process was explicitly stopped by _ControlEvse.req_ with the parameter _operation='end'_, but no _ReleaseEvse.req_ was sent).
+It is up to the operator to decide how long to keep any OCHPdirect session open and valid when there is no longer an active charging process attached to it (i.e. the charging process was explicitly stopped by _ControlEvse.req_ with the parameter _operation='end'_, but no _ReleaseEvse.req_ was sent).
 
 
+## Inform a provider about a charging process (both interfaces)
 
-## Inform a provider about a charging process (_MDM_ interface)
-
-The provider must get informed about any status updates to an 
-OCHP-direct charging process. The operator's backend must make use of
-a threshold in order to avoid too many messages (It is recommended
+The provider must get informed by the operator about any status updates to an 
+OCHP-direct charging process, at least when a charging process starts as well as when it ends.
+The operator's backend must make use of a threshold in order to avoid too many messages (It is recommended
 not to send InformProvider more than once every 15 minutes, unless
 the parameters of the charging process were changed).
 
+The provider may request additional InformProvider messages from the CPO to follow the progress of the charging process. In order not to overwhelm any system involved, it is recommended not to exceed a frequency of 15 minutes between each such request.
+
 The information types are:
- * Start of a charging session. _The process was authorized and the car is properly connected._
- * End of a charging session. _The charging session has ended by any event and will not be resumed. The car may still be plugged in._
- * Metering information (status). This information should also be included in start and end messages.
+ * Start of a charging session: _The process was authorized and the car is properly connected._ The operator must send an InformProvider to the provider in this case. 
+ * End of a charging session: _The charging session has ended by any event and will not be resumed._ The operator must send an InformProvider to the provider in this case.
+ * Metering information (status). This information should also be included in start and end messages. If possible, meter values should always be included in their most up-to-date form in any InformProvider message.
  * Power management information (status)
  * Invoicing ready, CDR sent (finish)
 
  
-![Figure OCHP direct advanced process](media/OCHPdirectProcess-2.png "OCHP direct advanced process")
+![Figure OCHP direct InformProvider example](media/OCHPdirectProcess-2.png "OCHP direct InformProvider example")
 
 
 
@@ -518,11 +539,19 @@ The information types are:
 When a status update to a charging process gets available, the operator
 informs the concerned provider.
 
- * CMS sends the InformProvider.req PDU.
+ * CMS sends the InformProviderMessage PDU.
  * MDM responds with a InformProvider.conf PDU.
 
 
+### Request charging process information for a provider's customer
 
+When a customer requests updated charging information to their charging 
+process or when the provider deems it necessary to collect updated 
+information on their behalf. May be called directly after SelectEvse 
+to collect current meter values for the selected EVSE.
+
+ * MDM sends the InformProvider.req PDU.
+ * CMS responds with a InformProviderMessage PDU.
 
 
 
@@ -625,11 +654,10 @@ sent by the MDM towards the CMS.
 :------------|:-------------|:--------|:------------
 evseId       |  EvseId      |  1      |  The charge point which is selected by the provider.
 contractId   |  ContractId  |  1      |  Contract-ID for which the charge point is selected.
-reserveUntil |  DateTimeType|  ?      |  The desired TTL for the reservation created for the selected EVSE.
+reserveUntil |  DateTimeType|  ?      |  The desired TTL for the reservation created for the selected EVSE (in UTC).
 reserveEmtId |  EmtId       |  ?      |  If defined, a reservation can be made for a specific physical token that is to be used to start the charging process.
 
-**Note:** If no reserveUntil is defined in the request, it is up to the CPO to set a pre-defined TTL for the reservation and the session established. Once that TTL expires, the session and reservation should be invalidated.
-
+**Note:** If no reserveUntil is defined in the request, it is up to the CPO to set a pre-defined TTL for the reservation and the session established (recommendation: 5 minutes). Once that TTL expires, the session and reservation should be invalidated.
 **Note:** A specific token may be defined for a reservation, which would enable access to the charging station with the customers RFID card as well. If this is the case, the operator must still accept all ControlEvse requests coming in for that session ID.
 
 
@@ -700,13 +728,14 @@ ttl          |  DateTimeType  |  ?      |  On success the timeout for this sessi
 
 
 
-### InformProvider.req
+### InformProviderMessage
 
-This contains the field definition of the InformProvider.req 
+This contains the field definition of the InformProviderMessage 
 sent by the CMS towards the MDM.
 
  Field Name       |  Field Type     |  Card.  |  Description
 :-----------------|:----------------|:--------|:------------
+result            |  DirectResult   |  ?      |  This contains the result of InformProvider.req. Only applicable if the InformProviderMessage is sent as a response to InformProvider.req.
 message           |  DirectMessage  |  1      |  The operation that triggered the operator to send this message.
 evseId            |  EvseId         |  1      |  The charge point which is used for this charging process.
 contractId        |  ContractId     |  1      |  Contract-ID to which the charge point is assigned.
@@ -717,9 +746,20 @@ maxEnergy         |  float          |  ?      |  Maximum authorised energy in ki
 currentPower      |  float          |  ?      |  The currently supplied power limit in kilowatts in case of load management. Example: "3.7", "8", "15"
 chargedEnergy     |  float          |  ?      |  The amount of energy in kilowatthours transferred during this charging process. Example: "5.5", "20", "85"
 meterValue        |  float          |  ?      |  The current meter value (in kWh) as displayed on the meter to enable displaying it to the user. Example: "12345.67"
-localTime         |  LocalDateTimeType |  ?      |  The local time at the charge point.
-currentCost       |  float          |  ?      |  The total cost of the charging process up to this point.
+localTime         |  LocalDateTimeType |  ?   |  The local time at the charge point. To be sent along with meterValue.
+currentCost       |  float          |  ?      |  The total cost of the charging process that will be billed by the operator up to this point.
 currency          |  string(3)      |  ?      |  The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
+
+
+
+### InformProvider.req
+
+This contains the field definition of the InformProvider.req 
+sent by the MDM towards the CMS.
+
+ Field Name      |  Field Type    |  Card.  |  Description
+:----------------|:---------------|:--------|:------------
+directId         |  DirectId      |  1      |  The session id for this direct charging process.
 
 
 
@@ -730,13 +770,7 @@ sent by the MDM as a response to InformProvider.conf.
 
  Field Name      |  Field Type    |  Card.  |  Description
 :----------------|:---------------|:--------|:------------
-result           |  DirectResult  |  1      |  This contains the result of InformProvider.req.
-
-
-
-
-
-
+result           |  DirectResult  |  1      |  This contains the result of InformProviderMessage.
 
 
 
@@ -757,10 +791,10 @@ Contains a generic endpoint definition.
  Field Name    |  Field Type  |  Card.  |  Description
 :--------------|:-------------|:--------|:------------
  url           | string(255)  | 1       | The endpoint address.
+ version 	   | string(3)	  | + 		| The OCHPdirect version used by this endpoint (e.g. 0.2)
  namespaceUrl  | string(255)  | ?       | The WSDL namespace definition.
  accessToken   | string(255)  | 1       | The secret token to access this endpoint.
  validDate     | DateType     | 1       | The day on which this endpoint/token combination is valid.
- useProxy      | boolean      | ?       | To be set to "true" in case a proxy system is being used to handle all OCHPdirect requests.
  
  **Note:** Any token for day N has to be treated as valid from day N-1 23:50 UTC to day N+1 0:30 UTC.
 
@@ -773,6 +807,7 @@ Expands the DirectEndpoint.
  Field Name    |  Field Type      |  Card.  |  Description
 :--------------|:-----------------|:--------|:------------
  url           | string(255)      | 1       | The endpoint address.
+ version 	   | string(3)		  | + 		| The OCHPdirect version used by this endpoint (e.g. 0.2)
  namespaceUrl  | string(255)      | ?       | The WSDL namespace definition.
  accessToken   | string(255)      | 1       | The secret token to access this endpoint.
  validDate     | DateType         | 1       | The day on which this endpoint/token combination is valid.
@@ -790,6 +825,7 @@ Expands the DirectEndpoint.
  Field Name    |  Field Type  |  Card.  |  Description
 :--------------|:-------------|:--------|:------------
  url           | string(255)  | 1       | The endpoint address.
+ version 	   | string(3)	  | + 		| The OCHPdirect version used by this endpoint (e.g. 0.2)
  namespaceUrl  | string(255)  | ?       | The WSDL namespace definition.
  accessToken   | string(255)  | 1       | The secret token to access this endpoint.
  validDate     | DateType     | 1       | The day on which this endpoint/token combination is valid.
@@ -797,7 +833,7 @@ Expands the DirectEndpoint.
  whitelist     | EvsePattern  | +       | List of patterns that match all EVSE-IDs the endpoint is responsible for.
  blacklist     | EvsePattern  | *       | List of patterns that match EVSE-IDs the endpoint is not responsible for, but are matched by the whitelist.
 
- **Note:** Any token for day N has to be treated as valid from day N-1 23:50 UTC to day N+1 0:30 UTC.
+ **Note:** Any token for day `N` has to be treated as valid from day `N-1` 23:50 UTC to day `N+1` 0:30 UTC.
  
 
 ### ContractPattern *class*
@@ -849,6 +885,14 @@ Result and error codes for the class Result as return value for method calls.
  invalid-id     | The DirectId is not valid or has expired.
  server         | Internal server error.
 
+#### Usage of DirectResultCodes
+
+This quick chapter shall give an overview of how certain result codes are supposed to be treated by OCHPdirect endpoints in order to reduce potential misunderstandings.
+
+
+ 
+ 
+ 
 
 ### DirectId *class*
 
@@ -858,8 +902,8 @@ be unique per Operator-ID.
 There are two events that create a new DirectId:
 
  * A successful call to SelectEvse by the provider
- * Local start of a charging session (i.e. via RFID) for a OCHP-direct
-   enabled Contract-ID at a OCHP-direct enabled EVSE
+ * Local start of a charging session (e.g. via RFID) for an OCHP-direct
+   enabled Contract-ID at an OCHP-direct enabled EVSE
 
 ```regex
 [A-Z0-9\-]{1,255}

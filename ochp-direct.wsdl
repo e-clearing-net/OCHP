@@ -509,9 +509,16 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 				</s:complexType>
 			</s:element>
 
-			<s:element name="InformProviderRequest">
+			<s:element name="InformProviderMessage">
 				<s:complexType>
 					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="result" type="tns:DirectResult">
+							<s:annotation>
+								<s:documentation>
+									This contains the result if the EMP requested InformProvider from the CPO. If InformProviderMessage is sent by the CPO towards the EMP as a request, this element must not be used.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
 						<s:element minOccurs="1" maxOccurs="1" name="message" type="tns:DirectMessage">
 							<s:annotation>
 								<s:documentation>
@@ -619,6 +626,20 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 							<s:annotation>
 								<s:documentation>
 									This contains the result of InformProvider.req.
+								</s:documentation>
+							</s:annotation>
+						</s:element>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			
+			<s:element name="InformProviderRequest">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="directId" type="tns:DirectId">
+							<s:annotation>
+								<s:documentation>
+									The session id for this direct charging process.
 								</s:documentation>
 							</s:annotation>
 						</s:element>
@@ -760,13 +781,22 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 				element="tns:ReleaseEvseResponse" />
 	</wsdl:message>
 
-	<wsdl:message name="InformProviderInput">
+	<wsdl:message name="InformProviderEMPInput">
+		<wsdl:part name="parameters"
+				element="tns:InformProviderMessage" />
+	</wsdl:message>
+	<wsdl:message name="InformProviderEMPOutput">
+		<wsdl:part name="parameters"
+				element="tns:InformProviderResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="InformProviderCPOInput">
 		<wsdl:part name="parameters"
 				element="tns:InformProviderRequest" />
 	</wsdl:message>
-	<wsdl:message name="InformProviderOutput">
+	<wsdl:message name="InformProviderCPOOutput">
 		<wsdl:part name="parameters"
-				element="tns:InformProviderResponse" />
+				element="tns:InformProviderMessage" />
 	</wsdl:message>
 
 
@@ -844,6 +874,14 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			<wsdl:input message="tns:ReleaseEvseInput" />
 			<wsdl:output message="tns:ReleaseEvseOutput" />
 		</wsdl:operation>
+		
+		<wsdl:operation name="InformProviderCPO">
+			<wsdl:documentation>
+				The provider can request information for an ongoing charging process.
+			</wsdl:documentation>
+			<wsdl:input message="tns:InformProviderCPOInput" />
+			<wsdl:output message="tns:InformProviderCPOOutput" />
+		</wsdl:operation>
 	</wsdl:portType>
 
 <!-- Port definition for Service Provider backends -->
@@ -854,12 +892,12 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			OCHP-direct Version 0.2 Interface for the Service Provider backend
 		</wsdl:documentation>
 
-		<wsdl:operation name="InformProvider">
+		<wsdl:operation name="InformProviderEMP">
 			<wsdl:documentation>
 				When a status update to a charging process gets available, the operator informs the concerned provider.
 			</wsdl:documentation>
-			<wsdl:input message="tns:InformProviderInput" />
-			<wsdl:output message="tns:InformProviderOutput" />
+			<wsdl:input message="tns:InformProviderEMPInput" />
+			<wsdl:output message="tns:InformProviderEMPOutput" />
 		</wsdl:operation>
 	</wsdl:portType>
 
@@ -958,6 +996,16 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 				<soap:body use="literal" />
 			</wsdl:output>
 		</wsdl:operation>
+		
+		<wsdl:operation name="InformProviderCPO">
+			<soap:operation soapAction="http://ochp.eu/direct/0.2/InformProviderCPO" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
 
 	</wsdl:binding>
 
@@ -972,8 +1020,8 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
 
-		<wsdl:operation name="InformProvider">
-			<soap:operation soapAction="http://ochp.eu/direct/0.2/InformProvider" />
+		<wsdl:operation name="InformProviderEMP">
+			<soap:operation soapAction="http://ochp.eu/direct/0.2/InformProviderEMP" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
