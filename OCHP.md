@@ -2104,6 +2104,14 @@ none of the TariffElements before this matches the current charging period.
  recipients          | string (5) 		    	 | *       | Provider-IDs of the intended recipients for this tariff.
 <div><!-- ---------------------------------------------------------------------------- --></div>
 
+### TariffElement *class*
+
+<div><!-- ---------------------------------------------------------------------------- --></div>
+ Field Name          |  Field Type               |  Card.  |  Description
+:--------------------|:--------------------------|:--------|:------------
+ priceComponent      | [PriceComponent](#pricecomponent-class) | +     | List of price components that make up the pricing of this tariff
+ tariffRestrictions  | [TariffRestrictions](#tariffrestrictions-class) | ?     | List of tariff restrictions
+<div><!-- ---------------------------------------------------------------------------- --></div>  
 
 ### PriceComponent *class*
 
@@ -2114,15 +2122,6 @@ none of the TariffElements before this matches the current charging period.
  itemPrice       | float	                 | 1     | price per unit for this tariff dimension
  stepSize        | int                           | 1     | Minimum amount to be billed. This unit will be billed in this stepSize blocks. For example: if type is time and  stepSize is 300, then time will be billed in blocks of 5 minutes, so if 6 minutes is used, 10 minutes (2 blocks of stepSize) will be billed.
 <div><!-- ---------------------------------------------------------------------------- --></div>
-
-### TariffElement *class*
-
-<div><!-- ---------------------------------------------------------------------------- --></div>
- Field Name          |  Field Type               |  Card.  |  Description
-:--------------------|:--------------------------|:--------|:------------
- priceComponent      | [PriceComponent](#pricecomponent-class) | +     | List of price components that make up the pricing of this tariff
- tariffRestrictions  | [TariffRestrictions](#tariffrestrictions-class) | ?     | List of tariff restrictions
-<div><!-- ---------------------------------------------------------------------------- --></div>  
 
 ### TariffRestrictions *class*
 
