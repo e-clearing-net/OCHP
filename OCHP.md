@@ -148,6 +148,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [MajorType *enum*](#majortype-enum)
         - [MinorType *enum*](#minortype-enum)
         - [EvseStatusType *class*](#evsestatustype-class)
+		- [ParkingStatusType *class*](#parkingstatustype-class)
+	- [Types for Tariff Data Exchange](#types-for-tariff-data-exchange)
+		- [TariffInfoType *class*](#tariffinfotype-class)
+		- [TariffElementType *class*](#tariffelementtype-class)
+		- [PriceComponentType *class*](#pricecomponenttype-class)
+		- [TariffRestrictionType *class*](#tariffrestrictiontype-class)
 - [Binding to Transport Protocol](#binding-to-transport-protocol)
     - [User Identification](#user-identification)
 - [Annexes](#annexes)
@@ -1089,8 +1095,9 @@ This contains the field definition of the GetStatus.conf sent by the CHS as resp
 
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
-evse          |  EvseStatusType  |  *      |  This contains one EVSE id with the current status represented in a major part and a minor part.
+evse          |  EvseStatusType  |  *      |  This contains one EVSE ID with the current status represented in a major part and a minor part.
 parkingspot   |  ParkingStatusType |  *    |  This contains one parking spot ID with the current status.
+combined 	  |  EvseStatusType	 |  *      |  This contains one EVSE ID status including the parking spot status (if applicable).
 
 
 
@@ -1309,8 +1316,12 @@ The type of the supplied instance for basic filtering.
  Value       |  Description
 :------------|:-------------
  rfid        |  All kinds of RFID-Cards. Field tokenInstance holds the hexadecimal representation of the card's UID, Byte order: big endian, no zero-filling.
- remote      |  All means of remote authentication through the backend.
+ remote      |  All means of remote authentication through the backend. Field tokenInstance holds a reference to the remote authorization or session. In case of a OCHP_direct- authorization the _directId_.
  15118       |  All authentication means defined by ISO/IEC 15118 except RFID-cards.
+ 
+ **NOTE:** The _remote_ token type is only beeing used in the CDR of a
+ remotely started charging process. Tokens with type _remote_ shall not
+ be included in a whitelist!
 
 
 ### tokenSubType *enum*
@@ -1330,8 +1341,8 @@ Specifies the representation of the token to allow hashed token values.
 
  Value       |  Description
 :------------|:-------------
- plain       |  The token instance is represented in plain text.
- sha-160     |  The token instance is represented in its 160bit SHA1 hash in 40 hexadecimal digits. (default)
+ plain       |  The token instance is represented in plain text. (default)
+ sha-160     |  The token instance is represented in its 160bit SHA1 hash in 40 hexadecimal digits.
  sha-256     |  The token instance is represented in its 256bit SHA2 hash in 64 hexadecimal digits.
 
 ###### eMT-ID Semantics
@@ -1370,8 +1381,9 @@ The billing items for charging periods.
  usagetime    |  Price for the time of EVSE usage. The billingValue represents the time in hours.
  energy       |  Price for the consumed energy. The billingValue represents the energy in kilowatt-hours.
  power        |  Price for the used power level. The billingValue represents the maximum power in kilowatts.
- serviceFee   |  General service fee per charging process. The billingValue represents multiplier and thus has to be set to "1.0".
- reservation  |  Price for a reservation of the EVSE. The billingValue represents the time in hours. If instead a flat fee is charged per reservation, the billingValue should be set to "1.0".
+ serviceFee   |  General service fee per charging process. The billingValue represents a multiplier and thus has to be set to "1.0".
+ reservation  |  One time fee for a reservation of the EVSE. The billingValue represents a multiplier and thus has to be set to "1.0".
+ reservationtime | Price for the duration of a reservation. The billingValue represents the time in hours.
 
 
 ### CdrPeriodType *class*
@@ -2100,30 +2112,31 @@ none of the TariffElements before this matches the current charging period.
  tariffId            | string (15)           	 | 1       | Uniquely identifies the tariff within the CPOs platform (and suboperator platforms).  
  currency            | string (3)                | 1       | Currency of this tariff, ISO 4217 Code
  productType	     | string (15)   			 | 1	   | ID used to reference tariff on EVSE level
- tariffElement       | [TariffElement](#tariffelement-class) | +     | List of tariff elements
+ tariffElement       | [TariffElementType](#tariffelementtype-class) | +     | List of tariff elements
  recipients          | string (5) 		    	 | *       | Provider-IDs of the intended recipients for this tariff.
 <div><!-- ---------------------------------------------------------------------------- --></div>
 
-### TariffElement *class*
 
-<div><!-- ---------------------------------------------------------------------------- --></div>
- Field Name          |  Field Type               |  Card.  |  Description
-:--------------------|:--------------------------|:--------|:------------
- priceComponent      | [PriceComponent](#pricecomponent-class) | +     | List of price components that make up the pricing of this tariff
- tariffRestrictions  | [TariffRestrictions](#tariffrestrictions-class) | ?     | List of tariff restrictions
-<div><!-- ---------------------------------------------------------------------------- --></div>  
-
-### PriceComponent *class*
+### PriceComponentType *class*
 
 <div><!-- ---------------------------------------------------------------------------- --></div>
  Field Name          |  Field Type               |  Card.  |  Description
 :--------------------|:--------------------------|:--------|:------------
  billingItem     | [BillingItemType] (#billingitemtype-enum) | 1     | Type of tariff dimension
- itemPrice       | float	                 | 1     | price per unit for this tariff dimension
+ itemPrice       | float	                     | 1     | price per unit for this tariff dimension
  stepSize        | int                           | 1     | Minimum amount to be billed. This unit will be billed in this stepSize blocks. For example: if type is time and  stepSize is 300, then time will be billed in blocks of 5 minutes, so if 6 minutes is used, 10 minutes (2 blocks of stepSize) will be billed.
 <div><!-- ---------------------------------------------------------------------------- --></div>
 
-### TariffRestrictions *class*
+### TariffElementType *class*
+
+<div><!-- ---------------------------------------------------------------------------- --></div>
+ Field Name          |  Field Type               |  Card.  |  Description
+:--------------------|:--------------------------|:--------|:------------
+ priceComponent      | [PriceComponentType](#pricecomponenttype-class) | +     | List of price components that make up the pricing of this tariff
+ tariffRestriction   | [TariffRestrictionType](#tariffrestrictiontype-class) | ?     | List of tariff restrictions
+<div><!-- ---------------------------------------------------------------------------- --></div>  
+
+### TariffRestrictionType *class*
 
 <div><!-- ---------------------------------------------------------------------------- --></div>
  Field Name          |  Field Type               |  Card.  |  Description
@@ -2184,14 +2197,19 @@ Specifies the major and minor status of a EVSE.
  Field Name  |  Field Type    |  Card.  |  Description
 :------------|:---------------|:--------|:------------
  evseId      |  EvseId        |  1      |  The EVSE the status is set for.
- major       |  MajorType     |  1      |  The major status value for the EVSE.
- minor       |  MinorType     |  ?      |  The minor status value for the EVSE.
- ttl         |  DateTimeType  |  ?      |  The time to live is set as the deadline till the status value is to be considered valid. Should be set to the expected status change.
+ major~      |  MajorType     |  1      |  The major status value for the EVSE.
+ minor~      |  MinorType     |  ?      |  The minor status value for the EVSE.
+ ttl~        |  DateTimeType  |  ?      |  The time to live is set as the deadline until which the status value is to be considered valid. Should be set to the expected status change.
+ 
+ ### ParkingStatusType *class*
 
+Specifies the live status of a parking spot.
 
-
-
-
+ Field Name  |  Field Type    |  Card.  |  Description
+:------------|:---------------|:--------|:------------
+ parkingId   |  ParkingId     |  1      |  The parking spot the status is set for.
+ status~     |  MajorType     |  1      |  The status value of the parking spot.
+ ttl~        |  DateTimeType  |  ?      |  The time to live is set as the deadline until which the status value is to be considered valid. Should be set to the expected status change.
 
 
 # Binding to Transport Protocol

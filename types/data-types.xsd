@@ -348,8 +348,8 @@
 							usagetime; Price for the time of EVSE usage. The billingValue represents the time in hours 
 							energy; Price for the consumed energy. The billingValue represents the energy in kilowatt-hours. 
 							power; Price for the consumed energy. The billingValue represents the maximum power in kilowatts 
-							serviceFee; General service fee per charging process. The billingValue represents multiplier and thus has to be set to "1.0"
-							reservation; One time fee for a reservation of the EVSE. The billingValue should be set to "1.0".
+							serviceFee; General service fee per charging process. The billingValue represents a multiplier and thus has to be set to "1.0"
+							reservation; One time fee for a reservation of the EVSE. The billingValue represents a multiplier and thus has to be set to "1.0".
 							reservationtime; Price for the duration of a reservation. The billingValue represents the time in hours.
 						</s:documentation>
 					</s:annotation>

@@ -84,7 +84,7 @@
 							Defines which status of CDRs to return, depending on the role of the partner:
 							Provider: accepted, revised, rejected
 							Operator: approved, declined, rejected
-							If not defined, will return accepted and revised CDRs for Providers.
+							If not defined, will return accepted and revised CDRs only.
 						</s:documentation>
 					</s:annotation>
 				</s:element>

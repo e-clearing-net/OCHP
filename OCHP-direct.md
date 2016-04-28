@@ -100,6 +100,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - [Binding to Transport Protocol](#binding-to-transport-protocol)
     - [OCHP direct over SOAP](#ochp-direct-over-soap)
     - [Partner Identification](#partner-identification)
+- [Combining OCHP_direct_ with OCHP](#combining-ochpdirect-with-classic-ochp)
 
 
  * * *
@@ -944,5 +945,27 @@ Messages to inform a provider about an OCHP-direct charging process.
 ## OCHP direct over SOAP
 
 For this protocol the SOAP Version 1.1 MUST be used.
+
+
+
+# Combining OCHP​_direct_ with classic OCHP
+
+OCHP​_direct_ is made to be used in association with the classic OCHP
+and a clearing house. This section gives additional advice of how
+integrate it.
+
+
+## CDRs for OCHP​_direct_ sessions
+
+ Field Name       |  Field Type         |  Card.  |  Additional advice
+:-----------------|:--------------------|:--------|:--------------------
+ cdrId            |  string(36)         |  1      |
+ evseId           |  EvseId             |  1      |
+ emtId            |  EmtId              |  1      |  The field _tokenType_ should be set to `remote`, the field _instance_ should enhold the _directId_.
+ contractId       |  ContractId         |  1      |
+ liveAuthId       |  LiveAuthId         |  ?      |  Not used with OCHPdirect.
+ status           |  CdrStatusType      |  1      |
+ startDateTime    |  LocalDateTimeType  |  1      |  Start date and time of the direct session (successfull SelectEvse). Must be set in the local time of the charge point.
+ endDateTime      |  LocalDateTimeType  |  1      |  End date and time of the charge session (log-off with the RFID badge, ControlEvse.operation = _end_ or physical disconnect). Must be set in the local time of the charge point.
 
 
