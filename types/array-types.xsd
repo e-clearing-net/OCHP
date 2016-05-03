@@ -248,13 +248,6 @@
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
-			<s:element name="parkingId" type="ParkingId" minOccurs="0" maxOccurs="unbounded">
-				<s:annotation>
-					<s:documentation>
-						Parking-ID to reference parking spots operated and monitored by a PSO. Ideally, list all parking spots that can access this EVSE.
-					</s:documentation>
-				</s:annotation>
-			</s:element>
 			<s:element name="timestamp" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
@@ -350,7 +343,7 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="status" type="tns:GeneralStatusType" minOccurs="0" maxOccurs="1">
+			<s:element name="status" type="tns:StatusType" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						The current status of the charge point.
@@ -451,7 +444,7 @@
 			<s:element name="tariffId" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Alphanumeric. Identifies a tariff. Unique within one EVSE Operator
+						Alphanumeric. Identifies a tariff. Unique within one EVSE Operator.
 					</s:documentation>
 				</s:annotation>
 				<s:simpleType>
@@ -465,7 +458,7 @@
 			<s:element name="recipient" minOccurs="0" maxOccurs="unbounded">
 				<s:annotation>
 					<s:documentation>
-						Alphanumeric. Identifies a recipient EMSP according to EMSP-ID without separators. If left blank, tariff is valid for all.
+						Alphanumeric. Identifies a recipient EMSP according to EMSP-ID without any separators. If not provided, tariff is valid for all.
 					</s:documentation>
 				</s:annotation>
 				<s:simpleType>

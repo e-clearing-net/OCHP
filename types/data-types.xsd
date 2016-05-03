@@ -257,7 +257,7 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="restrictions" type="tns:RestrictionType" minOccurs="0" maxOccurs="unbounded">
+			<s:element name="restriction" type="tns:RestrictionType" minOccurs="0" maxOccurs="unbounded">
 				<s:annotation>
 					<s:documentation>
 						Restrictions to the usage of this parking spot.
@@ -276,7 +276,7 @@
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
-			<s:element name="parkingSlotNumber" minOccurs="0" maxOccurs="1">
+			<s:element name="parkingSpotNumber" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						Alphanumeric. Locally displayed parking slot number. Examples: "10", "251","B25", "P-234"
@@ -576,9 +576,9 @@
 		</s:sequence>
 	</s:complexType>
 
-	<s:complexType name="GeneralStatusType">
+	<s:complexType name="StatusType">
 		<s:sequence>
-			<s:element name="GeneralStatusType">
+			<s:element name="StatusType">
 				<s:annotation>
 					<s:documentation>
 						Unknown; No status information available
@@ -1064,7 +1064,7 @@
 			<s:element name="tariffRestriction" type="TariffRestrictionType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Contains information about when to apply the defined priceComponent.
+						Contains information about when to apply the defined priceComponent / tariffElement.
 					</s:documentation>
 				</s:annotation>
 			</s:element>

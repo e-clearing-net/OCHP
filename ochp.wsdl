@@ -284,6 +284,20 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			<wsdl:input message="tns:UpdateChargePointListRequest"></wsdl:input>
 			<wsdl:output message="tns:UpdateChargePointListResponse"></wsdl:output>
 		</wsdl:operation>
+		<wsdl:operation name="UpdateTariffs">
+			<wsdl:documentation>
+				For all updates to tariff objects from the CIMS to the Clearing House and the EVSPs. Can contain single or multiple tariffs to update.
+			</wsdl:documentation>
+			<wsdl:input message="tns:UpdateTariffsRequest"></wsdl:input>
+			<wsdl:output message="tns:UpdateTariffsResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetTariffUpdates">
+			<wsdl:documentation>
+				Downloads all tariff objects from the Clearing House that have been updated since a given date and time. Can contain single or multiple tariffs.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetTariffUpdatesRequest"></wsdl:input>
+			<wsdl:output message="tns:GetTariffUpdatesResponse"></wsdl:output>
+		</wsdl:operation>
 		<wsdl:operation name="RequestLiveRoamingAuthorisation">
 			<wsdl:documentation>
 				A CMS may request the Clearing House to authorize one single token for a charging session

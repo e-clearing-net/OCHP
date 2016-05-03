@@ -4,12 +4,12 @@
 
 Prot. Version | Date       | Comment
 :-------------|:-----------|:-------
-0.1           | 28‑02‑2012 | Concept, Functional specification
-0.2           | 21‑05‑2012 | VAS data added
-1.0           | 12‑12‑2013 | Use-case driven structure; Delta-Synchronization; Live-Authorization; CDR-Validation; Alignment to standardization and market development.
-1.2           | 17‑06‑2014 | Live Status Interface and further enhancements from market requirements. Commit: [6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5](../../commit/6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5)
-1.3           | 27‑03‑2015 | Bug fixes, further enhancements (power ratings, location types, time zones) Commit: [77cccd838db692ab6f8b77fb4be8e81d59ec04e2](../../commit/77cccd838db692ab6f8b77fb4be8e81d59ec04e2)
-1.4	      |		   |
+0.1           | 28-02-2012 | Concept, Functional specification
+0.2           | 21-05-2012 | VAS data added
+1.0           | 12-12-2013 | Use-case driven structure; Delta-Synchronization; Live-Authorization; CDR-Validation; Alignment to standardization and market development.
+1.2           | 17-06-2014 | Live Status Interface and further enhancements from market requirements. Commit: [6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5](../../commit/6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5)
+1.3           | 27-03-2015 | Bug fixes, further enhancements (power ratings, location types, time zones) Commit: [77cccd838db692ab6f8b77fb4be8e81d59ec04e2](../../commit/77cccd838db692ab6f8b77fb4be8e81d59ec04e2)
+1.4a1         | 04-05-2016 | Bug fixes, enhancements, tariffs, CDR handling changes, new role: PSO.
 
 
 Copyright (c) 2012-2016 smartlab, bluecorner.be, e-laad.nl
@@ -210,7 +210,7 @@ one or more  | `minOccurs="1" maxOccurs="unbounded"`         | +
 zero or more | `minOccurs="0" maxOccurs="unbounded"`         | *
 exactly one  | *(default)*                                   | 1
 
-For some data fields a [http://en.wikipedia.org/wiki/Regular_expression](http://en.wikipedia.org/wiki/Regular_expression) is
+For some data fields a [Regular Expression](http://en.wikipedia.org/wiki/Regular_expression) is
 provided as an additional and very precise definition of the data
 format.
 
@@ -245,6 +245,7 @@ MDM          | Master Data Management System
 NSP          | Navigation Service Provider
 OCHP         | Open Clearing House Protocol
 PDU          | Protocol Data Unit
+PSM			 | Parking Spot Management System
 PSO	         | Parking Spot Operator
 RA           | Roaming Authorisation
 RFID         | Radio-frequency identification
@@ -334,11 +335,11 @@ contracts with EVSE operators or EVSPs.
 
 ### Parking Spot Operator (PSO)
 
-The PSO offers multiple services to the CPO as well as the EV Driver and
+The PSO offers multiple services to the Operator as well as the EV Driver and
 NSP. They offer access to a parking spot associated with an EVSE to the
-EV driver and sometimes the location for the EVSE to the CPO. Furthermore,
+EV driver and sometimes the location for the EVSE to the EVSE-Op. Furthermore,
 they may operate services that allow detailed tracking of the occupation
-of single parking spots, thus enhancing CPO data sent to an NSP.
+of single parking spots, thus enhancing Operator-data sent to an NSP.
 
 
 ### Charging Session
@@ -572,11 +573,10 @@ roaming list can be done in the following way:
 ## Exchange Charge Data
 
 The exchange of charge data is be done by sending records containing 
-all billing information from the EVSE-Operator to corresponding the 
+all billing information from the EVSE-Operator to the corresponding
 EVSP. The data set is called Charge Detail Record (CDR). Each CDR 
 contains a status value that reflects the processing state of the 
-record within the clearing house roaming connection. The status must 
-not be set directly by the roaming partners' systems. The figure in the 
+record within the clearing house roaming connection. The figure in the
 next section illustrates the status flow for each CDR.
 
 ##### CDR Validation Process
@@ -587,18 +587,18 @@ be accepted. Implausible CDRs will directly be sent back to the
 CDR-"Originator" and can be adjusted. A corrected version of the CDR 
 can again be uploaded to the Clearing House with the next call. Already 
 uploaded CDRs will have the status *new* set by the Clearing House. 
-Plausible CDRs will be marked as *accepted* and sent to the EV 
+Plausible CDRs will be marked as *accepted* and forwarded to the EV 
 Service Provider or CDR-"Owner" for approval.
-The CDR-"Owner" downloads in bilateral agreed intervals the list of 
-CDRs from all providers. After a internal validation check in the 
+The CDR-"Owner" downloads (in bilaterally agreed intervals) the list of 
+CDRs from all providers. After an internal validation check in the 
 backend, the EVSP uploads a list of approved and declined CDRs to the 
 Clearing House. Approved CDRs will be marked as such and their status 
-is set to *approved*. These CDRs will then be archived and are not 
-available for download any more. Declined CDRs will be marked as 
-*owner-declined*, an issue will be filed and the Clearing House will 
-try to solve the issue. Upon manual revision the CDRs will be either 
-marked as *approved* or *rejected* to be archived in the system. CDRs 
-in status *owner-declined* are not available for download.
+is set to *approved*. These CDRs will then be archived and will not
+be included in the standard GetCDRs. Declined CDRs will be marked as 
+*declined* and will then be available for download by the EVSE Operator.
+They now have the option to either re-upload the CDR as *revised* or
+finally confirm the affected CDRs as *rejected*, foregoing any further
+claims on that charging process.
 
 ![Figure Status flow for CDRs](media/CDRvalidation.png "Status flow for CDRs")
 
@@ -610,7 +610,7 @@ Local roaming charge data records are sent from the CMS to the CHS. The
 upload has to be done in the following way:
 
  * CMS sends the AddCDRs.req PDU.
- * CHS responds with: AddCDRs.conf PDU.
+ * CHS responds with an AddCDRs.conf PDU.
 
 
 
@@ -622,14 +622,25 @@ sent. The download has to be done in the following way:
 
  * MDM sends GetCDRs.req PDU.
  * CHS responds with a GetCDRs.conf PDU.
- * MDM confirms or declines single CDRs with ConfirmCDRs.req
+ * MDM confirms or declines individual CDRs by sending ConfirmCDRs.req PDU.
+ * CHS responds with a ConfirmCDRs.conf PDU.
+ 
+Furthermore, the CMS may download declined CDRs and attempt to fix any
+issues there were by re-uploading the CDRs as "revised" or to finally
+reject them (forego payment) by setting their status to "rejected".
+ 
+ * CMS may send the GetCDRs.req PDU.
+ * CHS responds with GetCDRs.conf PDU according to the status provided in the request.
+ * CMS may revise CDRs by sending AddCDRs.req PDU.
+ * CHS responds with an AddCDRs.conf PDU.
+ * CMS may reject individual CDRs by sending ConfirmCDRs.req PDU.
  * CHS responds with a ConfirmCDRs.conf PDU.
 
 
 ##### Implementation
-All CDRs stay in the download queue until their successful download was
-confirmed by a call to ConfirmCDRs.req. Declined CDRs may be handled in
-a separate negotiation process as described before.
+All CDRs stay in the download queue (GetCDRs without explicitly stating the status)
+until their successful download was confirmed by a call to ConfirmCDRs.req.
+Declined CDRs may be handled in a separate process as described before.
 
 
 
@@ -661,7 +672,7 @@ An NSP downloads the global charge point information from the CHS. The
 download of the global charge point information is done in the following
 way:
 
- * NPS sends the GetChargePointList.req PDU.
+ * NSP sends the GetChargePointList.req PDU.
  * CHS responds with GetChargePointList.conf PDU.
 
 
@@ -691,8 +702,8 @@ An MDM has to regularly download tariff information for their roaming
 partners' charge points from the Clearing House. This is done in the
 following way:
 
- * MDM sends GetTariffs.req PDU.
- * CHS responds with GetTariffs.conf PDU.
+ * MDM sends GetTariffUpdates.req PDU.
+ * CHS responds with GetTariffUpdates.conf PDU.
 
 
 
@@ -753,12 +764,20 @@ Major Status  | Minor Status | Description
 :-------------|:-------------|:-------------
 Unknown       | n/a          | Operator can not reliably determine the current status. TTL is set to the time the next status update is expected, normally in near future.
 Available     | Available    | A new charging process can be started immediately. TTL is set to the near future, normally five minutes ahead.
-Available     | Reserved     | A new charging process can be started immediately but there is a reservation in the future. TTL is set to a date until when new charging processes may be started. Usually the status will change than to *Not Available--Reserved*.
+Available     | Reserved     | A new charging process can be started immediately but there is a reservation in the future. TTL is set to a date until when new charging processes may be started. Usually the status will then change to *Not Available--Reserved*.
 Not Available | Charging     | Charging process ongoing, charge point occupied. No new charging process can be started. TTL is set to the expected end of the charging process. For example 20 minutes ahead for quick charging.
 Not Available | Blocked      | Parking spot occupied w/o ongoing charging process. This may be caused by a parked car that is not ambiguous to charge. TTL is set to a date in the near future.
 Not Available | Reserved     | Reserved for now or the near future, no new charging process may be started. TTL is set to the date the reservation will expire. Usually the status will change than to either *Not Available--Charging* or to *Available--Available* if the reservation was not used..
 Not Available | Out Of Order | Failure or other inoperability. TTL is set to the expected end of the failure if known. In case of longer service interruptions, the charge point status value should also be set to *Inoperative*, see  [ChargePointStatusType](#ChargePointStatusType).
 
+Furthermore, a PSO can send live status information for their parking
+spots towards the system. These will be evaluated according to the
+parkingId sent with individual EVSEs. The parking spot itself can have
+the same major live status as an EVSE: available, not available, unknown.
+
+In order to enable implementations to only resolve one set of status,
+the status of EVSE and parking spot are returned individually as well
+as combined.
 
 
 ##### Implementation
@@ -774,15 +793,17 @@ A CMS may update the current live status of individual charging stations in the 
 
  * CMS sends the UpdateStatus.req PDU.
  * CHS responds with a UpdateStatus.conf PDU.
+ 
+Additionally, a PSM may update the current live status of individual parking spots, allowing the EVSE Operators roaming partners to receive these alongside the EVSE live status. The live status update is done in the same way (initiated by the PSM).
 
 
 ### Download global live status information from the CHS
 
 A NSP may receive the current live status of individual charging 
-stations from the Clearing House. The live status download is done in 
-the following way:
+stations and parking spot from the Clearing House. The live status
+download is done in the following way:
 
- * CMS sends the GetStatus.req PDU.
+ * MDM sends the GetStatus.req PDU.
  * CHS responds with a GetStatus.conf PDU.
 
 
@@ -1937,6 +1958,18 @@ This class contains all address related information to be used in charge point, 
  country             |  string(3)                |  1      |  Alpha, three characters. ISO 3166 country code
 
 
+### ParkingSpotType *class*
+
+This class contains all parking related information. If a parkingId is given, this ID can be used to associate parking spot live information from a PSO with this EVSE.
+
+ Field Name          |  Field Type               |  Card.  |  Description
+:--------------------|:--------------------------|:--------|:------------
+ parkingId           |  ParkingId                |  ?      |  Globally unique identifier for this parking spot.
+ restriction	     |  RestrictionType		     |  *      |  Restrictions applying to the usage of the charging station or parking spot.
+ floorlevel          |  string(4)                |  ?      |  Alphanumeric. Level on which the charge station is located (in garage buildings) in the locally displayed numbering scheme. Examples: "-2","P-5", "2", "+5"
+ parkingSpotNumber   |  string(5)                |  ?      |  Alphanumeric. Locally displayed parking slot number. Examples: "10", "251","B25", "P-234"
+ 
+
 ### ChargePointInfo *class*
 
 Contains information about the charge points.
@@ -1950,7 +1983,7 @@ Contains information about the charge points.
  locationNameLang    |  string(3)                |  1      |  Alpha, three characters. ISO-639-3 language code defining the language of the location name
  images              |  evseImageUrlType         |  *      |  Links to images related to the EVSE such as photos or logos.
  relatedResource     |  RelatedResourceType      |  *      |  Links to be visited by the user, related to the charge point or charging station.
- address	     |  AddressType		 |  1      |  Contains the address of the charging station.
+ address	         |  AddressType		         |  1      |  Contains the address of the charging station.
  chargePointLocation |  GeoPointType             |  1      |  Geographical location of the charge point itself (power outlet).
  relatedLocation     |  AdditionalGeoPointType   |  ?      |  Geographical location of related points relevant to the user.
  timeZone            |  string(255)              |  ?      |  One of IANA tzdata's __TZ__-values representing the time zone of the location. Examples: "Europe/Oslo", "Europe/Zurich". ([http://www.iana.org/time-zones](http://www.iana.org/time-zones))
@@ -1961,9 +1994,8 @@ Contains information about the charge points.
  statusSchedule      |  ChargePointScheduleType  |  *      |  Planned status changes in the future. If a time span matches with the current or displayed date, the corresponding value overwrites *status*.
  telephoneNumber     |  string(20)               |  ?      |  Numeric. Service hotline to be displayed to the EV user. Separators recommended. Characters: [0-9], -, +, <space>
  location            |  GeneralLocationType      |  1      |  The general type of the charge point location.
- floorLevel          |  string(4)                |  ?      |  Alphanumeric. Level on which the charging station is located (in garage buildings) in the locally displayed numbering scheme. Examples: "-2", "P-5", "+5". Characters: [A-Z], [0-9], -, +, /
- parkingSlotNumber   |  string(5)                |  ?      |  Alphanumeric. Locally displayed parking slot number. Examples: "10", "B25", "P-234". Characters: [A-Z], [0-9], -, +, /
- Restriction	     |  RestrictionType		 |  *      |  Restrictions applying to the usage of the charging station or parking spot.
+ parkingSpot		 |  ParkingSpotType          |  *      |  Information about one or more parking spots associated with the EVSE.
+ restriction	     |  RestrictionType		     |  *      |  Restrictions applying to the usage of the charging station or parking spot.
  authMethods         |  AuthMethodType           |  +      |  List of available payment or access methods on site.
  connectors          |  ConnectorType            |  +      |  Which receptacle type is/are present for a power outlet.
  chargePointType     |  string(2)                |  1      |  The type of the charge point "AC" or "DC"
@@ -2000,6 +2032,65 @@ path of of both IDs.
 ## Types for Tariff Data Exchange
 
 These types are used to exchange tariff information between an operator and one or more providers.
+
+
+###TariffInfo *class*
+
+A Tariff Object consists of a list of one or more TariffElements. These elements can be used to create complex Tariff structures. 
+When the list of _elements_ contains more than 1 element, then the first tariff in the list with matching restrictions will be used.
+
+It is advised to always set a "default" tariff, the last tariff in the list of _elements_ with no restriction. This acts as a fallback when
+none of the TariffElements before this matches the current charging period.
+
+It is up to a CPO to ensure that there are not multiple tariffs for the same _productType_ and the same recipient EVSP. Otherwise, the EVSP would not be able to know which tariff to use.
+Furthermore, it is advised to always set a validity date for any tariff to expire at and renew this date accordingly when there are no changes to the tariff.  
+
+<div><!-- ---------------------------------------------------------------------------- --></div>
+ Field Name          |  Field Type               |  Card.  |  Description
+:--------------------|:--------------------------|:--------|:------------
+ tariffId            | string (15)           	 | 1       | Uniquely identifies the tariff within the CPOs platform (and suboperator platforms).  
+ currency            | string (3)                | 1       | Currency of this tariff, ISO 4217 Code
+ productType	     | string (15)   			 | 1	   | ID used to reference tariff on EVSE level
+ tariffElement       | [TariffElementType](#tariffelementtype-class) | +     | List of tariff elements
+ recipients          | string (5) 		    	 | *       | Provider-IDs of the intended recipients for this tariff.
+<div><!-- ---------------------------------------------------------------------------- --></div>
+
+
+### PriceComponentType *class*
+
+<div><!-- ---------------------------------------------------------------------------- --></div>
+ Field Name          |  Field Type               |  Card.  |  Description
+:--------------------|:--------------------------|:--------|:------------
+ billingItem	     | [BillingItemType] (#billingitemtype-enum) | 1     | Type of tariff dimension
+ itemPrice	         | float	                 | 1     | price per unit for this tariff dimension (unit according to dimension, see BillingItemType description)
+ stepSize	         | int                       | 1     | Minimum amount to be billed. This unit will be billed in this stepSize blocks. For example: if type is time and  stepSize is 300, then time will be billed in blocks of 5 minutes, so if 6 minutes is used, 10 minutes (2 blocks of stepSize) will be billed.
+<div><!-- ---------------------------------------------------------------------------- --></div>
+
+### TariffElementType *class*
+
+<div><!-- ---------------------------------------------------------------------------- --></div>
+ Field Name          |  Field Type               |  Card.  |  Description
+:--------------------|:--------------------------|:--------|:------------
+ priceComponent      | [PriceComponentType](#pricecomponenttype-class) | +     | List of price components that make up the pricing of this tariff
+ tariffRestriction   | [TariffRestrictionType](#tariffrestrictiontype-class) | ?     | List of tariff restrictions
+<div><!-- ---------------------------------------------------------------------------- --></div>  
+
+### TariffRestrictionType *class*
+
+<div><!-- ---------------------------------------------------------------------------- --></div>
+ Field Name          |  Field Type               |  Card.  |  Description
+:--------------------|:--------------------------|:--------|:------------
+ regularHours		 | RegularHoursType			 | *	   | Regular hours that this tariff element should be valid for (maximum of 14 entries). If always valid (24/7), don't set (as this is a tariff restriction).
+ startDate           | DateType					 | ?       | Start date, for example: 2015-12-24, valid from this day (midnight, i.e. including this day)
+ endDate             | DateType 				 | ?       | End date, for example: 2015-12-27, valid until this day (midnight, i.e. excluding this day)          
+ minEnergy           | float   					 | ?       | Minimum used energy in kWh, for example 20.0, valid from this amount of energy is used                       
+ maxEnergy           | float  					 | ?       | Maximum used energy in kWh, for example 50.0, valid until this amount of energy is used 
+ minPower            | float   					 | ?       | Minimum power in kW, for example 0.0, valid from this charging speed
+ maxPower            | float			 		 | ?       | Maximum power in kW, for example 20.0, valid up to this charging speed
+ minDuration         | int                       | ?       | Minimum duration in seconds, valid for a duration from x seconds
+ maxDuration         | int                       | ?       | Maximum duration in seconds, valid for a duration up to x seconds
+<div><!-- ---------------------------------------------------------------------------- --></div>
+
 
 #### Examples
 
@@ -2096,62 +2187,6 @@ Parking costs:
 	</tariffElement>
 </tariffInfo>
 ```
-
-
-###TariffInfo *class*
-
-A Tariff Object consists of a list of one or more TariffElements. These elements can be used to create complex Tariff structures. 
-When the list of _elements_ contains more then 1 element, then the first tariff in the list with matching restrictions will be used.
-
-It is advised to always set a "default" tariff, the last tariff in the list of _elements_ with no restriction. This acts as a fallback when
-none of the TariffElements before this matches the current charging period.   
-
-<div><!-- ---------------------------------------------------------------------------- --></div>
- Field Name          |  Field Type               |  Card.  |  Description
-:--------------------|:--------------------------|:--------|:------------
- tariffId            | string (15)           	 | 1       | Uniquely identifies the tariff within the CPOs platform (and suboperator platforms).  
- currency            | string (3)                | 1       | Currency of this tariff, ISO 4217 Code
- productType	     | string (15)   			 | 1	   | ID used to reference tariff on EVSE level
- tariffElement       | [TariffElementType](#tariffelementtype-class) | +     | List of tariff elements
- recipients          | string (5) 		    	 | *       | Provider-IDs of the intended recipients for this tariff.
-<div><!-- ---------------------------------------------------------------------------- --></div>
-
-
-### PriceComponentType *class*
-
-<div><!-- ---------------------------------------------------------------------------- --></div>
- Field Name          |  Field Type               |  Card.  |  Description
-:--------------------|:--------------------------|:--------|:------------
- billingItem     | [BillingItemType] (#billingitemtype-enum) | 1     | Type of tariff dimension
- itemPrice       | float	                     | 1     | price per unit for this tariff dimension
- stepSize        | int                           | 1     | Minimum amount to be billed. This unit will be billed in this stepSize blocks. For example: if type is time and  stepSize is 300, then time will be billed in blocks of 5 minutes, so if 6 minutes is used, 10 minutes (2 blocks of stepSize) will be billed.
-<div><!-- ---------------------------------------------------------------------------- --></div>
-
-### TariffElementType *class*
-
-<div><!-- ---------------------------------------------------------------------------- --></div>
- Field Name          |  Field Type               |  Card.  |  Description
-:--------------------|:--------------------------|:--------|:------------
- priceComponent      | [PriceComponentType](#pricecomponenttype-class) | +     | List of price components that make up the pricing of this tariff
- tariffRestriction   | [TariffRestrictionType](#tariffrestrictiontype-class) | ?     | List of tariff restrictions
-<div><!-- ---------------------------------------------------------------------------- --></div>  
-
-### TariffRestrictionType *class*
-
-<div><!-- ---------------------------------------------------------------------------- --></div>
- Field Name          |  Field Type               |  Card.  |  Description
-:--------------------|:--------------------------|:--------|:------------
- regularHours		 | RegularHoursType			 | *	   | regular hours that this tariff element should be valid for (maximum of 14 entries)
- startDate           | DateType					 | ?       | Start date, for example: 2015-12-24, valid from this day
- endDate             | DateType 				 | ?       | End date, for example: 2015-12-27, valid until this day (excluding this day)          
- minEnergy           | float   					 | ?       | Minimum used energy in kWh, for example 20, valid from this amount of energy is used                       
- maxEnergy           | float  					 | ?       | Maximum used energy in kWh, for example 50, valid until this amount of energy is used 
- minPower            | float   					 | ?       | Minimum power in kW, for example 0, valid from this charging speed
- maxPower            | float			 		 | ?       | Maximum power in kW, for example 20, valid up to this charging speed
- minDuration         | int                       | ?       | Minimum duration in seconds, valid for a duration from x seconds
- maxDuration         | int                       | ?       | Maximum duration in seconds, valid for a duration up to x seconds
-<div><!-- ---------------------------------------------------------------------------- --></div>
-
 
 
 ## Types for the Live Status Interface

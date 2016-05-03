@@ -14,7 +14,7 @@ Prot. Version | Date       | Comment
 0.2			  | 		   | 
 
 
-Copyright (c) 2015 smartlab, bluecorner.be, e-laad.nl
+Copyright (c) 2015-2016 smartlab, bluecorner.be, e-laad.nl
 
 Permission is hereby granted, free of charge, to any person obtaining a 
 copy of this software and associated documentation files 
