@@ -470,7 +470,7 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
-				<s:element minOccurs="0" maxOccurs="unbounded" name="refusedTariffs" type="tns:TariffInfo">
+				<s:element minOccurs="0" maxOccurs="unbounded" name="refusedTariffInfo" type="tns:TariffInfo">
 					<s:annotation>
 						<s:documentation>
 							This contains the charge point information records that could not be set in the clearing house. For error description see the result message.

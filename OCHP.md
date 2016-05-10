@@ -9,7 +9,7 @@ Prot. Version | Date       | Comment
 1.0           | 12-12-2013 | Use-case driven structure; Delta-Synchronization; Live-Authorization; CDR-Validation; Alignment to standardization and market development.
 1.2           | 17-06-2014 | Live Status Interface and further enhancements from market requirements. Commit: [6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5](../../commit/6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5)
 1.3           | 27-03-2015 | Bug fixes, further enhancements (power ratings, location types, time zones) Commit: [77cccd838db692ab6f8b77fb4be8e81d59ec04e2](../../commit/77cccd838db692ab6f8b77fb4be8e81d59ec04e2)
-1.4a1         | 04-05-2016 | Bug fixes, enhancements, tariffs, CDR handling changes, new role: PSO.
+1.4a1         | 10-05-2016 | Tariffs, CDR handling changes, new role: PSO, bug fixes, enhancements
 
 
 Copyright (c) 2012-2016 smartlab, bluecorner.be, e-laad.nl
@@ -66,6 +66,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     - [Exchange Charge Point Information](#exchange-charge-point-information)
         - [Upload own charge point information to the CHS](#upload-own-charge-point-information-to-the-chs)
         - [Download global charge point information from the CHS](#download-global-charge-point-information-from-the-chs)
+	- [Exchange Tariff Information](#exchange-tariff-information)
+		- [Upload and Update Tariff Information to the CHS](#upload-and-update-tariff-information-to-the-chs)
+		- [Download Tariff Information from the CHS](#download-tariff-information-from-the-chs)
     - [Live Request for a single authorization](#live--request-for-a-single-authorization)
         - [Request the CHS to authorize one single token for roaming](#-request-the-chs-to-authorize-one-single-token-for-roaming)
     - [Live Status Interface](#live-status-interface)
@@ -97,6 +100,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [GetChargePointListUpdates.conf](#getchargepointlistupdatesconf)
         - [UpdateChargePointList.req](#updatechargepointlistreq)
         - [UpdateChargePointList.conf](#updatechargepointlistconf)
+	- [Messages for the Exchange of Tariff Information](#messages-for-the-exchange-of-tariff-information)
+		- [UpdateTariffs.req](#updatetariffsreq)
+		- [UpdateTariffs.conf](#updatetariffsconf)
+		- [GetTariffUpdates.req](#gettariffupdatesreq)
+		- [GetTariffUpdates.conf](#gettariffupdatesconf)
     - [Messages for live authorisation](#messages-for-live-authorisation)
         - [RequestLiveRoamingAuthorisation.req](#-requestliveroamingauthorisationreq)
         - [RequestLiveRoamingAuthorisation.conf](#-requestliveroamingauthorisationconf)
@@ -446,7 +454,7 @@ business model following them.
 
 
 
-## OCHP direct Extension
+## OCHPdirect Extension
 
 Starting with Protocol Version 1.3, OCHP offers the possibility to 
 open a _direct_ communication between two roaming partners. The 
@@ -458,7 +466,6 @@ The direct communication between operators and providers allows the
 implementation of fundamental new use cases between two roaming 
 partners. Those use cases are:
 
-#### Basic use cases
  * **Remote Start:** A user starts a charging process at an operator‘s 
    charge pole by using a provider‘s app. They are starting the process 
    from a – of the operator's point of view – remote service.
@@ -467,8 +474,6 @@ partners. Those use cases are:
  * **Live Info:** A user requests information about a charging process 
    at an operator’s charge pole by using a provider’s app (from which 
    the process was started).
-
-#### Advanced use cases
  * **Charge Event:** A user gets informed by a provider’s app about 
    status changes of a charging process at an operator’s charge pole, 
    even if it wasn't started remotely.
@@ -478,18 +483,14 @@ partners. Those use cases are:
  * **Remote Action:** A user triggers advanced and not charging process 
    related actions at a charge point or charging station of an operator.
 
-The _basic use cases_ require the operator to act as a server in 
-order to receive information and commands from the provider. The
-_advanced use cases_ require also the provider to act as a server.
-
 
 ### Definition of OCHP direct
 
 Being an extension to the pure OCHP, the messages and data types used 
-for OCHP direct are defined in a [seperated document](OCHP-direct.md).
+for OCHPdirect are defined in a [seperate document](OCHP-direct.md).
 Within the current document, only the extension to OCHP is described.
 The complete description of the functionality and implementation of
-_OCHP direct_ can be found in it's seperate documentation.
+_OCHPdirect_ can be found in its seperate documentation.
 
 
 
@@ -499,7 +500,7 @@ _OCHP direct_ can be found in it's seperate documentation.
 # CH-Partner Interface description
 
 The interfaces between the system of the Clearing House and systems of
-the different partners consist of the four following components:
+the different partners consist of the six following components:
 
  * Exchange of Authorisation Data (Roaming Authorisations, 
    RoamingAuthorisationInfo)
@@ -507,6 +508,7 @@ the different partners consist of the four following components:
    Records, CDRInfo)
  * Exchange of Charge Point Information (Static and live POI data, 
    ChargePointInfo)
+ * Exchange of Tariff Information (TariffInfo)
  * Live Authorization Requests (Single-Token-Requests)
  * Exchange of Parking Spot Information (Static and live data)
 
@@ -999,7 +1001,7 @@ by the CHS as response to the SetChargePointList.req.
  Field Name             |  Field Type       |  Card.  |  Description
 :-----------------------|:------------------|:--------|:------------
 result                  |  Result           |  1      |  This contains the result of SetChargePointList.req.
-refusedChargePointInfo  |  ChargePointInfo  |  ?      |  This contains the charge point information records that could not be set in the clearing house. For error description see the result message.
+refusedChargePointInfo  |  ChargePointInfo  |  +      |  This contains the charge point information records that could not be set in the clearing house. For error description see the result message.
 
 
 ### GetChargePointListUpdates.req
@@ -1041,12 +1043,57 @@ sent by the CHS as response to the SetChargePointList.req.
  Field Name             |  Field Type       |  Card.  |  Description
 :-----------------------|:------------------|:--------|:------------
 result                  |  Result           |  1      |  This contains the result of UpdateChargePointList.req.
-refusedChargePointInfo  |  ChargePointInfo  |  ?      |  This contains the charge point information records that could not be set in the clearing house. For error description see the result message.
+refusedChargePointInfo  |  ChargePointInfo  |  *      |  This contains the charge point information records that could not be set in the clearing house. For error description see the result message.
+
+
+
+## Messages for the exchange of Tariff Information
+
+
+### UpdateTariffs.req
+
+This contains the field definition of the UpdateTariffs.req
+sent by a partner system to the CHS.
+
+ Field Name      |  Field Type  |  Card.  |  Description
+:----------------|:-------------|:--------|:------------
+tariffInfoArray  |  TariffInfo  |  +      |  This contains the tariff information to be updated or added.
+
+
+### UpdateTariffs.conf
+
+This contains the field definition of the UpdateTariffs.conf
+sent by the CHS as response to the UpdateTariffs.req.
+
+ Field Name             |  Field Type       |  Card.  |  Description
+:-----------------------|:------------------|:--------|:------------
+result                  |  Result           |  1      |  This contains the result of UpdateChargePointList.req.
+refusedTariffInfo	    |  TariffInfo       |  *      |  This contains the charge point information records that could not be set in the clearing house. For error description see the result message.
+
+
+### GetTariffUpdates.req
+
+This contains the field definition of the GetTariffUpdates.req
+sent by a partner system to the CHS.
+
+ Field Name    |  Field Type    |  Card.  |  Description
+:--------------|:---------------|:--------|:------------
+lastUpdate     |  DateTimeType  |  ?      |  If this value is set to a point in the past the response is limited to tariff information that was updated more recently than that date and time. If not, it will return all tariff information that is currently valid.
+
+
+### GetTariffUpdates.conf
+
+This contains the field definition of the GetTariffUpdates.conf
+sent by the CHS as response to the GetTariffUpdates.req.
+
+ Field Name           |  Field Type       |  Card.  |  Description
+:---------------------|:------------------|:--------|:------------
+result                |  Result           |  1      |  This contains the result of GetTariffUpdates.req.
+TariffInfoArray  	  |  TariffInfo		  |  *      |  This contains the tariff information that is currently valid or that was changed since the time specified in lastUpdate in the request.
 
 
 
 ## Messages for live authorisation
-
 
 
 ### RequestLiveRoamingAuthorisation.req
@@ -1806,7 +1853,7 @@ Opening and access hours for the charge point.
 
  Field Name             |  Field Type             |  Card.  |  Description
 :-----------------------|:------------------------|:--------|:------------
- model~			|  HoursModelType	  |  1	    |  Denotes what model of opening hours is used, i.e. 24/7, regular hours or irregular hours.
+ model~					|  HoursModelType	 	  |  1	    |  Denotes what model of opening hours is used, i.e. 24/7, regular hours or irregular hours.
  regularHours           |  RegularHoursType       |  *      |  Regular hours, weekday based. Should not be set for representing 24/7 as this is the most common case. No more than two periods per weekday should be set.
  exceptionalOpenings    |  exceptionalPeriodType  |  *      |  Exceptions for specified calendar dates, time-range based. Periods the station is operating/accessible. For irregular hours or as addition to regular hours. May overlap regular rules.
  exceptionalClosings    |  exceptionalPeriodType  |  *      |  Exceptions for specified calendar dates, time-range based. Periods the station is not operating/accessible. Overwriting regularHours and twentyfourseven. Should not overlap exceptionalOpenings.
@@ -1819,8 +1866,9 @@ Denotes what model of opening hours is used for this charge point.
  Value       |  Description
 :------------|:-------------
  twentyfourseven     |  The charge point is open to the public 24 hours per day, 7 days per week (i.e. always).
- regular   |  The opening times of the charge point are defined by the regularHours elements as provided.
- irregular |  The opening times do not follow a regular pattern and are defined through the exceptionalOpenings elements only or via a relatedResource of the corresponding type.
+ regular     |  The opening times of the charge point are defined by the regularHours elements as provided.
+ irregular   |  The opening times do not follow a regular pattern and are defined through the exceptionalOpenings elements only or via a relatedResource of the corresponding type.
+ unknown     |  The opening times are not known to the operator.
  
 
 ###### Example one
@@ -1841,12 +1889,13 @@ Operating 24/7 except for New Year 2015:
 
 
 ###### Example two
-Operating on Weekdays from 8am till 8pm with one exceptional opening on
-22/6/2014 and one exceptional closing the Monday after:
+Operating on Weekdays from 8am until 8pm and Saturdays from 10am until 4pm with one exceptional opening on
+22/6/2014 and one exceptional closing the Tuesday after:
 
 ```XML
 <operatingTimes model="regular">
      <regularHours weekdayFrom="1" weekdayTo="5" periodBegin="08:00" periodEnd="20:00">
+	 <regularHours weekdayFrom="6" periodBegin="10:00" periodEnd="16:00">
      <exceptionalOpenings>
         <periodBegin>
          	<DateTime>2014-06-22T09:00:00Z</DateTime>
@@ -1869,11 +1918,11 @@ Operating on Weekdays from 8am till 8pm with one exceptional opening on
 This represents the following schedule, where ~~stroked out~~ days are without operation hours, **bold** days are where exceptions apply and regular displayed days are where the regular schedule applies.
 
 
-| Weekday   | Mo | Tu | We | Th | Fr | Sa     | Su     | Mo | Tu         | We | Th | Fr | Sa     | Su     |
-|-----------|----|----|----|----|----|--------|--------|----|------------|----|----|----|--------|--------|
-| Date      | 16 | 17 | 18 | 19 | 20 | **21** | ~~22~~ | 23 | **~~24~~** | 25 | 26 | 27 | ~~28~~ | ~~29~~ |
-| Open from | 08 | 08 | 08 | 08 | 08 | 09     | -      | 08 | -          | 08 | 08 | 08 | -      | -      |
-| Open till | 20 | 20 | 20 | 20 | 20 | 12     | -      | 20 | -          | 20 | 20 | 20 | -      | -      |
+| Weekday    | Mo | Tu | We | Th | Fr | Sa     | Su     | Mo | Tu         | We | Th | Fr | Sa     | Su     |
+|------------|----|----|----|----|----|--------|--------|----|------------|----|----|----|--------|--------|
+| Date       | 16 | 17 | 18 | 19 | 20 | 21     | **22** | 23 | **~~24~~** | 25 | 26 | 27 | 28     | ~~29~~ |
+| Open from  | 08 | 08 | 08 | 08 | 08 | 10     | 09     | 08 | -          | 08 | 08 | 08 | 10     | -      |
+| Open until | 20 | 20 | 20 | 20 | 20 | 16     | 12     | 20 | -          | 20 | 20 | 20 | 16     | -      |
 
 
 ###### Example three
@@ -1988,7 +2037,7 @@ Contains information about the charge points.
  relatedLocation     |  AdditionalGeoPointType   |  ?      |  Geographical location of related points relevant to the user.
  timeZone            |  string(255)              |  ?      |  One of IANA tzdata's __TZ__-values representing the time zone of the location. Examples: "Europe/Oslo", "Europe/Zurich". ([http://www.iana.org/time-zones](http://www.iana.org/time-zones))
  productType         |  string(15)               |  ?      |  Charge point category code defined by the operator. Allows different pricing levels in roaming agreements based on the category and references a tariff.
- openingTimes        |  HoursType                |  1      |  The times the EVSE is operating and can be used for charging. Must not be provided if operating hours are unsure/unknown.
+ openingTimes        |  HoursType                |  1      |  The times the EVSE is operating and can be used for charging. Can be set to unknown.
  closedCharging      |  boolean                  |  ?      |  Specifies whether the charge point can be used for charging even when it is not currently open according to openingTimes.
  status              |  ChargePointStatusType    |  ?      |  The current status of the charge point (static, not live-status!)
  statusSchedule      |  ChargePointScheduleType  |  *      |  Planned status changes in the future. If a time span matches with the current or displayed date, the corresponding value overwrites *status*.
