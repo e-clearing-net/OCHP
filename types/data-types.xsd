@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.3" xmlns:tns="http://ochp.eu/1.3" xmlns:s="http://www.w3.org/2001/XMLSchema">
+<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.4" xmlns:tns="http://ochp.eu/1.4" xmlns:s="http://www.w3.org/2001/XMLSchema">
 
 	<s:complexType name="DateTimeType">
 		<s:sequence>
@@ -32,25 +32,6 @@
 					<s:restriction base="s:string">
 						<s:length value="10"></s:length>
 						<s:pattern value="(\d\d\d\d)-(\d\d)-(\d\d)"></s:pattern>
-						<s:whiteSpace value="collapse"></s:whiteSpace>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
-		</s:sequence>
-	</s:complexType>
-	
-	<s:complexType name="TimeType">
-		<s:sequence>
-			<s:element name="Time">
-				<s:annotation>
-					<s:documentation>
-						Format is according to ISO8601. The field takes 8 alphanumeric characters (hh:mm:ss).
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:length value="9"></s:length>
-						<s:pattern value="(\d\d):(\d\d):(\d\d)Z"></s:pattern>
 						<s:whiteSpace value="collapse"></s:whiteSpace>
 					</s:restriction>
 				</s:simpleType>
@@ -208,6 +189,19 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
+			<s:element name="tariffId" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						References a tariff uploaded by the CPO as a basis for this connector.
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="15"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
 		</s:sequence>
 	</s:complexType>
 
@@ -227,7 +221,7 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="nominalVoltage" minOccurs="1" maxOccurs="1">
+			<s:element name="nominalVoltage" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						The nominal voltage for the charge point.
@@ -332,6 +326,13 @@
 				<s:annotation>
 					<s:documentation>
 						The cost of the period in the given currency.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="taxrate" type="s:float" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Tax rate in percent that is to be paid for charging processes in the country of origin.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -440,36 +441,6 @@
 	<s:complexType name="ConnectorStandard">
 		<s:sequence>
 			<s:element name="ConnectorStandard">
-				<s:annotation>
-					<s:documentation>
-						The Standard of the installed connector; 
-							Chademo                The connector type is CHAdeMO, DC 
-							IEC_62196_T1           The connector type is IEC 62196 Type 1 “SAE J1772”
-							IEC_62196_T1_COMBO     The connector type is Combo Type 1 based, DC 
-							IEC_62196_T2           The connector type is IEC 62196 Type 2 “Mennekes” 
-							IEC_62196_T2_COMBO     The connector type is Combo Type 2 based, DC
-							IEC_62196_T3A          The connector type is IEC 62196 Type 3A 
-							IEC_62196_T3C          The connector type is IEC 62196 Type 3C “Scame” 
-							DOMESTIC_A             The connector type is Standard/Domestic household, type "A", NEMA 1-15, 2 pins 
-							DOMESTIC_B             The connector type is Standard/Domestic household, type "B", NEMA 5-15, 3 pins
-							DOMESTIC_C             The connector type is Standard/Domestic household, type "C", CEE 7/17, 2 pins 
-							DOMESTIC_D             The connector type is Standard/Domestic household, type "D", 3 pin 
-							DOMESTIC_E             The connector type is Standard/Domestic household, type "E", CEE 7/5 3 pins
-							DOMESTIC_F             The connector type is Standard/Domestic household, type "F", CEE 7/4, Schuko, 3 pins 
-							DOMESTIC_G             The connector type is Standard/Domestic household, type "G", BS 1363, Commonwealth, 3 pins 
-							DOMESTIC_H             The connector type is Standard/Domestic household, type "H", SI-32, 3 pins
-							DOMESTIC_I             The connector type is Standard/Domestic household, type "I", AS 3112, 3 pins 
-							DOMESTIC_J             The connector type is Standard/Domestic household, type "J", SEV 1011, 3 pins 
-							DOMESTIC_K             The connector type is Standard/Domestic household, type "K", DS 60884-2-D1, 3 pins 
-							DOMESTIC_L             The connector type is Standard/Domestic household, type "L", CEI 23-16-VII, 3 pins 
-							TESLA_R                The connector type is Tesla Connector “Roadster”_type (round, 4 pin) 
-							TESLA_S                The connector type is Tesla Connector “Model_S”_type (oval, 5 pin)
-							IEC_60309_2_single_16  The connector type is IEC 60309-2 Industrial Connector single phase 16 Amperes (usually blue)
-							IEC_60309_2_three_16   The connector type is IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
-							IEC_60309_2_three_32   The connector type is IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
-							IEC_60309_2_three_64   The connector type is IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
-					</s:documentation>
-				</s:annotation>
 				<s:simpleType>
 					<s:annotation>
 						<s:documentation>
@@ -493,8 +464,8 @@
 							DOMESTIC_J             The connector type is Standard/Domestic household, type "J", SEV 1011, 3 pins 
 							DOMESTIC_K             The connector type is Standard/Domestic household, type "K", DS 60884-2-D1, 3 pins 
 							DOMESTIC_L             The connector type is Standard/Domestic household, type "L", CEI 23-16-VII, 3 pins 
-							TESLA_R                The connector type is Tesla Connector “Roadster”_type (round, 4 pin) 
-							TESLA_S                The connector type is Tesla Connector “Model_S”_type (oval, 5 pin)
+							TESLA_R                The connector type is Tesla Connector “Roadster”-type (round, 4 pin) 
+							TESLA_S                The connector type is Tesla Connector “Model-S”-type (oval, 5 pin)
 							IEC_60309_2_single_16  The connector type is IEC 60309-2 Industrial Connector single phase 16 Amperes (usually blue)
 							IEC_60309_2_three_16   The connector type is IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
 							IEC_60309_2_three_32   The connector type is IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
@@ -535,30 +506,22 @@
 
 	<s:complexType name="HoursType">
 		<s:sequence>
-			<s:attribute name="hoursModel" use="required">
-				<s:annotation>
-					<s:documentation>
-						What kind of hours are being used here:
-						twentyfourseven: open 24 hours a day, 7 days a week
-						regular: open according to the regular schedule defined by regularHours elements.
-						irregular: no regular opening times. Further defined either by exceptionalOpenings elements or a relatedResource website.
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:enumeration value="twentyfourseven"></s:enumeration>
-						<s:enumeration value="regular"></s:enumeration>
-						<s:enumeration value="irregular"></s:enumeration>
-					</s:restriction>
-				</s:simpleType>
-			</s:attribute>
-			<s:element name="regularHours" type="tns:RegularHoursType" minOccurs="0" maxOccurs="14">
-				<s:annotation>
-					<s:documentation>
-						Regular hours, weekday based. May only be set if the hoursModel used is set to "regular" and for no more than two periods per weekday.
-					</s:documentation>
-				</s:annotation>
-			</s:element>
+			<s:choice>
+				<s:element name="regularHours" type="tns:RegularHoursType" minOccurs="1" maxOccurs="7">
+					<s:annotation>
+						<s:documentation>
+							Regular hours, weekday based. This element should not be set for representing 24/7 as this is the most common case.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element name="twentyfourseven" type="s:boolean" minOccurs="1" maxOccurs="1">
+					<s:annotation>
+						<s:documentation>
+							True to represent 24 hours per day and 7 days per week, except the given exceptions.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:choice>
 			<s:element name="exceptionalOpenings" type="tns:ExceptionalPeriodType" minOccurs="0" maxOccurs="unbounded">
 				<s:annotation>
 					<s:documentation>
@@ -573,19 +536,26 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
+			<s:element name="closedCharging" type="tns:boolean" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Should be set to true in case an EV can be charged when plugged in during off-times (i.e. when the location is closed according to the specified hours).
+					</s:documentation>
+				</s:annotation>
+			</s:element>
 		</s:sequence>
 	</s:complexType>
 
-	<s:complexType name="StatusType">
+	<s:complexType name="ChargePointStatusType">
 		<s:sequence>
-			<s:element name="StatusType">
+			<s:element name="ChargePointStatusType">
 				<s:annotation>
 					<s:documentation>
 						Unknown; No status information available
-						Operative; in operation and can be used
-						Inoperative; cannot be used due to maintenance, greater downtime, blocking construction works or other access restrictions (temporarily, will be operative in the future). 
-						Planned; planned, will be operating soon 
-						Closed; discontinued, will be deleted soon
+						Operative; Charge point is in operation and can be used
+						Inoperative; charge point cannot be used due to maintenance, greater downtime, blocking construction works or other access restrictions (temporarily, will be operative in the future). 
+						Planned; planned charge point, will be operating soon 
+						Closed; discontinued charge point, will be deleted soon
 					</s:documentation>
 				</s:annotation>
 				<s:simpleType>
@@ -617,7 +587,7 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="status" type="tns:GeneralStatusType" minOccurs="1" maxOccurs="1">
+			<s:element name="status" type="tns:ChargePointStatusType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						Status value during the scheduled period.
@@ -727,10 +697,10 @@
 				Regular hours, weekday based. Multiple days with the same hours can be combined using weekdayTo.
 			</s:documentation>
 		</s:annotation>
-		<s:attribute name="weekdayFrom" use="required">
+		<s:attribute name="weekday" use="required">
 			<s:annotation>
 				<s:documentation>
-					Number of day in the week, beginning with Monday(1).
+					Number of day in the week, beginning with Monday(1) until Sunday (7).
 				</s:documentation>
 			</s:annotation>
 			<s:simpleType>
@@ -740,32 +710,31 @@
 				</s:restriction>
 			</s:simpleType>
 		</s:attribute>
-		<s:attribute name="weekdayTo" use="optional">
-			<s:annotation>
-				<s:documentation>
-					Number of day in the week, beginning with Monday(1).
-				</s:documentation>
-			</s:annotation>
-			<s:simpleType>
-				<s:restriction base="s:int">
-					<s:maxInclusive value="7"></s:maxInclusive>
-					<s:minInclusive value="1"></s:minInclusive>
-				</s:restriction>
-			</s:simpleType>
-		</s:attribute>
-		<s:attribute name="periodBegin" type="TimeType" use="required">
+		<s:attribute name="periodBegin" use="required">
 			<s:annotation>
 				<s:documentation>
 					Begin of the regular period given in hours and minutes. Must be in 24h format with leading zeros. Example 18:15 Minute/Hour separator is :
 				</s:documentation>
 			</s:annotation>
+			<s:simpleType>
+				<s:restriction base="s:string">
+					<s:pattern value="[0-2][0-9]\:[0-5][0-9]"></s:pattern>
+					<s:length value="5"></s:length>
+				</s:restriction>
+			</s:simpleType>
 		</s:attribute>
-		<s:attribute name="periodEnd" type = "TimeType" use="required">
+		<s:attribute name="periodEnd" use="required">
 			<s:annotation>
 				<s:documentation>
 					End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
 				</s:documentation>
 			</s:annotation>
+			<s:simpleType>
+				<s:restriction base="s:string">
+					<s:pattern value="[0-2][0-9]:[0-5][0-9]"></s:pattern>
+					<s:length value="5"></s:length>
+				</s:restriction>
+			</s:simpleType>
 		</s:attribute>
 	</s:complexType>
 
@@ -1052,6 +1021,44 @@
 		</s:sequence>
 	</s:complexType>
 
+	<s:complexType name="IndividualTariffType">
+		<s:sequence>
+			<s:element name="tariffElement" type="tns:TariffElementType" minOccurs="1" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						Contains information about the pricing structure of the tariff element.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="recipient" minOccurs="0" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						Alphanumeric. Identifies a recipient EMSP according to EMSP-ID without separators. If not provided, tariff element is considered the default tariff for this tariffId. Should never be returned by the CHS (i.e. only part of upload, not download).
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="5"></s:maxLength>
+						<s:pattern value="[A-Z0-9]{1,5}"></s:pattern>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="currency" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:whiteSpace value="collapse"></s:whiteSpace>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+	
 	<s:complexType name="TariffElementType">
 		<s:sequence>
 			<s:element name="priceComponent" type="tns:PriceComponentType" minOccurs="1" maxOccurs="1">
@@ -1068,8 +1075,8 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-		</s:sequence>
-	</s:complexType>
+		</s:sequence
+	</s:complexType>	
 	
 	<s:complexType name="PriceComponentType">
 		<s:sequence>
@@ -1090,7 +1097,7 @@
 			<s:element name="stepSize" type="s:int" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Minimum amount to be billed (billing will happen in stepSize blocks).
+						Minimum amount to be billed (billing will happen in stepSize increments). In case the billingItem is a one time payment, stepSize is to be set to 1.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -1106,17 +1113,17 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="startDate" type="tns:DateType" minOccurs="0" maxOccurs="1">
+			<s:element name="startDateTime" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Start date.
+						Valid from this date/time.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="endDate" type="tns:DateType" minOccurs="0" maxOccurs="1">
+			<s:element name="endDateTime" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						End date.
+						Valid until this date/time.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -1202,7 +1209,7 @@
 	<s:simpleType name="ParkingId">
 		<s:annotation>
 			<s:documentation>
-				The Paking-ID uniquely references one parking spot.
+				The Parking-ID uniquely references one parking spot.
 			</s:documentation>
 		</s:annotation>
 		<s:restriction base="s:string">

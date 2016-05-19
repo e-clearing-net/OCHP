@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.3" xmlns:tns="http://ochp.eu/1.3" xmlns:s="http://www.w3.org/2001/XMLSchema">
+<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.4" xmlns:tns="http://ochp.eu/1.4" xmlns:s="http://www.w3.org/2001/XMLSchema">
 
 	<s:include schemaLocation="data-types.xsd"/>
 
@@ -124,10 +124,10 @@
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
-			<s:element name="address" type="tns:AddressType" minOccurs="1" maxOccurs="1">
+			<s:element name="chargePointAddress" type="tns:AddressType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Address of the charge point.
+						Address of the charge point, consisting of housenumber, street, zipcode, city, country.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -187,7 +187,7 @@
 			<s:element name="chargingPeriods" type="tns:CdrPeriodType" minOccurs="1" maxOccurs="unbounded">
 				<s:annotation>
 					<s:documentation>
-						One period per item on the bill. At the moment only one period is to be provided
+						One period per item on the bill.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -209,13 +209,6 @@
 						<s:whiteSpace value="collapse"></s:whiteSpace>
 					</s:restriction>
 				</s:simpleType>
-			</s:element>
-			<s:element name="taxrate" type="s:float" minOccurs="0" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						Tax rate in percent that is to be paid for charging processes in the country of origin.
-					</s:documentation>
-				</s:annotation>
 			</s:element>
 		</s:sequence>
 	</s:complexType>
@@ -283,10 +276,10 @@
 			</s:element>
 			<s:element name="images" minOccurs="0" maxOccurs="unbounded" type="tns:EvseImageUrlType"></s:element>
 			<s:element name="relatedResource" minOccurs="0" maxOccurs="unbounded" type="tns:RelatedResourceType"></s:element>
-			<s:element name="address" type="tns:AddressType" minOccurs="1" maxOccurs="1">
+			<s:element name="chargePointAddress" type="tns:AddressType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Address of the charge point.
+						Address of the charge point, consisting of housenumber, street, zipcode, city, country.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -316,30 +309,10 @@
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
-			<s:element name="productType" minOccurs="0" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						Charge point category code defined by the operator. Allows different pricing levels in roaming agreements based on the category.
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:minLength value="1"></s:minLength>
-						<s:maxLength value="15"></s:maxLength>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
 			<s:element name="openingTimes" type="tns:HoursType" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						The times the EVSE is operating and can be used for charging. Must nor be provided if operating hours are unsure/unknown
-					</s:documentation>
-				</s:annotation>
-			</s:element>
-			<s:element name="closedCharging" type="tns:boolean" minOccurs="0" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						Should be set to true in case an EV can be charged when plugged in during off-times (i.e. when the location is closed according to openingTimes).
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -360,12 +333,13 @@
 			<s:element name="telephoneNumber" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Numeric. Service hotline for charging station to be displayed. to the EV user. Separators recommended.
+						Numeric. Service hotline for charging station to be displayed to the EV user. Separators recommended. Must include country code (e.g. +49).
+						RegEx:
 					</s:documentation>
 				</s:annotation>
 				<s:simpleType>
 					<s:restriction base="s:string">
-						<s:pattern value="[0-9 \-\+]{1,20}"></s:pattern>
+						<s:pattern value="[\+][1-9]{1,3}[0-9 \-]{1,15}"></s:pattern>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
@@ -386,7 +360,7 @@
 			<s:element name="restriction" type="tns:RestrictionType" minOccurs="0" maxOccurs="unbounded">
 				<s:annotation>
 					<s:documentation>
-						This value, if provided, represents the restriction to the parking spot or EVSE for different purposes.
+						This value, if provided, represents the restriction to EVSE-usage for different purposes.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -398,19 +372,6 @@
 						Which receptable type is/are present for a power outlet.
 					</s:documentation>
 				</s:annotation>
-			</s:element>
-			<s:element name="chargePointType" minOccurs="1" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						The type of the charge point "AC" or "DC"
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:enumeration value="AC"></s:enumeration>
-						<s:enumeration value="DC"></s:enumeration>
-					</s:restriction>
-				</s:simpleType>
 			</s:element>
 			<s:element name="ratings" type="tns:RatingsType" minOccurs="0" maxOccurs="1">
 				<s:annotation>
@@ -434,70 +395,32 @@
 			</s:element>
 		</s:sequence>
 	</s:complexType>
+	
 	<s:complexType name="TariffInfo">
 		<s:annotation>
 			<s:documentation>
-				Information about a tariff referenced at EVSE level.
+				Information about a tariff referenced at connector level.
 			</s:documentation>
 		</s:annotation>
 		<s:sequence>
 			<s:element name="tariffId" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Alphanumeric. Identifies a tariff. Unique within one EVSE Operator.
+						Alphanumeric. Identifies a tariff. Unique within one EVSE Operator. Must begin with the Operator-ID, without separators.
 					</s:documentation>
 				</s:annotation>
 				<s:simpleType>
 					<s:restriction base="s:string">
 						<s:minLength value="1"></s:minLength>
 						<s:maxLength value="15"></s:maxLength>
-						<s:pattern value="[A-Z0-9 ]{1,15}"></s:pattern>
+						<s:pattern value="[A-Z0-9]{1,15}"></s:pattern>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
-			<s:element name="recipient" minOccurs="0" maxOccurs="unbounded">
+			<s:element name="individualTariff" type="tns:IndividualTariffType" minOccurs="1" maxOccurs="unbounded">
 				<s:annotation>
 					<s:documentation>
-						Alphanumeric. Identifies a recipient EMSP according to EMSP-ID without separators. If not provided, tariff should be considered valid for all. Should never be returned by the CHS (i.e. only part of upload, not download).
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:minLength value="1"></s:minLength>
-						<s:maxLength value="5"></s:maxLength>
-						<s:pattern value="[A-Z0-9 ]{1,5}"></s:pattern>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
-			<s:element name="currency" minOccurs="1" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:whiteSpace value="collapse"></s:whiteSpace>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
-			<s:element name="productType" minOccurs="1" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						Allows referencing of this tariff object at EVSE level. May be used across multiple tariffs, but must be unique per recipient-EMSP.
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:minLength value="1"></s:minLength>
-						<s:maxLength value="15"></s:maxLength>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
-			<s:element name="tariffElement" type="tns:TariffElementType" minOccurs="1" maxOccurs="unbounded">
-				<s:annotation>
-					<s:documentation>
-						Element describing this tariff and restrictions.ö
+						Element describing an individual tariff for a specific recipient. One default tariff without recipients must be provided.
 					</s:documentation>
 				</s:annotation>
 			</s:element>

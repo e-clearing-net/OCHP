@@ -160,13 +160,6 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 							</s:documentation>
 						</s:annotation>
 					</s:element>
-					<s:element name="useProxy" type="boolean" minOccurs="0" maxOccurs="1">
-						<s:annotation>
-							<s:documentation>
-								Marks this endpoint for use with a proxy system through which to exchange all OCHPdirect requests.
-							</s:documentation>
-						</s:annotation>
-					</s:element>
 				</s:sequence>
 			</s:complexType>
 
@@ -361,14 +354,15 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 						<s:element name="reserveUntil" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
 							<s:annotation>
 								<s:documentation>
-									The time until which a reservation of the charge point for this contractId / RFID tag is requested.
+									The time until which a reservation of the charge point is requested from now on. It is recommended not to exceed 30 minutes of reservation.
 								</s:documentation>
 							</s:annotation>
 						</s:element>
 						<s:element name="reserveEmtId" type="tns:EmtId" minOccurs="0" maxOccurs="1">
 							<s:annotation>
 								<s:documentation>
-									Physical token for which the EVSE shall be reserved.
+									Physical token for which the EVSE shall be reserved. Only to be used when an OCHPdirect authorisation will not take place.
+									Only to be used in case the Contract-ID specified has multiple physical tokens, otherwise the contract-ID should suffice. Workaround for OCPP only being able to reserve a single UID in a charging station.
 								</s:documentation>
 							</s:annotation>
 						</s:element>
@@ -512,7 +506,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			<s:element name="InformProviderMessage">
 				<s:complexType>
 					<s:sequence>
-						<s:element minOccurs="0" maxOccurs="1" name="result" type="tns:DirectResult">
+						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:DirectResult">
 							<s:annotation>
 								<s:documentation>
 									This contains the result if the EMP requested InformProvider from the CPO. If InformProviderMessage is sent by the CPO towards the EMP as a request, this element must not be used.
@@ -582,20 +576,20 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 								</s:documentation>
 							</s:annotation>
 						</s:element>
-						<s:element name="meterValue" type="s:float" minOccurs="0" maxOccurs="1">
+						<s:element name="meterReading" type="tns:MeterReading" minOccurs="0" maxOccurs="1">
 							<s:annotation>
 								<s:documentation>
 									The current meter value (in kWh) as displayed on the meter to enable displaying it to the user. Example: "12345.67"
 								</s:documentation>
 							</s:annotation>
 						</s:element>
-						<s:element name="localTime" type="tns:LocalDateTimeType" minOccurs="0" maxOccurs="1">
+						<s:element name="chargingPeriods" type="tns:CdrPeriodType" minOccurs="0" maxOccurs="unbounded">
 							<s:annotation>
 								<s:documentation>
-									The local time at the charge point.
+									One period per item on the bill.
 								</s:documentation>
 							</s:annotation>
-						</s:element>
+						</s:element>						
 						<s:element name="currentCost" type="s:float" minOccurs="0" maxOccurs="1">
 							<s:annotation>
 								<s:documentation>
@@ -706,6 +700,29 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 				</s:sequence>
 			</s:complexType>
 
+			<s:complexType name="MeterReading">
+				<s:annotation>
+					<s:documentation>
+						Most current meter readings transferred from the charge point including time stamp.
+					</s:documentation>
+				</s:annotation>
+				<s:sequence>
+					<s:element minOccurs="1" maxOccurs="1" name="meterValue" type="s:float">
+						<s:annotation>
+							<s:documentation>
+								The meter reading as transferred by the charging station (OCPP default unit: Wh).
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+					<s:element minOccurs="1" maxOccurs="1" name="meterTime" type="s:DateTimeType">
+						<s:annotation>
+							<s:documentation>
+								The exact local time stamp of the time the meter reading was taken (belonging to the meter reading, e.g. as transferred by OCPP).
+							</s:documentation>
+						</s:annotation>
+					</s:element>
+				</s:sequence>
+			</s:complexType>
 		</s:schema>
 	</wsdl:types>
 

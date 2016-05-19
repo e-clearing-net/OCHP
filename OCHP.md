@@ -12,7 +12,7 @@ Prot. Version | Date       | Comment
 1.4a1         | 10-05-2016 | Tariffs, CDR handling changes, new role: PSO, bug fixes, enhancements
 
 
-Copyright (c) 2012-2016 smartlab, bluecorner.be, e-laad.nl
+Copyright (c) 2012-2016 smartlab, elaad.nl
 
 Permission is hereby granted, free of charge, to any person obtaining a 
 copy of this software and associated documentation files 
@@ -1545,7 +1545,7 @@ Contains all information concerning a Charge Data Record
  maxSocketPower   |  float              |  1      |  Maximum available power at the socket in kilowatts. Example: "3.7", "11", "22"
  productType      |  string(15)         |  ?      |  Identifies the type of the product and tariff that was delivered for the charging session. Custom product code.
  meterId          |  string(20)         |  ?      |  Written identification number of the physical energy meter, provided by the manufacturer. For future use.
- chargingPeriods  |  CdrPeriodType      |  +      |  One period per item on the bill. At the moment only one period is to be provided.
+ chargingPeriods  |  CdrPeriodType      |  +      |  One period per item on the bill.
 
 
 
@@ -2285,7 +2285,7 @@ Specifies the major and minor status of a EVSE.
  minor~      |  MinorType     |  ?      |  The minor status value for the EVSE.
  ttl~        |  DateTimeType  |  ?      |  The time to live is set as the deadline until which the status value is to be considered valid. Should be set to the expected status change.
  
- ### ParkingStatusType *class*
+### ParkingStatusType *class*
 
 Specifies the live status of a parking spot.
 

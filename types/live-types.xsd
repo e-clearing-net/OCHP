@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.3" xmlns:tns="http://ochp.eu/1.3" xmlns:s="http://www.w3.org/2001/XMLSchema">
+<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.4" xmlns:tns="http://ochp.eu/1.4" xmlns:s="http://www.w3.org/2001/XMLSchema">
 
 	<s:include schemaLocation="data-types.xsd"/>
 
@@ -42,20 +42,6 @@
 					<s:enumeration value="charging"></s:enumeration>
 					<s:enumeration value="blocked"></s:enumeration>
 					<s:enumeration value="outoforder"></s:enumeration>
-				</s:restriction>
-			</s:simpleType>
-		</s:attribute>
-		<s:attribute name="parking" use="optional">
-			<s:annotation>
-				<s:documentation>
-					The parking status type reflects the overall status of all parking spots available from the EVSE. Values:
-				</s:documentation>
-			</s:annotation>
-			<s:simpleType>
-				<s:restriction base="s:string">
-					<s:enumeration value="available"></s:enumeration>
-					<s:enumeration value="not-available"></s:enumeration>
-					<s:enumeration value="unknown"></s:enumeration>
 				</s:restriction>
 			</s:simpleType>
 		</s:attribute>

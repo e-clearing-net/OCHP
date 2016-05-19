@@ -98,7 +98,15 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		<wsdl:part name="parameters"
 				element="tns:UpdateRoamingAuthorisationListRequest" />
 	</wsdl:message>
-
+	
+	<wsdl:message name="GetSingleRoamingAuthorisationRequest">
+		<wsdl:part name="parameters"
+				element="tns:GetSingleRoamingAuthorisationRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetSingleRoamingAuthorisationResponse">
+		<wsdl:part name="parameters"
+				element="tns:GetSingleRoamingAuthorisationResponse" />
+	</wsdl:message>
 <!-- Messages for the Exchange of Charge Data -->
 
 	<wsdl:message name="AddCDRsInput">
@@ -117,6 +125,15 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	<wsdl:message name="GetCDRsOutput">
 		<wsdl:part name="parameters"
 				element="tns:GetCDRsResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="CheckCDRsInput">
+		<wsdl:part name="parameters"
+				element="tns:CheckCDRsRequest" />
+	</wsdl:message>
+	<wsdl:message name="CheckCDRsOutput">
+		<wsdl:part name="parameters"
+				element="tns:CheckCDRsResponse" />
 	</wsdl:message>
 
 	<wsdl:message name="ConfirmCDRsRequest">
@@ -166,17 +183,26 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 				element="tns:UpdateChargePointListResponse" />
 	</wsdl:message>
 
-<!-- Messages for live authorisation -->
+<!-- Messages for the Exchange of Charge Point Information -->
 
-	<wsdl:message name="RequestLiveRoamingAuthorisationRequest">
+	<wsdl:message name="UpdateTariffsRequest">
 		<wsdl:part name="parameters"
-				element="tns:RequestLiveRoamingAuthorisationRequest" />
+				element="tns:UpdateTariffsRequest" />
 	</wsdl:message>
-	<wsdl:message name="RequestLiveRoamingAuthorisationResponse">
+	<wsdl:message name="UpdateTariffsResponse">
 		<wsdl:part name="parameters"
-				element="tns:RequestLiveRoamingAuthorisationResponse" />
+				element="tns:UpdateTariffsResponse" />
 	</wsdl:message>
-
+	
+	<wsdl:message name="GetTariffUpdatesRequest">
+		<wsdl:part name="parameters"
+				element="tns:GetTariffUpdatesRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetTariffUpdatesResponse">
+		<wsdl:part name="parameters"
+				element="tns:GetTariffUpdatesResponse" />
+	</wsdl:message>
+	
 <!-- Messages for the Live Status Interface -->
 
 	<wsdl:message name="UpdateStatusRequest">
@@ -216,10 +242,17 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		</wsdl:operation>
 		<wsdl:operation name="GetCDRs">
 			<wsdl:documentation>
-				Cleared roaming charge data records, held at the CHS are sent from the CHS to the MDM. Note that only cleared CDRs that concern the EVSP are sent.
+				Cleared roaming charge data records, held at the CHS are sent from the CHS to the MDM. Note that only cleared CDRs that concern the EVSP are sent according to the status specified in the request.
 			</wsdl:documentation>
 			<wsdl:input message="tns:GetCDRsInput" />
 			<wsdl:output message="tns:GetCDRsOutput" />
+		</wsdl:operation>
+		<wsdl:operation name="CheckCDRs">
+			<wsdl:documentation>
+				Cleared roaming charge data records, held at the CHS are sent from the CHS to the CMS. Note that only CDRs sent by this EVSE operator are sent according to the status specified in the request.
+			</wsdl:documentation>
+			<wsdl:input message="tns:CheckCDRsInput" />
+			<wsdl:output message="tns:CheckCDRsOutput" />
 		</wsdl:operation>
 		<wsdl:operation name="GetRoamingAuthorisationList">
 			<wsdl:documentation>
@@ -298,12 +331,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			<wsdl:input message="tns:GetTariffUpdatesRequest"></wsdl:input>
 			<wsdl:output message="tns:GetTariffUpdatesResponse"></wsdl:output>
 		</wsdl:operation>
-		<wsdl:operation name="RequestLiveRoamingAuthorisation">
+		<wsdl:operation name="GetSingleRoamingAuthorisation">
 			<wsdl:documentation>
 				A CMS may request the Clearing House to authorize one single token for a charging session
 			</wsdl:documentation>
-			<wsdl:input message="tns:RequestLiveRoamingAuthorisationRequest"></wsdl:input>
-			<wsdl:output message="tns:RequestLiveRoamingAuthorisationResponse"></wsdl:output>
+			<wsdl:input message="tns:GetSingleRoamingAuthorisationRequest"></wsdl:input>
+			<wsdl:output message="tns:GetSingleRoamingAuthorisationResponse"></wsdl:output>
 		</wsdl:operation>
 	</wsdl:portType>
 
@@ -361,6 +394,16 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			</wsdl:output>
 		</wsdl:operation>
 
+		<wsdl:operation name="CheckCDRs">
+			<soap:operation soapAction="http://ochp.eu/1.4/CheckCDRs" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
 		<wsdl:operation name="GetRoamingAuthorisationList">
 			<soap:operation soapAction="http://ochp.eu/1.4/GetRoamingAuthorisationList" />
 			<wsdl:input>
@@ -450,9 +493,29 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 				<soap:body use="literal" />
 			</wsdl:output>
 		</wsdl:operation>
+		
+		<wsdl:operation name="UpdateTariffs">
+			<soap:operation soapAction="http://ochp.eu/1.4/UpdateTariffs" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		<wsdl:operation name="GetTariffUpdates">
+			<soap:operation soapAction="http://ochp.eu/1.4/GetTariffUpdates" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
 
-		<wsdl:operation name="RequestLiveRoamingAuthorisation">
-			<soap:operation soapAction="http://ochp.eu/1.4/RequestLiveRoamingAuthorisation" />
+		<wsdl:operation name="GetSingleRoamingAuthorisation">
+			<soap:operation soapAction="http://ochp.eu/1.4/GetSingleRoamingAuthorisation" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
