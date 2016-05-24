@@ -13,21 +13,21 @@
 			<s:element name="EmtId" type="tns:EmtId" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Electrical vehicle contract identifier
+						Electrical vehicle contract identifier.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
 			<s:element name="contractId" type="tns:ContractId" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						EMA-ID the token belongs to
+						EMA-ID the token belongs to.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
 			<s:element minOccurs="0" maxOccurs="1" name="printedNumber">
 				<s:annotation>
 					<s:documentation>
-						Might be used for manual authorisation
+						Might be used for manual authorisation.
 					</s:documentation>
 				</s:annotation>
 				<s:simpleType>
@@ -94,8 +94,7 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="startDateTime"
-				type="tns:LocalDateTimeType" minOccurs="1" maxOccurs="1">
+			<s:element name="startDateTime" type="tns:LocalDateTimeType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						Start date and time of charge session
@@ -157,19 +156,6 @@
 						Defines the ratings for the charge point.
 					</s:documentation>
 				</s:annotation>
-			</s:element>
-			<s:element name="productType" minOccurs="0" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						Identifies the type of the product that was delivered for the charging session. Custom product code.
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:minLength value="1"></s:minLength>
-						<s:maxLength value="15"></s:maxLength>
-					</s:restriction>
-				</s:simpleType>
 			</s:element>
 			<s:element name="meterId" minOccurs="0" maxOccurs="1">
 				<s:annotation>
@@ -244,7 +230,7 @@
 			<s:element name="timestamp" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Recommended. Date and time of the latest data update for this ChargePointInfo. When set it must be updated if one of the values changed.
+						Recommended. Date and time of the latest data update for this ChargePointInfo. When set it must be updated if any value is changed.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -343,7 +329,7 @@
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
-			<s:element name="location" type="tns:GeneralLocationType" minOccurs="1" maxOccurs="1">
+			<s:element name="location" type="tns:ChargePointLocationType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						The general type of the charge point location.
@@ -403,19 +389,12 @@
 			</s:documentation>
 		</s:annotation>
 		<s:sequence>
-			<s:element name="tariffId" minOccurs="1" maxOccurs="1">
+			<s:element name="tariffId" minOccurs="1" maxOccurs="1" type="tns:TariffId">
 				<s:annotation>
 					<s:documentation>
 						Alphanumeric. Identifies a tariff. Unique within one EVSE Operator. Must begin with the Operator-ID, without separators.
 					</s:documentation>
 				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:minLength value="1"></s:minLength>
-						<s:maxLength value="15"></s:maxLength>
-						<s:pattern value="[A-Z0-9]{1,15}"></s:pattern>
-					</s:restriction>
-				</s:simpleType>
 			</s:element>
 			<s:element name="individualTariff" type="tns:IndividualTariffType" minOccurs="1" maxOccurs="unbounded">
 				<s:annotation>

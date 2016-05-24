@@ -906,10 +906,10 @@ These messages are used for the purpose of the exchange of charge data from an E
 
 ### GetCDRs.req
 
-This contains the field definition of the GetCDRs.req sent by a partner's system to the CHS.
+This contains the field definition of the GetCDRs.req sent by a provider's system to the CHS.
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
-cdrStatus        |  CdrStatusType          |  ?      | Defines which status of CDRs to return, depending on the role of the partner (Provider: accepted, revised, rejected; Operator: approved, declined, rejected). If not defined, will return accepted and revised CDRs for Providers.
+cdrStatus        |  CdrStatusType          |  ?      | Defines which status of CDRs to return: accepted, revised, rejected, approved. If not set, will return accepted and revised CDRs.
 
 
 ### GetCDRs.conf
@@ -919,12 +919,31 @@ This contains the field definition of the GetCDRs.conf sent by the CHS as respon
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
 result        |  Result          |  1      |  This contains the result of GetCDRs.req.
-cdrInfoArray  |  Array(CDRInfo)  |  *      |  This contains the CDRs that have been cleared (in the last call to ClearCDRs.req).
+cdrInfoArray  |  Array(CDRInfo)  |  *      |  This contains CDRs according to the status specified in the request.
+
+
+### CheckCDRs.req
+
+This contains the field definition of the CheckCDRs.req sent by an EVSE operator's system to the CHS.
+ Field Name   |  Field Type      |  Card.  |  Description
+:-------------|:-----------------|:--------|:------------
+cdrStatus        |  CdrStatusType          |  ?      | Defines which status of CDRs to return: declined, rejected, approved. If not set, will return declined CDRs.
+
+
+### CheckCDRs.conf
+
+This contains the field definition of the CheckCDRs.conf sent by the CHS as response to the CheckCDRs.req.
+
+ Field Name   |  Field Type      |  Card.  |  Description
+:-------------|:-----------------|:--------|:------------
+result        |  Result          |  1      |  This contains the result of GetCDRs.req.
+cdrInfoArray  |  Array(CDRInfo)  |  *      |  This contains the CDRs according to the status specified in the request.
 
 
 ### AddCDRs.req
 
 This contains the field definition of the AddCDRs.req sent by a partner's system to the CHS.
+May be used by an EVSE operator to mark declined CDRs as finally rejected, by uploading them again under that status.
 
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
@@ -949,8 +968,6 @@ This contains the field definition of the ConfirmCDRs.req sent by a partner's sy
 :-------------|:-----------------|:--------|:------------
 approved      |  CdrId		 |  *      |  This contains the CDR-IDs for CDRs that have been approved by the EVSP.
 declined      |  CdrId   	 |  *      |  This contains the CDR-IDs for CDRs that have been declined by the EVSP.
-rejected      |  CdrId		 |  *      |  This contains the CDR-IDs for CDRs to be marked finally rejected by the CPO.
-
 
 
 ### ConfirmCDRs.conf
@@ -1155,6 +1172,7 @@ This contains the field definition of the GetStatus.req sent by a NPS to the CHS
  Field Name    |  Field Type    |  Card.  |  Description
 :--------------|:---------------|:--------|:------------
 startDateTime  |  DateTimeType  |  ?      |  If this value is set to a point in the past the response is limited to status information that is more actual than the given value.
+statusType	   |  string(255)   |  ? 	  |  This field can be set to determine which status values to return from the CHS. Valid entries: evse, parking, combined. If not set, combined status values will be returned (for all EVSEs available to the NSP regardless of existance of parking spot information).
 
 
 ### GetStatus.conf
@@ -1164,7 +1182,7 @@ This contains the field definition of the GetStatus.conf sent by the CHS as resp
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
 evse          |  EvseStatusType  |  *      |  This contains one EVSE ID with the current status represented in a major part and a minor part.
-parkingspot   |  ParkingStatusType |  *    |  This contains one parking spot ID with the current status.
+parking	      |  ParkingStatusType |  *    |  This contains one parking spot ID with the current status.
 combined 	  |  EvseStatusType	 |  *      |  This contains one EVSE ID status including the parking spot status (if applicable).
 
 
@@ -1250,44 +1268,6 @@ semantically not the same as UTC.
 
 ```regex
 (\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)([+\-]\d\d):(\d\d)
-```
-
-
-### DateType
-
-Format is according to ISO8601 UTC. The field takes 10 alphanumeric
-characters.
-
-###### Example
-
-```
-2011-06-01
-```
-
-
-###### Regular Expression
-
-```regex
-(\d\d\d\d)-(\d\d)-(\d\d)
-```
-
-
-### TimeType
-
-Format is according to ISO8601 UTC. The field takes 9 alphanumeric
-characters.
-
-###### Example
-
-```
-11:45:30Z
-```
-
-
-###### Regular Expression
-
-```regex
-(\d\d):(\d\d):(\d\d)Z
 ```
 
 
@@ -1482,6 +1462,7 @@ C = sum( billingValue_i * itemPrice_i ) [currency]
  currency       |  string(3)          |  1      |  Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
  itemPrice      |  float              |  1      |  Price per unit of the billingItem in the given currency.
  periodCost     |  float              |  ?      |  Total cost of the period in the given currency.
+ taxrate		|  int				  |  ?      |  Tax rate in percent to be paid for the charging process in the EVSE operator's country.
 
 ###### Implementation
 Different prices for the individual parts of the pricing model can
@@ -1516,8 +1497,6 @@ while uploading, approving or declining CDRs.
  declined	 |  The CDR was declined by the owner (EVSP).
  approved        |  The CDR was approved by the owner (EVSP).
  revised	 |  The CDR was revised by the CPO and uploaded again. Only previously accepted or declined CDRs can be revised.
- cleared	 |  
- rated		 |  
 
 
 ### CDRInfo *class*
@@ -1535,11 +1514,7 @@ Contains all information concerning a Charge Data Record
  startDateTime    |  LocalDateTimeType  |  1      |  Start date and time of the charge session (login with the RFID badge). Local time of the charge point is used.
  endDateTime      |  LocalDateTimeType  |  1      |  End date and time of the charge session (log-off with the RFID badge or physical disconnect). Must be set in the local time of the charge point.
  duration         |  string(9)          |  ?      |  Duration of the charge session. Example: "000:00:28"
- houseNumber      |  string(6)          |  ?      |  Hose number at the location of the charge point. Alphanumeric, for example "10","255B"
- address          |  string(45)         |  ?      |  Street of the location of the charge point. Optionally also containing the house number if not in field houseNumber.
- zipCode          |  string(10)         |  ?      |  Where available the ZIP code of the location of the charge point.
- city             |  string(45)         |  ?      |  City of the location of the charge point.
- country          |  string(3)          |  1      |  Country of the location of the charge point. Format is according to the three- character ISO-3166 code.
+ chargePointAddress |  AddressType      |  ?      |  Hose number at the location of the charge point. Alphanumeric, for example "10","255B"
  chargePointType  |  string(2)          |  1      |  The type of the charge point "AC" or "DC"
  connectorType    |  ConnectorType      |  1      |  Type of the utilized socket or connector.
  maxSocketPower   |  float              |  1      |  Maximum available power at the socket in kilowatts. Example: "3.7", "11", "22"
@@ -1781,6 +1756,7 @@ standard and format (socket/cable).
 :------------------|:-----------------------|:--------|:------------
  connectorStandard |  ConnectorStandardType |  1      |  The standard of the installed connector.
  connectorFormat   |  ConnectorFormatType   |  1      |  The format (socket/cable) of the installed connector.
+ tariffId		   |  TariffId				|  ?      |  Reference to a tariff, if tariffs are exchanged through the CHS.
 
 
 ### RatingsType *class*
@@ -1849,33 +1825,25 @@ tomorrow. Today it is still planned and under construction."
 
 ### HoursType *class*
 
-Opening and access hours for the charge point.
+Opening hours for the charge point.
 
  Field Name             |  Field Type             |  Card.  |  Description
 :-----------------------|:------------------------|:--------|:------------
- model~					|  HoursModelType	 	  |  1	    |  Denotes what model of opening hours is used, i.e. 24/7, regular hours or irregular hours.
- regularHours           |  RegularHoursType       |  *      |  Regular hours, weekday based. Should not be set for representing 24/7 as this is the most common case. No more than two periods per weekday should be set.
+ *Choice: one of two*   |                         |         | 
+  > regularHours        |  regularHoursType       |  *      |  Regular hours, weekday based. Should not be set for representing 24/7 as this is the most common case.
+  > twentyfourseven     |  boolean                |  1      |  True to represent 24 hours per day and 7 days per week, except the given exceptions. May be set to false if opening hours are defined only by exceptionalOpenings.
+ closedCharging		    |  boolean				  |  1      |  Should be set to true in case an EV can be charged when plugged in during off-times (i.e. when the location is closed according to the specified hours).
  exceptionalOpenings    |  exceptionalPeriodType  |  *      |  Exceptions for specified calendar dates, time-range based. Periods the station is operating/accessible. For irregular hours or as addition to regular hours. May overlap regular rules.
  exceptionalClosings    |  exceptionalPeriodType  |  *      |  Exceptions for specified calendar dates, time-range based. Periods the station is not operating/accessible. Overwriting regularHours and twentyfourseven. Should not overlap exceptionalOpenings.
  
- 
-### HoursModelType *enum*
-
-Denotes what model of opening hours is used for this charge point.
-
- Value       |  Description
-:------------|:-------------
- twentyfourseven     |  The charge point is open to the public 24 hours per day, 7 days per week (i.e. always).
- regular     |  The opening times of the charge point are defined by the regularHours elements as provided.
- irregular   |  The opening times do not follow a regular pattern and are defined through the exceptionalOpenings elements only or via a relatedResource of the corresponding type.
- unknown     |  The opening times are not known to the operator.
  
 
 ###### Example one
 Operating 24/7 except for New Year 2015:
 
 ```XML
-<operatingTimes model="twentyfourseven">
+<operatingTimes>
+   <twentyfourseven>true</twentyfourseven>
    <exceptionalClosings>
 	  <periodBegin>
 		 <DateTime>2015-01-01T00:00:00Z</DateTime>
@@ -1893,9 +1861,13 @@ Operating on Weekdays from 8am until 8pm and Saturdays from 10am until 4pm with 
 22/6/2014 and one exceptional closing the Tuesday after:
 
 ```XML
-<operatingTimes model="regular">
-     <regularHours weekdayFrom="1" weekdayTo="5" periodBegin="08:00" periodEnd="20:00">
-	 <regularHours weekdayFrom="6" periodBegin="10:00" periodEnd="16:00">
+<operatingTimes>
+     <regularHours weekday="1" periodBegin="08:00" periodEnd="20:00">
+	 <regularHours weekday="2" periodBegin="08:00" periodEnd="20:00">
+	 <regularHours weekday="3" periodBegin="08:00" periodEnd="20:00">
+	 <regularHours weekday="4" periodBegin="08:00" periodEnd="20:00">
+	 <regularHours weekday="5" periodBegin="08:00" periodEnd="20:00">
+	 <regularHours weekday="6" periodBegin="10:00" periodEnd="16:00">
      <exceptionalOpenings>
         <periodBegin>
          	<DateTime>2014-06-22T09:00:00Z</DateTime>
@@ -1929,7 +1901,8 @@ This represents the following schedule, where ~~stroked out~~ days are without o
 Irregular operating hours, open only on one weekend in April 2016 from Friday 16:00h until Sunday 20:00h:
 
 ```XML
-<operatingTimes model="irregular">
+<operatingTimes>
+	 <twentyfourseven>false</twentyfourseven>
      <exceptionalOpenings>
         <periodBegin>
          	<DateTime>2016-04-22T16:00:00Z</DateTime>
@@ -1948,8 +1921,7 @@ Regular recurring operation or access hours. Consecutive days can be combined us
 
  Field Name   |  Field Type  |  Card.  |  Description
 :-------------|:-------------|:--------|:------------
- weekdayFrom~ |  int(1)      |  1      |  Number of day in the week, beginning with Monday (1), ending with Sunday (7).
- weekdayTo~   |  int(1)      |  ?      |  Number of day in the week, beginning with Monday (1), ending with Sunday (7).
+ weekday~     |  int(1)      |  1      |  Number of day in the week, beginning with Monday (1), ending with Sunday (7).
  periodBegin~ |  TimeType    |  1      |  Begin of the regular period given in hours:minutes:seconds. Must be in 24h format with leading zeros. Example: "18:15:00". Hour/Minute/Second separator: ":" Regex: $[$0-2$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$
  periodEnd~   |  TimeType    |  1      |  End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
 
@@ -1964,7 +1936,7 @@ Specifies one exceptional period for opening or access hours.
  periodEnd   |  DateTimeType|  1      |  End of the exception.
 
 
-### GeneralLocationType *enum*
+### ChargePointLocationType *enum*
 
 Reflects the general type of the charge points location. May be used 
 for user information.
@@ -1996,7 +1968,7 @@ for different purposes.
 
 ### AdressType *class*
 
-This class contains all address related information to be used in charge point, CDR and other data.
+This class contains all address related information in regards to a charge point.
 
  Field Name          |  Field Type               |  Card.  |  Description
 :--------------------|:--------------------------|:--------|:------------
@@ -2014,10 +1986,14 @@ This class contains all parking related information. If a parkingId is given, th
  Field Name          |  Field Type               |  Card.  |  Description
 :--------------------|:--------------------------|:--------|:------------
  parkingId           |  ParkingId                |  ?      |  Globally unique identifier for this parking spot.
- restriction	     |  RestrictionType		     |  *      |  Restrictions applying to the usage of the charging station or parking spot.
+ restriction	     |  RestrictionType		     |  *      |  Restrictions applying to the usage of the parking spot. If set, should include the restrictions to EVSE-usage as well.
  floorlevel          |  string(4)                |  ?      |  Alphanumeric. Level on which the charge station is located (in garage buildings) in the locally displayed numbering scheme. Examples: "-2","P-5", "2", "+5"
  parkingSpotNumber   |  string(5)                |  ?      |  Alphanumeric. Locally displayed parking slot number. Examples: "10", "251","B25", "P-234"
  
+ 
+### ParkingId
+The parking-ID follows a similar syntax to that of contract- and EVSE-IDs. The PSO-ID is followed by a 'P' that signifies a tariff and a unique instance of up to 30 characters.
+
 
 ### ChargePointInfo *class*
 
@@ -2032,22 +2008,20 @@ Contains information about the charge points.
  locationNameLang    |  string(3)                |  1      |  Alpha, three characters. ISO-639-3 language code defining the language of the location name
  images              |  evseImageUrlType         |  *      |  Links to images related to the EVSE such as photos or logos.
  relatedResource     |  RelatedResourceType      |  *      |  Links to be visited by the user, related to the charge point or charging station.
- address	         |  AddressType		         |  1      |  Contains the address of the charging station.
+ chargePointAddress	 |  AddressType		         |  1      |  Contains the address of the charging station.
  chargePointLocation |  GeoPointType             |  1      |  Geographical location of the charge point itself (power outlet).
  relatedLocation     |  AdditionalGeoPointType   |  ?      |  Geographical location of related points relevant to the user.
  timeZone            |  string(255)              |  ?      |  One of IANA tzdata's __TZ__-values representing the time zone of the location. Examples: "Europe/Oslo", "Europe/Zurich". ([http://www.iana.org/time-zones](http://www.iana.org/time-zones))
- productType         |  string(15)               |  ?      |  Charge point category code defined by the operator. Allows different pricing levels in roaming agreements based on the category and references a tariff.
  openingTimes        |  HoursType                |  1      |  The times the EVSE is operating and can be used for charging. Can be set to unknown.
- closedCharging      |  boolean                  |  ?      |  Specifies whether the charge point can be used for charging even when it is not currently open according to openingTimes.
  status              |  ChargePointStatusType    |  ?      |  The current status of the charge point (static, not live-status!)
  statusSchedule      |  ChargePointScheduleType  |  *      |  Planned status changes in the future. If a time span matches with the current or displayed date, the corresponding value overwrites *status*.
- telephoneNumber     |  string(20)               |  ?      |  Numeric. Service hotline to be displayed to the EV user. Separators recommended. Characters: [0-9], -, +, <space>
- location            |  GeneralLocationType      |  1      |  The general type of the charge point location.
+ telephoneNumber     |  string(20)               |  ?      |  Numeric. Service hotline to be displayed to the EV user. Has to be in international format including leading + and country code. Separators recommended. Characters: [0-9], -, <space>
+ location            |  ChargePointLocationType  |  1      |  The general type of the charge point location.
  parkingSpot		 |  ParkingSpotType          |  *      |  Information about one or more parking spots associated with the EVSE.
- restriction	     |  RestrictionType		     |  *      |  Restrictions applying to the usage of the charging station or parking spot.
+ restriction	     |  RestrictionType		     |  *      |  Restrictions applying to the usage of the charging station.
  authMethods         |  AuthMethodType           |  +      |  List of available payment or access methods on site.
  connectors          |  ConnectorType            |  +      |  Which receptacle type is/are present for a power outlet.
- chargePointType     |  string(2)                |  1      |  The type of the charge point "AC" or "DC"
+ chargePointType     |  string(2)                |  1      |  The type of the charge point ("AC" or "DC").
  ratings             |  RatingsType              |  ?      |  Defines the ratings for the charge point.
  userInterfaceLang   |  string(3)                |  *      |  Alpha, three characters. Language(s) of the user interface or printed on-site instructions. *ISO-639-3* language code
 
@@ -2085,24 +2059,39 @@ These types are used to exchange tariff information between an operator and one 
 
 ###TariffInfo *class*
 
-A Tariff Object consists of a list of one or more TariffElements. These elements can be used to create complex Tariff structures. 
-When the list of _elements_ contains more than 1 element, then the first tariff in the list with matching restrictions will be used.
+A Tariff Object consists of a list of one or more individual tariffs for individual recipients. One default individual tariff should always be defined without a specific recipient.
+Each individual tariff consists of tariff elements. These elements can be used to create complex Tariff structures.
 
-It is advised to always set a "default" tariff, the last tariff in the list of _elements_ with no restriction. This acts as a fallback when
-none of the TariffElements before this matches the current charging period.
+Changes to a tariff can always only be made to the entire tariff object. That way it is ensured that there cannot be multiple conflicting tariffs referenced at the same connector.  
 
-It is up to a CPO to ensure that there are not multiple tariffs for the same _productType_ and the same recipient EVSP. Otherwise, the EVSP would not be able to know which tariff to use.
-Furthermore, it is advised to always set a validity date for any tariff to expire at and renew this date accordingly when there are no changes to the tariff.  
+<div><!-- ------------------------------------------------------------------------------></div>
+ Field Name          |  Field Type               |  Card.  |  Description
+:--------------------|:--------------------------|:--------|:------------
+ tariffId            | TariffId	            	 | 1       | Uniquely identifies the tariff.
+ individualTariff	 | IndividualTariffType		 | +	   | Contains multiple individual tariffs dependant on intended recipient.
+ <div><!-- ------------------------------------------------------------------------------></div>
+
+ 
+ ###IndividualTariffType *class*
+ <div><!-- ------------------------------------------------------------------------------></div>
+ Field Name          |  Field Type               |  Card.  |  Description
+:--------------------|:--------------------------|:--------|:------------
+ currency            | string (3)                | 1       | Currency of this tariff, ISO 4217 Code
+ tariffElement       | TariffElementType 		 | +       | List of tariff elements.
+ recipient           | string (5) 		    	 | *       | Provider-IDs of the intended recipients for this tariff. If no recipient is provided, this individual tariff is considered the default tariff.
+<div><!-- ---------------------------------------------------------------------------- --></div>
+
+**Note:** Tariffs are referenced on connector level by their tariff-ID only. Every EVSE Operator is advised to define one default individual tariff for each tariffId as a fallback in addition to the individual tariffs defined for certain recipients. A provider will only receive tariffs that they are recipient for.
+
+
+### TariffElementType *class*
 
 <div><!-- ---------------------------------------------------------------------------- --></div>
  Field Name          |  Field Type               |  Card.  |  Description
 :--------------------|:--------------------------|:--------|:------------
- tariffId            | string (15)           	 | 1       | Uniquely identifies the tariff within the CPOs platform (and suboperator platforms).  
- currency            | string (3)                | 1       | Currency of this tariff, ISO 4217 Code
- productType	     | string (15)   			 | 1	   | ID used to reference tariff on EVSE level
- tariffElement       | [TariffElementType](#tariffelementtype-class) | +     | List of tariff elements
- recipients          | string (5) 		    	 | *       | Provider-IDs of the intended recipients for this tariff.
-<div><!-- ---------------------------------------------------------------------------- --></div>
+ priceComponent      | PriceComponentType        | +       | List of price components that make up the pricing of this tariff
+ tariffRestriction   | TariffRestrictionType     | ?       | List of tariff restrictions
+<div><!-- ---------------------------------------------------------------------------- --></div>  
 
 
 ### PriceComponentType *class*
@@ -2110,19 +2099,11 @@ Furthermore, it is advised to always set a validity date for any tariff to expir
 <div><!-- ---------------------------------------------------------------------------- --></div>
  Field Name          |  Field Type               |  Card.  |  Description
 :--------------------|:--------------------------|:--------|:------------
- billingItem	     | [BillingItemType] (#billingitemtype-enum) | 1     | Type of tariff dimension
- itemPrice	         | float	                 | 1     | price per unit for this tariff dimension (unit according to dimension, see BillingItemType description)
- stepSize	         | int                       | 1     | Minimum amount to be billed. This unit will be billed in this stepSize blocks. For example: if type is time and  stepSize is 300, then time will be billed in blocks of 5 minutes, so if 6 minutes is used, 10 minutes (2 blocks of stepSize) will be billed.
+ billingItem	     | BillingItemType 			 | 1       | Type of tariff dimension
+ itemPrice	         | float	                 | 1       | price per unit for this tariff dimension (unit according to dimension, see BillingItemType description)
+ stepSize	         | int                       | 1       | Minimum amount to be billed. This unit will be billed in this stepSize blocks. For example: if type is time and  stepSize is 300, then time will be billed in blocks of 5 minutes, so if 6 minutes is used, 10 minutes (2 blocks of stepSize) will be billed. In case of one-time payments, this is to be set to 1.0.
 <div><!-- ---------------------------------------------------------------------------- --></div>
 
-### TariffElementType *class*
-
-<div><!-- ---------------------------------------------------------------------------- --></div>
- Field Name          |  Field Type               |  Card.  |  Description
-:--------------------|:--------------------------|:--------|:------------
- priceComponent      | [PriceComponentType](#pricecomponenttype-class) | +     | List of price components that make up the pricing of this tariff
- tariffRestriction   | [TariffRestrictionType](#tariffrestrictiontype-class) | ?     | List of tariff restrictions
-<div><!-- ---------------------------------------------------------------------------- --></div>  
 
 ### TariffRestrictionType *class*
 
@@ -2141,23 +2122,27 @@ Furthermore, it is advised to always set a validity date for any tariff to expir
 <div><!-- ---------------------------------------------------------------------------- --></div>
 
 
+### TariffId
+The tariff-ID follows a similar syntax to that of contract- and EVSE-IDs. The Operator-ID is followed by a 'T' that signifies a tariff and a unique instance of up to 9 characters.
+
 #### Examples
 
 ##### Simple Tariff example
-2 euro per hour
+2 euro per hour default tariff
 
 ```XML
 <tariffInfo>
-	<tariffId>123</tariffId>
-	<currency>EUR</currency>
-	<productType>A1</productType>
-	<tariffElement>
-		<priceComponent>
-			<billingItem>usagetime</BillingItem>
-			<itemPrice>2.00</itemPrice>
-			<stepSize>300</stepSize>
-		</priceComponent>
-	</tariffElement>
+	<tariffId>YYABCT01</tariffId>
+	<individualTariff>
+		<currency>EUR</currency>
+		<tariffElement>
+			<priceComponent>
+				<billingItem>usagetime</BillingItem>
+				<itemPrice>2.00</itemPrice>
+				<stepSize>300</stepSize>
+			</priceComponent>
+		</tariffElement>
+	</individualTariff>
 </tariffInfo>
 ```
 
@@ -2169,71 +2154,94 @@ Furthermore, it is advised to always set a validity date for any tariff to expir
 Parking costs:
 - Weekdays: between 09:00 and 18:00 : 5 euro (paid per 5 minutes) 
 - Saturday: between 10:00 and 17:00 : 6 euro (paid per 5 minutes)
+as default tariff
+with additional 2 euro per hour tariff for YYCBA-provider
 
 ```XML
 <tariffInfo>
-	<tariffId>1234</tariffId>
-	<currency>EUR</currency>
-	<productType>A2</productType>
-	<tariffElement>
-		<priceComponent>
-			<billingItem>serviceFee</billingItem>
-			<itemPrice>2.50</itemPrice>
-			<stepSize>1</stepSize>
-		</priceComponent>
-	</tariffElement>
-	<tariffElement>
-		<priceComponent>
-			<billingItem>usagetime</billingItem>
-			<itemPrice>1.00</itemPrice>
-			<stepSize>900</stepSize>
-		</priceComponent>
-		<tariffRestriction>
-			<maxPower>11.00</maxPower>
-		</tariffRestriction>
-	</tariffElement>
-	<tariffElement>
-		<priceComponent>
-			<billingItem>usagetime</billingItem>
-			<itemPrice>2.00</itemPrice>
-			<stepSize>600</stepSize>
-		</priceComponent>
-		<tariffRestriction>
-			<minPower>11.00</minPower>
-			<regularHours weekdayFrom="1" weekdayTo="5">
-		</tariffRestriction>
-	</tariffElement>
-	<tariffElement>
-		<priceComponent>
-			<billingItem>usagetime</billingItem>
-			<itemPrice>1.25</itemPrice>
-			<stepSize>600</stepSize>
-		</priceComponent>
-		<tariffRestriction>
-			<minPower>11.00</minPower>
-			<regularHours weekdayFrom="6" weekdayTo="7">
-		</tariffRestriction>
-	</tariffElement>
-	<tariffElement>
-		<priceComponent>
-			<billingItem>parkingtime</billingItem>
-			<itemPrice>5.00</itemPrice>
-			<stepSize>300</stepSize>
-		</priceComponent>
-		<tariffRestriction>
-			<regularHours weekdayFrom="1" weekdayTo="5" periodBegin="09:00" periodEnd="18:00">
-		</tariffRestriction>
-	</tariffElement>
-	<tariffElement>
-		<priceComponent>
-			<billingItem>parkingtime</billingItem>
-			<itemPrice>6.00</itemPrice>
-			<stepSize>300</stepSize>
-		</priceComponent>
-		<tariffRestriction>
-			<regularHours weekdayFrom="6" periodBegin="10:00" periodEnd="17:00">
-		</tariffRestriction>
-	</tariffElement>
+	<tariffId>YYABCT02</tariffId>
+	<individualTariff>
+		<currency>EUR</currency>
+		<tariffElement>
+			<priceComponent>
+				<billingItem>serviceFee</billingItem>
+				<itemPrice>2.50</itemPrice>
+				<stepSize>1</stepSize>
+			</priceComponent>
+		</tariffElement>
+		<tariffElement>
+			<priceComponent>
+				<billingItem>usagetime</billingItem>
+				<itemPrice>1.00</itemPrice>
+				<stepSize>900</stepSize>
+			</priceComponent>
+			<tariffRestriction>
+				<maxPower>11.00</maxPower>
+			</tariffRestriction>
+		</tariffElement>
+		<tariffElement>
+			<priceComponent>
+				<billingItem>usagetime</billingItem>
+				<itemPrice>2.00</itemPrice>
+				<stepSize>600</stepSize>
+			</priceComponent>
+			<tariffRestriction>
+				<minPower>11.00</minPower>
+				<regularHours weekday="1">
+				<regularHours weekday="2">
+				<regularHours weekday="3">
+				<regularHours weekday="4">
+				<regularHours weekday="5">
+			</tariffRestriction>
+		</tariffElement>
+		<tariffElement>
+			<priceComponent>
+				<billingItem>usagetime</billingItem>
+				<itemPrice>1.25</itemPrice>
+				<stepSize>600</stepSize>
+			</priceComponent>
+			<tariffRestriction>
+				<minPower>11.00</minPower>
+				<regularHours weekday="6">
+				<regularHours weekday="7">
+			</tariffRestriction>
+		</tariffElement>
+		<tariffElement>
+			<priceComponent>
+				<billingItem>parkingtime</billingItem>
+				<itemPrice>5.00</itemPrice>
+				<stepSize>300</stepSize>
+			</priceComponent>
+			<tariffRestriction>
+				<regularHours weekday="1" periodBegin="09:00" periodEnd="18:00">
+				<regularHours weekday="2" periodBegin="09:00" periodEnd="18:00">
+				<regularHours weekday="3" periodBegin="09:00" periodEnd="18:00">
+				<regularHours weekday="4" periodBegin="09:00" periodEnd="18:00">
+				<regularHours weekday="5" periodBegin="09:00" periodEnd="18:00">
+			</tariffRestriction>
+		</tariffElement>
+		<tariffElement>
+			<priceComponent>
+				<billingItem>parkingtime</billingItem>
+				<itemPrice>6.00</itemPrice>
+				<stepSize>300</stepSize>
+			</priceComponent>
+			<tariffRestriction>
+				<regularHours weekday="6" periodBegin="10:00" periodEnd="17:00">
+			</tariffRestriction>
+		</tariffElement>
+	</individualTariff>
+	<individualTariff>
+		<currency>EUR</currency>
+		<recipient>YYCBA</recipient>
+		<tariffElement>
+			<priceComponent>
+				<billingItem>usagetime</BillingItem>
+				<itemPrice>2.00</itemPrice>
+				<stepSize>300</stepSize>
+			</priceComponent>
+		</tariffElement>
+	</individualTariff>
 </tariffInfo>
 ```
 

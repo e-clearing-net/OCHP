@@ -128,7 +128,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 							</s:restriction>
 						</s:simpleType>
 					</s:element>
-					<s:element name="namespaceUrl" minOccurs="0" maxOccurs="1">
+					<s:element name="namespaceUrl" minOccurs="1" maxOccurs="1">
 						<s:annotation>
 							<s:documentation>
 								The WSDL namespace definition.
@@ -137,6 +137,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 						<s:simpleType>
 							<s:restriction base="s:string">
 								<s:maxLength value="255"></s:maxLength>
+								<s:enumeration value="http://ochp.eu/1.3"></s:enumeration>
 								<s:enumeration value="http://ochp.eu/1.4"></s:enumeration>
 							</s:restriction>
 						</s:simpleType>
@@ -714,7 +715,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 							</s:documentation>
 						</s:annotation>
 					</s:element>
-					<s:element minOccurs="1" maxOccurs="1" name="meterTime" type="s:DateTimeType">
+					<s:element minOccurs="1" maxOccurs="1" name="meterTime" type="s:LocalDateTimeType">
 						<s:annotation>
 							<s:documentation>
 								The exact local time stamp of the time the meter reading was taken (belonging to the meter reading, e.g. as transferred by OCPP).
@@ -1022,7 +1023,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			<wsdl:output>
 				<soap:body use="literal" />
 			</wsdl:output>
-		</wsdl:operation>
+		</wsdl:operation>		
 
 	</wsdl:binding>
 
@@ -1093,30 +1094,30 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 
 		<wsdl:port name="eCHS_P-System-direct" binding="tns:eCHS-OCHP_1.4-direct">
 			<wsdl:documentation>
-				eCHS Productive System Endpoint with OCHP direct extension
+				eCHS Productive System Endpoint with OCHPdirect extension
 			</wsdl:documentation>
 			<soap:address location="https://echs.e-clearing.net/direct/ochp/v1.4" />
 		</wsdl:port>
 
 		<wsdl:port name="eCHS_Q-System-direct" binding="tns:eCHS-OCHP_1.4-direct">
 			<wsdl:documentation>
-				eCHS Quality Ensurance Endpoint with OCHP direct extension
+				eCHS Quality Ensurance Endpoint with OCHPdirect extension
 			</wsdl:documentation>
 			<soap:address location="https://echs-q.e-clearing.net/direct/ochp/v1.4" />
 		</wsdl:port>
 
-<!-- Example Endpoints for the Direct Extension -->
+<!-- Non-productive example Endpoints for the Direct Extension -->
 
              <wsdl:port name="eCHS_Q-System-direct-Provider" binding="tns:Provider_OCHP-direct_0.2">
                     <wsdl:documentation>
-                           eCHS Quality Ensurance OCHP direct Provider-Endpoint (Non-functional example)
+                           eCHS Quality Ensurance OCHPdirect Provider-Endpoint (Non-functional example)
                     </wsdl:documentation>
                     <soap:address location="https://echs-q.e-clearing.net/direct/provider/ochp/v1.4" />
              </wsdl:port>
              
              <wsdl:port name="eCHS_Q-System-direct-Operator" binding="tns:Operator_OCHP-direct_0.2">
                     <wsdl:documentation>
-                           eCHS Quality Ensurance OCHP direct Operator-Endpoint (Non-functional example)
+                           eCHS Quality Ensurance OCHPdirect Operator-Endpoint (Non-functional example)
                     </wsdl:documentation>
                     <soap:address location="https://echs-q.e-clearing.net/direct/operator/ochp/v1.4" />
              </wsdl:port>

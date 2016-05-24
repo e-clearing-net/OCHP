@@ -19,25 +19,6 @@
 			</s:element>
 		</s:sequence>
 	</s:complexType>
-	
-	<s:complexType name="DateType">
-		<s:sequence>
-			<s:element name="Date">
-				<s:annotation>
-					<s:documentation>
-						Format is according to ISO8601. The field takes 10 alphanumeric characters.
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:length value="10"></s:length>
-						<s:pattern value="(\d\d\d\d)-(\d\d)-(\d\d)"></s:pattern>
-						<s:whiteSpace value="collapse"></s:whiteSpace>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
-		</s:sequence>
-	</s:complexType>
 
 	<s:complexType name="LocalDateTimeType">
 		<s:annotation>
@@ -189,18 +170,12 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="tariffId" minOccurs="0" maxOccurs="1">
+			<s:element name="tariffId" minOccurs="0" maxOccurs="1" type="tns:TariffId">
 				<s:annotation>
 					<s:documentation>
-						References a tariff uploaded by the CPO as a basis for this connector.
+						References a tariff uploaded by the CPO to be used with this connector.
 					</s:documentation>
 				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:minLength value="1"></s:minLength>
-						<s:maxLength value="15"></s:maxLength>
-					</s:restriction>
-				</s:simpleType>
 			</s:element>
 		</s:sequence>
 	</s:complexType>
@@ -329,7 +304,7 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="taxrate" type="s:float" minOccurs="0" maxOccurs="1">
+			<s:element name="taxrate" type="s:int" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						Tax rate in percent that is to be paid for charging processes in the country of origin.
@@ -510,7 +485,7 @@
 				<s:element name="regularHours" type="tns:RegularHoursType" minOccurs="1" maxOccurs="7">
 					<s:annotation>
 						<s:documentation>
-							Regular hours, weekday based. This element should not be set for representing 24/7 as this is the most common case.
+							Regular hours, weekday based. This element should not be set for representing 24/7.
 						</s:documentation>
 					</s:annotation>
 				</s:element>
@@ -532,7 +507,7 @@
 			<s:element name="exceptionalClosings" type="tns:ExceptionalPeriodType" minOccurs="0" maxOccurs="unbounded">
 				<s:annotation>
 					<s:documentation>
-						Exceptions for specific calendar dates, time-range based. Periods the station is not operating/accessible. Additional to regular hours. Overwriting regularHours and exceptionalOpenings. Should not overlap exceptionalOpenings.
+						Exceptions for specific calendar dates, time-range based. Periods the station is not operating/accessible. Additional to regular hours. Overwriting regularHours and twentyfourseven. Should not overlap exceptionalOpenings.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -597,9 +572,9 @@
 		</s:sequence>
 	</s:complexType>
 
-	<s:complexType name="GeneralLocationType">
+	<s:complexType name="ChargePointLocationType">
 		<s:sequence>
-			<s:element name="GeneralLocationType">
+			<s:element name="ChargePointLocationType">
 				<s:annotation>
 					<s:documentation>
 						* on-street parking in public space
@@ -694,7 +669,7 @@
 	<s:complexType name="RegularHoursType">
 		<s:annotation>
 			<s:documentation>
-				Regular hours, weekday based. Multiple days with the same hours can be combined using weekdayTo.
+				Regular hours, weekday based.
 			</s:documentation>
 		</s:annotation>
 		<s:attribute name="weekday" use="required">
@@ -1075,7 +1050,7 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-		</s:sequence
+		</s:sequence>
 	</s:complexType>	
 	
 	<s:complexType name="PriceComponentType">
@@ -1217,4 +1192,17 @@
 			<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[Pp][A-Za-z0-9][A-Za-z0-9\*]{0,30}"></s:pattern>
 		</s:restriction>
 	</s:simpleType>
+		
+	<s:simpleType name="TariffId">
+		<s:annotation>
+			<s:documentation>
+				The Tariff-ID uniquely references one tariff.
+			</s:documentation>
+		</s:annotation>
+		<s:restriction base="s:string">
+			<s:pattern value="[A-Za-z]{2}\*[A-Za-z0-9]{3}\*[Tt][A-Za-z0-9][A-Za-z0-9\*]{0,9}"></s:pattern>
+			<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[Tt][A-Za-z0-9][A-Za-z0-9\*]{0,9}"></s:pattern>
+		</s:restriction>
+	</s:simpleType>
+	
 </s:schema>
