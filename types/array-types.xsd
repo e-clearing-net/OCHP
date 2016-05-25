@@ -325,11 +325,11 @@
 				</s:annotation>
 				<s:simpleType>
 					<s:restriction base="s:string">
-						<s:pattern value="[\+][1-9]{1,3}[0-9 \-]{1,15}"></s:pattern>
+						<s:pattern value="[\+]{0,1}[1-9]{0,3}[0-9 \-]{1,15}"></s:pattern>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
-			<s:element name="location" type="tns:ChargePointLocationType" minOccurs="1" maxOccurs="1">
+			<s:element name="location" type="tns:GeneralLocationType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						The general type of the charge point location.
@@ -358,6 +358,19 @@
 						Which receptable type is/are present for a power outlet.
 					</s:documentation>
 				</s:annotation>
+			</s:element>
+			<s:element name="chargePointType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						The type of the charge point "AC" or "DC"
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:enumeration value="AC"></s:enumeration>
+						<s:enumeration value="DC"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
 			</s:element>
 			<s:element name="ratings" type="tns:RatingsType" minOccurs="0" maxOccurs="1">
 				<s:annotation>

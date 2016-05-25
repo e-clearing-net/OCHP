@@ -14,7 +14,7 @@ Prot. Version | Date       | Comment
 0.2			  | 31-05-2016 | Functional enhancements, usability improvements.
 
 
-Copyright (c) 2015-2016 smartlab, bluecorner.be, e-laad.nl
+Copyright (c) 2015-2016 smartlab, e-laad.nl
 
 Permission is hereby granted, free of charge, to any person obtaining a 
 copy of this software and associated documentation files 
@@ -43,29 +43,30 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - [Preface](#preface)
     - [Conventions](#conventions)
 - [Introduction](#introduction)
-    - [Use Cases of OCHP direct](#use-cases-of-ochp-direct)
+    - [Use Cases of OCHPdirect](#use-cases-of-ochpdirect)
             - [Basic use cases](#basic-use-cases)
             - [Advanced use cases](#advanced-use-cases)
-    - [Basic Principles of OCHP direct](#basic-principles-of-ochp-direct)
+    - [Basic Principles of OCHPdirect](#basic-principles-of-ochpdirect)
         - [Trust and authorisation structure](#trust-and-authorisation-structure)
-            - [The usual situation without OCHP direct](#the-usual-situation-without-ochp-direct)
-            - [The situation with OCHP direct](#the-situation-with-ochp-direct)
-            - [Security of the OCHP direct interface](#security-of-the-ochp-direct-interface)
+            - [The usual situation without OCHPdirect](#the-usual-situation-without-ochpdirect)
+            - [The situation with OCHPdirect](#the-situation-with-ochpdirect)
+            - [Security of the OCHPdirect interface](#security-of-the-ochp-direct-interface)
             - [Identification token distribution](#identification-token-distribution)
 - [Partner-to-CHS interface description (Extension to OCHP)](#partner-to-chs-interface-description-extension-to-ochp)
-    - [Exchange of interface definition _Basic_](#exchange-of-interface-definition-basic)
+    - [Exchange of interface definition](#exchange-of-interface-definition-basic)
         - [Set own interface definition in the CHS](#set-own-interface-definition-in-the-chs)
         - [Get roaming partners interface definitions from the CHS](#get-roaming-partners-interface-definitions-from-the-chs)
-- [Partner-to-partner interface description (_OCHP direct_ interface)](#partner-to-partner-interface-description-ochp-direct-interface)
-    - [Get status information of charge points _Basic_](#get-status-information-of-charge-points-basic)
+- [Partner-to-partner interface description (_OCHPdirect_ interface)](#partner-to-partner-interface-description-ochp-direct-interface)
+    - [Get status information of charge points](#get-status-information-of-charge-points-basic)
         - [Request current live status from an Operator](#request-current-live-status-from-an-operator)
         - [Report a data or compatibility discrepancy to an Operator](#report-a-data-or-compatibility-discrepancy-to-an-operator)
-    - [Start, stop and control a charging process remotely _Basic_](#start-stop-and-control-a-charging-process-remotely-basic)
+    - [Start, stop and control a charging process remotely](#start-stop-and-control-a-charging-process-remotely-basic)
         - [Select a charge point of an operator](#select-a-charge-point-of-an-operator)
         - [Control a selected charge point in an operator's backend](#control-a-selected-charge-point-in-an-operators-backend)
         - [Release a selected charge point in an operator's backend](#release-a-selected-charge-point-in-an-operators-backend)
-    - [Inform a provider about a charging process _Advanced_](#inform-a-provider-about-a-charging-process-advanced)
+    - [Inform a provider about a charging process](#inform-a-provider-about-a-charging-process-advanced)
         - [Send charging process information of a provider's customer](#send-charging-process-information-of-a-providers-customer)
+		- [Request charging process information for a provider's customer](#request-charging-process-information-for-a-providers-customer)
 - [Messages](#messages)
     - [Messages for the exchange of interface definitions](#messages-for-the-exchange-of-interface-definitions)
         - [AddServiceEndpoints.req](#addserviceendpointsreq)
@@ -82,6 +83,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [ControlEvse.conf](#controlevseconf)
         - [ReleaseEvse.req](#releaseevsereq)
         - [ReleaseEvse.conf](#releaseevseconf)
+		- [InformProviderMessage](#informprovidermesssage)
         - [InformProvider.req](#informproviderreq)
         - [InformProvider.conf](#informproviderconf)
 - [Types](#types)
@@ -155,7 +157,7 @@ the [OCHP documentation](OCHP.md).
 
 
 
-## Use Cases of OCHP direct
+## Use Cases of OCHPdirect
 
 The overall use case for this interface is to control services like 
 charging sessions in an operator's backend while handling the user 
@@ -193,7 +195,7 @@ act as a server as well.
 
 
 
-## Basic Principles of OCHP direct
+## Basic Principles of OCHPdirect
 
 The OCHP direct Interface describes a set of methods to control 
 charging sessions in an EVSE operator's backend. While dedicated 
@@ -239,14 +241,14 @@ cover all possible market situations.
 
 ### Trust and authorisation structure
 
-Based on the assumption that _OCHP direct_ is used in addition to a 
+Based on the assumption that _OCHPdirect_ is used in addition to a 
 regular OCHP connection via a clearing house, the following trust 
-structure applies. However, _OCHP direct_ may also be used in other 
+structure applies. However, _OCHPdirect_ may also be used in other 
 combinations, where the OCHP-part of the following description is to be 
 covered by alternative methods.
 
 
-#### The usual situation without OCHP direct
+#### The usual situation without OCHPdirect
 
 When two roaming partners connect via OCHP and the clearing house, the 
 authorisation and trust structure can be defined as follows:
@@ -265,7 +267,7 @@ that all sent customer tokens are getting authorised on all charge
 points or as based on the contract between both.
 
 
-#### The situation with OCHP direct
+#### The situation with OCHPdirect
 
 When direct authorisation requests come in place, the situation turns 
 around:
@@ -290,7 +292,7 @@ charging infrastructure. Here, those trusted tokens / contracts get sent
 via OCHPdirect instead of through the CHS whitelist.
 
 
-#### Security of the OCHP direct interface
+#### Security of the OCHPdirect interface
 
 Each roaming partner who makes use of OCHP direct needs provide a SOAP 
 server with a publicly accessible interface. This applies to both the operator and the provider. It is obvious that they must
@@ -401,9 +403,9 @@ of connected partners is done in the following way:
 
 
 
-# Partner-to-partner interface description (_OCHP direct_ interface)
+# Partner-to-partner interface description (_OCHPdirect_ interface)
 
-This interface description is the core of OCHP-direct. The described
+This interface description is the core of OCHPdirect. The described
 methods must be available at the provider's backend _MDM_ (InformProvider)
 and the operator's backend _CMS_ (all other methods).
 The partners have to make sure they only connect to other partners'
@@ -730,6 +732,12 @@ result       |  DirectResult  |  1      |  This contains the result of ControlEv
 directId     |  DirectId      |  1      |  The session id for this direct charging process.
 ttl          |  DateTimeType  |  ?      |  On success the timeout for this session.
 
+**Note:** It is up to the CPO to define a ttl for the
+charging session established here and to find a reasonable
+limitation (recommendation: 24 hours). The CPO has to
+ensure that a customer can correctly disconnect their EV
+even if the session was already invalidated.
+
 
 
 ### ReleaseEvse.req
@@ -822,10 +830,9 @@ Contains a generic endpoint definition.
  namespaceUrl  | string(255)  | 1       | The WSDL namespace definition (i.e. version definition).
  accessToken   | string(255)  | 1       | The secret token to access this endpoint.
  validDate     | DateType     | 1       | The day on which this endpoint/token combination is valid.
-
  
  **Note:** Any token for day N has to be treated as valid from day N-1 23:50 UTC to day N+1 0:30 UTC.
- **Note:** Any partner using OCHP 1.4 with OCHPdirect extension is expected to provide an OCHPdirect 0.2 compliant endpoint.
+ **Note:** Any partner may operate more than one OCHPdirect endpoint to enable compatibility with a larger number of partners.
 
 
 ### ProviderEndpoint *class*
@@ -844,8 +851,7 @@ Expands the DirectEndpoint.
  blacklist     | ContractPattern  | *       | List of patterns that match Contract-IDs the endpoint is not responsible for, but are matched by the whitelist.
 
  **Note:** Any token for day N has to be treated as valid from day N-1 23:50 UTC to day N+1 0:30 UTC.
- **Note:** Any partner using OCHP 1.4 with OCHPdirect extension is expected to provide an OCHPdirect 0.2 compliant endpoint.
-
+ **Note:** Any partner may operate more than one OCHPdirect endpoint to enable compatibility with a larger number of partners.
  
 ### OperatorEndpoint *class*
 
@@ -863,7 +869,7 @@ Expands the DirectEndpoint.
  blacklist     | EvsePattern  | *       | List of patterns that match EVSE-IDs the endpoint is not responsible for, but are matched by the whitelist.
 
  **Note:** Any token for day `N` has to be treated as valid from day `N-1` 23:50 UTC to day `N+1` 0:30 UTC.
- **Note:** Any partner using OCHP 1.4 with OCHPdirect extension is expected to provide an OCHPdirect 0.2 compliant endpoint.
+ **Note:** Any partner may operate more than one OCHPdirect endpoint to enable compatibility with a larger number of partners.
  
 
 ### ContractPattern *class*

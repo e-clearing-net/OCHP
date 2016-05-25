@@ -9,7 +9,7 @@ Prot. Version | Date       | Comment
 1.0           | 12-12-2013 | Use-case driven structure; Delta-Synchronization; Live-Authorization; CDR-Validation; Alignment to standardization and market development.
 1.2           | 17-06-2014 | Live Status Interface and further enhancements from market requirements. Commit: [6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5](../../commit/6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5)
 1.3           | 27-03-2015 | Bug fixes, further enhancements (power ratings, location types, time zones) Commit: [77cccd838db692ab6f8b77fb4be8e81d59ec04e2](../../commit/77cccd838db692ab6f8b77fb4be8e81d59ec04e2)
-1.4a1         | 10-05-2016 | Tariffs, CDR handling changes, new role: PSO, bug fixes, enhancements
+1.4           | 31-05-2016 | Tariffs, CDR handling changes, new role: PSO, bug fixes, enhancements
 
 
 Copyright (c) 2012-2016 smartlab, elaad.nl
@@ -48,6 +48,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [Electric Vehicle Service Provider (EVSP)](#electric-vehicle-service-provider-evsp)
         - [Electric Vehicle Supply Equipment Operator (EVSE Operator)](#electric-vehicle-supply-equipment-operator-evse-operator)
         - [Navigation Service Provider (NSP)](#navigation-service-provider-nsp)
+		- [Parking Spot Operator (PSO)](#parking-spot-operator-pso)
         - [Charging Session](#charging-session)
     - [Clearing House](#clearing-house)
     - [Clearing House functionality](#clearing-house-functionality)
@@ -69,7 +70,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	- [Exchange Tariff Information](#exchange-tariff-information)
 		- [Upload and Update Tariff Information to the CHS](#upload-and-update-tariff-information-to-the-chs)
 		- [Download Tariff Information from the CHS](#download-tariff-information-from-the-chs)
-    - [Live Request for a single authorization](#live--request-for-a-single-authorization)
+    - [Request for a single authorization](#request-for-a-single-authorization)
         - [Request the CHS to authorize one single token for roaming](#-request-the-chs-to-authorize-one-single-token-for-roaming)
     - [Live Status Interface](#live-status-interface)
         - [Update the live status of the own stations in the CHS](#update-the-live-status-of-the-own-stations-in-the-chs)
@@ -150,18 +151,17 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [ExceptionalPeriodType *class*](#exceptionalperiodtype-class)
         - [ParkingRestrictionType *enum*](#parkingrestrictiontype-enum)
         - [ChargePointInfo *class*](#chargepointinfo-class)
-    - [Types for live authorisation](#types-for-live-authorisation)
-        - [LiveAuthId *class*](#liveauthid-class)
-    - [Types for the Live Status Interface](#types-for-the-live-status-interface)
+    - [Types for Tariff Data Exchange](#types-for-tariff-data-exchange)
+		- [TariffInfo *class*](#tariffinfo-class)
+		- [IndividualTariffType *class*](#individualtarifftype-class)
+		- [TariffElementType *class*](#tariffelementtype-class)
+		- [PriceComponentType *class*](#pricecomponenttype-class)
+		- [TariffRestrictionType *class*](#tariffrestrictiontype-class)
+	- [Types for the Live Status Interface](#types-for-the-live-status-interface)
         - [MajorType *enum*](#majortype-enum)
         - [MinorType *enum*](#minortype-enum)
         - [EvseStatusType *class*](#evsestatustype-class)
 		- [ParkingStatusType *class*](#parkingstatustype-class)
-	- [Types for Tariff Data Exchange](#types-for-tariff-data-exchange)
-		- [TariffInfoType *class*](#tariffinfotype-class)
-		- [TariffElementType *class*](#tariffelementtype-class)
-		- [PriceComponentType *class*](#pricecomponenttype-class)
-		- [TariffRestrictionType *class*](#tariffrestrictiontype-class)
 - [Binding to Transport Protocol](#binding-to-transport-protocol)
     - [User Identification](#user-identification)
 - [Annexes](#annexes)
@@ -509,7 +509,7 @@ the different partners consist of the six following components:
  * Exchange of Charge Point Information (Static and live POI data, 
    ChargePointInfo)
  * Exchange of Tariff Information (TariffInfo)
- * Live Authorization Requests (Single-Token-Requests)
+ * Single Authorization Requests (Single-Token-Requests)
  * Exchange of Parking Spot Information (Static and live data)
 
 From the data flow perspective, each market role is a source or a sink
@@ -598,9 +598,9 @@ Clearing House. Approved CDRs will be marked as such and their status
 is set to *approved*. These CDRs will then be archived and will not
 be included in the standard GetCDRs. Declined CDRs will be marked as 
 *declined* and will then be available for download by the EVSE Operator.
-They now have the option to either re-upload the CDR as *revised* or
-finally confirm the affected CDRs as *rejected*, foregoing any further
-claims on that charging process.
+They now have the option to either re-upload a reworked CDR as *revised*
+using the same CDR-ID or finally confirm the affected CDRs as *rejected*,
+foregoing any further claims on that charging process.
 
 ![Figure Status flow for CDRs](media/CDRvalidation.png "Status flow for CDRs")
 
@@ -631,18 +631,18 @@ Furthermore, the CMS may download declined CDRs and attempt to fix any
 issues there were by re-uploading the CDRs as "revised" or to finally
 reject them (forego payment) by setting their status to "rejected".
  
- * CMS may send the GetCDRs.req PDU.
- * CHS responds with GetCDRs.conf PDU according to the status provided in the request.
+ * CMS may send the CheckCDRs.req PDU.
+ * CHS responds with CheckCDRs.conf PDU according to the status provided in the request.
  * CMS may revise CDRs by sending AddCDRs.req PDU.
  * CHS responds with an AddCDRs.conf PDU.
- * CMS may reject individual CDRs by sending ConfirmCDRs.req PDU.
- * CHS responds with a ConfirmCDRs.conf PDU.
+ * CMS may reject individual CDRs by sending AddCDRs.req PDU.
+ * CHS responds with a AddCDRs.conf PDU.
 
 
 ##### Implementation
 All CDRs stay in the download queue (GetCDRs without explicitly stating the status)
 until their successful download was confirmed by a call to ConfirmCDRs.req.
-Declined CDRs may be handled in a separate process as described before.
+Declined CDRs may be handled in a separate process as described above.
 
 
 
@@ -683,8 +683,8 @@ way:
 ## Exchange Tariff Information
 
 The eCHS enables CPOs to upload tariffs and tariff-groups for each charge
-point they operate. These tariffs can be sent to individual EMPs. This is
-to ensure a quick and automated change in tariffs for certain charge points
+point they operate. These tariffs may be defined for individual EMPs. This
+is to ensure a quick and automated change in tariffs for certain charge points
 without having to alter bilateral agreements every time and without having
 a very large annex.
 
@@ -710,22 +710,21 @@ following way:
 
 
 
-## Live Request for a single authorization
+## Request for a single authorization
 
-Live requests are sent from the EVSE-Operator backend to the clearing 
-house in the event that the local repository of authorization records 
-was not synchronized from the clearing house. The figure illustrates 
-the steps during a charging session that is authorised live by the 
-clearing house. During the authorisation for the start of the process 
-the operator backend is requesting the clearing house via OCHP. The 
-response contains the authorisation or rejection and a transaction ID. 
-For the end of the charging process the operator backend is able to 
-authorise the same token. For the later exchanged CDR the transaction 
-ID of the single authorisation is to be used.
+Single authorization requests are sent from the EVSE-Operator backend
+to the clearing house in the event that the local repository of
+authorization records was not synchronized from the clearing house.
+The figure illustrates the steps during a charging session that is
+authorised by the clearing house. During the authorisation for the
+start of the process the operator backend is requesting the clearing
+house via OCHP. The response contains the single requested authorization
+record. For the end of the charging process the operator backend is able
+to authorise the same token.
 Note: OCHP only allows the internal repository of authorization records
 in the CHS to be checked against, which is the same list of tokens that
 also gets returned when downloading roaming authorization data into the
-CMS.
+CMS. This is not a live request at the provider backend.
 
 ![Figure Message exchange for live authorisation requests for a single charging process.](media/SingleAuthorisation.png "Message exchange for live authorisation requests for a single charging process.")
 
@@ -733,10 +732,8 @@ CMS.
 ### Request the CHS to authorize one single token for roaming
 
 A CMS may request the Clearing House to authorize one single token for a
-charging session. The authorization is requested for a single token.
-Optional a ID for the single transaction can be added to track the issued
-CDR in the requester's numbering scheme. The request for authorization is
-done in the following way:
+charging session. The request for authorization is done in the following
+way:
 
  * CMS sends the RequestLiveRoamingAuthorisation.req PDU.
  * CHS responds with a RequestLiveRoamingAuthorisation.conf PDU.
@@ -775,17 +772,25 @@ Not Available | Out Of Order | Failure or other inoperability. TTL is set to the
 Furthermore, a PSO can send live status information for their parking
 spots towards the system. These will be evaluated according to the
 parkingId sent with individual EVSEs. The parking spot itself can have
-the same major live status as an EVSE: available, not available, unknown.
+the same major live status as an EVSE: available, not available or unknown.
 
 In order to enable implementations to only resolve one set of status,
-the status of EVSE and parking spot are returned individually as well
+the status of EVSE and parking spot can be returned individually as well
 as combined.
 
 
 ##### Implementation
-Each status update from the sending operator must contain the major status and may contain a minor status for further details. Consuming Navigation System Providers must be able to process the three major status values. Optionally they may display the minor status and the ttl-value to the user.
-The clearing house or every consuming system may drop status values with an expired ttl-value. The status of an EVSE must default to *unknown* in that case.
-Consuming systems should request for new status updates whenever an loaded status value expires.
+Each status update from the sending operator must contain the major status
+and may contain a minor status for further details. Consuming Navigation
+System Providers must be able to process the three major status values.
+Optionally they may display the minor status and the ttl-value to the user.
+Furthermore, they can request the CHS to return parking spot live information
+either on its own or combined with the EVSEs live status.
+The clearing house or every consuming system may drop status values with an
+expired ttl-value. The status of an EVSE must default to *unknown* in that case.
+Consuming systems should regularly check for updates status in the CHS. In
+order to guarantee a high quality and up-to-dateness of data, updated status
+should be collected in short intervals.
 
 
 
@@ -907,9 +912,10 @@ These messages are used for the purpose of the exchange of charge data from an E
 ### GetCDRs.req
 
 This contains the field definition of the GetCDRs.req sent by a provider's system to the CHS.
+
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
-cdrStatus        |  CdrStatusType          |  ?      | Defines which status of CDRs to return: accepted, revised, rejected, approved. If not set, will return accepted and revised CDRs.
+cdrStatus     |  CdrStatusType   |  ?      | Defines which status of CDRs to return: accepted, revised, rejected, approved. If not set, will return accepted and revised CDRs.
 
 
 ### GetCDRs.conf
@@ -925,6 +931,7 @@ cdrInfoArray  |  Array(CDRInfo)  |  *      |  This contains CDRs according to th
 ### CheckCDRs.req
 
 This contains the field definition of the CheckCDRs.req sent by an EVSE operator's system to the CHS.
+
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
 cdrStatus        |  CdrStatusType          |  ?      | Defines which status of CDRs to return: declined, rejected, approved. If not set, will return declined CDRs.
@@ -1110,16 +1117,13 @@ TariffInfoArray  	  |  TariffInfo		  |  *      |  This contains the tariff infor
 
 
 
-## Messages for live authorisation
+## Messages for single authorisation
 
 
-### RequestLiveRoamingAuthorisation.req
+### RequestSingleRoamingAuthorisation.req
 
 This contains the field definition of the 
-RequestLiveRoamingAuthorisation.req sent by CMS to the CHS. A 
-authorisation will always generate a unique cdrId to track the 
-transaction. This ID can be generated by the operator or will be issued 
-by the clearing house.
+RequestSingleRoamingAuthorisation.req sent by CMS to the CHS.
 
  Field Name   |  Field Type  |  Card.  |  Description
 :-------------|:-------------|:--------|:------------
@@ -1127,17 +1131,16 @@ emtId         |  EmtId       |  1      |  This contains the ID of the token whic
 
 
 
-### RequestLiveRoamingAuthorisation.conf
+### RequestSingleRoamingAuthorisation.conf
 
 This contains the field definition of the 
-RequestLiveRoamingAuthorisation.conf sent by the CHS as response to the 
-RequestLiveRoamingAuthorisation.req.
+RequestSingleRoamingAuthorisation.conf sent by the CHS as response to the 
+RequestSingleRoamingAuthorisation.req.
 
  Field Name               |  Field Type                |  Card.  |  Description
 :-------------------------|:---------------------------|:--------|:------------
 result                    |  Result                    |  1      |  This contains the result of GetRoamingAuthorisationList.req.
 roamingAuthorisationInfo  |  RoamingAuthorisationInfo  |  ?      |  This contains the roaming authorisation record for the requested token, if the request was valid.
-liveAuthId                |  LiveAuthId                |  1      |  Unique ID of the live authorisation request to the clearing house. Must be used for the corresponding CDR to reference this request.
 
 
 
@@ -1172,7 +1175,13 @@ This contains the field definition of the GetStatus.req sent by a NPS to the CHS
  Field Name    |  Field Type    |  Card.  |  Description
 :--------------|:---------------|:--------|:------------
 startDateTime  |  DateTimeType  |  ?      |  If this value is set to a point in the past the response is limited to status information that is more actual than the given value.
-statusType	   |  string(255)   |  ? 	  |  This field can be set to determine which status values to return from the CHS. Valid entries: evse, parking, combined. If not set, combined status values will be returned (for all EVSEs available to the NSP regardless of existance of parking spot information).
+statusType	   |  string(255)   |  ? 	  |  This field can be set to determine which status values to return from the CHS. Valid entries: evse, parking, combined. If not set, only EVSE status values will be returned.
+
+**Note:** When the statusType is defined as *combined*,
+the CHS will return values for all EVSEs of all EVSE Operators
+there is a valid roaming connection to, regardless of whether
+there is additional parking status information for all of
+them.
 
 
 ### GetStatus.conf
@@ -1195,7 +1204,7 @@ combined 	  |  EvseStatusType	 |  *      |  This contains one EVSE ID status inc
 
 # Types
 
-The defined types have either to be filled with a valid value or - where allowed - left out in the SOAP tree.
+The defined types have either to be filled with a valid value or - where allowed - left out in the SOAP tree, they cannot be empty.
 
 
 
@@ -1271,6 +1280,33 @@ semantically not the same as UTC.
 ```
 
 
+### BillingItemType *enum*
+
+The billing items for charging periods and tariffs.
+
+ Value        |  Description
+:-------------|:-------------
+ parkingtime  |  Price for the time of parking. The billingValue represents the time in hours.
+ usagetime    |  Price for the time of EVSE usage. The billingValue represents the time in hours.
+ energy       |  Price for the consumed energy. The billingValue represents the energy in kilowatt-hours.
+ power        |  Price for the used power level. The billingValue represents the maximum power in kilowatts.
+ serviceFee   |  General service fee per charging process. The billingValue represents a multiplier and thus has to be set to "1.0".
+ reservation  |  One time fee for a reservation of the EVSE. The billingValue represents a multiplier and thus has to be set to "1.0".
+ reservationtime | Price for the duration of a reservation. The billingValue represents the time in hours.
+
+ 
+### RegularHoursType *class*
+
+Regular recurring operation or access hours. Consecutive days can be combined using weekdayTo, single days can be defined using only weekdayFrom.
+
+ Field Name   |  Field Type  |  Card.  |  Description
+:-------------|:-------------|:--------|:------------
+ weekday~     |  int(1)      |  1      |  Number of day in the week, beginning with Monday (1), ending with Sunday (7).
+ periodBegin~ |  TimeType    |  1      |  Begin of the regular period given in hours:minutes:seconds. Must be in 24h format with leading zeros. Example: "18:15:00". Hour/Minute/Second separator: ":" Regex: $[$0-2$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$
+ periodEnd~   |  TimeType    |  1      |  End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
+
+
+
 ## Types for the Exchange of Authorisation Data
 
 These data types are used for the purpose of the exchange of
@@ -1294,6 +1330,7 @@ to the augmented Backus-Naur Form (ABNF) as defined in RFC 5234):
     ; three alphanumeric characters, defined and listed by eMI3 group
 <Instance> = 9 (ALPHA / DIGIT)
     ; nine alphanumeric characters
+	; it is strongly recommended to use the type-ID C as first character
 <Check Digit> = *1 (ALPHA / DIGIT)
     ; Optional but highly recommended, see subclause H.1.3 for its computation
 ALPHA = %x41-5A / %x61-7A
@@ -1321,6 +1358,9 @@ The following rules apply:
  * While the Provider ID must be assigned by a central issuing
    authority, each provider with an assigned Provider ID can chose the eMA
    Instance within the above mentioned rules freely.
+ * It is strongly recommended to use the Type-ID `C` as the first character
+   of the nine character instance to conform to the eMI3 EMAID standard.
+   See the example above.
 
 
 ###### Backward Compatibility
@@ -1364,12 +1404,12 @@ The type of the supplied instance for basic filtering.
  Value       |  Description
 :------------|:-------------
  rfid        |  All kinds of RFID-Cards. Field tokenInstance holds the hexadecimal representation of the card's UID, Byte order: big endian, no zero-filling.
- remote      |  All means of remote authentication through the backend. Field tokenInstance holds a reference to the remote authorization or session. In case of a OCHP_direct- authorization the _directId_.
+ remote      |  All means of remote authentication through the backend. Field tokenInstance holds a reference to the remote authorization or session. In case of a OCHPdirect authorization the _directId_.
  15118       |  All authentication means defined by ISO/IEC 15118 except RFID-cards.
  
  **NOTE:** The _remote_ token type is only beeing used in the CDR of a
  remotely started charging process. Tokens with type _remote_ shall not
- be included in a whitelist!
+ be included in a whitelist.
 
 
 ### tokenSubType *enum*
@@ -1417,21 +1457,6 @@ Contains information about a roaming authorisation (card/token)
 
 These data types are used for the purpose of the exchange of charge data
 from an EVSE Operator to an EVSP.
-
-
-### BillingItemType *enum*
-
-The billing items for charging periods.
-
- Value        |  Description
-:-------------|:-------------
- parkingtime  |  Price for the time of parking. The billingValue represents the time in hours.
- usagetime    |  Price for the time of EVSE usage. The billingValue represents the time in hours.
- energy       |  Price for the consumed energy. The billingValue represents the energy in kilowatt-hours.
- power        |  Price for the used power level. The billingValue represents the maximum power in kilowatts.
- serviceFee   |  General service fee per charging process. The billingValue represents a multiplier and thus has to be set to "1.0".
- reservation  |  One time fee for a reservation of the EVSE. The billingValue represents a multiplier and thus has to be set to "1.0".
- reservationtime | Price for the duration of a reservation. The billingValue represents the time in hours.
 
 
 ### CdrPeriodType *class*
@@ -1485,18 +1510,19 @@ models. Some examples:
 ### CdrStatusType *enum*
 
 Reflects the current status of the CDR. This is reflecting the status
-of internal processing in the clearing house. The value must not be
+of internal processing in the clearing house. The value cannot be
 changed by the partner's systems directly. Implicit changes are made
-while uploading, approving or declining CDRs.
+while uploading (including revised, rejected CDRs), approving or
+declining CDRs.
 
  Value           |  Description
 :----------------|:-------------
  new             |  A new CDR before upload to the CHS.
  accepted        |  An uploaded CDR was accepted by the CHS as plausible.
  rejected        |  The checked CDR again rejected by the CHS and is to be archived.
- declined	 |  The CDR was declined by the owner (EVSP).
+ declined	 	 |  The CDR was declined by the owner (EVSP).
  approved        |  The CDR was approved by the owner (EVSP).
- revised	 |  The CDR was revised by the CPO and uploaded again. Only previously accepted or declined CDRs can be revised.
+ revised		 |  The CDR was revised by the CPO and uploaded again. Only previously accepted or declined CDRs can be revised.
 
 
 ### CDRInfo *class*
@@ -1666,7 +1692,7 @@ The class of referenced related resource.
  surroundingInfo  |  further information on the surroundings of the charging station e.g. further POIs
  ownerHomepage    |  website of the station owner (not operator) in case of hotels, restaurants, etc.
  feedbackForm     |  form for user feedback on the charging station service
- openingTimes	  |  link to a calendar or info page containing opening times (only if they are defined as irregular).
+ openingTimes	  |  link to a calendar or info page containing opening times (only if no other way of defining these is possible).
 
 
 ### GeoPointType *class*
@@ -1915,28 +1941,17 @@ Irregular operating hours, open only on one weekend in April 2016 from Friday 16
 ```
 
 
-### RegularHoursType *class*
-
-Regular recurring operation or access hours. Consecutive days can be combined using weekdayTo, single days can be defined using only weekdayFrom.
-
- Field Name   |  Field Type  |  Card.  |  Description
-:-------------|:-------------|:--------|:------------
- weekday~     |  int(1)      |  1      |  Number of day in the week, beginning with Monday (1), ending with Sunday (7).
- periodBegin~ |  TimeType    |  1      |  Begin of the regular period given in hours:minutes:seconds. Must be in 24h format with leading zeros. Example: "18:15:00". Hour/Minute/Second separator: ":" Regex: $[$0-2$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$
- periodEnd~   |  TimeType    |  1      |  End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
-
-
 ### ExceptionalPeriodType *class*
 
 Specifies one exceptional period for opening or access hours.
 
  Field Name  |  Field Type  |  Card.  |  Description
 :------------|:-------------|:--------|:------------
- periodBegin |  DateTimeType|  1      |  Begin of the exception.
- periodEnd   |  DateTimeType|  1      |  End of the exception.
+ periodBegin | DateTimeType |  1      |  Begin of the exception.
+ periodEnd   | DateTimeType |  1      |  End of the exception.
 
 
-### ChargePointLocationType *enum*
+### GeneralLocationType *enum*
 
 Reflects the general type of the charge points location. May be used 
 for user information.
@@ -1947,6 +1962,7 @@ for user information.
  parking-garage     |  multistorey car park
  underground-garage |  multistorey car park, mainly underground
  parking-lot        |  a cleared area that is intended for parking vehicles, i.e. at super markets, bars, etc.
+ private 			|  located in private or corporate grounds, not immediately accessible by the public
  other              |  none of the given possibilities
  unknown            |  parking location type is not known by the operator
 
@@ -2015,8 +2031,8 @@ Contains information about the charge points.
  openingTimes        |  HoursType                |  1      |  The times the EVSE is operating and can be used for charging. Can be set to unknown.
  status              |  ChargePointStatusType    |  ?      |  The current status of the charge point (static, not live-status!)
  statusSchedule      |  ChargePointScheduleType  |  *      |  Planned status changes in the future. If a time span matches with the current or displayed date, the corresponding value overwrites *status*.
- telephoneNumber     |  string(20)               |  ?      |  Numeric. Service hotline to be displayed to the EV user. Has to be in international format including leading + and country code. Separators recommended. Characters: [0-9], -, <space>
- location            |  ChargePointLocationType  |  1      |  The general type of the charge point location.
+ telephoneNumber     |  string(20)               |  ?      |  Numeric. Service hotline to be displayed to the EV user. Recommended to be in international format including leading + and country code. Separators recommended. Characters: [0-9], -, <space>
+ location            |  GeneralLocationType      |  1      |  The general type of the charge point location.
  parkingSpot		 |  ParkingSpotType          |  *      |  Information about one or more parking spots associated with the EVSE.
  restriction	     |  RestrictionType		     |  *      |  Restrictions applying to the usage of the charging station.
  authMethods         |  AuthMethodType           |  +      |  List of available payment or access methods on site.
@@ -2027,37 +2043,12 @@ Contains information about the charge points.
 
 
 
-## Types for live authorisation
-
-The following types are used in the live authorisation methods. For referencing purpose the types may also be used in the Charge Detail Record.
-
-
-### LiveAuthId *class*
-
-Unique ID for one live authorisation request to the clearing house. 
-Will be returned from a call to RequestLiveRoamingAuthorisation and 
-must be sent back to the clearing house in the corresponding CDRInfo 
-item.
-
- Field Name  |  Field Type  |  Card.  |  Description
-:------------|:-------------|:--------|:------------
- liveAuthId  |  string(15)  |  1      |  Unique ID for one live authorisation request to the clearing house.
-
-Additionally to the internal session ID that has to be issued by the 
-operator to uniquely identify the charging process in the CDR, the 
-*liveAuthId* is identifying the live authorisation session in the 
-clearing house. Therefore the *liveAuthId* has be referenced in the CDR 
-to close this session. The figure below illustrates the full exchange 
-path of of both IDs.
-
-![Figure ID handling for the live authorisation request](media/SingleAuthorisation-2.png "ID handling for the live authorisation request")
-
 ## Types for Tariff Data Exchange
 
 These types are used to exchange tariff information between an operator and one or more providers.
 
 
-###TariffInfo *class*
+### TariffInfo *class*
 
 A Tariff Object consists of a list of one or more individual tariffs for individual recipients. One default individual tariff should always be defined without a specific recipient.
 Each individual tariff consists of tariff elements. These elements can be used to create complex Tariff structures.
@@ -2072,7 +2063,7 @@ Changes to a tariff can always only be made to the entire tariff object. That wa
  <div><!-- ------------------------------------------------------------------------------></div>
 
  
- ###IndividualTariffType *class*
+ ### IndividualTariffType *class*
  <div><!-- ------------------------------------------------------------------------------></div>
  Field Name          |  Field Type               |  Card.  |  Description
 :--------------------|:--------------------------|:--------|:------------
@@ -2154,7 +2145,7 @@ The tariff-ID follows a similar syntax to that of contract- and EVSE-IDs. The Op
 Parking costs:
 - Weekdays: between 09:00 and 18:00 : 5 euro (paid per 5 minutes) 
 - Saturday: between 10:00 and 17:00 : 6 euro (paid per 5 minutes)
-as default tariff
+all of the above as the default tariff
 with additional 2 euro per hour tariff for YYCBA-provider
 
 ```XML
@@ -2253,6 +2244,18 @@ status information in addition to the charge point information or
 POI data from an EVSE Operator to an NSP.
 
 
+### EvseStatusType *class*
+
+Specifies the major and minor status of a EVSE.
+
+ Field Name  |  Field Type    |  Card.  |  Description
+:------------|:---------------|:--------|:------------
+ evseId      |  EvseId        |  1      |  The EVSE the status is set for.
+ major~      |  MajorType     |  1      |  The major status value for the EVSE.
+ minor~      |  MinorType     |  ?      |  The minor status value for the EVSE.
+ ttl~        |  DateTimeType  |  ?      |  The time to live is set as the deadline until which the status value is to be considered valid. Should be set to the expected status change.
+
+
 ### MajorType *enum*
 
 The major status type reflects the overall status of the EVSE.
@@ -2280,18 +2283,7 @@ predicted.
  charging    |  the EVSE is in use. ttl to be set on the expected end of the charging process
  blocked     |  the EVSE not accessible because of a physical barrier, i.e. a car
  outoforder  |  the EVSE is currently out of order. ttl to be set to the expected re-enabling
-
-
-### EvseStatusType *class*
-
-Specifies the major and minor status of a EVSE.
-
- Field Name  |  Field Type    |  Card.  |  Description
-:------------|:---------------|:--------|:------------
- evseId      |  EvseId        |  1      |  The EVSE the status is set for.
- major~      |  MajorType     |  1      |  The major status value for the EVSE.
- minor~      |  MinorType     |  ?      |  The minor status value for the EVSE.
- ttl~        |  DateTimeType  |  ?      |  The time to live is set as the deadline until which the status value is to be considered valid. Should be set to the expected status change.
+ 
  
 ### ParkingStatusType *class*
 

@@ -572,9 +572,9 @@
 		</s:sequence>
 	</s:complexType>
 
-	<s:complexType name="ChargePointLocationType">
+	<s:complexType name="GeneralLocationType">
 		<s:sequence>
-			<s:element name="ChargePointLocationType">
+			<s:element name="GeneralLocationType">
 				<s:annotation>
 					<s:documentation>
 						* on-street parking in public space
@@ -583,6 +583,7 @@
 						* parking-lot a cleared area that is intended for parking vehicles, i.e. at super markets, bars, etc.
 						* other none of the given possibilities
 						* unknown parking location type is not known by the operator
+						* private located in private or corporate grounds, not immediately accessible by the public
 					</s:documentation>
 				</s:annotation>
 				<s:simpleType>
@@ -595,6 +596,7 @@
 						<s:enumeration value="parking-lot"></s:enumeration>
 						<s:enumeration value="other"></s:enumeration>
 						<s:enumeration value="unknown"></s:enumeration>
+						<s:enumeration value="private"></s:enumeration>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
@@ -1170,14 +1172,6 @@
 			<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[A-Za-z0-9]{9}[A-Za-z0-9]"></s:pattern>
 			<s:pattern value="[A-Za-z]{2}-[A-Za-z0-9]{3}-[A-Za-z0-9]{9}"></s:pattern>
 			<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[A-Za-z0-9]{9}"></s:pattern>
-		</s:restriction>
-	</s:simpleType>
-
-	<s:simpleType name="LiveAuthId">
-		<s:restriction base="s:string">
-			<s:pattern value="[A-Z0-9\-]*"></s:pattern>
-			<s:minLength value="1"></s:minLength>
-			<s:maxLength value="15"></s:maxLength>
 		</s:restriction>
 	</s:simpleType>
 	
