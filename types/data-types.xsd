@@ -583,7 +583,7 @@
 						* parking-lot a cleared area that is intended for parking vehicles, i.e. at super markets, bars, etc.
 						* other none of the given possibilities
 						* unknown parking location type is not known by the operator
-						* private located in private or corporate grounds, not immediately accessible by the public
+						* private located in private or corporate grounds, may not be accessible to the public
 					</s:documentation>
 				</s:annotation>
 				<s:simpleType>

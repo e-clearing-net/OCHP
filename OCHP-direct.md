@@ -507,9 +507,9 @@ prior selected EVSE.
  * MDM sends the ReleaseEvse.req PDU.
  * CMS responds with a ReleaseEvse.conf PDU.
 
-**Note:** To end a charging session properly, the provider should always call _ReleaseEvse.req_. Alternatively, they can also call _ControlEvse.req_ with the parameter _operation='end'_ to explicitly end a charging process. A session with no ongoing charging process (_ControlEvse.req_ with _operation='start'_ was not called or not successful) shall always be closed with _ReleaseEvse.req_.
+**Note:** To end a charging session properly, the provider should always call _ReleaseEvse.req_. Additionally, they can also call _ControlEvse.req_ with the parameter _operation='end'_ to explicitly end a charging process. A session with no ongoing charging process (_ControlEvse.req_ with _operation='start'_ was not called or not successful) shall always be closed with _ReleaseEvse.req_.
 When the operator receives a valid _ReleaseEvse.req_ for an ongoing charging process which was not ended with a call to _ControlEvse.req_ with parameter _operation='end'_, the operator should implicitly end the process.
-It is up to the operator to decide how long to keep any OCHPdirect session open and valid when there is no longer an active charging process attached to it (i.e. the charging process was explicitly stopped by _ControlEvse.req_ with the parameter _operation='end'_, but no _ReleaseEvse.req_ was sent).
+It is up to the operator to decide how long to keep any OCHPdirect session open and valid when there is no longer an active charging process attached to it (i.e. the charging process was explicitly stopped by _ControlEvse.req_ with the parameter _operation='end'_, but no _ReleaseEvse.req_ was sent). It is recommended to reduce the TTL of these sessions to 15 minutes or less.
 
 
 ## Inform a provider about a charging process (both interfaces)

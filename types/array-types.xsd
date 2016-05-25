@@ -325,7 +325,7 @@
 				</s:annotation>
 				<s:simpleType>
 					<s:restriction base="s:string">
-						<s:pattern value="[\+]{0,1}[1-9]{0,3}[0-9 \-]{1,15}"></s:pattern>
+						<s:pattern value="[\+]{0,1}[1-9]{0,1}[0-9 \-]{1,17}"></s:pattern>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>

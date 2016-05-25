@@ -1962,7 +1962,7 @@ for user information.
  parking-garage     |  multistorey car park
  underground-garage |  multistorey car park, mainly underground
  parking-lot        |  a cleared area that is intended for parking vehicles, i.e. at super markets, bars, etc.
- private 			|  located in private or corporate grounds, not immediately accessible by the public
+ private 			|  located in private or corporate grounds, may not be accessible to the public
  other              |  none of the given possibilities
  unknown            |  parking location type is not known by the operator
 
