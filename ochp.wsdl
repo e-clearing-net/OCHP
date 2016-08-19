@@ -3,7 +3,7 @@
 
 <!-- ===================================================================
 
-                  OCHP 1.3 Web Service Description
+                  OCHP 1.4 Web Service Description
 
 This document defines a standard interface between different parties in
 the market of electric vehicle charging infrastructure and a clearing
@@ -39,21 +39,21 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ==================================================================== -->
 
 
-<wsdl:definitions name="OCHP_1.3"
-	targetNamespace="http://ochp.eu/1.3" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+<wsdl:definitions name="OCHP_1.4"
+	targetNamespace="http://ochp.eu/1.4" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:s="http://www.w3.org/2001/XMLSchema"
-	xmlns:p="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://ochp.eu/1.3">
+	xmlns:p="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://ochp.eu/1.4">
 
 	<wsdl:documentation>
-		Open Clearing House Protocol (OCHP) Version 1.3
+		Open Clearing House Protocol (OCHP) Version 1.4
 	</wsdl:documentation>
 
 	<wsdl:types>
 		<s:schema>
-			<s:import namespace="http://ochp.eu/1.3" schemaLocation="types/message-elements.xsd"/>
-			<s:import namespace="http://ochp.eu/1.3" schemaLocation="types/array-types.xsd"/>
-			<s:import namespace="http://ochp.eu/1.3" schemaLocation="types/data-types.xsd"/>
-			<s:import namespace="http://ochp.eu/1.3" schemaLocation="types/live-types.xsd"/>
+			<s:import namespace="http://ochp.eu/1.4" schemaLocation="types/message-elements.xsd"/>
+			<s:import namespace="http://ochp.eu/1.4" schemaLocation="types/array-types.xsd"/>
+			<s:import namespace="http://ochp.eu/1.4" schemaLocation="types/data-types.xsd"/>
+			<s:import namespace="http://ochp.eu/1.4" schemaLocation="types/live-types.xsd"/>
 		</s:schema>
 	</wsdl:types>
 
@@ -98,7 +98,15 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		<wsdl:part name="parameters"
 				element="tns:UpdateRoamingAuthorisationListRequest" />
 	</wsdl:message>
-
+	
+	<wsdl:message name="GetSingleRoamingAuthorisationRequest">
+		<wsdl:part name="parameters"
+				element="tns:GetSingleRoamingAuthorisationRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetSingleRoamingAuthorisationResponse">
+		<wsdl:part name="parameters"
+				element="tns:GetSingleRoamingAuthorisationResponse" />
+	</wsdl:message>
 <!-- Messages for the Exchange of Charge Data -->
 
 	<wsdl:message name="AddCDRsInput">
@@ -117,6 +125,15 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	<wsdl:message name="GetCDRsOutput">
 		<wsdl:part name="parameters"
 				element="tns:GetCDRsResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="CheckCDRsInput">
+		<wsdl:part name="parameters"
+				element="tns:CheckCDRsRequest" />
+	</wsdl:message>
+	<wsdl:message name="CheckCDRsOutput">
+		<wsdl:part name="parameters"
+				element="tns:CheckCDRsResponse" />
 	</wsdl:message>
 
 	<wsdl:message name="ConfirmCDRsRequest">
@@ -166,17 +183,26 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 				element="tns:UpdateChargePointListResponse" />
 	</wsdl:message>
 
-<!-- Messages for live authorisation -->
+<!-- Messages for the Exchange of Charge Point Information -->
 
-	<wsdl:message name="RequestLiveRoamingAuthorisationRequest">
+	<wsdl:message name="UpdateTariffsRequest">
 		<wsdl:part name="parameters"
-				element="tns:RequestLiveRoamingAuthorisationRequest" />
+				element="tns:UpdateTariffsRequest" />
 	</wsdl:message>
-	<wsdl:message name="RequestLiveRoamingAuthorisationResponse">
+	<wsdl:message name="UpdateTariffsResponse">
 		<wsdl:part name="parameters"
-				element="tns:RequestLiveRoamingAuthorisationResponse" />
+				element="tns:UpdateTariffsResponse" />
 	</wsdl:message>
-
+	
+	<wsdl:message name="GetTariffUpdatesRequest">
+		<wsdl:part name="parameters"
+				element="tns:GetTariffUpdatesRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetTariffUpdatesResponse">
+		<wsdl:part name="parameters"
+				element="tns:GetTariffUpdatesResponse" />
+	</wsdl:message>
+	
 <!-- Messages for the Live Status Interface -->
 
 	<wsdl:message name="UpdateStatusRequest">
@@ -201,10 +227,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                         Port Definitions
 ==================================================================== -->
 
-	<wsdl:portType name="OCHP_1.3">
+	<wsdl:portType name="OCHP_1.4">
 
 		<wsdl:documentation>
-			OCHP Version 1.3 Interface
+			OCHP Version 1.4 Interface
 		</wsdl:documentation>
 
 		<wsdl:operation name="AddCDRs">
@@ -216,10 +242,17 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		</wsdl:operation>
 		<wsdl:operation name="GetCDRs">
 			<wsdl:documentation>
-				Cleared roaming charge data records, held at the CHS are sent from the CHS to the MDM. Note that only cleared CDRs that concern the EVSP are sent.
+				Cleared roaming charge data records, held at the CHS are sent from the CHS to the MDM. Note that only cleared CDRs that concern the EVSP are sent according to the status specified in the request.
 			</wsdl:documentation>
 			<wsdl:input message="tns:GetCDRsInput" />
 			<wsdl:output message="tns:GetCDRsOutput" />
+		</wsdl:operation>
+		<wsdl:operation name="CheckCDRs">
+			<wsdl:documentation>
+				Cleared roaming charge data records, held at the CHS are sent from the CHS to the CMS. Note that only CDRs sent by this EVSE operator are sent according to the status specified in the request.
+			</wsdl:documentation>
+			<wsdl:input message="tns:CheckCDRsInput" />
+			<wsdl:output message="tns:CheckCDRsOutput" />
 		</wsdl:operation>
 		<wsdl:operation name="GetRoamingAuthorisationList">
 			<wsdl:documentation>
@@ -284,19 +317,33 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			<wsdl:input message="tns:UpdateChargePointListRequest"></wsdl:input>
 			<wsdl:output message="tns:UpdateChargePointListResponse"></wsdl:output>
 		</wsdl:operation>
-		<wsdl:operation name="RequestLiveRoamingAuthorisation">
+		<wsdl:operation name="UpdateTariffs">
+			<wsdl:documentation>
+				For all updates to tariff objects from the CIMS to the Clearing House and the EVSPs. Can contain single or multiple tariffs to update.
+			</wsdl:documentation>
+			<wsdl:input message="tns:UpdateTariffsRequest"></wsdl:input>
+			<wsdl:output message="tns:UpdateTariffsResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetTariffUpdates">
+			<wsdl:documentation>
+				Downloads all tariff objects from the Clearing House that have been updated since a given date and time. Can contain single or multiple tariffs.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetTariffUpdatesRequest"></wsdl:input>
+			<wsdl:output message="tns:GetTariffUpdatesResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetSingleRoamingAuthorisation">
 			<wsdl:documentation>
 				A CMS may request the Clearing House to authorize one single token for a charging session
 			</wsdl:documentation>
-			<wsdl:input message="tns:RequestLiveRoamingAuthorisationRequest"></wsdl:input>
-			<wsdl:output message="tns:RequestLiveRoamingAuthorisationResponse"></wsdl:output>
+			<wsdl:input message="tns:GetSingleRoamingAuthorisationRequest"></wsdl:input>
+			<wsdl:output message="tns:GetSingleRoamingAuthorisationResponse"></wsdl:output>
 		</wsdl:operation>
 	</wsdl:portType>
 
-	<wsdl:portType name="OCHP_1.3-live">
+	<wsdl:portType name="OCHP_1.4-live">
 
 		<wsdl:documentation>
-			OCHP Version 1.3 Live POI Interface
+			OCHP Version 1.4 Live POI Interface
 		</wsdl:documentation>
 
 		<wsdl:operation name="UpdateStatus">
@@ -319,16 +366,16 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
                         Binding Definitions
 ==================================================================== -->
 
-	<wsdl:binding name="eCHS-OCHP_1.3" type="tns:OCHP_1.3">
+	<wsdl:binding name="eCHS-OCHP_1.4" type="tns:OCHP_1.4">
 
 		<wsdl:documentation>
-			OCHP Version 1.3 Interface
+			OCHP Version 1.4 Interface
 		</wsdl:documentation>
 
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
 
 		<wsdl:operation name="AddCDRs">
-			<soap:operation soapAction="http://ochp.eu/1.3/AddCDRs" />
+			<soap:operation soapAction="http://ochp.eu/1.4/AddCDRs" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -338,7 +385,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		</wsdl:operation>
 
 		<wsdl:operation name="GetCDRs">
-			<soap:operation soapAction="http://ochp.eu/1.3/GetCDRs" />
+			<soap:operation soapAction="http://ochp.eu/1.4/GetCDRs" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -347,8 +394,18 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			</wsdl:output>
 		</wsdl:operation>
 
+		<wsdl:operation name="CheckCDRs">
+			<soap:operation soapAction="http://ochp.eu/1.4/CheckCDRs" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
 		<wsdl:operation name="GetRoamingAuthorisationList">
-			<soap:operation soapAction="http://ochp.eu/1.3/GetRoamingAuthorisationList" />
+			<soap:operation soapAction="http://ochp.eu/1.4/GetRoamingAuthorisationList" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -358,7 +415,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		</wsdl:operation>
 
 		<wsdl:operation name="SetRoamingAuthorisationList">
-			<soap:operation soapAction="http://ochp.eu/1.3/SetRoamingAuthorisationList" />
+			<soap:operation soapAction="http://ochp.eu/1.4/SetRoamingAuthorisationList" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -368,7 +425,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		</wsdl:operation>
 
 		<wsdl:operation name="GetChargePointList">
-			<soap:operation soapAction="http://ochp.eu/1.3/GetChargePointList" />
+			<soap:operation soapAction="http://ochp.eu/1.4/GetChargePointList" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -378,7 +435,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		</wsdl:operation>
 
 		<wsdl:operation name="SetChargepointList">
-			<soap:operation soapAction="http://ochp.eu/1.3/SetChargepointList" />
+			<soap:operation soapAction="http://ochp.eu/1.4/SetChargepointList" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -388,7 +445,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		</wsdl:operation>
 
 		<wsdl:operation name="GetRoamingAuthorisationListUpdates">
-			<soap:operation soapAction="http://ochp.eu/1.3/GetRoamingAuthorisationListUpdates" />
+			<soap:operation soapAction="http://ochp.eu/1.4/GetRoamingAuthorisationListUpdates" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -398,7 +455,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		</wsdl:operation>
 
 		<wsdl:operation name="UpdateRoamingAuthorisationList">
-			<soap:operation soapAction="http://ochp.eu/1.3/UpdateRoamingAuthorisationList" />
+			<soap:operation soapAction="http://ochp.eu/1.4/UpdateRoamingAuthorisationList" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -408,7 +465,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		</wsdl:operation>
 
 		<wsdl:operation name="ConfirmCDRs">
-			<soap:operation soapAction="http://ochp.eu/1.3/ConfirmCDRs" />
+			<soap:operation soapAction="http://ochp.eu/1.4/ConfirmCDRs" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -418,7 +475,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		</wsdl:operation>
 
 		<wsdl:operation name="GetChargePointListUpdates">
-			<soap:operation soapAction="http://ochp.eu/1.3/GetChargePointListUpdates" />
+			<soap:operation soapAction="http://ochp.eu/1.4/GetChargePointListUpdates" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -428,7 +485,27 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		</wsdl:operation>
 
 		<wsdl:operation name="UpdateChargePointList">
-			<soap:operation soapAction="http://ochp.eu/1.3/UpdateChargePointList" />
+			<soap:operation soapAction="http://ochp.eu/1.4/UpdateChargePointList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		<wsdl:operation name="UpdateTariffs">
+			<soap:operation soapAction="http://ochp.eu/1.4/UpdateTariffs" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		<wsdl:operation name="GetTariffUpdates">
+			<soap:operation soapAction="http://ochp.eu/1.4/GetTariffUpdates" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -437,8 +514,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			</wsdl:output>
 		</wsdl:operation>
 
-		<wsdl:operation name="RequestLiveRoamingAuthorisation">
-			<soap:operation soapAction="http://ochp.eu/1.3/RequestLiveRoamingAuthorisation" />
+		<wsdl:operation name="GetSingleRoamingAuthorisation">
+			<soap:operation soapAction="http://ochp.eu/1.4/GetSingleRoamingAuthorisation" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -451,10 +528,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 <!-- Binding to the Live POI Interface -->
 
-	<wsdl:binding name="eCHS-OCHP_1.3-live" type="tns:OCHP_1.3-live">
+	<wsdl:binding name="eCHS-OCHP_1.4-live" type="tns:OCHP_1.4-live">
 
 		<wsdl:documentation>
-			OCHP Version 1.3 Live POI Interface
+			OCHP Version 1.4 Live POI Interface
 		</wsdl:documentation>
 
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
@@ -490,34 +567,34 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 			EEN European Emobility Network - EV Clearing Platform
 		</wsdl:documentation>
 
-		<wsdl:port name="eCHS_P-System" binding="tns:eCHS-OCHP_1.3">
+		<wsdl:port name="eCHS_P-System" binding="tns:eCHS-OCHP_1.4">
 			<wsdl:documentation>
 				eCHS Productive System Endpoint
 			</wsdl:documentation>
-			<soap:address location="https://echs.e-clearing.net/service/ochp/v1.3" />
+			<soap:address location="https://echs.e-clearing.net/service/ochp/v1.4" />
 		</wsdl:port>
 
-		<wsdl:port name="eCHS_Q-System" binding="tns:eCHS-OCHP_1.3">
+		<wsdl:port name="eCHS_Q-System" binding="tns:eCHS-OCHP_1.4">
 			<wsdl:documentation>
 				eCHS Quality Ensurance System Endpoint
 			</wsdl:documentation>
-			<soap:address location="https://echs-q.e-clearing.net/service/ochp/v1.3" />
+			<soap:address location="https://echs-q.e-clearing.net/service/ochp/v1.4" />
 		</wsdl:port>
 
 <!-- Endpoints for the Live POI Interface -->
 
-		<wsdl:port name="eCHS_P-System-live" binding="tns:eCHS-OCHP_1.3-live">
+		<wsdl:port name="eCHS_P-System-live" binding="tns:eCHS-OCHP_1.4-live">
 			<wsdl:documentation>
 				eCHS Live-POI Productive System Endpoint
 			</wsdl:documentation>
-			<soap:address location="https://echs.e-clearing.net/live/ochp/v1.3" />
+			<soap:address location="https://echs.e-clearing.net/live/ochp/v1.4" />
 		</wsdl:port>
 
-		<wsdl:port name="eCHS_Q-System-live" binding="tns:eCHS-OCHP_1.3-live">
+		<wsdl:port name="eCHS_Q-System-live" binding="tns:eCHS-OCHP_1.4-live">
 			<wsdl:documentation>
 				eCHS Live-POI Quality Ensurance Endpoint
 			</wsdl:documentation>
-			<soap:address location="https://echs-q.e-clearing.net/live/ochp/v1.3" />
+			<soap:address location="https://echs-q.e-clearing.net/live/ochp/v1.4" />
 		</wsdl:port>
 
 	</wsdl:service>
