@@ -80,13 +80,6 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="liveAuthId" type="tns:LiveAuthId" minOccurs="0" maxOccurs="1">
-				<s:annotation>
-					<s:documentation>
-						References a live authorisation request to the clearing house. Must be specified if the charging process was authorized by the clearing house directly in a call to RequestLiveRoamingAuthorisation.
-					</s:documentation>
-				</s:annotation>
-			</s:element>
 			<s:element name="status" type="tns:CdrStatusType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
