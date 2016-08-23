@@ -511,7 +511,7 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="closedCharging" type="tns:boolean" minOccurs="1" maxOccurs="1">
+			<s:element name="closedCharging" type="s:boolean" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						Should be set to true in case an EV can be charged when plugged in during off-times (i.e. when the location is closed according to the specified hours).
