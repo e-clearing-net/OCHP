@@ -1045,7 +1045,7 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="tariffRestriction" type="TariffRestrictionType" minOccurs="1" maxOccurs="1">
+			<s:element name="tariffRestriction" type="tns:TariffRestrictionType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						Contains information about when to apply the defined priceComponent / tariffElement.
