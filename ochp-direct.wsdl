@@ -770,7 +770,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 							</s:documentation>
 						</s:annotation>
 					</s:element>
-					<s:element minOccurs="1" maxOccurs="1" name="meterTime" type="s:LocalDateTimeType">
+					<s:element minOccurs="1" maxOccurs="1" name="meterTime" type="tns:LocalDateTimeType">
 						<s:annotation>
 							<s:documentation>
 								The exact local time stamp of the time the meter reading was taken (belonging to the meter reading, e.g. as transferred by OCPP).
