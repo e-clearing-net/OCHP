@@ -295,7 +295,7 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="status" type="tns:StatusType" minOccurs="0" maxOccurs="1">
+			<s:element name="status" type="tns:ChargePointStatusType" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						The current status of the charge point.
