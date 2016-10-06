@@ -659,11 +659,13 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 									Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
 								</s:documentation>
 							</s:annotation>
-							<s:restriction base="s:string">
-								<s:pattern value="[A-Z]*"></s:pattern>
-								<s:minLength value="3"></s:minLength>
-								<s:maxLength value="3"></s:maxLength>
-							</s:restriction>
+							<s:simpleType>
+								<s:restriction base="s:string">
+									<s:pattern value="[A-Z]*"></s:pattern>
+									<s:minLength value="3"></s:minLength>
+									<s:maxLength value="3"></s:maxLength>
+								</s:restriction>
+							</s:simpleType>
 						</s:element>
 					</s:sequence>
 				</s:complexType>
