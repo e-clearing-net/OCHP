@@ -653,7 +653,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 								</s:documentation>
 							</s:annotation>
 						</s:element>
-						<s:element name="currency" type="s:string" minOccurs="0" maxOccurs="1" nillable="true">
+						<s:element name="currency" minOccurs="0" maxOccurs="1" nillable="true">
 							<s:annotation>
 								<s:documentation>
 									Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
