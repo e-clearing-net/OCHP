@@ -136,30 +136,30 @@
 					<s:documentation>
 						The Standard of the installed connector; 
 							Chademo                The connector type is CHAdeMO, DC 
-							IEC-62196-T1           The connector type is IEC 62196 Type 1 “SAE J1772”
-							IEC-62196-T1-COMBO     The connector type is Combo Type 1 based, DC 
-							IEC-62196-T2           The connector type is IEC 62196 Type 2 “Mennekes” 
-							IEC-62196-T2-COMBO     The connector type is Combo Type 2 based, DC
-							IEC-62196-T3A          The connector type is IEC 62196 Type 3A 
-							IEC-62196-T3C          The connector type is IEC 62196 Type 3C “Scame” 
-							DOMESTIC-A             The connector type is Standard/Domestic household, type "A", NEMA 1-15, 2 pins 
-							DOMESTIC-B             The connector type is Standard/Domestic household, type "B", NEMA 5-15, 3 pins
-							DOMESTIC-C             The connector type is Standard/Domestic household, type "C", CEE 7/17, 2 pins 
-							DOMESTIC-D             The connector type is Standard/Domestic household, type "D", 3 pin 
-							DOMESTIC-E             The connector type is Standard/Domestic household, type "E", CEE 7/5 3 pins
-							DOMESTIC-F             The connector type is Standard/Domestic household, type "F", CEE 7/4, Schuko, 3 pins 
-							DOMESTIC-G             The connector type is Standard/Domestic household, type "G", BS 1363, Commonwealth, 3 pins 
-							DOMESTIC-H             The connector type is Standard/Domestic household, type "H", SI-32, 3 pins
-							DOMESTIC-I             The connector type is Standard/Domestic household, type "I", AS 3112, 3 pins 
-							DOMESTIC-J             The connector type is Standard/Domestic household, type "J", SEV 1011, 3 pins 
-							DOMESTIC-K             The connector type is Standard/Domestic household, type "K", DS 60884-2-D1, 3 pins 
-							DOMESTIC-L             The connector type is Standard/Domestic household, type "L", CEI 23-16-VII, 3 pins 
-							TESLA-R                The connector type is Tesla Connector “Roadster”-type (round, 4 pin) 
-							TESLA-S                The connector type is Tesla Connector “Model-S”-type (oval, 5 pin)
-							IEC-60309-2-single-16  The connector type is IEC 60309-2 Industrial Connector single phase 16 Amperes (usually blue)
-							IEC-60309-2-three-16   The connector type is IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
-							IEC-60309-2-three-32   The connector type is IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
-							IEC-60309-2-three-64   The connector type is IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
+							IEC_62196_T1           The connector type is IEC 62196 Type 1 “SAE J1772”
+							IEC_62196_T1_COMBO     The connector type is Combo Type 1 based, DC 
+							IEC_62196_T2           The connector type is IEC 62196 Type 2 “Mennekes” 
+							IEC_62196_T2_COMBO     The connector type is Combo Type 2 based, DC
+							IEC_62196_T3A          The connector type is IEC 62196 Type 3A 
+							IEC_62196_T3C          The connector type is IEC 62196 Type 3C “Scame” 
+							DOMESTIC_A             The connector type is Standard/Domestic household, type "A", NEMA 1-15, 2 pins 
+							DOMESTIC_B             The connector type is Standard/Domestic household, type "B", NEMA 5-15, 3 pins
+							DOMESTIC_C             The connector type is Standard/Domestic household, type "C", CEE 7/17, 2 pins 
+							DOMESTIC_D             The connector type is Standard/Domestic household, type "D", 3 pin 
+							DOMESTIC_E             The connector type is Standard/Domestic household, type "E", CEE 7/5 3 pins
+							DOMESTIC_F             The connector type is Standard/Domestic household, type "F", CEE 7/4, Schuko, 3 pins 
+							DOMESTIC_G             The connector type is Standard/Domestic household, type "G", BS 1363, Commonwealth, 3 pins 
+							DOMESTIC_H             The connector type is Standard/Domestic household, type "H", SI-32, 3 pins
+							DOMESTIC_I             The connector type is Standard/Domestic household, type "I", AS 3112, 3 pins 
+							DOMESTIC_J             The connector type is Standard/Domestic household, type "J", SEV 1011, 3 pins 
+							DOMESTIC_K             The connector type is Standard/Domestic household, type "K", DS 60884-2-D1, 3 pins 
+							DOMESTIC_L             The connector type is Standard/Domestic household, type "L", CEI 23-16-VII, 3 pins 
+							TESLA_R                The connector type is Tesla Connector “Roadster”-type (round, 4 pin) 
+							TESLA_S                The connector type is Tesla Connector “Model_S”-type (oval, 5 pin)
+							IEC_60309_2_single_16  The connector type is IEC 60309-2 Industrial Connector single phase 16 Amperes (usually blue)
+							IEC_60309_2_three_16   The connector type is IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
+							IEC_60309_2_three_32   The connector type is IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
+							IEC_60309_2_three_64   The connector type is IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
 					</s:documentation>
 				</s:annotation>
 			</s:element>
