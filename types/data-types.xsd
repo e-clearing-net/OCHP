@@ -1104,42 +1104,42 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="minEnergy" type="s:float" minOccurs="1" maxOccurs="1">
+			<s:element name="minEnergy" type="s:float" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						Minimum energy used in kWh. Valid from this amount used.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="maxEnergy" type="s:float" minOccurs="1" maxOccurs="1">
+			<s:element name="maxEnergy" type="s:float" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						Maximum energy used in kWh. Valid up to this amount used.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="minPower" type="s:float" minOccurs="1" maxOccurs="1">
+			<s:element name="minPower" type="s:float" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						Minimum power in kW. Valid from this power.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="maxPower" type="s:float" minOccurs="1" maxOccurs="1">
+			<s:element name="maxPower" type="s:float" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						Maximum power in kW. Valid up to this power.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="minDuration" type="s:int" minOccurs="1" maxOccurs="1">
+			<s:element name="minDuration" type="s:int" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						Minimum duration in seconds. Valid from this duration.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="maxDuration" type="s:int" minOccurs="1" maxOccurs="1">
+			<s:element name="maxDuration" type="s:int" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						Maximum duration in seconds. Valid up to this duration.
