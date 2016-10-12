@@ -85,6 +85,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [GetRoamingAuthorisationListUpdates.conf](#getroamingauthorisationlistupdatesconf)
         - [UpdateRoamingAuthorisationList.req](#updateroamingauthorisationlistreq)
         - [UpdateRoamingAuthorisationList.conf](#updateroamingauthorisationlistconf)
+	- [RequestSingleRoamingAuthorisation.req](#-requestsingleroamingauthorisationreq)
+        - [RequestSingleRoamingAuthorisation.conf](#-requestsingleroamingauthorisationconf)
     - [Messages for the Exchange of Charge Data](#messages-for-the-exchange-of-charge-data)
         - [GetCDRs.req](#getcdrsreq)
         - [GetCDRs.conf](#getcdrsconf)
@@ -106,9 +108,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		- [UpdateTariffs.conf](#updatetariffsconf)
 		- [GetTariffUpdates.req](#gettariffupdatesreq)
 		- [GetTariffUpdates.conf](#gettariffupdatesconf)
-    - [Messages for live authorisation](#messages-for-live-authorisation)
-        - [RequestLiveRoamingAuthorisation.req](#-requestliveroamingauthorisationreq)
-        - [RequestLiveRoamingAuthorisation.conf](#-requestliveroamingauthorisationconf)
     - [Messages for the Live Status Interface](#messages-for-the-live-status-interface)
         - [UpdateStatus.req](#updatestatusreq)
         - [UpdateStatus.conf](#updatestatusconf)
@@ -149,7 +148,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [HoursType *class*](#hourstype-class)
         - [RegularHoursType *class*](#regularhourstype-class)
         - [ExceptionalPeriodType *class*](#exceptionalperiodtype-class)
-        - [ParkingRestrictionType *enum*](#parkingrestrictiontype-enum)
+        - [RestrictionType *enum*](#restrictiontype-enum)
         - [ChargePointInfo *class*](#chargepointinfo-class)
     - [Types for Tariff Data Exchange](#types-for-tariff-data-exchange)
 		- [TariffInfo *class*](#tariffinfo-class)
@@ -1541,12 +1540,11 @@ Contains all information concerning a Charge Data Record
  evseId           |  EvseId             |  1      |  Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it.
  emtId            |  EmtId              |  1      |  Utilized token for this charging session.
  contractId       |  ContractId         |  1      |  Identifies a customer in the electric mobility charging context.
- liveAuthId       |  LiveAuthId         |  ?      |  References a live authorisation request to the clearing house. Must be specified if the charging process was authorized by the clearing house directly in a call to RequestLiveRoamingAuthorisation.
  status           |  CdrStatusType      |  1      |  Current status of the CDR. Must be set to "new" by the issuing CMS. Shall not be changed by any partner but only by the CHS.
  startDateTime    |  LocalDateTimeType  |  1      |  Start date and time of the charge session (login with the RFID badge). Local time of the charge point is used.
  endDateTime      |  LocalDateTimeType  |  1      |  End date and time of the charge session (log-off with the RFID badge or physical disconnect). Must be set in the local time of the charge point.
  duration         |  string(9)          |  ?      |  Duration of the charge session. Example: "000:00:28"
- chargePointAddress |  AddressType      |  ?      |  Hose number at the location of the charge point. Alphanumeric, for example "10","255B"
+ chargePointAddress |  AddressType      |  ?      |  Contains the address of the charging station.
  chargePointType  |  string(2)          |  1      |  The type of the charge point "AC" or "DC"
  connectorType    |  ConnectorType      |  1      |  Type of the utilized socket or connector.
  maxSocketPower   |  float              |  1      |  Maximum available power at the socket in kilowatts. Example: "3.7", "11", "22"
@@ -2007,8 +2005,8 @@ This class contains all address related information in regards to a charge point
  zipCode             |  string(10)               |  1      |  Alphanumeric, Examples: "60439", "8011 PK". Without leading country code. Characters: [A-Z], [0-9], -, <space>
  country             |  string(3)                |  1      |  Alpha, three characters. ISO 3166 country code
 
-
-### ParkingSpotType *class*
+ 
+### ParkingSpotInfo *class*
 
 This class contains all parking related information. If a parkingId is given, this ID can be used to associate parking spot live information from a PSO with this EVSE.
 
@@ -2046,7 +2044,7 @@ Contains information about the charge points.
  statusSchedule      |  ChargePointScheduleType  |  *      |  Planned status changes in the future. If a time span matches with the current or displayed date, the corresponding value overwrites *status*.
  telephoneNumber     |  string(20)               |  ?      |  Numeric. Service hotline to be displayed to the EV user. Recommended to be in international format including leading + and country code. Separators recommended. Characters: [0-9], -, <space>
  location            |  GeneralLocationType      |  1      |  The general type of the charge point location.
- parkingSpot		 |  ParkingSpotType          |  *      |  Information about one or more parking spots associated with the EVSE.
+ parkingSpot		 |  ParkingSpotInfo          |  *      |  Information about one or more parking spots associated with the EVSE.
  restriction	     |  RestrictionType		     |  *      |  Restrictions applying to the usage of the charging station.
  authMethods         |  AuthMethodType           |  +      |  List of available payment or access methods on site.
  connectors          |  ConnectorType            |  +      |  Which receptacle type is/are present for a power outlet.
