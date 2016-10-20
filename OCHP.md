@@ -2093,8 +2093,8 @@ Changes to a tariff can always only be made to the entire tariff object. That wa
 <div><!-- ---------------------------------------------------------------------------- --></div>
  Field Name          |  Field Type               |  Card.  |  Description
 :--------------------|:--------------------------|:--------|:------------
- priceComponent      | PriceComponentType        | +       | List of price components that make up the pricing of this tariff
- tariffRestriction   | TariffRestrictionType     | ?       | List of tariff restrictions
+ priceComponent      | PriceComponentType        | 1       | Price component defining this TariffElement. 
+ tariffRestriction   | TariffRestrictionType     | ?       | List of tariff restrictions applicable for this TariffElement / PriceComponent.
 <div><!-- ---------------------------------------------------------------------------- --></div>  
 
 
