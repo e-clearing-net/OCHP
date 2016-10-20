@@ -787,8 +787,9 @@ evseId            |  EvseId         |  1      |  The charge point which is used 
 contractId        |  ContractId     |  1      |  Contract-ID to which the charge point is assigned.
 directId          |  DirectId       |  1      |  The session id for this direct charging process.
 ttl               |  DateTimeType   |  ?      |  On success the timeout for this session.
-stateOfCharge	  |  float			|  ?	  |  Current state of charge of the connected EV in percent.
 maxPower          |  float          |  ?      |  Maximum authorised power in kilowatts. Example: "3.7", "8", "15"
+maxCurrent	  |  float	    |  ?      |  Maximum authorised current in ampere. Example: "16", "25", "32"
+onePhase	  |  boolean	    |  ?      |  Marks an AC-charging session to be limited to one-phase charging.
 maxEnergy         |  float          |  ?      |  Maximum authorised energy in kilowatthours. Example: "5.5", "20", "85"
 minEnergy	      |  float          |  ?      |  Minimum required energy in kilowatthours. Example: "5.5", "20", "85"
 departure		  |  DateTimeType	|  ?	  |  Scheduled time of departure.
