@@ -1547,7 +1547,7 @@ Contains all information concerning a Charge Data Record
  chargePointAddress |  AddressType      |  ?      |  Contains the address of the charging station.
  chargePointType  |  string(2)          |  1      |  The type of the charge point "AC" or "DC"
  connectorType    |  ConnectorType      |  1      |  Type of the utilized socket or connector.
- maxSocketPower   |  float              |  1      |  Maximum available power at the socket in kilowatts. Example: "3.7", "11", "22"
+ ratings	  |  RatingsType        |  ?      |  Ratings applicable to this charge point.
  meterId          |  string(20)         |  ?      |  Written identification number of the physical energy meter, provided by the manufacturer. For future use.
  chargingPeriods  |  CdrPeriodType      |  +      |  One period per item on the bill.
  totalCost	      |  float		        |  ?	  |  Total cost for the entire charging process. Should always equal the sum of the individual periodCosts.
