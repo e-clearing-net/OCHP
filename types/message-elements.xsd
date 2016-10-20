@@ -696,7 +696,7 @@
 
 	<s:element name="GetStatusResponse">
 		<s:complexType>
-			<s:sequence>
+			<s:choice>
 				<s:element name="combined" type="tns:EvseStatusType" minOccurs="0" maxOccurs="unbounded">
 					<s:annotation>
 						<s:documentation>
@@ -718,7 +718,7 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
-			</s:sequence>
+			</s:choice>
 		</s:complexType>
 	</s:element>
 
