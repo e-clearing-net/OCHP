@@ -1239,6 +1239,7 @@ Result and error codes for the class Result as return value for method calls.
  invalid-id     | One or more ID (EVSE/Contract) were not valid for this user.
  server         | Internal server error.
  format         | Data has technical errors.
+ roaming	| No roaming connections set; No own partners connected to this user; Roaming partners have no data.
 
 
 ### DateTimeType
