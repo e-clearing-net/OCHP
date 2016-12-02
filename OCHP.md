@@ -751,9 +751,9 @@ As additional status information to the static POI data of the Charge
 Point Information, the Live Status Interface builds upon that. Thus, 
 live status data does only contain the status information of each EVSE 
 without further payload data. A additional time to live can be 
-specified until the status information may be considered as actual. 
+specified until the status information may be considered as valid. 
 Overdue status information will be dropped by the CHS. The Navigation 
-System Providers are asked to request the actual status for stations 
+System Providers are asked to request the current status for stations 
 without valid status information.
 The current major and minor status of each EVSE shall be set following 
 the decision flow in figure below.
@@ -761,7 +761,7 @@ the decision flow in figure below.
 ![Figure Status decision flow for EVSEs.](media/LiveStatusDecision.png "Status decision flow for EVSEs.")
 
 Table shows the relationship of the major and minor status values. 
-Other combinations of the status values are must not be set.
+Other combinations of the status values must not be set.
 
 Major Status  | Minor Status | Description
 :-------------|:-------------|:-------------
@@ -775,7 +775,7 @@ Not Available | Out Of Order | Failure or other inoperability. TTL is set to the
 
 Furthermore, a PSO can send live status information for their parking
 spots towards the system. These will be evaluated according to the
-parkingId sent with individual EVSEs. The parking spot itself can have
+parkingId sent with individual EVSE static POI data. The parking spot itself can have
 the same major live status as an EVSE: available, not available or unknown.
 
 In order to enable implementations to only resolve one set of status,
@@ -785,8 +785,10 @@ as combined.
 
 ##### Implementation
 Each status update from the sending operator must contain the major status
-and may contain a minor status for further details. Consuming Navigation
-System Providers must be able to process the three major status values.
+and may contain a minor status for further details. The sending operator shall only
+send a status update for an EVSE in case of either change of EVSE-status or impending
+epiry of the ttl-value.
+Consuming Navigation System Providers must be able to process the three major status values.
 Optionally they may display the minor status and the ttl-value to the user.
 Furthermore, they can request the CHS to return parking spot live information
 either on its own or combined with the EVSEs live status.
