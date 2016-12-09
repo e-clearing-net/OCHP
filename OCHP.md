@@ -2097,7 +2097,7 @@ Changes to a tariff can always only be made to the entire tariff object. That wa
  Field Name          |  Field Type               |  Card.  |  Description
 :--------------------|:--------------------------|:--------|:------------
  priceComponent      | PriceComponentType        | 1       | Price component defining this TariffElement. 
- tariffRestriction   | TariffRestrictionType     | ?       | List of tariff restrictions applicable for this TariffElement / PriceComponent.
+ tariffRestriction   | TariffRestrictionType     | 1       | List of tariff restrictions applicable for this TariffElement / PriceComponent.
 <div><!-- ---------------------------------------------------------------------------- --></div>  
 
 
@@ -2149,6 +2149,7 @@ The tariff-ID follows a similar syntax to that of contract- and EVSE-IDs. The Op
 				<stepSize>300</stepSize>
 			</priceComponent>
 		</tariffElement>
+		<tariffRestriction/>
 	</individualTariff>
 </tariffInfo>
 ```
