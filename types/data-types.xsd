@@ -1073,10 +1073,10 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="stepSize" type="s:int" minOccurs="1" maxOccurs="1">
+			<s:element name="stepSize" type="s:float" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Minimum amount to be billed (billing will happen in stepSize increments). In case the billingItem is a one time payment, stepSize is to be set to 1.
+						Minimum amount to be billed. This unit will be billed in this stepSize blocks. For example: if billingItem is usagetime and stepSize is 0.1, then time will be billed in blocks of 6 minutes, so if 8 minutes is used, 12 minutes (2 blocks of stepSize) will be billed. In case of one-time payments, this is to be set to 1.0.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
