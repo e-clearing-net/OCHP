@@ -2157,17 +2157,18 @@ The tariff-ID follows a similar syntax to that of contract- and EVSE-IDs. The Op
 ```
 
 #### Complex Tariff example
-2.50 euro start tariff
-1.00 euro per hour charging tariff for less than 11kW (paid per 15 minutes)
-2.00 euro per hour charging tariff for more than 11kW on weekdays (paid per 10 minutes)
-1.25 euro per hour charging tariff for more than 11kW during the weekend (paid per 10 minutes)
+- 2.50 euro start tariff
+- 1.00 euro per hour charging tariff for less than 11kW (paid per 15 minutes)
+- 2.00 euro per hour charging tariff for more than 11kW on weekdays (paid per 12 minutes)
+- 1.25 euro per hour charging tariff for more than 11kW during the weekend (paid per 12 minutes)
+
 Parking costs:
 - Weekdays: between 09:00 and 18:00 : 5 euro (paid per 6 minutes) 
 - Saturday: between 10:00 and 17:00 : 6 euro (paid per 6 minutes)
 
 all of the above as the default tariff
 
-with additional 2 euro per hour tariff for YYCBA-provider
+with additional 2 euro per hour tariff for YYCBA-provider (paid exactly as consumed)
 
 ```XML
 <TariffInfoArray>
@@ -2201,7 +2202,7 @@ with additional 2 euro per hour tariff for YYCBA-provider
 					<BillingItemType>usagetime</BillingItemType>
 				</billingItem>
 				<itemPrice>2.0</itemPrice>
-				<stepSize>0.1667</stepSize>
+				<stepSize>0.2</stepSize>
 			</priceComponent>
 			<tariffRestriction>
 				<regularHours weekday="1" periodBegin="00:00" periodEnd="24:00"/>
@@ -2218,7 +2219,7 @@ with additional 2 euro per hour tariff for YYCBA-provider
 					<BillingItemType>usagetime</BillingItemType>
 				</billingItem>
 				<itemPrice>1.25</itemPrice>
-				<stepSize>0.1667</stepSize>
+				<stepSize>0.2</stepSize>
 			</priceComponent>
 			<tariffRestriction>
 				<regularHours weekday="6" periodBegin="00:00" periodEnd="24:00"/>
@@ -2232,7 +2233,7 @@ with additional 2 euro per hour tariff for YYCBA-provider
 					<BillingItemType>parkingtime</BillingItemType>
 				</billingItem>
 				<itemPrice>5.0</itemPrice>
-				<stepSize>0.0833</stepSize>
+				<stepSize>0.1</stepSize>
 			</priceComponent>
 			<tariffRestriction>
 				<regularHours weekday="1" periodBegin="09:00" periodEnd="18:00"/>
@@ -2263,7 +2264,7 @@ with additional 2 euro per hour tariff for YYCBA-provider
 					<BillingItemType>usagetime</BillingItemType>
 				</billingItem>
 				<itemPrice>100.00</itemPrice>
-				<stepSize>0.1</stepSize>
+				<stepSize>0.0</stepSize>
 			</priceComponent>
 			<tariffRestriction>
 			</tariffRestriction>
