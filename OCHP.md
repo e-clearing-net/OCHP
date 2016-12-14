@@ -2263,7 +2263,7 @@ with additional 2 euro per hour tariff for YYCBA-provider (paid exactly as consu
 				<billingItem>
 					<BillingItemType>usagetime</BillingItemType>
 				</billingItem>
-				<itemPrice>100.00</itemPrice>
+				<itemPrice>2.00</itemPrice>
 				<stepSize>0.0</stepSize>
 			</priceComponent>
 			<tariffRestriction>
