@@ -2138,20 +2138,22 @@ The tariff-ID follows a similar syntax to that of contract- and EVSE-IDs. The Op
 2 euro per hour default tariff
 
 ```XML
-<tariffInfo>
+<TariffInfoArray>
 	<tariffId>YYABCT01</tariffId>
 	<individualTariff>
-		<currency>EUR</currency>
 		<tariffElement>
 			<priceComponent>
-				<billingItem>usagetime</BillingItem>
-				<itemPrice>2.00</itemPrice>
-				<stepSize>300</stepSize>
+				<billingItem>
+					<BillingItemType>usagetime</BillingItemType>
+				</billingItem>
+				<itemPrice>2.0</itemPrice>
+				<stepSize>0.0</stepSize>
 			</priceComponent>
+			<tariffRestriction/>
 		</tariffElement>
-		<tariffRestriction/>
+		<currency>EUR</currency>
 	</individualTariff>
-</tariffInfo>
+</TariffInfoArray>
 ```
 
 #### Complex Tariff example
@@ -2160,99 +2162,116 @@ The tariff-ID follows a similar syntax to that of contract- and EVSE-IDs. The Op
 2.00 euro per hour charging tariff for more than 11kW on weekdays (paid per 10 minutes)
 1.25 euro per hour charging tariff for more than 11kW during the weekend (paid per 10 minutes)
 Parking costs:
-- Weekdays: between 09:00 and 18:00 : 5 euro (paid per 5 minutes) 
-- Saturday: between 10:00 and 17:00 : 6 euro (paid per 5 minutes)
+- Weekdays: between 09:00 and 18:00 : 5 euro (paid per 6 minutes) 
+- Saturday: between 10:00 and 17:00 : 6 euro (paid per 6 minutes)
 
 all of the above as the default tariff
 
 with additional 2 euro per hour tariff for YYCBA-provider
 
 ```XML
-<tariffInfo>
+<TariffInfoArray>
 	<tariffId>YYABCT02</tariffId>
 	<individualTariff>
-		<currency>EUR</currency>
 		<tariffElement>
 			<priceComponent>
-				<billingItem>serviceFee</billingItem>
-				<itemPrice>2.50</itemPrice>
-				<stepSize>1</stepSize>
+				<billingItem>
+					<BillingItemType>serviceFee</BillingItemType>
+				</billingItem>
+				<itemPrice>2.5</itemPrice>
+				<stepSize>1.0</stepSize>
 			</priceComponent>
+			<tariffRestriction/>
 		</tariffElement>
 		<tariffElement>
 			<priceComponent>
-				<billingItem>usagetime</billingItem>
-				<itemPrice>1.00</itemPrice>
-				<stepSize>900</stepSize>
+				<billingItem>
+					<BillingItemType>usagetime</BillingItemType>
+				</billingItem>
+				<itemPrice>1.0</itemPrice>
+				<stepSize>0.25</stepSize>
 			</priceComponent>
 			<tariffRestriction>
-				<maxPower>11.00</maxPower>
+				<maxPower>11.0</maxPower>
 			</tariffRestriction>
 		</tariffElement>
 		<tariffElement>
 			<priceComponent>
-				<billingItem>usagetime</billingItem>
-				<itemPrice>2.00</itemPrice>
-				<stepSize>600</stepSize>
+				<billingItem>
+					<BillingItemType>usagetime</BillingItemType>
+				</billingItem>
+				<itemPrice>2.0</itemPrice>
+				<stepSize>0.1667</stepSize>
 			</priceComponent>
 			<tariffRestriction>
-				<minPower>11.00</minPower>
-				<regularHours weekday="1">
-				<regularHours weekday="2">
-				<regularHours weekday="3">
-				<regularHours weekday="4">
-				<regularHours weekday="5">
+				<regularHours weekday="1" periodBegin="00:00" periodEnd="24:00"/>
+				<regularHours weekday="2" periodBegin="00:00" periodEnd="24:00"/>
+				<regularHours weekday="3" periodBegin="00:00" periodEnd="24:00"/>
+				<regularHours weekday="4" periodBegin="00:00" periodEnd="24:00"/>                     
+				<regularHours weekday="5" periodBegin="00:00" periodEnd="24:00"/>
+				<minPower>11.0</minPower>
 			</tariffRestriction>
 		</tariffElement>
 		<tariffElement>
 			<priceComponent>
-				<billingItem>usagetime</billingItem>
+				<billingItem>
+					<BillingItemType>usagetime</BillingItemType>
+				</billingItem>
 				<itemPrice>1.25</itemPrice>
-				<stepSize>600</stepSize>
+				<stepSize>0.1667</stepSize>
 			</priceComponent>
 			<tariffRestriction>
-				<minPower>11.00</minPower>
-				<regularHours weekday="6">
-				<regularHours weekday="7">
+				<regularHours weekday="6" periodBegin="00:00" periodEnd="24:00"/>
+				<regularHours weekday="7" periodBegin="00:00" periodEnd="24:00"/>
+				<minPower>11.0</minPower>
 			</tariffRestriction>
 		</tariffElement>
 		<tariffElement>
 			<priceComponent>
-				<billingItem>parkingtime</billingItem>
-				<itemPrice>5.00</itemPrice>
-				<stepSize>300</stepSize>
+				<billingItem>
+					<BillingItemType>parkingtime</BillingItemType>
+				</billingItem>
+				<itemPrice>5.0</itemPrice>
+				<stepSize>0.0833</stepSize>
 			</priceComponent>
 			<tariffRestriction>
-				<regularHours weekday="1" periodBegin="09:00" periodEnd="18:00">
-				<regularHours weekday="2" periodBegin="09:00" periodEnd="18:00">
-				<regularHours weekday="3" periodBegin="09:00" periodEnd="18:00">
-				<regularHours weekday="4" periodBegin="09:00" periodEnd="18:00">
-				<regularHours weekday="5" periodBegin="09:00" periodEnd="18:00">
+				<regularHours weekday="1" periodBegin="09:00" periodEnd="18:00"/>
+				<regularHours weekday="2" periodBegin="09:00" periodEnd="18:00"/>
+				<regularHours weekday="3" periodBegin="09:00" periodEnd="18:00"/>
+				<regularHours weekday="4" periodBegin="09:00" periodEnd="18:00"/>
+				<regularHours weekday="5" periodBegin="09:00" periodEnd="18:00"/>
 			</tariffRestriction>
 		</tariffElement>
 		<tariffElement>
 			<priceComponent>
-				<billingItem>parkingtime</billingItem>
-				<itemPrice>6.00</itemPrice>
-				<stepSize>300</stepSize>
+				<billingItem>
+					<BillingItemType>parkingtime</BillingItemType>
+				</billingItem>
+				<itemPrice>6.0</itemPrice>
+				<stepSize>0.1</stepSize>
 			</priceComponent>
 			<tariffRestriction>
-				<regularHours weekday="6" periodBegin="10:00" periodEnd="17:00">
+				<regularHours weekday="6" periodBegin="10:00" periodEnd="17:00"/>
 			</tariffRestriction>
 		</tariffElement>
+		<currency>EUR</currency>
 	</individualTariff>
 	<individualTariff>
-		<currency>EUR</currency>
-		<recipient>YYCBA</recipient>
 		<tariffElement>
 			<priceComponent>
-				<billingItem>usagetime</BillingItem>
-				<itemPrice>2.00</itemPrice>
-				<stepSize>300</stepSize>
+				<billingItem>
+					<BillingItemType>usagetime</BillingItemType>
+				</billingItem>
+				<itemPrice>100.00</itemPrice>
+				<stepSize>0.1</stepSize>
 			</priceComponent>
+			<tariffRestriction>
+			</tariffRestriction>
 		</tariffElement>
+		<recipient>YYCBA</recipient>
+		<currency>EUR</currency>
 	</individualTariff>
-</tariffInfo>
+</TariffInfoArray>
 ```
 
 
