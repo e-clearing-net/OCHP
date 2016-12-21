@@ -1491,7 +1491,6 @@ totalCost = sum( billingValue_i * itemPrice_i ) [currency]
  endDateTime    |  LocalDateTimeType  |  1      |  Ending time of the period. Must be equal or earlier than endDateTime of the CDRInfo.
  billingItem    |  BillingItemType    |  1      |  Defines what the EVSP is charged for during this period.
  billingValue   |  float              |  1      |  The value the EVSP is charged for. The unit of this value depends on the billingItem.
- currency       |  string(3)          |  1      |  Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
  itemPrice      |  float              |  1      |  Price per unit of the billingItem in the given currency.
  periodCost     |  float              |  ?      |  Total cost of the period in the given currency.
  taxrate		|  int				  |  ?      |  Tax rate in percent to be paid for the charging process in the EVSE operator's country.
