@@ -971,7 +971,7 @@ This contains the field definition of the AddCDRs.conf sent by the CHS as respon
  Field Name           |  Field Type      |  Card.  |  Description
 :---------------------|:-----------------|:--------|:------------
 result                |  Result          |  1      |  This contains the result of AddCDRs.req.
-implausibleCdrsArray  |  Array(CDRInfo)  |  *      |  This contains the refused Charge Detail Records.
+implausibleCdrsArray  |  Array(CdrId)    |  *      |  This contains the refused Charge Detail Records.
 
 
 ### ConfirmCDRs.req
