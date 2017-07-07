@@ -12,6 +12,7 @@ Prot. Version | Date       | Comment
 :-------------|:-----------|:-------
 0.1           | 27-03-2015 | Concept, Functional specification. Commit: [77cccd838db692ab6f8b77fb4be8e81d59ec04e2](../../commit/77cccd838db692ab6f8b77fb4be8e81d59ec04e2)
 0.2			  | 15-08-2016 | Functional enhancements, usability improvements.
+0.3	      | 07-07-2017 | Live-Auhtorisation, Security Update
 
 
 Copyright (c) 2015-2016 smartlab, e-laad.nl
@@ -197,7 +198,7 @@ act as a server as well.
 
 ## Basic Principles of OCHPdirect
 
-The OCHP direct Interface describes a set of methods to control 
+The OCHPdirect Interface describes a set of methods to control 
 charging sessions in an EVSE operator's backend. While dedicated 
 methods in the clearing house's interface extend its functionality to 
 provide remote services, the actual service requests are sent between 
@@ -482,6 +483,9 @@ maximum TTL for the reservation they would accept, but establish the
 session nonetheless. It is then up to the provider to decide whether 
 to accept this offer from the operator (and otherwise release the EVSE, 
 cancelling the reservation).
+
+The provider may also request a reservation from a specific time.
+This is to enable sharing of semi-public charging infrastructure like from car sharing applications, that need to be available from a certain point on. As above, it's up to the operator to decide whether the reservation request is accepted. If it is declined, the operator should return the maximum "ReserveFrom" value he will allow at the charge point and for the token used for authorisation.
 
  * MDM sends the SelectEvse.req PDU.
  * CMS responds with a SelectEvse.conf PDU.
