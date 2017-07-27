@@ -2014,7 +2014,7 @@ This class contains all parking related information. If a parkingId is given, th
 
  Field Name          |  Field Type               |  Card.  |  Description
 :--------------------|:--------------------------|:--------|:------------
- parkingId           |  ParkingId                |  ?      |  Globally unique identifier for this parking spot.
+ parkingId           |  ParkingId                |  1      |  Globally unique identifier for this parking spot.
  restriction	     |  RestrictionType		     |  *      |  Restrictions applying to the usage of the parking spot. If set, should include the restrictions to EVSE-usage as well.
  floorlevel          |  string(4)                |  ?      |  Alphanumeric. Level on which the charge station is located (in garage buildings) in the locally displayed numbering scheme. Examples: "-2","P-5", "2", "+5"
  parkingSpotNumber   |  string(5)                |  ?      |  Alphanumeric. Locally displayed parking slot number. Examples: "10", "251","B25", "P-234"
