@@ -1310,8 +1310,8 @@ Regular recurring operation or access hours. Consecutive days can be combined us
  Field Name   |  Field Type  |  Card.  |  Description
 :-------------|:-------------|:--------|:------------
  weekday~     |  int(1)      |  1      |  Number of day in the week, beginning with Monday (1), ending with Sunday (7).
- periodBegin~ |  TimeType    |  1      |  Begin of the regular period given in hours:minutes:seconds. Must be in 24h format with leading zeros. Example: "18:15:00". Hour/Minute/Second separator: ":" Regex: $[$0-2$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$
- periodEnd~   |  TimeType    |  1      |  End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
+ periodBegin~ |  string(5)    |  1      |  Begin of the regular period given in hours:minutes. Must be in 24h format with leading zeros. Example: "18:15". Hour/Minute separator: ":" Regex: $[$0-2$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$
+ periodEnd~   |  string(5)    |  1      |  End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
 
 
 
