@@ -56,7 +56,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     - [Exchange of interface definition](#exchange-of-interface-definition-basic)
         - [Set own interface definition in the CHS](#set-own-interface-definition-in-the-chs)
         - [Get roaming partners interface definitions from the CHS](#get-roaming-partners-interface-definitions-from-the-chs)
-- [Partner-to-partner interface description (_OCHPdirect_ interface)](#partner-to-partner-interface-description-ochp-direct-interface)
+- [Partner-to-partner interface description (_OCHPdirect_ interface)](#partner-to-partner-interface-description-ochpdirect-interface)
     - [Get status information of charge points](#get-status-information-of-charge-points-basic)
         - [Request current live status from an Operator](#request-current-live-status-from-an-operator)
         - [Report a data or compatibility discrepancy to an Operator](#report-a-data-or-compatibility-discrepancy-to-an-operator)
