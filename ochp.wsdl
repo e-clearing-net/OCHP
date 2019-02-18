@@ -3,7 +3,7 @@
 
 <!-- ===================================================================
 
-                  OCHP-direct 1.4.1 Web Service Description
+                  OCHP 1.5 Web Service Description
 
 This document defines a standard interface between different parties in
 the market of electric vehicle charging infrastructure and a clearing
@@ -15,889 +15,45 @@ available information. For a full interface description please refer
 to the OCHP specification PDF you can download from http://ochp.eu.
 
 
- Copyright Information:
-This work is licensed under the Creative Commons
-Attribution-NoDerivatives 4.0 International License.
-To view a copy of this license, visitk
-http://creativecommons.org/licenses/by-nd/4.0/.
+Copyright (c) 2012-2018 smartlab, bluecorner.be, e-laad.nl
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==================================================================== -->
 
 
-<wsdl:definitions name="OCHP_direct_0.2"
-	targetNamespace="http://ochp.eu/1.4.1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+<wsdl:definitions name="OCHP_1.5"
+	targetNamespace="http://ochp.eu/1.5" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:s="http://www.w3.org/2001/XMLSchema"
-	xmlns:p="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://ochp.eu/1.4.1">
+	xmlns:p="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://ochp.eu/1.5">
 
 	<wsdl:documentation>
-		Open Clearing House Protocol (OCHP) direct Extension Version 1.4.1
+		Open Clearing House Protocol (OCHP) Version 1.5
 	</wsdl:documentation>
 
-	<wsdl:import namespace="http://ochp.eu/1.5" location="ochp.wsdl"/>
-
 	<wsdl:types>
-		<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.4.1">
-
-			<s:include schemaLocation="types/message-elements.xsd"/>
-
-			<s:element name="AddServiceEndpointsRequest">
-				<s:complexType>
-					<s:sequence>
-						<s:element minOccurs="0" maxOccurs="unbounded" name="providerEndpointArray" type="tns:ProviderEndpoint">
-							<s:annotation>
-								<s:documentation>
-									Array of endpoints of the partners provider system.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element minOccurs="0" maxOccurs="unbounded" name="operatorEndpointArray" type="tns:OperatorEndpoint">
-							<s:annotation>
-								<s:documentation>
-									Array of endpoints of the partners operator system.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-					</s:sequence>
-				</s:complexType>
-			</s:element>
-
-			<s:element name="AddServiceEndpointsResponse">
-				<s:complexType>
-					<s:sequence>
-						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:Result">
-							<s:annotation>
-								<s:documentation>
-									This contains the result of AddServiceEndpoints.req
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-					</s:sequence>
-				</s:complexType>
-			</s:element>
-
-			<s:element name="GetServiceEndpointsRequest">
-				<s:complexType>
-					<s:annotation>
-						<s:documentation>
-							Defines the GetServiceEndpoints.req.
-						</s:documentation>
-					</s:annotation>
-				</s:complexType>
-			</s:element>
-
-			<s:element name="GetServiceEndpointsResponse">
-				<s:complexType>
-					<s:sequence>
-						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:Result">
-							<s:annotation>
-								<s:documentation>
-									This contains the result of GetServiceEndpoints.req
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element minOccurs="0" maxOccurs="unbounded" name="providerEndpointArray" type="tns:ProviderEndpoint">
-							<s:annotation>
-								<s:documentation>
-									Array of endpoints of all providers connected to the requester.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element minOccurs="0" maxOccurs="unbounded" name="operatorEndpointArray" type="tns:OperatorEndpoint">
-							<s:annotation>
-								<s:documentation>
-									Array of endpoints of all operators connected to the requester.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-					</s:sequence>
-				</s:complexType>
-			</s:element>
-
-			<s:complexType name="DirectEndpoint">
-				<s:sequence>
-					<s:element name="url" minOccurs="1" maxOccurs="1">
-						<s:annotation>
-							<s:documentation>
-								The endpoint address.
-							</s:documentation>
-						</s:annotation>
-						<s:simpleType>
-							<s:restriction base="s:string">
-								<s:pattern value="https:\/\/.+"></s:pattern>
-								<s:maxLength value="255"></s:maxLength>
-							</s:restriction>
-						</s:simpleType>
-					</s:element>
-					<s:element name="namespaceUrl" minOccurs="1" maxOccurs="1">
-						<s:annotation>
-							<s:documentation>
-								The WSDL namespace definition.
-							</s:documentation>
-						</s:annotation>
-						<s:simpleType>
-							<s:restriction base="s:string">
-								<s:maxLength value="255"></s:maxLength>
-								<s:enumeration value="http://ochp.eu/1.3"></s:enumeration>
-								<s:enumeration value="http://ochp.eu/1.4"></s:enumeration>
-								<s:enumeration value="http://ochp.eu/1.5"></s:enumeration>
-							</s:restriction>
-						</s:simpleType>
-					</s:element>
-					<s:element name="accessToken" minOccurs="0" maxOccurs="1">
-						<s:annotation>
-							<s:documentation>
-								The secret token to access this endpoint.
-							</s:documentation>
-						</s:annotation>
-						<s:simpleType>
-							<s:restriction base="s:string">
-								<s:maxLength value="255"></s:maxLength>
-							</s:restriction>
-						</s:simpleType>
-					</s:element>
-					<s:element name="validDate" minOccurs="1" maxOccurs="1">
-						<s:annotation>
-							<s:documentation>
-								The date on which this endpoint/token combination is valid (plus overlap into day before and after).
-							</s:documentation>
-						</s:annotation>
-						<s:simpleType>
-							<s:restriction base="s:string">
-								<s:length value="10"></s:length>
-								<s:whiteSpace value="collapse"></s:whiteSpace>
-								<s:pattern value="(\d\d\d\d)-(\d\d)-(\d\d)"></s:pattern>
-							</s:restriction>
-						</s:simpleType>
-					</s:element>
-				</s:sequence>
-			</s:complexType>
-
-			<s:complexType name="ProviderEndpoint">
-				<s:complexContent>
-					<s:extension base="tns:DirectEndpoint">
-						<s:sequence>
-							<s:element name="whitelist" type="tns:ContractPattern" minOccurs="1" maxOccurs="unbounded">
-								<s:annotation>
-									<s:documentation>
-										List of patterns that match all Contract-IDs the endpoint is responsible for.
-									</s:documentation>
-								</s:annotation>
-							</s:element>
-							<s:element name="blacklist" type="tns:ContractPattern" minOccurs="0" maxOccurs="unbounded">
-								<s:annotation>
-									<s:documentation>
-										List of patterns that match Contract-IDs the endpoint is not responsible for, but are matched by the whitelist.
-									</s:documentation>
-								</s:annotation>
-							</s:element>
-						</s:sequence>
-					</s:extension>
-				</s:complexContent>
-			</s:complexType>
-
-			<s:complexType name="OperatorEndpoint">
-				<s:complexContent>
-					<s:extension base="tns:DirectEndpoint">
-						<s:sequence>
-							<s:element name="whitelist" type="tns:EvsePattern" minOccurs="1" maxOccurs="unbounded">
-								<s:annotation>
-									<s:documentation>
-										List of patterns that match all EVSE-IDs the endpoint is responsible for.
-									</s:documentation>
-								</s:annotation>
-							</s:element>
-							<s:element name="blacklist" type="tns:EvsePattern" minOccurs="0" maxOccurs="unbounded">
-								<s:annotation>
-									<s:documentation>
-										List of patterns that match EVSE-IDs the endpoint is not responsible for, but are matched by the whitelist.
-									</s:documentation>
-								</s:annotation>
-							</s:element>
-						</s:sequence>
-					</s:extension>
-				</s:complexContent>
-			</s:complexType>
-
-			<s:simpleType name="ContractPattern">
-				<s:annotation>
-					<s:documentation>
-						Defines a pattern that matches Contract-IDs. The pattern must be specified for IDs without optional seperators. The wildcard character for the pattern is %. The pattern as well as the ID is case sensitive.
-					</s:documentation>
-				</s:annotation>
-				<s:restriction base="s:string">
-					<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[Cc][A-Za-z0-9]{0,8}%?"></s:pattern>
-				</s:restriction>
-			</s:simpleType>
-
-			<s:simpleType name="EvsePattern">
-				<s:annotation>
-					<s:documentation>
-						Defines a pattern that matches EVSE-IDs. The pattern must be specified for IDs without optional seperators. Seperators in the ID's instance are handled as part of the alphabet. The wildcard character for the pattern is %.
-					</s:documentation>
-				</s:annotation>
-				<s:restriction base="s:string">
-					<s:pattern value="[A-Z]{2}[A-Z0-9]{3}[E]([A-Z0-9]?[A-Z0-9\*]{0,30})%?"></s:pattern>
-				</s:restriction>
-			</s:simpleType>
-
-
-<!-- Elements and types for the direct communication -->
-
-			<s:complexType name="DirectResult" abstract="false">
-				<s:annotation>
-					<s:documentation>
-						General result for OCHP-direct
-					</s:documentation>
-				</s:annotation>
-				<s:sequence>
-					<s:element minOccurs="1" maxOccurs="1" name="resultCode" type="tns:DirectResultCodeType">
-						<s:annotation>
-							<s:documentation>
-								The machine-readable result code.
-							</s:documentation>
-						</s:annotation>
-					</s:element>
-					<s:element minOccurs="1" maxOccurs="1" nillable="true" name="resultDescription">
-						<s:annotation>
-							<s:documentation>
-								The human-readable error description
-							</s:documentation>
-						</s:annotation>
-						<s:simpleType>
-							<s:restriction base="s:string">
-								<s:maxLength value="1000"></s:maxLength>
-							</s:restriction>
-						</s:simpleType>
-					</s:element>
-				</s:sequence>
-			</s:complexType>
-
-			<s:complexType name="DirectResultCodeType">
-				<s:sequence>
-					<s:element name="resultCode">
-						<s:annotation>
-							<s:documentation>
-								ok: Data accepted and processed;
-								partly: Not all control parameters could be applied;
-								not-found: Given EVSE-ID is not known to the operator;
-								not-supported: Given EVSE-ID does not support OCHP-direct;
-								invalid-id: The DirectId is not valid or has expired;
-								server: Internal server error;
-							</s:documentation>
-						</s:annotation>
-						<s:simpleType>
-							<s:restriction base="s:string">
-								<s:enumeration value="ok"></s:enumeration>
-								<s:enumeration value="partly"></s:enumeration>
-								<s:enumeration value="not-found"></s:enumeration>
-								<s:enumeration value="not-supported"></s:enumeration>
-								<s:enumeration value="invalid-id"></s:enumeration>
-								<s:enumeration value="server"></s:enumeration>
-							</s:restriction>
-						</s:simpleType>
-					</s:element>
-				</s:sequence>
-			</s:complexType>
-
-			<s:element name="DirectEvseStatusRequest">
-				<s:complexType>
-					<s:sequence>
-						<s:element name="requestedEvseId" type="tns:EvseId" minOccurs="1" maxOccurs="unbounded">
-							<s:annotation>
-								<s:documentation>
-									List of EVSE-IDs the live status is requested for.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-					</s:sequence>
-				</s:complexType>
-			</s:element>
-
-			<s:element name="ReportDiscrepancyRequest">
-				<s:complexType>
-					<s:sequence>
-						<s:element name="evseId" type="tns:EvseId" minOccurs="1" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									The charge point which is affected by the report.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element minOccurs="1" maxOccurs="1" nillable="false" name="report">
-							<s:annotation>
-								<s:documentation>
-									Textual or generated report of the discrepancy.
-								</s:documentation>
-							</s:annotation>
-							<s:simpleType>
-								<s:restriction base="s:string">
-									<s:maxLength value="2000"></s:maxLength>
-								</s:restriction>
-							</s:simpleType>
-						</s:element>
-					</s:sequence>
-				</s:complexType>
-			</s:element>
-
-			<s:element name="ReportDiscrepancyResponse">
-				<s:complexType></s:complexType>
-			</s:element>
-
-			<s:element name="SelectEvseRequest">
-				<s:complexType>
-					<s:sequence>
-						<s:element name="evseId" type="tns:EvseId" minOccurs="1" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									The charge point which is selected by the provider.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="contractId" type="tns:ContractId" minOccurs="1" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									Contract-ID for which the charge point is selected.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="reserveFrom" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									The desired start time for the reservation created for the selected EVSE (in UTC).
-								</s:documentation>
-							</s:annotation>
-						</s:element>						
-						<s:element name="reserveUntil" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									The desired end time for the reservation created for the selected EVSE (in UTC).
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-					</s:sequence>
-				</s:complexType>
-			</s:element>
-
-			<s:element name="SelectEvseResponse">
-				<s:complexType>
-					<s:sequence>
-						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:DirectResult">
-							<s:annotation>
-								<s:documentation>
-									This contains the result of SelectEvse.req.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element minOccurs="0" maxOccurs="1" name="directId" type="tns:DirectId">
-							<s:annotation>
-								<s:documentation>
-									The session id for this direct charging process on success.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element minOccurs="0" maxOccurs="1" name="ttl" type="tns:DateTimeType">
-							<s:annotation>
-								<s:documentation>
-									On success the time until this selection is valid.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-					</s:sequence>
-				</s:complexType>
-			</s:element>
-
-			<s:element name="ControlEvseRequest">
-				<s:complexType>
-					<s:sequence>
-						<s:element minOccurs="1" maxOccurs="1" name="directId" type="tns:DirectId">
-							<s:annotation>
-								<s:documentation>
-									The session id referencing the direct charging process to be controlled.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element minOccurs="1" maxOccurs="1" name="operation" type="tns:DirectOperation">
-							<s:annotation>
-								<s:documentation>
-									The operation to be performed for the selected charge point.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="minPower" type="s:float" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									Minimum authorised power in kilowatts. Example: "3.7", "8", "15"
-								</s:documentation>
-							</s:annotation>
-						</s:element>						
-						<s:element name="maxPower" type="s:float" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									Maximum authorised power in kilowatts. Example: "3.7", "8", "15"
-								</s:documentation>
-							</s:annotation>
-						</s:element>	
-						<s:element name="minCurrent" type="s:float" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									Minimum authorised current in ampere. Example: "16", "25", "32"
-								</s:documentation>
-							</s:annotation>
-						</s:element>						
-						<s:element name="maxCurrent" type="s:float" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									Maximum authorised current in ampere. Example: "16", "25", "32"
-								</s:documentation>
-							</s:annotation>
-						</s:element>						
-						<s:element name="onePhase" type="s:boolean" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									Marks an AC-charging session to be limited to one-phase charging. 
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="minEnergy" type="s:float" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									Minimum required energy in kilowatthours. Example: "5.5", "20", "85"
-								</s:documentation>
-							</s:annotation>
-						</s:element>						
-						<s:element name="maxEnergy" type="s:float" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									Maximum authorised energy in kilowatthours. Example: "5.5", "20", "85"
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="departure" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									Scheduled time of departure. Only to be used for smart charging purposes.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-					</s:sequence>
-				</s:complexType>
-			</s:element>
-
-			<s:element name="ControlEvseResponse">
-				<s:complexType>
-					<s:sequence>
-						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:DirectResult">
-							<s:annotation>
-								<s:documentation>
-									This contains the result of ControlEvse.req.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element minOccurs="0" maxOccurs="1" name="directId" type="tns:DirectId">
-							<s:annotation>
-								<s:documentation>
-									The session id for this direct charging process.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element minOccurs="0" maxOccurs="1" name="ttl" type="tns:DateTimeType">
-							<s:annotation>
-								<s:documentation>
-									On success the timeout for this session.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-					</s:sequence>
-				</s:complexType>
-			</s:element>
-
-			<s:element name="ReleaseEvseRequest">
-				<s:complexType>
-					<s:sequence>
-						<s:element minOccurs="1" maxOccurs="1" name="directId" type="tns:DirectId">
-							<s:annotation>
-								<s:documentation>
-									The session id referencing the direct charging process to be released.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-					</s:sequence>
-				</s:complexType>
-			</s:element>
-
-			<s:element name="ReleaseEvseResponse">
-				<s:complexType>
-					<s:sequence>
-						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:DirectResult">
-							<s:annotation>
-								<s:documentation>
-									This contains the result of ReleaseEvse.req.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element minOccurs="0" maxOccurs="1" name="directId" type="tns:DirectId">
-							<s:annotation>
-								<s:documentation>
-									The session id for this direct charging process.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element minOccurs="0" maxOccurs="1" name="ttl" type="tns:DateTimeType">
-							<s:annotation>
-								<s:documentation>
-									On success the timeout for this session.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-					</s:sequence>
-				</s:complexType>
-			</s:element>
-
-			<s:element name="InformProviderMessage">
-				<s:complexType>
-					<s:sequence>
-						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:DirectResult">
-							<s:annotation>
-								<s:documentation>
-									This contains the result if the EMP requested InformProvider from the CPO. If InformProviderMessage is sent by the CPO towards the EMP as a request, this element must not be used.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element minOccurs="1" maxOccurs="1" name="message" type="tns:DirectMessage">
-							<s:annotation>
-								<s:documentation>
-									The operation to be performed for the selected charge point.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="evseId" type="tns:EvseId" minOccurs="1" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									The charge point which is used for this charging process.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="contractId" type="tns:ContractId" minOccurs="1" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									Contract-ID to which the charge point is assigned.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element minOccurs="1" maxOccurs="1" name="directId" type="tns:DirectId">
-							<s:annotation>
-								<s:documentation>
-									The session id for this direct charging process.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element minOccurs="0" maxOccurs="1" name="ttl" type="tns:DateTimeType">
-							<s:annotation>
-								<s:documentation>
-									The timeout for this session.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="maxPower" type="s:float" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									Maximum authorised power in kilowatts. Example: "3.7", "8", "15"
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="minPower" type="s:float" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									Minimum authorised power in kilowatts. Example: "3.7", "8", "15"
-								</s:documentation>
-							</s:annotation>
-						</s:element>	
-						<s:element name="effectivePower" type="s:float" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									The currently supplied power limit in kilowatts in case of load management. Example: "3.7", "8", "15"
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="maxCurrent" type="s:float" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									Maximum authorised current in ampere. Example: "16", "25", "32"
-								</s:documentation>
-							</s:annotation>
-						</s:element>						
-						<s:element name="minCurrent" type="s:float" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									Minimum authorised current in ampere. Example: "16", "25", "32"
-								</s:documentation>
-							</s:annotation>
-						</s:element>						
-						<s:element name="onePhase" type="s:boolean" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									Marks an AC-charging session to be limited to one-phase charging. 
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="maxEnergy" type="s:float" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									Maximum authorised energy in kilowatthours. Example: "5.5", "20", "85"
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="minEnergy" type="s:float" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									Minimum required energy in kilowatthours. Example: "5.5", "20", "85"
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="departure" type="tns:DateTimeType" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									Scheduled time of departure. Only to be used for smart charging purposes.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="chargedEnergy" type="s:float" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									The amount of energy in kilowatthours transferred during this charging process. Example: "5.5", "20", "85"
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="meterReading" type="tns:MeterReading" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									The current meter value (in kWh) as displayed on the meter to enable displaying it to the user. Example: "12345.67"
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="chargingPeriods" type="tns:CdrPeriodType" minOccurs="0" maxOccurs="unbounded">
-							<s:annotation>
-								<s:documentation>
-									One period per item on the bill.
-								</s:documentation>
-							</s:annotation>
-						</s:element>						
-						<s:element name="currentCost" type="s:float" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									The total cost of the charging process up to this point.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="currency" minOccurs="0" maxOccurs="1" nillable="true">
-							<s:annotation>
-								<s:documentation>
-									Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
-								</s:documentation>
-							</s:annotation>
-							<s:simpleType>
-								<s:restriction base="s:string">
-									<s:pattern value="[A-Z]*"></s:pattern>
-									<s:minLength value="3"></s:minLength>
-									<s:maxLength value="3"></s:maxLength>
-								</s:restriction>
-							</s:simpleType>
-						</s:element>
-						<s:element name="tariffInfo" type="tns:TariffInfo" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									This contains the tariff information to be updated or added.
-								</s:documentation>
-							</s:annotation>
-						</s:element>						
-					</s:sequence>
-				</s:complexType>
-			</s:element>
-
-			<s:element name="InformProviderResponse">
-				<s:complexType>
-					<s:sequence>
-						<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:DirectResult">
-							<s:annotation>
-								<s:documentation>
-									This contains the result of InformProvider.req.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-					</s:sequence>
-				</s:complexType>
-			</s:element>
-			
-			<s:element name="InformProviderRequest">
-				<s:complexType>
-					<s:sequence>
-						<s:element minOccurs="1" maxOccurs="1" name="directId" type="tns:DirectId">
-							<s:annotation>
-								<s:documentation>
-									The session id for this direct charging process.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-					</s:sequence>
-				</s:complexType>
-			</s:element>
-			
-			<s:element name="GetSingleRoamingAuthorisationRequest">
-				<s:complexType>
-					<s:sequence>
-						<s:element name="emtId" type="tns:EmtId" minOccurs="1" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									This contains the ID of the token which is to be retreived from the CHS.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-					</s:sequence>
-				</s:complexType>
-			</s:element>
-		
-			<s:element name="GetSingleRoamingAuthorisationResponse">
-				<s:complexType>
-					<s:sequence>
-						<s:element name="result" type="tns:Result" minOccurs="1" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									This contains the result of GetSingleRoamingAuthorisation.req
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-						<s:element name="roamingAuthorisationInfo" type="tns:RoamingAuthorisationInfo" minOccurs="0" maxOccurs="1">
-							<s:annotation>
-								<s:documentation>
-									This contains the roaming authorisation record for the requested token, if the request was valid.
-								</s:documentation>
-							</s:annotation>
-						</s:element>
-					</s:sequence>
-				</s:complexType>
-			</s:element>			
-
-			<s:simpleType name="DirectId">
-				<s:annotation>
-					<s:documentation>
-						Defines a pattern that matches EVSE-IDs. The pattern must be specified for IDs without optional seperators. Seperators in the ID's instance are handled as part of the alphabet. The wildcard character for the pattern is %.
-					</s:documentation>
-				</s:annotation>
-				<s:restriction base="s:string">
-					<s:pattern value="[A-Z0-9\-]*"></s:pattern>
-					<s:minLength value="1"></s:minLength>
-					<s:maxLength value="255"></s:maxLength>
-				</s:restriction>
-			</s:simpleType>
-
-			<s:complexType name="DirectOperation">
-				<s:sequence>
-					<s:element name="operation">
-						<s:annotation>
-							<s:documentation>
-								start: Initiate the start. Operator should allow the user to plug in;
-								change: Change the parameters of the charging process;
-								end: End the charging process. Operator should allow the user to plug out;
-								unlock: Unlock charging point. Operator should unlock the user to plug out;
-								reset: Initiate a reset of the charging point. Operator should restart the charging point;
-							</s:documentation>
-						</s:annotation>
-						<s:simpleType>
-							<s:restriction base="s:string">
-								<s:enumeration value="start"></s:enumeration>
-								<s:enumeration value="change"></s:enumeration>
-								<s:enumeration value="end"></s:enumeration>
-								<s:enumeration value="unlock"></s:enumeration>
-								<s:enumeration value="reset"></s:enumeration>								
-							</s:restriction>
-						</s:simpleType>
-					</s:element>
-				</s:sequence>
-			</s:complexType>
-
-			<s:complexType name="DirectMessage">
-				<s:sequence>
-					<s:element name="message">
-						<s:annotation>
-							<s:documentation>
-								start: A OCHP-direct charging process has been started;
-								change: The parameters of the charging process were changed;
-								info: A informative update is available, e.g. updated consumed energy value;
-								end: The charging process has ended, the connector was unplugged;
-								unlock: The charging point is unlocked;
-								reset: The charging point has been reset;
-								finish: The session is finished and the CDR was sent out;
-							</s:documentation>
-						</s:annotation>
-						<s:simpleType>
-							<s:restriction base="s:string">
-								<s:enumeration value="start"></s:enumeration>
-								<s:enumeration value="change"></s:enumeration>
-								<s:enumeration value="info"></s:enumeration>
-								<s:enumeration value="end"></s:enumeration>
-								<s:enumeration value="unlock"></s:enumeration>
-								<s:enumeration value="reset"></s:enumeration>								
-								<s:enumeration value="finish"></s:enumeration>
-							</s:restriction>
-						</s:simpleType>
-					</s:element>
-				</s:sequence>
-			</s:complexType>
-
-			<s:complexType name="MeterReading">
-				<s:annotation>
-					<s:documentation>
-						Most current meter readings transferred from the charge point including time stamp.
-					</s:documentation>
-				</s:annotation>
-				<s:sequence>
-					<s:element minOccurs="1" maxOccurs="1" name="meterValue" type="s:float">
-						<s:annotation>
-							<s:documentation>
-								The meter reading as transferred by the charging station (OCPP default unit: Wh).
-							</s:documentation>
-						</s:annotation>
-					</s:element>
-					<s:element minOccurs="1" maxOccurs="1" name="meterTime" type="tns:LocalDateTimeType">
-						<s:annotation>
-							<s:documentation>
-								The exact local time stamp of the time the meter reading was taken (belonging to the meter reading, e.g. as transferred by OCPP).
-							</s:documentation>
-						</s:annotation>
-					</s:element>
-				</s:sequence>
-			</s:complexType>
-			
-			<s:simpleType name="IdToken">
-				<s:annotation>
-					<s:documentation>Type of string defining identification token, e.g. RFID or credit card number. To be treated as case insensitive.</s:documentation>
-	        	</s:annotation>
-	        	<s:restriction base="s:string">
-	          		<s:maxLength value="20"/>
-	         	</s:restriction>
-         	</s:simpleType>
-         		
-      		<s:complexType name="IdTagInfo">
-        		<s:sequence>
-          			<s:element name="status" type="tns:AuthorizationStatus" minOccurs="1" maxOccurs="1"/>
-          			<s:element name="expiryDate" type="s:dateTime" minOccurs="0" maxOccurs="1"/>
-          			<s:element name="parentIdTag" type="tns:IdToken" minOccurs="0" maxOccurs="1"/>
-        		</s:sequence>
-      		</s:complexType> 
-      		
-			<s:simpleType name="AuthorizationStatus">
-				<s:annotation>
-					<s:documentation>Defines the authorization-status-value</s:documentation>
-				</s:annotation>
-				<s:restriction base="s:string">
-					<s:enumeration value="Accepted"/>
-					<s:enumeration value="Blocked"/>
-					<s:enumeration value="Expired"/>
-					<s:enumeration value="Invalid"/>
-					<s:enumeration value="ConcurrentTx"/>
-				</s:restriction>
-			</s:simpleType>
-			
+		<s:schema>
+			<s:import namespace="http://ochp.eu/1.5" schemaLocation="types/message-elements.xsd"/>
+			<s:import namespace="http://ochp.eu/1.5" schemaLocation="types/array-types.xsd"/>
+			<s:import namespace="http://ochp.eu/1.5" schemaLocation="types/data-types.xsd"/>
+			<s:import namespace="http://ochp.eu/1.5" schemaLocation="types/live-types.xsd"/>
 		</s:schema>
 	</wsdl:types>
 
@@ -905,228 +61,485 @@ http://creativecommons.org/licenses/by-nd/4.0/.
                         Messages
 ==================================================================== -->
 
-	<wsdl:message name="AddServiceEndpointsInput">
+<!-- Messages for the Exchange of Authorisation Data -->
+
+	<wsdl:message name="GetRoamingAuthorisationListInput">
 		<wsdl:part name="parameters"
-				element="tns:AddServiceEndpointsRequest" />
+				element="tns:GetRoamingAuthorisationListRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetRoamingAuthorisationListOutput">
+		<wsdl:part name="parameters"
+				element="tns:GetRoamingAuthorisationListResponse" />
 	</wsdl:message>
 
-	<wsdl:message name="AddServiceEndpointsOutput">
+	<wsdl:message name="SetRoamingAuthorisationListInput">
 		<wsdl:part name="parameters"
-				element="tns:AddServiceEndpointsResponse" />
+				element="tns:SetRoamingAuthorisationListRequest" />
+	</wsdl:message>
+	<wsdl:message name="SetRoamingAuthorisationListOutput">
+		<wsdl:part name="parameters"
+				element="tns:SetRoamingAuthorisationListResponse" />
 	</wsdl:message>
 
-	<wsdl:message name="GetServiceEndpointsInput">
+	<wsdl:message name="GetRoamingAuthorisationListUpdatesRequest">
 		<wsdl:part name="parameters"
-				element="tns:GetServiceEndpointsRequest" />
+				element="tns:GetRoamingAuthorisationListUpdatesRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetRoamingAuthorisationListUpdatesResponse">
+		<wsdl:part name="parameters"
+				element="tns:GetRoamingAuthorisationListUpdatesResponse" />
 	</wsdl:message>
 
-	<wsdl:message name="GetServiceEndpointsOutput">
+	<wsdl:message name="UpdateRoamingAuthorisationListResponse">
 		<wsdl:part name="parameters"
-				element="tns:GetServiceEndpointsResponse" />
+				element="tns:UpdateRoamingAuthorisationListResponse" />
 	</wsdl:message>
-
-
-<!-- Messages for the direct communication -->
-
-	<wsdl:message name="GetEvseStatusInput">
+	<wsdl:message name="UpdateRoamingAuthorisationListRequest">
 		<wsdl:part name="parameters"
-				element="tns:DirectEvseStatusRequest" />
-	</wsdl:message>
-	<wsdl:message name="GetEvseStatusOutput">
-		<wsdl:part name="parameters"
-				element="tns:GetStatusResponse" />
-	</wsdl:message>
-
-	<wsdl:message name="ReportDiscrepancyInput">
-		<wsdl:part name="parameters"
-				element="tns:ReportDiscrepancyRequest" />
-	</wsdl:message>
-	<wsdl:message name="ReportDiscrepancyOutput">
-		<wsdl:part name="parameters"
-				element="tns:ReportDiscrepancyResponse" />
-	</wsdl:message>
-
-	<wsdl:message name="SelectEvseInput">
-		<wsdl:part name="parameters"
-				element="tns:SelectEvseRequest" />
-	</wsdl:message>
-	<wsdl:message name="SelectEvseOutput">
-		<wsdl:part name="parameters"
-				element="tns:SelectEvseResponse" />
-	</wsdl:message>
-
-	<wsdl:message name="ControlEvseInput">
-		<wsdl:part name="parameters"
-				element="tns:ControlEvseRequest" />
-	</wsdl:message>
-	<wsdl:message name="ControlEvseOutput">
-		<wsdl:part name="parameters"
-				element="tns:ControlEvseResponse" />
-	</wsdl:message>
-
-	<wsdl:message name="ReleaseEvseInput">
-		<wsdl:part name="parameters"
-				element="tns:ReleaseEvseRequest" />
-	</wsdl:message>
-	<wsdl:message name="ReleaseEvseOutput">
-		<wsdl:part name="parameters"
-				element="tns:ReleaseEvseResponse" />
-	</wsdl:message>
-
-	<wsdl:message name="InformProviderEMPInput">
-		<wsdl:part name="parameters"
-				element="tns:InformProviderMessage" />
-	</wsdl:message>
-	<wsdl:message name="InformProviderEMPOutput">
-		<wsdl:part name="parameters"
-				element="tns:InformProviderResponse" />
+				element="tns:UpdateRoamingAuthorisationListRequest" />
 	</wsdl:message>
 	
-	<wsdl:message name="InformProviderCPOInput">
-		<wsdl:part name="parameters"
-				element="tns:InformProviderRequest" />
-	</wsdl:message>
-	<wsdl:message name="InformProviderCPOOutput">
-		<wsdl:part name="parameters"
-				element="tns:InformProviderMessage" />
-	</wsdl:message>
-	
-	<wsdl:message name="GetSingleRoamingAuthorisationInput">
+	<wsdl:message name="GetSingleRoamingAuthorisationRequest">
 		<wsdl:part name="parameters"
 				element="tns:GetSingleRoamingAuthorisationRequest" />
 	</wsdl:message>
-	<wsdl:message name="GetSingleRoamingAuthorisationOutput">
+	<wsdl:message name="GetSingleRoamingAuthorisationResponse">
 		<wsdl:part name="parameters"
 				element="tns:GetSingleRoamingAuthorisationResponse" />
+	</wsdl:message>
+<!-- Messages for the Exchange of Charge Data -->
+
+	<wsdl:message name="AddCDRsInput">
+		<wsdl:part name="parameters"
+				element="tns:AddCDRsRequest" />
+	</wsdl:message>
+	<wsdl:message name="AddCDRsOutput">
+		<wsdl:part name="parameters"
+				element="tns:AddCDRsResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="GetCDRsInput">
+		<wsdl:part name="parameters"
+				element="tns:GetCDRsRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetCDRsOutput">
+		<wsdl:part name="parameters"
+				element="tns:GetCDRsResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="CheckCDRsInput">
+		<wsdl:part name="parameters"
+				element="tns:CheckCDRsRequest" />
+	</wsdl:message>
+	<wsdl:message name="CheckCDRsOutput">
+		<wsdl:part name="parameters"
+				element="tns:CheckCDRsResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="ConfirmCDRsRequest">
+		<wsdl:part name="parameters"
+				element="tns:ConfirmCDRsRequest" />
+	</wsdl:message>
+	<wsdl:message name="ConfirmCDRsResponse">
+		<wsdl:part name="parameters"
+				element="tns:ConfirmCDRsResponse" />
+	</wsdl:message>
+
+<!-- Messages for the Exchange of Charge Point Information -->
+
+	<wsdl:message name="GetChargepointListInput">
+		<wsdl:part name="parameters"
+				element="tns:GetChargePointListRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetChargepointListOutput">
+		<wsdl:part name="parameters"
+				element="tns:GetChargePointListResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="SetChargepointListInput">
+		<wsdl:part name="parameters"
+				element="tns:SetChargePointListRequest" />
+	</wsdl:message>
+	<wsdl:message name="SetChargepointListOutput">
+		<wsdl:part name="parameters"
+				element="tns:SetChargePointListResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="GetChargePointListUpdatesRequest">
+		<wsdl:part name="parameters"
+				element="tns:GetChargePointListUpdatesRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetChargePointListUpdatesResponse">
+		<wsdl:part name="parameters"
+				element="tns:GetChargePointListUpdatesResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="UpdateChargePointListRequest">
+		<wsdl:part name="parameters"
+				element="tns:UpdateChargePointListRequest" />
+	</wsdl:message>
+	<wsdl:message name="UpdateChargePointListResponse">
+		<wsdl:part name="parameters"
+				element="tns:UpdateChargePointListResponse" />
+	</wsdl:message>
+
+<!-- Messages for the Exchange of Charge Point Information -->
+
+	<wsdl:message name="UpdateTariffsRequest">
+		<wsdl:part name="parameters"
+				element="tns:UpdateTariffsRequest" />
+	</wsdl:message>
+	<wsdl:message name="UpdateTariffsResponse">
+		<wsdl:part name="parameters"
+				element="tns:UpdateTariffsResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="GetTariffUpdatesRequest">
+		<wsdl:part name="parameters"
+				element="tns:GetTariffUpdatesRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetTariffUpdatesResponse">
+		<wsdl:part name="parameters"
+				element="tns:GetTariffUpdatesResponse" />
+	</wsdl:message>
+	
+<!-- Messages for the partner list exchange 
+	
+	<wsdl:message name="GetPartnerListRequest">
+	<wsdl:part name="parameters"
+				element="tns:GetPartnerListRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetPartnerListResponse">
+		<wsdl:part name="parameters"
+				element="tns:GetPartnerListResponse" />
+	</wsdl:message> -->	
+	
+<!-- Messages for the Live Status Interface -->
+
+	<wsdl:message name="UpdateStatusRequest">
+		<wsdl:part name="parameters"
+				element="tns:UpdateStatusRequest" />
+	</wsdl:message>
+	<wsdl:message name="UpdateStatusResponse">
+		<wsdl:part name="parameters"
+				element="tns:UpdateStatusResponse" />
+	</wsdl:message>
+
+	<wsdl:message name="GetStatusRequest">
+		<wsdl:part name="parameters"
+				element="tns:GetStatusRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetStatusResponse">
+		<wsdl:part name="parameters"
+				element="tns:GetStatusResponse" />
+	</wsdl:message>
+	
+<!-- Messages for the alternative fuels interface -->
+
+
+<!-- 	<wsdl:message name="AddSDRsInput">
+		<wsdl:part name="parameters"
+				element="tns:AddSDRsRequest" />
+	</wsdl:message>
+	<wsdl:message name="AddSDRsOutput">
+		<wsdl:part name="parameters"
+				element="tns:AddSDRsResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="GetSDRsInput">
+		<wsdl:part name="parameters"
+				element="tns:GetSDRsRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetSDRsOutput">
+		<wsdl:part name="parameters"
+				element="tns:GetSDRsResponse" />
+	</wsdl:message>	
+	
+	<wsdl:message name="CheckSDRsInput">
+		<wsdl:part name="parameters"
+				element="tns:CheckSDRsRequest" />
+	</wsdl:message>
+	<wsdl:message name="CheckSDRsOutput">
+		<wsdl:part name="parameters"
+				element="tns:CheckSDRsResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="ConfirmSDRsInput">
+		<wsdl:part name="parameters"
+				element="tns:ConfirmSDRsRequest" />
+	</wsdl:message>
+	<wsdl:message name="ConfirmSDRsOutput">
+		<wsdl:part name="parameters"
+				element="tns:ConfirmSDRsResponse" />
+	</wsdl:message>		
+
+	<wsdl:message name="GetDispenserListInput">
+		<wsdl:part name="parameters"
+				element="tns:GetDispenserListRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetDispenserListOutput">
+		<wsdl:part name="parameters"
+				element="tns:GetDispenserListResponse" />
 	</wsdl:message>	
 
+	<wsdl:message name="SetDispenserListInput">
+		<wsdl:part name="parameters"
+				element="tns:SetDispenserListRequest" />
+	</wsdl:message>
+	<wsdl:message name="SetDispenserListOutput">
+		<wsdl:part name="parameters"
+				element="tns:SetDispenserListResponse" />
+	</wsdl:message>	
+
+	<wsdl:message name="GetDispenserListUpdatesInput">
+		<wsdl:part name="parameters"
+				element="tns:GetDispenserListUpdatesRequest" />
+	</wsdl:message>
+	<wsdl:message name="GetDispenserListUpdatesOutput">
+		<wsdl:part name="parameters"
+				element="tns:GetDispenserListUpdatesResponse" />
+	</wsdl:message>
+	
+	<wsdl:message name="UpdateDispenserListInput">
+		<wsdl:part name="parameters"
+				element="tns:UpdateDispenserListRequest" />
+	</wsdl:message>
+	<wsdl:message name="UpdateDispenserListOutput">
+		<wsdl:part name="parameters"
+				element="tns:UpdateDispenserListResponse" />
+	</wsdl:message>	 -->
 
 <!-- ===================================================================
                         Port Definitions
 ==================================================================== -->
 
-	<wsdl:portType name="OCHP_1.5-direct">
+	<wsdl:portType name="OCHP_1.5">
 
 		<wsdl:documentation>
-			OCHP Version 1.5 Interface + OCHP direct extension
+			OCHP Version 1.5 Interface
 		</wsdl:documentation>
 
-		<wsdl:operation name="AddServiceEndpoints">
+		<wsdl:operation name="AddCDRs">
 			<wsdl:documentation>
-				The backend of each roaming partner has to send the definition of its OCHP direct interface to the Clearing House to share that data with their connected roaming partners.
+				Local roaming charge data records are sent from the CMS to the CHS.
 			</wsdl:documentation>
-			<wsdl:input message="tns:AddServiceEndpointsInput" />
-			<wsdl:output message="tns:AddServiceEndpointsOutput" />
+			<wsdl:input message="tns:AddCDRsInput" />
+			<wsdl:output message="tns:AddCDRsOutput" />
 		</wsdl:operation>
-		<wsdl:operation name="GetServiceEndpoints">
+		<wsdl:operation name="GetCDRs">
 			<wsdl:documentation>
-				The backend of each roaming partner has to fetch the global list of interface definitions from the CHS.
+				Cleared roaming charge data records, held at the CHS are sent from the CHS to the MDM. Note that only cleared CDRs that concern the EVSP are sent according to the status specified in the request.
 			</wsdl:documentation>
-			<wsdl:input message="tns:GetServiceEndpointsInput" />
-			<wsdl:output message="tns:GetServiceEndpointsOutput" />
+			<wsdl:input message="tns:GetCDRsInput" />
+			<wsdl:output message="tns:GetCDRsOutput" />
+		</wsdl:operation>
+		<wsdl:operation name="CheckCDRs">
+			<wsdl:documentation>
+				Cleared roaming charge data records, held at the CHS are sent from the CHS to the CMS. Note that only CDRs sent by this EVSE operator are sent according to the status specified in the request.
+			</wsdl:documentation>
+			<wsdl:input message="tns:CheckCDRsInput" />
+			<wsdl:output message="tns:CheckCDRsOutput" />
+		</wsdl:operation>
+		<wsdl:operation name="GetRoamingAuthorisationList">
+			<wsdl:documentation>
+				A CMS downloads the global authorisation data repository from the CHS.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetRoamingAuthorisationListInput" />
+			<wsdl:output message="tns:GetRoamingAuthorisationListOutput" />
+		</wsdl:operation>
+		<wsdl:operation name="SetRoamingAuthorisationList">
+			<wsdl:documentation>
+				The MDM of each EVSP has to exchange the own authorisation data with the Clearing House to share that data with EVSE Operators.
+			</wsdl:documentation>
+			<wsdl:input message="tns:SetRoamingAuthorisationListInput" />
+			<wsdl:output message="tns:SetRoamingAuthorisationListOutput" />
+		</wsdl:operation>
+		<wsdl:operation name="GetChargePointList">
+			<wsdl:documentation>
+				A NPS downloads the global charge point information from the CHS.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetChargepointListInput" />
+			<wsdl:output message="tns:GetChargepointListOutput" />
+		</wsdl:operation>
+		<wsdl:operation name="SetChargepointList">
+			<wsdl:documentation>
+				Local roaming charge data records are sent from the CMS to the CHS.
+			</wsdl:documentation>
+			<wsdl:input message="tns:SetChargepointListInput" />
+			<wsdl:output message="tns:SetChargepointListOutput" />
+		</wsdl:operation>
+		<wsdl:operation name="GetRoamingAuthorisationListUpdates">
+			<wsdl:documentation>
+				A CMS downloads the changes to the global authorisation data repository since the last synchronization from the CHS.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetRoamingAuthorisationListUpdatesRequest"></wsdl:input>
+			<wsdl:output message="tns:GetRoamingAuthorisationListUpdatesResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateRoamingAuthorisationList">
+			<wsdl:documentation>
+				For later updates of authorization data from the MDM to the Clearing House and the EVSE Operators, only the changed entries (delta) have to be transferred.
+			</wsdl:documentation>
+			<wsdl:input message="tns:UpdateRoamingAuthorisationListRequest"></wsdl:input>
+			<wsdl:output message="tns:UpdateRoamingAuthorisationListResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ConfirmCDRs">
+			<wsdl:documentation>
+				Cleared roaming charge data records, downloaded from the CHS are confirmed by the MDM. An EVSE-Operator has to confirm every downloaded CDR either with an accept or a revoke.
+			</wsdl:documentation>
+			<wsdl:input message="tns:ConfirmCDRsRequest"></wsdl:input>
+			<wsdl:output message="tns:ConfirmCDRsResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetChargePointListUpdates">
+			<wsdl:documentation>
+				A NPS downloads the changes to the global charge point information data repository since the last synchronization from the CHS.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetChargePointListUpdatesRequest"></wsdl:input>
+			<wsdl:output message="tns:GetChargePointListUpdatesResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateChargePointList">
+			<wsdl:documentation>
+				For later updates of charge point information from the CIMS to the Clearing House and the EVSPs, only the changed entries (delta) have to be transferred.
+			</wsdl:documentation>
+			<wsdl:input message="tns:UpdateChargePointListRequest"></wsdl:input>
+			<wsdl:output message="tns:UpdateChargePointListResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateTariffs">
+			<wsdl:documentation>
+				For all updates to tariff objects from the CIMS to the Clearing House and the EVSPs. Can contain single or multiple tariffs to update.
+			</wsdl:documentation>
+			<wsdl:input message="tns:UpdateTariffsRequest"></wsdl:input>
+			<wsdl:output message="tns:UpdateTariffsResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetTariffUpdates">
+			<wsdl:documentation>
+				Downloads all tariff objects from the Clearing House that have been updated since a given date and time. Can contain single or multiple tariffs.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetTariffUpdatesRequest"></wsdl:input>
+			<wsdl:output message="tns:GetTariffUpdatesResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetSingleRoamingAuthorisation">
+			<wsdl:documentation>
+				A CMS may request the Clearing House to authorize one single token for a charging session
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetSingleRoamingAuthorisationRequest"></wsdl:input>
+			<wsdl:output message="tns:GetSingleRoamingAuthorisationResponse"></wsdl:output>
+		</wsdl:operation>
+<!--	<wsdl:operation name="GetPartnerList">
+			<wsdl:documentation>
+				A Partner may request a list of all partners within the platform or specify the request to get a list of its own roaming partners.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetPartnerListRequest"></wsdl:input>
+			<wsdl:output message="tns:GetPartnerListResponse"></wsdl:output>
+		</wsdl:operation>		
+	</wsdl:portType>	-->
+
+	<wsdl:portType name="OCHP_1.5-live">
+
+		<wsdl:documentation>
+			OCHP Version 1.5 Live POI Interface
+		</wsdl:documentation>
+
+		<wsdl:operation name="UpdateStatus">
+			<wsdl:documentation>
+				A CMS may update the current live status of individual charging stations in the Clearing House to allow roaming partners to receive those statuses.
+			</wsdl:documentation>
+			<wsdl:input message="tns:UpdateStatusRequest"></wsdl:input>
+			<wsdl:output message="tns:UpdateStatusResponse"></wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetStatus">
+			<wsdl:documentation>
+				A NPS may receive the current live status of individual charging stations from the Clearing House.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetStatusRequest"></wsdl:input>
+			<wsdl:output message="tns:GetStatusResponse"></wsdl:output>
 		</wsdl:operation>
 	</wsdl:portType>
-
-
-<!-- Port definition for EVSE-Operator backends -->
-
-	<wsdl:portType name="Operator_OCHP-direct_1.5">
+	
+<!-- 	<wsdl:portType name="OCHP_1.5-alt">
 
 		<wsdl:documentation>
-			OCHP-direct Version 1.5 Interface for the EVSE-Operator backend
+			OCHP-alt Interface for the MSE-Operator backend
 		</wsdl:documentation>
-
-		<wsdl:operation name="GetEvseStatus">
+		
+		<wsdl:operation name="AddSDRs">
 			<wsdl:documentation>
 				Request the live status for a list of EVSEs without latency through the Clearing House.
 			</wsdl:documentation>
-			<wsdl:input message="tns:GetEvseStatusInput" />
-			<wsdl:output message="tns:GetEvseStatusOutput" />
-		</wsdl:operation>
-
-		<wsdl:operation name="ReportDiscrepancy">
-			<wsdl:documentation>
-				Report an issue concerning the data or the compatibility or status of an EVSE to the operator to their information.
-			</wsdl:documentation>
-			<wsdl:input message="tns:ReportDiscrepancyInput" />
-			<wsdl:output message="tns:ReportDiscrepancyOutput" />
-		</wsdl:operation>
-
-		<wsdl:operation name="SelectEvse">
-			<wsdl:documentation>
-				Select an EVSE in an operator's backend. This starts the session and generates the OCHP-direct session ID.
-			</wsdl:documentation>
-			<wsdl:input message="tns:SelectEvseInput" />
-			<wsdl:output message="tns:SelectEvseOutput" />
-		</wsdl:operation>
-
-		<wsdl:operation name="ControlEvse">
-			<wsdl:documentation>
-				Control a selected EVSE in the limits of the charging process.
-			</wsdl:documentation>
-			<wsdl:input message="tns:ControlEvseInput" />
-			<wsdl:output message="tns:ControlEvseOutput" />
-		</wsdl:operation>
-
-		<wsdl:operation name="ReleaseEvse">
-			<wsdl:documentation>
-				The provider should release the prior selected EVSE after the charging process.
-			</wsdl:documentation>
-			<wsdl:input message="tns:ReleaseEvseInput" />
-			<wsdl:output message="tns:ReleaseEvseOutput" />
+			<wsdl:input message="tns:AddSDRsInput" />
+			<wsdl:output message="tns:AddSDRsOutput" />
 		</wsdl:operation>
 		
-		<wsdl:operation name="InformProviderCPO">
+		<wsdl:operation name="GetSDRs">
 			<wsdl:documentation>
-				The provider can request information for an ongoing charging process.
+				Request the live status for a list of EVSEs without latency through the Clearing House.
 			</wsdl:documentation>
-			<wsdl:input message="tns:InformProviderCPOInput" />
-			<wsdl:output message="tns:InformProviderCPOOutput" />
+			<wsdl:input message="tns:GetSDRsInput" />
+			<wsdl:output message="tns:GetSDRsOutput" />
 		</wsdl:operation>
 		
-	</wsdl:portType>
-
-<!-- Port definition for Service Provider backends -->
-
-	<wsdl:portType name="Provider_OCHP-direct_1.5">
-
-		<wsdl:documentation>
-			OCHP-direct Version 1.5 Interface for the Service Provider backend
-		</wsdl:documentation>
-
-		<wsdl:operation name="InformProviderEMP">
+		<wsdl:operation name="CheckSDRs">
 			<wsdl:documentation>
-				When a status update to a charging process gets available, the operator informs the concerned provider.
+				Request the live status for a list of EVSEs without latency through the Clearing House.
 			</wsdl:documentation>
-			<wsdl:input message="tns:InformProviderEMPInput" />
-			<wsdl:output message="tns:InformProviderEMPOutput" />
+			<wsdl:input message="tns:CheckSDRsInput" />
+			<wsdl:output message="tns:CheckSDRsOutput" />
 		</wsdl:operation>
 		
-		<wsdl:operation name="GetSingleRoamingAuthorisation">
+		<wsdl:operation name="ConfirmSDRs">
 			<wsdl:documentation>
-				The operator can request the validity of a contract directly at the providers backend.
+				Request the live status for a list of EVSEs without latency through the Clearing House.
 			</wsdl:documentation>
-			<wsdl:input message="tns:GetSingleRoamingAuthorisationInput" />
-			<wsdl:output message="tns:GetSingleRoamingAuthorisationOutput" />
-		</wsdl:operation>		
+			<wsdl:input message="tns:ConfirmSDRsInput" />
+			<wsdl:output message="tns:ConfirmSDRsOutput" />
+		</wsdl:operation>			
+
+		<wsdl:operation name="GetDispenserList">
+			<wsdl:documentation>
+				Request the live status for a list of EVSEs without latency through the Clearing House.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetDispenserListInput" />
+			<wsdl:output message="tns:GetDispenserListOutput" />
+		</wsdl:operation>
 		
-	</wsdl:portType>
+		<wsdl:operation name="SetDispenserList">
+			<wsdl:documentation>
+				Request the live status for a list of EVSEs without latency through the Clearing House.
+			</wsdl:documentation>
+			<wsdl:input message="tns:SetDispenserListInput" />
+			<wsdl:output message="tns:SetDispenserListOutput" />
+		</wsdl:operation>	
 
+		<wsdl:operation name="GetDispenserListUpdates">
+			<wsdl:documentation>
+				Request the live status for a list of EVSEs without latency through the Clearing House.
+			</wsdl:documentation>
+			<wsdl:input message="tns:GetDispenserListUpdatesInput" />
+			<wsdl:output message="tns:GetDispenserListUpdatesOutput" />
+		</wsdl:operation>	
 
+		<wsdl:operation name="UpdateDispenserList">
+			<wsdl:documentation>
+				Request the live status for a list of EVSEs without latency through the Clearing House.
+			</wsdl:documentation>
+			<wsdl:input message="tns:UpdateDispenserListInput" />
+			<wsdl:output message="tns:UpdateDispenserListOutput" />
+		</wsdl:operation>
+	</wsdl:portType>	
+ -->
 <!-- ===================================================================
                         Binding Definitions
 ==================================================================== -->
 
-	<wsdl:binding name="eCHS-OCHP_1.5-direct" type="tns:OCHP_1.5-direct">
+	<wsdl:binding name="eCHS-OCHP_1.5" type="tns:OCHP_1.5">
 
 		<wsdl:documentation>
-			OCHP Version 1.5 Interface with OCHP direct extension
+			OCHP Version 1.5 Interface
 		</wsdl:documentation>
 
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
 
-		<wsdl:operation name="AddServiceEndpoints">
-			<soap:operation soapAction="http://ochp.eu/direct/1.5/AddServiceEndpoints" />
+		<wsdl:operation name="AddCDRs">
+			<soap:operation soapAction="http://ochp.eu/1.5/AddCDRs" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -1135,8 +548,8 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			</wsdl:output>
 		</wsdl:operation>
 
-		<wsdl:operation name="GetServiceEndpoints">
-			<soap:operation soapAction="http://ochp.eu/direct/1.5/GetServiceEndpoints" />
+		<wsdl:operation name="GetCDRs">
+			<soap:operation soapAction="http://ochp.eu/1.5/GetCDRs" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -1145,61 +558,8 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			</wsdl:output>
 		</wsdl:operation>
 
-	</wsdl:binding>
-
-
-<!-- Binding for EVSE-Operator backends -->
-
-	<wsdl:binding name="Operator_OCHP-direct_1.5" type="tns:Operator_OCHP-direct_1.5">
-
-		<wsdl:documentation>
-			OCHP-direct Version 1.5 Interface for the EVSE-Operator backend
-		</wsdl:documentation>
-
-		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
-
-		<wsdl:operation name="ReportDiscrepancy">
-			<soap:operation soapAction="http://ochp.eu/direct/1.5/ReportDiscrepancy" />
-			<wsdl:input>
-				<soap:body use="literal" />
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal" />
-			</wsdl:output>
-		</wsdl:operation>
-
-		<wsdl:operation name="GetEvseStatus">
-			<soap:operation soapAction="http://ochp.eu/direct/1.5/GetEvseStatus" />
-			<wsdl:input>
-				<soap:body use="literal" />
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal" />
-			</wsdl:output>
-		</wsdl:operation>
-
-		<wsdl:operation name="SelectEvse">
-			<soap:operation soapAction="http://ochp.eu/direct/1.5/SelectEvse" />
-			<wsdl:input>
-				<soap:body use="literal" />
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal" />
-			</wsdl:output>
-		</wsdl:operation>
-
-		<wsdl:operation name="ControlEvse">
-			<soap:operation soapAction="http://ochp.eu/direct/1.5/ControlEvse" />
-			<wsdl:input>
-				<soap:body use="literal" />
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal" />
-			</wsdl:output>
-		</wsdl:operation>
-
-		<wsdl:operation name="ReleaseEvse">
-			<soap:operation soapAction="http://ochp.eu/direct/1.5/ReleaseEvse" />
+		<wsdl:operation name="CheckCDRs">
+			<soap:operation soapAction="http://ochp.eu/1.5/CheckCDRs" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -1208,31 +568,8 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			</wsdl:output>
 		</wsdl:operation>
 		
-		<wsdl:operation name="InformProviderCPO">
-			<soap:operation soapAction="http://ochp.eu/direct/1.5/InformProviderCPO" />
-			<wsdl:input>
-				<soap:body use="literal" />
-			</wsdl:input>
-			<wsdl:output>
-				<soap:body use="literal" />
-			</wsdl:output>
-		</wsdl:operation>		
-
-	</wsdl:binding>
-
-
-<!-- Binding for Service Provider backends -->
-
-	<wsdl:binding name="Provider_OCHP-direct_1.5" type="tns:Provider_OCHP-direct_1.5">
-
-		<wsdl:documentation>
-			OCHP-direct Version 1.5 Interface for the Service Provider backend
-		</wsdl:documentation>
-
-		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
-
-		<wsdl:operation name="InformProviderEMP">
-			<soap:operation soapAction="http://ochp.eu/direct/1.5/InformProviderEMP" />
+		<wsdl:operation name="GetRoamingAuthorisationList">
+			<soap:operation soapAction="http://ochp.eu/1.5/GetRoamingAuthorisationList" />
 			<wsdl:input>
 				<soap:body use="literal" />
 			</wsdl:input>
@@ -1241,13 +578,251 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			</wsdl:output>
 		</wsdl:operation>
 
+		<wsdl:operation name="SetRoamingAuthorisationList">
+			<soap:operation soapAction="http://ochp.eu/1.5/SetRoamingAuthorisationList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GetChargePointList">
+			<soap:operation soapAction="http://ochp.eu/1.5/GetChargePointList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="SetChargepointList">
+			<soap:operation soapAction="http://ochp.eu/1.5/SetChargepointList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GetRoamingAuthorisationListUpdates">
+			<soap:operation soapAction="http://ochp.eu/1.5/GetRoamingAuthorisationListUpdates" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="UpdateRoamingAuthorisationList">
+			<soap:operation soapAction="http://ochp.eu/1.5/UpdateRoamingAuthorisationList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="ConfirmCDRs">
+			<soap:operation soapAction="http://ochp.eu/1.5/ConfirmCDRs" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GetChargePointListUpdates">
+			<soap:operation soapAction="http://ochp.eu/1.5/GetChargePointListUpdates" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="UpdateChargePointList">
+			<soap:operation soapAction="http://ochp.eu/1.5/UpdateChargePointList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		<wsdl:operation name="UpdateTariffs">
+			<soap:operation soapAction="http://ochp.eu/1.5/UpdateTariffs" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		<wsdl:operation name="GetTariffUpdates">
+			<soap:operation soapAction="http://ochp.eu/1.5/GetTariffUpdates" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GetSingleRoamingAuthorisation">
+			<soap:operation soapAction="http://ochp.eu/1.5/GetSingleRoamingAuthorisation" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+<!--	<wsdl:operation name="GetPartnerList">
+			<soap:operation soapAction="http://ochp.eu/1.5/GetPartnerList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>		-->		
+
+<!-- Binding to the Live POI Interface -->
+
+	<wsdl:binding name="eCHS-OCHP_1.5-live" type="tns:OCHP_1.5-live">
+
+		<wsdl:documentation>
+			OCHP Version 1.5 Live POI Interface
+		</wsdl:documentation>
+
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+
+		<wsdl:operation name="UpdateStatus">
+			<soap:operation soapAction="http://ochp.e-clearing.net/service/UpdateStatus" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+
+		<wsdl:operation name="GetStatus">
+			<soap:operation soapAction="http://ochp.e-clearing.net/service/GetStatus" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
 	</wsdl:binding>
+	
+<!-- 	<wsdl:binding name="eCHS-OCHP_1.5-alt" type="tns:OCHP_1.5-alt">
+		<wsdl:documentation>
+			OCHP-alt Interface for the MSE-Operator backend
+		</wsdl:documentation>	
+		
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
+		
+		<wsdl:operation name="AddSDRs">
+			<soap:operation soapAction="http://ochp.eu/alt/AddSDRs" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		<wsdl:operation name="GetSDRs">
+			<soap:operation soapAction="http://ochp.eu/alt/GetSDRs" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>	
+		
+		<wsdl:operation name="CheckSDRs">
+			<soap:operation soapAction="http://ochp.eu/alt/CheckSDRs" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>		
+		
+		<wsdl:operation name="ConfirmSDRs">
+			<soap:operation soapAction="http://ochp.eu/alt/ConfirmSDRs" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>	
+
+		<wsdl:operation name="GetDispenserList">
+			<soap:operation soapAction="http://ochp.eu/alt/GetDispenserList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>	
+		
+		<wsdl:operation name="SetDispenserList">
+			<soap:operation soapAction="http://ochp.eu/alt/SetDispenserList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+		
+		<wsdl:operation name="GetDispenserListUpdates">
+			<soap:operation soapAction="http://ochp.eu/alt/GetDispenserListUpdates" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>		
+		
+		<wsdl:operation name="UpdateDispenserList">
+			<soap:operation soapAction="http://ochp.eu/alt/UpdateDispenserList" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>		
+	</wsdl:binding> -->	
 
 <!-- ===================================================================
                         Service Definition
 ==================================================================== -->
 
-	<wsdl:service name="e-clearing.net-OCHP-direct">
+	<wsdl:service name="e-clearing.net">
 
 		<wsdl:documentation>
 			EEN European Emobility Network - EV Clearing Platform
@@ -1283,37 +858,21 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			<soap:address location="https://echs-q.e-clearing.net/live/ochp/v1.5" />
 		</wsdl:port>
 
-<!-- Endpoints for the Direct Extension -->
+<!-- Endpoints for the Alt Interface -->
 
-		<wsdl:port name="eCHS_P-System-direct" binding="tns:eCHS-OCHP_1.5-direct">
+<!-- 		<wsdl:port name="eCHS_P-System-alt" binding="tns:eCHS-OCHP_1.5-alt">
 			<wsdl:documentation>
-				eCHS Productive System Endpoint with OCHPdirect extension
+				eCHS alt Productive System Endpoint
 			</wsdl:documentation>
-			<soap:address location="https://echs.e-clearing.net/direct/ochp/v1.5" />
+			<soap:address location="https://echs.e-clearing.net/alt/ochp/v1.5" />
 		</wsdl:port>
 
-		<wsdl:port name="eCHS_Q-System-direct" binding="tns:eCHS-OCHP_1.5-direct">
+		<wsdl:port name="eCHS_Q-System-alt" binding="tns:eCHS-OCHP_1.5-alt">
 			<wsdl:documentation>
-				eCHS Quality Ensurance Endpoint with OCHPdirect extension
+				eCHS alt Quality Ensurance Endpoint
 			</wsdl:documentation>
-			<soap:address location="https://echs-q.e-clearing.net/direct/ochp/v1.5" />
-		</wsdl:port>
-
-<!-- Non-productive example Endpoints for the Direct Extension -->
-
-             <wsdl:port name="eCHS_Q-System-direct-Provider" binding="tns:Provider_OCHP-direct_1.5">
-                    <wsdl:documentation>
-                           eCHS Quality Ensurance OCHPdirect Provider-Endpoint (Non-functional example)
-                    </wsdl:documentation>
-                    <soap:address location="https://echs-q.e-clearing.net/direct/provider/ochp/v1.5" />
-             </wsdl:port>
-             
-             <wsdl:port name="eCHS_Q-System-direct-Operator" binding="tns:Operator_OCHP-direct_1.5">
-                    <wsdl:documentation>
-                           eCHS Quality Ensurance OCHPdirect Operator-Endpoint (Non-functional example)
-                    </wsdl:documentation>
-                    <soap:address location="https://echs-q.e-clearing.net/direct/operator/ochp/v1.5" />
-             </wsdl:port>
+			<soap:address location="https://echs-q.e-clearing.net/alt/ochp/v1.5" />
+		</wsdl:port> -->
 
 	</wsdl:service>
 
