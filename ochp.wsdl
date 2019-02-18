@@ -3,7 +3,7 @@
 
 <!-- ===================================================================
 
-                  OCHP 1.5 Web Service Description
+                  OCHP 1.4.1 Web Service Description
 
 This document defines a standard interface between different parties in
 the market of electric vehicle charging infrastructure and a clearing
@@ -15,7 +15,7 @@ available information. For a full interface description please refer
 to the OCHP specification PDF you can download from http://ochp.eu.
 
 
-Copyright (c) 2012-2018 smartlab, bluecorner.be, e-laad.nl
+Copyright (c) 2012-2019 smartlab, bluecorner.be, e-laad.nl
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the
@@ -39,21 +39,21 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ==================================================================== -->
 
 
-<wsdl:definitions name="OCHP_1.5"
+<wsdl:definitions name="OCHP_1.4.1"
 	targetNamespace="http://ochp.eu/1.5" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:s="http://www.w3.org/2001/XMLSchema"
-	xmlns:p="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://ochp.eu/1.5">
+	xmlns:p="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://ochp.eu/1.4.1">
 
 	<wsdl:documentation>
-		Open Clearing House Protocol (OCHP) Version 1.5
+		Open Clearing House Protocol (OCHP) Version 1.4.1
 	</wsdl:documentation>
 
 	<wsdl:types>
 		<s:schema>
-			<s:import namespace="http://ochp.eu/1.5" schemaLocation="types/message-elements.xsd"/>
-			<s:import namespace="http://ochp.eu/1.5" schemaLocation="types/array-types.xsd"/>
-			<s:import namespace="http://ochp.eu/1.5" schemaLocation="types/data-types.xsd"/>
-			<s:import namespace="http://ochp.eu/1.5" schemaLocation="types/live-types.xsd"/>
+			<s:import namespace="http://ochp.eu/1.4.1" schemaLocation="types/message-elements.xsd"/>
+			<s:import namespace="http://ochp.eu/1.4.1" schemaLocation="types/array-types.xsd"/>
+			<s:import namespace="http://ochp.eu/1.4.1" schemaLocation="types/data-types.xsd"/>
+			<s:import namespace="http://ochp.eu/1.4.1" schemaLocation="types/live-types.xsd"/>
 		</s:schema>
 	</wsdl:types>
 
@@ -201,18 +201,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	<wsdl:message name="GetTariffUpdatesResponse">
 		<wsdl:part name="parameters"
 				element="tns:GetTariffUpdatesResponse" />
-	</wsdl:message>
-	
-<!-- Messages for the partner list exchange 
-	
-	<wsdl:message name="GetPartnerListRequest">
-	<wsdl:part name="parameters"
-				element="tns:GetPartnerListRequest" />
-	</wsdl:message>
-	<wsdl:message name="GetPartnerListResponse">
-		<wsdl:part name="parameters"
-				element="tns:GetPartnerListResponse" />
-	</wsdl:message> -->	
+	</wsdl:message>	
 	
 <!-- Messages for the Live Status Interface -->
 
@@ -234,80 +223,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 				element="tns:GetStatusResponse" />
 	</wsdl:message>
 	
-<!-- Messages for the alternative fuels interface -->
-
-
-<!-- 	<wsdl:message name="AddSDRsInput">
-		<wsdl:part name="parameters"
-				element="tns:AddSDRsRequest" />
-	</wsdl:message>
-	<wsdl:message name="AddSDRsOutput">
-		<wsdl:part name="parameters"
-				element="tns:AddSDRsResponse" />
-	</wsdl:message>
-	
-	<wsdl:message name="GetSDRsInput">
-		<wsdl:part name="parameters"
-				element="tns:GetSDRsRequest" />
-	</wsdl:message>
-	<wsdl:message name="GetSDRsOutput">
-		<wsdl:part name="parameters"
-				element="tns:GetSDRsResponse" />
-	</wsdl:message>	
-	
-	<wsdl:message name="CheckSDRsInput">
-		<wsdl:part name="parameters"
-				element="tns:CheckSDRsRequest" />
-	</wsdl:message>
-	<wsdl:message name="CheckSDRsOutput">
-		<wsdl:part name="parameters"
-				element="tns:CheckSDRsResponse" />
-	</wsdl:message>
-	
-	<wsdl:message name="ConfirmSDRsInput">
-		<wsdl:part name="parameters"
-				element="tns:ConfirmSDRsRequest" />
-	</wsdl:message>
-	<wsdl:message name="ConfirmSDRsOutput">
-		<wsdl:part name="parameters"
-				element="tns:ConfirmSDRsResponse" />
-	</wsdl:message>		
-
-	<wsdl:message name="GetDispenserListInput">
-		<wsdl:part name="parameters"
-				element="tns:GetDispenserListRequest" />
-	</wsdl:message>
-	<wsdl:message name="GetDispenserListOutput">
-		<wsdl:part name="parameters"
-				element="tns:GetDispenserListResponse" />
-	</wsdl:message>	
-
-	<wsdl:message name="SetDispenserListInput">
-		<wsdl:part name="parameters"
-				element="tns:SetDispenserListRequest" />
-	</wsdl:message>
-	<wsdl:message name="SetDispenserListOutput">
-		<wsdl:part name="parameters"
-				element="tns:SetDispenserListResponse" />
-	</wsdl:message>	
-
-	<wsdl:message name="GetDispenserListUpdatesInput">
-		<wsdl:part name="parameters"
-				element="tns:GetDispenserListUpdatesRequest" />
-	</wsdl:message>
-	<wsdl:message name="GetDispenserListUpdatesOutput">
-		<wsdl:part name="parameters"
-				element="tns:GetDispenserListUpdatesResponse" />
-	</wsdl:message>
-	
-	<wsdl:message name="UpdateDispenserListInput">
-		<wsdl:part name="parameters"
-				element="tns:UpdateDispenserListRequest" />
-	</wsdl:message>
-	<wsdl:message name="UpdateDispenserListOutput">
-		<wsdl:part name="parameters"
-				element="tns:UpdateDispenserListResponse" />
-	</wsdl:message>	 -->
 
 <!-- ===================================================================
                         Port Definitions
