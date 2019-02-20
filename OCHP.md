@@ -10,9 +10,10 @@ Prot. Version | Date       | Comment
 1.2           | 17-06-2014 | Live Status Interface and further enhancements from market requirements. Commit: [6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5](../../commit/6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5)
 1.3           | 27-03-2015 | Bug fixes, further enhancements (power ratings, location types, time zones) Commit: [77cccd838db692ab6f8b77fb4be8e81d59ec04e2](../../commit/77cccd838db692ab6f8b77fb4be8e81d59ec04e2)
 1.4           | 15-08-2016 | Tariffs, CDR handling changes, new role: PSO, bug fixes, enhancements
+1.4.1         | XX-02-2019 | Added support for other fuel types and German Eichrecht
 
 
-Copyright (c) 2012-2016 smartlab, elaad.nl
+Copyright (c) 2012-2019 smartlab, elaad.nl
 
 Permission is hereby granted, free of charge, to any person obtaining a 
 copy of this software and associated documentation files 
