@@ -65,6 +65,7 @@
 						<s:enumeration value="rfid"></s:enumeration>
 						<s:enumeration value="remote"></s:enumeration>
 						<s:enumeration value="15118"></s:enumeration>
+						<s:enumeration value="other"></s:enumeration>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
@@ -166,7 +167,7 @@
 			<s:element name="connectorFormat" minOccurs="1" maxOccurs="1" type="tns:ConnectorFormat">
 				<s:annotation>
 					<s:documentation>
-						The format (socket/ cable) of the installed connector Socket The connector is a socket; the EV user needs to bring a fitting plug. Cable The connector is an attached cable; the EV user car needs to have a fitting inlet.
+						The format (socket/ cable / other) of the installed connector Socket The connector is a socket; the EV user needs to bring a fitting plug. Cable The connector is an attached cable; the EV user car needs to have a fitting inlet.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -327,6 +328,8 @@
 							serviceFee; General service fee per charging process. The billingValue represents a multiplier and thus has to be set to "1.0"
 							reservation; One time fee for a reservation of the EVSE. The billingValue represents a multiplier and thus has to be set to "1.0".
 							reservationtime; Price for the duration of a reservation. The billingValue represents the time in hours.
+							volume; The billingQuantity represents quantity in liter.
+							mass; The billingQuantity represents quantity in kilogramm.	
 						</s:documentation>
 					</s:annotation>
 					<s:restriction base="s:string">
@@ -337,6 +340,8 @@
 						<s:enumeration value="serviceFee"></s:enumeration>
 						<s:enumeration value="reservation"></s:enumeration>
 						<s:enumeration value="reservationtime"></s:enumeration>
+						<s:enumeration value="volume"></s:enumeration>
+						<s:enumeration value="mass"></s:enumeration>	
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
@@ -445,6 +450,15 @@
 							IEC_60309_2_three_16   The connector type is IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
 							IEC_60309_2_three_32   The connector type is IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
 							IEC_60309_2_three_64   The connector type is IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
+							Super_95 
+							Super_Plus 
+							Super_E10 
+							Diesel 
+							Ethanol 
+							LNG 
+							CNG 
+							H2
+							AdBlue 
 						</s:documentation>
 					</s:annotation>
 					<s:restriction base="s:string">
@@ -473,6 +487,15 @@
 						<s:enumeration value="IEC_60309_2_three_16"></s:enumeration>
 						<s:enumeration value="IEC_60309_2_three_32"></s:enumeration>
 						<s:enumeration value="IEC_60309_2_three_64"></s:enumeration>
+						<s:enumeration value="Super_95"></s:enumeration>
+						<s:enumeration value="Super_Plus"></s:enumeration>
+						<s:enumeration value="Super_E10"></s:enumeration>
+						<s:enumeration value="Diesel"></s:enumeration>
+						<s:enumeration value="LPG"></s:enumeration>
+						<s:enumeration value="CNG"></s:enumeration>
+						<s:enumeration value="LNG"></s:enumeration>
+						<s:enumeration value="H2"></s:enumeration>
+						<s:enumeration value="Ethanol"></s:enumeration>	
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
@@ -739,15 +762,17 @@
 			<s:element name="ConnectorFormat">
 				<s:annotation>
 					<s:documentation>
-						The format (socket/ cable) of the installed connector.
+						The format (socket/ cable / other) of the installed connector.
 							Socket; The connector is a socket; the EV user needs to bring a fitting plug 
 							Cable; The connector is an attached cable; the EV user car needs to have a fitting inlet
+							Other; The connector is of another type, like a nozzle with an attached hose. a nozzle; the user car needs to have an inlet matching the fuel type of the charge point.
 					</s:documentation>
 				</s:annotation>
 				<s:simpleType>
 					<s:restriction base="s:string">
 						<s:enumeration value="Socket"></s:enumeration>
 						<s:enumeration value="Cable"></s:enumeration>
+						<s:enumeration value="Other"></s:enumeration>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
@@ -1200,5 +1225,131 @@
 			<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[Tt][A-Za-z0-9][A-Za-z0-9\*]{0,9}"></s:pattern>
 		</s:restriction>
 	</s:simpleType>
+	
+	<s:complexType name="ChargePointType">
+		<s:sequence>
+			<s:element name="ChargePointType">
+				<s:annotation>
+					<s:documentation>
+						The type of the charge point "AC", "DC", or other
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:enumeration value="AC"></s:enumeration>
+						<s:enumeration value="DC"></s:enumeration>
+						<s:enumeration value="Other"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+	
+	<s:complexType name="PermissionsType">
+		<s:sequence>
+			<s:element name="PermissionsType">
+				<s:annotation>
+					<s:documentation>
+						AC
+						DC
+						CNG
+						LNG
+						Fuel
+						H2
+						Ethanol
+						Any
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:enumeration value="AC"></s:enumeration>
+						<s:enumeration value="DC"></s:enumeration>
+						<s:enumeration value="CNG"></s:enumeration>
+						<s:enumeration value="LNG"></s:enumeration>
+						<s:enumeration value="Fuel"></s:enumeration>
+						<s:enumeration value="H2"></s:enumeration>
+						<s:enumeration value="Ethanol"></s:enumeration>
+						<s:enumeration value="Any"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+	
+	<s:complexType name="MeteringInfoType">
+		<s:annotation>
+			<s:documentation>
+				Array type mainly to serve the German Eichrecht 
+			</s:documentation>
+		</s:annotation>
+		<s:sequence>
+			<s:element name="meteringType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Defines the method to review charging data 
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:enumeration value="local"></s:enumeration>
+						<s:enumeration value="software"></s:enumeration>
+						<s:enumeration value="other"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="meteringVendor" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Contains the name of the vendor 
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="32"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="meteringVendorVersion" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Version number of the solution 
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="32"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="meteringData" minOccurs="0" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						Contains at least starting and ending meter values of a certain charging session 
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="255"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="meteringKey" minOccurs="0" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						Defines the public key of a charging pole as define in the Eichrecht
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="255"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>						
+		</s:sequence>
+	</s:complexType>
 	
 </s:schema>
