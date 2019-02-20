@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.4" xmlns:tns="http://ochp.eu/1.4" xmlns:s="http://www.w3.org/2001/XMLSchema">
+<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.4.1" xmlns:tns="http://ochp.eu/1.4.1" xmlns:s="http://www.w3.org/2001/XMLSchema">
 
 	<s:include schemaLocation="data-types.xsd"/>
 
@@ -24,6 +24,13 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
+			<s:element name="permissions" type="tns:PermissionsType" minOccurs="1" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						Permissions for various energy sources and authorization services.
+					</s:documentation>
+				</s:annotation>
+			</s:element>	
 			<s:element minOccurs="0" maxOccurs="1" name="printedNumber">
 				<s:annotation>
 					<s:documentation>
@@ -188,6 +195,12 @@
 						<s:whiteSpace value="collapse"></s:whiteSpace>
 					</s:restriction>
 				</s:simpleType>
+			</s:element>
+			<s:element name="meteringInfo" type="tns:MeteringInfoType" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+					</s:documentation>
+				</s:annotation>
 			</s:element>
 		</s:sequence>
 	</s:complexType>
@@ -362,6 +375,7 @@
 					<s:restriction base="s:string">
 						<s:enumeration value="AC"></s:enumeration>
 						<s:enumeration value="DC"></s:enumeration>
+						<s:enumeration value="Other"></s:enumeration>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
@@ -369,6 +383,7 @@
 				<s:annotation>
 					<s:documentation>
 						Defines the ratings for the charge point.
+						Do not include for non-electric chargepoints.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -397,6 +412,12 @@
 						<s:maxInclusive value="1000"></s:maxInclusive>
 					</s:restriction>
 				</s:simpleType>
+			</s:element>
+			<s:element name="meteringInfo" type="tns:MeteringInfoType" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+					</s:documentation>
+				</s:annotation>
 			</s:element>
 		</s:sequence>
 	</s:complexType>
