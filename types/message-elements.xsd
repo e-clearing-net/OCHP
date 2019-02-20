@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.4" xmlns:tns="http://ochp.eu/1.4" xmlns:s="http://www.w3.org/2001/XMLSchema">
+<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.4.1" xmlns:tns="http://ochp.eu/1.4.1" xmlns:s="http://www.w3.org/2001/XMLSchema">
 
 	<s:include schemaLocation="data-types.xsd"/>
 	<s:include schemaLocation="array-types.xsd"/>
