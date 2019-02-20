@@ -25,18 +25,18 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 
 
 <wsdl:definitions name="OCHP_direct_0.2"
-	targetNamespace="http://ochp.eu/1.4" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	targetNamespace="http://ochp.eu/1.4.1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
 	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:s="http://www.w3.org/2001/XMLSchema"
-	xmlns:p="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://ochp.eu/1.4">
+	xmlns:p="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://ochp.eu/1.4.1">
 
 	<wsdl:documentation>
 		Open Clearing House Protocol (OCHP) direct Extension Version 0.2
 	</wsdl:documentation>
 
-	<wsdl:import namespace="http://ochp.eu/1.4" location="ochp.wsdl"/>
+	<wsdl:import namespace="http://ochp.eu/1.4.1" location="ochp.wsdl"/>
 
 	<wsdl:types>
-		<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.4">
+		<s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.4.1">
 
 			<s:include schemaLocation="types/message-elements.xsd"/>
 
@@ -138,7 +138,7 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 							<s:restriction base="s:string">
 								<s:maxLength value="255"></s:maxLength>
 								<s:enumeration value="http://ochp.eu/1.3"></s:enumeration>
-								<s:enumeration value="http://ochp.eu/1.4"></s:enumeration>
+								<s:enumeration value="http://ochp.eu/1.4.1"></s:enumeration>
 							</s:restriction>
 						</s:simpleType>
 					</s:element>
@@ -879,10 +879,10 @@ http://creativecommons.org/licenses/by-nd/4.0/.
                         Port Definitions
 ==================================================================== -->
 
-	<wsdl:portType name="OCHP_1.4-direct">
+	<wsdl:portType name="OCHP_1.4.1-direct">
 
 		<wsdl:documentation>
-			OCHP Version 1.4 Interface + OCHP direct extension
+			OCHP Version 1.4.1 Interface + OCHP direct extension
 		</wsdl:documentation>
 
 		<wsdl:operation name="AddServiceEndpoints">
@@ -981,10 +981,10 @@ http://creativecommons.org/licenses/by-nd/4.0/.
                         Binding Definitions
 ==================================================================== -->
 
-	<wsdl:binding name="eCHS-OCHP_1.4-direct" type="tns:OCHP_1.4-direct">
+	<wsdl:binding name="eCHS-OCHP_1.4.1-direct" type="tns:OCHP_1.4.1-direct">
 
 		<wsdl:documentation>
-			OCHP Version 1.4 Interface with OCHP direct extension
+			OCHP Version 1.4.1 Interface with OCHP direct extension
 		</wsdl:documentation>
 
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1117,50 +1117,50 @@ http://creativecommons.org/licenses/by-nd/4.0/.
 			EEN European Emobility Network - EV Clearing Platform
 		</wsdl:documentation>
 
-		<wsdl:port name="eCHS_P-System" binding="tns:eCHS-OCHP_1.4">
+		<wsdl:port name="eCHS_P-System" binding="tns:eCHS-OCHP_1.4.1">
 			<wsdl:documentation>
 				eCHS Productive System Endpoint
 			</wsdl:documentation>
-			<soap:address location="https://echs.e-clearing.net/service/ochp/v1.4" />
+			<soap:address location="https://echs.e-clearing.net/service/ochp/v1.4.1" />
 		</wsdl:port>
 
-		<wsdl:port name="eCHS_Q-System" binding="tns:eCHS-OCHP_1.4">
+		<wsdl:port name="eCHS_Q-System" binding="tns:eCHS-OCHP_1.4.1">
 			<wsdl:documentation>
 				eCHS Quality Ensurance System Endpoint
 			</wsdl:documentation>
-			<soap:address location="https://echs-q.e-clearing.net/service/ochp/v1.4" />
+			<soap:address location="https://echs-q.e-clearing.net/service/ochp/v1.4.1" />
 		</wsdl:port>
 
 <!-- Endpoints for the Live POI Interface -->
 
-		<wsdl:port name="eCHS_P-System-live" binding="tns:eCHS-OCHP_1.4-live">
+		<wsdl:port name="eCHS_P-System-live" binding="tns:eCHS-OCHP_1.4.1-live">
 			<wsdl:documentation>
 				eCHS Live-POI Productive System Endpoint
 			</wsdl:documentation>
-			<soap:address location="https://echs.e-clearing.net/live/ochp/v1.4" />
+			<soap:address location="https://echs.e-clearing.net/live/ochp/v1.4.1" />
 		</wsdl:port>
 
-		<wsdl:port name="eCHS_Q-System-live" binding="tns:eCHS-OCHP_1.4-live">
+		<wsdl:port name="eCHS_Q-System-live" binding="tns:eCHS-OCHP_1.4.1-live">
 			<wsdl:documentation>
 				eCHS Live-POI Quality Ensurance Endpoint
 			</wsdl:documentation>
-			<soap:address location="https://echs-q.e-clearing.net/live/ochp/v1.4" />
+			<soap:address location="https://echs-q.e-clearing.net/live/ochp/v1.4.1" />
 		</wsdl:port>
 
 <!-- Endpoints for the Direct Extension -->
 
-		<wsdl:port name="eCHS_P-System-direct" binding="tns:eCHS-OCHP_1.4-direct">
+		<wsdl:port name="eCHS_P-System-direct" binding="tns:eCHS-OCHP_1.4.1-direct">
 			<wsdl:documentation>
 				eCHS Productive System Endpoint with OCHPdirect extension
 			</wsdl:documentation>
-			<soap:address location="https://echs.e-clearing.net/direct/ochp/v1.4" />
+			<soap:address location="https://echs.e-clearing.net/direct/ochp/v1.4.1" />
 		</wsdl:port>
 
-		<wsdl:port name="eCHS_Q-System-direct" binding="tns:eCHS-OCHP_1.4-direct">
+		<wsdl:port name="eCHS_Q-System-direct" binding="tns:eCHS-OCHP_1.4.1-direct">
 			<wsdl:documentation>
 				eCHS Quality Ensurance Endpoint with OCHPdirect extension
 			</wsdl:documentation>
-			<soap:address location="https://echs-q.e-clearing.net/direct/ochp/v1.4" />
+			<soap:address location="https://echs-q.e-clearing.net/direct/ochp/v1.4.1" />
 		</wsdl:port>
 
 <!-- Non-productive example Endpoints for the Direct Extension -->
@@ -1169,14 +1169,14 @@ http://creativecommons.org/licenses/by-nd/4.0/.
                     <wsdl:documentation>
                            eCHS Quality Ensurance OCHPdirect Provider-Endpoint (Non-functional example)
                     </wsdl:documentation>
-                    <soap:address location="https://echs-q.e-clearing.net/direct/provider/ochp/v1.4" />
+                    <soap:address location="https://echs-q.e-clearing.net/direct/provider/ochp/v1.4.1" />
              </wsdl:port>
              
              <wsdl:port name="eCHS_Q-System-direct-Operator" binding="tns:Operator_OCHP-direct_0.2">
                     <wsdl:documentation>
                            eCHS Quality Ensurance OCHPdirect Operator-Endpoint (Non-functional example)
                     </wsdl:documentation>
-                    <soap:address location="https://echs-q.e-clearing.net/direct/operator/ochp/v1.4" />
+                    <soap:address location="https://echs-q.e-clearing.net/direct/operator/ochp/v1.4.1" />
              </wsdl:port>
 
 	</wsdl:service>
