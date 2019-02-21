@@ -1276,7 +1276,7 @@
 		</s:sequence>
 	</s:complexType>
 	
-	<s:complexType name="MeteringInfoType">
+	<!--s:complexType name="MeteringInfoType">
 		<s:annotation>
 			<s:documentation>
 				Array type mainly to serve the German Eichrecht 
@@ -1350,6 +1350,6 @@
 				</s:simpleType>
 			</s:element>						
 		</s:sequence>
-	</s:complexType>
+	</s:complexType-->
 	
 </s:schema>
