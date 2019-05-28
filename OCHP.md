@@ -239,7 +239,7 @@ CH           | Clearing House
 CHS          | Clearing House System
 CMS          | Charge Point Management System
 Contract-ID  | Contract (or Account) Identifier
-CPO	         | Charge Point Operator
+CPO	     | Charge Point Operator
 EMP          | Electric Mobility Provider
 EMT-ID       | Electric Mobility Token Identifier
 EV           | Electrical Vehicle
@@ -253,8 +253,8 @@ MDM          | Master Data Management System
 NSP          | Navigation Service Provider
 OCHP         | Open Clearing House Protocol
 PDU          | Protocol Data Unit
-PSM			 | Parking Spot Management System
-PSO	         | Parking Spot Operator
+PSM	     | Parking Spot Management System
+PSO	     | Parking Spot Operator
 RA           | Roaming Authorisation
 RFID         | Radio-frequency identification
 VAS          | Value Added Service
@@ -840,7 +840,7 @@ These messages are used for the purpose of the exchange of authorization data fr
 ### GetRoamingAuthorisationList.req
 
 This contains the field definition of the GetRoamingAuthorisationList.req sent by a partner's system to the CHS.
-No fields are defined.
+No fields are defined. (It's a CPO message)
 
 
 ### GetRoamingAuthorisationList.conf
@@ -855,7 +855,7 @@ roamingAuthorisationInfoArray  |  RoamingAuthorisationInfo  |  *      |  This co
 
 ### SetRoamingAuthorisationList.req
 
-This contains the field definition of the SetRoamingAuthorisationList.req sent by a partner's system to the CHS.
+This contains the field definition of the SetRoamingAuthorisationList.req sent by a partner's system to the CHS. (It's an EMP message)
 
  Field Name                    |  Field Type                |  Card.  |  Description
 :------------------------------|:---------------------------|:--------|:------------
@@ -874,7 +874,7 @@ refusedRoamingAuthorisationInfo  |  RoamingAuthorisationInfo  |  ?      |  This 
 
 ### GetRoamingAuthorisationListUpdates.req
 
-This contains the field definition of the GetRoamingAuthorisationListUpdate.req sent by a partner's system to the CHS.
+This contains the field definition of the GetRoamingAuthorisationListUpdate.req sent by a partner's system to the CHS. (It's a CPO message)
 
  Field Name   |  Field Type    |  Card.  |  Description
 :-------------|:---------------|:--------|:------------
@@ -893,7 +893,7 @@ roamingAuthorisationInfoArray  |  RoamingAuthorisationInfo  |  *      |  This co
 
 ### UpdateRoamingAuthorisationList.req
 
-This contains the field definition of the UpdateRoamingAuthorisationList.req sent by a partner's system to the CHS.
+This contains the field definition of the UpdateRoamingAuthorisationList.req sent by a partner's system to the CHS. (It's an EMP message)
 
  Field Name                    |  Field Type                |  Card.  |  Description
 :------------------------------|:---------------------------|:--------|:------------
@@ -957,7 +957,7 @@ cdrInfoArray  |  Array(CDRInfo)  |  *      |  This contains the CDRs according t
 ### AddCDRs.req
 
 This contains the field definition of the AddCDRs.req sent by a partner's system to the CHS.
-May be used by an EVSE operator to mark declined CDRs as finally rejected, by uploading them again under that status.
+May be used by an EVSE operator to mark declined CDRs as finally rejected, by uploading them again under that status. (It's a CPO message)
 
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
@@ -976,7 +976,7 @@ implausibleCdrsArray  |  Array(CdrId)    |  *      |  This contains the refused 
 
 ### ConfirmCDRs.req
 
-This contains the field definition of the ConfirmCDRs.req sent by a partner's system to the CHS.
+This contains the field definition of the ConfirmCDRs.req sent by a partner's system to the CHS. (It's an EMP message)
 
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
@@ -1002,7 +1002,7 @@ These messages are used for the purpose of the exchange of charge point informat
 ### GetChargePointList.req
 
 This contains the field definition of the GetChargePointList.req sent by a partner's system to the CHS.
-No fields are defined.
+No fields are defined. (It's a NSP message)
 
 
 ### GetChargePointList.conf
@@ -1017,7 +1017,7 @@ chargePointInfoArray  |  ChargePointInfo  |  *      |  This contains the charge 
 
 ### SetChargePointList.req
 
-This contains the field definition of the SetChargePointList.req sent by a partner's system to the CHS.
+This contains the field definition of the SetChargePointList.req sent by a partner's system to the CHS. (It's a CPO message)
 
  Field Name           |  Field Type       |  Card.  |  Description
 :---------------------|:------------------|:--------|:------------
@@ -1038,7 +1038,7 @@ refusedChargePointInfo  |  ChargePointInfo  |  +      |  This contains the charg
 ### GetChargePointListUpdates.req
 
 This contains the field definition of the GetChargePointListUpdates.req 
-sent by a partner's system to the CHS.
+sent by a partner's system to the CHS. (It's a NSP message)
 
  Field Name   |  Field Type    |  Card.  |  Description
 :-------------|:---------------|:--------|:------------
@@ -1059,7 +1059,7 @@ chargePointInfoArray  |  ChargePointInfo  |  *      |  This contains the charge 
 ### UpdateChargePointList.req
 
 This contains the field definition of the UpdateChargePointList.req 
-sent by a partner's system to the CHS.
+sent by a partner's system to the CHS. (It's a CPO message)
 
  Field Name           |  Field Type       |  Card.  |  Description
 :---------------------|:------------------|:--------|:------------
@@ -1084,7 +1084,7 @@ refusedChargePointInfo  |  ChargePointInfo  |  *      |  This contains the charg
 ### UpdateTariffs.req
 
 This contains the field definition of the UpdateTariffs.req
-sent by a partner system to the CHS.
+sent by a partner system to the CHS. (It's a CPO message)
 
  Field Name      |  Field Type  |  Card.  |  Description
 :----------------|:-------------|:--------|:------------
@@ -1105,7 +1105,7 @@ refusedTariffInfo	    |  TariffInfo       |  *      |  This contains the charge 
 ### GetTariffUpdates.req
 
 This contains the field definition of the GetTariffUpdates.req
-sent by a partner system to the CHS.
+sent by a partner system to the CHS. (It's an EMP message)
 
  Field Name    |  Field Type    |  Card.  |  Description
 :--------------|:---------------|:--------|:------------
@@ -1130,7 +1130,7 @@ TariffInfoArray  	  |  TariffInfo		  |  *      |  This contains the tariff infor
 ### RequestSingleRoamingAuthorisation.req
 
 This contains the field definition of the 
-RequestSingleRoamingAuthorisation.req sent by CMS to the CHS.
+RequestSingleRoamingAuthorisation.req sent by CMS to the CHS. (It's a CPO message)
 
  Field Name   |  Field Type  |  Card.  |  Description
 :-------------|:-------------|:--------|:------------
@@ -1157,7 +1157,7 @@ roamingAuthorisationInfo  |  RoamingAuthorisationInfo  |  ?      |  This contain
 
 ### UpdateStatus.req
 
-This contains the field definition of the UpdateStatus.req sent by a CMS to the CHS.
+This contains the field definition of the UpdateStatus.req sent by a CMS to the CHS. (It's a CPO/PSO message)
 
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
@@ -1177,7 +1177,7 @@ result        |  Result      |  1      |  This contains the result of UpdateStat
 
 ### GetStatus.req
 
-This contains the field definition of the GetStatus.req sent by a NPS to the CHS.
+This contains the field definition of the GetStatus.req sent by a NPS to the CHS. (It's a NSP message)
 
  Field Name    |  Field Type    |  Card.  |  Description
 :--------------|:---------------|:--------|:------------
@@ -1199,7 +1199,7 @@ This contains the field definition of the GetStatus.conf sent by the CHS as resp
 :-------------|:-----------------|:--------|:------------
 evse          |  EvseStatusType  |  *      |  This contains one EVSE ID with the current status represented in a major part and a minor part.
 parking	      |  ParkingStatusType |  *    |  This contains one parking spot ID with the current status.
-combined 	  |  EvseStatusType	 |  *      |  This contains one EVSE ID status including the parking spot status (if applicable).
+combined      |  EvseStatusType	 |  *      |  This contains one EVSE ID status including the parking spot status (if applicable).
 
 
 
