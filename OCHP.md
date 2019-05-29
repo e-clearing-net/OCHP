@@ -1808,7 +1808,7 @@ lower.
 
  Field Name       |  Field Type  |  Card.  |  Description
 :-----------------|:-------------|:--------|:------------
- maximumPower     |  float       |  1      |  The maximum available power at this charge point at nominal voltage over all available phases of the line.
+ maximumPower     |  float       |  1      |  The maximum available power at t	his charge point at nominal voltage over all available phases of the line.
  guaranteedPower  |  float       |  ?      |  The minimum guaranteed mean power in case of load management. Should be set to maximum when no load management applied.
  nominalVoltage   |  int         |  ?      |  The nominal voltage for the charge point.
 
@@ -2070,12 +2070,10 @@ Each individual tariff consists of tariff elements. These elements can be used t
 
 Changes to a tariff can always only be made to the entire tariff object. That way it is ensured that there cannot be multiple conflicting tariffs referenced at the same connector.  
 
-<div><!-- ------------------------------------------------------------------------------></div>
  Field Name          |  Field Type               |  Card.  |  Description
 :--------------------|:--------------------------|:--------|:------------
  tariffId            | TariffId	            	 | 1       | Uniquely identifies the tariff.
- individualTariff	 | IndividualTariffType		 | +	   | Contains multiple individual tariffs dependant on intended recipient.
-<div><!-- ------------------------------------------------------------------------------></div>
+ individualTariff    | IndividualTariffType	 | +	   | Contains multiple individual tariffs dependant on intended recipient.
 
  
 ### IndividualTariffType *class*
