@@ -2077,53 +2077,47 @@ Changes to a tariff can always only be made to the entire tariff object. That wa
 
  
 ### IndividualTariffType *class*
-<div><!-- ------------------------------------------------------------------------------></div>
+
  Field Name          |  Field Type               |  Card.  |  Description
 :--------------------|:--------------------------|:--------|:------------
  currency            | string (3)                | 1       | Currency of this tariff, ISO 4217 Code
- tariffElement       | TariffElementType 		 | +       | List of tariff elements.
- recipient           | string (5) 		    	 | *       | Provider-IDs of the intended recipients for this tariff. If no recipient is provided, this individual tariff is considered the default tariff.
-<div><!-- ---------------------------------------------------------------------------- --></div>
+ tariffElement       | TariffElementType 	 | +       | List of tariff elements.
+ recipient           | string (5) 	   	 | *       | Provider-IDs of the intended recipients for this tariff. If no recipient is provided, this individual tariff is considered the default tariff.
+
 
 **Note:** Tariffs are referenced on connector level by their tariff-ID only. Every EVSE Operator is advised to define one default individual tariff for each tariffId as a fallback in addition to the individual tariffs defined for certain recipients. A provider will only receive tariffs that they are recipient for.
 
 
 ### TariffElementType *class*
 
-<div><!-- ---------------------------------------------------------------------------- --></div>
  Field Name          |  Field Type               |  Card.  |  Description
 :--------------------|:--------------------------|:--------|:------------
  priceComponent      | PriceComponentType        | 1       | Price component defining this TariffElement. 
  tariffRestriction   | TariffRestrictionType     | 1       | List of tariff restrictions applicable for this TariffElement / PriceComponent.
-<div><!-- ---------------------------------------------------------------------------- --></div>  
 
 
 ### PriceComponentType *class*
 
-<div><!-- ---------------------------------------------------------------------------- --></div>
  Field Name          |  Field Type               |  Card.  |  Description
 :--------------------|:--------------------------|:--------|:------------
- billingItem	     | BillingItemType 			 | 1       | Type of tariff dimension
- itemPrice	         | float	                 | 1       | price per unit for this tariff dimension (unit according to dimension, see BillingItemType description)
- stepSize	         | float                       | 1       | Minimum amount to be billed. This unit will be billed in this stepSize blocks. For example: if billingItem is usagetime and  stepSize is 0.1, then time will be billed in blocks of 6 minutes, so if 8 minutes is used, 12 minutes (2 blocks of stepSize) will be billed. In case of one-time payments, this is to be set to 1.0.
-<div><!-- ---------------------------------------------------------------------------- --></div>
+ billingItem	     | BillingItemType 		 | 1       | Type of tariff dimension
+ itemPrice	     | float	                 | 1       | price per unit for this tariff dimension (unit according to dimension, see BillingItemType description)
+ stepSize	     | float                     | 1       | Minimum amount to be billed. This unit will be billed in this stepSize blocks. For example: if billingItem is usagetime and  stepSize is 0.1, then time will be billed in blocks of 6 minutes, so if 8 minutes is used, 12 minutes (2 blocks of stepSize) will be billed. In case of one-time payments, this is to be set to 1.0.
 
 
 ### TariffRestrictionType *class*
 
-<div><!-- ---------------------------------------------------------------------------- --></div>
  Field Name          |  Field Type               |  Card.  |  Description
 :--------------------|:--------------------------|:--------|:------------
- regularHours		 | RegularHoursType			 | *	   | Regular hours that this tariff element should be valid for (maximum of 14 entries). If always valid (24/7), don't set (as this is a tariff restriction).
- startDate           | DateType					 | ?       | Start date, for example: 2015-12-24, valid from this day (midnight, i.e. including this day)
- endDate             | DateType 				 | ?       | End date, for example: 2015-12-27, valid until this day (midnight, i.e. excluding this day)          
- minEnergy           | float   					 | ?       | Minimum used energy in kWh, for example 20.0, valid from this amount of energy is used                       
- maxEnergy           | float  					 | ?       | Maximum used energy in kWh, for example 50.0, valid until this amount of energy is used 
- minPower            | float   					 | ?       | Minimum power in kW, for example 0.0, valid from this charging speed
- maxPower            | float			 		 | ?       | Maximum power in kW, for example 20.0, valid up to this charging speed
+ regularHours	     | RegularHoursType		 | *	   | Regular hours that this tariff element should be valid for (maximum of 14 entries). If always valid (24/7), don't set (as this is a tariff restriction).
+ startDate           | DateType			 | ?       | Start date, for example: 2015-12-24, valid from this day (midnight, i.e. including this day)
+ endDate             | DateType 		 | ?       | End date, for example: 2015-12-27, valid until this day (midnight, i.e. excluding this day)          
+ minEnergy           | float   			 | ?       | Minimum used energy in kWh, for example 20.0, valid from this amount of energy is used                       
+ maxEnergy           | float  			 | ?       | Maximum used energy in kWh, for example 50.0, valid until this amount of energy is used 
+ minPower            | float   			 | ?       | Minimum power in kW, for example 0.0, valid from this charging speed
+ maxPower            | float			 | ?       | Maximum power in kW, for example 20.0, valid up to this charging speed
  minDuration         | int                       | ?       | Minimum duration in seconds, valid for a duration from x seconds
  maxDuration         | int                       | ?       | Maximum duration in seconds, valid for a duration up to x seconds
-<div><!-- ---------------------------------------------------------------------------- --></div>
 
 
 ### TariffId
