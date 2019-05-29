@@ -1808,7 +1808,7 @@ lower.
 
  Field Name       |  Field Type  |  Card.  |  Description
 :-----------------|:-------------|:--------|:------------
- maximumPower     |  float       |  1      |  The maximum available power at t	his charge point at nominal voltage over all available phases of the line.
+ maximumPower     |  float       |  1      |  The maximum available power at this charge point at nominal voltage over all available phases of the line.
  guaranteedPower  |  float       |  ?      |  The minimum guaranteed mean power in case of load management. Should be set to maximum when no load management applied.
  nominalVoltage   |  int         |  ?      |  The nominal voltage for the charge point.
 
