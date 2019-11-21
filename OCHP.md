@@ -1553,7 +1553,7 @@ Contains all information concerning a Charge Data Record
  ratings	  |  RatingsType        |  ?      |  Ratings applicable to this charge point.
  meterId          |  string(20)         |  ?      |  Written identification number of the physical energy meter, provided by the manufacturer. For future use.
  chargingPeriods  |  CdrPeriodType      |  +      |  One period per item on the bill.
- totalCost	      |  float		        |  ?	  |  Total cost for the entire charging process. Should always equal the sum of the individual periodCosts.
+ totalCost	      |  float		        |  ?	  |  Total cost (nett price, without VAT) for the entire charging process. Should always equal the sum of the individual periodCosts.
  currency	      |  string(3)		    |  1	  |  Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
  
  
