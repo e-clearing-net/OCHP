@@ -926,6 +926,8 @@ This contains the field definition of the GetCDRs.req sent by a provider's syste
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
 cdrStatus     |  CdrStatusType   |  ?      | Defines which status of CDRs to return: accepted, revised, rejected, approved. If not set, will return accepted and revised CDRs.
+dateFrom      |  DateTimeType    |  1      | to filter the CDRs starting from the mentioned date and time.
+dateTo        |  DateTimeType    |  1      | to filter the CDRs till the mentioned date and time.
 
 
 ### GetCDRs.conf
@@ -945,6 +947,8 @@ This contains the field definition of the CheckCDRs.req sent by an EVSE operator
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
 cdrStatus     |  CdrStatusType   |  ?      | Defines which status of CDRs to return: declined, rejected, approved. If not set, will return declined CDRs.
+dateFrom      |  DateTimeType    |  1      | to filter the CDRs starting from the mentioned date and time.
+dateTo        |  DateTimeType    |  1      | to filter the CDRs till the mentioned date and time.
 
 
 ### CheckCDRs.conf
