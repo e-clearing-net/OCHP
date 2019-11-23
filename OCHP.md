@@ -152,6 +152,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [RegularHoursType *class*](#regularhourstype-class)
         - [ExceptionalPeriodType *class*](#exceptionalperiodtype-class)
         - [RestrictionType *enum*](#restrictiontype-enum)
+        - [chargePointType *enum*](#chargePointType-enum)
         - [ChargePointInfo *class*](#chargepointinfo-class)
     - [Types for Tariff Data Exchange](#types-for-tariff-data-exchange)
 		- [TariffInfo *class*](#tariffinfo-class)
@@ -2044,6 +2045,28 @@ This class contains all parking related information. If a parkingId is given, th
 The parking-ID follows a similar syntax to that of contract- and EVSE-IDs. The PSO-ID is followed by a 'P' that signifies a tariff and a unique instance of up to 30 characters.
 
 
+### chargePointType *enum*
+
+The chargePointType is extended from "AC" and "DC" to the options mentioned below. The enhancement enables the CPOs to define the CPTs
+more precisely and offer diversified services.
+
+ Value       	|  Description
+:------------	|:-------------
+ AC		|  Alternating current
+ DC		|  Direct current
+ Super_95	|  Premium unleaded petrol having octance rating of 95
+ Super_Plus	|  High octane rating fuel containing 5-10% of ethanol
+ Super_E10	|  Petrol fuel with an ethanol content of up to 10 percent and an octane rating of at least 95
+ Diesel		|  Liquid fuel used in diesel engines, whose ignition takes place without any spark
+ LPG		|  Liquefied petroleum gas
+ CNG		|  Compressed natural gas
+ LNG		|  Liquified natural gas
+ H2		|  Hydrogen fuel
+ Ethanol	|  Ethyl alcohol as fuel
+ AdBlue		|  !!! not a fuel
+ Other		|  Other fuel types
+ 
+
 ### ChargePointInfo *class*
 
 Contains information about the charge points.
@@ -2070,10 +2093,10 @@ Contains information about the charge points.
  restriction	     |  RestrictionType		     |  *      |  Restrictions applying to the usage of the charging station.
  authMethods         |  AuthMethodType           |  +      |  List of available payment or access methods on site.
  connectors          |  ConnectorType            |  +      |  Which receptacle type is/are present for a power outlet.
- chargePointType     |  string(2)                |  1      |  The type of the charge point ("AC" or "DC").
+ chargePointType     |  string(10)               |  1      |  The type of the charge point.
  ratings             |  RatingsType              |  ?      |  Defines the ratings for the charge point.
  userInterfaceLang   |  string(3)                |  *      |  Alpha, three characters. Language(s) of the user interface or printed on-site instructions. *ISO-639-3* language code
- maxReservation		 |  float					 |  ?	   |  If a reservation of this charge point is possible, this is the maximum duration the CPO will allow a reservation for (in minutes). Recommendation: 30 minutes.
+ maxReservation	     |  float		 	 |  ?	   |  If a reservation of this charge point is possible, this is the maximum duration the CPO will allow a reservation for (in minutes). Recommendation: 30 minutes.
  
 
 
