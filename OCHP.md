@@ -10,9 +10,10 @@ Prot. Version | Date       | Comment
 1.2           | 17-06-2014 | Live Status Interface and further enhancements from market requirements. Commit: [6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5](../../commit/6a1dcb07cfa75f8b3deb185c55ce451bb8703cb5)
 1.3           | 27-03-2015 | Bug fixes, further enhancements (power ratings, location types, time zones) Commit: [77cccd838db692ab6f8b77fb4be8e81d59ec04e2](../../commit/77cccd838db692ab6f8b77fb4be8e81d59ec04e2)
 1.4           | 15-08-2016 | Tariffs, CDR handling changes, new role: PSO, bug fixes, enhancements
+1.5           | 23-11-2019 | Extension of Roaming-Authorizations, chargePointType, Get/Check CDRs ...... bug fixes, enhancements
 
 
-Copyright (c) 2012-2016 smartlab, elaad.nl
+Copyright (c) 2012-2019 smartlab, elaad.nl
 
 Permission is hereby granted, free of charge, to any person obtaining a 
 copy of this software and associated documentation files 
@@ -127,6 +128,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [tokenSubType *enum*](#tokensubtype-enum)
         - [tokenRepresentation *enum*](#tokenrepresentation-enum)
         - [RoamingAuthorisationInfo *class*](#roamingauthorisationinfo-class)
+	- [PermissionsType *enum*](#PermissionsType-enum)
     - [Types for the Exchange of Charge Data](#types-for-the-exchange-of-charge-data)
         - [BillingItemType *enum*](#billingitemtype-enum)
         - [CdrPeriodType *class*](#cdrperiodtype-class)
@@ -1448,16 +1450,34 @@ code or operator/provider part. This information about the "owning
 operator/provider" is delivered by the context of the communication.
 
 
+### PermissionsType *enum*
+
+RoamingAuthorisationInfo is extended by the attribute permissions. The PermissionsType (enum) can be set to multiple options. Feature will help EMPs to have better structured and organized customer portfolio.
+
+ Value       	|  Description
+:------------	|:-------------
+ AC		|  Alternating current
+ DC		|  Direct current
+ CNG		|  Compressed natural gas
+ LNG		|  Liquified natural gas
+ Fuel		|  Fuel
+ H2		|  Hydrogen
+ Ethanol	|  Ethyl alcohol as fuel
+ Other		|  Other fuel types
+ 
+ 
+
 ### RoamingAuthorisationInfo *class*
 
 Contains information about a roaming authorisation (card/token)
 
- Field Name     |  Field Type    |  Card.  |  Description
-:---------------|:---------------|:--------|:------------
- EmtId          |  EmtId         |  1      |  Electrical Vehicle Contract Identifier
- contractId     |  ContractId    |  1      |  EMA-ID the token belongs to.
- printedNumber  |  string(150)   |  ?      |  Might be used for manual authorisation.
- expiryDate     |  DateTimeType  |  1      |  Tokens may be used until the date of expiry is reached. To be handled by the partners systems. Expired roaming authorisations may be erased locally by each partner's systems.
+ Field Name     |  Field Type    	|  Card.  |  Description
+:---------------|:---------------	|:--------|:------------
+ EmtId          |  EmtId         	|  1      |  Electrical Vehicle Contract Identifier
+ contractId     |  ContractId    	|  1      |  EMA-ID: the token belongs to
+ permissions    |  PermissionsType	|  1      |  Permissions for various energy sources and authorization services
+ printedNumber  |  string(150)   	|  ?      |  Might be used for manual authorisation.
+ expiryDate     |  DateTimeType  	|  1      |  Tokens may be used until the date of expiry is reached. To be handled by the partners systems. Expired roaming authorisations may be erased locally by each partner's systems.
 
 
 
