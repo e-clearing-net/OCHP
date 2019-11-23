@@ -24,6 +24,11 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
+			<s:element name="permissions" type="tns:PermissionsType" minOccurs="1" maxOccurs="unbounded">
+        			<s:annotation>
+          				<s:documentation>Permissions for various energy sources and authorization services.</s:documentation>
+        			</s:annotation>
+      			</s:element>
 			<s:element minOccurs="0" maxOccurs="1" name="printedNumber">
 				<s:annotation>
 					<s:documentation>
