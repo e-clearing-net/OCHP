@@ -1201,4 +1201,35 @@
 		</s:restriction>
 	</s:simpleType>
 	
+	<s:complexType name="PermissionsType">
+    		<s:sequence>
+			<s:element name="PermissionsType">
+        			<s:annotation>
+          				<s:documentation>
+						AC
+						DC
+						CNG
+						LNG
+						Fuel
+						H2
+						Ethanol
+						Other
+		  			</s:documentation>
+        			</s:annotation>
+        			<s:simpleType>
+          				<s:restriction base="s:string">
+						<s:enumeration value="AC"/>
+						<s:enumeration value="DC"/>
+						<s:enumeration value="CNG"/>
+						<s:enumeration value="LNG"/>
+						<s:enumeration value="Fuel"/>
+						<s:enumeration value="H2"/>
+						<s:enumeration value="Ethanol"/>
+						<s:enumeration value="Other"/>
+          				</s:restriction>
+        			</s:simpleType>
+      			</s:element>
+    		</s:sequence>
+  	</s:complexType>
+	
 </s:schema>
