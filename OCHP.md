@@ -2063,8 +2063,8 @@ more precisely and offer diversified services.
  LNG		|  Liquified natural gas
  H2		|  Hydrogen fuel
  Ethanol	|  Ethyl alcohol as fuel
- AdBlue		|  !!! not a fuel
- Other		|  Other fuel types
+ AdBlue		|  Diesel exhaust fluid used in vehicles with Selective Catalytic Reduction (SCR)
+ Other		|  Other chargepoint types
  
 
 ### ChargePointInfo *class*
