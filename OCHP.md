@@ -1308,7 +1308,8 @@ The billing items for charging periods and tariffs.
  serviceFee   |  General service fee per charging process. The billingValue represents a multiplier and thus has to be set to "1.0".
  reservation  |  One time fee for a reservation of the EVSE. The billingValue represents a multiplier and thus has to be set to "1.0".
  reservationtime | Price for the duration of a reservation. The billingValue represents the time in hours.
-
+ volume	      | Price for the quantity used in liter.
+ mass         | Price for the quantity used in kilogram (kg).
  
 ### RegularHoursType *class*
 
@@ -1421,6 +1422,7 @@ The type of the supplied instance for basic filtering.
  rfid        |  All kinds of RFID-Cards. Field tokenInstance holds the hexadecimal representation of the card's UID, Byte order: big endian, no zero-filling.
  remote      |  All means of remote authentication through the backend. Field tokenInstance holds a reference to the remote authorization or session. In case of a OCHPdirect authorization the _directId_.
  15118       |  All authentication means defined by ISO/IEC 15118 except RFID-cards.
+ other       |  To accommodate the other energy sources incorporated into the protocol.
  
  **NOTE:** The _remote_ token type is only beeing used in the CDR of a
  remotely started charging process. Tokens with type _remote_ shall not
@@ -1800,6 +1802,16 @@ The socket or plug standard of the charging point.
  IEC_60309_2_three_16  |  IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
  IEC_60309_2_three_32  |  IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
  IEC_60309_2_three_64  |  IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
+ LPG		       |  ACME, DISH, Bajonett, Euronozzle
+ LNG		       |  Universal
+ CNG		       |  NGV1, NGV2
+ H2		       |  SAE J2601
+ SUPER_95	       |  Universal
+ SUPER_PLUS	       |  Universal
+ SUPER_E10	       |  Universal
+ DIESEL		       |  Universal
+ ETHANOL	       |  Universal
+ ADBLUE		       |  Universal
 
 
 ### ConnectorFormat *enum*
@@ -1810,6 +1822,8 @@ The format of the connector, whether it is a socket or a plug.
 :------------|:-------------
  Socket      |  The connector is a socket; the EV user needs to bring a fitting plug/cable.
  Cable       |  The connector is an attached cable; the EV users car needs to have a corresponding inlet.
+ Nozzle      |  The connector is a nozzle; used normally at conventional fuel stations.
+ Other       |  The connector is of another type, like a nozzle with an attached hose.
 
 
 ### ConnectorType *class*
