@@ -2078,6 +2078,7 @@ Contains information about the charge points.
  Field Name          |  Field Type               |  Card.  |  Description
 :--------------------|:--------------------------|:--------|:------------
  evseId              |  EvseId                   |  1      |  Globally unique identifier
+ evseDescription     |  string(100)              |  1      |  Human readable description of an EVSE
  locationId          |  string(15)               |  1      |  Alphanumeric. Identifies a location/pool of EVSEs. Unique within one EVSE Operator. All EVSEs of one locationId have to have the same address and Geocoordinates. Characters: [A-Z], [0-9], <space>
  timestamp           |  DateTimeType             |  ?      |  Recommended. Date and time of the latest data update for this ChargePointInfo. When set it must be updated if one of the values changed.
  locationName        |  string(100)              |  1      |  Official name; should be unique in the geographical area
