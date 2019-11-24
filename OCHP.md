@@ -119,6 +119,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     - [General Types](#general-types)
         - [Result *class*](#result-class)
         - [ResultCodeType *enum*](#resultcodetype-enum)
+        - [Pagination](#pagination)
         - [DateTimeType](#datetimetype)
         - [LocalDateTimeType](#localdatetimetype)
     - [Types for the Exchange of Authorisation Data](#types-for-the-exchange-of-authorisation-data)
@@ -843,7 +844,14 @@ These messages are used for the purpose of the exchange of authorization data fr
 ### GetRoamingAuthorisationList.req
 
 This contains the field definition of the GetRoamingAuthorisationList.req sent by a partner's system to the CHS.
-No fields are defined. (It's a CPO message)
+No fields are mandatory but it's recommended to use pagination. (It's a CPO message)
+
+ Field Name   |  Field Type      |  Card.  |  Description
+:-------------|:-----------------|:--------|:------------
+dateFrom      |  DateTimeType    |  ?      | to filter the RAs updated from the mentioned date and time.
+dateTo        |  DateTimeType    |  ?      | to filter the RAs updated till the mentioned date and time.
+offset        |  int    	 |  ?      | the offset of a first object, that the request will return. Default is always zero.
+limit         |  int   		 |  ?      | the maximum number of objects that a Get request will return.
 
 
 ### GetRoamingAuthorisationList.conf
@@ -1250,6 +1258,16 @@ Result and error codes for the class Result as return value for method calls.
  server         | Internal server error.
  format         | Data has technical errors.
  roaming	| No roaming connections set; No own partners connected to this user; Roaming partners have no data.
+
+
+### Pagination
+
+Field Name   |  Field Type      |  Card.  |  Description
+:-------------|:-----------------|:--------|:------------
+dateFrom      |  DateTimeType    |  ?      | to filter the results updated, starting from the mentioned date and time.
+dateTo        |  DateTimeType    |  ?      | to filter the results updated, till the mentioned date and time.
+offset        |  int    	 |  ?      | the offset of a first object, that the request will return. Default is always zero.
+limit         |  int   		 |  ?      | the maximum number of objects that a Get request will return.
 
 
 ### DateTimeType
