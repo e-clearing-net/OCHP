@@ -1555,9 +1555,9 @@ declining CDRs.
  new             |  A new CDR before upload to the CHS.
  accepted        |  An uploaded CDR was accepted by the CHS as plausible.
  rejected        |  The checked CDR again rejected by the CHS and is to be archived.
- declined	 	 |  The CDR was declined by the owner (EVSP).
+ declined	 |  The CDR was declined by the owner (EVSP).
  approved        |  The CDR was approved by the owner (EVSP).
- revised		 |  The CDR was revised by the CPO and uploaded again. Only previously accepted or declined CDRs can be revised.
+ revised	 |  The CDR was revised by the CPO and uploaded again. Only previously accepted or declined CDRs can be revised.
 
 
 ### CDRInfo *class*
@@ -1566,7 +1566,7 @@ Contains all information concerning a Charge Data Record
 
  Field Name       |  Field Type         |  Card.  |  Description
 :-----------------|:--------------------|:--------|:------------
- cdrId            |  CdrId		        |  1      |  Unique charge data record identifier.
+ cdrId            |  CdrId		|  1      |  Unique charge data record identifier.
  evseId           |  EvseId             |  1      |  Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it.
  emtId            |  EmtId              |  1      |  Utilized token for this charging session.
  contractId       |  ContractId         |  1      |  Identifies a customer in the electric mobility charging context.
@@ -1580,14 +1580,16 @@ Contains all information concerning a Charge Data Record
  ratings	  |  RatingsType        |  ?      |  Ratings applicable to this charge point.
  meterId          |  string(20)         |  ?      |  Written identification number of the physical energy meter, provided by the manufacturer. For future use.
  chargingPeriods  |  CdrPeriodType      |  +      |  One period per item on the bill.
- totalCost	      |  float		        |  ?	  |  Total cost (nett price, without VAT) for the entire charging process. Should always equal the sum of the individual periodCosts.
- currency	      |  string(3)		    |  1	  |  Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
+ totalCost	  |  float		|  ?	  |  Total cost (nett price, without VAT) for the entire charging process. Should always equal the sum of the individual periodCosts.
+ currency	  |  string(3)		|  1	  |  Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
  
  
 ### CdrId
-The CDR-ID is a unique identifier for charge data records. It is composed of the CPO-ID followed by an alphanumeric instance of up to 31 characters (Characters: $[$A-Z$]$, $[$0-9$]$).
+The CDR-ID is a unique identifier for charge data records. EvseId is incorporated into the CDR-ID to make it explicit who the CPO is. The length of the string is extended from “36” to “43”. 
+	
+Case insensitive (normalized to all upper Case, remove optional Separators) (Characters: $[$A-Z$]$, $[$0-9$]$).
 
-**Note:** For compatibility reasons, CDR-IDs from older OCHP implementations will not necessarily include the CPO-ID and must only be EVSE-unique.
+**Note:** For compatibility reasons, CDR-IDs from older OCHP implementations will not necessarily include the EvseId/CPO-ID and must only be EVSE-unique.
 
 
 
