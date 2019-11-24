@@ -87,6 +87,24 @@
 					</s:annotation>
 				</s:element>
 			</s:sequence>
+			<s:sequence>
+				<s:element minOccurs="1" maxOccurs="1" name="dateFrom" type="tns:DateTimeType">
+					<s:annotation>
+						<s:documentation>
+							to filter the CDRs starting from the mentioned date and time.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+			<s:sequence>
+				<s:element minOccurs="1" maxOccurs="1" name="dateTo" type="tns:DateTimeType">
+					<s:annotation>
+						<s:documentation>
+							to filter the CDRs till the mentioned date and time.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
 		</s:complexType>
 	</s:element>
 
@@ -116,7 +134,7 @@
 		</s:complexType>
 	</s:element>
 	
-		<s:element name="CheckCDRsRequest">
+	<s:element name="CheckCDRsRequest">
 		<s:complexType>
 			<s:annotation>
 				<s:documentation>
@@ -129,6 +147,24 @@
 						<s:documentation>
 							Defines which status of CDRs to return to the CPO making the call.
 							Valid options: declined (default, if not set), approved, rejected.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+			<s:sequence>
+				<s:element minOccurs="1" maxOccurs="1" name="dateFrom" type="tns:DateTimeType">
+					<s:annotation>
+						<s:documentation>
+							to filter the CDRs starting from the mentioned date and time.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
+			<s:sequence>
+				<s:element minOccurs="1" maxOccurs="1" name="dateTo" type="tns:DateTimeType">
+					<s:annotation>
+						<s:documentation>
+							to filter the CDRs till the mentioned date and time.
 						</s:documentation>
 					</s:annotation>
 				</s:element>
