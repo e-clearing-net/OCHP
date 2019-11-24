@@ -846,13 +846,6 @@ These messages are used for the purpose of the exchange of authorization data fr
 This contains the field definition of the GetRoamingAuthorisationList.req sent by a partner's system to the CHS.
 No fields are mandatory but it's recommended to use pagination. (It's a CPO message)
 
- Field Name   |  Field Type      |  Card.  |  Description
-:-------------|:-----------------|:--------|:------------
-dateFrom      |  DateTimeType    |  ?      | to filter the RAs updated from the mentioned date and time.
-dateTo        |  DateTimeType    |  ?      | to filter the RAs updated till the mentioned date and time.
-offset        |  int    	 |  ?      | the offset of a first object, that the request will return. Default is always zero.
-limit         |  int   		 |  ?      | the maximum number of objects that a Get request will return.
-
 
 ### GetRoamingAuthorisationList.conf
 
@@ -866,7 +859,7 @@ roamingAuthorisationInfoArray  |  RoamingAuthorisationInfo  |  *      |  This co
 
 ### SetRoamingAuthorisationList.req
 
-This contains the field definition of the SetRoamingAuthorisationList.req sent by a partner's system to the CHS. (It's an EMP message)
+This contains the field definition of the SetRoamingAuthorisationList.req sent by a partner's system to the CHS. Pagination is supported. (It's an EMP message)
 
  Field Name                    |  Field Type                |  Card.  |  Description
 :------------------------------|:---------------------------|:--------|:------------
@@ -885,7 +878,7 @@ refusedRoamingAuthorisationInfo  |  RoamingAuthorisationInfo  |  ?      |  This 
 
 ### GetRoamingAuthorisationListUpdates.req
 
-This contains the field definition of the GetRoamingAuthorisationListUpdate.req sent by a partner's system to the CHS. (It's a CPO message)
+This contains the field definition of the GetRoamingAuthorisationListUpdate.req sent by a partner's system to the CHS. Pagination is supported. (It's a CPO message)
 
  Field Name   |  Field Type    |  Card.  |  Description
 :-------------|:---------------|:--------|:------------
@@ -904,7 +897,7 @@ roamingAuthorisationInfoArray  |  RoamingAuthorisationInfo  |  *      |  This co
 
 ### UpdateRoamingAuthorisationList.req
 
-This contains the field definition of the UpdateRoamingAuthorisationList.req sent by a partner's system to the CHS. (It's an EMP message)
+This contains the field definition of the UpdateRoamingAuthorisationList.req sent by a partner's system to the CHS. Pagination is supported. (It's an EMP message)
 
  Field Name                    |  Field Type                |  Card.  |  Description
 :------------------------------|:---------------------------|:--------|:------------
@@ -1017,7 +1010,7 @@ These messages are used for the purpose of the exchange of charge point informat
 ### GetChargePointList.req
 
 This contains the field definition of the GetChargePointList.req sent by a partner's system to the CHS.
-No fields are defined. (It's a NSP message)
+No fields are defined but it's recommended to use pagination. (It's a NSP message)
 
 
 ### GetChargePointList.conf
@@ -1032,7 +1025,7 @@ chargePointInfoArray  |  ChargePointInfo  |  *      |  This contains the charge 
 
 ### SetChargePointList.req
 
-This contains the field definition of the SetChargePointList.req sent by a partner's system to the CHS. (It's a CPO message)
+This contains the field definition of the SetChargePointList.req sent by a partner's system to the CHS. Pagination is supported. (It's a CPO message)
 
  Field Name           |  Field Type       |  Card.  |  Description
 :---------------------|:------------------|:--------|:------------
@@ -1053,7 +1046,7 @@ refusedChargePointInfo  |  ChargePointInfo  |  +      |  This contains the charg
 ### GetChargePointListUpdates.req
 
 This contains the field definition of the GetChargePointListUpdates.req 
-sent by a partner's system to the CHS. (It's a NSP message)
+sent by a partner's system to the CHS. It's recommended to use pagination. (It's a NSP message)
 
  Field Name   |  Field Type    |  Card.  |  Description
 :-------------|:---------------|:--------|:------------
@@ -1074,7 +1067,7 @@ chargePointInfoArray  |  ChargePointInfo  |  *      |  This contains the charge 
 ### UpdateChargePointList.req
 
 This contains the field definition of the UpdateChargePointList.req 
-sent by a partner's system to the CHS. (It's a CPO message)
+sent by a partner's system to the CHS. Pagination is supported. (It's a CPO message)
 
  Field Name           |  Field Type       |  Card.  |  Description
 :---------------------|:------------------|:--------|:------------
