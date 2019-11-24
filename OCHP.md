@@ -1586,7 +1586,7 @@ Contains all information concerning a Charge Data Record
  endDateTime      |  LocalDateTimeType  |  1      |  End date and time of the charge session (log-off with the RFID badge or physical disconnect). Must be set in the local time of the charge point.
  duration         |  string(9)          |  ?      |  Duration of the charge session. Example: "000:00:28"
  chargePointAddress |  AddressType      |  1      |  Contains the address of the charging station.
- chargePointType  |  string(2)          |  1      |  The type of the charge point "AC" or "DC"
+ chargePointType  |  string(10)         |  1      |  Type of the charge point.
  connectorType    |  ConnectorType      |  1      |  Type of the utilized socket or connector.
  ratings	  |  RatingsType        |  ?      |  Ratings applicable to this charge point.
  meterId          |  string(20)         |  ?      |  Written identification number of the physical energy meter, provided by the manufacturer. For future use.
