@@ -199,7 +199,8 @@ Provider takes care of the EV user authentication and billing processes.
 The EV Service Provider provides the EV-customer authorization tokens
 (i.e. RFID-card, Certificates, ... ) that give authorisation to use
 the charging stations of contracted EVSE Operators.
-See the EMP Documentation [#EMP_documentation] (OCHP/documentation/)
+See the EMP Documentation 
+[EMP Documentation](/documentation/EMP_documentation.md "EMP Documentation")
 
 
 ### Electric Vehicle Supply Equipment Operator (EVSE Operator)
