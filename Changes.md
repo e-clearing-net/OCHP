@@ -1,4 +1,4 @@
-This file summarizes the changes made in OCHP version 1.5
+This file summarizes the changes made in OCHP version 1.5, coming from version 1.4.1
 
 # Token Data Type
 More authorization methods are being used to access charging stations than RFID cards or remote tokens.
@@ -29,9 +29,9 @@ The type of the supplied instance for basic filtering.
 
  Value       |  Description
 :------------|:-------------
- ISO14443    |  All kinds of RFID-Cards. Field tokenInstance holds the hexadecimal representation of the card's UID, Byte order: big endian, no zero-filling. Formerly 'rfid'
- ISO15693    |  All kinds of NFC identification. Field tokenInstance holds the hexadecimal representation of the card's UID, Byte order: big endian, no zero-filling.
- ISO15118    |  All authentication means defined by ISO/IEC 15118 except RFID-cards.
+ iso14443    |  All kinds of RFID-Cards. Field tokenInstance holds the hexadecimal representation of the card's UID, Byte order: big endian, no zero-filling. Formerly 'rfid'
+ iso15693    |  All kinds of NFC identification. Field tokenInstance holds the hexadecimal representation of the card's UID, Byte order: big endian, no zero-filling.
+ iso15118    |  All authentication means defined by ISO/IEC 15118 except RFID-cards.
  remote      |  All means of remote authentication through the backend. Field tokenInstance holds a reference to the remote authorization or session. In case of a OCHPdirect authorization the _directId_.
 
 
