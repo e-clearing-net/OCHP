@@ -192,13 +192,14 @@ Operators. The EV users identify their selves via an access token issued
 by the EVSP.
 
 
-### Electric Vehicle Service Provider (EVSP)
+### Electric Mobility Provider (EMP)
 
-The EVSP operates as a contract party for the EV user. The EV Service
+The EMP operates as a contract party for the EV user. The EV Service
 Provider takes care of the EV user authentication and billing processes.
 The EV Service Provider provides the EV-customer authorization tokens
 (i.e. RFID-card, Certificates, ... ) that give authorisation to use
 the charging stations of contracted EVSE Operators.
+See the EMP Documentation [EMP_documentation] (OCHP/documentation/)
 
 
 ### Electric Vehicle Supply Equipment Operator (EVSE Operator)
