@@ -3,14 +3,18 @@
 The purpose of the Open Clearing House Protocol is to connect market actors in the
 field of electric mobility charging infrastructure.
 
-[The current version of OCHP (1.4).](OCHP.md)
+[The current version of OCHP (1.4.1).](OCHP.md)
 
-[The current version of OCHP_direct_ (0.2).](OCHP-direct.md)
+[The current version of OCHPdirect (0.2).](OCHP-direct.md)
 
 Further information on [ochp.eu](http://ochp.eu)
 
 
 ##History
+
+### [Version 1.4](https://github.com/e-clearing-net/OCHP/tree/OCHP-1.4)
+
+Introduction of OCHPdirect 0.2, Tariffs, CDR handling changes, new role: PSO, bug fixes and enhancements.
 
 
 ### [Version 1.3](https://github.com/e-clearing-net/OCHP/tree/OCHP-1.3)
