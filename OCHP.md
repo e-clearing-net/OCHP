@@ -1470,7 +1470,7 @@ operator/provider" is delivered by the context of the communication.
 
 ### PermissionsType *enum*
 
-RoamingAuthorisationInfo is extended by the attribute permissions. The PermissionsType (enum) can be set to multiple options. Feature will help EMPs to have better structured and organized customer portfolio.
+RoamingAuthorisationInfo class is extended by the attribute permissions. The PermissionsType (enum) can be set to multiple options. Feature will help EMPs to have better structured and organized customer portfolio.
 
  Value       	|  Description
 :------------	|:-------------
