@@ -27,11 +27,19 @@
 			<s:element name="permissions" type="tns:PermissionsType" minOccurs="1" maxOccurs="unbounded">
 				<s:annotation>
 					<s:documentation>
-						Permissions for various energy sources and authorization services.
+						The PermissionsType (enum) can be set to multiple options. Feature will help EMPs to have better structured and organized customer portfolio.
+							AC
+							DC
+							CNG
+							LNG
+							Fuel
+							H2
+							Ethanol
+							Other
 					</s:documentation>
 				</s:annotation>
-			</s:element>	
-			<s:element minOccurs="0" maxOccurs="1" name="printedNumber">
+			</s:element>
+			<s:element name="printedNumber" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
 						Might be used for manual authorisation.
@@ -421,7 +429,7 @@
 			</s:element>
 		</s:sequence>
 	</s:complexType>
-	
+
 	<s:complexType name="TariffInfo">
 		<s:annotation>
 			<s:documentation>

@@ -38,7 +38,7 @@
 			</s:element>
 		</s:sequence>
 	</s:complexType>
-	
+
 	<s:complexType name="EmtId">
 		<s:sequence>
 			<s:element name="instance" minOccurs="1" maxOccurs="1">
@@ -65,7 +65,6 @@
 						<s:enumeration value="rfid"></s:enumeration>
 						<s:enumeration value="remote"></s:enumeration>
 						<s:enumeration value="15118"></s:enumeration>
-						<s:enumeration value="other"></s:enumeration>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
@@ -103,6 +102,38 @@
 		</s:attribute>
 	</s:complexType>
 
+	<s:complexType name="PermissionsType">
+		<s:sequence>
+			<s:element name="PermissionsType">
+				<s:simpleType>
+					<s:annotation>
+						<s:documentation>
+							The PermissionsType (enum) can be set to multiple options. Feature will help EMPs to have better structured and organized customer portfolio.
+								AC
+								DC
+								CNG
+								LNG
+								Fuel
+								H2
+								Ethanol
+								Other
+						</s:documentation>
+					</s:annotation>
+					<s:restriction base="s:string">
+						<s:enumeration value="AC"></s:enumeration>
+						<s:enumeration value="DC"></s:enumeration>
+						<s:enumeration value="CNG"></s:enumeration>
+						<s:enumeration value="LNG"></s:enumeration>
+						<s:enumeration value="Fuel"></s:enumeration>
+						<s:enumeration value="H2"></s:enumeration>
+						<s:enumeration value="Ethanol"></s:enumeration>
+						<s:enumeration value="Other"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+
 	<s:complexType name="CdrStatusType">
 		<s:sequence>
 			<s:element name="CdrStatusType">
@@ -135,27 +166,27 @@
 			<s:element name="connectorStandard" minOccurs="1" maxOccurs="1" type="tns:ConnectorStandard">
 				<s:annotation>
 					<s:documentation>
-						The Standard of the installed connector; 
-							Chademo                The connector type is CHAdeMO, DC 
+						The Standard of the installed connector;
+							Chademo                The connector type is CHAdeMO, DC
 							IEC_62196_T1           The connector type is IEC 62196 Type 1 “SAE J1772”
-							IEC_62196_T1_COMBO     The connector type is Combo Type 1 based, DC 
-							IEC_62196_T2           The connector type is IEC 62196 Type 2 “Mennekes” 
+							IEC_62196_T1_COMBO     The connector type is Combo Type 1 based, DC
+							IEC_62196_T2           The connector type is IEC 62196 Type 2 “Mennekes”
 							IEC_62196_T2_COMBO     The connector type is Combo Type 2 based, DC
-							IEC_62196_T3A          The connector type is IEC 62196 Type 3A 
-							IEC_62196_T3C          The connector type is IEC 62196 Type 3C “Scame” 
-							DOMESTIC_A             The connector type is Standard/Domestic household, type "A", NEMA 1-15, 2 pins 
+							IEC_62196_T3A          The connector type is IEC 62196 Type 3A
+							IEC_62196_T3C          The connector type is IEC 62196 Type 3C “Scame”
+							DOMESTIC_A             The connector type is Standard/Domestic household, type "A", NEMA 1-15, 2 pins
 							DOMESTIC_B             The connector type is Standard/Domestic household, type "B", NEMA 5-15, 3 pins
-							DOMESTIC_C             The connector type is Standard/Domestic household, type "C", CEE 7/17, 2 pins 
-							DOMESTIC_D             The connector type is Standard/Domestic household, type "D", 3 pin 
+							DOMESTIC_C             The connector type is Standard/Domestic household, type "C", CEE 7/17, 2 pins
+							DOMESTIC_D             The connector type is Standard/Domestic household, type "D", 3 pin
 							DOMESTIC_E             The connector type is Standard/Domestic household, type "E", CEE 7/5 3 pins
-							DOMESTIC_F             The connector type is Standard/Domestic household, type "F", CEE 7/4, Schuko, 3 pins 
-							DOMESTIC_G             The connector type is Standard/Domestic household, type "G", BS 1363, Commonwealth, 3 pins 
+							DOMESTIC_F             The connector type is Standard/Domestic household, type "F", CEE 7/4, Schuko, 3 pins
+							DOMESTIC_G             The connector type is Standard/Domestic household, type "G", BS 1363, Commonwealth, 3 pins
 							DOMESTIC_H             The connector type is Standard/Domestic household, type "H", SI-32, 3 pins
-							DOMESTIC_I             The connector type is Standard/Domestic household, type "I", AS 3112, 3 pins 
-							DOMESTIC_J             The connector type is Standard/Domestic household, type "J", SEV 1011, 3 pins 
-							DOMESTIC_K             The connector type is Standard/Domestic household, type "K", DS 60884-2-D1, 3 pins 
-							DOMESTIC_L             The connector type is Standard/Domestic household, type "L", CEI 23-16-VII, 3 pins 
-							TESLA_R                The connector type is Tesla Connector “Roadster”-type (round, 4 pin) 
+							DOMESTIC_I             The connector type is Standard/Domestic household, type "I", AS 3112, 3 pins
+							DOMESTIC_J             The connector type is Standard/Domestic household, type "J", SEV 1011, 3 pins
+							DOMESTIC_K             The connector type is Standard/Domestic household, type "K", DS 60884-2-D1, 3 pins
+							DOMESTIC_L             The connector type is Standard/Domestic household, type "L", CEI 23-16-VII, 3 pins
+							TESLA_R                The connector type is Tesla Connector “Roadster”-type (round, 4 pin)
 							TESLA_S                The connector type is Tesla Connector “Model_S”-type (oval, 5 pin)
 							IEC_60309_2_single_16  The connector type is IEC 60309-2 Industrial Connector single phase 16 Amperes (usually blue)
 							IEC_60309_2_three_16   The connector type is IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
@@ -260,7 +291,7 @@
 			</s:element>
 		</s:sequence>
 	</s:complexType>
-	
+
 	<s:complexType name="CdrPeriodType">
 		<s:sequence>
 			<s:element name="startDateTime" type="tns:LocalDateTimeType" minOccurs="1" maxOccurs="1">
@@ -321,15 +352,15 @@
 				<s:simpleType>
 					<s:annotation>
 						<s:documentation>
-							parkingtime; Price for parking, The billingValue represents the time in hours 
-							usagetime; Price for the time of EVSE usage. The billingValue represents the time in hours 
-							energy; Price for the consumed energy. The billingValue represents the energy in kilowatt-hours. 
-							power; Price for the consumed energy. The billingValue represents the maximum power in kilowatts 
+							parkingtime; Price for parking, The billingValue represents the time in hours
+							usagetime; Price for the time of EVSE usage. The billingValue represents the time in hours
+							energy; Price for the consumed energy. The billingValue represents the energy in kilowatt-hours.
+							power; Price for the consumed energy. The billingValue represents the maximum power in kilowatts
 							serviceFee; General service fee per charging process. The billingValue represents a multiplier and thus has to be set to "1.0"
 							reservation; One time fee for a reservation of the EVSE. The billingValue represents a multiplier and thus has to be set to "1.0".
 							reservationtime; Price for the duration of a reservation. The billingValue represents the time in hours.
 							volume; The billingQuantity represents quantity in liter.
-							mass; The billingQuantity represents quantity in kilogramm.	
+							mass; The billingQuantity represents quantity in kilogramm.
 						</s:documentation>
 					</s:annotation>
 					<s:restriction base="s:string">
@@ -341,7 +372,7 @@
 						<s:enumeration value="reservation"></s:enumeration>
 						<s:enumeration value="reservationtime"></s:enumeration>
 						<s:enumeration value="volume"></s:enumeration>
-						<s:enumeration value="mass"></s:enumeration>	
+						<s:enumeration value="mass"></s:enumeration>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
@@ -424,41 +455,41 @@
 				<s:simpleType>
 					<s:annotation>
 						<s:documentation>
-						The Standard of the installed connector; 
-							Chademo                The connector type is CHAdeMO, DC 
+						The Standard of the installed connector;
+							Chademo                The connector type is CHAdeMO, DC
 							IEC_62196_T1           The connector type is IEC 62196 Type 1 “SAE J1772”
-							IEC_62196_T1_COMBO     The connector type is Combo Type 1 based, DC 
-							IEC_62196_T2           The connector type is IEC 62196 Type 2 “Mennekes” 
+							IEC_62196_T1_COMBO     The connector type is Combo Type 1 based, DC
+							IEC_62196_T2           The connector type is IEC 62196 Type 2 “Mennekes”
 							IEC_62196_T2_COMBO     The connector type is Combo Type 2 based, DC
-							IEC_62196_T3A          The connector type is IEC 62196 Type 3A 
-							IEC_62196_T3C          The connector type is IEC 62196 Type 3C “Scame” 
-							DOMESTIC_A             The connector type is Standard/Domestic household, type "A", NEMA 1-15, 2 pins 
+							IEC_62196_T3A          The connector type is IEC 62196 Type 3A
+							IEC_62196_T3C          The connector type is IEC 62196 Type 3C “Scame”
+							DOMESTIC_A             The connector type is Standard/Domestic household, type "A", NEMA 1-15, 2 pins
 							DOMESTIC_B             The connector type is Standard/Domestic household, type "B", NEMA 5-15, 3 pins
-							DOMESTIC_C             The connector type is Standard/Domestic household, type "C", CEE 7/17, 2 pins 
-							DOMESTIC_D             The connector type is Standard/Domestic household, type "D", 3 pin 
+							DOMESTIC_C             The connector type is Standard/Domestic household, type "C", CEE 7/17, 2 pins
+							DOMESTIC_D             The connector type is Standard/Domestic household, type "D", 3 pin
 							DOMESTIC_E             The connector type is Standard/Domestic household, type "E", CEE 7/5 3 pins
-							DOMESTIC_F             The connector type is Standard/Domestic household, type "F", CEE 7/4, Schuko, 3 pins 
-							DOMESTIC_G             The connector type is Standard/Domestic household, type "G", BS 1363, Commonwealth, 3 pins 
+							DOMESTIC_F             The connector type is Standard/Domestic household, type "F", CEE 7/4, Schuko, 3 pins
+							DOMESTIC_G             The connector type is Standard/Domestic household, type "G", BS 1363, Commonwealth, 3 pins
 							DOMESTIC_H             The connector type is Standard/Domestic household, type "H", SI-32, 3 pins
-							DOMESTIC_I             The connector type is Standard/Domestic household, type "I", AS 3112, 3 pins 
-							DOMESTIC_J             The connector type is Standard/Domestic household, type "J", SEV 1011, 3 pins 
-							DOMESTIC_K             The connector type is Standard/Domestic household, type "K", DS 60884-2-D1, 3 pins 
-							DOMESTIC_L             The connector type is Standard/Domestic household, type "L", CEI 23-16-VII, 3 pins 
-							TESLA_R                The connector type is Tesla Connector “Roadster”-type (round, 4 pin) 
+							DOMESTIC_I             The connector type is Standard/Domestic household, type "I", AS 3112, 3 pins
+							DOMESTIC_J             The connector type is Standard/Domestic household, type "J", SEV 1011, 3 pins
+							DOMESTIC_K             The connector type is Standard/Domestic household, type "K", DS 60884-2-D1, 3 pins
+							DOMESTIC_L             The connector type is Standard/Domestic household, type "L", CEI 23-16-VII, 3 pins
+							TESLA_R                The connector type is Tesla Connector “Roadster”-type (round, 4 pin)
 							TESLA_S                The connector type is Tesla Connector “Model-S”-type (oval, 5 pin)
 							IEC_60309_2_single_16  The connector type is IEC 60309-2 Industrial Connector single phase 16 Amperes (usually blue)
 							IEC_60309_2_three_16   The connector type is IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
 							IEC_60309_2_three_32   The connector type is IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
 							IEC_60309_2_three_64   The connector type is IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
-							Super_95 
-							Super_Plus 
-							Super_E10 
-							Diesel 
-							Ethanol 
-							LNG 
-							CNG 
+							Super_95
+							Super_Plus
+							Super_E10
+							Diesel
+							Ethanol
+							LNG
+							CNG
 							H2
-							AdBlue 
+							AdBlue
 						</s:documentation>
 					</s:annotation>
 					<s:restriction base="s:string">
@@ -495,7 +526,7 @@
 						<s:enumeration value="CNG"></s:enumeration>
 						<s:enumeration value="LNG"></s:enumeration>
 						<s:enumeration value="H2"></s:enumeration>
-						<s:enumeration value="Ethanol"></s:enumeration>	
+						<s:enumeration value="Ethanol"></s:enumeration>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
@@ -551,8 +582,8 @@
 					<s:documentation>
 						Unknown; No status information available
 						Operative; Charge point is in operation and can be used
-						Inoperative; charge point cannot be used due to maintenance, greater downtime, blocking construction works or other access restrictions (temporarily, will be operative in the future). 
-						Planned; planned charge point, will be operating soon 
+						Inoperative; charge point cannot be used due to maintenance, greater downtime, blocking construction works or other access restrictions (temporarily, will be operative in the future).
+						Planned; planned charge point, will be operating soon
 						Closed; discontinued charge point, will be deleted soon
 					</s:documentation>
 				</s:annotation>
@@ -631,7 +662,7 @@
 			<s:element name="RestrictionType">
 				<s:annotation>
 					<s:documentation>
-						* evonly reserved parking spot for electric vehicles 
+						* evonly reserved parking spot for electric vehicles
 						* plugged parking allowed only while plugged in (and charging)
 						* disabled reserved parking spot for disabled people with valid ID
 						* customers parking or charging for costumer/guests only, for example in case of a hotel or shop
@@ -658,13 +689,13 @@
 	<s:complexType name="AuthMethodType">
 		<s:annotation>
 			<s:documentation>
-				Public; Public accessible, no authorisation required 
-				LocalKey; A key or token can be received at the location.(i.e. at the hotel reception or in the restaurant) 
-				DirectCash; The EVSE can be accessed through direct payment in cash. 
+				Public; Public accessible, no authorisation required
+				LocalKey; A key or token can be received at the location.(i.e. at the hotel reception or in the restaurant)
+				DirectCash; The EVSE can be accessed through direct payment in cash.
 				DirectCreditcard; The Evse can be accessed through direct payment with credit card
-				RfidMifareCls; Personal RFID token with roaming relation. (Mifare Classic) 
-				RfidMifareDes; Personal token with roaming relation. (Mifare Desfire) 
-				RfidCalypso; Personal RFID token with roaming relation. (Calypso) 
+				RfidMifareCls; Personal RFID token with roaming relation. (Mifare Classic)
+				RfidMifareDes; Personal token with roaming relation. (Mifare Desfire)
+				RfidCalypso; Personal RFID token with roaming relation. (Calypso)
 				Iec15118; In-car access token as specified in IEC-15118
 				OchpDirectAuth; The EVSE can be accessed through a OCHP-direct capable provider app.
 				OperatorAuth; The EVSE can be accessed through a direct online payment to the operator.
@@ -763,7 +794,7 @@
 				<s:annotation>
 					<s:documentation>
 						The format (socket/ cable / other) of the installed connector.
-							Socket; The connector is a socket; the EV user needs to bring a fitting plug 
+							Socket; The connector is a socket; the EV user needs to bring a fitting plug
 							Cable; The connector is an attached cable; the EV user car needs to have a fitting inlet
 							Other; The connector is of another type, like a nozzle with an attached hose. a nozzle; the user car needs to have an inlet matching the fuel type of the charge point.
 					</s:documentation>
@@ -784,8 +815,8 @@
 			<s:element name="resultCode">
 				<s:annotation>
 					<s:documentation>
-						ok: Data accepted and processed; 
-						partly: Only part of the data was accepted; 
+						ok: Data accepted and processed;
+						partly: Only part of the data was accepted;
 						not-authorized: Wrong username and/or password;
 						invalid-id: One or more ID (EVSE/Contract) were not valid for this user;
 						server: Internal server error;
@@ -815,7 +846,7 @@
 			<s:pattern value="[0-9A-Z]{1,36}"></s:pattern>
 		</s:restriction>
 	</s:simpleType>
-	
+
 	<s:complexType name="AddressType">
 		<s:sequence>
 			<s:element name="houseNumber" minOccurs="0" maxOccurs="1">
@@ -916,15 +947,15 @@
 			<s:element name="class" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Image class for usage categorization. Values: 
-							networkLogo: logo of a associated roaming network to be displayed with the EVSE for example in lists, maps and detailed information view; 
-							operatorLogo: logo of the charge points operator, for example a municipal, to be displayed with the EVSEs detailed information view or in lists and maps, if no networkLogo is present; 
-							ownerLogo: logo of the charge points owner, for example a local store, to be displayed with the EVSEs detailed information view; 
+						Image class for usage categorization. Values:
+							networkLogo: logo of a associated roaming network to be displayed with the EVSE for example in lists, maps and detailed information view;
+							operatorLogo: logo of the charge points operator, for example a municipal, to be displayed with the EVSEs detailed information view or in lists and maps, if no networkLogo is present;
+							ownerLogo: logo of the charge points owner, for example a local store, to be displayed with the EVSEs detailed information view;
 							stationPhoto: full view photo of the station in field. Should show the station only;
 							locationPhoto: location overview photo. Should indicate the location of the station on the site or street.;
-							entrancePhoto: location entrance photo. Should show the car entrance to the location from street side; 
+							entrancePhoto: location entrance photo. Should show the car entrance to the location from street side;
 							otherPhoto: other related photo to be displayed with the stations detailed information view;
-							otherLogo: other related logo to be displayed with the stations detailed information view; 
+							otherLogo: other related logo to be displayed with the stations detailed information view;
 							otherGraphic: other related graphic to be displayed with the stations detailed information view;
 					</s:documentation>
 				</s:annotation>
@@ -1002,7 +1033,7 @@
 			<s:element name="class" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						The class of referenced related resource. Values: 
+						The class of referenced related resource. Values:
 							operatorMap: direct link to this charge point on a map of the operator
 							operatorPayment: link to a payment page of the operator for contractless direct payment
 							stationInfo: further information on the charging station
@@ -1062,7 +1093,7 @@
 			</s:element>
 		</s:sequence>
 	</s:complexType>
-	
+
 	<s:complexType name="TariffElementType">
 		<s:sequence>
 			<s:element name="priceComponent" type="tns:PriceComponentType" minOccurs="1" maxOccurs="1">
@@ -1080,8 +1111,8 @@
 				</s:annotation>
 			</s:element>
 		</s:sequence>
-	</s:complexType>	
-	
+	</s:complexType>
+
 	<s:complexType name="PriceComponentType">
 		<s:sequence>
 			<s:element name="billingItem" type="tns:BillingItemType" minOccurs="1" maxOccurs="1">
@@ -1107,7 +1138,7 @@
 			</s:element>
 		</s:sequence>
 	</s:complexType>
-	
+
 	<s:complexType name="TariffRestrictionType">
 		<s:sequence>
 			<s:element name="regularHours" type="tns:RegularHoursType" minOccurs="0" maxOccurs="14">
@@ -1201,7 +1232,7 @@
 			<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[A-Za-z0-9]{9}"></s:pattern>
 		</s:restriction>
 	</s:simpleType>
-	
+
 	<s:simpleType name="ParkingId">
 		<s:annotation>
 			<s:documentation>
@@ -1213,7 +1244,7 @@
 			<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[Pp][A-Za-z0-9][A-Za-z0-9\*]{0,30}"></s:pattern>
 		</s:restriction>
 	</s:simpleType>
-		
+
 	<s:simpleType name="TariffId">
 		<s:annotation>
 			<s:documentation>
@@ -1225,7 +1256,7 @@
 			<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[Tt][A-Za-z0-9][A-Za-z0-9\*]{0,9}"></s:pattern>
 		</s:restriction>
 	</s:simpleType>
-	
+
 	<s:complexType name="ChargePointType">
 		<s:sequence>
 			<s:element name="ChargePointType">
@@ -1244,49 +1275,19 @@
 			</s:element>
 		</s:sequence>
 	</s:complexType>
-	
-	<s:complexType name="PermissionsType">
-		<s:sequence>
-			<s:element name="PermissionsType">
-				<s:annotation>
-					<s:documentation>
-						AC
-						DC
-						CNG
-						LNG
-						Fuel
-						H2
-						Ethanol
-						Any
-					</s:documentation>
-				</s:annotation>
-				<s:simpleType>
-					<s:restriction base="s:string">
-						<s:enumeration value="AC"></s:enumeration>
-						<s:enumeration value="DC"></s:enumeration>
-						<s:enumeration value="CNG"></s:enumeration>
-						<s:enumeration value="LNG"></s:enumeration>
-						<s:enumeration value="Fuel"></s:enumeration>
-						<s:enumeration value="H2"></s:enumeration>
-						<s:enumeration value="Ethanol"></s:enumeration>
-						<s:enumeration value="Any"></s:enumeration>
-					</s:restriction>
-				</s:simpleType>
-			</s:element>
-		</s:sequence>
-	</s:complexType>
-	
+
+
 	<!--s:complexType name="MeteringInfoType">
 		<s:annotation>
 			<s:documentation>
-				Array type mainly to serve the German Eichrecht 
+				Array type mainly to serve the German Eichrecht
 			</s:documentation>
 		</s:annotation>
 		<s:sequence>
 			<s:element name="meteringType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Defines the method to review charging data 
+						Defines the method to review charging data
 					</s:documentation>
 				</s:annotation>
 				<s:simpleType>
@@ -1300,7 +1301,7 @@
 			<s:element name="meteringVendor" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Contains the name of the vendor 
+						Contains the name of the vendor
 					</s:documentation>
 				</s:annotation>
 				<s:simpleType>
@@ -1313,7 +1314,7 @@
 			<s:element name="meteringVendorVersion" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Version number of the solution 
+						Version number of the solution
 					</s:documentation>
 				</s:annotation>
 				<s:simpleType>
@@ -1326,7 +1327,7 @@
 			<s:element name="meteringData" minOccurs="0" maxOccurs="unbounded">
 				<s:annotation>
 					<s:documentation>
-						Contains at least starting and ending meter values of a certain charging session 
+						Contains at least starting and ending meter values of a certain charging session
 					</s:documentation>
 				</s:annotation>
 				<s:simpleType>
@@ -1348,8 +1349,8 @@
 						<s:maxLength value="255"></s:maxLength>
 					</s:restriction>
 				</s:simpleType>
-			</s:element>						
+			</s:element>
 		</s:sequence>
 	</s:complexType-->
-	
+
 </s:schema>

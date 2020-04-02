@@ -1474,7 +1474,7 @@ Contains information about a roaming authorisation (card/token)
 :---------------|:------------------|:--------|:------------
  EmtId          |  EmtId            |  1      |  Electrical Vehicle Contract Identifier
  contractId     |  ContractId       |  1      |  EMA-ID the token belongs to
- permissions    |  PermissionsType  |  1      |  Permissions for various energy sources and authorization services
+ permissions    |  PermissionsType  |  +      |  Permissions for various energy sources and authorization services
  printedNumber  |  string(150)      |  ?      |  Might be used for manual authorisation
  expiryDate     |  DateTimeType     |  1      |  Tokens may be used until the date of expiry is reached. To be handled by the partners systems. Expired roaming authorisations may be erased locally by each partner's systems
 
