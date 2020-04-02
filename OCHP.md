@@ -127,6 +127,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [tokenType *enum*](#tokentype-enum)
         - [tokenSubType *enum*](#tokensubtype-enum)
         - [tokenRepresentation *enum*](#tokenrepresentation-enum)
+        - [PermissionsType *enum*](#PermissionsType-enum)
         - [RoamingAuthorisationInfo *class*](#roamingauthorisationinfo-class)
     - [Types for the Exchange of Charge Data](#types-for-the-exchange-of-charge-data)
         - [BillingItemType *enum*](#billingitemtype-enum)
@@ -1449,16 +1450,33 @@ code or operator/provider part. This information about the "owning
 operator/provider" is delivered by the context of the communication.
 
 
+### PermissionsType *enum*
+
+RoamingAuthorisationInfo class is extended by the attribute permissions. The PermissionsType (enum) can be set to multiple options. Feature will help EMPs to have better structured and organized customer portfolio.
+
+ Value       	|  Description
+:------------	|:-------------
+ AC       |  Alternating current
+ DC       |  Direct current
+ CNG      |  Compressed natural gas
+ LNG		  |  Liquified natural gas
+ Fuel     |  Fuel
+ H2       |  Hydrogen
+ Ethanol  |  Ethyl alcohol as fuel
+ Other    |  Other fuel types
+
+
 ### RoamingAuthorisationInfo *class*
 
 Contains information about a roaming authorisation (card/token)
 
- Field Name     |  Field Type    |  Card.  |  Description
-:---------------|:---------------|:--------|:------------
- EmtId          |  EmtId         |  1      |  Electrical Vehicle Contract Identifier
- contractId     |  ContractId    |  1      |  EMA-ID the token belongs to.
- printedNumber  |  string(150)   |  ?      |  Might be used for manual authorisation.
- expiryDate     |  DateTimeType  |  1      |  Tokens may be used until the date of expiry is reached. To be handled by the partners systems. Expired roaming authorisations may be erased locally by each partner's systems.
+ Field Name     |  Field Type       |  Card.  |  Description
+:---------------|:------------------|:--------|:------------
+ EmtId          |  EmtId            |  1      |  Electrical Vehicle Contract Identifier
+ contractId     |  ContractId       |  1      |  EMA-ID the token belongs to
+ permissions    |  PermissionsType  |  1      |  Permissions for various energy sources and authorization services
+ printedNumber  |  string(150)      |  ?      |  Might be used for manual authorisation
+ expiryDate     |  DateTimeType     |  1      |  Tokens may be used until the date of expiry is reached. To be handled by the partners systems. Expired roaming authorisations may be erased locally by each partner's systems
 
 
 
