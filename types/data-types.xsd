@@ -1263,7 +1263,7 @@
 				<s:annotation>
 					<s:documentation>
 						The type of the charge point:
-								"AC"
+							  "AC"
 							  "DC"
 							  "Super_95"
 							  "Super_Plus"
