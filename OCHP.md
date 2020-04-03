@@ -152,6 +152,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [RegularHoursType *class*](#regularhourstype-class)
         - [ExceptionalPeriodType *class*](#exceptionalperiodtype-class)
         - [RestrictionType *enum*](#restrictiontype-enum)
+        - [chargePointType *enum*](#chargePointType-enum)
         - [ChargePointInfo *class*](#chargepointinfo-class)
     - [Types for Tariff Data Exchange](#types-for-tariff-data-exchange)
 		- [TariffInfo *class*](#tariffinfo-class)
@@ -1556,24 +1557,24 @@ declining CDRs.
 
 Contains all information concerning a Charge Data Record
 
- Field Name       |  Field Type         |  Card.  |  Description
-:-----------------|:--------------------|:--------|:------------
- cdrId            |  CdrId		        |  1      |  Unique charge data record identifier.
- evseId           |  EvseId             |  1      |  Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it.
- emtId            |  EmtId              |  1      |  Utilized token for this charging session.
- contractId       |  ContractId         |  1      |  Identifies a customer in the electric mobility charging context.
- status           |  CdrStatusType      |  1      |  Current status of the CDR. Must be set to "new" by the issuing CMS. Shall not be changed by any partner but only by the CHS.
- startDateTime    |  LocalDateTimeType  |  1      |  Start date and time of the charge session (login with the RFID badge). Local time of the charge point is used.
- endDateTime      |  LocalDateTimeType  |  1      |  End date and time of the charge session (log-off with the RFID badge or physical disconnect). Must be set in the local time of the charge point.
- duration         |  string(9)          |  ?      |  Duration of the charge session. Example: "000:00:28"
- chargePointAddress |  AddressType      |  1      |  Contains the address of the charging station.
- chargePointType  |  string(2)          |  1      |  The type of the charge point "AC" or "DC"
- connectorType    |  ConnectorType      |  1      |  Type of the utilized socket or connector.
- ratings	  |  RatingsType        |  ?      |  Ratings applicable to this charge point.
- meterId          |  string(20)         |  ?      |  Written identification number of the physical energy meter, provided by the manufacturer. For future use.
- chargingPeriods  |  CdrPeriodType      |  +      |  One period per item on the bill.
- totalCost	      |  float		        |  ?	  |  Total cost for the entire charging process. Should always equal the sum of the individual periodCosts.
- currency	      |  string(3)		    |  1	  |  Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
+ Field Name         |  Field Type         |  Card.  |  Description
+:-------------------|:--------------------|:--------|:------------
+ cdrId              |  CdrId		          |  1      |  Unique charge data record identifier.
+ evseId             |  EvseId             |  1      |  Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it.
+ emtId              |  EmtId              |  1      |  Utilized token for this charging session.
+ contractId         |  ContractId         |  1      |  Identifies a customer in the electric mobility charging context.
+ status             |  CdrStatusType      |  1      |  Current status of the CDR. Must be set to "new" by the issuing CMS. Shall not be changed by any partner but only by the CHS.
+ startDateTime      |  LocalDateTimeType  |  1      |  Start date and time of the charge session (login with the RFID badge). Local time of the charge point is used.
+ endDateTime        |  LocalDateTimeType  |  1      |  End date and time of the charge session (log-off with the RFID badge or physical disconnect). Must be set in the local time of the charge point.
+ duration           |  string(9)          |  ?      |  Duration of the charge session. Example: "000:00:28"
+ chargePointAddress |  AddressType        |  1      |  Contains the address of the charging station.
+ chargePointType    |  string(10)         |  1      |  The type of the charge point.
+ connectorType      |  ConnectorType      |  1      |  Type of the utilized socket or connector.
+ ratings            |  RatingsType        |  ?      |  Ratings applicable to this charge point.
+ meterId            |  string(20)         |  ?      |  Written identification number of the physical energy meter, provided by the manufacturer. For future use.
+ chargingPeriods    |  CdrPeriodType      |  +      |  One period per item on the bill.
+ totalCost          |  float		          |  ?	    |  Total cost for the entire charging process. Should always equal the sum of the individual periodCosts.
+ currency           |  string(3)	   	    |  1	    |  Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
 
 
 ### CdrId
@@ -2043,6 +2044,28 @@ This class contains all parking related information. If a parkingId is given, th
 The parking-ID follows a similar syntax to that of contract- and EVSE-IDs. The PSO-ID is followed by a 'P' that signifies a tariff and a unique instance of up to 30 characters.
 
 
+### chargePointType *enum*
+
+The chargePointType is extended from "AC" and "DC" to the options mentioned below. The enhancement enables the CPOs to define the Chargepoints
+more precisely and offer diversified services.
+
+ Value       	|  Description
+:------------	|:-------------
+ AC		        |  Alternating current
+ DC		        |  Direct current
+ Super_95	    |  Premium unleaded petrol having octance rating of 95
+ Super_Plus	  |  High octane rating fuel containing 5-10% of ethanol
+ Super_E10	  |  Petrol fuel with an ethanol content of up to 10 percent and an octane rating of at least 95
+ Diesel		    |  Liquid fuel used in diesel engines, whose ignition takes place without any spark
+ LPG		      |  Liquefied petroleum gas
+ CNG		      |  Compressed natural gas
+ LNG		      |  Liquified natural gas
+ H2		        |  Hydrogen fuel
+ Ethanol	    |  Ethyl alcohol as fuel
+ AdBlue		    |  Diesel exhaust fluid used in vehicles with Selective Catalytic Reduction (SCR)
+ Other		    |  Other chargepoint types
+
+
 ### ChargePointInfo *class*
 
 Contains information about the charge points.
@@ -2056,7 +2079,7 @@ Contains information about the charge points.
  locationNameLang    |  string(3)                |  1      |  Alpha, three characters. ISO-639-3 language code defining the language of the location name
  images              |  evseImageUrlType         |  *      |  Links to images related to the EVSE such as photos or logos.
  relatedResource     |  RelatedResourceType      |  *      |  Links to be visited by the user, related to the charge point or charging station.
- chargePointAddress	 |  AddressType		         |  1      |  Contains the address of the charging station.
+ chargePointAddress	 |  AddressType		           |  1      |  Contains the address of the charging station.
  chargePointLocation |  GeoPointType             |  1      |  Geographical location of the charge point itself (power outlet).
  relatedLocation     |  AdditionalGeoPointType   |  ?      |  Geographical location of related points relevant to the user.
  timeZone            |  string(255)              |  ?      |  One of IANA tzdata's __TZ__-values representing the time zone of the location. Examples: "Europe/Oslo", "Europe/Zurich". ([http://www.iana.org/time-zones](http://www.iana.org/time-zones))
@@ -2065,14 +2088,14 @@ Contains information about the charge points.
  statusSchedule      |  ChargePointScheduleType  |  *      |  Planned status changes in the future. If a time span matches with the current or displayed date, the corresponding value overwrites *status*.
  telephoneNumber     |  string(20)               |  ?      |  Numeric. Service hotline to be displayed to the EV user. Recommended to be in international format including leading + and country code. Separators recommended. Characters: [0-9], -, <space>
  location            |  GeneralLocationType      |  1      |  The general type of the charge point location.
- parkingSpot		 |  ParkingSpotInfo          |  *      |  Information about one or more parking spots associated with the EVSE.
- restriction	     |  RestrictionType		     |  *      |  Restrictions applying to the usage of the charging station.
+ parkingSpot         |  ParkingSpotInfo          |  *      |  Information about one or more parking spots associated with the EVSE.
+ restriction	       |  RestrictionType		       |  *      |  Restrictions applying to the usage of the charging station.
  authMethods         |  AuthMethodType           |  +      |  List of available payment or access methods on site.
  connectors          |  ConnectorType            |  +      |  Which receptacle type is/are present for a power outlet.
- chargePointType     |  string(2)                |  1      |  The type of the charge point ("AC" or "DC").
+ chargePointType     |  string(10)               |  1      |  The type of the charge point.
  ratings             |  RatingsType              |  ?      |  Defines the ratings for the charge point.
  userInterfaceLang   |  string(3)                |  *      |  Alpha, three characters. Language(s) of the user interface or printed on-site instructions. *ISO-639-3* language code
- maxReservation		 |  float					 |  ?	   |  If a reservation of this charge point is possible, this is the maximum duration the CPO will allow a reservation for (in minutes). Recommendation: 30 minutes.
+ maxReservation		   |  float					           |  ?	     |  If a reservation of this charge point is possible, this is the maximum duration the CPO will allow a reservation for (in minutes). Recommendation: 30 minutes.
 
 
 
