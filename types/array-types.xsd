@@ -141,19 +141,20 @@
 			<s:element name="chargePointType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						The type of the charge point "AC"
-																				 "DC"
-																				 "Super_95"
-																				 "Super_Plus"
-																				 "Super_E10"
-																				 "Diesel"
-																				 "LPG"
-																				 "CNG"
-																				 "LNG"
-																				 "H2"
-																				 "Ethanol"
-																				 "AdBlue"
-																				 "Other"
+						The type of the charge point:
+							  "AC"
+							  "DC"
+							  "Super_95"
+							  "Super_Plus"
+							  "Super_E10"
+							  "Diesel"
+							  "LPG"
+							  "CNG"
+							  "LNG"
+							  "H2"
+							  "Ethanol"
+							  "AdBlue"
+							  "Other"
 					</s:documentation>
 				</s:annotation>
 				<s:simpleType>
@@ -399,19 +400,20 @@
 			<s:element name="chargePointType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						The type of the charge point "AC"
-																				 "DC"
-																				 "Super_95"
-																				 "Super_Plus"
-																				 "Super_E10"
-																				 "Diesel"
-																				 "LPG"
-																				 "CNG"
-																				 "LNG"
-																				 "H2"
-																				 "Ethanol"
-																				 "AdBlue"
-																				 "Other"
+						The type of the charge point:
+							  "AC"
+							  "DC"
+							  "Super_95"
+							  "Super_Plus"
+							  "Super_E10"
+							  "Diesel"
+							  "LPG"
+							  "CNG"
+							  "LNG"
+							  "H2"
+							  "Ethanol"
+							  "AdBlue"
+							  "Other"
 					</s:documentation>
 				</s:annotation>
 				<s:simpleType>
