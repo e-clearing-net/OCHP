@@ -1787,7 +1787,7 @@ Where the type-enum can be one of the following choices:
 
 ### ConnectorStandard *enum*
 
-The socket or plug standard of the charging point.
+The standard of the installed charging point connector.
 
  Value                 |  Description
 :----------------------|:-------------
