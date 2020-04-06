@@ -1766,7 +1766,7 @@ Where the type-enum can be one of the following choices:
 
 ### ConnectorStandard *enum*
 
-The socket or plug standard of the charging point.
+The standard of the installed charging point connector.
 
  Value                 |  Description
 :----------------------|:-------------
@@ -1795,6 +1795,16 @@ The socket or plug standard of the charging point.
  IEC_60309_2_three_16  |  IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
  IEC_60309_2_three_32  |  IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
  IEC_60309_2_three_64  |  IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
+ LPG                   |  ACME, DISH, Bajonett, Euronozzle
+ LNG        		       |  Universal
+ CNG        		       |  NGV1, NGV2
+ H2	          	       |  SAE J2601
+ SUPER_95	             |  Universal
+ SUPER_PLUS	           |  Universal
+ SUPER_E10	           |  Universal
+ DIESEL		             |  Universal
+ ETHANOL	             |  Universal
+ ADBLUE		             |  Universal
 
 
 ### ConnectorFormat *enum*
