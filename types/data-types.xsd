@@ -192,6 +192,16 @@
 							IEC_60309_2_three_16   The connector type is IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
 							IEC_60309_2_three_32   The connector type is IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
 							IEC_60309_2_three_64   The connector type is IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
+							LPG										 ACME, DISH, Bajonett, Euronozzle
+							LNG										 Universal
+							CNG					   				 NGV1, NGV2
+							H2					   				 SAE J2601
+							SUPER_95			   			 Universal
+							SUPER_PLUS			   		 Universal
+							SUPER_E10			   			 Universal
+							DIESEL				   			 Universal
+							ETHANOL				   			 Universal
+							ADBLUE				   			 Universal
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -485,15 +495,16 @@
 							IEC_60309_2_three_16   The connector type is IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
 							IEC_60309_2_three_32   The connector type is IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
 							IEC_60309_2_three_64   The connector type is IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
-							Super_95
-							Super_Plus
-							Super_E10
-							Diesel
-							Ethanol
-							LNG
-							CNG
-							H2
-							AdBlue
+							LPG										 ACME, DISH, Bajonett, Euronozzle
+							LNG										 Universal
+							CNG					   				 NGV1, NGV2
+							H2					   				 SAE J2601
+							SUPER_95			   			 Universal
+							SUPER_PLUS			   		 Universal
+							SUPER_E10			   			 Universal
+							DIESEL				   			 Universal
+							ETHANOL				   			 Universal
+							ADBLUE				   			 Universal
 						</s:documentation>
 					</s:annotation>
 					<s:restriction base="s:string">
@@ -522,15 +533,16 @@
 						<s:enumeration value="IEC_60309_2_three_16"></s:enumeration>
 						<s:enumeration value="IEC_60309_2_three_32"></s:enumeration>
 						<s:enumeration value="IEC_60309_2_three_64"></s:enumeration>
-						<s:enumeration value="Super_95"></s:enumeration>
-						<s:enumeration value="Super_Plus"></s:enumeration>
-						<s:enumeration value="Super_E10"></s:enumeration>
-						<s:enumeration value="Diesel"></s:enumeration>
-						<s:enumeration value="LPG"></s:enumeration>
-						<s:enumeration value="CNG"></s:enumeration>
-						<s:enumeration value="LNG"></s:enumeration>
-						<s:enumeration value="H2"></s:enumeration>
-						<s:enumeration value="Ethanol"></s:enumeration>
+						<s:enumeration value="LPG"/>
+						<s:enumeration value="LNG"/>
+						<s:enumeration value="CNG"/>
+						<s:enumeration value="H2"/>
+						<s:enumeration value="SUPER_95"/>
+						<s:enumeration value="SUPER_PLUS"/>
+						<s:enumeration value="SUPER_E10"/>
+						<s:enumeration value="DIESEL"/>
+						<s:enumeration value="ETHANOL"/>
+						<s:enumeration value="ADBLUE"/>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
