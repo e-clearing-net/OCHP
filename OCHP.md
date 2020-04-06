@@ -1291,23 +1291,6 @@ semantically not the same as UTC.
 ```
 
 
-### BillingItemType *enum*
-
-The billing items for charging periods and tariffs.
-
- Value        |  Description
-:-------------|:-------------
- parkingtime  |  Price for the time of parking. The billingValue represents the time in hours.
- usagetime    |  Price for the time of EVSE usage. The billingValue represents the time in hours.
- energy       |  Price for the consumed energy. The billingValue represents the energy in kilowatt-hours.
- power        |  Price for the used power level. The billingValue represents the maximum power in kilowatts.
- serviceFee   |  General service fee per charging process. The billingValue represents a multiplier and thus has to be set to "1.0".
- reservation  |  One time fee for a reservation of the EVSE. The billingValue represents a multiplier and thus has to be set to "1.0".
- reservationtime | Price for the duration of a reservation. The billingValue represents the time in hours.
- volume       | Price for the quantity used in liter.
- mass         | Price for the quantity used in kilogram (kg).
-
-
 ### RegularHoursType *class*
 
 Regular recurring operation or access hours. Consecutive days can be combined using weekdayTo, single days can be defined using only weekdayFrom.
@@ -1489,6 +1472,23 @@ These data types are used for the purpose of the exchange of charge data
 from an EVSE Operator to an EVSP.
 
 
+### BillingItemType *enum*
+
+The billing items for charging periods and tariffs.
+
+ Value        |  Description
+:-------------|:-------------
+ parkingtime  |  Price for the time of parking. The billingValue represents the time in hours.
+ usagetime    |  Price for the time of EVSE usage. The billingValue represents the time in hours.
+ energy       |  Price for the consumed energy. The billingValue represents the energy in kilowatt-hours.
+ power        |  Price for the used power level. The billingValue represents the maximum power in kilowatts.
+ serviceFee   |  General service fee per charging process. The billingValue represents a multiplier and thus has to be set to "1.0".
+ reservation  |  One time fee for a reservation of the EVSE. The billingValue represents a multiplier and thus has to be set to "1.0".
+ reservationtime | Price for the duration of a reservation. The billingValue represents the time in hours.
+ volume       | Price for the quantity used in liter.
+ mass         | Price for the quantity used in kilogram (kg).
+
+
 ### CdrPeriodType *class*
 
 This class defines one time and billing period in the charge detail
@@ -1516,7 +1516,7 @@ totalCost = sum( billingValue_i * itemPrice_i ) [currency]
  billingValue   |  float              |  1      |  The value the EVSP is charged for. The unit of this value depends on the billingItem.
  itemPrice      |  float              |  1      |  Price per unit of the billingItem in the given currency.
  periodCost     |  float              |  ?      |  Total cost of the period in the given currency.
- taxrate		|  int				  |  ?      |  Tax rate in percent to be paid for the charging process in the EVSE operator's country.
+ taxrate	|  int				  |  ?      |  Tax rate in percent to be paid for the charging process in the EVSE operator's country.
 
 
 ###### Implementation
@@ -1550,9 +1550,9 @@ declining CDRs.
  new             |  A new CDR before upload to the CHS.
  accepted        |  An uploaded CDR was accepted by the CHS as plausible.
  rejected        |  The checked CDR again rejected by the CHS and is to be archived.
- declined	 	 |  The CDR was declined by the owner (EVSP).
+ declined	 |  The CDR was declined by the owner (EVSP).
  approved        |  The CDR was approved by the owner (EVSP).
- revised		 |  The CDR was revised by the CPO and uploaded again. Only previously accepted or declined CDRs can be revised.
+ revised	 |  The CDR was revised by the CPO and uploaded again. Only previously accepted or declined CDRs can be revised.
 
 
 ### CDRInfo *class*
@@ -1561,7 +1561,7 @@ Contains all information concerning a Charge Data Record
 
  Field Name         |  Field Type         |  Card.  |  Description
 :-------------------|:--------------------|:--------|:------------
- cdrId              |  CdrId		          |  1      |  Unique charge data record identifier.
+ cdrId              |  CdrId		  |  1      |  Unique charge data record identifier.
  evseId             |  EvseId             |  1      |  Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it.
  emtId              |  EmtId              |  1      |  Utilized token for this charging session.
  contractId         |  ContractId         |  1      |  Identifies a customer in the electric mobility charging context.
@@ -1575,8 +1575,8 @@ Contains all information concerning a Charge Data Record
  ratings            |  RatingsType        |  ?      |  Ratings applicable to this charge point.
  meterId            |  string(20)         |  ?      |  Written identification number of the physical energy meter, provided by the manufacturer. For future use.
  chargingPeriods    |  CdrPeriodType      |  +      |  One period per item on the bill.
- totalCost          |  float		          |  ?	    |  Total cost for the entire charging process. Should always equal the sum of the individual periodCosts.
- currency           |  string(3)	   	    |  1	    |  Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
+ totalCost          |  float		  |  ?	    |  Total cost for the entire charging process. Should always equal the sum of the individual periodCosts.
+ currency           |  string(3)	  |  1	    |  Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
 
 
 ### CdrId
