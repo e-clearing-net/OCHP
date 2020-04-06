@@ -2119,54 +2119,6 @@ Contains information about the charge points.
 These types are used to exchange tariff information between an operator and one or more providers.
 
 
-### TariffInfo *class*
-
-A Tariff Object consists of a list of one or more individual tariffs for individual recipients. One default individual tariff should always be defined without a specific recipient.
-Each individual tariff consists of tariff elements. These elements can be used to create complex Tariff structures.
-
-Changes to a tariff can always only be made to the entire tariff object. That way it is ensured that there cannot be multiple conflicting tariffs referenced at the same connector.  
-
-
- Field Name          |  Field Type               |  Card.  |  Description
-:--------------------|:--------------------------|:--------|:------------
- tariffId            | TariffId	            	 | 1       | Uniquely identifies the tariff.
- individualTariff    | IndividualTariffType	 | +	   | Contains multiple individual tariffs dependant on intended recipient.
-
-
-
-### IndividualTariffType *class*
-
- Field Name          |  Field Type               |  Card.  |  Description
-:--------------------|:--------------------------|:--------|:------------
- currency            | string (3)                | 1       | Currency of this tariff, ISO 4217 Code
- tariffElement       | TariffElementType 	 | +       | List of tariff elements.
- recipient           | string (5) 		 | *       | Provider-IDs of the intended recipients for this tariff. If no recipient is provided, this individual tariff is considered the default tariff.
-
-
-**Note:** Tariffs are referenced on connector level by their tariff-ID only. Every EVSE Operator is advised to define one default individual tariff for each tariffId as a fallback in addition to the individual tariffs defined for certain recipients. A provider will only receive tariffs that they are recipient for.
-
-
-### TariffElementType *class*
-
-
- Field Name          |  Field Type               |  Card.  |  Description
-:--------------------|:--------------------------|:--------|:------------
- priceComponent      | PriceComponentType        | 1       | Price component defining this TariffElement.
- tariffRestriction   | TariffRestrictionType     | 1       | List of tariff restrictions applicable for this TariffElement / PriceComponent.
- 
-
-
-### PriceComponentType *class*
-
-
- Field Name          |  Field Type               |  Card.  |  Description
-:--------------------|:--------------------------|:--------|:------------
- billingItem	     | BillingItemType 		 | 1       | Type of tariff dimension
- itemPrice	     | float	                 | 1       | price per unit for this tariff dimension (unit according to dimension, see BillingItemType description)
- stepSize	     | float                     | 1       | Minimum amount to be billed. This unit will be billed in this stepSize blocks. For example: if billingItem is usagetime and  stepSize is 0.1, then time will be billed in blocks of 6 minutes, so if 8 minutes is used, 12 minutes (2 blocks of stepSize) will be billed. In case of one-time payments, this is to be set to 1.0.
-
-
-
 ### TariffRestrictionType *class*
 
  Field Name          |  Field Type               |  Card.  |  Description
@@ -2182,9 +2134,53 @@ Changes to a tariff can always only be made to the entire tariff object. That wa
  maxDuration         | int                       | ?       | Maximum duration in seconds, valid for a duration up to x seconds
 
 
+### PriceComponentType *class*
+
+ Field Name          |  Field Type               |  Card.  |  Description
+:--------------------|:--------------------------|:--------|:------------
+ billingItem	     | BillingItemType 		 | 1       | Type of tariff dimension
+ itemPrice	     | float	                 | 1       | price per unit for this tariff dimension (unit according to dimension, see BillingItemType description)
+ stepSize	     | float                     | 1       | Minimum amount to be billed. This unit will be billed in this stepSize blocks. For example: if billingItem is usagetime and  stepSize is 0.1, then time will be billed in blocks of 6 minutes, so if 8 minutes is used, 12 minutes (2 blocks of stepSize) will be billed. In case of one-time payments, this is to be set to 1.0.
+
+
+### TariffElementType *class*
+
+ Field Name          |  Field Type               |  Card.  |  Description
+:--------------------|:--------------------------|:--------|:------------
+ priceComponent      | PriceComponentType        | 1       | Price component defining this TariffElement.
+ tariffRestriction   | TariffRestrictionType     | 1       | List of tariff restrictions applicable for this TariffElement / PriceComponent.
+
+
+### IndividualTariffType *class*
+
+ Field Name          |  Field Type               |  Card.  |  Description
+:--------------------|:--------------------------|:--------|:------------
+ currency            | string (3)                | 1       | Currency of this tariff, ISO 4217 Code
+ tariffElement       | TariffElementType 	 | +       | List of tariff elements.
+ recipient           | string (5) 		 | *       | Provider-IDs of the intended recipients for this tariff. If no recipient is provided, this individual tariff is considered the default tariff.
+
+
+**Note:** Tariffs are referenced on connector level by their tariff-ID only. Every EVSE Operator is advised to define one default individual tariff for each tariffId as a fallback in addition to the individual tariffs defined for certain recipients. A provider will only receive tariffs that they are recipient for.
+
 
 ### TariffId
 The tariff-ID follows a similar syntax to that of contract- and EVSE-IDs. The Operator-ID is followed by a 'T' that signifies a tariff and a unique instance of up to 9 characters.
+
+
+### TariffInfo *class*
+
+A Tariff Object consists of a list of one or more individual tariffs for individual recipients. One default individual tariff should always be defined without a specific recipient.
+Each individual tariff consists of tariff elements. These elements can be used to create complex Tariff structures.
+
+Changes to a tariff can always only be made to the entire tariff object. That way it is ensured that there cannot be multiple conflicting tariffs referenced at the same connector.  
+
+
+ Field Name          |  Field Type               |  Card.  |  Description
+:--------------------|:--------------------------|:--------|:------------
+ tariffId            | TariffId	            	 | 1       | Uniquely identifies the tariff.
+ individualTariff    | IndividualTariffType	 | +	   | Contains multiple individual tariffs dependant on intended recipient.
+
+
 
 ### Examples
 
