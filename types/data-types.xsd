@@ -160,6 +160,16 @@
 							IEC_60309_2_three_16   The connector type is IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
 							IEC_60309_2_three_32   The connector type is IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
 							IEC_60309_2_three_64   The connector type is IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
+							LPG		       ACME, DISH, Bajonett, Euronozzle
+							LNG		       Universal
+							CNG		       NGV1, NGV2
+							H2		       SAE J2601
+							SUPER_95	       Universal
+							SUPER_PLUS	       Universal
+							SUPER_E10	       Universal
+							DIESEL		       Universal
+							ETHANOL		       Universal
+							ADBLUE		       Universal
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -419,7 +429,7 @@
 				<s:simpleType>
 					<s:annotation>
 						<s:documentation>
-						The Standard of the installed connector; 
+						The Standard of the installed connector: 
 							Chademo                The connector type is CHAdeMO, DC 
 							IEC_62196_T1           The connector type is IEC 62196 Type 1 “SAE J1772”
 							IEC_62196_T1_COMBO     The connector type is Combo Type 1 based, DC 
@@ -445,6 +455,16 @@
 							IEC_60309_2_three_16   The connector type is IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
 							IEC_60309_2_three_32   The connector type is IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
 							IEC_60309_2_three_64   The connector type is IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
+							LPG		       ACME, DISH, Bajonett, Euronozzle
+							LNG		       Universal
+							CNG		       NGV1, NGV2
+							H2		       SAE J2601
+							SUPER_95	       Universal
+							SUPER_PLUS	       Universal
+							SUPER_E10	       Universal
+							DIESEL		       Universal
+							ETHANOL		       Universal
+							ADBLUE		       Universal
 						</s:documentation>
 					</s:annotation>
 					<s:restriction base="s:string">
@@ -473,6 +493,16 @@
 						<s:enumeration value="IEC_60309_2_three_16"></s:enumeration>
 						<s:enumeration value="IEC_60309_2_three_32"></s:enumeration>
 						<s:enumeration value="IEC_60309_2_three_64"></s:enumeration>
+						<s:enumeration value="LPG"/>
+						<s:enumeration value="LNG"/>
+						<s:enumeration value="CNG"/>
+						<s:enumeration value="H2"/>
+						<s:enumeration value="SUPER_95"/>
+						<s:enumeration value="SUPER_PLUS"/>
+						<s:enumeration value="SUPER_E10"/>
+						<s:enumeration value="DIESEL"/>
+						<s:enumeration value="ETHANOL"/>
+						<s:enumeration value="ADBLUE"/>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
