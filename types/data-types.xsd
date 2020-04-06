@@ -201,7 +201,7 @@
 						The format (Socket/ Cable / Nozzle / Other) of the installed connector.
 						Socket: The connector is a socket; the EV user needs to bring a fitting plug.
 						Cable: The connector is an attached cable; the EV user car needs to have a fitting inlet.
-						Nozzle: the user car needs to have an inlet matching the fuel type of the charge point
+						Nozzle: the user's car needs to have an inlet matching the fuel type of the charge point
 						Other: The connector is of another type, like a nozzle with an attached hose.
 					</s:documentation>
 				</s:annotation>
@@ -800,7 +800,7 @@
 						The format (Socket/ Cable / Nozzle / Other) of the installed connector.
 						Socket: The connector is a socket; the EV user needs to bring a fitting plug.
 						Cable: The connector is an attached cable; the EV user car needs to have a fitting inlet.
-						Nozzle: the user car needs to have an inlet matching the fuel type of the charge point
+						Nozzle: the user's car needs to have an inlet matching the fuel type of the charge point
 						Other: The connector is of another type, like a nozzle with an attached hose.
 					</s:documentation>
 				</s:annotation>
