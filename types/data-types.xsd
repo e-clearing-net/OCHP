@@ -192,16 +192,16 @@
 							IEC_60309_2_three_16   The connector type is IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
 							IEC_60309_2_three_32   The connector type is IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
 							IEC_60309_2_three_64   The connector type is IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
-							LPG										 ACME, DISH, Bajonett, Euronozzle
-							LNG										 Universal
-							CNG					   				 NGV1, NGV2
-							H2					   				 SAE J2601
-							SUPER_95			   			 Universal
-							SUPER_PLUS			   		 Universal
-							SUPER_E10			   			 Universal
-							DIESEL				   			 Universal
-							ETHANOL				   			 Universal
-							ADBLUE				   			 Universal
+							LPG		       ACME, DISH, Bajonett, Euronozzle
+							LNG		       Universal
+							CNG		       NGV1, NGV2
+							H2		       SAE J2601
+							SUPER_95	       Universal
+							SUPER_PLUS	       Universal
+							SUPER_E10	       Universal
+							DIESEL		       Universal
+							ETHANOL		       Universal
+							ADBLUE		       Universal
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -495,16 +495,16 @@
 							IEC_60309_2_three_16   The connector type is IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
 							IEC_60309_2_three_32   The connector type is IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
 							IEC_60309_2_three_64   The connector type is IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
-							LPG										 ACME, DISH, Bajonett, Euronozzle
-							LNG										 Universal
-							CNG					   				 NGV1, NGV2
-							H2					   				 SAE J2601
-							SUPER_95			   			 Universal
-							SUPER_PLUS			   		 Universal
-							SUPER_E10			   			 Universal
-							DIESEL				   			 Universal
-							ETHANOL				   			 Universal
-							ADBLUE				   			 Universal
+							LPG		       ACME, DISH, Bajonett, Euronozzle
+							LNG		       Universal
+							CNG		       NGV1, NGV2
+							H2		       SAE J2601
+							SUPER_95	       Universal
+							SUPER_PLUS	       Universal
+							SUPER_E10	       Universal
+							DIESEL		       Universal
+							ETHANOL		       Universal
+							ADBLUE		       Universal
 						</s:documentation>
 					</s:annotation>
 					<s:restriction base="s:string">
