@@ -65,6 +65,7 @@
 						<s:enumeration value="rfid"></s:enumeration>
 						<s:enumeration value="remote"></s:enumeration>
 						<s:enumeration value="15118"></s:enumeration>
+						<s:enumeration value="other"></s:enumeration>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>

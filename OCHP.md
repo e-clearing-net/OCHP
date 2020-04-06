@@ -1402,6 +1402,7 @@ The type of the supplied instance for basic filtering.
  rfid        |  All kinds of RFID-Cards. Field tokenInstance holds the hexadecimal representation of the card's UID, Byte order: big endian, no zero-filling.
  remote      |  All means of remote authentication through the backend. Field tokenInstance holds a reference to the remote authorization or session. In case of a OCHPdirect authorization the _directId_.
  15118       |  All authentication means defined by ISO/IEC 15118 except RFID-cards.
+ other       |  Tokens other than rfid, remote or ISO 15118 type.
 
  **NOTE:** The _remote_ token type is only beeing used in the CDR of a
  remotely started charging process. Tokens with type _remote_ shall not
