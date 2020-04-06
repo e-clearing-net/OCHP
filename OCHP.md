@@ -1799,12 +1799,14 @@ The socket or plug standard of the charging point.
 
 ### ConnectorFormat *enum*
 
-The format of the connector, whether it is a socket or a plug.
+The format of the connector, depending on the source device.
 
- Value       |  Description
-:------------|:-------------
- Socket      |  The connector is a socket; the EV user needs to bring a fitting plug/cable.
- Cable       |  The connector is an attached cable; the EV users car needs to have a corresponding inlet.
+ Value        |  Description
+:-------------|:-------------
+Socket        |  The connector is a socket; the EV user needs to bring a fitting plug/cable.
+Cable         |  The connector is an attached cable; the EV user's car needs to have a corresponding inlet.
+Nozzle        |  The connector is a nozzle; used normally at conventional fuel stations.
+Other         |  The connector is of another type, like a nozzle with an attached hose.
 
 
 ### ConnectorType *class*
@@ -1815,8 +1817,8 @@ standard and format (socket/cable).
  Field Name        |  Field Type            |  Card.  |  Description
 :------------------|:-----------------------|:--------|:------------
  connectorStandard |  ConnectorStandardType |  1      |  The standard of the installed connector.
- connectorFormat   |  ConnectorFormatType   |  1      |  The format (socket/cable) of the installed connector.
- tariffId		   |  TariffId				|  ?      |  Reference to a tariff, if tariffs are exchanged through the CHS.
+ connectorFormat   |  ConnectorFormatType   |  1      |  The format of the connector, depending on the source device.
+ tariffId		       |  TariffId              |  ?      |  Reference to a tariff, if tariffs are exchanged through the CHS.
 
 
 ### RatingsType *class*

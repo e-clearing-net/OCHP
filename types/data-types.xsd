@@ -198,7 +198,11 @@
 			<s:element name="connectorFormat" minOccurs="1" maxOccurs="1" type="tns:ConnectorFormat">
 				<s:annotation>
 					<s:documentation>
-						The format (socket/ cable / other) of the installed connector Socket The connector is a socket; the EV user needs to bring a fitting plug. Cable The connector is an attached cable; the EV user car needs to have a fitting inlet.
+						The format (Socket/ Cable / Nozzle / Other) of the installed connector.
+						Socket: The connector is a socket; the EV user needs to bring a fitting plug.
+						Cable: The connector is an attached cable; the EV user car needs to have a fitting inlet.
+						Nozzle: the user car needs to have an inlet matching the fuel type of the charge point
+						Other: The connector is of another type, like a nozzle with an attached hose.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -793,16 +797,18 @@
 			<s:element name="ConnectorFormat">
 				<s:annotation>
 					<s:documentation>
-						The format (socket/ cable / other) of the installed connector.
-							Socket; The connector is a socket; the EV user needs to bring a fitting plug
-							Cable; The connector is an attached cable; the EV user car needs to have a fitting inlet
-							Other; The connector is of another type, like a nozzle with an attached hose. a nozzle; the user car needs to have an inlet matching the fuel type of the charge point.
+						The format (Socket/ Cable / Nozzle / Other) of the installed connector.
+						Socket: The connector is a socket; the EV user needs to bring a fitting plug.
+						Cable: The connector is an attached cable; the EV user car needs to have a fitting inlet.
+						Nozzle: the user car needs to have an inlet matching the fuel type of the charge point
+						Other: The connector is of another type, like a nozzle with an attached hose.
 					</s:documentation>
 				</s:annotation>
 				<s:simpleType>
 					<s:restriction base="s:string">
 						<s:enumeration value="Socket"></s:enumeration>
 						<s:enumeration value="Cable"></s:enumeration>
+						<s:enumeration value="Nozzle"></s:enumeration>
 						<s:enumeration value="Other"></s:enumeration>
 					</s:restriction>
 				</s:simpleType>
