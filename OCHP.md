@@ -1830,7 +1830,7 @@ The socket or plug standard of the charging point.
 
 ### ConnectorFormat *enum*
 
-The format of the connector, whether it is a socket or a plug.
+The format of the connector, depending on the source device.
 
  Value       |  Description
 :------------|:-------------
@@ -1848,8 +1848,8 @@ standard and format (socket/cable).
  Field Name        |  Field Type            |  Card.  |  Description
 :------------------|:-----------------------|:--------|:------------
  connectorStandard |  ConnectorStandardType |  1      |  The standard of the installed connector.
- connectorFormat   |  ConnectorFormatType   |  1      |  The format (socket/cable) of the installed connector.
- tariffId		   |  TariffId				|  ?      |  Reference to a tariff, if tariffs are exchanged through the CHS.
+ connectorFormat   |  ConnectorFormatType   |  1      |  The format of the connector, depending on the source device.
+ tariffId	   |  TariffId		    |  ?      |  Reference to a tariff, if tariffs are exchanged through the CHS.
 
 
 ### RatingsType *class*
