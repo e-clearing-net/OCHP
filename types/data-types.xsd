@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0"? encoding="UTF-8"?>
 <s:schema elementFormDefault="qualified" targetNamespace="http://ochp.eu/1.4.1" xmlns:tns="http://ochp.eu/1.4.1" xmlns:s="http://www.w3.org/2001/XMLSchema">
 
 	<s:complexType name="DateTimeType">
