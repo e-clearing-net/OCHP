@@ -231,6 +231,7 @@
 			<s:element name="meteringInfo" type="tns:MeteringInfoType" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
+						Array type to cater mainly the Eichrecht law.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -400,7 +401,7 @@
 			<s:element name="chargePointType" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						The type of the charge point:
+						The type of the charge point: (NOTE: tns should be defined and parameters should be seperately defined in the data-types!)
 							  "AC"
 							  "DC"
 							  "Super_95"
@@ -471,6 +472,7 @@
 			<s:element name="meteringInfo" type="tns:MeteringInfoType" minOccurs="0" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
+						Array type to cater mainly the Eichrecht law.
 					</s:documentation>
 				</s:annotation>
 			</s:element>

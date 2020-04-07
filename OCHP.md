@@ -133,6 +133,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [BillingItemType *enum*](#billingitemtype-enum)
         - [CdrPeriodType *class*](#cdrperiodtype-class)
         - [CdrStatusType *enum*](#cdrstatustype-enum)
+        - [MeteringInfoType *class*](#meteringinfotype-class)
         - [CDRInfo *class*](#cdrinfo-class)
     - [Types for the Exchange of Charge Point Information](#types-for-the-exchange-of-charge-point-information)
         - [EvseId](#evseid)
@@ -1517,7 +1518,7 @@ totalCost = sum( billingValue_i * itemPrice_i ) [currency]
  billingValue   |  float              |  1      |  The value the EVSP is charged for. The unit of this value depends on the billingItem.
  itemPrice      |  float              |  1      |  Price per unit of the billingItem in the given currency.
  periodCost     |  float              |  ?      |  Total cost of the period in the given currency.
- taxrate	|  int				  |  ?      |  Tax rate in percent to be paid for the charging process in the EVSE operator's country.
+ taxrate	      |  int				        |  ?      |  Tax rate in percent to be paid for the charging process in the EVSE operator's country.
 
 
 ###### Implementation
@@ -1551,9 +1552,22 @@ declining CDRs.
  new             |  A new CDR before upload to the CHS.
  accepted        |  An uploaded CDR was accepted by the CHS as plausible.
  rejected        |  The checked CDR again rejected by the CHS and is to be archived.
- declined	 |  The CDR was declined by the owner (EVSP).
+ declined	       |  The CDR was declined by the owner (EVSP).
  approved        |  The CDR was approved by the owner (EVSP).
- revised	 |  The CDR was revised by the CPO and uploaded again. Only previously accepted or declined CDRs can be revised.
+ revised	       |  The CDR was revised by the CPO and uploaded again. Only previously accepted or declined CDRs can be revised.
+
+
+### MeteringInfoType *class*
+
+This class defines the parameters, catering the Eichrecht law.
+
+Field Name               |  Field Type      |  Card.  |  Description
+:------------------------|:-----------------|:--------|:------------
+meteringType             |  string          |  1      |  Defines the method/solution to review charging data. Accepted values are: "local", "software", "other".
+meteringVendor           |  string(32)      |  1      |  Contains the name of the vendor.
+meteringVendorVersion    |  string(32)      |  1      |  Defines the solution version number.
+meteringData             |  string(255)     |  *      |  Contains at least the starting and ending meter values of a certain charging session.
+meteringKey              |  string(255)     |  *      |  Defines the public key of a charging pole as defined in the Eichrecht law.
 
 
 ### CDRInfo *class*
@@ -1562,7 +1576,7 @@ Contains all information concerning a Charge Data Record
 
  Field Name         |  Field Type         |  Card.  |  Description
 :-------------------|:--------------------|:--------|:------------
- cdrId              |  CdrId		  |  1      |  Unique charge data record identifier.
+ cdrId              |  CdrId		          |  1      |  Unique charge data record identifier.
  evseId             |  EvseId             |  1      |  Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it.
  emtId              |  EmtId              |  1      |  Utilized token for this charging session.
  contractId         |  ContractId         |  1      |  Identifies a customer in the electric mobility charging context.
@@ -1576,8 +1590,9 @@ Contains all information concerning a Charge Data Record
  ratings            |  RatingsType        |  ?      |  Ratings applicable to this charge point.
  meterId            |  string(20)         |  ?      |  Written identification number of the physical energy meter, provided by the manufacturer. For future use.
  chargingPeriods    |  CdrPeriodType      |  +      |  One period per item on the bill.
- totalCost          |  float		  |  ?	    |  Total cost for the entire charging process. Should always equal the sum of the individual periodCosts.
- currency           |  string(3)	  |  1	    |  Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
+ totalCost          |  float		          |  ?	    |  Total cost for the entire charging process. Should always equal the sum of the individual periodCosts.
+ currency           |  string(3)	        |  1	    |  Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
+ meteringInfo       |  MeteringInfoType	  |  ?	    |  Array type to cater mainly the Eichrecht law.
 
 
 ### CdrId
@@ -2104,13 +2119,14 @@ Contains information about the charge points.
  telephoneNumber     |  string(20)               |  ?      |  Numeric. Service hotline to be displayed to the EV user. Recommended to be in international format including leading + and country code. Separators recommended. Characters: [0-9], -, <space>
  location            |  GeneralLocationType      |  1      |  The general type of the charge point location.
  parkingSpot         |  ParkingSpotInfo          |  *      |  Information about one or more parking spots associated with the EVSE.
- restriction	     |  RestrictionType		 |  *      |  Restrictions applying to the usage of the charging station.
+ restriction	       |  RestrictionType		       |  *      |  Restrictions applying to the usage of the charging station.
  authMethods         |  AuthMethodType           |  +      |  List of available payment or access methods on site.
  connectors          |  ConnectorType            |  +      |  Which receptacle type is/are present for a power outlet.
  chargePointType     |  string(10)               |  1      |  The type of the charge point.
  ratings             |  RatingsType              |  ?      |  Defines the ratings for the charge point.
  userInterfaceLang   |  string(3)                |  *      |  Alpha, three characters. Language(s) of the user interface or printed on-site instructions. *ISO-639-3* language code
- maxReservation	     |  float			 |  ?	   |  If a reservation of this charge point is possible, this is the maximum duration the CPO will allow a reservation for (in minutes). Recommendation: 30 minutes.
+ maxReservation	     |  float			               |  ?	     |  If a reservation of this charge point is possible, this is the maximum duration the CPO will allow a reservation for (in minutes). Recommendation: 30 minutes.
+ meteringInfo       |  MeteringInfoType	         |  ?	     |  Array type to cater mainly the Eichrecht law.
 
 
 
