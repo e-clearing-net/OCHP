@@ -140,7 +140,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [RelatedResourceClass *enum*](#relatedresourceclass-enum)
         - [GeoPointType *class*](#geopointtype-class)
         - [AdditionalGeoPointType *class*](#additionalgeopointtype-class)
-        - [ConnectorStandard *enum*](#connectorstandard-enum)
+        - [ConnectorStandardType *enum*](#connectorstandardtype-enum)
         - [ConnectorFormat *enum*](#connectorformat-enum)
         - [ConnectorType *class*](#connectortype-class)
         - [AuthMethodType *enum*](#authmethodtype-enum)
@@ -1744,7 +1744,7 @@ Where the type-enum can be one of the following choices:
  other       |  Other relevant point. Name recommended.
 
 
-### ConnectorStandard *enum*
+### ConnectorStandardType *enum*
 
 The socket or plug standard of the charging point.
 
