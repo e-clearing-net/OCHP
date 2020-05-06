@@ -86,8 +86,6 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
-			</s:sequence>
-			<s:sequence>
 				<s:element minOccurs="1" maxOccurs="1" name="dateFrom" type="tns:DateTimeType">
 					<s:annotation>
 						<s:documentation>
@@ -95,8 +93,6 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
-			</s:sequence>
-			<s:sequence>
 				<s:element minOccurs="1" maxOccurs="1" name="dateTo" type="tns:DateTimeType">
 					<s:annotation>
 						<s:documentation>
@@ -133,7 +129,7 @@
 			</s:sequence>
 		</s:complexType>
 	</s:element>
-	
+
 	<s:element name="CheckCDRsRequest">
 		<s:complexType>
 			<s:annotation>
@@ -554,7 +550,7 @@
 			</s:sequence>
 		</s:complexType>
 	</s:element>
-	
+
 	<s:element name="UpdateTariffsRequest">
 		<s:complexType>
 			<s:sequence>
@@ -589,7 +585,7 @@
 			</s:sequence>
 		</s:complexType>
 	</s:element>
-	
+
 	<s:element name="GetTariffUpdatesRequest">
 		<s:complexType>
 			<s:sequence>
@@ -624,7 +620,7 @@
 			</s:sequence>
 		</s:complexType>
 	</s:element>
-	
+
 	<s:element name="GetSingleRoamingAuthorisationRequest">
 		<s:complexType>
 			<s:sequence>
