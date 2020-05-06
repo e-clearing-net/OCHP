@@ -146,8 +146,6 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
-			</s:sequence>
-			<s:sequence>
 				<s:element minOccurs="1" maxOccurs="1" name="dateFrom" type="tns:DateTimeType">
 					<s:annotation>
 						<s:documentation>
@@ -155,8 +153,6 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
-			</s:sequence>
-			<s:sequence>
 				<s:element minOccurs="1" maxOccurs="1" name="dateTo" type="tns:DateTimeType">
 					<s:annotation>
 						<s:documentation>
