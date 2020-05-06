@@ -954,7 +954,7 @@
 			<s:element name="class" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						Image class for usage categorization. Values:
+						  Image class for usage categorization. Values:
 							networkLogo: logo of a associated roaming network to be displayed with the EVSE for example in lists, maps and detailed information view;
 							operatorLogo: logo of the charge points operator, for example a municipal, to be displayed with the EVSEs detailed information view or in lists and maps, if no networkLogo is present;
 							ownerLogo: logo of the charge points owner, for example a local store, to be displayed with the EVSEs detailed information view;
