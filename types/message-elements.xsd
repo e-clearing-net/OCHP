@@ -267,6 +267,36 @@
 					Defines the GetChargePointList.req.
 				</s:documentation>
 			</s:annotation>
+			<s:sequence>
+				<s:element minOccurs="0" maxOccurs="1" name="dateFrom" type="tns:DateTimeType">
+					<s:annotation>
+						<s:documentation>
+							To filter the Charge Points starting from the mentioned date and time.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="1" name="dateTo" type="tns:DateTimeType">
+					<s:annotation>
+						<s:documentation>
+							To filter the Charge Points till the mentioned date and time.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="1" name="limit" type="s:int">
+					<s:annotation>
+						<s:documentation>
+							Maximum number of Charge Points to GET.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="1" name="offset" type="s:int">
+					<s:annotation>
+						<s:documentation>
+							The offset of the first object returned. Default is 0.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+			</s:sequence>
 		</s:complexType>
 	</s:element>
 
