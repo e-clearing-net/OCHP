@@ -1253,12 +1253,12 @@ Result and error codes for the class Result as return value for method calls.
 
 ### Pagination
 
-Field Name   |  Field Type      |  Card.  |  Description
+Field Name    |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
 dateFrom      |  DateTimeType    |  ?      | to filter the results updated, starting from the mentioned date and time.
-dateTo        |  DateTimeType    |  ?      | to filter the results updated, till the mentioned date and time.
-offset        |  int    	 |  ?      | the offset of a first object, that the request will return. Default is always zero.
-limit         |  int   		 |  ?      | the maximum number of objects that a Get request will return.
+dateTo        |  DateTimeType    |  ?      | to filter the results updated, till the mentioned date and time (inclusive).
+offset        |  int    	       |  ?      | the offset of a first object, that the request will return. Default is always zero.
+limit         |  int   		       |  ?      | the maximum number of objects that a Get request will return.
 
 
 ### DateTimeType
