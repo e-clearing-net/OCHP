@@ -1268,7 +1268,7 @@ limit         |  int   		       |  ?      | the maximum number of objects that a
 
 The official companyId (CPO-ID/EMP-ID) issued by the relevant authority e.g. BDEW for Germany, eViolin for Netherlands, Belgium and Luxembourg, Austrian Mobile Power GmbH for Austria, AFIREV for France. The field takes 5 alphanumeric characters and consists of:
 
-PartnerID: <Country Code> <Party-ID>
+PartnerID: [Country Code] [Party-ID]
 
 where:
 Country Code = 2 ALPHA. Two character country code according to ISO-3166-1.
