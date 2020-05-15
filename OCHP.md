@@ -120,6 +120,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [Result *class*](#result-class)
         - [ResultCodeType *enum*](#resultcodetype-enum)
         - [Pagination](#pagination)
+        - [PartnerID](#partnerid)
         - [DateTimeType](#datetimetype)
         - [LocalDateTimeType](#localdatetimetype)
     - [Types for the Exchange of Authorisation Data](#types-for-the-exchange-of-authorisation-data)
@@ -928,6 +929,7 @@ This contains the field definition of the GetCDRs.req sent by a provider's syste
 :-------------|:-----------------|:--------|:------------
 cdrStatus     |  CdrStatusType   |  ?      | Defines which status of CDRs to return: accepted, revised, rejected, approved. If not set, will return accepted and revised CDRs.
 pagination    |  Pagination      |  ?      | to filter the CDRs as per mentioned criteria.
+partnerID     |  PartnerID       |  *      | to get CDRs from selected partner(s) i.e. CPOs.
 
 
 ### GetCDRs.conf
@@ -948,6 +950,7 @@ This contains the field definition of the CheckCDRs.req sent by an EVSE operator
 :-------------|:-----------------|:--------|:------------
 cdrStatus     |  CdrStatusType   |  ?      | Defines which status of CDRs to return: declined, rejected, approved. If not set, will return declined CDRs.
 pagination    |  Pagination      |  ?      | to filter the CDRs as per mentioned criteria.
+partnerID     |  PartnerID       |  *      | to get CDRs from selected partner(s) i.e. EMP/EMSP.
 
 
 ### CheckCDRs.conf
@@ -1259,6 +1262,29 @@ dateFrom      |  DateTimeType    |  ?      | to filter the results updated, star
 dateTo        |  DateTimeType    |  ?      | to filter the results updated, till the mentioned date and time (inclusive).
 offset        |  int    	       |  ?      | the offset of a first object, that the request will return. Default is always zero.
 limit         |  int   		       |  ?      | the maximum number of objects that a Get request will return.
+
+
+### PartnerID
+
+The official companyId (CPO-ID/EMP-ID) issued by the relevant authority e.g. BDEW for Germany, eViolin for Netherlands, Belgium and Luxembourg, Austrian Mobile Power GmbH for Austria, AFIREV for France. The field takes 5 alphanumeric characters and consists of:
+
+PartnerID: <Country Code> <Party-ID>
+
+where:
+<Country Code> = 2 ALPHA. Two character country code according to ISO-3166-1 (Alpha-2-Code).
+<Party-ID> = 3 (ALPHA/DIGIT). Three alphanumeric characters defined and listed by the respective issuing authority.
+
+###### Regular Expression
+
+```regex
+[A-Z]{2}[A-Za-z0-9]{3}
+```
+
+###### Example
+
+```
+DELND
+```
 
 
 ### DateTimeType
