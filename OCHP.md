@@ -1271,8 +1271,8 @@ The official companyId (CPO-ID/EMP-ID) issued by the relevant authority e.g. BDE
 PartnerID: <Country Code> <Party-ID>
 
 where:
-<Country Code> = 2 ALPHA. Two character country code according to ISO-3166-1 (Alpha-2-Code).
-<Party-ID> = 3 (ALPHA/DIGIT). Three alphanumeric characters defined and listed by the respective issuing authority.
+Country Code = 2 ALPHA. Two character country code according to ISO-3166-1.
+Party-ID = 3 (ALPHA/DIGIT). Three alphanumeric characters defined and listed by the respective issuing authority.
 
 ###### Regular Expression
 
