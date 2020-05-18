@@ -313,7 +313,7 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
-				<s:element minOccurs="0" maxOccurs="unbounded" name="partnerID" type="tns:PartnerID">
+				<s:element minOccurs="0" maxOccurs="1" name="partnerID" type="tns:PartnerID">
 					<s:annotation>
 						<s:documentation>
 							to get ChargePoints from selected partner(s) i.e. CPOs.
@@ -566,6 +566,13 @@
 					<s:annotation>
 						<s:documentation>
 							Date and time since the last successful call of GetChargePointList.req of GetChargePointListUpdates.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="1" name="partnerID" type="tns:PartnerID">
+					<s:annotation>
+						<s:documentation>
+							to get ChargePoints from selected partner(s) i.e. CPOs.
 						</s:documentation>
 					</s:annotation>
 				</s:element>
