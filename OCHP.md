@@ -1256,6 +1256,8 @@ Result and error codes for the class Result as return value for method calls.
 
 ### Pagination
 
+Defines the pagination fields allowing the users to provide criteria in supported requests to filter the results. 
+
 Field Name    |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
 dateFrom      |  DateTimeType    |  ?      | to filter the results updated, starting from the mentioned date and time.
