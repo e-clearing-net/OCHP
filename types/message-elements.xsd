@@ -313,13 +313,6 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
-				<s:element minOccurs="0" maxOccurs="unbounded" name="partnerID" type="tns:PartnerID">
-					<s:annotation>
-						<s:documentation>
-							to get ChargePoints from selected partner(s) i.e. CPOs.
-						</s:documentation>
-					</s:annotation>
-				</s:element>
 				<s:element minOccurs="0" maxOccurs="1" name="limit" type="s:int">
 					<s:annotation>
 						<s:documentation>
