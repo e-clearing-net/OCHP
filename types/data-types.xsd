@@ -847,16 +847,6 @@
 		</s:sequence>
 	</s:complexType>
 
-
-	<s:simpleType name="PartnerID">
-		<s:restriction base="s:string">
-			<s:minLength value="1"></s:minLength>
-			<s:maxLength value="5"></s:maxLength>
-			<s:pattern value="[A-Z]{2}[A-Za-z0-9]{3}"></s:pattern>
-		</s:restriction>
-	</s:simpleType>
-
-
 	<s:simpleType name="CdrId">
 		<s:restriction base="s:string">
 			<s:minLength value="1"></s:minLength>

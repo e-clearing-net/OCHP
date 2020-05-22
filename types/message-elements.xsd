@@ -93,13 +93,6 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
-				<s:element minOccurs="0" maxOccurs="unbounded" name="partnerID" type="tns:PartnerID">
-					<s:annotation>
-						<s:documentation>
-							to get CDRs from selected partner(s) i.e. CPOs.
-						</s:documentation>
-					</s:annotation>
-				</s:element>
 			</s:sequence>
 		</s:complexType>
 	</s:element>
@@ -150,13 +143,6 @@
 					<s:annotation>
 						<s:documentation>
 							to filter the CDRs as per mentioned criteria.
-						</s:documentation>
-					</s:annotation>
-				</s:element>
-				<s:element minOccurs="0" maxOccurs="unbounded" name="partnerID" type="tns:PartnerID">
-					<s:annotation>
-						<s:documentation>
-							to get CDRs from selected partner(s) i.e. EMPs/EMSPs.
 						</s:documentation>
 					</s:annotation>
 				</s:element>
