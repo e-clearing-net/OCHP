@@ -562,20 +562,6 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
-				<s:element minOccurs="0" maxOccurs="1" name="limit" type="s:int">
-					<s:annotation>
-						<s:documentation>
-							Maximum number of Roaming Authorisation Updates to GET.
-						</s:documentation>
-					</s:annotation>
-				</s:element>
-				<s:element minOccurs="0" maxOccurs="1" name="offset" type="s:int">
-					<s:annotation>
-						<s:documentation>
-							The offset of the first object returned. Default is 0.
-						</s:documentation>
-					</s:annotation>
-				</s:element>
 			</s:sequence>
 		</s:complexType>
 	</s:element>
