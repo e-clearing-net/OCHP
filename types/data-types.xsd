@@ -825,7 +825,7 @@
 			<s:element name="dateTo" minOccurs="0" maxOccurs="1" type="tns:DateTimeType">
 				<s:annotation>
 					<s:documentation>
-						To filter the results updated, till the mentioned date and time (inclusive or exclusive).
+						To filter the results updated, till the mentioned date and time (inclusive).
 					</s:documentation>
 				</s:annotation>
 			</s:element>
