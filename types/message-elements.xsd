@@ -86,10 +86,17 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
-				<s:element minOccurs="0" maxOccurs="1" name="pagination" type="tns:Pagination">
+				<s:element minOccurs="1" maxOccurs="1" name="dateFrom" type="tns:DateTimeType">
 					<s:annotation>
 						<s:documentation>
-							to filter the CDRs as per mentioned criteria.
+							to filter the CDRs starting from the mentioned date and time.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="1" maxOccurs="1" name="dateTo" type="tns:DateTimeType">
+					<s:annotation>
+						<s:documentation>
+							to filter the CDRs till the mentioned date and time.
 						</s:documentation>
 					</s:annotation>
 				</s:element>
@@ -139,10 +146,17 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
-				<s:element minOccurs="0" maxOccurs="1" name="pagination" type="tns:Pagination">
+				<s:element minOccurs="1" maxOccurs="1" name="dateFrom" type="tns:DateTimeType">
 					<s:annotation>
 						<s:documentation>
-							to filter the CDRs as per mentioned criteria.
+							to filter the CDRs starting from the mentioned date and time.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="1" maxOccurs="1" name="dateTo" type="tns:DateTimeType">
+					<s:annotation>
+						<s:documentation>
+							to filter the CDRs till the mentioned date and time.
 						</s:documentation>
 					</s:annotation>
 				</s:element>

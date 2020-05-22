@@ -818,14 +818,14 @@
 			<s:element name="dateFrom" minOccurs="0" maxOccurs="1" type="tns:DateTimeType">
 				<s:annotation>
 					<s:documentation>
-						To filter the results, starting from the mentioned date and time.
+						To filter the results updated, starting from the mentioned date and time.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
 			<s:element name="dateTo" minOccurs="0" maxOccurs="1" type="tns:DateTimeType">
 				<s:annotation>
 					<s:documentation>
-						To filter the results, till the mentioned date and time (inclusive).
+						To filter the results updated, till the mentioned date and time (inclusive or exclusive).
 					</s:documentation>
 				</s:annotation>
 			</s:element>
@@ -835,12 +835,11 @@
 						the offset of a first object, that the request will return. Default is always zero.
 					</s:documentation>
 				</s:annotation>
-				</s:simpleType>
 			</s:element>
 			<s:element name="limit" minOccurs="0" maxOccurs="1" type="s:int">
 				<s:annotation>
 					<s:documentation>
-						the maximum number of objects that a Get request will return.
+						the maximum number of objects that a Get request will return. What max. limit should be allowed?
 					</s:documentation>
 				</s:annotation>
 			</s:element>
