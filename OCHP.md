@@ -89,6 +89,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     - [Messages for the Exchange of Charge Data](#messages-for-the-exchange-of-charge-data)
         - [GetCDRs.req](#getcdrsreq)
         - [GetCDRs.conf](#getcdrsconf)
+        - [CheckCDRs.req](#checkcdrsreq)
+        - [CheckCDRs.conf](#checkcdrsconf)
         - [AddCDRs.req](#addcdrsreq)
         - [AddCDRs.conf](#addcdrsconf)
         - [ConfirmCDRs.req](#confirmcdrsreq)
