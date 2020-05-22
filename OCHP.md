@@ -849,6 +849,10 @@ These messages are used for the purpose of the exchange of authorization data fr
 This contains the field definition of the GetRoamingAuthorisationList.req sent by a partner's system to the CHS.
 No fields are mandatory but it's recommended to use pagination. (It's a CPO message)
 
+Field Name    |  Field Type      |  Card.  |  Description
+:-------------|:-----------------|:--------|:------------
+pagination    |  Pagination      |  ?      | to filter the authorisation data as per desired criteria.
+
 
 ### GetRoamingAuthorisationList.conf
 
@@ -1258,7 +1262,7 @@ Result and error codes for the class Result as return value for method calls.
 
 ### Pagination
 
-Defines the pagination fields allowing the users to provide criteria in supported requests to filter the results. 
+Defines the pagination fields allowing the users to provide criteria in supported requests to filter the results.
 
 Field Name    |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
