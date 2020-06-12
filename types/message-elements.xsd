@@ -214,6 +214,20 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
+				<s:element minOccurs="0" maxOccurs="unbounded" name="EMP-ID" type="tns:PartnerID">
+					<s:annotation>
+						<s:documentation>
+							to retrieve the CDRs for selected EMPs.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="unbounded" name="CPO-ID" type="tns:PartnerID">
+					<s:annotation>
+						<s:documentation>
+							to retrieve the CDRs for selected CPOs.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
 			</s:sequence>
 		</s:complexType>
 	</s:element>
