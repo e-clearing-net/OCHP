@@ -207,24 +207,24 @@
 	<s:element name="GetRoamingAuthorisationListRequest">
 		<s:complexType>
 			<s:sequence>
-				<s:element minOccurs="0" maxOccurs="1" name="pagination" type="tns:Pagination">
-					<s:annotation>
-						<s:documentation>
-							to filter the Authorisation data as per mentioned criteria.
-						</s:documentation>
-					</s:annotation>
-				</s:element>
 				<s:element minOccurs="0" maxOccurs="unbounded" name="EMP-ID" type="tns:PartnerID">
 					<s:annotation>
 						<s:documentation>
-							to retrieve the CDRs for selected EMPs.
+							to retrieve the RoamingAuthorisations for selected EMPs.
 						</s:documentation>
 					</s:annotation>
 				</s:element>
 				<s:element minOccurs="0" maxOccurs="unbounded" name="CPO-ID" type="tns:PartnerID">
 					<s:annotation>
 						<s:documentation>
-							to retrieve the CDRs for selected CPOs.
+							to retrieve the RoamingAuthorisations from selected CPOs.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="1" name="pagination" type="tns:Pagination">
+					<s:annotation>
+						<s:documentation>
+							to filter the Authorisation data as per mentioned criteria.
 						</s:documentation>
 					</s:annotation>
 				</s:element>
@@ -657,6 +657,20 @@
 					<s:annotation>
 						<s:documentation>
 							Date and time since the last successful call. If left empty, will return full list of valid tariffs.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="unbounded" name="EMP-ID" type="tns:PartnerID">
+					<s:annotation>
+						<s:documentation>
+							to retrieve the Tariffs for selected EMPs.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="unbounded" name="CPO-ID" type="tns:PartnerID">
+					<s:annotation>
+						<s:documentation>
+							to retrieve the Tariffs from selected CPOs.
 						</s:documentation>
 					</s:annotation>
 				</s:element>
