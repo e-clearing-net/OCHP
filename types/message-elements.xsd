@@ -86,6 +86,20 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
+				<s:element minOccurs="0" maxOccurs="unbounded" name="EMP-ID" type="tns:PartnerID">
+					<s:annotation>
+						<s:documentation>
+							to retrieve the CDRs for selected EMPs.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="unbounded" name="CPO-ID" type="tns:PartnerID">
+					<s:annotation>
+						<s:documentation>
+							to retrieve the CDRs for selected CPOs.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
 				<s:element minOccurs="0" maxOccurs="1" name="pagination" type="tns:Pagination">
 					<s:annotation>
 						<s:documentation>
@@ -136,6 +150,20 @@
 						<s:documentation>
 							Defines which status of CDRs to return to the CPO making the call.
 							Valid options: declined (default, if not set), approved, rejected.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="unbounded" name="EMP-ID" type="tns:PartnerID">
+					<s:annotation>
+						<s:documentation>
+							to retrieve the CDRs for selected EMPs.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="unbounded" name="CPO-ID" type="tns:PartnerID">
+					<s:annotation>
+						<s:documentation>
+							to retrieve the CDRs for selected CPOs.
 						</s:documentation>
 					</s:annotation>
 				</s:element>
