@@ -113,16 +113,16 @@
 						owner declined; The CDR was declined by the owner (EVSP)
 						approved; The CDR was approved by the owner(EVSP)
 						revised; The CDR was revised by the CPO after a rejection by the owner.
+						<s:enumeration value="new"></s:enumeration>
 					</s:documentation>
 				</s:annotation>
 				<s:simpleType>
 					<s:restriction base="s:string">
-						<s:enumeration value="new"></s:enumeration>
 						<s:enumeration value="accepted"></s:enumeration>
-						<s:enumeration value="rejected"></s:enumeration>
 						<s:enumeration value="declined"></s:enumeration>
-						<s:enumeration value="approved"></s:enumeration>
 						<s:enumeration value="revised"></s:enumeration>
+						<s:enumeration value="rejected"></s:enumeration>
+						<s:enumeration value="approved"></s:enumeration>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
@@ -853,7 +853,7 @@
 			<s:pattern value="[A-Z]{2}[A-Za-z0-9]{3}"></s:pattern>
 		</s:restriction>
 	</s:simpleType>
-	
+
 	<s:simpleType name="CdrId">
 		<s:restriction base="s:string">
 			<s:minLength value="1"></s:minLength>

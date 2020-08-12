@@ -13,7 +13,7 @@ Prot. Version | Date       | Comment
 1.5           | 23-11-2019 | Extension of Roaming-Authorizations, chargePointType, Get/Check CDRs ...... bug fixes, enhancements
 
 
-Copyright (c) 2012-2019 smartlab, elaad.nl
+Copyright (c) 2012-2020 smartlab, elaad.nl
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files
@@ -924,18 +924,18 @@ refusedRoamingAuthorisationInfo  |  RoamingAuthorisationInfo  |  ?      |  This 
 
 ## Messages for the Exchange of Charge Data
 
-These messages are used for the purpose of the exchange of charge data from an EVSE Operator to an EVSP.
+These messages are used for the purpose of the exchange of charge data from an EVSE Operator to an EMSP.
 
 
 ### GetCDRs.req
 
-This contains the field definition of the GetCDRs.req sent by a provider's system to the CHS.
+This contains the field definition of the GetCDRs.req sent by a provider's system (EMSP) to the CHS.
 
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
-cdrStatus     |  CdrStatusType   |  ?      | Defines which status of CDRs to return: accepted, revised, rejected, approved. If not set, will return accepted and revised CDRs.
+cdrStatus     |  CdrStatusType   |  ?      | Defines which status of CDRs to return: Valid options are: accepted, declined, revised, rejected, approved. If not set, will return accepted and revised CDRs.
+partnerID     |  PartnerID       |  *      | to get CDRs from selected partner(s) i.e. CPOs and for which specific sister companies i.e. EMSPs (if exist).
 pagination    |  Pagination      |  ?      | to filter the CDRs as per mentioned criteria.
-partnerID     |  PartnerID       |  *      | to get CDRs from selected partner(s) i.e. CPOs.
 
 
 ### GetCDRs.conf
@@ -954,9 +954,9 @@ This contains the field definition of the CheckCDRs.req sent by an EVSE operator
 
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
-cdrStatus     |  CdrStatusType   |  ?      | Defines which status of CDRs to return: declined, rejected, approved. If not set, will return declined CDRs.
+cdrStatus     |  CdrStatusType   |  ?      | Defines which status of CDRs to return: Valid options are: accepted, declined, revised, rejected, approved. If not set, will return declined CDRs.
+partnerID     |  PartnerID       |  *      | to get CDRs from selected partner(s) i.e. EMP/EMSP and for which specific sister companies i.e. CPOs (if exist).
 pagination    |  Pagination      |  ?      | to filter the CDRs as per mentioned criteria.
-partnerID     |  PartnerID       |  *      | to get CDRs from selected partner(s) i.e. EMP/EMSP.
 
 
 ### CheckCDRs.conf
@@ -1592,16 +1592,16 @@ Reflects the current status of the CDR. This is reflecting the status
 of internal processing in the clearing house. The value cannot be
 changed by the partner's systems directly. Implicit changes are made
 while uploading (including revised, rejected CDRs), approving or
-declining CDRs.
+declining CDRs.  ((new A new CDR before upload to the CHS))
 
  Value           |  Description
-:----------------|:-------------
- new             |  A new CDR before upload to the CHS.
+:----------------|:-----------------------------------------------------
  accepted        |  An uploaded CDR was accepted by the CHS as plausible.
- rejected        |  The checked CDR again rejected by the CHS and is to be archived.
- declined	 |  The CDR was declined by the owner (EVSP).
- approved        |  The CDR was approved by the owner (EVSP).
- revised	 |  The CDR was revised by the CPO and uploaded again. Only previously accepted or declined CDRs can be revised.
+ declined	       |  The CDR was declined by the owner (EMSP).
+ revised	       |  The CDR was revised by the CPO and uploaded again. Only previously accepted or declined CDRs can be revised.
+ rejected        |  The declined CDR is rejected by the operator (CPO) and is to be archived by CHS.
+ approved        |  The CDR was approved by the owner (EMSP).
+
 
 
 ### CDRInfo *class*

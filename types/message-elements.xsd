@@ -80,8 +80,8 @@
 				<s:element minOccurs="0" maxOccurs="1" name="cdrStatus" type="tns:CdrStatusType">
 					<s:annotation>
 						<s:documentation>
-							Defines which status of CDRs to return to the EMP.
-							Valid options: accepted, revised, approved, rejected.
+							Is an EMP method. Defines which status of CDRs to return to the Emobility service provider.
+							Valid options are: accepted, declined, revised, rejected, approved.
 							If not set, returns accepted and revised CDRs.
 						</s:documentation>
 					</s:annotation>
@@ -89,14 +89,14 @@
 				<s:element minOccurs="0" maxOccurs="unbounded" name="EMP-ID" type="tns:PartnerID">
 					<s:annotation>
 						<s:documentation>
-							to retrieve the CDRs for selected EMPs.
+							to retrieve the CDRs for selected EMPs (own sister companies).
 						</s:documentation>
 					</s:annotation>
 				</s:element>
 				<s:element minOccurs="0" maxOccurs="unbounded" name="CPO-ID" type="tns:PartnerID">
 					<s:annotation>
 						<s:documentation>
-							to retrieve the CDRs for selected CPOs.
+							to retrieve the CDRs from selected CPOs.
 						</s:documentation>
 					</s:annotation>
 				</s:element>
@@ -149,21 +149,21 @@
 					<s:annotation>
 						<s:documentation>
 							Defines which status of CDRs to return to the CPO making the call.
-							Valid options: declined (default, if not set), approved, rejected.
+							Valid options are: accepted, declined, revised, rejected, approved. If not set, will return declined CDRs.
 						</s:documentation>
 					</s:annotation>
 				</s:element>
 				<s:element minOccurs="0" maxOccurs="unbounded" name="EMP-ID" type="tns:PartnerID">
 					<s:annotation>
 						<s:documentation>
-							to retrieve the CDRs for selected EMPs.
+							to retrieve the CDRs from selected EMPs.
 						</s:documentation>
 					</s:annotation>
 				</s:element>
 				<s:element minOccurs="0" maxOccurs="unbounded" name="CPO-ID" type="tns:PartnerID">
 					<s:annotation>
 						<s:documentation>
-							to retrieve the CDRs for selected CPOs.
+							to retrieve the CDRs for selected CPOs (own sister companies).
 						</s:documentation>
 					</s:annotation>
 				</s:element>
