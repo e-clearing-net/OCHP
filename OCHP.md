@@ -46,6 +46,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - [Introduction](#introduction)
     - [Primary Stakeholders Electric Vehicles](#primary-stakeholders-electric-vehicles)
         - [Electric Vehicle User (EV User)](#electric-vehicle-user-ev-user)
+        - [E-Mobilty Service Provider (EMSP)](#emobility-service-provider-emsp)
         - [Electric Vehicle Service Provider (EVSP)](#electric-vehicle-service-provider-evsp)
         - [Electric Vehicle Supply Equipment Operator (EVSE Operator)](#electric-vehicle-supply-equipment-operator-evse-operator)
         - [Navigation Service Provider (NSP)](#navigation-service-provider-nsp)
@@ -254,6 +255,7 @@ EVCO-ID      | Electrical Vehicle Contract Identifier
 EVSE         | Electrical Vehicle Supply Equipment
 EVSE-ID      | Electrical Vehicle Supply Equipment Identifier
 EVSE-Op      | EVSE Operator
+EMSP         | E-Mobilty Service Provider
 EVSP         | Electric Vehicle Service Provider
 ID           | Identifier
 MDM          | Master Data Management System
