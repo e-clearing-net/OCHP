@@ -846,6 +846,39 @@
 		</s:sequence>
 	</s:complexType>
 
+	<s:complexType name="ItemInfo">
+		<s:sequence>
+			<s:element name="objectCount" minOccurs="0" maxOccurs="1" type="s:int">
+				<s:annotation>
+					<s:documentation>
+						Total number of objects available in the server system.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="objectSize" minOccurs="0" maxOccurs="1" type="s:int">
+				<s:annotation>
+					<s:documentation>
+						Object size receive from the server response.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="link" minOccurs="0" maxOccurs="1" type="s:string">
+				<s:annotation>
+					<s:documentation>
+						Link to the 'next' page, when this is NOT the last page.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="limit" minOccurs="0" maxOccurs="1" type="s:int">
+				<s:annotation>
+					<s:documentation>
+						Number of objects that are returned.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
+	
 	<s:simpleType name="PartnerID">
 		<s:restriction base="s:string">
 			<s:minLength value="5"></s:minLength>
