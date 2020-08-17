@@ -247,7 +247,7 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
-				<s:element minOccurs="0" maxOccurs="1" name="roamingAuthorisationItemInfo" type="tns:Iteminfo">
+				<s:element minOccurs="0" maxOccurs="1" name="roamingAuthorisationItemInfo" type="tns:ItemInfo">
 					<s:annotation>
 						<s:documentation>
 							This contains the roaming authorisation item info.
@@ -432,6 +432,13 @@
 					<s:annotation>
 						<s:documentation>
 							This contains the result of GetRoamingAuthorisationListUpdate.req
+						</s:documentation>
+					</s:annotation>
+				</s:element>
+				<s:element minOccurs="0" maxOccurs="1" name="roamingAuthorisationItemInfo" type="tns:ItemInfo">
+					<s:annotation>
+						<s:documentation>
+							This contains the roaming authorisation item info.
 						</s:documentation>
 					</s:annotation>
 				</s:element>
