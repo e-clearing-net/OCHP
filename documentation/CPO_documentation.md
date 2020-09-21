@@ -18,3 +18,6 @@ The following methods are part of the CPO implementation to be used by the CPO. 
 - [SetChargePointList.req](#setchargepointlistreq)
 - [UpdateChargePointList.req](#updatechargepointlistreq)
 - [UpdateTariffs.req](#updatetariffsreq)
+
+### Live Interface
+- [UpdateStatus.req](#updatestatusreq)
