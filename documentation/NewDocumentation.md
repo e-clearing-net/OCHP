@@ -209,6 +209,8 @@ The EVSE operator operates as contract party for the EVSP. The charging
 stations (EVSE) of the EVSE operator are accessible by a specified set
 of EV users of the contracted EVSPs. The EVSP pays the EVSE operator for
 the charging services received by its contracted EV users.
+See the CPO Documentation 
+[CPO Documentation](/documentation/CPO_documentation.md "CPO Documentation")
 
 
 ### Navigation Service Provider (NSP)
