@@ -218,6 +218,8 @@ See the CPO Documentation
 The NSP offers service towards the EV user for searching, locating and
 routing to EVSEs of the contracted EVSE operators. It therefore may have
 contracts with EVSE operators or EVSPs.
+See the NSP Documentation 
+[NSP Documentation](/documentation/NSP_documentation.md "NSP Documentation")
 
 
 ### Parking Spot Operator (PSO)
