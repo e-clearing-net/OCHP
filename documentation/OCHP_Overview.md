@@ -11,7 +11,7 @@ OCHP is an open source protocol. It offers a uniform, SOAP based, interface solu
 # USPs
 
 # Stakeholders e-mobility
- * The (/documentation/EMP_documentation.md ***EMP***) (Electric Mobility Provider) - granting access to 
+ * The [EMP](/documentation/EMP_documentation.md "EMP") (Electric Mobility Provider) - granting access to 
    charging stations and thus offering services to the contracted EV 
    user. The service offer is supported by the market roles CPO and NSP.
  * The ***CPO*** (Charge Point Operator) - 
