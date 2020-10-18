@@ -14,11 +14,11 @@ OCHP is an open source protocol. It offers a uniform, SOAP based, interface solu
  * The [EMP](/documentation/EMP_documentation.md "EMP") (Electric Mobility Provider) - granting access to 
    charging stations and thus offering services to the contracted EV 
    user. The service offer is supported by the market roles CPO and NSP.
- * The ***CPO*** (Charge Point Operator) - 
+ * The [CPO](/documentation/CPO_documentation.md "CPO") (Charge Point Operator) - 
    operating charging stations.
- * The ***NSP*** (Navigation Service Provider) - offering relevant 
+ * The [NSP](/documentation/NSP_documentation.md "NSP") (Navigation Service Provider) - offering relevant 
    navigation services to the EV user.
- * The ***PSO*** (Parking Spot Operator) - owning and/or operating the parking
+ * The [PSO](/documentation/PSO_documentation.md "PSO") - owning and/or operating the parking
    spots that allow access to the charging infrastructure owned/operated by the EVSE Operator.
- * The ***DSO*** (Distribution System Operator) - consume POI Data, much like the Navigation Service Provider (NSP).
+ * The [DSO](/documentation/DSO_documentation.md "DSO") - consume POI Data, much like the Navigation Service Provider (NSP).
    This service will allow the DSO to retrieve Data on installed capacity of chargers and current energy flow in a standardized format.
