@@ -18,7 +18,7 @@ OCHP is an open source protocol. It offers a uniform, SOAP based, interface solu
    operating charging stations.
  * The [NSP](/documentation/NSP_documentation.md "NSP") (Navigation Service Provider) - offering relevant 
    navigation services to the EV user.
- * The [PSO](/documentation/PSO_documentation.md "PSO") - owning and/or operating the parking
+ * The [PSO](/documentation/PSO_documentation.md "PSO") (Parking Spot Operator) - owning and/or operating the parking
    spots that allow access to the charging infrastructure owned/operated by the EVSE Operator.
- * The [DSO](/documentation/DSO_documentation.md "DSO") - consume POI Data, much like the Navigation Service Provider (NSP).
+ * The [DSO](/documentation/DSO_documentation.md "DSO") (Distribution System Operator) - consume POI Data, much like the Navigation Service Provider (NSP).
    This service will allow the DSO to retrieve Data on installed capacity of chargers and current energy flow in a standardized format.
