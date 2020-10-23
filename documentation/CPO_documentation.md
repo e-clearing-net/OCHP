@@ -10,7 +10,7 @@ The main functionalities for the CPO are: Publishing charge point information, r
 ## CPO Methods
 The following methods are part of the CPO implementation to be used by the CPO. Typically, an CPO implementation consists of these methods
 
-- [AddCDRs.req](/documentation/NewDocumentation.md/#addcdrs.req)
+- [AddCDRs.req](/documentation/NewDocumentation.md/#addcdrsreq)
 - [CheckCDRs.req](/documentation/NewDocumentation.md/#checkcdrsreq)
 - [GetRoamingAuthorisationList.req](/documentation/NewDocumentation.md/#getroamingauthorisationlistreq)
 - [GetRoamingAuthorisationListUpdates.req](/documentation/NewDocumentation.md/#getroamingauthorisationlistupdatesreq)
