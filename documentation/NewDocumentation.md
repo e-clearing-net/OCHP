@@ -72,7 +72,7 @@ enhancements and are not to be confused with the derived protocol
 states labelled by the protocol version numeration. To illustrate this, 
 the following figure shows the development process of this protocol.
 
-![Figure Protocol Versioning](media/ProtocolVersioning.png "Protocol Versioning")
+![Figure Protocol Versioning](../media/ProtocolVersioning.png "Protocol Versioning")
 
 
 ## Conventions
@@ -181,7 +181,7 @@ one or more market roles. The contracts between each actor and the data
 routing are part of the clearing house's business logic and out of scope
 for this protocol description.
 
-![Figure EV charging infrastructure market overview](media/EV-charging-market-overview.png "EV charging infrastructure market overview")
+![Figure EV charging infrastructure market overview](../media/EV-charging-market-overview.png "EV charging infrastructure market overview")
 
 
 ### Electric Vehicle User (EV User)
@@ -240,9 +240,9 @@ executed (first figure below) or the car was disconnected from the
 charge point manually (second figure below). This is considered a 
 forced unauthorized ending.
 
-![Figure Example for an authorized end of a charging session](media/ChargingSessionDefinition-1.png "Example for an authorized end of a charging session")
+![Figure Example for an authorized end of a charging session](../media/ChargingSessionDefinition-1.png "Example for an authorized end of a charging session")
 
-![Figure Example for a forced end of a charging session](media/ChargingSessionDefinition-2.png "Example for a forced end of a charging session")
+![Figure Example for a forced end of a charging session](../media/ChargingSessionDefinition-2.png "Example for a forced end of a charging session")
 
 
 
@@ -258,7 +258,7 @@ the Clearing House and the partners. The figure illustrates the overall
 system overview of all partners with their systems and the clearing 
 house system with the EV user as service consumer.
 
-![Figure Global System Overview](media/global-system-overview.png "Global System Overview")
+![Figure Global System Overview](../media/global-system-overview.png "Global System Overview")
 
 A different view to the implementation of the described role model gives
 figure below. The clearing house provides here a central
@@ -277,7 +277,7 @@ For the sake of simplification only two layers are shown in this figure.
 The same principles apply to the navigation service layer. Also other 
 additional clearing houses could exist in this model.
 
-![Figure Layer model of clearing house connections](media/ClearingHouseLayerModel.png "Layer model of clearing house connections")
+![Figure Layer model of clearing house connections](../media/ClearingHouseLayerModel.png "Layer model of clearing house connections")
 
 
 
@@ -341,7 +341,7 @@ Starting with Protocol Version 1.3, OCHP offers the possibility to
 open a _direct_ communication between two roaming partners. The 
 following figure illustrates the additional data path.
 
-![Figure OCHP direct Basic Overview](media/OCHPdirectBasicOverview.png "OCHP direct Basic Overview")
+![Figure OCHP direct Basic Overview](../media/OCHPdirectBasicOverview.png "OCHP direct Basic Overview")
 
 The direct communication between operators and providers allows the 
 implementation of fundamental new use cases between two roaming 
@@ -533,7 +533,7 @@ for certain data types. The figure below gives an overview of
 the exchanged data types, their direction and their particular
 originating and consuming market role.
 
-![Figure Data flow and direction overview](media/DataFlows.png "Data flow and direction overview")
+![Figure Data flow and direction overview](../media/DataFlows.png "Data flow and direction overview")
 
 The exchange of data takes place via standardized web services.
 
@@ -618,7 +618,7 @@ They now have the option to either re-upload a reworked CDR as *revised*
 using the same CDR-ID or finally confirm the affected CDRs as *rejected*,
 foregoing any further claims on that charging process.
 
-![Figure Status flow for CDRs](media/CDRvalidation.png "Status flow for CDRs")
+![Figure Status flow for CDRs](../media/CDRvalidation.png "Status flow for CDRs")
 
 
 
@@ -747,7 +747,7 @@ in the CHS to be checked against, which is the same list of tokens that
 also gets returned when downloading roaming authorization data into the
 CMS. This is not a live request at the provider backend.
 
-![Figure Message exchange for live authorisation requests for a single charging process.](media/SingleAuthorisation.png "Message exchange for live authorisation requests for a single charging process.")
+![Figure Message exchange for live authorisation requests for a single charging process.](../media/SingleAuthorisation.png "Message exchange for live authorisation requests for a single charging process.")
 
 
 ### Request the CHS to authorize one single token for roaming
@@ -775,7 +775,7 @@ without valid status information.
 The current major and minor status of each EVSE shall be set following 
 the decision flow in figure below.
 
-![Figure Status decision flow for EVSEs.](media/LiveStatusDecision.png "Status decision flow for EVSEs.")
+![Figure Status decision flow for EVSEs.](../media/LiveStatusDecision.png "Status decision flow for EVSEs.")
 
 Table shows the relationship of the major and minor status values. 
 Other combinations of the status values must not be set.
@@ -1417,7 +1417,7 @@ This reflects the situation that one contractual user account can be
 authorized by different tokens. The structure can be illustrated as
 shown in this figure:
 
-![Figure ID-Structure](media/IDstructure.png "ID-Structure")
+![Figure ID-Structure](../media/IDstructure.png "ID-Structure")
 
 
 ### EmtId *class*
@@ -2666,7 +2666,7 @@ stations. The charging station consists of one single charge pole only.
 Therefore there is a risk to confuse the terms pole and station. The 
 following examples will make the difference clear.
 
-![Figure Example 1](media/EVSEstructureExamples--1.png "Example 1")
+![Figure Example 1](../media/EVSEstructureExamples--1.png "Example 1")
 
 
 ##### Example Two
@@ -2680,7 +2680,7 @@ In fact, the two charging stations in this example are just exactly two
 times example one. Each of the stations is placed at a individual 
 location not related to each other.
 
-![Figure Example 2](media/EVSEstructureExamples--2.png "Example 2")
+![Figure Example 2](../media/EVSEstructureExamples--2.png "Example 2")
 
 
 ##### Example Three
@@ -2698,7 +2698,7 @@ one single charging station to the user. Other circumstances like a
 common electrical connection or a mutual controlling and communication 
 unit is not decisive for this combination.
 
-![Figure Example 3](media/EVSEstructureExamples--3.png "Example 3")
+![Figure Example 3](../media/EVSEstructureExamples--3.png "Example 3")
 
 
 ##### Example Four
@@ -2716,7 +2716,7 @@ charging station may be communicated to the user under one single name.
 In the attributes for the station the user will find the number of 
 charge points which is the same as in example three.
 
-![Figure Example 4](media/EVSEstructureExamples--4.png "Example 4")
+![Figure Example 4](../media/EVSEstructureExamples--4.png "Example 4")
 
 
 
@@ -2765,4 +2765,4 @@ The six steps are:
 The remaining charge points in the data set are operative and available 
 at the current moment and can be displayed to the EV User.
 
-![Figure Filtering for available charge points](media/POIavailabilityFilter.png "Filtering for available charge points")
+![Figure Filtering for available charge points](../media/POIavailabilityFilter.png "Filtering for available charge points")
