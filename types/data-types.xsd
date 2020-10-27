@@ -878,7 +878,7 @@
 			</s:element>
 		</s:sequence>
 	</s:complexType>
-	
+
 	<s:simpleType name="PartnerID">
 		<s:restriction base="s:string">
 			<s:minLength value="5"></s:minLength>
@@ -1296,12 +1296,13 @@
 	<s:simpleType name="TariffId">
 		<s:annotation>
 			<s:documentation>
-				The Tariff-ID uniquely references one tariff.
+				The Tariff-ID uniquely references one tariff. The tariff-ID follows a similar syntax to that of contract- and EVSE-IDs.
+				The Operator-ID is followed by a 'T' that signifies a tariff and a unique instance of up to 30 characters. The max. length allowed it string(36).
 			</s:documentation>
 		</s:annotation>
 		<s:restriction base="s:string">
-			<s:pattern value="[A-Za-z]{2}\*[A-Za-z0-9]{3}\*[Tt][A-Za-z0-9][A-Za-z0-9\*]{0,9}"></s:pattern>
-			<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[Tt][A-Za-z0-9][A-Za-z0-9\*]{0,9}"></s:pattern>
+			<s:pattern value="[A-Z]{2}\*[A-Za-z0-9]{3}\*[T][A-Za-z0-9][A-Za-z0-9\*]{0,29}"></s:pattern>
+			<s:pattern value="[A-Z]{2}[A-Za-z0-9]{3}[T][A-Za-z0-9][A-Za-z0-9\*]{0,29}"></s:pattern>
 		</s:restriction>
 	</s:simpleType>
 

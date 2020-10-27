@@ -160,11 +160,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [chargePointType *enum*](#chargePointType-enum)
         - [ChargePointInfo *class*](#chargepointinfo-class)
     - [Types for Tariff Data Exchange](#types-for-tariff-data-exchange)
-		- [TariffInfo *class*](#tariffinfo-class)
-		- [IndividualTariffType *class*](#individualtarifftype-class)
-		- [TariffElementType *class*](#tariffelementtype-class)
-		- [PriceComponentType *class*](#pricecomponenttype-class)
-		- [TariffRestrictionType *class*](#tariffrestrictiontype-class)
+		    - [TariffId](#tariffid)    
+		    - [IndividualTariffType *class*](#individualtarifftype-class)
+		    - [TariffElementType *class*](#tariffelementtype-class)
+		    - [PriceComponentType *class*](#pricecomponenttype-class)
+		    - [TariffRestrictionType *class*](#tariffrestrictiontype-class)
+        - [TariffInfo *class*](#tariffinfo-class)
 	- [Types for the Live Status Interface](#types-for-the-live-status-interface)
         - [MajorType *enum*](#majortype-enum)
         - [MinorType *enum*](#minortype-enum)
@@ -2174,18 +2175,16 @@ meteringInfo         |  MeteringInfoType         |  ?      |  Array type mainly 
 
 These types are used to exchange tariff information between an operator and one or more providers.
 
+### TariffId
+The tariff-ID follows a similar syntax to that of contract- and EVSE-IDs. The tariff-ID follows a similar syntax to that of contract- and EVSE-IDs.
+The Operator-ID is followed by a 'T' that signifies a tariff and a unique instance of up to 30 characters. The max. length allowed for TariffId is string(36).
 
-### TariffInfo *class*
+###### Regular Expression
 
-A Tariff Object consists of a list of one or more individual tariffs for individual recipients. One default individual tariff should always be defined without a specific recipient.
-Each individual tariff consists of tariff elements. These elements can be used to create complex Tariff structures.
-
-Changes to a tariff can always only be made to the entire tariff object. That way it is ensured that there cannot be multiple conflicting tariffs referenced at the same connector.  
-
- Field Name          |  Field Type               |  Card.  |  Description
-:--------------------|:--------------------------|:--------|:------------
- tariffId            | TariffId	            	 | 1       | Uniquely identifies the tariff.
- individualTariff    | IndividualTariffType	 | +	   | Contains multiple individual tariffs dependant on intended recipient.
+```regex
+[A-Z]{2}\*[A-Za-z0-9]{3}\*[T][A-Za-z0-9][A-Za-z0-9\*]{0,29}
+[A-Z]{2}[A-Za-z0-9]{3}[T][A-Za-z0-9][A-Za-z0-9\*]{0,29}
+```
 
 
 ### IndividualTariffType *class*
@@ -2227,13 +2226,24 @@ Changes to a tariff can always only be made to the entire tariff object. That wa
  minEnergy           | float   			 | ?       | Minimum used energy in kWh, for example 20.0, valid from this amount of energy is used                       
  maxEnergy           | float  			 | ?       | Maximum used energy in kWh, for example 50.0, valid until this amount of energy is used
  minPower            | float   			 | ?       | Minimum power in kW, for example 0.0, valid from this charging speed
- maxPower            | float			 | ?       | Maximum power in kW, for example 20.0, valid up to this charging speed
- minDuration         | int                       | ?       | Minimum duration in seconds, valid for a duration from x seconds
- maxDuration         | int                       | ?       | Maximum duration in seconds, valid for a duration up to x seconds
+ maxPower            | float			   | ?       | Maximum power in kW, for example 20.0, valid up to this charging speed
+ minDuration         | int           | ?       | Minimum duration in seconds, valid for a duration from x seconds
+ maxDuration         | int           | ?       | Maximum duration in seconds, valid for a duration up to x seconds
 
 
-### TariffId
-The tariff-ID follows a similar syntax to that of contract- and EVSE-IDs. The Operator-ID is followed by a 'T' that signifies a tariff and a unique instance of up to 9 characters.
+### TariffInfo *class*
+
+ A Tariff Object consists of a list of one or more individual tariffs for individual recipients. One default individual tariff should always be defined without a specific recipient.
+ Each individual tariff consists of tariff elements. These elements can be used to create complex Tariff structures.
+
+ Changes to a tariff can always only be made to the entire tariff object. That way it is ensured that there cannot be multiple conflicting tariffs referenced at the same connector.  
+
+  Field Name          |  Field Type               |  Card.  |  Description
+ :--------------------|:--------------------------|:--------|:------------
+  tariffId            | TariffId	            	  | 1       | Uniquely identifies the tariff.
+  individualTariff    | IndividualTariffType	    | +	      | Contains multiple individual tariffs dependant on intended recipient.
+
+
 
 ### Examples
 
