@@ -2176,8 +2176,7 @@ meteringInfo         |  MeteringInfoType         |  ?      |  Array type mainly 
 These types are used to exchange tariff information between an operator and one or more providers.
 
 ### TariffId
-The tariff-ID follows a similar syntax to that of contract- and EVSE-IDs. The tariff-ID follows a similar syntax to that of contract- and EVSE-IDs.
-The Operator-ID is followed by a 'T' that signifies a tariff and a unique instance of up to 30 characters. The max. length allowed for TariffId is string(36).
+The tariffId follows a similar syntax to that of contract- and EVSE-IDs. The Operator-ID is followed by a 'T' that signifies a tariff and a unique instance of up to 30 characters. The max. length allowed for TariffId is string(36).
 
 ###### Regular Expression
 
