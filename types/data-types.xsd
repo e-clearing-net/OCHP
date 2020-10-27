@@ -44,13 +44,14 @@
 			<s:element name="instance" minOccurs="1" maxOccurs="1">
 				<s:annotation>
 					<s:documentation>
-						The authorization tokens are defined according to the specification of the EMT-ID (Token ID). Each token consists of an token instance which holds the payload and at least the token type. The sub-type is for further specification of the general token type.
+						The authorization tokens are defined according to the specification of the EMT-ID (Token ID). Each token consists of a token instance which holds the payload
+						 and at least the token type. The sub-type is for further specification of the general token type.
 					</s:documentation>
 				</s:annotation>
 				<s:simpleType>
 					<s:restriction base="s:string">
 						<s:minLength value="1"></s:minLength>
-						<s:maxLength value="512"></s:maxLength>
+						<s:maxLength value="36"></s:maxLength>
 					</s:restriction>
 				</s:simpleType>
 			</s:element>

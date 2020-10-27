@@ -1453,7 +1453,7 @@ further specification of the general token type.
 
  Field Name      |  Field Type           |  Card.  |  Description
 :----------------|:----------------------|:--------|:------------
- instance        |  string(512)          |  1      |  Specification according to the token type.
+ instance        |  string(36)           |  1      |  Specification according to the token type.
  representation  |  tokenRepresentation  |  1      |  The token instance may be represented by its hash value (hexadecimal representation of the hash value). This specifies in which representation the token instance is set.
  type            |  tokenType            |  1      |  The type of the supplied instance.
  subType         |  tokenSubType         |  ?      |  The exact type of the supplied instance.
@@ -1466,7 +1466,7 @@ The type of the supplied instance for basic filtering.
 
  Value       |  Description
 :------------|:-------------
- rfid        |  All kinds of RFID-Cards. Field tokenInstance holds the hexadecimal representation of the card's UID, Byte order: big endian, no zero-filling.
+ rfid        |  All kinds of RFID-Cards. Field token Instance holds the hexadecimal representation of the card's UID, Byte order: big endian, no zero-filling.
  remote      |  All means of remote authentication through the backend. Field tokenInstance holds a reference to the remote authorization or session. In case of a OCHPdirect authorization the _directId_.
  15118       |  All authentication means defined by ISO/IEC 15118 except RFID-cards.
  other       |  To accommodate the other energy sources incorporated into the protocol.
