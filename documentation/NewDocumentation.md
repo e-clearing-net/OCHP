@@ -939,8 +939,12 @@ This contains the field definition of the GetCDRs.req sent by a provider's syste
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
 cdrStatus     |  CdrStatusType   |  ?      | Defines which status of CDRs to return: accepted, revised, rejected, approved. If not set, will return accepted and revised CDRs.
-dateFrom      |  DateTimeType    |  1      | to filter the CDRs starting from the mentioned date and time.
-dateTo        |  DateTimeType    |  1      | to filter the CDRs till the mentioned date and time.
+EMP-ID        |  PartnerID       |  ?      | To retrieve the CDRs for selected EMPs (own sister companies).
+CPO-ID        |  PartnerID       |  ?      | To retrieve the CDRs from selected CPOs.
+dateFrom      |  DateTimeType    |  ?      | To filter the CDRs starting from the mentioned date and time.
+dateTo        |  DateTimeType    |  ?      | To filter the CDRs till the mentioned date and time.
+offset        |  int    	 |  ?      | The offset of a first CDR that the request will return. Default is always zero.
+limit         |  int   		 |  ?      | The maximum number of CDRs that a Get request will return.
 
 
 ### GetCDRs.conf
