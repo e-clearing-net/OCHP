@@ -1285,12 +1285,13 @@
 	<s:simpleType name="ParkingId">
 		<s:annotation>
 			<s:documentation>
-				The Parking-ID uniquely references one parking spot.
+				The Parking-ID uniquely references one parking spot. The Parking Spot Operator ID (PSO-ID) is followed by a 'P' that signifies a parking spot and a unique instance of up to 30 characters.
+				The max. length allowed for ParkingId is string(36).
 			</s:documentation>
 		</s:annotation>
 		<s:restriction base="s:string">
-			<s:pattern value="[A-Za-z]{2}\*[A-Za-z0-9]{3}\*[Pp][A-Za-z0-9][A-Za-z0-9\*]{0,30}"></s:pattern>
-			<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[Pp][A-Za-z0-9][A-Za-z0-9\*]{0,30}"></s:pattern>
+			<s:pattern value="[A-Z]{2}\*[A-Za-z0-9]{3}\*[Pp][A-Za-z0-9][A-Za-z0-9\*]{0,29}"></s:pattern>
+			<s:pattern value="[A-Z]{2}[A-Za-z0-9]{3}[Pp][A-Za-z0-9][A-Za-z0-9\*]{0,29}"></s:pattern>
 		</s:restriction>
 	</s:simpleType>
 
@@ -1302,8 +1303,8 @@
 			</s:documentation>
 		</s:annotation>
 		<s:restriction base="s:string">
-			<s:pattern value="[A-Z]{2}\*[A-Za-z0-9]{3}\*[T][A-Za-z0-9][A-Za-z0-9\*]{0,29}"></s:pattern>
-			<s:pattern value="[A-Z]{2}[A-Za-z0-9]{3}[T][A-Za-z0-9][A-Za-z0-9\*]{0,29}"></s:pattern>
+			<s:pattern value="[A-Z]{2}\*[A-Za-z0-9]{3}\*[Tt][A-Za-z0-9][A-Za-z0-9\*]{0,29}"></s:pattern>
+			<s:pattern value="[A-Z]{2}[A-Za-z0-9]{3}[Tt][A-Za-z0-9][A-Za-z0-9\*]{0,29}"></s:pattern>
 		</s:restriction>
 	</s:simpleType>
 

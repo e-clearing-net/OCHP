@@ -167,9 +167,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       - [TariffRestrictionType *class*](#tariffrestrictiontype-class)
       - [TariffInfo *class*](#tariffinfo-class)
     - [Types for the Live Status Interface](#types-for-the-live-status-interface)
+      - [ParkingId](#parkingid)
+      - [EvseStatusType *class*](#evsestatustype-class)      
       - [MajorType *enum*](#majortype-enum)
       - [MinorType *enum*](#minortype-enum)
-      - [EvseStatusType *class*](#evsestatustype-class)
       - [ParkingStatusType *class*](#parkingstatustype-class)
 - [Binding to Transport Protocol](#binding-to-transport-protocol)
     - [User Identification](#user-identification)
@@ -1885,7 +1886,7 @@ standard and format (socket/cable).
 :------------------|:-----------------------|:--------|:------------
  connectorStandard |  ConnectorStandardType |  1      |  The standard of the installed connector.
  connectorFormat   |  ConnectorFormatType   |  1      |  The format of the connector, depending on the source device.
- tariffId	   |  TariffId		    |  ?      |  Reference to a tariff, if tariffs are exchanged through the CHS.
+ tariffId	         |  TariffId		          |  ?      |  Reference to a tariff, if tariffs are exchanged through the CHS.
 
 
 ### RatingsType *class*
@@ -1960,7 +1961,7 @@ Opening hours for the charge point.
  *Choice: one of two*   |                         |         |
  \> regularHours        |  regularHoursType       |  *      |  Regular hours, weekday based. Should not be set for representing 24/7 as this is the most common case.
  \> twentyfourseven     |  boolean                |  1      |  True to represent 24 hours per day and 7 days per week, except the given exceptions. May be set to false if opening hours are defined only by exceptionalOpenings.
- closedCharging		    |  boolean				  |  1      |  Should be set to true in case an EV can be charged when plugged in during off-times (i.e. when the location is closed according to the specified hours).
+ closedCharging		      |  boolean				        |  1      |  Should be set to true in case an EV can be charged when plugged in during off-times (i.e. when the location is closed according to the specified hours).
  exceptionalOpenings    |  exceptionalPeriodType  |  *      |  Exceptions for specified calendar dates, time-range based. Periods the station is operating/accessible. For irregular hours or as addition to regular hours. May overlap regular rules.
  exceptionalClosings    |  exceptionalPeriodType  |  *      |  Exceptions for specified calendar dates, time-range based. Periods the station is not operating/accessible. Overwriting regularHours and twentyfourseven. Should not overlap exceptionalOpenings.
 
@@ -2109,9 +2110,6 @@ This class contains all parking related information. If a parkingId is given, th
  parkingSpotNumber   |  string(5)                |  ?      |  Alphanumeric. Locally displayed parking slot number. Examples: "10", "251","B25", "P-234"
 
 
-### ParkingId
-The parking-ID follows a similar syntax to that of contract- and EVSE-IDs. The PSO-ID is followed by a 'P' that signifies a tariff and a unique instance of up to 30 characters.
-
 
 ### chargePointType *enum*
 
@@ -2181,8 +2179,8 @@ The tariffId follows a similar syntax to that of contract- and EVSE-IDs. The Ope
 ###### Regular Expression
 
 ```regex
-[A-Z]{2}\*[A-Za-z0-9]{3}\*[T][A-Za-z0-9][A-Za-z0-9\*]{0,29}
-[A-Z]{2}[A-Za-z0-9]{3}[T][A-Za-z0-9][A-Za-z0-9\*]{0,29}
+[A-Z]{2}\*[A-Za-z0-9]{3}\*[Tt][A-Za-z0-9][A-Za-z0-9\*]{0,29}
+[A-Z]{2}[A-Za-z0-9]{3}[Tt][A-Za-z0-9][A-Za-z0-9\*]{0,29}
 ```
 
 
@@ -2393,6 +2391,17 @@ with additional 2 euro per hour tariff for YYCBA-provider (paid exactly as consu
 These data types are used for the purpose of the exchange of live
 status information in addition to the charge point information or
 POI data from an EVSE Operator to an NSP.
+
+
+### ParkingId
+The parking-ID follows a similar syntax to that of contract- and EVSE-IDs. The Parking Spot Operator ID (PSO-ID) is followed by a 'P' that signifies a parking spot and a unique instance of up to 30 characters. The max. length allowed for ParkingId is string(36).
+
+###### Regular Expression
+
+```regex
+[A-Z]{2}\*[A-Za-z0-9]{3}\*[Pp][A-Za-z0-9][A-Za-z0-9\*]{0,29}
+[A-Z]{2}[A-Za-z0-9]{3}[Pp][A-Za-z0-9][A-Za-z0-9\*]{0,29}
+```
 
 
 ### EvseStatusType *class*
