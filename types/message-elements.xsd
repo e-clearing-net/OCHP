@@ -313,17 +313,17 @@
 				</s:documentation>
 			</s:annotation>
 			<s:sequence>
+				<s:element minOccurs="0" maxOccurs="unbounded" name="CPO-ID" type="tns:PartnerID">
+					<s:annotation>
+						<s:documentation>
+							to get ChargePoints from selected partner(s) i.e. CPOs.
+						</s:documentation>
+					</s:annotation>
+				</s:element>
 				<s:element minOccurs="0" maxOccurs="1" name="pagination" type="tns:Pagination">
 					<s:annotation>
 						<s:documentation>
 							to filter the ChargePoint data as per mentioned criteria.
-						</s:documentation>
-					</s:annotation>
-				</s:element>
-				<s:element minOccurs="0" maxOccurs="unbounded" name="partnerID" type="tns:PartnerID">
-					<s:annotation>
-						<s:documentation>
-							to get ChargePoints from selected partner(s) i.e. CPOs.
 						</s:documentation>
 					</s:annotation>
 				</s:element>
