@@ -1631,7 +1631,7 @@ Contains all information concerning a Charge Data Record
 
 
 ### CdrId
-The CDR-ID is a unique identifier for charge data records. It is composed of the CPO-ID followed by an alphanumeric instance of up to 43 characters. The length of the string is extended from “36” to “48”. CPO-ID definition can be found here: [PartnerID]
+The CDR-ID is a unique identifier for charge data records. It is composed of the CPO-ID followed by an alphanumeric instance of up to 43 characters. The length of the string is extended from “36” to “48”. CPO-ID definition can be found here: <a name="PartnerID"></a>
 
 Case insensitive (normalized to all upper Case); (Characters: [A-Z],[0-9]).
 
