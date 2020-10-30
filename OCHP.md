@@ -269,6 +269,7 @@ PSO	         | Parking Spot Operator
 RA           | Roaming Authorisation
 RFID         | Radio-frequency identification
 VAS          | Value Added Service
+eMA ID       | eMobility Account Identifier
 
 
 
@@ -1379,22 +1380,23 @@ authorisation data from an EVSP to an EVSE Operator.
 
 ### ContractId (or EVCO-ID)
 
-The data type ContractId must follow the specification for EMAID in
-*ISO/IEC 15118-2 - Annex H "Specification of Identifiers"*.
-The check digit is optional but highly recommended. For calculation see
-the annex.
-The EMAID must match the following structure (the notation corresponds
+The data type ContractId must follow the specification for eMA ID (eMobility Account Identifier) in
+*ISO/IEC 15118-2 - Annex H "Specification of Identifiers"*. The *ISO/IEC 15118-2 - Annex H "Specification of Identifiers"* is further elaborated and interpreted by eMI³
+in *"eMI3 standard version V1.0 - Part 2: Business Objects"*.   
+The check digit is optional but highly recommended. For calculation see the annex.
+The eMA ID must match the following structure (the notation corresponds
 to the augmented Backus-Naur Form (ABNF) as defined in RFC 5234):
 
 ```ABNF
-<ContractID> = <Country Code> <S> <Provider ID> <S> <Instance> <S> <Check Digit>
+<ContractId> = <Country Code> <S> <Provider ID> <S> <ID Type> <eMA Instance> <S> <Check Digit>
 <Country Code> = 2 ALPHA
     ; two character country code according to ISO 3166-1 (Alpha-2-Code)
 <Provider ID> = 3 (ALPHA / DIGIT)
-    ; three alphanumeric characters, defined and listed by eMI3 group
-<Instance> = 9 (ALPHA / DIGIT)
-    ; nine alphanumeric characters
-	; it is strongly recommended to use the type-ID C as first character
+    ; three alphanumeric characters, referring to the EMSP. The ID is issued by the relevant authority of the specific country. For example, bdew in Germany, eViolin in Netherlands.
+<ID Type> = “C”
+    ; one character “C” indicating that this ID represents a reference to a “Contract”
+<eMA Instance> = 8 (ALPHA / DIGIT)
+    ; eight alphanumeric characters referring to the internal service contract between EMSP and its customer
 <Check Digit> = *1 (ALPHA / DIGIT)
     ; Optional but highly recommended, see subclause H.1.3 for its computation
 ALPHA = %x41-5A / %x61-7A
@@ -1405,36 +1407,27 @@ DIGIT = %x30-39
     ; optional separator
 ```
 
-An example for a valid EMAID therefore is `DE8AACA2B3C4D5N` or with dashes
+An example for a valid eMA ID therefore is `DE8AACA2B3C4D5N` or with dashes
 `DE-8AA-CA2B3C4D5-N`.
 
-###### Contract-ID Semantics
+###### ContractId Semantics
 The following rules apply:
 
- * The Contract-ID must be interpreted case insensitive.
- * A hyphen ("-") can be used as separator in communication with
-   users to allow better reading, spelling and typing. An example for such
-   an illustration is `DE-8AA-CA2B3C4D5-N`. If the hyphenated representation
-   is chosen, the separators must be set at all three places.
- * Each Contract-ID has a fixed length of at least fourteen and at
-   most fifteen characters excluding the optional hyphens or seventeen
+ * The ContractId must be interpreted case insensitive.
+ * A hyphen ("-") can be used as separator in communication with users to allow better reading, spelling and typing. An example for such
+   an illustration is `DE-8AA-CA2B3C4D5-N`. If the hyphenated representation is chosen, the separators must be set at all three places.
+ * Each ContractId has a fixed length of at least fourteen and at most fifteen characters excluding the optional hyphens or seventeen
    respectively eighteen characters including the optional separators.
- * While the Provider ID must be assigned by a central issuing
-   authority, each provider with an assigned Provider ID can chose the eMA
+ * While the Provider ID must be assigned by a central issuing authority, each provider with an assigned Provider ID can chose the eMA
    Instance within the above mentioned rules freely.
- * It is strongly recommended to use the Type-ID `C` as the first character
-   of the nine character instance to conform to the eMI3 EMAID standard.
-   See the example above.
 
 
 ###### Backward Compatibility
-Contract IDs as defined in DIN SPEC 91286 may be used as well by adding
-two zeros ("00") at the beginning of the Instance-part and the old
+Contract IDs (ContractId) as defined in DIN SPEC 91286 may be used as well by adding
+character "C" followed by a zero i.e. ("C0"), at the beginning of the Instance-part and the old
 check digit at position 14. A second check digit as referenced in this
-document may be calculated over the resulting ID and may be added on
-position 15.
-Example: The DIN-Contract-ID `DE-8AA-123A56-3` must be set as EMAID
-`DE-8AA-00123A563-N`.
+document may be calculated over the resulting ID and may be added on position 15.
+Example: The DIN-Contract-ID `DE-8AA-123A56-3` must be set as eMA ID `DE-8AA-C0123A563-N`.
 
 ###### ID-Structure
 One Contract-ID (ContractId) may refer to several Token-IDs (EmtId).
@@ -1511,14 +1504,14 @@ RoamingAuthorisationInfo class is extended by the attribute permissions. The Per
 
  Value       	|  Description
 :------------	|:-------------
- AC		|  Alternating current
- DC		|  Direct current
- CNG		|  Compressed natural gas
- LNG		|  Liquified natural gas
- Fuel		|  Fuel
- H2		|  Hydrogen
- Ethanol	|  Ethyl alcohol as fuel
- Other		|  Other fuel types
+ AC		        |  Alternating current
+ DC		        |  Direct current
+ CNG		      |  Compressed natural gas
+ LNG		      |  Liquified natural gas
+ Fuel		      |  Fuel
+ H2		        |  Hydrogen
+ Ethanol	    |  Ethyl alcohol as fuel
+ Other		    |  Other fuel types
 
 
 
@@ -2513,23 +2506,25 @@ end has to be changed depending on the usage or implementation.
 
 
 
-### Regular expression for Contract-ID validation
+### Regular expression for ContractId validation
 
-This will match on a valid Contract-ID. The positive look ahead at the
-very end has to be changed depending on the usage or implementation. The
+This will match on a valid Contract-ID. The positive look ahead at the very end has to be changed depending on the usage or implementation. The
 check digit has to be validated in a separate step.
 
 ###### Regular Expression
 
 ```regex
-[A-Za-z]\{2\}(-?)[A-Za-z0-9]\{3\}(?:\2)[Cc][A-Za-z0-9]\{9\}(?:(?:\2)[A-Za-z0-9])?(?=\s)
+[A-Z]{2}-[A-Za-z0-9]{3}-[Cc][A-Za-z0-9]{8}-[A-Za-z0-9]
+[A-Z]{2}-[A-Za-z0-9]{3}-[Cc][A-Za-z0-9]{8}
+[A-Z]{2}[A-Za-z0-9]{3}[Cc][A-Za-z0-9]{8}[A-Za-z0-9]
+[A-Z]{2}[A-Za-z0-9]{3}[Cc][A-Za-z0-9]{8}
 ```
 
 
 
-### Regular expression for Contract-ID normalization
+### Regular expression for ContractId normalization
 
-This will remove the optional separators from a valid Contract-ID.
+This will remove the optional separators from a valid ContractId.
 
 ###### Regular Expression
 
@@ -2537,31 +2532,26 @@ This will remove the optional separators from a valid Contract-ID.
 ([A-Za-z]\{2\})(-?)([A-Za-z0-9]\{3\})(?:\2)[Cc]([A-Za-z0-9]\{9\})(?:(?\2)([A-Za-z0-9]))?(?=\s)
 ```
 
-```regex
-\1\3\4\5\6
-```
 
 
+## List of examples for valid ContractIds
 
-## List of examples for valid Contract-Ids
-
-These are different possibilities for syntactically correct
-Contract-IDs.
+These are different possibilities for syntactically correct ContractIds.
 
  ID-Example           | Description
 :---------------------|:------------
 `DE-8AC-C12E456L89-Y` | Separators, Upper Case, Check Digit
 `DE-8AC-C12E456L89`   | Separators, Upper Case
-`de-8ac-c12e456l89-y` | Separators, Lower Case, Check Digit
-`de-8ac-c12e456l89`   | Separators, Lower Case
-`dE-8Ac-C12e456L89-y` | Separators, Mixed Case, Check Digit
-`De-8aC-c12E456l89`   | Separators, Mixed Case
+`DE-8ac-c12e456l89-y` | Separators, Lower Case, Check Digit
+`DE-8ac-c12e456l89`   | Separators, Lower Case
+`DE-8Ac-C12e456L89-y` | Separators, Mixed Case, Check Digit
+`DE-8aC-c12E456l89`   | Separators, Mixed Case
 `DE8ACC12E456L89Y`    | Upper Case, Check Digit
 `DE8ACC12E456L89`     | Upper Case
-`de8acc12e456l89y`    | Lower Case, Check digit
-`de8acc12e456l89`     | Lower Case
-`dE8aCc12E456l89Y`    | Mixed Case, Check Digit
-`De8AcC12e456L89`     | Mixed Case
+`DE8acc12e456l89y`    | Lower Case, Check digit
+`DE8acc12e456l89`     | Lower Case
+`DE8aCc12E456l89Y`    | Mixed Case, Check Digit
+`DE8AcC12e456L89`     | Mixed Case
 
 
 
