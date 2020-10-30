@@ -1631,13 +1631,15 @@ Contains all information concerning a Charge Data Record
 
 
 ### CdrId
-The CDR-ID is a unique identifier for charge data records. CPO-ID is incorporated into the CDR-ID to make it explicit who the CPO is. The length of the string is extended from “36” to “43”.
+The CDR-ID is a unique identifier for charge data records. It is composed of the CPO-ID followed by an alphanumeric instance of up to 43 characters. The length of the string is extended from “36” to “48”. CPO-ID definition can be found here: [PartnerID]
 
-Case insensitive (normalized to all upper Case, remove optional Separators) (Characters: $[$A-Z$]$, $[$0-9$]$).
+Case insensitive (normalized to all upper Case); (Characters: [A-Z],[0-9]).
 
-**Note:** For compatibility reasons, CDR-IDs from older OCHP implementations will not necessarily include the EvseId/CPO-ID and must only be EVSE-unique.
+###### Regular Expression
 
-
+```regex
+[0-9A-Z]{6,48}
+```
 
 ## Types for the Exchange of Charge Point Information
 

@@ -890,9 +890,9 @@
 
 	<s:simpleType name="CdrId">
 		<s:restriction base="s:string">
-			<s:minLength value="1"></s:minLength>
-			<s:maxLength value="36"></s:maxLength>
-			<s:pattern value="[0-9A-Z]{1,36}"></s:pattern>
+			<s:minLength value="6"></s:minLength>
+			<s:maxLength value="48"></s:maxLength>
+			<s:pattern value="[0-9A-Z]{6,48}"></s:pattern>
 		</s:restriction>
 	</s:simpleType>
 
