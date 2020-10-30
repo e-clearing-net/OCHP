@@ -135,7 +135,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         - [PermissionsType *enum*](#PermissionsType-enum)
         - [RoamingAuthorisationInfo *class*](#roamingauthorisationinfo-class)
     - [Types for the Exchange of Charge Data](#types-for-the-exchange-of-charge-data)
-        - [BillingItemType *enum*](#billingitemtype-enum)
+        - [CdrId](#CdrId)
+    	- [BillingItemType *enum*](#billingitemtype-enum)
         - [CdrPeriodType *class*](#cdrperiodtype-class)
         - [CdrStatusType *enum*](#cdrstatustype-enum)
         - [CDRInfo *class*](#cdrinfo-class)
@@ -1539,6 +1540,18 @@ These data types are used for the purpose of the exchange of charge data
 from an EVSE Operator to an EVSP.
 
 
+### CdrId
+The CDR-ID is a unique identifier for charge data records. It is composed of the CPO-ID followed by an alphanumeric instance of up to 43 characters. The length of the string is extended from “36” to “48”. CPO-ID definition can be found here: [PartnerID](https://github.com/e-clearing-net/OCHP/blob/OCHP-1.5-RC/OCHP.md#partnerid)
+
+Case insensitive (normalized to all upper Case); (Characters: [A-Z],[0-9]).
+
+###### Regular Expression
+
+```regex
+[0-9A-Z]{6,48}
+```
+
+
 ### CdrPeriodType *class*
 
 This class defines one time and billing period in the charge detail
@@ -1630,16 +1643,6 @@ Contains all information concerning a Charge Data Record
  currency	        |  string(3)		      |  1	    |  Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
 
 
-### CdrId
-The CDR-ID is a unique identifier for charge data records. It is composed of the CPO-ID followed by an alphanumeric instance of up to 43 characters. The length of the string is extended from “36” to “48”. CPO-ID definition can be found here: <a name="PartnerID"></a>
-
-Case insensitive (normalized to all upper Case); (Characters: [A-Z],[0-9]).
-
-###### Regular Expression
-
-```regex
-[0-9A-Z]{6,48}
-```
 
 ## Types for the Exchange of Charge Point Information
 
