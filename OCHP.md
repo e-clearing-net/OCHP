@@ -1393,7 +1393,7 @@ to the augmented Backus-Naur Form (ABNF) as defined in RFC 5234):
     ; two character country code according to ISO 3166-1 (Alpha-2-Code)
 <Provider ID> = 3 (ALPHA / DIGIT)
     ; three alphanumeric characters, referring to the EMSP. The ID is issued by the relevant authority of the specific country.  
-    For example, bdew in Germany, eViolin in Netherlands.
+    For example: bdew in Germany, eViolin in Netherlands
 <ID Type> = “C”
     ; one character “C” indicating that this ID represents a reference to a “Contract”
 <eMA Instance> = 8 (ALPHA / DIGIT)
