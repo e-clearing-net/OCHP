@@ -1388,11 +1388,12 @@ The eMA ID must match the following structure (the notation corresponds to the a
 
 ```ABNF
 <ContractId> = <Country Code> <S> <Provider ID> <S> <ID Type> <eMA Instance> <S> <Check Digit>
+
 <Country Code> = 2 ALPHA
     ; two character country code according to ISO 3166-1 (Alpha-2-Code)
 <Provider ID> = 3 (ALPHA / DIGIT)
     ; three alphanumeric characters, referring to the EMSP. The ID is issued by the relevant authority of the specific country.  
-    For example: bdew in Germany, eViolin in Netherlands
+    ; For example: bdew in Germany, eViolin in Netherlands
 <ID Type> = “C”
     ; one character “C” indicating that this ID represents a reference to a “Contract”
 <eMA Instance> = 8 (ALPHA / DIGIT)
@@ -1409,8 +1410,9 @@ DIGIT = %x30-39
 
 An example for a valid eMA ID therefore is `DE8AACA2B3C4D5N` or with dashes `DE-8AA-CA2B3C4D5-N`.
 
-**Note:** For compatibility reasons, Contract-IDs from older OCHP implementations will not necessarily include the *<ID Type> = “C”* after the *<Provider ID>*.
-
+```
+**Note:** For compatibility reasons, Contract-IDs from older OCHP implementations will not necessarily include the *ID Type = “C”* after the *Provider ID*.
+```
 
 ###### ContractId Semantics
 The following rules apply:
