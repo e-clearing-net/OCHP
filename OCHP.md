@@ -1384,8 +1384,7 @@ The data type ContractId must follow the specification for eMA ID (eMobility Acc
 *ISO/IEC 15118-2 - Annex H "Specification of Identifiers"*. The *ISO/IEC 15118-2 - Annex H "Specification of Identifiers"* is further elaborated and interpreted by eMI³
 in *"eMI3 standard version V1.0 - Part 2: Business Objects"*.   
 The check digit is optional but highly recommended. For calculation see the annex.
-The eMA ID must match the following structure (the notation corresponds
-to the augmented Backus-Naur Form (ABNF) as defined in RFC 5234):
+The eMA ID must match the following structure (the notation corresponds to the augmented Backus-Naur Form (ABNF) as defined in RFC 5234):
 
 ```ABNF
 <ContractId> = <Country Code> <S> <Provider ID> <S> <ID Type> <eMA Instance> <S> <Check Digit>
@@ -1408,8 +1407,10 @@ DIGIT = %x30-39
     ; optional separator
 ```
 
-An example for a valid eMA ID therefore is `DE8AACA2B3C4D5N` or with dashes
-`DE-8AA-CA2B3C4D5-N`.
+An example for a valid eMA ID therefore is `DE8AACA2B3C4D5N` or with dashes `DE-8AA-CA2B3C4D5-N`.
+
+**Note:** For compatibility reasons, Contract-IDs from older OCHP implementations will not necessarily include the *<ID Type> = “C”* after the *<Provider ID>*.
+
 
 ###### ContractId Semantics
 The following rules apply:
@@ -1431,10 +1432,8 @@ document may be calculated over the resulting ID and may be added on position 15
 Example: The DIN-Contract-ID `DE-8AA-123A56-3` must be set as eMA ID `DE-8AA-C0123A563-N`.
 
 ###### ID-Structure
-One Contract-ID (ContractId) may refer to several Token-IDs (EmtId).
-This reflects the situation that one contractual user account can be
-authorized by different tokens. The structure can be illustrated as
-shown in this figure:
+One Contract-ID (ContractId) may refer to several Token-IDs (EmtId). This reflects the situation that one contractual user account can be
+authorized by different tokens. The structure can be illustrated as shown in this figure:
 
 ![Figure ID-Structure](media/IDstructure.png "ID-Structure")
 
@@ -1608,7 +1607,7 @@ Contains all information concerning a Charge Data Record
 
  Field Name       |  Field Type         |  Card.  |  Description
 :-----------------|:--------------------|:--------|:------------
- cdrId            |  CdrId		|  1      |  Unique charge data record identifier.
+ cdrId            |  CdrId		          |  1      |  Unique charge data record identifier.
  evseId           |  EvseId             |  1      |  Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it.
  emtId            |  EmtId              |  1      |  Utilized token for this charging session.
  contractId       |  ContractId         |  1      |  Identifies a customer in the electric mobility charging context.
@@ -1619,16 +1618,16 @@ Contains all information concerning a Charge Data Record
  chargePointAddress |  AddressType      |  1      |  Contains the address of the charging station.
  chargePointType  |  string(10)         |  1      |  Type of the charge point.
  connectorType    |  ConnectorType      |  1      |  Type of the utilized socket or connector.
- ratings	  |  RatingsType        |  ?      |  Ratings applicable to this charge point.
+ ratings	        |  RatingsType        |  ?      |  Ratings applicable to this charge point.
  meterId          |  string(20)         |  ?      |  Written identification number of the physical energy meter, provided by the manufacturer. For future use.
  meteringInfo     |  MeteringInfoType   |  ?      |  Array type mainly to serve the German Eichrecht.
  chargingPeriods  |  CdrPeriodType      |  +      |  One period per item on the bill.
- totalCost	  |  float		|  ?	  |  Total cost (nett price, without VAT) for the entire charging process. Should always equal the sum of the individual periodCosts.
- currency	  |  string(3)		|  1	  |  Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
+ totalCost	      |  float		          |  ?	    |  Total cost (nett price, without VAT) for the entire charging process. Should always equal the sum of the individual periodCosts.
+ currency	        |  string(3)		      |  1	    |  Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
 
 
 ### CdrId
-The CDR-ID is a unique identifier for charge data records. EvseId is incorporated into the CDR-ID to make it explicit who the CPO is. The length of the string is extended from “36” to “43”.
+The CDR-ID is a unique identifier for charge data records. CPO-ID is incorporated into the CDR-ID to make it explicit who the CPO is. The length of the string is extended from “36” to “43”.
 
 Case insensitive (normalized to all upper Case, remove optional Separators) (Characters: $[$A-Z$]$, $[$0-9$]$).
 
@@ -2520,19 +2519,6 @@ check digit has to be validated in a separate step.
 [A-Z]{2}[A-Za-z0-9]{3}[Cc][A-Za-z0-9]{8}[A-Za-z0-9]
 [A-Z]{2}[A-Za-z0-9]{3}[Cc][A-Za-z0-9]{8}
 ```
-
-
-
-### Regular expression for ContractId normalization
-
-This will remove the optional separators from a valid ContractId.
-
-###### Regular Expression
-
-```regex
-([A-Za-z]\{2\})(-?)([A-Za-z0-9]\{3\})(?:\2)[Cc]([A-Za-z0-9]\{9\})(?:(?\2)([A-Za-z0-9]))?(?=\s)
-```
-
 
 
 ## List of examples for valid ContractIds
