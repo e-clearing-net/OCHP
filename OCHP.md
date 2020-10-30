@@ -1543,7 +1543,6 @@ from an EVSE Operator to an EVSP.
 ### CdrId
 The CDR-ID is a unique identifier for charge data records. It is composed of the CPO-ID followed by an alphanumeric instance of up to 43 characters. The length of the string is extended from “36” to “48”. CPO-ID definition can be found here: [PartnerID](https://github.com/e-clearing-net/OCHP/blob/OCHP-1.5-RC/OCHP.md#partnerid)
 
-Case insensitive (normalized to all upper Case); (Characters: [A-Z],[0-9]).
 
 ###### Regular Expression
 
