@@ -249,7 +249,7 @@ CH           | Clearing House
 CHS          | Clearing House System
 CMS          | Charge Point Management System
 Contract-ID  | Contract (or Account) Identifier
-CPO	         | Charge Point Operator
+CPO	     | Charge Point Operator
 EMP          | Electric Mobility Provider
 EMT-ID       | Electric Mobility Token Identifier
 EV           | Electrical Vehicle
@@ -264,8 +264,8 @@ MDM          | Master Data Management System
 NSP          | Navigation Service Provider
 OCHP         | Open Clearing House Protocol
 PDU          | Protocol Data Unit
-PSM	         | Parking Spot Management System
-PSO	         | Parking Spot Operator
+PSM	     | Parking Spot Management System
+PSO	     | Parking Spot Operator
 RA           | Roaming Authorisation
 RFID         | Radio-frequency identification
 VAS          | Value Added Service
@@ -1382,7 +1382,7 @@ authorisation data from an EVSP to an EVSE Operator.
 
 The data type ContractId must follow the specification for eMA ID (eMobility Account Identifier) in
 *ISO/IEC 15118-2 - Annex H "Specification of Identifiers"*. The *ISO/IEC 15118-2 - Annex H "Specification of Identifiers"* is further elaborated and interpreted by eMI³
-in *"eMI3 standard version V1.0 - Part 2: Business Objects"*.   
+in *"eMI³ standard version V1.0 - Part 2: Business Objects"*.   
 The check digit is optional but highly recommended. For calculation see the annex.
 The eMA ID must match the following structure (the notation corresponds to the augmented Backus-Naur Form (ABNF) as defined in RFC 5234):
 
