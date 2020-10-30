@@ -1410,8 +1410,10 @@ DIGIT = %x30-39
 
 An example for a valid eMA ID therefore is `DE8AACA2B3C4D5N` or with dashes `DE-8AA-CA2B3C4D5-N`.
 
+###### **NOTE**
 ```
-**Note:** For compatibility reasons, Contract-IDs from older OCHP implementations will not necessarily include the *ID Type = “C”* after the *Provider ID*.
+For compatibility reasons, Contract-IDs from older OCHP implementations will not necessarily include  
+the *ID Type = “C”* after the *Provider ID*.
 ```
 
 ###### ContractId Semantics
