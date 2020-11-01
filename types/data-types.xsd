@@ -849,14 +849,14 @@
 
 	<s:complexType name="ItemInfo">
 		<s:sequence>
-			<s:element name="objectCount" minOccurs="0" maxOccurs="1" type="s:int">
+			<s:element name="objectCount" minOccurs="1" maxOccurs="1" type="s:int">
 				<s:annotation>
 					<s:documentation>
 						Total number of objects available in the server system.
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="objectSize" minOccurs="0" maxOccurs="1" type="s:int">
+			<s:element name="objectSize" minOccurs="1" maxOccurs="1" type="s:int">
 				<s:annotation>
 					<s:documentation>
 						Object size receive from the server response.
