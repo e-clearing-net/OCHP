@@ -863,13 +863,6 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="link" minOccurs="0" maxOccurs="1" type="s:string">
-				<s:annotation>
-					<s:documentation>
-						Link to the 'next' page, when this is NOT the last page.
-					</s:documentation>
-				</s:annotation>
-			</s:element>
 			<s:element name="limit" minOccurs="0" maxOccurs="1" type="s:int">
 				<s:annotation>
 					<s:documentation>
