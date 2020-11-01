@@ -1030,7 +1030,15 @@ These messages are used for the purpose of the exchange of charge point informat
 ### GetChargePointList.req
 
 This contains the field definition of the GetChargePointList.req sent by a partner's system to the CHS.
-No fields are defined but it's recommended to use pagination. (It's a NSP message)
+It's recommended to use pagination. (It's a NSP message)
+
+ Field Name   |  Field Type      |  Card.  |  Description
+:-------------|:-----------------|:--------|:------------
+CPO-ID        |  PartnerID       |  ?      | To retrieve the Charge Points from selected CPOs.
+dateFrom      |  DateTimeType    |  ?      | To filter the Charge Points added from the mentioned date and time.
+dateTo        |  DateTimeType    |  ?      | To filter the Charge Points added till the mentioned date and time.
+offset        |  int    	 |  ?      | The offset of a first Charge Points that the request will return. Default is always zero.
+limit         |  int   		 |  ?      | The maximum number of Charge Points that a Get request will return.
 
 
 ### GetChargePointList.conf
