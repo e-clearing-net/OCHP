@@ -247,7 +247,7 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
-				<s:element minOccurs="0" maxOccurs="1" name="roamingAuthorisationItemInfo" type="tns:ItemInfo">
+				<s:element minOccurs="1" maxOccurs="1" name="roamingAuthorisationItemInfo" type="tns:ItemInfo">
 					<s:annotation>
 						<s:documentation>
 							This contains the roaming authorisation item info.
@@ -346,7 +346,7 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
-				<s:element minOccurs="0" maxOccurs="1" name="chargePointItemInfo" type="tns:ItemInfo">
+				<s:element minOccurs="1" maxOccurs="1" name="chargePointItemInfo" type="tns:ItemInfo">
 					<s:annotation>
 						<s:documentation>
 							This contains the charge Point item info.
@@ -442,7 +442,7 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
-				<s:element minOccurs="0" maxOccurs="1" name="roamingAuthorisationItemInfo" type="tns:ItemInfo">
+				<s:element minOccurs="1" maxOccurs="1" name="roamingAuthorisationItemInfo" type="tns:ItemInfo">
 					<s:annotation>
 						<s:documentation>
 							This contains the roaming authorisation item info.
@@ -590,7 +590,7 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
-				<s:element minOccurs="0" maxOccurs="1" name="chargePointItemInfo" type="tns:ItemInfo">
+				<s:element minOccurs="1" maxOccurs="1" name="chargePointItemInfo" type="tns:ItemInfo">
 					<s:annotation>
 						<s:documentation>
 							This contains the charge Point item info.
