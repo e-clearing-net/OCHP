@@ -858,6 +858,15 @@ These messages are used for the purpose of the exchange of authorization data fr
 This contains the field definition of the GetRoamingAuthorisationList.req sent by a partner's system to the CHS.
 No fields are mandatory but it's recommended to use pagination. (It's a CPO message)
 
+ Field Name   |  Field Type      |  Card.  |  Description
+:-------------|:-----------------|:--------|:------------
+EMP-ID        |  PartnerID       |  ?      | To retrieve the Roaming Authorisations (Tokens/RFIDs) for selected EMPs.
+CPO-ID        |  PartnerID       |  ?      | To retrieve the Roaming Authorisations (Tokens/RFIDs) from selected CPOs.
+dateFrom      |  DateTimeType    |  ?      | To filter the Roaming Authorisations (Tokens/RFIDs) starting from the mentioned date and time.
+dateTo        |  DateTimeType    |  ?      | To filter the Roaming Authorisations (Tokens/RFIDs) till the mentioned date and time.
+offset        |  int    	 |  ?      | The offset of a first Roaming Authorisation (Token/RFID) that the request will return. Default is always zero.
+limit         |  int   		 |  ?      | The maximum number of Roaming Authorisations (Tokens/RFIDs) that a Get request will return.
+
 
 ### GetRoamingAuthorisationList.conf
 
