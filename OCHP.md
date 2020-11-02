@@ -1224,12 +1224,6 @@ combined      |  EvseStatusType	 |  *      |  This contains one EVSE ID status i
 
 
 
-
-
-
-
-
-
 # Types
 
 The defined types have either to be filled with a valid value or - where allowed - left out in the SOAP tree, they cannot be empty.
@@ -1665,8 +1659,8 @@ The EVSEID must follow the specification of _ISO/IEC 15118-2 - Annex H "Specific
 <ID Type> = "E"
     ; one character "E" indicating that this ID represents an "EVSE"
 <Power Outlet ID> = (ALPHA / DIGIT) *31 (ALPHA / DIGIT / <S>)
-    ; between 1 and 31 sequence of alphanumeric characters or separators, including additional optional separators start with alphanumeric character,   
-    internal number allowing the EVSE Operator to identify one specific EVSE
+    ; between 1 and 31 sequence of alphanumeric characters or separators, including additional optional separators,   
+    ; start with alphanumeric character, internal number allowing the EVSE Operator to identify one specific EVSE
 ALPHA = %x41-5A / %x61-7A
     ; according to IETF RFC 5234 (7-Bit ASCII)
 DIGIT = %x30-39
