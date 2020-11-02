@@ -1256,8 +1256,8 @@
 			</s:documentation>
 		</s:annotation>
 		<s:restriction base="s:string">
-			<s:pattern value="[A-Za-z]{2}\*[A-Za-z0-9]{3}\*[Ee][A-Za-z0-9][A-Za-z0-9\*]{0,30}"></s:pattern>
-			<s:pattern value="[A-Za-z]{2}[A-Za-z0-9]{3}[Ee][A-Za-z0-9][A-Za-z0-9\*]{0,30}"></s:pattern>
+			<s:pattern value="[A-Z]{2}\*[A-Za-z0-9]{3}\*[E][A-Za-z0-9][A-Za-z0-9\*]{0,30}"></s:pattern>
+			<s:pattern value="[A-Z]{2}[A-Za-z0-9]{3}[E][A-Za-z0-9][A-Za-z0-9\*]{0,30}"></s:pattern>
 		</s:restriction>
 	</s:simpleType>
 

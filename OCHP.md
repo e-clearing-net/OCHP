@@ -1651,21 +1651,22 @@ point information or POI data from an EVSE Operator to an NSP.
 
 ### EvseId
 
-The EVSEID must follow the specification of _ISO/IEC 15118-2 - Annex H "Specification of Identifiers"_.
-The EVSEID must match the following structure (the notation corresponds
-to the augmented Backus-Naur Form (ABNF) as defined in RFC5234):
+The EVSEID must follow the specification of _ISO/IEC 15118-2 - Annex H "Specification of Identifiers"_. The _ISO/IEC 15118-2 - Annex H "Specification of Identifiers"_ is further elaborated and interpreted by eMI³ in *"eMI³ standard version V1.0 - Part 2: Business Objects"*. The EVSEID must match the following structure (the notation corresponds to the augmented Backus-Naur Form (ABNF) as defined in RFC5234):
 
 ```ABNF
-<EVSEID> = <Country Code> <S> <EVSE Operator ID> <S>
-<ID Type> <Power Outlet ID>
+<EVSEID> = <Country Code> <S> <EVSE Operator ID> <S> <ID Type> <Power Outlet ID>
+
 <Country Code> = 2 ALPHA
     ; two character country code according to ISO 3166-1 (Alpha-2-Code)
+    ; Country Code SHALL represent the country where EVSE is installed
 <EVSE Operator ID> = 3 (ALPHA / DIGIT)
-    ; three alphanumeric characters, defined and listed by eMI3 group
+    ; three alphanumeric characters, referring to the EMSP. The ID is issued by the relevant authority of the specific country  
+    ; for example: bdew in Germany, eViolin in Netherlands
 <ID Type> = "E"
     ; one character "E" indicating that this ID represents an "EVSE"
-<Power Outlet ID> = (ALPHA / DIGIT) *30 (ALPHA / DIGIT / <S>)
-    ; sequence of alphanumeric characters or separators, start with alphanumeric character
+<Power Outlet ID> = (ALPHA / DIGIT) *31 (ALPHA / DIGIT / <S>)
+    ; between 1 and 31 sequence of alphanumeric characters or separators, including additional optional separators start with alphanumeric character,   
+    internal number allowing the EVSE Operator to identify one specific EVSE
 ALPHA = %x41-5A / %x61-7A
     ; according to IETF RFC 5234 (7-Bit ASCII)
 DIGIT = %x30-39
@@ -1674,10 +1675,11 @@ DIGIT = %x30-39
     ; optional separator
 ```
 
-An example for a valid EVSEID is FR*A23*E45B*78C with FR indicating
-France, A23 representing a particular EVSE Operator, E indicating that
+An example for a valid EVSEID is FR*A23*E45B*78C with FR indicating France, A23 representing a particular EVSE Operator, E indicating that
 it is of type EVSE and 45B*78C representing one of its power outlets.
-EVSEID Semantics
+
+
+###### EVSEID Semantics
 
 The following rules apply:
 
@@ -1690,6 +1692,14 @@ The following rules apply:
  * While the EVSE Operator ID shall be assigned by a central issuing
    authority, each operator with an assigned EVSE Operator ID can choose
    the Power Outlet ID within the above mentioned rules freely.
+
+
+###### Regular Expression
+
+```regex
+[A-Z]{2}\*[A-Za-z0-9]{3}\*[E][A-Za-z0-9][A-Za-z0-9\*]{0,30}
+[A-Z]{2}[A-Za-z0-9]{3}[E][A-Za-z0-9][A-Za-z0-9\*]{0,30}
+```
 
 
 ###### Backward Compatibility
@@ -2489,9 +2499,6 @@ Example:
 
 
 
-
-
-
 # Annexes
 
 
@@ -2509,7 +2516,8 @@ end has to be changed depending on the usage or implementation.
 ###### Regular Expression
 
 ```regex
-[A-Z]\{2\}(\*?)[A-Z0-9]\{3\}(?:\2)[E][A-Z0-9][A-Z0-9\*]\{0,30\}(?=\s)
+[A-Z]{2}\*[A-Za-z0-9]{3}\*[E][A-Za-z0-9][A-Za-z0-9\*]{0,30}
+[A-Z]{2}[A-Za-z0-9]{3}[E][A-Za-z0-9][A-Za-z0-9\*]{0,30}
 ```
 
 
