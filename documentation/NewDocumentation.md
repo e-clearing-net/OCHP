@@ -875,6 +875,7 @@ This contains the field definition of the GetRoamingAuthorisationList.conf sent 
  Field Name                    |  Field Type                |  Card.  |  Description
 :------------------------------|:---------------------------|:--------|:------------
 result                         |  Result                    |  1      |  This contains the result of GetRoamingAuthorisationList.req.
+roamingAuthorisationItemInfo   |  ItemInfo                  |  *      |  This contains the roaming authorisation item info (Total number of objects, response size & objects returned by the server system).
 roamingAuthorisationInfoArray  |  RoamingAuthorisationInfo  |  *      |  This contains the roaming authorisation records.
 
 
@@ -963,6 +964,7 @@ This contains the field definition of the GetCDRs.conf sent by the CHS as respon
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
 result        |  Result          |  1      |  This contains the result of GetCDRs.req.
+cdrsItemInfo  |  ItemInfo        |  *      |  This contains the CDRs item info (Total number of objects, response size & objects returned by the server system).
 cdrInfoArray  |  Array(CDRInfo)  |  *      |  This contains CDRs according to the status specified in the request.
 
 
@@ -1057,6 +1059,7 @@ This contains the field definition of the GetChargePointList.conf sent by the CH
  Field Name           |  Field Type       |  Card.  |  Description
 :---------------------|:------------------|:--------|:------------
 result                |  Result           |  1      |  This contains the result of GetRoamingAuthorisationList.req.
+chargePointItemInfo   |  ItemInfo         |  *      |  This contains the charge Point item info (Total number of objects, response size & objects returned by the server system).
 chargePointInfoArray  |  ChargePointInfo  |  *      |  This contains the charge point information records.
 
 
