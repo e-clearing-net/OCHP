@@ -863,7 +863,7 @@
 					</s:documentation>
 				</s:annotation>
 			</s:element>
-			<s:element name="limit" minOccurs="0" maxOccurs="1" type="s:int">
+			<s:element name="limit" minOccurs="1" maxOccurs="1" type="s:int">
 				<s:annotation>
 					<s:documentation>
 						Number of objects that are returned.
