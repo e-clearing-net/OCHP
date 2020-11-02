@@ -126,6 +126,13 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
+				<s:element minOccurs="1" maxOccurs="1" name="CDRsItemInfo" type="tns:ItemInfo">
+					<s:annotation>
+						<s:documentation>
+							This contains the CDRs item info.
+						</s:documentation>
+					</s:annotation>
+				</s:element>				
 				<s:element minOccurs="0" maxOccurs="unbounded" name="cdrInfoArray" type="tns:CDRInfo">
 					<s:annotation>
 						<s:documentation>
