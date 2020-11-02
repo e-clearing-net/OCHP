@@ -179,7 +179,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     - [ID Validation and Transformation Tools](#id-validation-and-transformation-tools)
         - [Regular expression for EVSE-ID validation](#regular-expression-for-evse-id-validation)
         - [Regular expression for Contract-ID validation](#regular-expression-for-contract-id-validation)
-        - [Regular expression for Contract-ID normalization](#regular-expression-for-contract-id-normalization)
     - [List of examples for valid Contract-Ids](#list-of-examples-for-valid-contract-ids)
     - [Data Field Mapping to OCPP](#data-field-mapping-to-ocpp)
         - [Connector Types](#connector-types)
