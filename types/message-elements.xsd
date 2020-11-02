@@ -126,7 +126,7 @@
 						</s:documentation>
 					</s:annotation>
 				</s:element>
-				<s:element minOccurs="1" maxOccurs="1" name="CDRsItemInfo" type="tns:ItemInfo">
+				<s:element minOccurs="1" maxOccurs="1" name="cdrsItemInfo" type="tns:ItemInfo">
 					<s:annotation>
 						<s:documentation>
 							This contains the CDRs item info.
