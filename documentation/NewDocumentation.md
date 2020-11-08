@@ -2112,13 +2112,26 @@ This class contains all parking related information. If a parkingId is given, th
  Field Name          |  Field Type               |  Card.  |  Description
 :--------------------|:--------------------------|:--------|:------------
  parkingId           |  ParkingId                |  1      |  Globally unique identifier for this parking spot.
- restriction	     |  RestrictionType		     |  *      |  Restrictions applying to the usage of the parking spot. If set, should include the restrictions to EVSE-usage as well.
+ restriction	     |  RestrictionType		 |  *      |  Restrictions applying to the usage of the parking spot. If set, should include the restrictions to EVSE-usage as well.
  floorlevel          |  string(4)                |  ?      |  Alphanumeric. Level on which the charge station is located (in garage buildings) in the locally displayed numbering scheme. Examples: "-2","P-5", "2", "+5"
  parkingSpotNumber   |  string(5)                |  ?      |  Alphanumeric. Locally displayed parking slot number. Examples: "10", "251","B25", "P-234"
+ facilities          |  FacilitiesType           |  *      |  Facilities available at the parking spot location. List of facilities that can be included in this field are provided in FacilitiesType enum table.
  
  
 ### ParkingId
 The parking-ID follows a similar syntax to that of contract- and EVSE-IDs. The PSO-ID is followed by a 'P' that signifies a tariff and a unique instance of up to 30 characters.
+
+### FacilitiesType *enum*
+
+ Value       	|  Description
+:------------	|:-------------
+ Restaurant	|  Restaurants avaiable at this parking spot.
+ Coffee shop	|  Coffee shop available.
+ Hotel     	|  Rooms or living accomodation available. 
+ WC     	|  Toilet available.
+ Bathroom     	|  Shower facility available.
+ WiFi     	|  WiFi internet facility available.
+ Truch wash     |  Truch wash facility available.
 
 
 ### chargePointType *enum*
