@@ -1562,7 +1562,7 @@ period prices:
 
 totalCost = sum( billingValue_i * itemPrice_i ) [currency]
 
-![Figure Example for periods in a CDR](media/CDRperiods.png "Example for periods in a CDR")
+![Figure Example for periods in a CDR](../media/CDRperiods.png "Example for periods in a CDR")
 
  Field Name     |  Field Type         |  Card.  |  Description
 :---------------|:--------------------|:--------|:------------
@@ -1572,7 +1572,7 @@ totalCost = sum( billingValue_i * itemPrice_i ) [currency]
  billingValue   |  float              |  1      |  The value the EVSP is charged for. The unit of this value depends on the billingItem.
  itemPrice      |  float              |  1      |  Price per unit of the billingItem in the given currency.
  periodCost     |  float              |  ?      |  Total cost of the period in the given currency.
- taxrate		|  int				  |  ?      |  Tax rate in percent to be paid for the charging process in the EVSE operator's country.
+ taxrate	|  int		      |  ?      |  Tax rate in percent to be paid for the charging process in the EVSE operator's country.
 
  
 ###### Implementation
@@ -2072,7 +2072,7 @@ for user information.
  parking-garage     |  multistorey car park
  underground-garage |  multistorey car park, mainly underground
  parking-lot        |  a cleared area that is intended for parking vehicles, i.e. at super markets, bars, etc.
- private 			|  located in private or corporate grounds, may not be accessible to the public
+ private 	    |  located in private or corporate grounds, may not be accessible to the public
  other              |  none of the given possibilities
  unknown            |  parking location type is not known by the operator
 
@@ -2131,7 +2131,7 @@ The parking-ID follows a similar syntax to that of contract- and EVSE-IDs. The P
  WC     	|  Toilet available.
  Bathroom     	|  Shower facility available.
  WiFi     	|  WiFi internet facility available.
- Truch wash     |  Truch wash facility available.
+ Truck wash     |  Truck wash facility available.
 
 
 ### chargePointType *enum*
@@ -2650,7 +2650,7 @@ multiple charge points in one pole is not affecting the logical
 relation of those. However, the attributes of the EVSE level may 
 indicate to its existence when two EVSEs share a common user interface.
 
-![Figure EVSE Data Model Structure](media/EVSEstructure.png "EVSE Data Model Structure")
+![Figure EVSE Data Model Structure](../media/EVSEstructure.png "EVSE Data Model Structure")
 
 The architecture of the data model is based on the logical relations of 
 the entities with a focus on the use cases for the EV user. The 
@@ -2686,7 +2686,7 @@ lower levels has to be performed in the connected systems. This allows
 high flexibility in the different data models.
 The used symbols in the examples are:
 
-![Figure Symbols used in example figures](media/EVSEstructureLegend.png "Symbols used in example figures")
+![Figure Symbols used in example figures](../media/EVSEstructureLegend.png "Symbols used in example figures")
 
  * **User Interface** is used by the EV User to interact with the 
    charging station in terms of authorisation, authentication, payment 
