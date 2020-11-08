@@ -2142,6 +2142,17 @@ more precisely and offer diversified services.
  AdBlue		|  Diesel exhaust fluid used in vehicles with Selective Catalytic Reduction (SCR)
  Other		|  Other chargepoint types
  
+ 
+ ### TruckParkingType *class*
+
+This value if provided can be used to inform which category of trucks and how many trucks can be parked at this location.
+
+ Field Name  |  Field Type |  Card.  |  Description
+:------------|:------------|:--------|:------------
+ lightTruck  | int  |  1   |  Number of light-duty trucks parking spots.
+ mediumTruck | int  |  1   |  Number of medium-duty trucks parking spots.
+ heavyTruck  | int  |  1   |  Number of heavy-duty trucks parking spots.
+
 
 ### ChargePointInfo *class*
 
@@ -2175,6 +2186,7 @@ Contains information about the charge points.
  userInterfaceLang   |  string(3)                |  *      |  Alpha, three characters. Language(s) of the user interface or printed on-site instructions. *ISO-639-3* language code
  maxReservation	     |  float		 	 |  ?	   |  If a reservation of this charge point is possible, this is the maximum duration the CPO will allow a reservation for (in minutes). Recommendation: 30 minutes.
 meteringInfo         |  MeteringInfoType         |  ?      |  Array type mainly to serve the German Eichrecht.
+truckParking         |  TruckParkingType         |  ?      |  If trucks can be parked at this location.
  
 
 
