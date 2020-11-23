@@ -218,6 +218,13 @@
 					</s:restriction>
 				</s:simpleType>
 			</s:element>
+			<s:element name="meteringInfo" type="tns:MeteringInfoType" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Array type to cater mainly the Eichrecht law.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
 		</s:sequence>
 	</s:complexType>
 
@@ -450,6 +457,13 @@
 						<s:maxInclusive value="1000"></s:maxInclusive>
 					</s:restriction>
 				</s:simpleType>
+			</s:element>
+			<s:element name="meteringInfo" type="tns:MeteringInfoType" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Array type to cater mainly the Eichrecht law.
+					</s:documentation>
+				</s:annotation>
 			</s:element>
 		</s:sequence>
 	</s:complexType>
