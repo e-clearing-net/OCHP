@@ -1376,5 +1376,82 @@
       			</s:element>
     		</s:sequence>
   	</s:complexType>
+	
+	<s:complexType name="MeteringInfoType">
+		<s:annotation>
+			<s:documentation>
+				Array type mainly to serve the German Eichrecht
+			</s:documentation>
+		</s:annotation>
+		<s:sequence>
+			<s:element name="meteringType" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Defines the method to review charging data. (NOTE: tns should be defined and the restrictions should be seperately mentioned)
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:enumeration value="local"></s:enumeration>
+						<s:enumeration value="software"></s:enumeration>
+						<s:enumeration value="other"></s:enumeration>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="meteringVendor" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Contains the name of the vendor
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="32"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="meteringVendorVersion" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Version number of the solution
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="32"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="meteringData" minOccurs="0" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						Contains at least the starting and ending meter values of a certain charging session
+						(!!!Maybe define seperate fields for starting and ending values?!!!)
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="255"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+			<s:element name="meteringKey" minOccurs="0" maxOccurs="unbounded">
+				<s:annotation>
+					<s:documentation>
+						Defines the public key of a charging pole as defined in the Eichrecht law
+					</s:documentation>
+				</s:annotation>
+				<s:simpleType>
+					<s:restriction base="s:string">
+						<s:minLength value="1"></s:minLength>
+						<s:maxLength value="255"></s:maxLength>
+					</s:restriction>
+				</s:simpleType>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
 
 </s:schema>
