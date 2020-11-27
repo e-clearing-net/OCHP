@@ -12,5 +12,5 @@ The PSO offers multiple services to the Operator as well as the EV Driver and NS
 
 ## PSO Method
 The following method is part of the PSO implementation to be used by the PSO.
-Typically, an EMP implementation consists of these methods, as well as the ability 
+Typically, an PSO implementation consists of these methods, as well as the ability 
 - [UpdateStatus.req](/documentation/NewDocumentation.md/#updatestatusreq)
