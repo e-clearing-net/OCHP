@@ -14,3 +14,9 @@ The PSO offers multiple services to the Operator as well as the EV Driver and NS
 The following method is part of the PSO implementation to be used by the PSO.
 Typically, an PSO implementation consists of these methods, as well as the ability 
 - [UpdateStatus.req](/documentation/NewDocumentation.md/#updatestatusreq)
+
+### Static Data
+- [GetChargePointList.req](/documentation/NewDocumentation.md/#getchargepointlistreq)
+- [GetChargePointListUpdates.req](/documentation/NewDocumentation.md/#getchargepointlistupdatesreq)
+### Live Interface
+- [GetStatus.req](/documentation/NewDocumentation.md/#getstatusreq)
