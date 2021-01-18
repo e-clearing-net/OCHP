@@ -1681,8 +1681,8 @@ Opening and access hours for the charge point.
  Field Name             |  Field Type             |  Card.  |  Description
 :-----------------------|:------------------------|:--------|:------------
  *Choice: one of two*   |                         |         | 
-  > regularHours        |  regularHoursType       |  *      |  Regular hours, weekday based. Should not be set for representing 24/7 as this is the most common case.
-  > twentyfourseven     |  boolean                |  1      |  True to represent 24 hours per day and 7 days per week, except the given exceptions.
+   regularHours        |  regularHoursType       |  *      |  Regular hours, weekday based. Should not be set for representing 24/7 as this is the most common case.
+   twentyfourseven     |  boolean                |  1      |  True to represent 24 hours per day and 7 days per week, except the given exceptions.
  exceptionalOpenings    |  exceptionalPeriodType  |  *      |  Exceptions for specified calendar dates, time-range based. Periods the station is operating/accessible. Additional to regular hours. May overlap regular rules.
  exceptionalClosings    |  exceptionalPeriodType  |  *      |  Exceptions for specified calendar dates, time-range based. Periods the station is not operating/accessible. Overwriting regularHours and exceptionalOpenings. Should not overlap exceptionalOpenings.
 
