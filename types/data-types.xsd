@@ -509,6 +509,39 @@
 			</s:element>
 		</s:sequence>
 	</s:complexType>
+	
+	<s:complexType name="GridConnectionType">
+		<s:sequence>
+			<s:element name="eanCode" type="s:string" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						The EAN code (European Article Numbering) is a unique code for your meter consisting of 18 figures which indicates a supply point
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="dsoId" type="s:string" minOccurs="1" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						Id of Distribution System Operator (DSO)
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="oscpId" type="s:string" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						OSCP ID.
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+			<s:element name="openADRId" type="tns:s:string" minOccurs="0" maxOccurs="1">
+				<s:annotation>
+					<s:documentation>
+						OpenADR: Open Automated Demand Response identifier
+					</s:documentation>
+				</s:annotation>
+			</s:element>
+		</s:sequence>
+	</s:complexType>
 
 	<s:complexType name="HoursType">
 		<s:sequence>
