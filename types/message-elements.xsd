@@ -370,65 +370,6 @@
 			</s:sequence>
 		</s:complexType>
 	</s:element>
-	
-	<s:element name="GetChargePointListForDSORequest">
-		<s:complexType>
-			<s:annotation>
-				<s:documentation>
-					Defines the ChargePointList For Distribution System Operator.
-				</s:documentation>
-			</s:annotation>
-			<s:sequence>
-				<s:element minOccurs="0" maxOccurs="unbounded" name="CPO-ID" type="tns:PartnerID">
-					<s:annotation>
-						<s:documentation>
-							to get ChargePoints from selected partner(s) i.e. CPOs.
-						</s:documentation>
-					</s:annotation>
-				</s:element>
-				<s:element minOccurs="0" maxOccurs="1" name="pagination" type="tns:Pagination">
-					<s:annotation>
-						<s:documentation>
-							to filter the ChargePoint data as per mentioned criteria.
-						</s:documentation>
-					</s:annotation>
-				</s:element>
-			</s:sequence>
-		</s:complexType>
-	</s:element>
-
-	<s:element name="GetChargePointListForDSOResponse">
-		<s:complexType>
-			<s:annotation>
-				<s:documentation>
-					This result will be returned on a GetChargePointList request.
-				</s:documentation>
-			</s:annotation>
-			<s:sequence>
-				<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:Result">
-					<s:annotation>
-						<s:documentation>
-							This contains the result of GetRoamingAuthorisationList.req
-						</s:documentation>
-					</s:annotation>
-				</s:element>
-				<s:element minOccurs="1" maxOccurs="1" name="chargePointItemInfo" type="tns:ItemInfo">
-					<s:annotation>
-						<s:documentation>
-							This contains the charge Point item info.
-						</s:documentation>
-					</s:annotation>
-				</s:element>
-				<s:element minOccurs="0" maxOccurs="unbounded" name="chargePointInfoforDSO" type="tns:ChargePointInfoforDSO">
-					<s:annotation>
-						<s:documentation>
-							This contains the charge point information records
-						</s:documentation>
-					</s:annotation>
-				</s:element>
-			</s:sequence>
-		</s:complexType>
-	</s:element>
 
 	<s:element name="SetChargePointListRequest">
 		<s:complexType>
@@ -460,46 +401,6 @@
 					</s:annotation>
 				</s:element>
 				<s:element minOccurs="0" maxOccurs="unbounded" name="refusedChargePointInfo" type="tns:ChargePointInfo">
-					<s:annotation>
-						<s:documentation>
-							This contains the charge point information records that could not be set in the clearing house. For error description see the result message.
-						</s:documentation>
-					</s:annotation>
-				</s:element>
-			</s:sequence>
-		</s:complexType>
-	</s:element>
-	
-	<s:element name="SetChargePointListForDSORequest">
-		<s:complexType>
-			<s:sequence>
-				<s:element minOccurs="1" maxOccurs="unbounded" name="chargePointInfoforDSO" type="tns:ChargePointInfoforDSO">
-					<s:annotation>
-						<s:documentation>
-							This contains the charge point information records for DSO
-						</s:documentation>
-					</s:annotation>
-				</s:element>
-			</s:sequence>
-		</s:complexType>
-	</s:element>
-
-	<s:element name="SetChargePointListForDSOResponse">
-		<s:complexType>
-			<s:annotation>
-				<s:documentation>
-					This result will be returned on a SetChargePointList request.
-				</s:documentation>
-			</s:annotation>
-			<s:sequence>
-				<s:element minOccurs="1" maxOccurs="1" name="result" type="tns:Result">
-					<s:annotation>
-						<s:documentation>
-							This contains the result of SetChargePointList.req
-						</s:documentation>
-					</s:annotation>
-				</s:element>
-				<s:element minOccurs="0" maxOccurs="unbounded" name="refusedChargePointInfoforDSO" type="tns:ChargePointInfoforDSO">
 					<s:annotation>
 						<s:documentation>
 							This contains the charge point information records that could not be set in the clearing house. For error description see the result message.
