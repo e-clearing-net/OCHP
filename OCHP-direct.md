@@ -910,7 +910,7 @@ for the pattern is `%`.
 ## Types for the _OCHP direct_ interface
 
 
-### DirectResult *enum*
+### DirectResult *class*
 
 Contains result information.
 
