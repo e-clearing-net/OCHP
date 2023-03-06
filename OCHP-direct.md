@@ -162,7 +162,8 @@ the [OCHP documentation](OCHP.md).
 The overall use case for this interface is to control services like 
 charging sessions in an operator's backend while handling the user 
 authorisation within an (from the operator's point of view) external 
-system.
+system. It is an extension of the OCHP Protocol which requires an 
+existing OCHP connection to the clearing house by both parties.
 
 The customer story can be shortened to: 
 
