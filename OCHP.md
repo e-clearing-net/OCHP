@@ -1162,7 +1162,7 @@ This contains the field definition of the UpdateStatus.req sent by a CMS to the 
  Field Name   |  Field Type      |  Card.  |  Description
 :-------------|:-----------------|:--------|:------------
 evse          |  EvseStatusType  |  *      |  This contains one EVSE id with the current status represented in a major part and a minor part.
-parkingspot	  |  ParkingStatusType |  *    |  This contains one parking spot ID with the current status.
+parking	      |  ParkingStatusType |  *    |  This contains one parking spot ID with the current status.
 ttl           |  DateTimeType    |  ?      |  The time to live is set as the deadline till the status values are to be considered valid, where not otherwise specified.
 
 
