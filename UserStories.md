@@ -3,12 +3,9 @@
 
 This page contains the User Stories upon which the design of OCHP 1.5 is based.
 The User Stories represent the Motivation of the protocol design, answering the question of "Why?" certain things should happen.
-Following the definition of the User Stories, Use Cases will be developed to fulfill the needs identified by the User Stories.
-
-A "User" is the party whose motivation is represented by a User Story. It does not necessarily describe an end user or EV-Driver.
-
-"Actors" are the parties who are involved in a user story.
-
+Following the definition of the User Stories, Use Cases will be developed to fulfill the needs identified by the User Stories.  
+A "User" is the party whose motivation is represented by a User Story. It does not necessarily describe an end user or EV-Driver.  
+"Actors" are the parties who are involved in a user story.  
 User Stories should follow the "As a *role* I want to *task* in order to *motivation*" Format.
 
 ## Roles
@@ -37,6 +34,7 @@ The User Stories are grouped into the following categories:
 - Extended Scope: User Stories not strictly related to Electric Mobility (Other alternative Fuels, Heavy Duty Vehicles, Shore-to-Ship Power etc.)
 
 ### User Stories - Authorisation
+For better readability, 
 #### Authorisation - General
 1. As an EV-Driver, I want to start a charging session at a charge point with an existing EMP subscription in order to recharge my vehicle.
    1. To access the charger, I want to use a physical RFID Token.
