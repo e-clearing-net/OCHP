@@ -9,6 +9,12 @@ field of electric mobility charging infrastructure.
 
 Further information on [ochp.eu](http://ochp.eu)
 
+##Development OCHP 1.5
+
+The development of OCHP 1.5 is based on User Stories found within this branch.
+Once the User Stories have been discussed with the community, Use Cases will be defined that describe how the User Stories are to be implemented using OCHP
+The Use Cases will be grouped into Modules allowing different degrees of functionalities.
+
 
 ##History
 
