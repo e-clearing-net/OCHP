@@ -1,0 +1,2890 @@
+openapi: 3.0.0
+info:
+  version: '1.0.0'
+  title: 'OCHP 1.5 JSON'
+  description: 'OCHP JSON API '
+  termsOfService: http://test-terms-of-service
+  contact:
+    name: SmartLab
+    url: http://ochpJsonTest.com
+    email: smartlab.ochp@testemail.com
+  license:
+    name: MIT License
+    url: https://github.com/e-clearing-net/OCHP/blob/master/LICENSasE
+servers: 
+
+  - description: SwaggerHub API Auto Mocking. The server is to be used by the EMSP to access data from the eCHS (Hub) server
+    url: https://virtserver.swaggerhub.com/e-clearing-net/OCHP/1.5/CPO/
+    
+# Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/smartlab/OCHP_JSON/1.0.0
+
+  - description: SwaggerHub API Auto Mocking. The server is to be used by the CPO to access data from the eCHS (Hub) server.
+    url: https://virtserver.swaggerhub.com/e-clearing-net/OCHP/1.5/EMSP/
+    
+  
+#  - url: https://virtserver.swaggerhub.com/{owner}/{api}/{version}
+  #- url: http://localhost:3000/
+ #   description: The Endpoints are accessed from this server
+tags:
+  - name: 'EMSP: Roaming Authorisation Data Exchange API'
+    description: Exchange of Roaming (EV-Charging) Informations between EMSP & eCHS
+    
+  - name: 'CPO: Roaming Authorisation Data Exchange API'
+    description: Exchange of Roaming (EV-Charging) Informations between CPO & eCHS
+    
+  - name: 'CPO: Charge Detail Record Exchange API'
+    description: Exchange of Charge Data Informations between CPO and eCHS.
+  
+  - name: 'EMSP: Charge Detail Record Exchange API'
+    description: Exchange of Charge Data Informations between EMSP and eCHS.
+    
+  - name: 'CPO: Live Status Interface Exchange API'
+    description: Exchange of current Live Status of individual charging stations between CPO and eCHS.
+    
+  - name: 'PSO: Live Status Interface Exchange API'
+    description: Exchange of current Live Status of individual parking spots between PSO and eCHS.
+    
+  - name: 'NSP: Live Status Information Exchange API'
+    description: Exchange of current Live Status of individual charging stations and parking spot between eCHS and NSP.
+    
+  - name: 'CPO: Tariff Information Exchange API'
+    description: Exchange of Tariff Information between the CPO & eCHS.
+    
+  - name: 'EMSP: Tariff Information Exchange API'
+    description: Exchange of Tariff Information between eCHS & EMSP.
+    
+  - name: 'CPO: Charge Point Information Exchange API'
+    description: Exchange of Charge Point Information between CPO & eCHS
+    
+  - name: 'NSP: Charge Point Information Exchange API'
+    description: Exchange of Charge Point Information between eCHS & NSP
+    
+#security: 
+ # - ApiKeyAuth: []
+    
+paths:
+  /RoamingAuthorisationInfos:
+      get:
+        tags:
+          - 'CPO: Roaming Authorisation Data Exchange API'
+        # The Charge point Management System downloads the global authorisation data repository from the CHS.
+        description: Allows a CPO to download the Roaming Authorisation List from eCHS
+        parameters:
+            - name: pagination
+              in: query
+              description: Filter the results updated, starting from the mentioned date and time.
+              schema: 
+              # to filter the authorisation data as per desired criteria.
+                $ref: '#/components/schemas/Pagination'
+                
+            - name: CPO-ID
+              in: query
+              description: The ID of the CPO/CPOs requesting the data/Roaming Authorisation Information from the eCHS server. To retrieve the RoamingAuthorisations for selected CPOs.
+              schema: 
+              # to get authorisation Tokens for/from selected partner(s) i.e. the user can include the The ID of the CPO/CPOs requesting the data/Roaming Authorisation Information from the eCHS server or the ID of the EMSP/EMSPs whose data/Roaming Authorisation Information is requested by the CPO/CPOs from the eCHS server. CPOs and for which specific sister companies i.e. EMSPs (if exist).
+                $ref: '#/components/schemas/PartnerID'
+                
+            - name: EMP-ID
+              in: query
+              description: The ID of the EMSP/EMSPs whose data/Roaming Authorisation Information is requested by the CPO/CPOs from the eCHS server. To retrieve the RoamingAuthorisations from selected EMSPs.
+              schema: 
+              # to get authorisation Tokens for/from selected partner(s) i.e. the user can include the The ID of the CPO/CPOs requesting the data/Roaming Authorisation Information from the eCHS server or the ID of the EMSP/EMSPs whose data/Roaming Authorisation Information is requested by the CPO/CPOs from the eCHS server. CPOs and for which specific sister companies i.e. EMSPs (if exist).
+                $ref: '#/components/schemas/PartnerID'
+            
+
+        responses:
+        
+        # for each value in the Result class an error code has been created. For eg: 200 is for Result value - 'ok' , 401 for a Result value 'not-authorised' etc, 400 for a Result value 'inavlid-id' and 'format', 500 for a Result value 'server' , 403 for a Result value 'roaming'
+        
+          '200':
+            description: The response from CHS. Successful download of the Roaming Authorisation Lists (GetRoamingAuthorisationList.conf).
+            # This response is sent when the CHS was able to completely fulfill the get roaming authorisation request from the CPO. If the CHS manages to send all the requested roaming authorisation list, then along with the list the result value 'ok' is sent.
+            content:
+              application/json:
+                schema:
+                   # the resultCodeType 'ok' is to be send.
+                       $ref: '#/components/schemas/ResponseModel'
+                       
+          '401':
+            #  The response send by the CHS when the CPO is  Not-authorised to request for the data. It may be due to a Wrong username and/password. Result value 'not-authorised' is sent
+           
+              $ref: '#/components/responses/Not-authorised'
+                    
+                        
+          '400':
+            # The response send by the CHS when the Data/request has technical errors or One or more ID (EVSE/Contract) were not valid for this user. Result value 'invalid-id' and/ 'format' is sent
+          
+             $ref: '#/components/responses/BadRequest'
+              
+          '500':
+            # The response send by the CHS when there are internal server issues. Result value 'server' is sent.
+          
+              $ref: '#/components/responses/InternalServerError'
+                        
+          '403':
+            # The response send by the CHS when the requesting CPO is one which has no roaming connections set or have no own partners connected to the user.
+          
+              $ref: '#/components/responses/Forbidden'
+
+      put: # The PUT method can be used to add new set of Roaming Authorisation data and also to update another set of Roaming Authorisation data to the existing Roaming Authorisation List (i.e update the whole roaming authorisation list) in the CHS by an EMSP. i.e If an EMSP wants to add 50 more tokens to the 100 tokens that are already on the eCHS server, it can use the PUT method and send the 100 tokens again along with the 50 new tokens. By doing so the 150 tokens it sends would replace the 100 tokens that were previously in eCHS.
+        tags: 
+          - 'EMSP: Roaming Authorisation Data Exchange API' 
+        description: Allows the EMSP to set Roaming Authorisation List or make updates on the Roaming Authorisation List to the CHS. PUT can also be used to update the tokens, but the request must contain all the tokens that the EMP wants to be in the eCHS system, as this request will replace all the old data in eCHS.
+          
+        requestBody:
+            required: true
+            content: 
+              application/json:
+                  schema:
+                    items:
+                             $ref: '#/components/schemas/RequestModel'
+                        
+        responses:
+        
+        # for each value in the Result class an error code has been created. For eg: 201 is for Result value - 'ok', 206 for Result value 'partly', 401 for a Result value 'not-authorised' etc, 400 for a Result value 'inavlid-id' and 'format',500 for a Result value 'server' , 403 for a Result value 'roaming'
+        
+          '201':
+            # This response is sent by the CHS when the EMSP could successfully make a set Roaming Authorisation List function or an update of the entire Roaming authorisation data/lists.With a successful  operation by EMSP, the CHS sents the Result value 'ok'
+              description: The response from CHS. Successfully set/added roaming authorisation list by the EMSP into the CHS (SetRoamingAuthorisationList.conf).
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    required:
+                      - result
+                    properties:
+                      result:
+                        # the resultCodeType 'ok' is to be send.
+                          $ref: '#/components/schemas/Result'
+            
+          '206':
+            # This response is sent by the CHS when the EMSP  sets/updates the  Roaming authorisation data/lists in the CHS, however not all were  successfully set/updated due to some reason. The CHS sends the Result value 'partly' and also sends the roaming authorisation lists that could not be updated in the CHS.
+              description: Partially-successful addition/setting of roaming authorisation list by the EMSP into the CHS (SetRoamingAuthorisationList.conf).
+              content:
+                application/json:
+                  schema:
+                    #type: array
+                    #items:
+                       # the resultCodeType 'partly' is to be send.
+                           $ref: '#/components/schemas/PartialSuccessResponseModel'
+                  
+          '401':
+            # The response send by the CHS when the EMSP is Not-authorised to update data. It may be due to a Wrong username and/password. Result value 'not-authorised' is sent
+          
+                         $ref: '#/components/responses/Not-authorised'
+                         
+          '400':
+           # The response send by the CHS when the Data/request has technical errors or One or more ID (EVSE/Contract) were not valid for this user. Result value 'invalid-id' and/ 'format' is sent
+            
+            
+                         $ref: '#/components/responses/BadRequest'
+              
+          '500':
+            # The response send by the CHS when there are internal server issues. Result value 'server' is sent
+              
+                         $ref: '#/components/responses/InternalServerError'
+                         
+          '403':
+            # The response send by the CHS when the EMSP requesting the update on roaming list  is one which has no roaming connections set or have no own partners connected to the user. Result value 'roaming'
+                
+                        $ref: '#/components/responses/Forbidden'   
+          
+      patch: # The PATCH operation carries out a partial-update function on the roaming authorisation list that exists in the CHS. It is used when one or more fields need a change/update in the roaming list but not all fields have to be changed. For eg: when we need to invalidate a token, we only have to set the expiryDate as a date in the past and pass it along with the other info of the token through the patch method. 
+        tags: 
+           - 'EMSP: Roaming Authorisation Data Exchange API'
+        description: Allows the EMSP to make (partial) updates only on certain fields (that requires to be changed) of the Roaming Authorisation List in the CHS. 
+        
+        requestBody:
+            required: true
+            content: 
+              application/json:
+                  schema:
+                    items:
+                             $ref: '#/components/schemas/RequestModel'   
+                    
+        responses:
+          '201':
+            # This response is sent by the CHS when the EMSP could successfully carry out the partial update of the Roaming authorisation data/lists. With the successful (partial) update operation by EMSP, the CHS sents the Result value 'ok'
+              description: The response from CHS. Successful update of roaming authorisation list by the EMSP into the CHS (UpdateRoamingAuthorisationList.conf).
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    required:
+                      - result
+                    properties:
+                      result:
+                       # the resultCodeType 'ok' is to be send.
+                          $ref: '#/components/schemas/Result'
+            
+          '206':
+            # This response is sent by the CHS when the EMSP carries out partial updates on the  Roaming authorisation data/lists in the CHS, however not all were  successful due to some reason. The CHS sends the Result value 'partly' and also sends the roaming authorisation lists that could not be updated in the CHS.
+              description: Partially-successful (partial) update of roaming authorisation list by the EMSP into the CHS (UpdateRoamingAuthorisationList.conf).
+              content:
+                application/json:
+                  schema:
+                   # type: array
+                    # items:
+                       # the resultCodeType 'partly' is to be send.
+                    $ref: '#/components/schemas/PartialSuccessResponseModel'
+             
+          
+          '401':
+            # The response send by the CHS when the EMSP is Not-authorised to update data. It may be due to a Wrong username and/password. Result value 'not-authorised' is sent
+          
+                         $ref: '#/components/responses/Not-authorised'
+                         
+          '400':
+            # The response send by the CHS when the Data/request has technical errors or One or more ID (EVSE/Contract) were not valid for this user. Result value 'invalid-id' and/ 'format' is sent
+            
+                         $ref: '#/components/responses/BadRequest'
+              
+          '500':
+            # The response send by the CHS when there are internal server issues. Result value 'server' is sent
+              
+                         $ref: '#/components/responses/InternalServerError'
+                         
+          '403':
+            # The response send by the CHS when the EMSP requesting the partial update on roaming list is one which has no roaming connections set or have no own partners connected to the user. Result value 'roaming'
+                
+                        $ref: '#/components/responses/Forbidden'  
+  
+  /RoamingAuthorisationInfos/{instance}/{evseId}/authorise:
+      post:
+        tags:
+          - 'CPO: Roaming Authorisation Data Exchange API'
+          # Single authorization requests are sent from the EVSE-Operator backend to the clearing house in the event that the local repository of authorization records was not synchronized from the clearing house.In case of some tokens, the EMSP might want a real time authorisation of the token or carry out a single authorisation in real time rather than whitelist-ing it. 
+        description: Allows a single roaming authorisation of selected tokens. The Charge point management system may request the Clearing House to authorize one single token for a charging session. The Charge point management system sends the request to authorise selected tokens by the EMSP via the CHS.
+        parameters:
+          - name: instance
+            in: path
+            description: This contains the ID of the token which is to be validated.
+            required: true
+            schema:
+                type: string
+                minLength: 1
+                maxLength: 36
+                description: Specification according to the token type
+                example: 3FA43D5B2
+          
+          - name: evseId
+            in: path
+            description: This contains the ID of the EVSE where the charging has to take place. Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it.
+            required: true
+            schema:
+                required: 
+                    - EvseId
+                properties:
+                    EvseId:
+                        $ref: '#/components/schemas/EvseId'
+              
+        requestBody:
+          required: true
+          content: 
+            application/json:
+                schema:
+                  required: 
+                    - emtId
+                  properties:
+                    emtId:
+                        $ref: '#/components/schemas/EmtId'
+        responses:
+          # for each value in the Result class an error code has been created. For eg: 201 is for Result value - 'ok', 401 for a Result value 'not-authorised' etc, 400 for a Result value 'inavlid-id' and 'format', 500 for a Result value 'server' , 403 for a Result value 'roaming'
+        
+          '200':
+            description: The response from CHS. Successfully sends the roaming authorisation record for the requested token. (RequestSingleRoamingAuthorisationList.conf). This contains the roaming authorisation record for the requested token, if the request was valid.
+            # This response is sent when the CHS was able to completely fulfill the request to obtain the  roaming authorisation data of the requested token by the CPO.  If the CHS manages to send the requested roaming authorisation data of the token mentioned, then along with the data the result value 'ok' is sent.
+            content:
+              application/json:
+                schema:
+                      # the resultCodeType 'ok' is to be send.  
+                       $ref: '#/components/schemas/SingleRoamingResponseModel'
+                       
+          '404': 
+            description: The response from EMSP via CHS. When the EMSP does not know the token for which the CPO is requesting an authorisation, CHS responds with a 404- Not found.
+                       
+          '401':
+            #  The response send by the CHS when the CPO is  Not-authorised to request for the data. It may be due to a Wrong username and/password. Result value 'not-authorised' is sent
+           
+              $ref: '#/components/responses/Not-authorised'
+                    
+                        
+          '400':
+            # The response send by the CHS when the Data/request has technical errors or One or more ID (EVSE/Contract) were not valid for this user. Result value 'invalid-id' and/ 'format' is sent
+          
+             $ref: '#/components/responses/BadRequest'
+              
+          '500':
+            # The response send by the CHS when there are internal server issues. Result value 'server' is sent.
+          
+              $ref: '#/components/responses/InternalServerError'
+                        
+          '403':
+            # The response send by the CHS when the requesting CPO is one which has no roaming connections set or have no own partners connected to the user.
+          
+              $ref: '#/components/responses/Forbidden'
+
+                      
+  /CDRs:
+    get: 
+      tags:
+          - 'EMSP: Charge Detail Record Exchange API'
+      # Incoming roaming charge data records, held at the CHS are sent from the CHS to the EMSP. Note that only CDRs that concern the particular EMSP are sent.
+      description: Allows an EMSP to request for the Charge Detail Records from the CHS. The EMSP gets the CDRs from the CPOs endpoint through the CHS. (GetCDRs.req)
+      parameters:
+            - name: pagination
+              in: query
+              description: Filter the results updated, starting from the mentioned date and time.
+              schema: 
+              # to filter the CDRs as per mentioned criteria.
+                $ref: '#/components/schemas/Pagination'
+                
+            - name: CPO-ID
+              in: query
+              description: The ID of the CPO/CPOs from where the Charge detail record is requested by an EMSP/EMSPs. To retrieve the CDRs from selected CPOs.
+              schema: 
+              # to get CDRs for/from selected partner(s) i.e. the user can include the The ID of the EMSP/EMSPs requesting the CDRs from the eCHS server or the ID of the CPO/CPOs whose CDR is requested by the EMSP/EMSPs from the eCHS server. CPOs and for which specific sister companies i.e. EMSPs (if exist).
+                $ref: '#/components/schemas/PartnerID'
+                
+            - name: EMP-ID
+              in: query
+              description: The ID of the EMSP/EMSPs requesting the charge detail record from the respective CPO/CPOs with which it has a roaming connection. To retrieve the CDRs for selected EMPs 
+              schema: 
+              # to get CDRs for/from selected partner(s) i.e. the user can include the The ID of the EMSP/EMSPs requesting the CDRs from the eCHS server or the ID of the CPO/CPOs whose CDR is requested by the EMSP/EMSPs from the eCHS server. CPOs and for which specific sister companies i.e. EMSPs (if exist).
+                $ref: '#/components/schemas/PartnerID'
+              
+            - name: cdrStatus
+              in: query
+              description: Defines which status of CDRs to return. Valid options are:- accepted, declined, revised, rejected, approved. If not set, will return accepted and revised CDRs.
+              # If the EMSP does not specify the status of CDRs it needs, then the CHS would send the CDRs of statuses accepted and revised
+              schema:
+                  # default: accepted and revised
+                  # optional field (cdrStatus), but when provided should contain at most one value. If value not provided by client then the default values 'accepted and revised CDRs'are used.
+                  $ref: '#/components/schemas/CdrStatusType'
+      
+          
+      responses:
+          '200':
+            description: The response from CHS. Successful download of the CDR from the CHS (GetCDRs.conf)
+            # This response is sent when the CHS was able to completely fulfill the get Charge detail records request from the EMSP. If the CHS manages to send all the requested Charge detail records, then along with the CDR info array the result value 'ok' is sent.
+            content:
+              application/json:
+                schema:
+                  # the resultCodeType 'ok' is to be send.
+                      $ref: '#/components/schemas/CDRsConfirmation'  
+            
+          '401':
+            #  The response send by the CHS when the EMSP is  Not-authorised to request for the data. It may be due to a Wrong username and/password. Result value 'not-authorised' is sent
+           
+              $ref: '#/components/responses/Not-authorised'
+                    
+                        
+          '400':
+            # The response send by the CHS when the Data/request has technical errors or One or more ID (EVSE/Contract) were not valid for this user. Result value 'invalid-id' and/ 'format' is sent
+          
+             $ref: '#/components/responses/BadRequest'
+              
+          '500':
+            # The response send by the CHS when there are internal server issues. Result value 'server' is sent.
+          
+              $ref: '#/components/responses/InternalServerError'
+                        
+          '403':
+            # The response send by the CHS when the requesting EMSP is one which has no roaming connections set or have no own partners connected to the user.
+          
+              $ref: '#/components/responses/Forbidden'
+   
+    post:
+        tags: 
+            - 'CPO: Charge Detail Record Exchange API'
+        # Upload Charge Data Records. Local roaming charge data records are sent from the CMS to the CHS.    
+        description: Allows a CPO to add the CDRs into CHS. May be used by a CPO to mark declined CDRs as finally rejected, by uploading them again under that status. (AddCDRs.req)
+        
+        requestBody:
+            required: true
+            content: 
+              application/json:
+                  schema:
+                   # items:
+                      # When CDRs are posted for the first time in CHS, the cdrStatusType should be 'new'. When the CPO re-uploads the CDR after it was accepted/declined in the previous upload, the status 'revised' should be used. CPO should also be able to add the declined CDRs finally with status 'rejected'.
+                          $ref: '#/components/schemas/AddCdrRequestModel'
+                          
+        responses:
+          '201':
+          # This response is sent by the CHS when all the CDRs added by the CPO were successfully uploaded in the CHS. When the CPO successfully uploads the CDR, the CHS sents the Result value 'ok'.
+             description: The response from CHS. Successful upload of Charge Detail Records into the CHS by the CPO. (AddCDRs.conf).
+             content:
+                application/json:
+                  schema:
+                    type: object
+                    required:
+                      - result
+                    properties:
+                      result:
+                        # the resultCodeType 'ok' is to be send.
+                          $ref: '#/components/schemas/Result'
+          
+          '206':
+            # This response is sent by the CHS when the CPO uploads the charge detail records  in the CHS, however not all were  successfully uploaded instead refused by the CHS. The CHS sends the Result value 'partly' and also sends the charge detail records that it considers implausible and refuses. 
+              description: Partially-successful upload of charge detail records by the CPO into the CHS (AddCDRs.conf).
+              content:
+                application/json:
+                  schema:
+                       # the resultCodeType 'partly' is to be send.
+                           $ref: '#/components/schemas/ImplausibleCDRsResponseModel'   
+                           
+          '401':
+            #  The response send by the CHS when the CPO is  Not-authorised to request for the data. It may be due to a Wrong username and/password. Result value 'not-authorised' is sent
+           
+              $ref: '#/components/responses/Not-authorised'
+                    
+                        
+          '400':
+            # The response send by the CHS when the Data/request has technical errors or One or more ID (EVSE/Contract) were not valid for this user. Result value 'invalid-id' and/ 'format' is sent
+          
+             $ref: '#/components/responses/BadRequest'
+              
+          '500':
+            # The response send by the CHS when there are internal server issues. Result value 'server' is sent.
+          
+              $ref: '#/components/responses/InternalServerError'
+                        
+          '403':
+            # The response send by the CHS when the requesting CPO is one which has no roaming connections set or have no own partners connected to the user.
+          
+              $ref: '#/components/responses/Forbidden'
+  
+    patch:
+        tags:
+            - 'EMSP: Charge Detail Record Exchange API'
+        description: The EMSP send the CHS the list of CDRs that it approves or declines.
+        requestBody:
+          content: 
+              application/json:
+                  schema:
+
+                      $ref: '#/components/schemas/ConfirmCDRs'
+        
+        responses:
+          '201':
+            description: The response from CHS. This response is send to the confirmation of CDRs request from EMSP. (ConfirmCDRs.conf).
+            content:
+                application/json:
+                  schema:
+                    type: object
+                    required:
+                      - result
+                    properties:
+                      result:
+                        # the resultCodeType 'ok' is to be send.
+                          $ref: '#/components/schemas/Result'
+          '206':
+            # This response is sent by the CHS when the EMSP tries to send the list of Approved and/declined CDRs, however not all were  successful due to some reason. The CHS sends the Result value 'partly' and also sends the cdr Ids, whose status could not be uploaded in the CHS.
+              description: Partially-successful (partial) update of cdr status by the EMSP into the CHS (ConfirmCDRs.conf).
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                       # the resultCodeType 'partly' is to be send.
+                           $ref: '#/components/schemas/refusedIDs'
+         
+          '401':
+            # The response send by the CHS when the EMSP is Not-authorised to update data. It may be due to a Wrong username and/password. Result value 'not-authorised' is sent
+          
+                         $ref: '#/components/responses/Not-authorised'
+                         
+          '400':
+           # The response send by the CHS when the Data/request has technical errors or One or more ID (EVSE/Contract) were not valid for this user. Result value 'invalid-id' and/ 'format' is sent
+            
+            
+                         $ref: '#/components/responses/BadRequest'
+              
+          '500':
+            # The response send by the CHS when there are internal server issues. Result value 'server' is sent
+              
+                         $ref: '#/components/responses/InternalServerError'
+                         
+          '403':
+            # The response send by the CHS when the EMSP requesting the update on roaming list  is one which has no roaming connections set or have no own partners connected to the user. Result value 'roaming'
+                
+                        $ref: '#/components/responses/Forbidden' 
+        
+  /CDRs/CheckCDRs:  
+    get:
+      tags: 
+          - 'CPO: Charge Detail Record Exchange API'
+      #  the Charge Management System may download declined CDRs and attempt to fix any issues that might exist  by re-uploading the CDRs as "revised" or to finally reject them (forego payment) by setting their status to "rejected".
+      description: Allows a CPO to check the CDR for EMSPs/EMSP (with which it has roaming connection) in the CHS. (CheckCDRs.req)
+      parameters:
+            - name: pagination
+              in: query
+              description: Filter the results updated, starting from the mentioned date and time.
+              schema: 
+              # to filter the CDRs as per mentioned criteria.
+                $ref: '#/components/schemas/Pagination'
+                
+            - name: EMP-ID
+              in: query
+              description: The ID of the EMSP/EMSPs, whose Charge Detail Records are to be checked by the requesting  CPO/CPOs in the CHS. To retrieve the CDRs from selected EMPs.
+              schema: 
+              # to get CDRs for/from selected partner(s) i.e. the user can include the The ID of the CPO/CPOs requesting the CDRs from the eCHS server or the ID of the EMSP/EMSPs whose CDR is requested by the CPO/CPOs from the eCHS server. EMP/EMSP and for which specific sister companies i.e. CPOs (if exist).
+                $ref: '#/components/schemas/PartnerID'
+                
+            - name: CPO-ID
+              in: query
+              description: The ID of the CPO/CPOs requesting to check the Charge Detail Record of EMSP/EMSPs in the CHS. To retrieve the CDRs for selected CPOs (own sister companies).
+              schema: 
+              # to get CDRs for/from selected partner(s) i.e. the user can include the The ID of the CPO/CPOs requesting the CDRs from the eCHS server or the ID of the EMSP/EMSPs whose CDR is requested by the CPO/CPOs from the eCHS server. EMP/EMSP and for which specific sister companies i.e. CPOs (if exist).
+                $ref: '#/components/schemas/PartnerID'
+            
+            - name: cdrStatus
+              in: query
+              description: Defines which status of CDRs to return. Valid options are- accepted, declined, revised, rejected, approved. If not set, will return declined CDRs.
+              schema:
+                  # default: declined
+                  # cannot have 'revised' as an enum
+                  # optional field (cdrStatus), but when provided should contain at most one value. If value not provided by client then the default value 'declined CDRs'are used.
+                  $ref: '#/components/schemas/CdrStatusType'  
+      
+      responses:
+          '200':
+            description: The response from CHS. Successful download of the CDR from the CHS (CheckCDRs.conf)
+            # This response is sent when the CHS was able to completely fulfill the get Charge detail records request from the CPO. If the CHS manages to send all the requested Charge detail records, then along with the CDR info array the result value 'ok' is sent.
+            content:
+              application/json:
+                schema:
+                   # the resultCodeType 'ok' is to be send.
+                      $ref: '#/components/schemas/CDRCheck'  
+        
+          '401':
+            #  The response send by the CHS when the CPO is  Not-authorised to request for the data. It may be due to a Wrong username and/password. Result value 'not-authorised' is sent
+           
+              $ref: '#/components/responses/Not-authorised'
+                    
+                        
+          '400':
+            # The response send by the CHS when the Data/request has technical errors or One or more ID (EVSE/Contract) were not valid for this user. Result value 'invalid-id' and/ 'format' is sent
+          
+             $ref: '#/components/responses/BadRequest'
+              
+          '500':
+            # The response send by the CHS when there are internal server issues. Result value 'server' is sent.
+          
+              $ref: '#/components/responses/InternalServerError'
+                        
+          '403':
+            # The response send by the CHS when the requesting CPO is one which has no roaming connections set or have no own partners connected to the user.
+          
+              $ref: '#/components/responses/Forbidden'
+  /Status:
+    patch:
+      tags:
+          - 'CPO: Live Status Interface Exchange API'
+          - 'PSO: Live Status Interface Exchange API'
+      description: A CPO may update the current live status of individual charging stations in the Clearing House to allow   roaming partners to receive those statuses. Additionally, a PSO may update the current live status of individual parking spots, allowing the EVSE Operators roaming partners to receive these alongside the EVSE live status(UpdateStatus.req).
+      
+      requestBody:
+          content: 
+            application/json:
+                schema:
+                  items:   
+                    $ref: '#/components/schemas/UpdateStatus'
+      responses:
+        '200':
+          description: The response from CHS. This response is send when the Status update is done by the CPO/PSO in the eCHs
+          content:
+                application/json:
+                  schema:
+                    type: object
+                    required:
+                      - result
+                    properties:
+                      result:
+                        # the resultCodeType 'ok' is to be send.
+                          $ref: '#/components/schemas/Result'
+        '401':
+            # The response send by the CHS when the CPO/PSO is Not-authorised to update data. It may be due to a Wrong username and/password. Result value 'not-authorised' is sent
+          
+                         $ref: '#/components/responses/Not-authorised'
+                         
+        '400':
+           # The response send by the CHS when the Data/request has technical errors or One or more ID (EVSE/Contract) were not valid for this user. Result value 'invalid-id' and/ 'format' is sent
+            
+            
+                         $ref: '#/components/responses/BadRequest'
+              
+        '500':
+            # The response send by the CHS when there are internal server issues. Result value 'server' is sent
+              
+                         $ref: '#/components/responses/InternalServerError'
+                         
+        '403':
+            # The response send by the CHS when the CPO/PSO requesting the update on roaming list  is one which has no roaming connections set or have no own partners connected to the user. Result value 'roaming'
+                
+                        $ref: '#/components/responses/Forbidden' 
+        
+    get:
+      tags:
+        - 'NSP: Live Status Information Exchange API'
+      # Download global live status information from the CHS. NSP may receive the current live status of individual charging stations and parking spot from the Clearing House. 
+      description: Allows an NSP to download the global live status information from the eCHS.
+      parameters: 
+        - name: startDateTime
+          in: query
+          description: If this value is set to a point in the past the response is limited to status information that is more actual than the given value.
+          schema: 
+            
+                $ref: '#/components/schemas/DateTimeType'
+        
+        - name: statusType
+          in: query
+          description: This field can be set to determine which status values to return from the CHS. Valid entries:- evse, parking, combined. If not set, only EVSE status values will be returned.
+              # If not set, only EVSE status values will be returned.
+          schema:
+                  
+                  $ref: '#/components/schemas/statusType'
+                  
+      responses:
+        '200':
+            description: The response from CHS. Successful download of global live status information from the CHS.
+            # This response is sent when the CHS was able to completely fulfill the get global live status information request from the NSP. If the CHS manages to send all the global live status information, then along with this information the result value 'ok' is sent.
+            content:
+              application/json:
+                schema:
+                  # the resultCodeType 'ok' is to be send.
+                      $ref: '#/components/schemas/StatusConfirmation'  
+        
+        '401':
+            #  The response send by the CHS when the NSP is  Not-authorised to request for the data. It may be due to a Wrong username and/password. Result value 'not-authorised' is sent
+           
+              $ref: '#/components/responses/Not-authorised'
+                    
+                        
+        '400':
+            # The response send by the CHS when the Data/request has technical errors or One or more ID (EVSE/Contract) were not valid for this user. Result value 'invalid-id' and/ 'format' is sent
+          
+             $ref: '#/components/responses/BadRequest'
+              
+        '500':
+            # The response send by the CHS when there are internal server issues. Result value 'server' is sent.
+          
+              $ref: '#/components/responses/InternalServerError'
+                        
+        '403':
+            # The response send by the CHS when the requesting NSP is one which has no roaming connections set or have no own partners connected to the user.
+          
+              $ref: '#/components/responses/Forbidden'
+              
+  /Tariff:
+    # The eCHS enables CPOs to upload tariffs and tariff-groups for each charge point they operate. These tariffs may be defined for individual EMSPs. This is to ensure a quick and automated change in tariffs for certain charge points without having to alter bilateral agreements every time and without having a very large annex.
+    put:
+      tags: 
+        - 'CPO: Tariff Information Exchange API'
+      description: The CPO uploads and/updates their tariff information to the Clearing House. 
+      requestBody:
+          required: true
+          content: 
+            application/json:
+                schema:
+                  
+                     $ref: '#/components/schemas/TariffRequestModel'
+                    
+                              
+      responses:
+        # for each value in the Result class an error code has been created. For eg: 201 is for Result value - 'ok', 206 for Result value 'partly', 401 for a Result value 'not-authorised' etc, 400 for a Result value 'inavlid-id' and 'format',500 for a Result value 'server' , 403 for a Result value 'roaming'
+        
+          '201':
+            # This response is sent by the CHS when the CPO could successfully upload or update their tariff information to the Clearing House. With a successful  operation by CPO, the CHS sents the Result value 'ok'
+              description: The response from CHS. Successfully uploaded the tariff information  by the CPO into the CHS (UpdateTariffs.conf).
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    required:
+                      - result
+                    properties:
+                      result:
+                        # the resultCodeType 'ok' is to be send.
+                          $ref: '#/components/schemas/Result'
+            
+          '206':
+            # This response is sent by the CHS when the CPO uploads or updates the tariff information to the Clearing House, however not all were  successfully uploaded/updated due to some reason. The CHS sends the Result value 'partly' and also sends the records that could not be updated/uploaded in the CHS.
+              description: Partially-successful upload/update of tariff information by the CPO into the CHS (UpdateTariffs.conf).
+              content:
+                application/json:
+                  schema:
+                      # the resultCodeType 'partly' is to be send.
+                        $ref: '#/components/schemas/refusedTariffInfoModel'
+           
+          '401':
+            # The response send by the CHS when the CPO is Not-authorised to update data. It may be due to a Wrong username and/password. Result value 'not-authorised' is sent
+          
+                         $ref: '#/components/responses/Not-authorised'
+                         
+          '400':
+           # The response send by the CHS when the Data/request has technical errors or One or more ID (EVSE/Contract) were not valid for this user. Result value 'invalid-id' and/ 'format' is sent
+            
+            
+                         $ref: '#/components/responses/BadRequest'
+              
+          '500':
+            # The response send by the CHS when there are internal server issues. Result value 'server' is sent
+              
+                         $ref: '#/components/responses/InternalServerError'
+                         
+          '403':
+            # The response send by the CHS when the CPO requesting the updateor upload of tariff information  is one which has no roaming connections set or have no own partners connected to the user. Result value 'roaming'
+                
+                        $ref: '#/components/responses/Forbidden'  
+    
+    get:
+      # An EMSP has to regularly download tariff information for their roaming partners' charge points from the Clearing House.
+      tags:
+          - 'EMSP: Tariff Information Exchange API'
+      description: Download the Tariff Information from the CHS.
+      parameters: 
+            - name: pagination
+              in: query
+              description: Filter the results updated, starting from the mentioned date and time.
+              schema: 
+              # to filter the Tariffs as per mentioned criteria.
+                $ref: '#/components/schemas/Pagination'
+                
+            - name: CPO-ID
+              in: query
+              description: The ID of the CPO/CPOs whose tariff information is requested by the EMSP/EMSPs from the eCHS server. To retrieve the Tariffs from selected CPOs
+              schema: 
+              # to get CDRs for/from selected partner(s) i.e. the user can include the The ID of the EMSP/EMSPs requesting the tariff information from the eCHS server or the ID of the CPO/CPOs whose tariff data is requested by the EMSP/EMSPs from the eCHS server. CPO/CPOs and for which specific sister companies i.e. EMSPs (if exist).
+                $ref: '#/components/schemas/PartnerID'
+                
+            - name: EMP-ID
+              in: query
+              description: The ID of the EMSP/EMSPs requesting the Tariff information from the eCHS server. To retrieve the Tariffs for selected EMPs.
+              schema: 
+              # to get CDRs for/from selected partner(s) i.e. the user can include the The ID of the EMSP/EMSPs requesting the tariff information from the eCHS server or the ID of the CPO/CPOs whose tariff data is requested by the EMSP/EMSPs from the eCHS server. CPO/CPOs and for which specific sister companies i.e. EMSPs (if exist).
+                $ref: '#/components/schemas/PartnerID'
+                
+
+      responses:
+        
+        # for each value in the Result class an error code has been created. For eg: 200 is for Result value - 'ok' , 401 for a Result value 'not-authorised' etc, 400 for a Result value 'inavlid-id' and 'format', 500 for a Result value 'server' , 403 for a Result value 'roaming'
+        
+          '200':
+            description: The response from CHS. Successful download of the tariff Information. (GetTariffUpdatest.conf).
+            # This response is sent when the CHS was able to completely fulfill the get tariff Information request from the EMSP. If the CHS manages to send all the requested tariff information, then along with the list the result value 'ok' is sent.
+            content:
+              application/json:
+                schema:
+                  # the resultCodeType 'ok' is to be send.
+                       $ref: '#/components/schemas/TariffResponseModel'
+                       
+          '401':
+            #  The response send by the CHS when the EMSP is  Not-authorised to request for the data. It may be due to a Wrong username and/password. Result value 'not-authorised' is sent
+           
+              $ref: '#/components/responses/Not-authorised'
+                    
+                        
+          '400':
+            # The response send by the CHS when the Data/request has technical errors or One or more ID (EVSE/Contract) were not valid for this user. Result value 'invalid-id' and/ 'format' is sent
+          
+             $ref: '#/components/responses/BadRequest'
+              
+          '500':
+            # The response send by the CHS when there are internal server issues. Result value 'server' is sent.
+          
+              $ref: '#/components/responses/InternalServerError'
+                        
+          '403':
+            # The response send by the CHS when the requesting EMSP is one which has no roaming connections set or have no own partners connected to the user.
+          
+              $ref: '#/components/responses/Forbidden'
+        
+  /ChargePointList:
+    put:
+      # For user information and routing purpose detailed information about charge points can be exchanged via OCHP. The CPO sends this data towards the systems of Navigation Service Providers. Those systems may aggregate, sort and filter the data and provide it to the navigation services or devices through proprietary interfaces within the NSP ecosystem. 
+      tags: 
+          - 'CPO: Charge Point Information Exchange API'
+      description: The CPO uploads own charge point information to the CHS. Each CPO has to upload its own Charge point information to the Clearing House. (SetChargePointList.req)
+      requestBody:
+          required: true
+          content: 
+            application/json:
+                schema:
+                  
+                     $ref: '#/components/schemas/chargePointRequestModel'
+                     
+      responses:
+        # for each value in the Result class an error code has been created. For eg: 201 is for Result value - 'ok', 206 for Result value 'partly', 401 for a Result value 'not-authorised' etc, 400 for a Result value 'inavlid-id' and 'format',500 for a Result value 'server' , 403 for a Result value 'roaming'
+        
+          '201':
+            # This response is sent by the CHS when the CPO could successfully set all the Charge Point Information Records in the Clearing House. With a successful operation by CPO, the CHS sents the Result value 'ok'
+              description: The response from CHS. Successfully uploaded the Charge Point Information Records by the CPO into the CHS (SetChargePointList.conf).
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    required:
+                      - result
+                    properties:
+                      result:
+                        # the resultCodeType 'ok' is to be send.
+                          $ref: '#/components/schemas/Result'
+            
+          '206':
+            # This response is sent by the CHS when the CPO  uploads the Charge Point Information Records in the CHS, however not all were  successfully uploaded due to some reason. The CHS sends the Result value 'partly' and also sends the Charge Point Information Records that could not be uploaded in the CHS.
+              description: Partially-successful upload of Charge Point Information Records by CPO into the CHS (SetChargePointList.conf).
+              content:
+                application/json:
+                  schema:
+                    #type: array
+                    #items:
+                      # the resultCodeType 'partly' is to be send.
+                           $ref: '#/components/schemas/refusedChargePointInfoResponse'
+                  
+          '401':
+            # The response send by the CHS when the CPO is Not-authorised to upload/update data. It may be due to a Wrong username and/password. Result value 'not-authorised' is sent
+          
+                         $ref: '#/components/responses/Not-authorised'
+                         
+          '400':
+           # The response send by the CHS when the Data/request has technical errors or One or more ID (EVSE/Contract) were not valid for this user. Result value 'invalid-id' and/ 'format' is sent
+            
+            
+                         $ref: '#/components/responses/BadRequest'
+              
+          '500':
+            # The response send by the CHS when there are internal server issues. Result value 'server' is sent
+              
+                         $ref: '#/components/responses/InternalServerError'
+                         
+          '403':
+            # The response send by the CHS when the CPO requesting the update on roaming list  is one which has no roaming connections set or have no own partners connected to the user. Result value 'roaming'
+                
+                        $ref: '#/components/responses/Forbidden'   
+                        
+    patch:
+    # For user information and routing purpose detailed information about charge points can be exchanged via OCHP. The CPO sends this data towards the systems of Navigation Service Providers. Those systems may aggregate, sort and filter the data and provide it to the navigation services or devices through proprietary interfaces within the NSP ecosystem. 
+      tags:
+        -  'CPO: Charge Point Information Exchange API'
+      description: The CPO makes an update on the existing list of Charge Point information records.
+      requestBody:
+          required: true
+          content: 
+            application/json:
+                schema:
+
+                    $ref: '#/components/schemas/chargePointRequestModel'
+                    
+      responses:
+          '201':
+            # This response is sent by the CHS when the CPO could successfully carry out the update of the CHarge POint information records. With the successful update operation by CPO, the CHS sents the Result value 'ok'
+              description: The response from CHS. Successful update of charge point information records by the CPO into the CHS (UpdateChargePointList.conf).
+              content:
+                application/json:
+                  schema:
+                    type: object
+                    required:
+                      - result
+                    properties:
+                      result:
+                      # the resultCodeType 'ok' is to be send.
+                          $ref: '#/components/schemas/Result'
+            
+          '206':
+            # This response is sent by the CHS when the CPO carries out updates on the Charge Point records in the CHS, however not all were  successful due to some reason. The CHS sends the Result value 'partly' and also sends the Charge Point Records that could not be updated in the CHS.
+              description: Partially-successful update of Charge Point Information records by the CPO into the CHS (UpdateChargePointList.conf).
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      # the resultCodeType 'partly' is to be send.
+                           $ref: '#/components/schemas/refusedChargePointInfoResponse'
+             
+          
+          '401':
+            # The response send by the CHS when the CPO is Not-authorised to update data. It may be due to a Wrong username and/password. Result value 'not-authorised' is sent
+          
+                         $ref: '#/components/responses/Not-authorised'
+                         
+          '400':
+            # The response send by the CHS when the Data/request has technical errors or One or more ID (EVSE/Contract) were not valid for this user. Result value 'invalid-id' and/ 'format' is sent
+            
+                         $ref: '#/components/responses/BadRequest'
+              
+          '500':
+            # The response send by the CHS when there are internal server issues. Result value 'server' is sent
+              
+                         $ref: '#/components/responses/InternalServerError'
+                         
+          '403':
+            # The response send by the CHS when the CPO requesting the  update on charge point information records is one which has no roaming connections set or have no own partners connected to the user. Result value 'roaming'
+                
+                        $ref: '#/components/responses/Forbidden' 
+      
+    get: 
+      # An NSP downloads the global charge point information from the eCHS.
+      tags: 
+        - 'NSP: Charge Point Information Exchange API'
+      description: Allows an NSP to download the charge Point Information from eCHS. (GetChargePointList.req)
+      parameters: 
+        
+            - name: pagination
+              in: query
+              description: Filter the results updated, starting from the mentioned date and time.
+              schema: 
+              # to filter the Charge point data as per mentioned criteria.
+                $ref: '#/components/schemas/Pagination'
+                
+            - name: CPO-ID
+              in: query
+              description: tThe ID of the CPO/CPOs whose ChargePoint information is requested by the NSP. To get ChargePoints from selected partner(s) i.e. CPOs
+              schema: 
+              # to get chargepoint information for/from selected partner(s) i.e. the user can include the The ID of the EMSP/EMSPs requesting the charge point data from the eCHS server or the ID of the CPO/CPOs whose charge point data is requested by the EMSP/EMSPs from the eCHS server. CPO/CPOs and for which specific sister companies i.e. EMSPs (if exist).
+                $ref: '#/components/schemas/PartnerID'
+                
+      responses:
+        
+        # for each value in the Result class an error code has been created. For eg: 200 is for Result value - 'ok' , 401 for a Result value 'not-authorised' etc, 400 for a Result value 'inavlid-id' and 'format', 500 for a Result value 'server' , 403 for a Result value 'roaming'
+        
+          '200':
+            description: The response from CHS. Successful download of the Roaming Authorisation Lists (GetChargePointList.conf).
+            # This response is sent when the CHS was able to completely fulfill the get charge point list information  request from the NSP. If the CHS manages to send all the requested charge point information, then along with the list the result value 'ok' is sent.
+            content:
+              application/json:
+                schema:
+                  # the resultCodeType 'ok' is to be send.
+                       $ref: '#/components/schemas/chargePointResponseModel'
+                       
+          '401':
+            #  The response send by the CHS when the NSP is  Not-authorised to request for the data. It may be due to a Wrong username and/password. Result value 'not-authorised' is sent
+           
+              $ref: '#/components/responses/Not-authorised'
+                    
+                        
+          '400':
+            # The response send by the CHS when the Data/request has technical errors or One or more ID (EVSE/Contract) were not valid for this user. Result value 'invalid-id' and/ 'format' is sent
+          
+             $ref: '#/components/responses/BadRequest'
+              
+          '500':
+            # The response send by the CHS when there are internal server issues. Result value 'server' is sent.
+          
+              $ref: '#/components/responses/InternalServerError'
+                        
+          '403':
+            # The response send by the CHS when the requesting NSP is one which has no roaming connections set or have no own partners connected to the user.
+          
+              $ref: '#/components/responses/Forbidden'
+        
+components:
+
+ # securitySchemes:
+  #  ApiKeyAuth:    
+  #    type: http
+   #   scheme: basic
+
+
+  responses:
+  
+    BadRequest:
+      description: Bad Request. Data/request has technical errors or One or more ID (EVSE/Contract) were not valid for this user.
+      content:
+          application/json:
+              schema:
+                # depending on the error the resultCodeType 'invalid-id' and/ 'format' should be used
+                        $ref: '#/components/schemas/Result'
+      
+  
+    Not-authorised:
+      description: Not-authorised to set the data. Wrong username and/password.
+      content:
+          application/json:
+            schema:
+               # the resultCodeType 'not-authorised' should be used
+                      $ref: '#/components/schemas/Result'
+                    
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+            schema:
+                # the resultCodeType 'server' should be used
+                    $ref: '#/components/schemas/Result'
+                   
+    Forbidden:
+      description: Forbidden. No roaming connections set; No own partners connected to this user; Roaming partners have no data.
+      content:
+          application/json:
+              schema:
+                   # the resultCodeType 'roaming' should be used
+                        $ref: '#/components/schemas/Result'
+      
+  schemas:
+    
+    Pagination:
+      type: object
+      description: Allows the users to provide criteria in supported requests to filter the results.
+      required: 
+        - dateFrom
+        - dateTo
+        - offset
+        - limit
+      properties:
+        dateFrom: 
+          #Filter the results updated, starting from the mentioned date and time.
+          $ref: '#/components/schemas/DateTimeType'
+        
+        dateTo:
+          # filter the results updated, till the mentioned date and time (inclusive).
+          $ref: '#/components/schemas/DateTimeType'
+          
+        offset:
+          type: integer
+          description: The offset of a first object, that the request will return. Default is always zero.
+          default: 0
+          example: 150
+                
+        limit:
+          type: integer
+          description: The maximum number of objects that a Get request will return.
+          example: 50
+          
+    PartnerID:
+      type: object
+      description: to get data for/from selected partner(s) 
+      properties:
+        partnerID:
+          type: array
+          items:
+                  type: string
+                  minLength: 5
+                  maxLength: 5
+                  pattern: '^[A-Z]{2}[A-Za-z0-9]{3}$'
+                  example: DELND
+
+    ResponseModel:
+      type: object
+      description: The response send by CHS.
+      required:
+        - result
+        - roamingAuthorisationItemInfo
+        - roamingAuthorisationInfoArray
+      properties:
+        result:
+                $ref: '#/components/schemas/Result'
+                
+        roamingAuthorisationItemInfo:
+                $ref: '#/components/schemas/ItemInfo'
+          
+        roamingAuthorisationInfoArray:
+          type: array
+          items:
+                $ref: '#/components/schemas/RoamingAuthorisationInfo'
+          
+    RequestModel:
+      type: object
+      description: The request send by EMSP for posting Roaming Authorisation Lists.
+      required:
+        - roamingAuthorisationInfoArray
+      properties:
+          roamingAuthorisationInfoArray:
+          #  type: array
+          #  items:
+              $ref: '#/components/schemas/RoamingAuthorisationInfo'
+              
+    SingleRoamingResponseModel:
+      type: object
+      description: The response send by CHS.
+      required:
+        - result
+        - roamingAuthorisationInfo
+      properties:
+        result:
+                $ref: '#/components/schemas/Result'
+          
+        roamingAuthorisationInfo:
+        
+                $ref: '#/components/schemas/RoamingAuthorisationInfo'
+          
+    PartialSuccessResponseModel:
+      type: object
+      description: The response send by CHS to the EMSP after setting/updating Roaming Authorisation Lists. This response is sent when not all but only part of the lists were only uploaded. The CHS also sends these refused Roaming Authorisation Lists along with the response.
+      required: 
+        - result
+        - refusedRoamingAuthorisationInfo
+      properties:
+        result:
+          # the Result would be partly in this case.
+           $ref: '#/components/schemas/Result'
+          
+        refusedRoamingAuthorisationInfo:
+          # Contains the roaming authorisation records that could not be set in CHS.
+          type: array
+          items:
+              $ref: '#/components/schemas/RoamingAuthorisationInfo'
+          
+    AddCdrRequestModel:
+      type: object
+      description: The CDR Info that is send by the CPO to the CHS with the POST CDRs request. 
+      required:
+        - cdrInfoArray
+      properties:
+        cdrInfoArray:
+              # Contains all information concerning one or more  Charge Detail Records
+              # When CDRs are posted for the first time in CHS, the cdrStatusType should be 'new'
+              # When the CPO re-uploads the CDR after it was accepted/decined in the previous upload, the status 'revised' should be used.
+              # CPO should also be able to add the declined CDRs finally with status 'rejected'.
+              type: array
+              items:
+                $ref: '#/components/schemas/CDRInfo'
+                
+    ImplausibleCDRsResponseModel:
+      type: object
+      description: The response send by CHS to the CPO after uploading the Charge detail records. This response is sent when not all CDRs could be successfully added to the Clearing house system. The CHS also sends the list of Implausible/refused CDRs along with the response 'partly'.
+      
+      required: 
+          - result
+          - implausibleCdrsArray
+        
+      properties:
+        result:
+          # the Result would be partly in this case.
+           $ref: '#/components/schemas/Result'
+           
+        implausibleCdrsArray:
+           type: array
+           items:
+                $ref: '#/components/schemas/CdrId'
+          
+    ConfirmCDRs:
+      type: object
+      properties:
+        approved:
+          type: array
+          items:
+            
+              $ref: '#/components/schemas/Approved'
+        declined:
+          type: array
+          items:
+            
+              $ref: '#/components/schemas/Declined'
+    
+    refusedIDs:
+      type: object
+      description: This response is sent by the CHS when the EMSP tries to send the list of Approved and/declined CDRs, however not all were  successful due to some reason. The CHS sends the Result value 'partly' and also sends the cdr Ids, whose status could not be uploaded in the CHS.
+      required: 
+        - result
+        - refusedcdrIds
+      properties:
+        result:
+          # the Result would be partly in this case.
+           $ref: '#/components/schemas/Result'
+          
+        refusedcdrIds:
+          # Contains the list of IDs that could not be set in CHS.
+          type: array
+          items:
+              $ref: '#/components/schemas/CdrId'
+    
+    ItemInfo:
+      type: object
+      description: This contains the roaming authorisation item info.
+      required:
+        - objectCount
+        - objectSize
+        - limit
+      properties:
+        objectCount:
+          type: integer
+          description: Total number of objects available in the server system.
+          example: 569
+          
+        objectSize:
+          type: integer
+          description: Object size receive from the server response
+          example: 20kB
+          
+        limit:
+          type: integer
+          description: Number of objects that are returned.
+          example: 100
+          
+    TariffRequestModel:
+      type: object
+      description: This contains the tariff information to be updated or added.
+      required: 
+        - tariffInfoArray
+      properties:
+        tariffInfoArray:
+          type: array
+          items:
+                $ref: '#/components/schemas/TariffInfo'
+    
+    TariffResponseModel:            
+        type: object
+        description: The response send by CHS to the EMSP for get tariff information request. The CHS sends the tariff information records along with the response 'ok'.
+        required: 
+            - result
+            - TariffInfoArray
+        properties:
+            result:
+              # the Result would be Ok in this case.
+                   $ref: '#/components/schemas/Result'
+                  
+            TariffInfoArray:
+              # Contains the tariff information that is currently valid or that was changed since the time specified in lastUpdate in the request.
+              type: array
+              items:
+                  $ref: '#/components/schemas/TariffInfo'
+                
+    refusedTariffInfoModel:
+      type: object
+      description: The response send by CHS to the CPO after uploading/updating the tariff information. This response is sent when not all but only part of the information could only be uploaded/updated. The CHS also sends these refused tariff information records along with the response 'partly'.
+      required: 
+        - result
+        - refusedTariffInfo
+      properties:
+        result:
+          # the Result would be partly in this case.
+               $ref: '#/components/schemas/Result'
+              
+        refusedTariffInfo:
+          # Contains the tariff information records that could not be set in CHS.
+          type: array
+          items:
+              $ref: '#/components/schemas/TariffInfo'
+    Result:
+      type: object
+      required:
+        - resultCode
+        - resultDescription
+      properties:
+      
+        resultCode:
+          $ref: '#/components/schemas/resultCodeType'
+     
+        resultDescription:
+          type: string
+          maxLength: 1000
+          description: Specifies the error in a human-readable format.
+        
+    resultCodeType:
+      #oneOf: 
+      type: string
+      enum:
+            - ok
+            - partly
+            - not-authorised
+            - invalid-id
+            - server
+            - format
+            - roaming
+      description: Specifies the result as a machine-readable result code.
+                        * 'ok' - A complete response/data to the request was successfully send. The HTTP response code is 200/201. 
+                        * 'partly' - Only partial response/data to the request was send. The HTTP response code is  206. 
+                        * 'not-auhorised' - The requested data can not be served/processed. The user is not authorised to set the data/request the data. Wrong Username and/password. The   HTTP    response code is 401.
+                        * 'invalid-id' - The requested data can not be served/processed. One or more ID (EVSE /Contract) were not valid for this user. The HTTP response code is 400.
+                        * 'server' - The requested data can not be served/processed. Internal server error. The HTTP response code is 500.
+                        * 'format' - The requested data can not be served/processed. Data/request has technical errors. The HTTP response code is 400.
+                        * 'roaming' - The requested data can not be served/processed. Forbidden. No roaming connections set; No own partners connected to this user; Roaming partners have no data. The HTTP response code is 403.
+    Approved:
+        type: object
+        description: Contains the CdrId and EvseId for CDRs that have been approved by the EMSP.
+        properties:
+          cdrId:
+            $ref: '#/components/schemas/CdrId'
+          EvseId:
+            $ref: '#/components/schemas/EvseId'
+            
+    Declined:
+        type: object
+        description: Contains the CdrId and EvseId for CDRs that have been declined by the EMSP.
+        properties:
+          cdrId:
+            $ref: '#/components/schemas/CdrId'
+          EvseId:
+            $ref: '#/components/schemas/EvseId'
+    
+    TariffInfo:
+      type: object
+      # A Tariff Object consists of a list of one or more individual tariffs for individual recipients. One default individual tariff should always be defined without a specific recipient. Each individual tariff consists of tariff elements. These elements can be used to create complex Tariff structures.Changes to a tariff can always only be made to the entire tariff object. That way it is ensured that there cannot be multiple conflicting tariffs referenced at the same connector.
+      description: The information on tariff that needs to be added or updated.
+      required:
+          - tariffId
+          - individualtariff
+          
+      properties:
+        tariffId:
+          # Uniquely identifies the tariff.
+            $ref: '#/components/schemas/TariffId'
+          
+        individualTariff:
+          # Contains multiple individual tariffs dependant on intended recipient.
+            type: array
+            items: 
+                $ref: '#/components/schemas/IndividualTariffType'
+            
+    RoamingAuthorisationInfo:      
+          type: object
+          description: Contains information about a roaming authorisation card/token.
+          required: 
+            - emtId
+            - contractId
+            - expiryDate
+            - permissions
+
+          properties:
+                  emtId:
+                    # Electrical Vehicle Contract Identifier
+                        $ref: '#/components/schemas/EmtId'
+                    
+                  contractId:
+                    # EMA-ID the token belongs to.
+                    $ref: '#/components/schemas/ContractId'
+                  
+                  permissions:
+                    # Permissions for various energy sources and authorization services
+                    $ref: '#/components/schemas/PermissionsType'
+                    
+                  printedNumber:
+                    type: string
+                    minLength: 1
+                    maxLength: 150
+                    description: Might be used for manual authorisation
+                    example: 4424
+                  
+                  expiryDate:
+                    
+                    # Tokens may be used until the date of expiry is reached. To be handled by the partners systems. Expired roaming authorisations may be erased locally by each partner's systems.
+                  
+                    $ref: '#/components/schemas/DateTimeType'
+                    
+                  
+    EmtId:
+        type: object
+        description: The authorisation tokens are defined according to the specification of the EMT-ID (Token ID). Each token consists of a token instance which holds the payload and at least the token type. The sub-type is for further specification of the general token type.
+        
+        required:
+          - instance
+          - representation
+          - type
+        properties:
+            
+            instance:
+              type: string
+              minLength: 1
+              maxLength: 36
+              description: Specification according to the token type
+              example: 43
+           
+            representation:
+              $ref: '#/components/schemas/tokenRepresentation'
+              
+           
+            type:
+              $ref: '#/components/schemas/tokenType'
+              
+            
+            subType:
+              $ref: '#/components/schemas/tokenSubType'
+    
+    PermissionsType:
+      type: string
+      description: RoamingAuthorisationInfo class is extended by the attribute permissions. The PermissionsType (enum) can be set to multiple options. Feature will help EMPs to have better structured and organized customer portfolio.
+                  * 'AC' - Alternating current
+                  * 'DC' - Direct current
+                  * 'CNG' -  Compressed natural gas
+                  * 'LNG' - Liquified natural gas
+                  * 'Fuel' - Fuel
+                  * 'H2' - Hydrogen
+                  * 'Ethanol' - Ethyl alcohol as fuel
+                  * 'Other' - Other fuel types
+        
+      enum:
+        - AC
+        - DC
+        - CNG
+        - LNG
+        - Fuel
+        - H2
+        - Ethanol
+        - Other
+              
+    DateTimeType:
+          type: string
+        #  format: date-time
+          maxLength: 20
+          pattern: '^([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T(?:[0-9]{2}):([0-9]{2}):([0-9]{2})Z$'
+        # pattern: '^(\d{4}-\d{1,2}-\d{1,2}Td{1,2}:\d{1,2}:\d{1,2}Z)$'
+        # pattern: '(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z'
+          description: Format is according to ISO8601 UTC. The field takes 20 alphanumeric characters.
+          example: '2025-01-01T00:00:00Z'
+    
+    tokenRepresentation:
+      type: string
+      default: plain
+      description: The token instance may be represented by its hash value (hexadecimal representation of the hash value). This specifies in which representation the token instance is set.
+                           * 'plain' - The token instance is represented in plain text. (default)
+                           * 'sha-160' - The token instance is represented in its 160bit SHA1 hash in 40 hexadecimal digits.
+                           * 'sha-256' - The token instance is represented in its 256bit SHA2 hash in 64 hexadecimal digits.
+      enum:
+          - plain
+          - sha-160
+          - sha-256
+    
+    tokenType:
+      type: string
+      description: The type of the supplied instance for basic filtering. The remote token type is only being used in the CDR of a remotely started charging process. Tokens with type remote shall not be included in a whitelist.
+                     * 'rfid' - All kinds of RFID-Cards. Field tokenInstance holds the hexadecimal representation of the card's UID, Byte order- big endian, no zero-filling.
+                     * 'remote' - All means of remote authentication through the backend. Field tokenInstance holds a reference to the remote authorization or session. In case of a OCHPdirect authorization the directId.
+                     * '15118' - All authentication means defined by ISO/IEC 15118 except RFID-cards.
+                     * 'other' - To accommodate the other energy sources incorporated into the protocol.
+      # The remote token type is only beeing used in the CDR of a remotely started charging process. Tokens with type remote shall not be included in a whitelist.                     
+      enum:
+            - rfid
+            - remote
+            - '15118'
+            - other
+      example: rfid
+            
+    tokenSubType:
+      type: string
+      description: The exact type of the supplied instance for referencing purpose.
+                           * 'mifareCls' - Mifare Classic Card
+                           * 'mifareDes' - Mifare Desfire Card
+                           * 'calypso' - Calypso Card
+      enum:
+            - mifareCls
+            - mifareDes
+            - calypso
+                  
+    CdrStatusType:
+          type: string
+          # The status values possible when a CPO uploads/re-uploads a CDR are new/revised respectively. When the CPO decides to finally forego the payment of a declined CDR, it shold be able to upload them as 'rejected' (POST CDRs).
+          # The status values possible when a CPO wants to check the CDR it posted, are 'declined/rejected/approved'. When no values are set by the CPO, eCHS returns the CDRs with status 'Declined'.(GET /CDRs/CheckCDRs)
+          # The status values possible when an EMSP fetches CDRs from eCHS are accepted/revised/rejected/approved.When no values are set by the EMSP, eCHS returns the CDRs with status 'accepted and revised'.(GET /CDRs)
+          description: Defines which status of CDRs to return.Available statuses are accepted, revised, rejected, approved.  Reflects the current status of the CDR. This is reflecting the status of internal processing in the clearing house. The value cannot be changed by the partner's systems directly. Implicit changes are made while uploading (including revised, rejected CDRs), approving or declining CDRs.
+                       * 'new' - A new CDR before upload to the CHS.
+                       * 'accepted'- An uploaded CDR was accepted by the CHS as plausible.
+                       * 'rejected'- The checked CDR again rejected by the CHS and is to be archived.
+                       * 'declined'- The CDR was declined by the owner (EMSP).
+                       * 'approved'- The CDR was approved by the owner (EMSP).
+                       * 'revised'- The CDR was revised by the CPO and uploaded again. Only previously accepted or declined CDRs can be revised.
+          # Reflects the current status of the CDR. This is reflecting the status of internal processing in the clearing house. The value cannot be changed by the partner's systems directly. Implicit changes are made while uploading (including revised, rejected CDRs), approving or declining CDRs.            
+          enum:
+            - new
+            - accepted  
+            - rejected  
+            - declined  
+            - approved  
+            - revised  
+        
+    CDRsConfirmation:
+      type: object
+      description: The response send by CHS.
+      required:
+        - result
+        - cdrsItemInfo
+        - cdrInfoArray
+      properties:
+        result:
+           
+              $ref: '#/components/schemas/Result'
+              
+        cdrsItemInfo:
+              $ref: '#/components/schemas/ItemInfo'
+          
+        cdrInfoArray:
+            type: array
+            items:
+              $ref: '#/components/schemas/CDRInfo'
+              
+    CDRCheck:
+      type: object
+      description: The response send by CHS.
+      required:
+        - result
+        - cdrInfoArray
+      properties:
+        result:
+              $ref: '#/components/schemas/Result'
+              
+        cdrInfoArray:
+            type: array
+            items:
+              $ref: '#/components/schemas/CDRInfo'
+          
+    CDRInfo:
+      type: object
+      description: Contains CDRs according to the status specified in the request and contains all information concerning a Charge Data Record.
+      required:
+        - cdrId
+        - evseId
+        - emtId
+        - contractId
+        - status
+        - startDateTime
+        - endDateTime
+        - chargePointAddress
+        - chargePointType
+        - connectorType
+        - chargingPeriods
+        - currency
+        
+      properties:
+          cdrId:
+          # Unique charge data record identifier. EvseId is incorporated into the CDR-ID to make it explicit who the CPO is.
+            $ref: '#/components/schemas/CdrId'
+          
+          evseId:
+
+          # Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it.
+                 $ref: '#/components/schemas/EvseId'
+            
+          emtId:
+
+            # Utilised token for this charging session.
+                $ref: '#/components/schemas/EmtId'
+          
+          contractId:
+
+              # Identifies a customer in the electric mobility charging context.
+                $ref: '#/components/schemas/ContractId'
+            
+          status:
+            
+            # Current status of the CDR. 
+            # Must be set to 'new' by the issuing CMS. Shall not be changed by any partner but only by the CHS. 
+            # Should be set to 'new' when the CPO adds the CDR for the first time and status 'revised' when the CPO re-uploads the CDR after it was accepted/decined in the previous upload.
+            # CPO should also be able to add the declined CDRs finally with status 'rejected'.
+                $ref: '#/components/schemas/CdrStatusType'
+            
+          startDateTime:
+            
+            # Start date and time of the charge session (login with the RFID badge). Local time of the charge point is used.
+                $ref: '#/components/schemas/LocalDateTimeType'
+            
+            
+          endDateTime:
+            
+            # End date and time of the charge session (log-off with the RFID badge or physical disconnect). Must be set in the local time of the charge point.
+                $ref: '#/components/schemas/LocalDateTimeType'
+            
+            
+          duration:
+            type: string
+            maxLength: 9
+            description: Duration of the charging session.
+            # pattern '(\d\d\d):(\d\d):(\d\d)'
+            pattern: '^\d{3}:\d{2}:\d{2}$'
+            example: 000:00:28
+            
+          chargePointAddress:
+           
+            # Contains the address of the charging station.
+          
+                  $ref: '#/components/schemas/AddressType'
+            
+          chargePointType:
+            # Type of the charge point.
+            
+             $ref: '#/components/schemas/chargePointType'
+            
+            
+          connectorType:
+            
+          # Type of the utilized socket or connector.
+                  $ref: '#/components/schemas/ConnectorType'
+            
+          ratings:
+            
+            # ratings applicable to this charge point.
+                $ref:  '#/components/schemas/RatingsType'
+            
+          meterId:
+            type: string
+            minLength: 1
+            maxLength: 20
+            description: Written identification number of the physical energy meter, provided by the manufacturer. For future use.
+          
+          meteringInfo:
+            # Array type mainly to serve the German Eichrecht.
+            $ref:  '#/components/schemas/MeteringInfoType'
+            
+          chargingPeriods:
+            type: array
+            items:
+                $ref:  '#/components/schemas/CdrPeriodType'
+             
+          totalCost:
+            type: number
+            format: float
+            description: Total cost (nett price, without VAT) for the entire charging process. Should always equal the sum of the individual periodCosts.
+            
+          currency:
+             $ref:  '#/components/schemas/currency'
+            
+            
+    CdrId:
+          type: string
+          minLength: 6
+          exclusiveMinimum: true
+          maxLength: 48
+          description: The CDR-ID is a unique identifier for charge data records. EvseId is incorporated into the CDR-ID to make it explicit who the CPO is.  It is composed of the CPO-ID followed by an alphanumeric instance of up to 43 characters. The length of the string is extended from “36” to “48”. 
+          pattern: '^[0-9A-Z]{6,48}$'
+          example: DESWU27429470131590851591774794405
+          
+    EvseId:
+          type: string
+          # The EVSEID must follow the specification of ISO/IEC 15118-2 - Annex H "Specification of Identifiers
+          description: Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it.Each EVSEID has a variable length with at least seven characters (two characters Country Code, three characters EVSE Operator ID, one character ID Type, one character Power Outlet ID) and at most thirty-seven characters (two characters Country Code, three characters EVSE Operator ID, one character ID Type, thirty-one characters Power Outlet ID). While the EVSE Operator ID shall be assigned by a central issuing authority, each operator with an assigned EVSE Operator ID can choose the Power Outlet ID within the above mentioned rules freely.
+          # More patterns exist. For eg: '[A-Z]{2}[A-Za-z0-9]{3}[E][A-Za-z0-9][A-Za-z0-9\*]{0,30}' is also an accepted pattern.
+          pattern: '^[A-Z]{2}\*[A-Za-z0-9]{3}\*[E][A-Za-z0-9][A-Za-z0-9\*]{0,30}$'
+          example: DE823E12345678
+          
+    currency:
+        type: string
+        minLength: 2
+        exclusiveMinimum: true
+        maxLength: 3
+        description: Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
+        example: EUR
+          
+    MeteringInfoType:
+      type: object
+      required: 
+        - meteringType
+        - meteringVendor
+        - meteringVendorVersion
+        
+      properties:
+        meteringType:
+          type: string
+          description: Defines the method/solution to review charging data. Accepted values are- "local", "software", "other".
+          enum: 
+            - local
+            - software
+            - other
+            
+        meteringVendor:
+          type: string
+          minLength: 1
+          maxLength: 32
+          description: Contains the name of the vendor
+          
+        meteringVendorVersion:
+          type: string
+          minLength: 1
+          maxLength: 32
+          description: Version number of the solution
+          
+        meteringData:
+          type: array
+          items:
+              $ref: '#/components/schemas/MeteringData'
+              
+        meteringKey:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: Defines the public key of a charging pole as defined in the Eichrecht law
+              
+    ContractId:
+      type: string
+      description: the ContractId must follow the specification for EMAID in ISO/IEC 15118-2 structure. 
+      # More accepted patterns exist. For eg: '[A-Za-z]{2}-[A-Za-z0-9]{3}-[A-Za-z0-9]{9}-[A-Za-z0-9]', '[A-Za-z]{2}[A-Za-z0-9]{3}[A-Za-z0-9]{9}[A-Za-z0-9]', '[A-Za-z]{2}-[A-Za-z0-9]{3}-[A-Za-z0-9]{9}', '[A-Za-z]{2}[A-Za-z0-9]{3}[A-Za-z0-9]{9}', '[A-Z]{2}[A-Za-z0-9]{3}[Cc][A-Za-z0-9]{8}-[A-Za-z0-9]'
+      pattern: '^[A-Z]{2}-[A-Za-z0-9]{3}-[Cc]-[A-Za-z0-9]{8}-[A-Za-z0-9]$'
+      example: YYCBA43A13F320
+      
+    MeteringData:
+      type: string
+      minLength: 1
+      maxLength: 255
+      description: Contains at least the starting and ending meter values of a certain charging session
+
+    LocalDateTimeType:
+        type: string
+        # format: date-time
+        maxLength: 25
+        pattern: '^([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T(?:[0-9]{2}):([0-9]{2}):([0-9]{2})([+\-][0-9]{2}):([0-9]{2})$'
+       # pattern: '^(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)([+\-]\d\d):(\d\d)$'
+        description: Format is according to ISO8601 UTC + Offset. The field takes 25 alphanumeric characters.Please note that this type does explicitly not take UTC times. All time values need to be given in local time with a valid offset. A time value with $+0000$ offset represents the Greenwich Mean Time and is semantically not the same as UTC.
+        example: 2011-06-01T 13:45:30+02:00
+
+    AddressType:
+      type: object
+      required: 
+        - address
+        - country
+        - city
+        - zipcode
+      properties:
+        
+        houseNumber:
+          type: string
+          minLength: 1
+          maxLength: 6
+          pattern: '^[A-Z0-9 \-]{1,6}$'
+          description: Alphanumeric, for example "10", "255B". Characters:- [A-Z], [0-9], -,
+          example: 56
+          
+        address:
+          type: string
+          minLength: 2
+          maxLength: 45
+          description:  Alphanumeric, for example "Av. Saint-Jean". Optionally also containing the house number if not in field houseNumber.
+          example: Erichstraße 
+        
+        city:
+          type: string
+          minLength: 1
+          maxLength: 45
+          description: Alphabetic, in the language defined in locationNameLang.
+          example: Aachen
+          
+        zipCode:
+          type: string
+          maxLength: 10
+          pattern: '^[A-Z0-9 \-]{1,10}$'
+          description: Alphanumeric,  Without leading country code. (eg-8011 PK) Characters- [A-Z], [0-9], -,
+          example: 60439
+          
+        country:
+          type: string
+          minLength: 2
+          exclusiveMaximum: true
+          maxLength: 3
+          pattern: '^[A-Z]{3}$'
+          description: Alpha, three characters. ISO 3166 country code
+          example: DEU
+              
+    chargePointType:
+        type: string
+        minLength: 1
+        exclusiveMinimum: true
+        maxLength: 10
+        description: The chargePointType is extended from AC and DC to the options mentioned below. The enhancement enables the CPOs to define the CPTs more precisely and offer diversified services.
+                  * 'AC' - Alternating current
+                  * 'DC' - Direct current
+                  * 'Super_95' - Premium unleaded petrol having octance rating of 95
+                  * 'Super_Plus' - High octane rating fuel containing 5-10% of ethanol
+                  * 'Super_E10' - Petrol fuel with an ethanol content of up to 10 percent and an octane rating of at least 95
+                  * 'Diesel' - Liquid fuel used in diesel engines, whose ignition takes place without any spark
+                  * 'LPG' - Liquefied petroleum gas
+                  * 'CNG' - Compressed natural gas
+                  * 'LNG' - Liquified natural gas
+                  * 'H2' - Hydrogen fuel
+                  * 'Ethanol' - Ethyl alcohol as fuel
+                  * 'AdBlue' - Diesel exhaust fluid used in vehicles with Selective Catalytic Reduction (SCR)
+                  * 'Other' - Other chargepoint types
+        
+        enum:
+            - AC
+            - DC
+            - Super_95
+            - Super_Plus
+            - Super_E10
+            - Diesel
+            - LPG
+            - CNG
+            - LNG
+            - H2
+            - Ethanol
+            - AdBlue
+            - Other
+      
+    
+    ConnectorType:
+      type: object
+      description: Defines a power outlet at an EVSE in terms of its connector standard and format (socket/cable)
+      required:
+        - connectorStandard
+        - connectorFormat
+      properties:
+      
+        connectorStandard:
+ 
+          # The standard of the installed connector.
+              $ref: '#/components/schemas/ConnectorStandardType'
+          
+        connectorFormat:
+ 
+          #   The format of the connector, depending on the source device.
+                $ref: '#/components/schemas/ConnectorFormatType'
+          
+            
+        tariffId:
+
+          # Reference to a tariff, if tariffs are exchanged through the CHS.
+                $ref: '#/components/schemas/TariffId'
+    
+    
+    ConnectorStandardType:
+      type: string
+      description: The socket or plug standard of the charging point
+                  * 'Chademo'- The connector type is CHAdeMO, DC
+                  * 'IEC_62196_T1'-   IEC 62196 Type 1 "SAE J1772"
+                  * 'IEC_62196_T1_COMBO'- Combo Type 1 based, DC
+                  * 'IEC_62196_T2'-   IEC 62196 Type 2 "Mennekes"
+                  * 'IEC_62196_T2_COMBO' - Combo Type 2 based, DC
+                  * 'IEC_62196_T3A' IEC 62196 Type 3A
+                  * 'IEC_62196_T3C'  IEC 62196 Type 3C "Scame"
+                  * 'DOMESTIC_A' Standard/Domestic household, type "A", NEMA 1-15, 2 pins
+                  * 'DOMESTIC_B' Standard/Domestic household, type "B", NEMA 5-15, 3 pins
+                  * 'DOMESTIC_C' Standard/Domestic household, type "C", CEE 7/17, 2 pins
+                  * 'DOMESTIC_D' Standard/Domestic household, type "D", 3 pin
+                  * 'DOMESTIC_E' Standard/Domestic household, type "E", CEE 7/5 3 pins
+                  * 'DOMESTIC_F' Standard/Domestic household, type "F", CEE 7/4, Schuko, 3 pins
+                  * 'DOMESTIC_G' Standard/Domestic household, type "G", BS 1363, Commonwealth, 3 pins
+                  * 'DOMESTIC_H' Standard/Domestic household, type "H", SI-32, 3 pins
+                  * 'DOMESTIC_I' Standard/Domestic household, type "I", AS 3112, 3 pins
+                  * 'DOMESTIC_J'  Standard/Domestic household, type "J", SEV 1011, 3 pins
+                  * 'DOMESTIC_K' Standard/Domestic household, type "K", DS 60884-2-D1, 3 pins
+                  * 'DOMESTIC_L'  Standard/Domestic household, type "L", CEI 23-16-VII, 3 pins
+                  * 'TESLA_R' Tesla Connector "Roadster"-type (round, 4 pin)
+                  * 'TESLA_S' Tesla Connector "Model-S"-type (oval, 5 pin)
+                  * 'IEC_60309_2_single_16'IEC 60309-2 Industrial Connector single phase 16 Amperes (usually blue)
+                  * 'IEC_60309_2_three_16'   IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
+                  * 'IEC_60309_2_three_32' IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
+                  * 'IEC_60309_2_three_64' IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
+                  * 'LPG  ' ACME, DISH, Bajonett, Euronozzle
+                  * 'LNG' Universal
+                  * 'CNG' NGV1, NGV2
+                  * 'H2' SAE J2601
+                  * 'SUPER_95' Universal
+                  * 'SUPER_PLUS' Universal
+                  * 'SUPER_E10' Universal  
+                  * 'DIESEL'  Universal
+                  * 'ETHANOL'  Universal
+                  * 'ADBLUE' Universal
+      enum: 
+        -  Chademo  
+        -  IEC_62196_T1  
+        -  IEC_62196_T1_COMBO  
+        -  IEC_62196_T2  
+        -  IEC_62196_T2_COMBO  
+        -  IEC_62196_T3A  
+        -  IEC_62196_T3C  
+        -  DOMESTIC_A  
+        -  DOMESTIC_B  
+        -  DOMESTIC_C  
+        -  DOMESTIC_D  
+        -  DOMESTIC_E  
+        -  DOMESTIC_F  
+        -  DOMESTIC_G  
+        -  DOMESTIC_H  
+        -  DOMESTIC_I  
+        -  DOMESTIC_J  
+        -  DOMESTIC_K  
+        -  DOMESTIC_L  
+        -  TESLA_R  
+        -  TESLA_S  
+        -  IEC_60309_2_single_16  
+        -  IEC_60309_2_three_16  
+        -  IEC_60309_2_three_32
+        -  IEC_60309_2_three_64
+        -  LPG  
+        -  LNG  
+        -  CNG
+        -  H2  
+        -  SUPER_95  
+        -  SUPER_PLUS  
+        -  SUPER_E10  
+        -  DIESEL  
+        -  ETHANOL  
+        -  ADBLUE
+        
+    ConnectorFormatType:
+      type: string
+      description: The format of the connector, whether it is a socket or a plug.
+                    * 'Socket' - The connector is a socket; the EV user needs to bring a fitting plug/cable.
+                    * 'Cable'- The connector is an attached cable; the EV users car needs to have a corresponding   inlet.
+                    * 'Nozzle'- The connector is a nozzle; used normally at conventional fuel stations.
+                    * 'Other'- The connector is of another type, like a nozzle with an attached hose.
+                   
+      enum: 
+          - Socket
+          - Cable
+          - Nozzle
+          - Other
+         
+          
+    TariffId:
+      type: string
+      description: The tariff-ID follows a similar syntax to that of contract- and EVSE-IDs. The The Operator-ID is followed by a 'T' that signifies a tariff and a unique instance of up to 30 characters. The max. length allowed it string(36). Alphanumeric. Identifies a tariff. Unique within one EVSE Operator. Must begin with the Operator-ID, without separators.
+      # More patterns are possible. The pattern '^[A-Z]{2}[A-Za-z0-9]{3}[Tt][A-Za-z0-9][A-Za-z0-9\*]{0,29}$' is also possible.
+      pattern: '^[A-Z]{2}\*[A-Za-z0-9]{3}\*[Tt][A-Za-z0-9][A-Za-z0-9\*]{0,29}$'
+      example: YYABCT01
+
+    RatingsType:
+      type: object
+      description: Defines the ratings of a charge point. The values can be displayed to the user or used to calculate charge time forecasts. Depending on the used plug type the effective available power might be lower.
+      required: 
+        - maximumPower
+        
+      properties:
+        maximumPower:
+          type: number
+          format: float
+          description: The maximum available power at this charge point at nominal voltage over all available phases of the line.
+        guaranteedPower:
+          type: number
+          format: float
+          description: The minimum guaranteed mean power in case of load management. Should be set to maximum when no load management applied.
+        nominalVoltage:
+          type: integer
+          minimum: 0
+          exclusiveMinimum: true
+          maximum: 1000
+          description: The Nominal voltage for the charge point
+        
+          
+    CdrPeriodType:
+      type: object
+      description: This class defines one time and billing period in the charge detail record. Two periods may overlap in time. Each period represents one billing item of the charging process. 
+      required:
+        - startDateTime
+        - endDateTime
+        - billingItem
+        - billingValue
+        - itemPrice
+      properties:
+        
+        startDateTime:
+           # Starting time of the period. Must be equal or later than startDateTime of the CDRInfo.
+           $ref: '#/components/schemas/LocalDateTimeType'
+        
+        endDateTime:
+          # Ending time of the period. Must be equal or earlier than endDateTime of the CDRInfo.
+          $ref: '#/components/schemas/LocalDateTimeType'
+        
+        billingItem:
+          # Defines what the EMSP is charged for during this period.
+          $ref: '#/components/schemas/BillingItemType'
+          
+        billingValue:
+          type: number
+          format: float
+          description: The value the EMSP is charged for. The unit of this value depends on the billingItem. 
+        
+        itemPrice:
+          type: number
+          format: float
+          description: Price per unit of the billingItem in the given currency.
+        
+        periodCost:
+          type: number
+          format: float
+          description: Total cost of the period in the given currency. 
+          
+        taxrate:
+          type: integer
+          description: Tax rate in percent to be paid for the charging process in the EVSE operator's country.
+    
+    BillingItemType:
+      type: string
+      description: The billing items for charging periods and tariffs.
+        * 'parkingtime'-  Price for the time of parking. The billingValue represents the time in hours.
+        * 'usagetime'-  Price for the time of EVSE usage. The billingValue represents the time in hours.
+        * 'energy'-  Price for the consumed energy. The billingValue represents the energy in kilowatt-hours.
+        * 'power'-  Price for the used power level. The billingValue represents the maximum power in kilowatts.
+        * 'serviceFee'  General service fee per charging process. The billingValue represents a multiplier and thus has to be set to "1.0".
+        * 'reservation'-  One time fee for a reservation of the EVSE. The billingValue represents a multiplier and thus has to be set to "1.0".
+        * 'reservationtime'-  Price for the duration of a reservation. The billingValue represents the time in hours.
+        * 'volume' - Price for the quantity used in liter.
+        * 'mass' - Price for the quantity used in kilogram (kg).
+        
+      enum:
+      - parkingtime
+      - usagetime
+      - energy
+      - power
+      - serviceFee
+      - reservation
+      - reservationtime
+      - volume
+      - mass
+      
+    UpdateStatus:
+    # Used for the purpose of the exchange of live status information in addition to the charge point information or POI data from an EVSE Operator to an NSP.
+      type: object
+      description: Update the live status of individual charging stations/individual parking spots in the eCHS.
+      properties:
+        evse:
+          # This contains one EVSE id with the current status represented in a major part and a minor part.
+          type: array
+          items:
+          
+            $ref: '#/components/schemas/EvseStatusType'
+          
+        parkingspot:
+          # This contains one parking spot ID with the current status.
+          type: array
+          items:
+          
+            $ref: '#/components/schemas/ParkingStatusType'
+          
+        ttl:
+         # The time to live is set as the deadline till the status values are to be considered valid, where not otherwise specified.
+             $ref: '#/components/schemas/DateTimeType'
+          
+    EvseStatusType:
+      type: object
+      description: Specifies the major and minor status of a EVSE. 
+      required: 
+         - evseId
+         - major
+
+      properties:
+        evseId:
+          # The EVSE the status is set for.
+          $ref: '#/components/schemas/EvseId'
+          
+        major:
+          # The major status value for the EVSE
+          $ref: '#/components/schemas/MajorType'
+          
+        minor:
+          # The minor status value for the EVSE.
+          $ref: '#/components/schemas/MinorType'
+        
+        ttl:
+          # The time to live is set as the deadline until which the status value is to be considered valid. Should be set to the expected status change.
+          $ref: '#/components/schemas/DateTimeType'
+          
+    ParkingStatusType:
+      type: object
+      description: Specifies the live status of a parking spot.
+      required:
+        - parkingId
+        - status
+        
+      properties:
+        parkingId:
+          # The parking spot the status is set for.  
+          $ref: '#/components/schemas/ParkingId'
+          
+        status:
+          # The status value of the parking spot.
+          $ref: '#/components/schemas/MajorType'
+          
+        ttl:
+        # The time to live is set as the deadline until which the status value is to be considered valid. Should be set to the expected status change.
+          $ref: '#/components/schemas/DateTimeType'
+          
+    MajorType:
+      type: string
+      description: The major status type reflects the overall status of the EVSE.
+                  * 'available' -  the EVSE is able to start a new charging process
+                  * 'not-available' -  at the moment no new charging process may be started
+                  * 'unknown' -  the current status of the EVSE is not known
+      enum:
+        - available
+        - not-available
+        - unknown
+        
+    MinorType:
+      type: string
+      description: The optional minor status type reflects the detailed status of the EVSE in addition to the major status. For each minor status value a proposed ttl value is given. However, the ttl should only be set to a value other than default if the expected status change is known or can be predicted.
+            * 'available' -  the EVSE is able to start a new charging process
+            * 'reserved' -   the EVSE is able to start a new charging process for limited duration as a future reservation is   present. ttl to be set on the start of the reservation when in future or to the end of the reservation else
+            * 'charging' - the EVSE is in use. ttl to be set on the expected end of the charging process
+            * 'blocked' -  the EVSE not accessible because of a physical barrier, i.e. a car
+            * 'outoforder' - the EVSE is currently out of order. ttl to be set to the expected re-enabling
+      enum:
+        - available
+        - reserved
+        - charging
+        - blocked
+        - outoforder
+      
+    statusType:
+      type: string
+      description: When the statusType is defined as combined, the CHS will return values for all EVSEs of all EVSE Operators there is a valid roaming connection to, regardless of whether there is additional parking status information for all of them.
+      # if not set default is evse
+      default: evse
+      enum:
+        - evse
+        - parking
+        - combined
+    
+    StatusConfirmation:
+        type: object
+        description: eCHS response to the Get Status request from NSP.
+        properties:
+        
+          evse:
+            type: array
+            description: This contains one EVSE ID with the current status represented in a major part and a minor part.Status values for all EVSE as sent to the eCHS by the EVSE operator.
+            items:
+              $ref: '#/components/schemas/EvseStatusType'
+              
+          parking:
+            type: array
+            description: This contains one parking spot ID with the current status. Status values for all parking spots as sent to the eCHS by the parking spot operator.
+            items:
+                $ref: '#/components/schemas/ParkingStatusType'
+          
+          combined:
+            type: array
+            description: This contains one EVSE ID status including the parking spot status (if applicable). Status values for all EVSE that have been combined with parking status values according to static POI data.
+            items:
+    
+                $ref: '#/components/schemas/EvseStatusType'
+                
+    IndividualTariffType:
+      # Tariffs are referenced on connector level by their tariff-ID only. Every EVSE Operator is advised to define one default individual tariff for each tariffId as a fallback in addition to the individual tariffs defined for certain recipients. A provider will only receive tariffs that they are recipient for.
+        type: object
+        description: Contains multiple individual tariffs dependant on intended recipient. Element describing an individual tariff for a specific recipient. One default tariff without recipients must be provided. When there are more than 1 element, the first tariff element to match the condition is used.
+        required:
+          - currency
+          - tariffElement
+          
+        properties:
+          currency:
+            $ref: '#/components/schemas/currency' 
+            
+          tariffElement:
+            type: array
+            description: List of tariff elements. Contains information about the pricing structure of the tariff element.
+            items:
+            
+              $ref: '#/components/schemas/TariffElementType'
+            
+          recipient:
+            type: array
+            description: Provider-IDs of the intended recipients for this tariff. If no recipient is provided, this individual tariff is considered the default tariff.
+            items:
+              $ref: '#/components/schemas/recipient'
+    
+    TariffElementType:
+        type: object
+        description: List of tariff elements
+        required:
+          - priceComponent
+          - tariffRestriction
+        
+        properties:
+          priceComponent: 
+            # Contains information about the pricing structure of the tariff element.
+              $ref: '#/components/schemas/PriceComponentType'
+            
+          tariffRestriction:
+            # Contains information about when to apply the defined priceComponent / tariffElement.
+              $ref: '#/components/schemas/TariffRestrictionType'
+    
+              
+    recipient:
+          type: string 
+          minLength: 1
+          maxLength: 5
+          description: Alphanumeric. Identifies a recipient EMSP according to EMSP-ID without separators. If not provided, tariff element is considered the default tariff for this tariffId. Should never be returned by the CHS (i.e. only part of upload, not download).
+          pattern: '^[A-Z0-9]{1,5}$'  
+          
+    PriceComponentType:   
+      type: object
+      description: Price component defining this TariffElement.
+      required: 
+        - billingItem
+        - itemPrice
+        - stepSize
+        
+      properties:
+      
+        billingItem:
+            # What dimension is part of this tariff element.
+              $ref: '#/components/schemas/BillingItemType'
+          
+        itemPrice:
+          # Price per unit of the billingItem in the given currency.
+            type: number
+            format: float
+            description: price per unit for this tariff dimension (unit according to dimension)
+        
+        stepSize:
+            type: number
+            format: float
+            description: Minimum amount to be billed. This unit will be billed in this stepSize blocks. For example:- if billingItem is usagetime and stepSize is 0.1, then time will be billed in blocks of 6 minutes, so if 8 minutes is used, 12 minutes (2 blocks of stepSize) will be billed. In case of one-time payments, this is to be set to 1.0.
+        
+    TariffRestrictionType:
+       # Contains information about when to apply the defined priceComponent / tariffElement.
+          type: object
+          description: List of tariff restrictions applicable for this TariffElement / PriceComponent.
+          properties:
+          
+              regularHours:
+                  type: array
+                  description: Regular hours that this tariff element should be valid for (maximum of 14 entries). If always valid (24/7), don't set (as this is a tariff restriction).
+                  items:
+                        $ref: '#/components/schemas/RegularHoursType'
+                        
+              startDate:
+                  # Begin of a scheduled period. Valid from this date/time.
+                  $ref: '#/components/schemas/DateTimeType'
+                
+              endDate:
+                  # End of scheduled period, if known. Valid until this date/time.
+                  $ref: '#/components/schemas/DateTimeType'
+                  
+              minEnergy:
+                  type: number
+                  format: float
+                  description: Minimum used energy in kWh, for example 20.0, valid from this amount of energy is used
+                  example: 20.0
+                  
+              maxEnergy:
+                  type: number
+                  format: float
+                  description: Maximum used energy in kWh, for example 50.0, valid until this amount of energy is used
+                  example: 50.0
+                  
+              minPower:
+                  type: number
+                  format: float
+                  description: Minimum power in kW, for example 0.0, valid from this charging speed
+                  example: 0.0
+                  
+              maxPower:
+                  type: number
+                  format: float
+                  description: Maximum power in kW, for example 20.0, valid up to this charging speed
+                  example: 20.0
+                  
+              minDuration:
+                   type: integer
+                   description: Minimum duration in seconds, valid for a duration from x seconds
+                   example: 10
+                   
+              maxDuration:
+                   type: integer
+                   description: Maximum duration in seconds, valid for a duration from x seconds
+                   example: 600
+                   
+    RegularHoursType:
+        type: object
+        description: Regular recurring operation or access hours. Consecutive days can be combined using weekdayTo, single days can be defined using only weekdayFrom.
+        required:
+          - weekday
+          - periodBegin
+          - periodEnd
+        properties:
+        
+          weekday:
+             type: integer
+             minimum: 1
+             maximum: 7
+             description: Number of day in the week, beginning with Monday (1), ending with Sunday (7).
+             
+          periodBegin:
+            type: string
+            maxLength: 5
+            description: begin of the regular period given in hours:minutes. Must be in 24h format with leading zeros. Example:- '18:15'. Hour/Minute separator:- ":" Regex:- $[$0-2$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$
+            pattern: '^[0-2][0-9]\:[0-5][0-9]$'
+            example: 18:15
+            
+          periodEnd:
+            type: string
+            maxLength: 5
+            description: End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
+            pattern: '^[0-2][0-9]:[0-5][0-9]$'
+            example: 20:15
+            
+    chargePointRequestModel:
+        type: object
+        description: The request send by CPO to upload Charge Point Information records.
+        required:
+          - chargePointInfoArray
+        properties:
+            chargePointInfoArray:
+              type: array
+              items:
+                $ref: '#/components/schemas/ChargePointInfo'
+    
+    refusedChargePointInfoResponse:
+        type: object
+        description: The response send by CHS to the CPO after uploading the Charge Point Information Records. This response is sent when not all but only part of the records were only uploaded. The CHS also sends these refused charge point information records along with the response, 'partly'
+        required: 
+          - result
+          - refusedChargePointInfo
+        properties:
+          result:
+            # the Result would be partly in this case.
+             $ref: '#/components/schemas/Result'
+            
+          refusedChargePointInfo:
+            # Contains the charge point information records that could not be set in CHS.
+            type: array
+            items:
+                $ref: '#/components/schemas/ChargePointInfo'
+    
+    chargePointResponseModel:
+       type: object
+       description: The response send by the eCHS.
+       required:
+          - result
+          - chargePointItemInfo
+          - chargePointInfoArray
+       properties:
+          result:
+            # the Result would be Ok in this case.
+             $ref: '#/components/schemas/Result'
+             
+          chargePointItemInfo:
+            $ref: '#/components/schemas/ItemInfo'
+            
+          chargePointInfoArray:
+            # Contains the charge point information records 
+            type: array
+            items:
+                $ref: '#/components/schemas/ChargePointInfo'
+        
+    ChargePointInfo:
+      type: object
+      description: Contains information about the charge points. Static POI data regarding a charge point / EVSE.
+      required:
+        - evseId
+        - evseDescription
+        - locationId
+        - locationName
+        - locationNameLang
+        - chargePointAddress
+        - chargePointLocation
+        - openingTimes
+        - location
+        - authMethods
+        - connectors
+        - chargePointType
+      properties:
+        evseId:
+          # Globally unique identifier
+              $ref: '#/components/schemas/EvseId'
+          
+        evseDescription:
+            type: string
+            maxLength: 100
+            description: Human readable description of an EVSE
+        
+        locationId:
+            type: string
+            minLength: 1
+            maxLength: 15
+            description: Alphanumeric. Identifies a location/pool of EVSEs. Unique within one EVSE Operator. All EVSEs of one locationId have to have the same address and Geocoordinates. Characters:- [A-Z], [0-9]
+            pattern: '^[A-Z0-9 ]{1,15}$'
+            
+        timeStamp:
+          # Recommended. Date and time of the latest data update for this ChargePointInfo. When set it must be updated if one of the values changed.
+             $ref: '#/components/schemas/DateTimeType'
+             
+        locationName:
+            type: string
+            minLength: 1
+            maxLength: 100
+            description: Official name; should be unique in the geographical area.
+            
+        locationNameLang:
+            type: string
+            maxLength: 3
+            description: Alpha, three characters. ISO-639-3 language code defining the language of the location name.
+            pattern: '^[A-Z]{3}$'
+            
+        images:
+            type: array
+            description: Links to images related to the EVSE such as photos or logos.
+            items: 
+                $ref: '#/components/schemas/evseImageUrlType'
+                
+        relatedResource: 
+            type: array
+            description: Links to be visited by the user, related to the charge point or charging station.
+            items: 
+                $ref: '#/components/schemas/RelatedResourceType'
+                
+        chargePointAddress:
+            # Contains the address of the charging station.
+            $ref: '#/components/schemas/AddressType'
+            
+        chargePointLocation:
+            # Geographical location of the charge point itself (power outlet).
+            $ref: '#/components/schemas/GeoPointType'
+          
+        relatedLocation:
+            # Geographical location of related points relevant to the user.
+            $ref: '#/components/schemas/AdditionalGeoPointType'
+                
+        timeZone:
+            type: string
+            maxLength: 255
+            description: One of IANA tzdata's TZ-values representing the time zone of the location.
+            example: Europe/Zurich
+            
+        openingTimes:
+            # The times the EVSE is operating and can be used for charging. Can be set to unknown.
+             $ref: '#/components/schemas/HoursType'
+             
+        status:
+            # The current status of the charge point (static, not live-status!)
+            $ref: '#/components/schemas/ChargePointStatusType'
+            
+        statusSchedule:
+            type: array
+            description: Planned status changes in the future. If a time span matches with the current or displayed date, the corresponding value overwrites status
+            items: 
+                   $ref: '#/components/schemas/ChargePointScheduleType'
+        
+        telephoneNumber:
+            type: string
+            maxLength: 20
+            description: Numeric. Service hotline for charging station to be displayed to the EV user. Separators recommended. Recommended to be in international format including leading + and country code. (e.g. +49).
+            pattern: '^[\+]{0,1}[1-9]{0,1}[0-9 \-]{1,17}$'
+        
+        location: 
+            # The general type of the charge point location.
+            $ref: '#/components/schemas/GeneralLocationType'
+            
+        parkingSpot:
+            type: array
+            description: Information about one or more parking spots associated with the EVSE.
+            items:
+                $ref: '#/components/schemas/ParkingSpotInfo'
+            
+        restriction: 
+            type: array
+            description: Restrictions applying to the usage of the charging station.
+            items:
+                $ref: '#/components/schemas/RestrictionType'
+                
+        authMethods:
+            type: array
+            description: List of available payment or access methods on site.
+            items:
+                $ref: '#/components/schemas/AuthMethodType'
+                
+        connectors:
+            type: array
+            description: Which receptacle type is/are present for a power outlet.
+            items:
+                 $ref: '#/components/schemas/ConnectorType'
+                 
+        chargePointType:
+            # The type of the charge point.
+            $ref: '#/components/schemas/chargePointType'
+            
+        ratings:
+            # Defines the ratings for the charge point.
+            $ref: '#/components/schemas/RatingsType'
+            
+        userInterfaceLang:
+            type: array
+            description: Alpha, three characters. Language(s) of the user interface or printed on-site instructions. ISO-639-3 language code
+            items:
+              $ref: '#/components/schemas/userInterfaceLang'
+              
+        maxReservation:
+            type: number
+            format: float
+            minimum: 0
+            exclusiveMinimum: true
+            maximum: 1000
+            description: If a reservation of this charge point is possible, this is the maximum duration the CPO will allow a reservation for (in minutes). Recommendation:- 30 minutes.
+            
+        meteringInfo:
+            # Array type mainly to serve the German Eichrecht.
+            $ref:  '#/components/schemas/MeteringInfoType'
+            
+        truckParking:
+            # If trucks can be parked at this location.
+             $ref:  '#/components/schemas/TruckParkingType'
+          
+    evseImageUrlType:
+      # This class references images related to a EVSE in terms of a file name or uri. According to the roaming connection between one EVSE Operator and one or more Navigation Service Providers the hosting or file exchange of image payload data has to be defined. 
+      type: object
+      description: This class references images related to a EVSE in terms of a file name or uri.
+      required: 
+          - uri
+          - class
+          - type
+          
+      properties:
+          uri: 
+            type: string
+            maxLength: 255
+            description: uri from where the image data can be fetched. Must begin with a protocol of the list:- http, https, file,ftp. 
+            pattern: '^(http|https|ftp|file):\/\/.+$'
+            
+          thumbUri:
+            type: string
+            maxLength: 255
+            description: uri from where a thumbnail of the image can be fetched. Must begin with a protocol of the list:- http, https, file, ftp.
+            pattern: '^(http|https|ftp|file):\/\/.+$'
+            
+          class:
+            # Image class for usage categorization
+            $ref: '#/components/schemas/ImageClass'
+            
+          type: 
+            type: string
+            minLength: 1
+            maxLength: 4
+            description: Image type like:- gif, jpeg, png, svg
+            
+          width:
+            type: integer
+            minimum: 0
+            exclusiveMinimum: true
+            maximum: 99999
+            exclusiveMaximum: false
+            description: Width of the full scale image
+            
+          height:
+            type: integer
+            minimum: 0
+            exclusiveMinimum: true
+            maximum: 99999
+            exclusiveMaximum: false
+            description: Height of the full scale image
+    
+    TruckParkingType:
+        type: object
+        description: If trucks can be parked at this location. This value if provided can be used to inform which category of trucks and how many trucks can be parked at this location.
+        required:
+          - lightTruck
+          - mediumTruck
+          - heavyTruck
+        properties:
+          lightTruck:
+            type: integer
+            description: Number of light-duty trucks parking spots.
+            
+          mediumTruck:
+            type: integer
+            description: Number of medium-duty trucks parking spots
+            
+          heavyTruck:
+            type: integer
+            description: Number of heavy-duty trucks parking spots.
+        
+    RelatedResourceType:
+        type: object
+        description: This class defines a resource related to the charge point or charging station.A resource can have multiple classes to indicate a combination of resources on one web site.
+        required:
+          - uri
+          - class
+        properties:
+            uri:
+              type: string
+              maxLength: 255
+              description: Referencing uri to the resource. Must begin with a protocol of the list:- http, https.
+              pattern: '^(http|https):\/\/.+$'
+       
+            class:
+                # Class(es) of the related url to indicate the referenced content and/or functionality.
+                  $ref: '#/components/schemas/RelatedResourceClass'
+        
+    ImageClass:
+      type: string
+      description: The class of a EVSE image to obtain the correct usage in a user presentation. Has to be set accordingly to the image content in order to guaranty the right usage.
+              * 'networkLogo' -  logo of an associated roaming network to be displayed with the EVSE for example in lists, maps and detailed information view
+              * 'operatorLogo'-  logo of the charge points operator, for example a municipal, to be displayed with the EVSEs detailed information view or in lists and maps, if no networkLogo is present
+              * 'ownerLogo' -  logo of the charge points owner, for example a local store, to be displayed with the EVSEs detailed information view
+              * 'stationPhoto' -  full view photo of the station in field. Should show the station only
+              * 'locationPhoto' -  location overview photo. Should indicate the location of the station on the site or street.
+              * 'entrancePhoto' -  location entrance photo. Should show the car entrance to the location from street side
+              * 'otherPhoto' -  other related photo to be displayed with the stations detailed information view
+              * 'otherLogo' -  other related logo to be displayed with the stations detailed information view
+              * 'otherGraphic' -  other related graphic to be displayed with the stations detailed information view
+      enum: 
+        - networkLogo
+        - operatorLogo
+        - ownerLogo
+        - stationPhoto
+        - locationPhoto
+        - entrancePhoto
+        - otherPhoto
+        - otherLogo
+        - otherGraphic
+        
+      
+    RelatedResourceClass:
+        type: string
+        description: The class of referenced related resource.
+                * 'operatorMap' -  direct link to this charge point on a map of the operator
+                * 'operatorPayment' -  link to a payment page of the operator for contractless direct payment
+                * 'stationInfo' -  further information on the charging station
+                * 'surroundingInfo' -  further information on the surroundings of the charging station e.g. further POIs
+                * 'ownerHomepage' -   website of the station owner (not operator) in case of hotels, restaurants, etc.
+                * 'feedbackForm'-  form for user feedback on the charging station service
+                * 'openingTimes' -  link to a calendar or info page containing opening times (only if no other way of defining these is possible).
+        enum: 
+          - operatorMap
+          - operatorPayment
+          - stationInfo
+          - surroundingInfo
+          - ownerHomepage
+          - feedbackForm
+          - openingTimes
+          
+    GeoPointType:
+        type: object
+        description: Defines a geo location. The geodetic system to be used is WGS 84.
+        required:
+            - lat
+            - lon
+        properties:
+            lat: 
+               # Latitude of the point in decimal degree.
+              $ref: '#/components/schemas/latitude'
+              
+            lon: 
+              # Longitude of the point in decimal degree.
+              $ref: '#/components/schemas/longitude' 
+              
+    
+    AdditionalGeoPointType:
+        type: object
+        description: Class defines a geo location. The geodetic system to be used is WGS 84.
+        required:
+            - lat
+            - lon
+            - type
+        properties:
+            lat: 
+              # Latitude of the point in decimal degree.
+              $ref: '#/components/schemas/latitude'
+              
+            lon: 
+              # Longitude of the point in decimal degree.
+              $ref: '#/components/schemas/longitude'
+              
+            name:
+              type: string
+              maxLength: 255
+              description: Name of the point in local language or as written at the location. For example the street name of a parking lot entrance or it's number.
+              
+            type:  
+              # The class of this geo point for categorization and right usage.
+              $ref: '#/components/schemas/GeoClass'
+              
+    latitude:
+        type: string
+        maxLength: 10
+        description: Latitude of the point in decimal degree.  Decimal separator:- "." 
+        pattern: '^-?[0-9]{1,2}\.[0-9]{6}$'
+        example: 50.770774.
+        
+    longitude:
+        type: string
+        maxLength: 10
+        description: Longitude of the point in decimal degree.  Decimal separator:- "." 
+        pattern: '^-?[0-9]{1,2}\.[0-9]{6}$'
+        example: -126.104965.
+    
+    GeoClass:
+        type: string
+        description: The class of this geo point for categorization and right usage.
+                * 'entrance' -  For larger sites entrances may be specified for navigation.
+                * 'exit' -  For larger sites exits may be specified for navigation purpose.
+                * 'access'-  Two directional entrance and exit.
+                * 'ui' -  Geographical location of the user interface for authorisation and payment means. If not specified the user interface is assumed to be at the location of the charge point.
+                * 'other' -   Other relevant point. Name recommended.
+        enum: 
+          - entrance
+          - exit
+          - access
+          - ui
+          - other
+          
+    HoursType:
+      type: object
+      description: Opening hours for the charge point.
+      required:
+          - twentyfourseven
+          - closedCharging
+      properties:
+        # You have a CHOICE of the next 2 items at this level. 1 to 7 repetitions:
+        regularHours:
+            type: array
+            description: Regular hours, weekday based. Should not be set for representing 24/7 as this is the most common case.
+            items:
+                $ref: '#/components/schemas/RegularHoursType'
+        
+        twentyfourseven:
+            type: boolean
+            description: True to represent 24 hours per day and 7 days per week, except the given exceptions. May be set to false if opening hours are defined only by exceptionalOpenings.
+            
+        closedCharging:
+            type: boolean
+            description: hould be set to true in case an EV can be charged when plugged in during off-times (i.e. when the location is closed according to the specified hours).
+        
+        exceptionalOpenings:
+              type: array
+              description: Exceptions for specified calendar dates, time-range based. Periods the station is operating/accessible. For irregular hours or as addition to regular hours. May overlap regular rules.
+              items: 
+                   $ref: '#/components/schemas/ExceptionalPeriodType'
+                   
+        exceptionalClosings:
+              type: array
+              description: Exceptions for specified calendar dates, time-range based. Periods the station is not operating/accessible. Overwriting regularHours and twentyfourseven. Should not overlap exceptionalOpenings.
+              items: 
+                   $ref: '#/components/schemas/ExceptionalPeriodType'
+                   
+    ExceptionalPeriodType:
+        type: object
+        description: Specifies one exceptional period for opening or access hours.
+        required:
+            - periodBegin
+            - periodEnd
+        properties:
+            periodBegin:
+              # Begin of the exception.
+              $ref: '#/components/schemas/DateTimeType'
+              
+            peridoEnd:
+              # End of the exception.
+              $ref: '#/components/schemas/DateTimeType'
+    
+    ChargePointStatusType:
+        type: string
+        description: This value represents the overall status of a charging point. Not to be confused with a live status (available, reserved, occupied, ... ) This overall status should reflect situations which are valid over several days. The live status indicates shorter valid status.
+                  * 'Unknown' -  No status information available
+                  * 'Operative' -  charge point is in operation and can be used
+                  * 'Inoperative' -  charge point cannot be used due to maintenance, greater downtime, blocking construction works or other access restrictions (temporarily, will be operative in the future).
+                  * 'Planned' -  planned charge point, will be operating soon
+                  * 'Closed' -  discontinued charge point, will be deleted soon
+        enum: 
+            - Unknown  
+            - Operative  
+            - Inoperative  
+            - Planned  
+            - Closed  
+   
+    ChargePointScheduleType:
+        type: object
+        description: This type is used to schedule status periods in the future. The NSP can provide this information to the EV user for trip planning purpose. A period MAY have no end. 
+        required:
+            - startDate
+            - status
+        properties:
+            startDate:
+                # Begin of the scheduled period.
+                $ref: '#/components/schemas/DateTimeType'
+            
+            endDate: 
+                # End of the scheduled period, if known.
+                $ref: '#/components/schemas/DateTimeType'
+                
+            status:
+                # Status value during the scheduled period.
+                $ref: '#/components/schemas/ChargePointStatusType'
+                
+    GeneralLocationType:
+        type: string
+        description: Reflects the general type of the charge points location. May be used for user information.
+                * 'on-street' - parking in public space
+                * 'parking-garage' - multistorey car park
+                * 'underground-garage' - multistorey car park, mainly underground
+                * 'parking-lot' - a cleared area that is intended for parking vehicles, i.e. at super markets, bars, etc.
+                * 'private' - located in private or corporate grounds, may not be accessible to the public
+                * 'other' - none of the given possibilities
+                * 'unknown' - parking location type is not known by the operator
+        enum:
+            - on-street
+            - parking-garage 
+            - underground-garage
+            - parking-lot
+            - private 
+            - other
+            - unknown
+            
+    ParkingSpotInfo:
+        type: object
+        description: Contains all parking related information. If a parkingId is given, this ID can be used to associate parking spot live information from a PSO with this EVSE. Static POI data regarding a parking spot.
+        required:
+            - parkingId
+        properties:
+            parkingId:  
+                # Globally unique identifier for this parking spot.
+                $ref: '#/components/schemas/ParkingId'
+            
+            restriction:
+                type: array
+                description: Restrictions applying to the usage of the parking spot. If set, should include the restrictions to EVSE-usage as well.
+                items: 
+                    $ref: '#/components/schemas/RestrictionType'  
+                
+            floorlevel:
+                type: string
+                maxLength: 4
+                description: Alphanumeric. Level on which the charge station is located (in garage buildings) in the locally displayed numbering scheme. 
+                pattern: '^[A-Z0-9\-\+/]{1,4}$'
+                example: -2
+                
+            parkingSpotNumber:
+                type: string
+                maxLength: 5
+                description: Alphanumeric. Locally displayed parking slot number. 
+                pattern: '^[A-Z0-9\-\+/]{1,5}$'
+                example: 10
+                
+                
+    ParkingId:
+          type: string
+          maxLength: 36
+          description: The parking-ID follows a similar syntax to that of contract- and EVSE-IDs. The PSO-ID is followed by a 'P' that signifies a tariff and a unique instance of up to 30 characters.
+            # More patterns exist. For eg: '[A-Z]{2}\*[A-Za-z0-9]{3}\*[Pp][A-Za-z0-9][A-Za-z0-9\*]{0,29}' is also an accepted pattern.
+          pattern: '^[A-Z]{2}[A-Za-z0-9]{3}[Pp][A-Za-z0-9][A-Za-z0-9\*]{0,29}$'
+          example: DELNDP12
+
+    RestrictionType:
+        type: string
+        description: This value, if provided, represents the restrictions to the usage of the charging station or parking spot for different purposes.
+                      * 'evonly' - reserved parking spot for electric vehicles
+                      * 'plugged' - parking allowed only while plugged in (and charging)
+                      * 'disabled' - reserved parking spot for disabled people with valid ID
+                      * 'customers' - parking or charging for costumer/guests only, for example in case of a hotel or shop
+                      * 'motorcycles' - parking spot only suitable for (electric) motorcycles, scooters or bicycles
+                      * 'carsharing'- charging / parking only for carsharing vehicles
+        enum:
+          - evonly
+          - plugged
+          - disabled
+          - customers
+          - motorcycles
+          - carsharing
+    
+    AuthMethodType:
+        type: string
+        description: The authorisation and payment methods available at an EVSE for the EV user.
+                      * 'Public' - Public accessible, no authorisation required
+                      * 'LocalKey'- A key or token can be received at the location.(i.e. at the hotel reception or in the restaurant)
+                      * 'DirectCash' - The EVSE can be accessed through direct payment in cash.
+                      * 'DirectCreditcard' - The Evse can be accessed through direct payment with credit card
+                      * 'RfidMifareCls' - Personal RFID token with roaming relation. (Mifare Classic)
+                      * 'RfidMifareDes' - Personal token with roaming relation. (Mifare Desfire)
+                      * 'RfidCalypso' - Personal RFID token with roaming relation. (Calypso)
+                      * 'Iec15118' - In-car access token as specified in IEC-15118
+                      * 'OchpDirectAuth' - The EVSE can be accessed through a OCHP-direct capable provider app.
+                      * 'OperatorAuth' - The EVSE can be accessed through a direct online payment to the operator.
+                      
+        enum: 
+            - Public
+            - LocalKey
+            - DirectCash
+            - DirectCreditcard
+            - DirectDebitcard
+            - RfidMifareCls
+            - RfidMifareDes
+            - RfidCalypso
+            - Iec15118
+            - OchpDirectAuth
+            - OperatorAuth
+  
+    userInterfaceLang:    
+        type: string
+        maxLength: 3
+        description: Alpha, three characters. Language(s) of the user interface or printed on-site instructions. ISO-639-3 language code
+        pattern: '^[A-Z]{3}$'
