@@ -1,32 +1,16 @@
 openapi: 3.0.0
 info:
-  version: '1.0.0'
+  version: '0.0.1'
   title: 'OCHP 1.5 JSON'
-  description: 'OCHP JSON API '
-  termsOfService: http://test-terms-of-service
+  description: 'OCHP 1.5 JSON API Prototype'
   contact:
-    name: SmartLab
-    url: http://ochpJsonTest.com
-    email: smartlab.ochp@testemail.com
+    name: e-clearing.net
+    url: https://ochp.eu
+    email: info@e-clearing.net
   license:
     name: MIT License
-    url: https://github.com/e-clearing-net/OCHP/blob/master/LICENSasE
-servers: 
+    url: https://github.com/e-clearing-net/OCHP/blob/master/LICENSE
 
-  - description: SwaggerHub API Auto Mocking. The server is to be used by the EMSP to access data from the eCHS (Hub) server
-    url: https://virtserver.swaggerhub.com/e-clearing-net/OCHP/1.5/CPO/
-    
-# Added by API Auto Mocking Plugin
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/smartlab/OCHP_JSON/1.0.0
-
-  - description: SwaggerHub API Auto Mocking. The server is to be used by the CPO to access data from the eCHS (Hub) server.
-    url: https://virtserver.swaggerhub.com/e-clearing-net/OCHP/1.5/EMSP/
-    
-  
-#  - url: https://virtserver.swaggerhub.com/{owner}/{api}/{version}
-  #- url: http://localhost:3000/
- #   description: The Endpoints are accessed from this server
 tags:
   - name: 'EMSP: Roaming Authorisation Data Exchange API'
     description: Exchange of Roaming (EV-Charging) Informations between EMSP & eCHS
