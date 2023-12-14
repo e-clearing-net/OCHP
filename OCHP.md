@@ -2044,7 +2044,7 @@ Contains information about the charge points.
  openingTimes        |  HoursType                |  1      |  The times the EVSE is operating and can be used for charging. Can be set to unknown.
  status              |  ChargePointStatusType    |  ?      |  The current status of the charge point (static, not live-status!)
  statusSchedule      |  ChargePointScheduleType  |  *      |  Planned status changes in the future. If a time span matches with the current or displayed date, the corresponding value overwrites *status*.
- telephoneNumber     |  string(20)               |  ?      |  Numeric. Service hotline to be displayed to the EV user. Recommended to be in international format including leading + and country code. Separators recommended. Characters: [0-9], -, <space>
+ telephoneNumber     |  string(19)               |  ?      |  Numeric. Service hotline to be displayed to the EV user. Recommended to be in international format including leading + and country code. Separators recommended. Characters: [0-9], -, <space>
  location            |  GeneralLocationType      |  1      |  The general type of the charge point location.
  parkingSpot		 |  ParkingSpotInfo          |  *      |  Information about one or more parking spots associated with the EVSE.
  restriction	     |  RestrictionType		     |  *      |  Restrictions applying to the usage of the charging station.
