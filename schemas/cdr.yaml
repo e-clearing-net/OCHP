@@ -1,0 +1,529 @@
+CDRInfo:
+  type: object
+  description: Contains CDRs according to the status specified in the request and contains all information concerning a Charge Data Record.
+  required:
+    - cdrId
+    - evseId
+    - emtId
+    - contractId
+    - status
+    - startDateTime
+    - endDateTime
+    - chargePointAddress
+    - chargePointType
+    - connectorType
+    - chargingPeriods
+    - currency
+
+  properties:
+    cdrId:
+      # Unique charge data record identifier. EvseId is incorporated into the CDR-ID to make it explicit who the CPO is.
+      $ref: '#/CdrId'
+
+    evseId:
+
+      # Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it.
+      $ref: '#/EvseId'
+
+    emtId:
+
+      # Utilised token for this charging session.
+      $ref: '#/EmtId'
+
+    contractId:
+
+      # Identifies a customer in the electric mobility charging context.
+      $ref: '#/ContractId'
+
+    status:
+
+      # Current status of the CDR.
+      # Must be set to 'new' by the issuing CMS. Shall not be changed by any partner but only by the CHS.
+      # Should be set to 'new' when the CPO adds the CDR for the first time and status 'revised' when the CPO re-uploads the CDR after it was accepted/decined in the previous upload.
+      # CPO should also be able to add the declined CDRs finally with status 'rejected'.
+      $ref: '#/CdrStatusType'
+
+    startDateTime:
+
+      # Start date and time of the charge session (login with the RFID badge). Local time of the charge point is used.
+      $ref: './generic.yaml#/LocalDateTimeType'
+
+
+    endDateTime:
+
+      # End date and time of the charge session (log-off with the RFID badge or physical disconnect). Must be set in the local time of the charge point.
+      $ref: './generic.yaml#/LocalDateTimeType'
+
+
+    durationInSeconds:
+          type: number
+          format: integer
+          example: 120
+          description: duration of the whole charingSession in seconds
+
+    chargePointAddress:
+
+      # Contains the address of the charging station.
+
+      $ref: './generic.yaml#/AddressType'
+
+    chargePointType:
+      # Type of the charge point.
+
+      $ref: '#/ChargePointType'
+
+
+    connectorType:
+
+      # Type of the utilized socket or connector.
+      $ref: '#/ConnectorType'
+
+    ratings:
+
+      # ratings applicable to this charge point.
+      $ref:  '#/RatingsType'
+
+    meterId:
+      type: string
+      minLength: 1
+      maxLength: 20
+      description: Written identification number of the physical energy meter, provided by the manufacturer. For future use.
+
+    meteringInfo:
+      #  to serve the German Eichrecht.
+      $ref:  '#/MeteringInfoType'
+
+    chargingPeriods:
+      type: array
+      items:
+        $ref:  '#/CdrPeriodType'
+
+    totalCost:
+      type: number
+      format: float
+      example: 13.44
+      description: Total cost (nett price, without VAT) for the entire charging process. Should always equal the sum of the individual periodCosts.
+
+    currency:
+      $ref: './generic.yaml#/Currency'
+
+
+CdrId:
+  type: string
+  minLength: 6
+  exclusiveMinimum: true
+  maxLength: 48
+  description: The CDR-ID is a unique identifier for charge data records. EvseId is incorporated into the CDR-ID to make it explicit who the CPO is.  It is composed of the CPO-ID followed by an alphanumeric instance of up to 43 characters. The length of the string is extended from “36” to “48”.
+  pattern: '^[0-9A-Z]{6,48}$'
+  example: DESWU27429470131590851591774794405
+
+EvseId:
+  type: string
+  # The EVSEID must follow the specification of ISO/IEC 15118-2 - Annex H "Specification of Identifiers
+  description: Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it.Each EVSEID has a variable length with at least seven characters (two characters Country Code, three characters EVSE Operator ID, one character ID Type, one character Power Outlet ID) and at most thirty-seven characters (two characters Country Code, three characters EVSE Operator ID, one character ID Type, thirty-one characters Power Outlet ID). While the EVSE Operator ID shall be assigned by a central issuing authority, each operator with an assigned EVSE Operator ID can choose the Power Outlet ID within the above mentioned rules freely.
+  # More patterns exist. For eg: '[A-Z]{2}[A-Za-z0-9]{3}[E][A-Za-z0-9][A-Za-z0-9\*]{0,30}' is also an accepted pattern.
+  pattern: '^[A-Z]{2}\*[A-Za-z0-9]{3}\*[E][A-Za-z0-9][A-Za-z0-9\*]{0,30}$'
+  example: DE823E12345678
+
+MeteringInfoType:
+  type: object
+  required:
+    - type
+
+  properties:
+    type:
+      type: string
+      enum:
+        - none
+        - local
+        - software
+        - other
+      description: "if type = software, fileId must be set. local is used for SAM module"
+      example: software
+    fileId:
+      type: string
+      minLength: 1
+      maxLength: 36
+      example: 'DA5347F3-DF2F-4BA6-905D-21E2FFAAA948'
+
+MeteringInfoFileType:
+  type: object
+  required:
+    - content
+    - fileType
+  properties:
+    id:
+      $ref: './generic.yaml#/Uuid'
+      description: 'id of the meteringInfoFile'
+    content:
+      type: string
+      minLength: 1
+      maxLength: 500000
+      description: 'base64 encoded content of the file.'
+    version:
+      type: string
+      minLength: 1
+      maxLength: 36
+      description: 'optional version '
+    name:
+      type: string
+      minLength: 1
+      maxLength: 36
+      description: 'optional name of the file'
+    type:
+      type: string
+      enum:
+        - OCMF
+        - METRA
+        - RTB
+        - OTHER
+
+ContractId:
+  type: string
+  description: the ContractId must follow the specification for EMAID in ISO/IEC 15118-2 structure.
+  # More accepted patterns exist. For eg: '[A-Za-z]{2}-[A-Za-z0-9]{3}-[A-Za-z0-9]{9}-[A-Za-z0-9]', '[A-Za-z]{2}[A-Za-z0-9]{3}[A-Za-z0-9]{9}[A-Za-z0-9]', '[A-Za-z]{2}-[A-Za-z0-9]{3}-[A-Za-z0-9]{9}', '[A-Za-z]{2}[A-Za-z0-9]{3}[A-Za-z0-9]{9}', '[A-Z]{2}[A-Za-z0-9]{3}[Cc][A-Za-z0-9]{8}-[A-Za-z0-9]'
+  pattern: '^[A-Z]{2}-[A-Za-z0-9]{3}-[Cc]-[A-Za-z0-9]{8}-[A-Za-z0-9]$'
+  example: YYCBA43A13F320
+
+MeteringData:
+  type: string
+  minLength: 1
+  maxLength: 255
+  description: Contains at least the starting and ending meter values of a certain charging session
+
+
+
+ChargePointType:
+  type: string
+  minLength: 1
+  exclusiveMinimum: true
+  maxLength: 10
+  description: The chargePointType is extended from AC and DC to the options mentioned below. The enhancement enables the CPOs to define the CPTs more precisely and offer diversified services.
+    * 'AC' - Alternating current
+    * 'DC' - Direct current
+    * 'Super_95' - Premium unleaded petrol having octance rating of 95
+    * 'Super_Plus' - High octane rating fuel containing 5-10% of ethanol
+    * 'Super_E10' - Petrol fuel with an ethanol content of up to 10 percent and an octane rating of at least 95
+    * 'Diesel' - Liquid fuel used in diesel engines, whose ignition takes place without any spark
+    * 'LPG' - Liquefied petroleum gas
+    * 'CNG' - Compressed natural gas
+    * 'LNG' - Liquified natural gas
+    * 'H2' - Hydrogen fuel
+    * 'Ethanol' - Ethyl alcohol as fuel
+    * 'AdBlue' - Diesel exhaust fluid used in vehicles with Selective Catalytic Reduction (SCR)
+    * 'Other' - Other chargepoint types
+
+  enum:
+    - AC
+    - DC
+    - Super_95
+    - Super_Plus
+    - Super_E10
+    - Diesel
+    - LPG
+    - CNG
+    - LNG
+    - H2
+    - Ethanol
+    - AdBlue
+    - Other
+
+
+ConnectorType:
+  type: object
+  description: Defines a power outlet at an EVSE in terms of its connector standard and format (socket/cable)
+  required:
+    - connectorStandard
+    - connectorFormat
+  properties:
+
+    connectorStandard:
+
+      # The standard of the installed connector.
+      $ref: '#/ConnectorStandardType'
+
+    connectorFormat:
+
+      #   The format of the connector, depending on the source device.
+      $ref: '#/ConnectorFormatType'
+
+
+    tariffId:
+
+      # Reference to a tariff, if tariffs are exchanged through the CHS.
+      $ref: '#/TariffId'
+
+
+ConnectorStandardType:
+  type: string
+  description: The socket or plug standard of the charging point
+    * 'Chademo'- The connector type is CHAdeMO, DC
+    * 'IEC_62196_T1'-   IEC 62196 Type 1 "SAE J1772"
+    * 'IEC_62196_T1_COMBO'- Combo Type 1 based, DC
+    * 'IEC_62196_T2'-   IEC 62196 Type 2 "Mennekes"
+    * 'IEC_62196_T2_COMBO' - Combo Type 2 based, DC
+    * 'IEC_62196_T3A' IEC 62196 Type 3A
+    * 'IEC_62196_T3C'  IEC 62196 Type 3C "Scame"
+    * 'DOMESTIC_A' Standard/Domestic household, type "A", NEMA 1-15, 2 pins
+    * 'DOMESTIC_B' Standard/Domestic household, type "B", NEMA 5-15, 3 pins
+    * 'DOMESTIC_C' Standard/Domestic household, type "C", CEE 7/17, 2 pins
+    * 'DOMESTIC_D' Standard/Domestic household, type "D", 3 pin
+    * 'DOMESTIC_E' Standard/Domestic household, type "E", CEE 7/5 3 pins
+    * 'DOMESTIC_F' Standard/Domestic household, type "F", CEE 7/4, Schuko, 3 pins
+    * 'DOMESTIC_G' Standard/Domestic household, type "G", BS 1363, Commonwealth, 3 pins
+    * 'DOMESTIC_H' Standard/Domestic household, type "H", SI-32, 3 pins
+    * 'DOMESTIC_I' Standard/Domestic household, type "I", AS 3112, 3 pins
+    * 'DOMESTIC_J'  Standard/Domestic household, type "J", SEV 1011, 3 pins
+    * 'DOMESTIC_K' Standard/Domestic household, type "K", DS 60884-2-D1, 3 pins
+    * 'DOMESTIC_L'  Standard/Domestic household, type "L", CEI 23-16-VII, 3 pins
+    * 'TESLA_R' Tesla Connector "Roadster"-type (round, 4 pin)
+    * 'TESLA_S' Tesla Connector "Model-S"-type (oval, 5 pin)
+    * 'IEC_60309_2_single_16'IEC 60309-2 Industrial Connector single phase 16 Amperes (usually blue)
+    * 'IEC_60309_2_three_16'   IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
+    * 'IEC_60309_2_three_32' IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
+    * 'IEC_60309_2_three_64' IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
+    * 'LPG  ' ACME, DISH, Bajonett, Euronozzle
+    * 'LNG' Universal
+    * 'CNG' NGV1, NGV2
+    * 'H2' SAE J2601
+    * 'SUPER_95' Universal
+    * 'SUPER_PLUS' Universal
+    * 'SUPER_E10' Universal
+    * 'DIESEL'  Universal
+    * 'ETHANOL'  Universal
+    * 'ADBLUE' Universal
+  enum:
+    -  Chademo
+    -  IEC_62196_T1
+    -  IEC_62196_T1_COMBO
+    -  IEC_62196_T2
+    -  IEC_62196_T2_COMBO
+    -  IEC_62196_T3A
+    -  IEC_62196_T3C
+    -  DOMESTIC_A
+    -  DOMESTIC_B
+    -  DOMESTIC_C
+    -  DOMESTIC_D
+    -  DOMESTIC_E
+    -  DOMESTIC_F
+    -  DOMESTIC_G
+    -  DOMESTIC_H
+    -  DOMESTIC_I
+    -  DOMESTIC_J
+    -  DOMESTIC_K
+    -  DOMESTIC_L
+    -  TESLA_R
+    -  TESLA_S
+    -  IEC_60309_2_single_16
+    -  IEC_60309_2_three_16
+    -  IEC_60309_2_three_32
+    -  IEC_60309_2_three_64
+    -  LPG
+    -  LNG
+    -  CNG
+    -  H2
+    -  SUPER_95
+    -  SUPER_PLUS
+    -  SUPER_E10
+    -  DIESEL
+    -  ETHANOL
+    -  ADBLUE
+
+ConnectorFormatType:
+  type: string
+  description: The format of the connector, whether it is a socket or a plug.
+    * 'Socket' - The connector is a socket; the EV user needs to bring a fitting plug/cable.
+    * 'Cable'- The connector is an attached cable; the EV users car needs to have a corresponding   inlet.
+    * 'Nozzle'- The connector is a nozzle; used normally at conventional fuel stations.
+    * 'Other'- The connector is of another type, like a nozzle with an attached hose.
+
+  enum:
+    - Socket
+    - Cable
+    - Nozzle
+    - Other
+
+
+EmtId:
+  type: object
+  description: The authorisation tokens are defined according to the specification of the EMT-ID (Token ID). Each token consists of a token instance which holds the payload and at least the token type. The sub-type is for further specification of the general token type.
+
+  required:
+    - instance
+    - representation
+    - type
+  properties:
+
+    instance:
+      type: string
+      minLength: 1
+      maxLength: 36
+      description: Specification according to the token type
+      example: 43
+
+    representation:
+      $ref: '#/TokenRepresentation'
+
+
+    type:
+      $ref: '#/TokenType'
+
+
+    subType:
+      $ref: '#/TokenSubType'
+
+CdrStatusType:
+  type: string
+  # The status values possible when a CPO uploads/re-uploads a CDR are new/revised respectively. When the CPO decides to finally forego the payment of a declined CDR, it shold be able to upload them as 'rejected' (POST CDRs).
+  # The status values possible when a CPO wants to check the CDR it posted, are 'declined/rejected/approved'. When no values are set by the CPO, eCHS returns the CDRs with status 'Declined'.(GET /CDRs/CheckCDRs)
+  # The status values possible when an EMSP fetches CDRs from eCHS are accepted/revised/rejected/approved.When no values are set by the EMSP, eCHS returns the CDRs with status 'accepted and revised'.(GET /CDRs)
+  description: Defines which status of CDRs to return.Available statuses are accepted, revised, rejected, approved.  Reflects the current status of the CDR. This is reflecting the status of internal processing in the clearing house. The value cannot be changed by the partner's systems directly. Implicit changes are made while uploading (including revised, rejected CDRs), approving or declining CDRs.
+    * 'new' - A new CDR before upload to the CHS.
+    * 'accepted'- An uploaded CDR was accepted by the CHS as plausible.
+    * 'rejected'- The checked CDR again rejected by the CHS and is to be archived.
+    * 'declined'- The CDR was declined by the owner (EMSP).
+    * 'approved'- The CDR was approved by the owner (EMSP).
+    * 'revised'- The CDR was revised by the CPO and uploaded again. Only previously accepted or declined CDRs can be revised.
+  # Reflects the current status of the CDR. This is reflecting the status of internal processing in the clearing house. The value cannot be changed by the partner's systems directly. Implicit changes are made while uploading (including revised, rejected CDRs), approving or declining CDRs.
+  enum:
+    - new
+    - accepted
+    - rejected
+    - declined
+    - approved
+    - revised
+
+RatingsType:
+  type: object
+  description: Defines the ratings of a charge point. The values can be displayed to the user or used to calculate charge time forecasts. Depending on the used plug type the effective available power might be lower.
+  required:
+    - maximumPower
+
+  properties:
+    maximumPower:
+      type: number
+      format: float
+      description: The maximum available power at this charge point at nominal voltage over all available phases of the line.
+    guaranteedPower:
+      type: number
+      format: float
+      description: The minimum guaranteed mean power in case of load management. Should be set to maximum when no load management applied.
+    nominalVoltage:
+      type: integer
+      minimum: 0
+      exclusiveMinimum: true
+      maximum: 1000
+      description: The Nominal voltage for the charge point
+
+CdrPeriodType:
+  type: object
+  description: This class defines one time and billing period in the charge detail record. Two periods may overlap in time. Each period represents one billing item of the charging process.
+  required:
+    - startDateTime
+    - endDateTime
+    - billingItem
+    - billingValue
+    - itemPrice
+  properties:
+
+    startDateTime:
+      # Starting time of the period. Must be equal or later than startDateTime of the CDRInfo.
+      $ref: './generic.yaml#/LocalDateTimeType'
+
+    endDateTime:
+      # Ending time of the period. Must be equal or earlier than endDateTime of the CDRInfo.
+      $ref: './generic.yaml#/LocalDateTimeType'
+
+    billingItem:
+      # Defines what the EMSP is charged for during this period.
+      $ref: '#/BillingItemType'
+
+    billingValue:
+      type: number
+      format: float
+      description: The value the EMSP is charged for. The unit of this value depends on the billingItem.
+
+    itemPrice:
+      type: number
+      format: float
+      description: Price per unit of the billingItem in the given currency.
+
+    periodCost:
+      type: number
+      format: float
+      description: Total cost of the period in the given currency.
+
+    taxrate:
+      type: integer
+      description: Tax rate in percent to be paid for the charging process in the EVSE operator's country.
+
+BillingItemType:
+  type: string
+  description: The billing items for charging periods and tariffs.
+    * 'parkingtime'-  Price for the time of parking. The billingValue represents the time in hours.
+    * 'usagetime'-  Price for the time of EVSE usage. The billingValue represents the time in hours.
+    * 'energy'-  Price for the consumed energy. The billingValue represents the energy in kilowatt-hours.
+    * 'power'-  Price for the used power level. The billingValue represents the maximum power in kilowatts.
+    * 'serviceFee'  General service fee per charging process. The billingValue represents a multiplier and thus has to be set to "1.0".
+    * 'reservation'-  One time fee for a reservation of the EVSE. The billingValue represents a multiplier and thus has to be set to "1.0".
+    * 'reservationtime'-  Price for the duration of a reservation. The billingValue represents the time in hours.
+    * 'volume' - Price for the quantity used in liter.
+    * 'mass' - Price for the quantity used in kilogram (kg).
+
+  enum:
+    - parkingtime
+    - usagetime
+    - energy
+    - power
+    - serviceFee
+    - reservation
+    - reservationtime
+    - volume
+    - mass
+
+
+
+TariffId:
+  type: string
+  description: The tariff-ID follows a similar syntax to that of contract- and EVSE-IDs. The The Operator-ID is followed by a 'T' that signifies a tariff and a unique instance of up to 30 characters. The max. length allowed it string(36). Alphanumeric. Identifies a tariff. Unique within one EVSE Operator. Must begin with the Operator-ID, without separators.
+  # More patterns are possible. The pattern '^[A-Z]{2}[A-Za-z0-9]{3}[Tt][A-Za-z0-9][A-Za-z0-9\*]{0,29}$' is also possible.
+  pattern: '^[A-Z]{2}\*[A-Za-z0-9]{3}\*[Tt][A-Za-z0-9][A-Za-z0-9\*]{0,29}$'
+  example: YYABCT01
+
+TokenRepresentation:
+  type: string
+  default: plain
+  description: The token instance may be represented by its hash value (hexadecimal representation of the hash value). This specifies in which representation the token instance is set.
+    * 'plain' - The token instance is represented in plain text. (default)
+    * 'sha-160' - The token instance is represented in its 160bit SHA1 hash in 40 hexadecimal digits.
+    * 'sha-256' - The token instance is represented in its 256bit SHA2 hash in 64 hexadecimal digits.
+  enum:
+    - plain
+    - sha-160
+    - sha-256
+
+TokenType:
+  type: string
+  description: The type of the supplied instance for basic filtering. The remote token type is only being used in the CDR of a remotely started charging process. Tokens with type remote shall not be included in a whitelist.
+    * 'rfid' - All kinds of RFID-Cards. Field tokenInstance holds the hexadecimal representation of the card's UID, Byte order- big endian, no zero-filling.
+    * 'remote' - All means of remote authentication through the backend. Field tokenInstance holds a reference to the remote authorization or session. In case of a OCHPdirect authorization the directId.
+    * '15118' - All authentication means defined by ISO/IEC 15118 except RFID-cards.
+    * 'other' - To accommodate the other energy sources incorporated into the protocol.
+  # The remote token type is only beeing used in the CDR of a remotely started charging process. Tokens with type remote shall not be included in a whitelist.
+  enum:
+    - rfid
+    - remote
+    - '15118'
+    - other
+  example: rfid
+
+TokenSubType:
+  type: string
+  description: The exact type of the supplied instance for referencing purpose.
+    * 'mifareCls' - Mifare Classic Card
+    * 'mifareDes' - Mifare Desfire Card
+    * 'calypso' - Calypso Card
+  enum:
+    - mifareCls
+    - mifareDes
+    - calypso
