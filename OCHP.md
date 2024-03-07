@@ -1705,32 +1705,62 @@ Operating 24/7 except for New Year 2015:
 
 
 ###### Example two
-Operating on Weekdays from 8am till 8pm with one exceptional opening on
-22/6/2014 and one exceptional closing the Monday after:
+Operating on Weekdays from 8am until 8pm and Saturdays from 10am until 4pm with one exceptional opening on
+22/6/2014 and one exceptional closing the Tuesday after:
 
 ```XML
 <operatingTimes>
-     <regularHours weekday="1" periodBegin="08:00" periodEnd="20:00">
-     <regularHours weekday="2" periodBegin="08:00" periodEnd="20:00">
-     <regularHours weekday="3" periodBegin="08:00" periodEnd="20:00">
-     <regularHours weekday="4" periodBegin="08:00" periodEnd="20:00">
-     <regularHours weekday="5" periodBegin="08:00" periodEnd="20:00">
-     <exceptionalOpenings
-         periodBegin="2014-06-21T09:00:00Z" periodEnd="2014-06-21T12:00:00Z">
-     <exceptionalClosings
-         periodBegin="2014-06-24T00:00:00Z" periodEnd="2014-06-25T00:00:00Z">
+	<regularHours weekday="1" periodBegin="08:00" periodEnd="20:00">
+	<regularHours weekday="2" periodBegin="08:00" periodEnd="20:00">
+	<regularHours weekday="3" periodBegin="08:00" periodEnd="20:00">
+	<regularHours weekday="4" periodBegin="08:00" periodEnd="20:00">
+	<regularHours weekday="5" periodBegin="08:00" periodEnd="20:00">
+	<regularHours weekday="6" periodBegin="10:00" periodEnd="16:00">
+     	<exceptionalOpenings>
+        	<periodBegin>
+         		<DateTime>2014-06-22T09:00:00Z</DateTime>
+		</periodBegin>
+		<periodEnd>
+			<DateTime>2014-06-22T12:00:00Z</DateTime>
+		</periodEnd>
+     	</exceptionalOpenings>
+     	<exceptionalClosings>
+        	<periodBegin>
+         		<DateTime>2014-06-24T00:00:00Z</DateTime>
+		</periodBegin>
+		<periodEnd>
+			<DateTime>2014-06-25T00:00:00Z</DateTime>
+		</periodEnd>
+	</exceptionalClosings>
 </operatingTimes>
 ```
 
 This represents the following schedule, where ~~stroked out~~ days are without operation hours, **bold** days are where exceptions apply and regular displayed days are where the regular schedule applies.
 
 
-| Weekday   | Mo | Tu | We | Th | Fr | Sa     | Su     | Mo | Tu         | We | Th | Fr | Sa     | Su     |
-|-----------|----|----|----|----|----|--------|--------|----|------------|----|----|----|--------|--------|
-| Date      | 16 | 17 | 18 | 19 | 20 | **21** | ~~22~~ | 23 | **~~24~~** | 25 | 26 | 27 | ~~28~~ | ~~29~~ |
-| Open from | 08 | 08 | 08 | 08 | 08 | 09     | -      | 08 | -          | 08 | 08 | 08 | -      | -      |
-| Open till | 20 | 20 | 20 | 20 | 20 | 12     | -      | 20 | -          | 20 | 20 | 20 | -      | -      |
+| Weekday    | Mo | Tu | We | Th | Fr | Sa     | Su     | Mo | Tu         | We | Th | Fr | Sa     | Su     |
+|------------|----|----|----|----|----|--------|--------|----|------------|----|----|----|--------|--------|
+| Date       | 16 | 17 | 18 | 19 | 20 | 21     | **22** | 23 | **~~24~~** | 25 | 26 | 27 | 28     | ~~29~~ |
+| Open from  | 08 | 08 | 08 | 08 | 08 | 10     | 09     | 08 | -          | 08 | 08 | 08 | 10     | -      |
+| Open until | 20 | 20 | 20 | 20 | 20 | 16     | 12     | 20 | -          | 20 | 20 | 20 | 16     | -      |
 
+
+###### Example three
+Irregular operating hours, open only on one weekend in April 2016 from Friday 16:00h until Sunday 20:00h:
+
+```XML
+<operatingTimes>
+	<twentyfourseven>false</twentyfourseven>
+	<exceptionalOpenings>
+	        <periodBegin>
+	         	<DateTime>2016-04-22T16:00:00Z</DateTime>
+		</periodBegin>
+		<periodEnd>
+			<DateTime>2014-06-24T20:00:00Z</DateTime>
+		</periodEnd>
+     	</exceptionalOpenings>
+</operatingTimes>
+```
 
 ### RegularHoursType *class*
 
