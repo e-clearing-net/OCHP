@@ -14,15 +14,17 @@ PaginatedResult:
     data:
       type: array
       items: {}  #  any type of items
-    totalcount:
-      type: number
-      example: 352
     limit:
       type: number
       example: 100
+    cursorNext:
+      type: string
+      maxlength: 200
+      example: "eyJpZCI6MTAwMDEsInNlcXVlbmNlIjozNTYyMX0="
     linkNext:
       type: string
-      example: https://www.server.com/emp/cdr/findByTags/?offset=100&limit=100
+      maxlength: 500
+      example: "https://www.server.com/cdrs?limit=100&cursorNext=eyJpZCI6MTAwMDEsInNlcXVlbmNlIjozNTYyMX0="
 
 Result:
   type: object
