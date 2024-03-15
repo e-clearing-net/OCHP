@@ -141,7 +141,7 @@ paths:
                     properties:
                       result:
                         # the resultCodeType 'ok' is to be send.
-                        $ref: './schemas/result.yaml#/Result'
+                        $ref: 'schemas/result.yaml#/Result'
             
           '206':
             # This response is sent by the CHS when the EMSP  sets/updates the  Roaming authorisation data/lists in the CHS, however not all were  successfully set/updated due to some reason. The CHS sends the Result value 'partly' and also sends the roaming authorisation lists that could not be updated in the CHS.
@@ -201,7 +201,7 @@ paths:
                     properties:
                       result:
                        # the resultCodeType 'ok' is to be send.
-                        $ref: './schemas/result.yaml#/Result'
+                        $ref: 'schemas/result.yaml#/Result'
             
           '206':
             # This response is sent by the CHS when the EMSP carries out partial updates on the  Roaming authorisation data/lists in the CHS, however not all were  successful due to some reason. The CHS sends the Result value 'partly' and also sends the roaming authorisation lists that could not be updated in the CHS.
@@ -262,7 +262,7 @@ paths:
                     - EvseId
                 properties:
                     EvseId:
-                        $ref: './schemas/cdr.yaml#/EvseId'
+                        $ref: 'schemas/cdr.yaml#/EvseId'
               
         requestBody:
           required: true
@@ -346,7 +346,7 @@ paths:
               schema:
                   # default: accepted and revised
                   # optional field (cdrStatus), but when provided should contain at most one value. If value not provided by client then the default values 'accepted and revised CDRs'are used.
-                $ref: './schemas/cdr.yaml#/CdrStatusType'
+                $ref: 'schemas/cdr.yaml#/CdrStatusType'
       
           
       responses:
@@ -357,11 +357,11 @@ paths:
               application/json:
                 schema:
                   allOf:
-                    - $ref: "./schemas/result.yaml#/PaginatedResult"
+                    - $ref: "schemas/result.yaml#/PaginatedResult"
                     - type: object
                       properties:
                         data:
-                          $ref: "./schemas/cdr.yaml#/CDRInfo"
+                          $ref: "schemas/cdr.yaml#/CDRInfo"
             
           '401':
             #  The response send by the CHS when the EMSP is  Not-authorised to request for the data. It may be due to a Wrong username and/password. Result value 'not-authorised' is sent
@@ -412,7 +412,7 @@ paths:
                     properties:
                       result:
                         # the resultCodeType 'ok' is to be send.
-                        $ref: './schemas/result.yaml#/Result'
+                        $ref: 'schemas/result.yaml#/Result'
           
           '206':
             # This response is sent by the CHS when the CPO uploads the charge detail records  in the CHS, however not all were  successfully uploaded instead refused by the CHS. The CHS sends the Result value 'partly' and also sends the charge detail records that it considers implausible and refuses. 
@@ -467,7 +467,7 @@ paths:
                     properties:
                       result:
                         # the resultCodeType 'ok' is to be send.
-                        $ref: './schemas/result.yaml#/Result'
+                        $ref: 'schemas/result.yaml#/Result'
           '206':
             # This response is sent by the CHS when the EMSP tries to send the list of Approved and/declined CDRs, however not all were  successful due to some reason. The CHS sends the Result value 'partly' and also sends the cdr Ids, whose status could not be uploaded in the CHS.
               description: Partially-successful (partial) update of cdr status by the EMSP into the CHS (ConfirmCDRs.conf).
@@ -535,7 +535,7 @@ paths:
                   # default: declined
                   # cannot have 'revised' as an enum
                   # optional field (cdrStatus), but when provided should contain at most one value. If value not provided by client then the default value 'declined CDRs'are used.
-                  $ref: './schemas/cdr.yaml#/CdrStatusType'
+                  $ref: 'schemas/cdr.yaml#/CdrStatusType'
 
 
       responses:
@@ -546,11 +546,11 @@ paths:
               application/json:
                 schema:
                   allOf:
-                    - $ref: "./schemas/result.yaml#/PaginatedResult"
+                    - $ref: "schemas/result.yaml#/PaginatedResult"
                     - type: object
                       properties:
                         data:
-                          $ref: "./schemas/cdr.yaml#/CDRInfo"
+                          $ref: "schemas/cdr.yaml#/CDRInfo"
         
           '401':
             #  The response send by the CHS when the CPO is  Not-authorised to request for the data. It may be due to a Wrong username and/password. Result value 'not-authorised' is sent
@@ -598,7 +598,7 @@ paths:
                     properties:
                       result:
                         # the resultCodeType 'ok' is to be send.
-                        $ref: './schemas/result.yaml#/Result'
+                        $ref: 'schemas/result.yaml#/Result'
         '401':
             # The response send by the CHS when the CPO/PSO is Not-authorised to update data. It may be due to a Wrong username and/password. Result value 'not-authorised' is sent
           
@@ -702,7 +702,7 @@ paths:
                     properties:
                       result:
                         # the resultCodeType 'ok' is to be send.
-                        $ref: './schemas/result.yaml#/Result'
+                        $ref: 'schemas/result.yaml#/Result'
             
           '206':
             # This response is sent by the CHS when the CPO uploads or updates the tariff information to the Clearing House, however not all were  successfully uploaded/updated due to some reason. The CHS sends the Result value 'partly' and also sends the records that could not be updated/uploaded in the CHS.
@@ -825,7 +825,7 @@ paths:
                     properties:
                       result:
                         # the resultCodeType 'ok' is to be send.
-                        $ref: './schemas/result.yaml#/Result'
+                        $ref: 'schemas/result.yaml#/Result'
             
           '206':
             # This response is sent by the CHS when the CPO  uploads the Charge Point Information Records in the CHS, however not all were  successfully uploaded due to some reason. The CHS sends the Result value 'partly' and also sends the Charge Point Information Records that could not be uploaded in the CHS.
@@ -885,7 +885,7 @@ paths:
                     properties:
                       result:
                       # the resultCodeType 'ok' is to be send.
-                        $ref: './schemas/result.yaml#/Result'
+                        $ref: 'schemas/result.yaml#/Result'
             
           '206':
             # This response is sent by the CHS when the CPO carries out updates on the Charge Point records in the CHS, however not all were  successful due to some reason. The CHS sends the Result value 'partly' and also sends the Charge Point Records that could not be updated in the CHS.
@@ -990,7 +990,7 @@ components:
           application/json:
               schema:
                 # depending on the error the resultCodeType 'invalid-id' and/ 'format' should be used
-                $ref: './schemas/result.yaml#/Result'
+                $ref: 'schemas/result.yaml#/Result'
       
   
     Not-authorised:
@@ -999,7 +999,7 @@ components:
           application/json:
             schema:
                # the resultCodeType 'not-authorised' should be used
-              $ref: './schemas/result.yaml#/Result'
+              $ref: 'schemas/result.yaml#/Result'
                     
     InternalServerError:
       description: Internal server error
@@ -1007,7 +1007,7 @@ components:
         application/json:
             schema:
                 # the resultCodeType 'server' should be used
-              $ref: './schemas/result.yaml#/Result'
+              $ref: 'schemas/result.yaml#/Result'
                    
     Forbidden:
       description: Forbidden. No roaming connections set; No own partners connected to this user; Roaming partners have no data.
@@ -1015,7 +1015,7 @@ components:
           application/json:
               schema:
                    # the resultCodeType 'roaming' should be used
-                $ref: './schemas/result.yaml#/Result'
+                $ref: 'schemas/result.yaml#/Result'
       
   schemas:
     
@@ -1069,7 +1069,7 @@ components:
         - roamingAuthorisationInfoArray
       properties:
         result:
-          $ref: './schemas/result.yaml#/Result'
+          $ref: 'schemas/result.yaml#/Result'
                 
         roamingAuthorisationItemInfo:
                 $ref: '#/components/schemas/ItemInfo'
@@ -1098,7 +1098,7 @@ components:
         - roamingAuthorisationInfo
       properties:
         result:
-          $ref: './schemas/result.yaml#/Result'
+          $ref: 'schemas/result.yaml#/Result'
           
         roamingAuthorisationInfo:
         
@@ -1113,7 +1113,7 @@ components:
       properties:
         result:
           # the Result would be partly in this case.
-          $ref: './schemas/result.yaml#/Result'
+          $ref: 'schemas/result.yaml#/Result'
           
         refusedRoamingAuthorisationInfo:
           # Contains the roaming authorisation records that could not be set in CHS.
@@ -1134,7 +1134,7 @@ components:
               # CPO should also be able to add the declined CDRs finally with status 'rejected'.
               type: array
               items:
-                $ref: './schemas/cdr.yaml#/CDRInfo'
+                $ref: 'schemas/cdr.yaml#/CDRInfo'
 
 
     ImplausibleCDRsResponseModel:
@@ -1148,12 +1148,12 @@ components:
       properties:
         result:
           # the Result would be partly in this case.
-          $ref: './schemas/result.yaml#/Result'
+          $ref: 'schemas/result.yaml#/Result'
            
         implausibleCdrsArray:
            type: array
            items:
-              $ref: './schemas/cdr.yaml#/CdrId'
+              $ref: 'schemas/cdr.yaml#/CdrId'
           
     ConfirmCDRs:
       type: object
@@ -1177,13 +1177,13 @@ components:
       properties:
         result:
           # the Result would be partly in this case.
-          $ref: './schemas/result.yaml#/Result'
+          $ref: 'schemas/result.yaml#/Result'
           
         refusedcdrIds:
           # Contains the list of IDs that could not be set in CHS.
           type: array
           items:
-            $ref: './schemas/cdr.yaml#/CdrId'
+            $ref: 'schemas/cdr.yaml#/CdrId'
     
     ItemInfo:
       type: object
@@ -1228,7 +1228,7 @@ components:
         properties:
             result:
               # the Result would be Ok in this case.
-              $ref: './schemas/result.yaml#/Result'
+              $ref: 'schemas/result.yaml#/Result'
                   
             TariffInfoArray:
               # Contains the tariff information that is currently valid or that was changed since the time specified in lastUpdate in the request.
@@ -1245,7 +1245,7 @@ components:
       properties:
         result:
           # the Result would be partly in this case.
-          $ref: './schemas/result.yaml#/Result'
+          $ref: 'schemas/result.yaml#/Result'
               
         refusedTariffInfo:
           # Contains the tariff information records that could not be set in CHS.
@@ -1258,18 +1258,18 @@ components:
         description: Contains the CdrId and EvseId for CDRs that have been approved by the EMSP.
         properties:
           cdrId:
-            $ref: './schemas/cdr.yaml#/CdrId'
+            $ref: 'schemas/cdr.yaml#/CdrId'
           EvseId:
-            $ref: './schemas/cdr.yaml#/EvseId'
+            $ref: 'schemas/cdr.yaml#/EvseId'
             
     Declined:
         type: object
         description: Contains the CdrId and EvseId for CDRs that have been declined by the EMSP.
         properties:
           cdrId:
-            $ref: './schemas/cdr.yaml#/CdrId'
+            $ref: 'schemas/cdr.yaml#/CdrId'
           EvseId:
-            $ref: './schemas/cdr.yaml#/EvseId'
+            $ref: 'schemas/cdr.yaml#/EvseId'
     
     TariffInfo:
       type: object
@@ -1306,7 +1306,7 @@ components:
                     
                   contractId:
                     # EMA-ID the token belongs to.
-                    $ref: './schemas/cdr.yaml#/ContractId'
+                    $ref: 'schemas/cdr.yaml#/ContractId'
                   
                   permissions:
                     # Permissions for various energy sources and authorization services
@@ -1434,7 +1434,7 @@ components:
         - cdrInfoArray
       properties:
         result:
-          $ref: './schemas/result.yaml#/Result'
+          $ref: 'schemas/result.yaml#/Result'
               
         cdrsItemInfo:
               $ref: '#/components/schemas/ItemInfo'
@@ -1442,7 +1442,7 @@ components:
         cdrInfoArray:
             type: array
             items:
-              $ref: './schemas/cdr.yaml#/CDRInfo'
+              $ref: 'schemas/cdr.yaml#/CDRInfo'
               
     CDRCheck:
       type: object
@@ -1452,12 +1452,12 @@ components:
         - cdrInfoArray
       properties:
         result:
-          $ref: './schemas/result.yaml#/Result'
+          $ref: 'schemas/result.yaml#/Result'
               
         cdrInfoArray:
             type: array
             items:
-              $ref: './schemas/cdr.yaml#/CDRInfo'
+              $ref: 'schemas/cdr.yaml#/CDRInfo'
           
 
               
@@ -1677,7 +1677,7 @@ components:
       properties:
         evseId:
           # The EVSE the status is set for.
-          $ref: './schemas/cdr.yaml#/EvseId'
+          $ref: 'schemas/cdr.yaml#/EvseId'
           
         major:
           # The major status value for the EVSE
@@ -1781,7 +1781,7 @@ components:
           
         properties:
           currency:
-            $ref: './schemas/generic.yaml#/Currency'
+            $ref: 'schemas/generic.yaml#/Currency'
             
           tariffElement:
             type: array
@@ -1948,7 +1948,7 @@ components:
         properties:
           result:
             # the Result would be partly in this case.
-            $ref: './schemas/result.yaml#/Result'
+            $ref: 'schemas/result.yaml#/Result'
             
           refusedChargePointInfo:
             # Contains the charge point information records that could not be set in CHS.
@@ -1966,7 +1966,7 @@ components:
        properties:
           result:
             # the Result would be Ok in this case.
-            $ref: './schemas/result.yaml#/Result'
+            $ref: 'schemas/result.yaml#/Result'
              
           chargePointItemInfo:
             $ref: '#/components/schemas/ItemInfo'
@@ -1996,7 +1996,7 @@ components:
       properties:
         evseId:
           # Globally unique identifier
-          $ref: './schemas/cdr.yaml#/EvseId'
+          $ref: 'schemas/cdr.yaml#/EvseId'
           
         evseDescription:
             type: string
@@ -2040,7 +2040,7 @@ components:
                 
         chargePointAddress:
             # Contains the address of the charging station.
-            $ref: './schemas/generic.yaml#/AddressType'
+            $ref: 'schemas/generic.yaml#/AddressType'
 
         chargePointLocation:
             # Geographical location of the charge point itself (power outlet).
@@ -2110,7 +2110,7 @@ components:
             
         ratings:
             # Defines the ratings for the charge point.
-          $ref: './schemas/cdr.yaml#/RatingsType'
+          $ref: 'schemas/cdr.yaml#/RatingsType'
             
         userInterfaceLang:
             type: array
@@ -2128,7 +2128,7 @@ components:
             
         meteringInfo:
             # Array type mainly to serve the German Eichrecht.
-          $ref: './schemas/cdr.yaml#/MeteringInfoType'
+          $ref: 'schemas/cdr.yaml#/MeteringInfoType'
             
         truckParking:
             # If trucks can be parked at this location.

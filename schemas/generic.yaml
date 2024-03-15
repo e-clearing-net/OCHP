@@ -48,7 +48,6 @@ AddressType:
     country:
       type: string
       minLength: 2
-      exclusiveMaximum: true
       maxLength: 3
       pattern: '^[A-Z]{3}$'
       description: Alpha, three characters. ISO 3166 country code

@@ -46,18 +46,17 @@ CDRInfo:
     startDateTime:
 
       # Start date and time of the charge session (login with the RFID badge). Local time of the charge point is used.
-      $ref: './generic.yaml#/LocalDateTimeType'
+      $ref: 'generic.yaml#/LocalDateTimeType'
 
 
     endDateTime:
 
       # End date and time of the charge session (log-off with the RFID badge or physical disconnect). Must be set in the local time of the charge point.
-      $ref: './generic.yaml#/LocalDateTimeType'
+      $ref: 'generic.yaml#/LocalDateTimeType'
 
 
     durationInSeconds:
-          type: number
-          format: integer
+          type: integer
           example: 120
           description: duration of the whole charingSession in seconds
 
@@ -65,7 +64,7 @@ CDRInfo:
 
       # Contains the address of the charging station.
 
-      $ref: './generic.yaml#/AddressType'
+      $ref: 'generic.yaml#/AddressType'
 
     chargePointType:
       # Type of the charge point.
@@ -105,13 +104,12 @@ CDRInfo:
       description: Total cost (nett price, without VAT) for the entire charging process. Should always equal the sum of the individual periodCosts.
 
     currency:
-      $ref: './generic.yaml#/Currency'
+      $ref: 'generic.yaml#/Currency'
 
 
 CdrId:
   type: string
-  minLength: 6
-  exclusiveMinimum: true
+  exclusiveMinimum: 6
   maxLength: 48
   description: The CDR-ID is a unique identifier for charge data records. EvseId is incorporated into the CDR-ID to make it explicit who the CPO is.  It is composed of the CPO-ID followed by an alphanumeric instance of up to 43 characters. The length of the string is extended from “36” to “48”.
   pattern: '^[0-9A-Z]{6,48}$'
@@ -153,7 +151,7 @@ MeteringInfoFileType:
     - fileType
   properties:
     id:
-      $ref: './generic.yaml#/Uuid'
+      $ref: 'generic.yaml#/Uuid'
       description: 'id of the meteringInfoFile'
     content:
       type: string
@@ -195,8 +193,7 @@ MeteringData:
 
 ChargePointType:
   type: string
-  minLength: 1
-  exclusiveMinimum: true
+  exclusiveMinimum: 1
   maxLength: 10
   description: The chargePointType is extended from AC and DC to the options mentioned below. The enhancement enables the CPOs to define the CPTs more precisely and offer diversified services.
     * 'AC' - Alternating current
@@ -410,8 +407,7 @@ RatingsType:
       description: The minimum guaranteed mean power in case of load management. Should be set to maximum when no load management applied.
     nominalVoltage:
       type: integer
-      minimum: 0
-      exclusiveMinimum: true
+      exclusiveMinimum: 0
       maximum: 1000
       description: The Nominal voltage for the charge point
 
@@ -428,11 +424,11 @@ CdrPeriodType:
 
     startDateTime:
       # Starting time of the period. Must be equal or later than startDateTime of the CDRInfo.
-      $ref: './generic.yaml#/LocalDateTimeType'
+      $ref: 'generic.yaml#/LocalDateTimeType'
 
     endDateTime:
       # Ending time of the period. Must be equal or earlier than endDateTime of the CDRInfo.
-      $ref: './generic.yaml#/LocalDateTimeType'
+      $ref: 'generic.yaml#/LocalDateTimeType'
 
     billingItem:
       # Defines what the EMSP is charged for during this period.
