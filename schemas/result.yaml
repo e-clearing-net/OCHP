@@ -1,0 +1,62 @@
+SingleResult:
+  allOf:
+      - $ref: "#/Result"
+      - type: object
+  properties:
+    data:
+      type: object
+      items: {}  #  any type of items
+PaginatedResult:
+  allOf:
+    - $ref: "#/Result"
+    - type: object
+  properties:
+    data:
+      type: array
+      items: {}  #  any type of items
+    limit:
+      type: number
+      example: 100
+    cursorNext:
+      type: string
+      maxlength: 200
+      example: "eyJpZCI6MTAwMDEsInNlcXVlbmNlIjozNTYyMX0="
+    linkNext:
+      type: string
+      maxlength: 500
+      example: "https://www.server.com/cdrs?limit=100&cursorNext=eyJpZCI6MTAwMDEsInNlcXVlbmNlIjozNTYyMX0="
+
+Result:
+  type: object
+  required:
+    - resultCode
+    - resultDescription
+  properties:
+
+    resultCode:
+      $ref: '#/ResultCodeType'
+
+    resultDescription:
+      type: string
+      maxLength: 1000
+      description: Specifies the error in a human-readable format.
+
+ResultCodeType:
+  #oneOf:
+  type: string
+  enum:
+    - ok
+    - partly
+    - not-authorised
+    - invalid-id
+    - server
+    - format
+    - roaming
+  description: Specifies the result as a machine-readable result code.
+    * 'ok' - A complete response/data to the request was successfully send. The HTTP response code is 200/201.
+    * 'partly' - Only partial response/data to the request was send. The HTTP response code is  206.
+    * 'not-auhorised' - The requested data can not be served/processed. The user is not authorised to set the data/request the data. Wrong Username and/password. The   HTTP    response code is 401.
+    * 'invalid-id' - The requested data can not be served/processed. One or more ID (EVSE /Contract) were not valid for this user. The HTTP response code is 400.
+    * 'server' - The requested data can not be served/processed. Internal server error. The HTTP response code is 500.
+    * 'format' - The requested data can not be served/processed. Data/request has technical errors. The HTTP response code is 400.
+    * 'roaming' - The requested data can not be served/processed. Forbidden. No roaming connections set; No own partners connected to this user; Roaming partners have no data. The HTTP response code is 403.
