@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: '0.0.1'
+  version: '0.0.2'
   title: 'OCHP 1.5 JSON'
   description: 'OCHP 1.5 JSON API Prototype'
   contact:
