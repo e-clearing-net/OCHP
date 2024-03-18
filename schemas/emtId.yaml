@@ -1,0 +1,69 @@
+
+EmtId:
+  type: object
+  description: The authorisation tokens are defined according to the specification of the EMT-ID (Token ID). Each token consists of a token instance which holds the payload and at least the token type. The sub-type is for further specification of the general token type.
+
+  required:
+    - instance
+    - representation
+    - type
+  properties:
+
+    instance:
+      type: string
+      minLength: 1
+      maxLength: 36
+      description: Specification according to the token type
+      example: 43
+
+    representation:
+      $ref: '#/TokenRepresentation'
+
+
+    type:
+      $ref: '#/TokenType'
+
+
+    subType:
+      $ref: '#/TokenSubType'
+
+
+
+
+TokenRepresentation:
+  type: string
+  default: plain
+  description: The token instance may be represented by its hash value (hexadecimal representation of the hash value). This specifies in which representation the token instance is set.
+    * 'plain' - The token instance is represented in plain text. (default)
+    * 'sha-160' - The token instance is represented in its 160bit SHA1 hash in 40 hexadecimal digits.
+    * 'sha-256' - The token instance is represented in its 256bit SHA2 hash in 64 hexadecimal digits.
+  enum:
+    - plain
+    - sha-160
+    - sha-256
+
+TokenType:
+  type: string
+  description: The type of the supplied instance for basic filtering. The remote token type is only being used in the CDR of a remotely started charging process. Tokens with type remote shall not be included in a whitelist.
+    * 'rfid' - All kinds of RFID-Cards. Field tokenInstance holds the hexadecimal representation of the card's UID, Byte order- big endian, no zero-filling.
+    * 'remote' - All means of remote authentication through the backend. Field tokenInstance holds a reference to the remote authorization or session. In case of a OCHPdirect authorization the directId.
+    * '15118' - All authentication means defined by ISO/IEC 15118 except RFID-cards.
+    * 'other' - To accommodate the other energy sources incorporated into the protocol.
+  # The remote token type is only beeing used in the CDR of a remotely started charging process. Tokens with type remote shall not be included in a whitelist.
+  enum:
+    - rfid
+    - remote
+    - '15118'
+    - other
+  example: rfid
+
+TokenSubType:
+  type: string
+  description: The exact type of the supplied instance for referencing purpose.
+    * 'mifareCls' - Mifare Classic Card
+    * 'mifareDes' - Mifare Desfire Card
+    * 'calypso' - Calypso Card
+  enum:
+    - mifareCls
+    - mifareDes
+    - calypso

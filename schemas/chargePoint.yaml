@@ -1,0 +1,472 @@
+ChargePointInfo:
+  type: object
+  description: Contains information about the charge points. Static POI data regarding a charge point / EVSE.
+  required:
+    - evseId
+    - evseDescription
+    - locationId
+    - locationName
+    - locationNameLang
+    - chargePointAddress
+    - chargePointLocation
+    - openingTimes
+    - location
+    - authMethods
+    - connectors
+    - chargePointType
+  properties:
+    evseId:
+      # Globally unique identifier
+      $ref: 'generic.yaml#/EvseId'
+
+    evseDescription:
+      type: string
+      maxLength: 100
+      description: Human readable description of an EVSE
+
+    locationId:
+      type: string
+      minLength: 1
+      maxLength: 15
+      description: Alphanumeric. Identifies a location/pool of EVSEs. Unique within one EVSE Operator. All EVSEs of one locationId have to have the same address and Geocoordinates. Characters:- [A-Z], [0-9]
+      pattern: '^[A-Z0-9 ]{1,15}$'
+
+    timeStamp:
+      # Recommended. Date and time of the latest data update for this ChargePointInfo. When set it must be updated if one of the values changed.
+      $ref: 'generic.yaml#/DateTimeType'
+
+    locationName:
+      type: string
+      minLength: 1
+      maxLength: 100
+      description: Official name; should be unique in the geographical area.
+
+    locationNameLang:
+      type: string
+      maxLength: 3
+      description: Alpha, three characters. ISO-639-3 language code defining the language of the location name.
+      pattern: '^[A-Z]{3}$'
+
+    images:
+      type: array
+      description: Links to images related to the EVSE such as photos or logos.
+      items:
+        $ref: '#/EvseImageUrlType'
+
+    relatedResource:
+      type: array
+      description: Links to be visited by the user, related to the charge point or charging station.
+      items:
+        $ref: '#/RelatedResourceType'
+
+    chargePointAddress:
+      # Contains the address of the charging station.
+      $ref: 'generic.yaml#/AddressType'
+
+    chargePointLocation:
+      # Geographical location of the charge point itself (power outlet).
+      $ref: 'generic.yaml#/GeoPointType'
+
+    relatedLocation:
+      # Geographical location of related points relevant to the user.
+      $ref: 'generic.yaml#/AdditionalGeoPointType'
+
+    timeZone:
+      type: string
+      maxLength: 255
+      description: One of IANA tzdata's TZ-values representing the time zone of the location.
+      example: Europe/Zurich
+
+    openingTimes:
+      # The times the EVSE is operating and can be used for charging. Can be set to unknown.
+      $ref: '#/HoursType'
+
+    status:
+      # The current status of the charge point (static, not live-status!)
+      $ref: '#/ChargePointStatusType'
+
+    statusSchedule:
+      type: array
+      description: Planned status changes in the future. If a time span matches with the current or displayed date, the corresponding value overwrites status
+      items:
+        $ref: '#/ChargePointScheduleType'
+
+    telephoneNumber:
+      type: string
+      maxLength: 20
+      description: Numeric. Service hotline for charging station to be displayed to the EV user. Separators recommended. Recommended to be in international format including leading + and country code. (e.g. +49).
+      pattern: '^[\+]{0,1}[1-9]{0,1}[0-9 \-]{1,17}$'
+
+    location:
+      # The general type of the charge point location.
+      $ref: '#/GeneralLocationType'
+
+    parkingSpot:
+      type: array
+      description: Information about one or more parking spots associated with the EVSE.
+      items:
+        $ref: '#/ParkingSpotInfo'
+
+    restriction:
+      type: array
+      description: Restrictions applying to the usage of the charging station.
+      items:
+        $ref: '#/RestrictionType'
+
+    authMethods:
+      type: array
+      description: List of available payment or access methods on site.
+      items:
+        $ref: '#/AuthMethodType'
+
+    connectors:
+      type: array
+      description: Which receptacle type is/are present for a power outlet.
+      items:
+        $ref: 'connector.yaml#/ConnectorType'
+
+    chargePointType:
+      # The type of the charge point.
+      $ref: 'generic.yaml#/ChargePointType'
+
+    ratings:
+      # Defines the ratings for the charge point.
+      $ref: 'generic.yaml#/RatingsType'
+
+    userInterfaceLang:
+      type: array
+      description: Alpha, three characters. Language(s) of the user interface or printed on-site instructions. ISO-639-3 language code
+      items:
+        $ref: 'generic.yaml#/UserInterfaceLang'
+
+    maxReservation:
+      type: number
+      format: float
+      minimum: 0
+      exclusiveMinimum: true
+      maximum: 1000
+      description: If a reservation of this charge point is possible, this is the maximum duration the CPO will allow a reservation for (in minutes). Recommendation:- 30 minutes.
+
+    meteringInfo:
+      #  mainly to serve the German Eichrecht.
+      $ref: 'generic.yaml#/MeteringInfoSupportType'
+
+    truckParking:
+      # If trucks can be parked at this location.
+      $ref:  '#/TruckParkingType'
+
+EvseImageUrlType:
+  # This class references images related to a EVSE in terms of a file name or uri. According to the roaming connection between one EVSE Operator and one or more Navigation Service Providers the hosting or file exchange of image payload data has to be defined.
+  type: object
+  description: This class references images related to a EVSE in terms of a file name or uri.
+  required:
+    - uri
+    - class
+    - type
+
+  properties:
+    uri:
+      type: string
+      maxLength: 255
+      description: uri from where the image data can be fetched. Must begin with a protocol of the list:- http, https, file,ftp.
+      pattern: '^(http|https|ftp|file):\/\/.+$'
+
+    thumbUri:
+      type: string
+      maxLength: 255
+      description: uri from where a thumbnail of the image can be fetched. Must begin with a protocol of the list:- http, https, file, ftp.
+      pattern: '^(http|https|ftp|file):\/\/.+$'
+
+    class:
+      # Image class for usage categorization
+      $ref: '#/ImageClass'
+
+    type:
+      type: string
+      minLength: 1
+      maxLength: 4
+      description: Image type like:- gif, jpeg, png, svg
+
+    width:
+      type: integer
+      minimum: 0
+      exclusiveMinimum: true
+      maximum: 99999
+      exclusiveMaximum: false
+      description: Width of the full scale image
+
+    height:
+      type: integer
+      minimum: 0
+      exclusiveMinimum: true
+      maximum: 99999
+      exclusiveMaximum: false
+      description: Height of the full scale image
+
+TruckParkingType:
+  type: object
+  description: If trucks can be parked at this location. This value if provided can be used to inform which category of trucks and how many trucks can be parked at this location.
+  required:
+    - lightTruck
+    - mediumTruck
+    - heavyTruck
+  properties:
+    lightTruck:
+      type: integer
+      description: Number of light-duty trucks parking spots.
+
+    mediumTruck:
+      type: integer
+      description: Number of medium-duty trucks parking spots
+
+    heavyTruck:
+      type: integer
+      description: Number of heavy-duty trucks parking spots.
+
+RelatedResourceType:
+  type: object
+  description: This class defines a resource related to the charge point or charging station.A resource can have multiple classes to indicate a combination of resources on one web site.
+  required:
+    - uri
+    - class
+  properties:
+    uri:
+      type: string
+      maxLength: 255
+      description: Referencing uri to the resource. Must begin with a protocol of the list:- http, https.
+      pattern: '^(http|https):\/\/.+$'
+
+    class:
+      # Class(es) of the related url to indicate the referenced content and/or functionality.
+      $ref: '#/RelatedResourceClass'
+
+ImageClass:
+  type: string
+  description: The class of a EVSE image to obtain the correct usage in a user presentation. Has to be set accordingly to the image content in order to guaranty the right usage.
+    * 'networkLogo' -  logo of an associated roaming network to be displayed with the EVSE for example in lists, maps and detailed information view
+    * 'operatorLogo'-  logo of the charge points operator, for example a municipal, to be displayed with the EVSEs detailed information view or in lists and maps, if no networkLogo is present
+    * 'ownerLogo' -  logo of the charge points owner, for example a local store, to be displayed with the EVSEs detailed information view
+    * 'stationPhoto' -  full view photo of the station in field. Should show the station only
+    * 'locationPhoto' -  location overview photo. Should indicate the location of the station on the site or street.
+    * 'entrancePhoto' -  location entrance photo. Should show the car entrance to the location from street side
+    * 'otherPhoto' -  other related photo to be displayed with the stations detailed information view
+    * 'otherLogo' -  other related logo to be displayed with the stations detailed information view
+    * 'otherGraphic' -  other related graphic to be displayed with the stations detailed information view
+  enum:
+    - networkLogo
+    - operatorLogo
+    - ownerLogo
+    - stationPhoto
+    - locationPhoto
+    - entrancePhoto
+    - otherPhoto
+    - otherLogo
+    - otherGraphic
+
+
+RelatedResourceClass:
+  type: string
+  description: The class of referenced related resource.
+    * 'operatorMap' -  direct link to this charge point on a map of the operator
+    * 'operatorPayment' -  link to a payment page of the operator for contractless direct payment
+    * 'stationInfo' -  further information on the charging station
+    * 'surroundingInfo' -  further information on the surroundings of the charging station e.g. further POIs
+    * 'ownerHomepage' -   website of the station owner (not operator) in case of hotels, restaurants, etc.
+    * 'feedbackForm'-  form for user feedback on the charging station service
+    * 'openingTimes' -  link to a calendar or info page containing opening times (only if no other way of defining these is possible).
+  enum:
+    - operatorMap
+    - operatorPayment
+    - stationInfo
+    - surroundingInfo
+    - ownerHomepage
+    - feedbackForm
+    - openingTimes
+
+
+
+ChargePointStatusType:
+  type: string
+  description: This value represents the overall status of a charging point. Not to be confused with a live status (available, reserved, occupied, ... ) This overall status should reflect situations which are valid over several days. The live status indicates shorter valid status.
+    * 'Unknown' -  No status information available
+    * 'Operative' -  charge point is in operation and can be used
+    * 'Inoperative' -  charge point cannot be used due to maintenance, greater downtime, blocking construction works or other access restrictions (temporarily, will be operative in the future).
+    * 'Planned' -  planned charge point, will be operating soon
+    * 'Closed' -  discontinued charge point, will be deleted soon
+  enum:
+    - Unknown
+    - Operative
+    - Inoperative
+    - Planned
+    - Closed
+
+ChargePointScheduleType:
+  type: object
+  description: This type is used to schedule status periods in the future. The NSP can provide this information to the EV user for trip planning purpose. A period MAY have no end.
+  required:
+    - startDate
+    - status
+  properties:
+    startDate:
+      # Begin of the scheduled period.
+      $ref: 'generic.yaml#/DateTimeType'
+
+    endDate:
+      # End of the scheduled period, if known.
+      $ref: 'generic.yaml#/DateTimeType'
+
+    status:
+      # Status value during the scheduled period.
+      $ref: '#/ChargePointStatusType'
+
+GeneralLocationType:
+  type: string
+  description: Reflects the general type of the charge points location. May be used for user information.
+    * 'on-street' - parking in public space
+    * 'parking-garage' - multistorey car park
+    * 'underground-garage' - multistorey car park, mainly underground
+    * 'parking-lot' - a cleared area that is intended for parking vehicles, i.e. at super markets, bars, etc.
+    * 'private' - located in private or corporate grounds, may not be accessible to the public
+    * 'other' - none of the given possibilities
+    * 'unknown' - parking location type is not known by the operator
+  enum:
+    - on-street
+    - parking-garage
+    - underground-garage
+    - parking-lot
+    - private
+    - other
+    - unknown
+
+ParkingSpotInfo:
+  type: object
+  description: Contains all parking related information. If a parkingId is given, this ID can be used to associate parking spot live information from a PSO with this EVSE. Static POI data regarding a parking spot.
+  required:
+    - parkingId
+  properties:
+    parkingId:
+      # Globally unique identifier for this parking spot.
+      $ref: '#/ParkingId'
+
+    restriction:
+      type: array
+      description: Restrictions applying to the usage of the parking spot. If set, should include the restrictions to EVSE-usage as well.
+      items:
+        $ref: '#/RestrictionType'
+
+    floorlevel:
+      type: string
+      maxLength: 4
+      description: Alphanumeric. Level on which the charge station is located (in garage buildings) in the locally displayed numbering scheme.
+      pattern: '^[A-Z0-9\-\+/]{1,4}$'
+      example: -2
+
+    parkingSpotNumber:
+      type: string
+      maxLength: 5
+      description: Alphanumeric. Locally displayed parking slot number.
+      pattern: '^[A-Z0-9\-\+/]{1,5}$'
+      example: 10
+
+
+ParkingId:
+  type: string
+  maxLength: 36
+  description: The parking-ID follows a similar syntax to that of contract- and EVSE-IDs. The PSO-ID is followed by a 'P' that signifies a tariff and a unique instance of up to 30 characters.
+  # More patterns exist. For eg: '[A-Z]{2}\*[A-Za-z0-9]{3}\*[Pp][A-Za-z0-9][A-Za-z0-9\*]{0,29}' is also an accepted pattern.
+  pattern: '^[A-Z]{2}[A-Za-z0-9]{3}[Pp][A-Za-z0-9][A-Za-z0-9\*]{0,29}$'
+  example: DELNDP12
+
+RestrictionType:
+  type: string
+  description: This value, if provided, represents the restrictions to the usage of the charging station or parking spot for different purposes.
+    * 'evonly' - reserved parking spot for electric vehicles
+    * 'plugged' - parking allowed only while plugged in (and charging)
+    * 'disabled' - reserved parking spot for disabled people with valid ID
+    * 'customers' - parking or charging for costumer/guests only, for example in case of a hotel or shop
+    * 'motorcycles' - parking spot only suitable for (electric) motorcycles, scooters or bicycles
+    * 'carsharing'- charging / parking only for carsharing vehicles
+  enum:
+    - evonly
+    - plugged
+    - disabled
+    - customers
+    - motorcycles
+    - carsharing
+
+HoursType:
+  type: object
+  description: Opening hours for the charge point.
+  required:
+    - twentyfourseven
+    - closedCharging
+  properties:
+    # You have a CHOICE of the next 2 items at this level. 1 to 7 repetitions:
+    regularHours:
+      type: array
+      description: Regular hours, weekday based. Should not be set for representing 24/7 as this is the most common case.
+      items:
+        $ref: 'generic.yaml#/RegularHoursType'
+
+    twentyfourseven:
+      type: boolean
+      description: True to represent 24 hours per day and 7 days per week, except the given exceptions. May be set to false if opening hours are defined only by exceptionalOpenings.
+
+    closedCharging:
+      type: boolean
+      description: hould be set to true in case an EV can be charged when plugged in during off-times (i.e. when the location is closed according to the specified hours).
+
+    exceptionalOpenings:
+      type: array
+      description: Exceptions for specified calendar dates, time-range based. Periods the station is operating/accessible. For irregular hours or as addition to regular hours. May overlap regular rules.
+      items:
+        $ref: '#/ExceptionalPeriodType'
+
+    exceptionalClosings:
+      type: array
+      description: Exceptions for specified calendar dates, time-range based. Periods the station is not operating/accessible. Overwriting regularHours and twentyfourseven. Should not overlap exceptionalOpenings.
+      items:
+        $ref: '#/ExceptionalPeriodType'
+
+ExceptionalPeriodType:
+  type: object
+  description: Specifies one exceptional period for opening or access hours.
+  required:
+    - periodBegin
+    - periodEnd
+  properties:
+    periodBegin:
+      # Begin of the exception.
+      $ref: 'generic.yaml#/DateTimeType'
+
+    peridoEnd:
+      # End of the exception.
+      $ref: 'generic.yaml#/DateTimeType'
+
+AuthMethodType:
+  type: string
+  description: The authorisation and payment methods available at an EVSE for the EV user.
+    * 'Public' - Public accessible, no authorisation required
+    * 'LocalKey'- A key or token can be received at the location.(i.e. at the hotel reception or in the restaurant)
+    * 'DirectCash' - The EVSE can be accessed through direct payment in cash.
+    * 'DirectCreditcard' - The Evse can be accessed through direct payment with credit card
+    * 'RfidMifareCls' - Personal RFID token with roaming relation. (Mifare Classic)
+    * 'RfidMifareDes' - Personal token with roaming relation. (Mifare Desfire)
+    * 'RfidCalypso' - Personal RFID token with roaming relation. (Calypso)
+    * 'Iec15118' - In-car access token as specified in IEC-15118
+    * 'OchpDirectAuth' - The EVSE can be accessed through a OCHP-direct capable provider app.
+    * 'OperatorAuth' - The EVSE can be accessed through a direct online payment to the operator.
+
+  enum:
+    - Public
+    - LocalKey
+    - DirectCash
+    - DirectCreditcard
+    - DirectDebitcard
+    - RfidMifareCls
+    - RfidMifareDes
+    - RfidCalypso
+    - Iec15118
+    - OchpDirectAuth
+    - OperatorAuth
+

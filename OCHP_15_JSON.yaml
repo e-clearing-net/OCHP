@@ -262,7 +262,7 @@ paths:
                     - EvseId
                 properties:
                     EvseId:
-                        $ref: 'schemas/cdr.yaml#/EvseId'
+                        $ref: 'schemas/generic.yaml#/EvseId'
               
         requestBody:
           required: true
@@ -273,7 +273,7 @@ paths:
                     - emtId
                   properties:
                     emtId:
-                        $ref: '#/components/schemas/EmtId'
+                      $ref: 'schemas/generic.yaml#/EvseId'
         responses:
           # for each value in the Result class an error code has been created. For eg: 201 is for Result value - 'ok', 401 for a Result value 'not-authorised' etc, 400 for a Result value 'inavlid-id' and 'format', 500 for a Result value 'server' , 403 for a Result value 'roaming'
         
@@ -629,9 +629,9 @@ paths:
         - name: startDateTime
           in: query
           description: If this value is set to a point in the past the response is limited to status information that is more actual than the given value.
-          schema: 
+          schema:
             
-                $ref: '#/components/schemas/DateTimeType'
+                $ref: 'schemas/generic.yaml#/DateTimeType'
         
         - name: statusType
           in: query
@@ -639,7 +639,7 @@ paths:
               # If not set, only EVSE status values will be returned.
           schema:
                   
-                  $ref: '#/components/schemas/statusType'
+                  $ref: 'schemas/evseStatus.yaml#/StatusType'
                   
       responses:
         '200':
@@ -1030,11 +1030,11 @@ components:
       properties:
         dateFrom: 
           #Filter the results updated, starting from the mentioned date and time.
-          $ref: '#/components/schemas/DateTimeType'
+          $ref: 'schemas/generic.yaml#/DateTimeType'
         
         dateTo:
           # filter the results updated, till the mentioned date and time (inclusive).
-          $ref: '#/components/schemas/DateTimeType'
+          $ref: 'schemas/generic.yaml#/DateTimeType'
           
         offset:
           type: integer
@@ -1077,7 +1077,7 @@ components:
         roamingAuthorisationInfoArray:
           type: array
           items:
-                $ref: '#/components/schemas/RoamingAuthorisationInfo'
+            $ref: 'schemas/authorisation.yaml#/AuthorisationInfo'
           
     RequestModel:
       type: object
@@ -1088,7 +1088,7 @@ components:
           roamingAuthorisationInfoArray:
           #  type: array
           #  items:
-              $ref: '#/components/schemas/RoamingAuthorisationInfo'
+            $ref: 'schemas/authorisation.yaml#/AuthorisationInfo'
               
     SingleRoamingResponseModel:
       type: object
@@ -1102,7 +1102,7 @@ components:
           
         roamingAuthorisationInfo:
         
-                $ref: '#/components/schemas/RoamingAuthorisationInfo'
+                $ref: 'schemas/authorisation.yaml#/AuthorisationInfo'
           
     PartialSuccessResponseModel:
       type: object
@@ -1119,7 +1119,7 @@ components:
           # Contains the roaming authorisation records that could not be set in CHS.
           type: array
           items:
-              $ref: '#/components/schemas/RoamingAuthorisationInfo'
+            $ref: 'schemas/authorisation.yaml#/AuthorisationInfo'
           
     AddCdrRequestModel:
       type: object
@@ -1217,7 +1217,7 @@ components:
         tariffInfoArray:
           type: array
           items:
-                $ref: '#/components/schemas/TariffInfo'
+                $ref: 'schemas/tariff.yaml#/TariffInfo'
     
     TariffResponseModel:            
         type: object
@@ -1234,7 +1234,7 @@ components:
               # Contains the tariff information that is currently valid or that was changed since the time specified in lastUpdate in the request.
               type: array
               items:
-                  $ref: '#/components/schemas/TariffInfo'
+                  $ref: 'schemas/tariff.yaml#/TariffInfo'
                 
     refusedTariffInfoModel:
       type: object
@@ -1251,7 +1251,7 @@ components:
           # Contains the tariff information records that could not be set in CHS.
           type: array
           items:
-              $ref: '#/components/schemas/TariffInfo'
+              $ref: 'schemas/tariff.yaml#/TariffInfo'
 
     Approved:
         type: object
@@ -1260,7 +1260,7 @@ components:
           cdrId:
             $ref: 'schemas/cdr.yaml#/CdrId'
           EvseId:
-            $ref: 'schemas/cdr.yaml#/EvseId'
+            $ref: 'schemas/generic.yaml#/EvseId'
             
     Declined:
         type: object
@@ -1269,161 +1269,9 @@ components:
           cdrId:
             $ref: 'schemas/cdr.yaml#/CdrId'
           EvseId:
-            $ref: 'schemas/cdr.yaml#/EvseId'
+            $ref: 'schemas/generic.yaml#/EvseId'
     
-    TariffInfo:
-      type: object
-      # A Tariff Object consists of a list of one or more individual tariffs for individual recipients. One default individual tariff should always be defined without a specific recipient. Each individual tariff consists of tariff elements. These elements can be used to create complex Tariff structures.Changes to a tariff can always only be made to the entire tariff object. That way it is ensured that there cannot be multiple conflicting tariffs referenced at the same connector.
-      description: The information on tariff that needs to be added or updated.
-      required:
-          - tariffId
-          - individualtariff
-          
-      properties:
-        tariffId:
-          # Uniquely identifies the tariff.
-            $ref: '#/components/schemas/TariffId'
-          
-        individualTariff:
-          # Contains multiple individual tariffs dependant on intended recipient.
-            type: array
-            items: 
-                $ref: '#/components/schemas/IndividualTariffType'
-            
-    RoamingAuthorisationInfo:      
-          type: object
-          description: Contains information about a roaming authorisation card/token.
-          required: 
-            - emtId
-            - contractId
-            - expiryDate
-            - permissions
 
-          properties:
-                  emtId:
-                    # Electrical Vehicle Contract Identifier
-                        $ref: '#/components/schemas/EmtId'
-                    
-                  contractId:
-                    # EMA-ID the token belongs to.
-                    $ref: 'schemas/cdr.yaml#/ContractId'
-                  
-                  permissions:
-                    # Permissions for various energy sources and authorization services
-                    $ref: '#/components/schemas/PermissionsType'
-                    
-                  printedNumber:
-                    type: string
-                    minLength: 1
-                    maxLength: 150
-                    description: Might be used for manual authorisation
-                    example: 4424
-                  
-                  expiryDate:
-                    
-                    # Tokens may be used until the date of expiry is reached. To be handled by the partners systems. Expired roaming authorisations may be erased locally by each partner's systems.
-                  
-                    $ref: '#/components/schemas/DateTimeType'
-                    
-                  
-    EmtId:
-        type: object
-        description: The authorisation tokens are defined according to the specification of the EMT-ID (Token ID). Each token consists of a token instance which holds the payload and at least the token type. The sub-type is for further specification of the general token type.
-        
-        required:
-          - instance
-          - representation
-          - type
-        properties:
-            
-            instance:
-              type: string
-              minLength: 1
-              maxLength: 36
-              description: Specification according to the token type
-              example: 43
-           
-            representation:
-              $ref: '#/components/schemas/tokenRepresentation'
-              
-           
-            type:
-              $ref: '#/components/schemas/tokenType'
-              
-            
-            subType:
-              $ref: '#/components/schemas/tokenSubType'
-    
-    PermissionsType:
-      type: string
-      description: RoamingAuthorisationInfo class is extended by the attribute permissions. The PermissionsType (enum) can be set to multiple options. Feature will help EMPs to have better structured and organized customer portfolio.
-                  * 'AC' - Alternating current
-                  * 'DC' - Direct current
-                  * 'CNG' -  Compressed natural gas
-                  * 'LNG' - Liquified natural gas
-                  * 'Fuel' - Fuel
-                  * 'H2' - Hydrogen
-                  * 'Ethanol' - Ethyl alcohol as fuel
-                  * 'Other' - Other fuel types
-        
-      enum:
-        - AC
-        - DC
-        - CNG
-        - LNG
-        - Fuel
-        - H2
-        - Ethanol
-        - Other
-              
-    DateTimeType:
-          type: string
-        #  format: date-time
-          maxLength: 20
-          pattern: '^([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T(?:[0-9]{2}):([0-9]{2}):([0-9]{2})Z$'
-        # pattern: '^(\d{4}-\d{1,2}-\d{1,2}Td{1,2}:\d{1,2}:\d{1,2}Z)$'
-        # pattern: '(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z'
-          description: Format is according to ISO8601 UTC. The field takes 20 alphanumeric characters.
-          example: '2025-01-01T00:00:00Z'
-    
-    tokenRepresentation:
-      type: string
-      default: plain
-      description: The token instance may be represented by its hash value (hexadecimal representation of the hash value). This specifies in which representation the token instance is set.
-                           * 'plain' - The token instance is represented in plain text. (default)
-                           * 'sha-160' - The token instance is represented in its 160bit SHA1 hash in 40 hexadecimal digits.
-                           * 'sha-256' - The token instance is represented in its 256bit SHA2 hash in 64 hexadecimal digits.
-      enum:
-          - plain
-          - sha-160
-          - sha-256
-    
-    tokenType:
-      type: string
-      description: The type of the supplied instance for basic filtering. The remote token type is only being used in the CDR of a remotely started charging process. Tokens with type remote shall not be included in a whitelist.
-                     * 'rfid' - All kinds of RFID-Cards. Field tokenInstance holds the hexadecimal representation of the card's UID, Byte order- big endian, no zero-filling.
-                     * 'remote' - All means of remote authentication through the backend. Field tokenInstance holds a reference to the remote authorization or session. In case of a OCHPdirect authorization the directId.
-                     * '15118' - All authentication means defined by ISO/IEC 15118 except RFID-cards.
-                     * 'other' - To accommodate the other energy sources incorporated into the protocol.
-      # The remote token type is only beeing used in the CDR of a remotely started charging process. Tokens with type remote shall not be included in a whitelist.                     
-      enum:
-            - rfid
-            - remote
-            - '15118'
-            - other
-      example: rfid
-            
-    tokenSubType:
-      type: string
-      description: The exact type of the supplied instance for referencing purpose.
-                           * 'mifareCls' - Mifare Classic Card
-                           * 'mifareDes' - Mifare Desfire Card
-                           * 'calypso' - Calypso Card
-      enum:
-            - mifareCls
-            - mifareDes
-            - calypso
-                  
 
     CDRsConfirmation:
       type: object
@@ -1460,189 +1308,6 @@ components:
               $ref: 'schemas/cdr.yaml#/CDRInfo'
           
 
-              
-    chargePointType:
-        type: string
-        minLength: 1
-        exclusiveMinimum: true
-        maxLength: 10
-        description: The chargePointType is extended from AC and DC to the options mentioned below. The enhancement enables the CPOs to define the CPTs more precisely and offer diversified services.
-                  * 'AC' - Alternating current
-                  * 'DC' - Direct current
-                  * 'Super_95' - Premium unleaded petrol having octance rating of 95
-                  * 'Super_Plus' - High octane rating fuel containing 5-10% of ethanol
-                  * 'Super_E10' - Petrol fuel with an ethanol content of up to 10 percent and an octane rating of at least 95
-                  * 'Diesel' - Liquid fuel used in diesel engines, whose ignition takes place without any spark
-                  * 'LPG' - Liquefied petroleum gas
-                  * 'CNG' - Compressed natural gas
-                  * 'LNG' - Liquified natural gas
-                  * 'H2' - Hydrogen fuel
-                  * 'Ethanol' - Ethyl alcohol as fuel
-                  * 'AdBlue' - Diesel exhaust fluid used in vehicles with Selective Catalytic Reduction (SCR)
-                  * 'Other' - Other chargepoint types
-        
-        enum:
-            - AC
-            - DC
-            - Super_95
-            - Super_Plus
-            - Super_E10
-            - Diesel
-            - LPG
-            - CNG
-            - LNG
-            - H2
-            - Ethanol
-            - AdBlue
-            - Other
-      
-    
-    ConnectorType:
-      type: object
-      description: Defines a power outlet at an EVSE in terms of its connector standard and format (socket/cable)
-      required:
-        - connectorStandard
-        - connectorFormat
-      properties:
-      
-        connectorStandard:
- 
-          # The standard of the installed connector.
-              $ref: '#/components/schemas/ConnectorStandardType'
-          
-        connectorFormat:
- 
-          #   The format of the connector, depending on the source device.
-                $ref: '#/components/schemas/ConnectorFormatType'
-          
-            
-        tariffId:
-
-          # Reference to a tariff, if tariffs are exchanged through the CHS.
-                $ref: '#/components/schemas/TariffId'
-    
-    
-    ConnectorStandardType:
-      type: string
-      description: The socket or plug standard of the charging point
-                  * 'Chademo'- The connector type is CHAdeMO, DC
-                  * 'IEC_62196_T1'-   IEC 62196 Type 1 "SAE J1772"
-                  * 'IEC_62196_T1_COMBO'- Combo Type 1 based, DC
-                  * 'IEC_62196_T2'-   IEC 62196 Type 2 "Mennekes"
-                  * 'IEC_62196_T2_COMBO' - Combo Type 2 based, DC
-                  * 'IEC_62196_T3A' IEC 62196 Type 3A
-                  * 'IEC_62196_T3C'  IEC 62196 Type 3C "Scame"
-                  * 'DOMESTIC_A' Standard/Domestic household, type "A", NEMA 1-15, 2 pins
-                  * 'DOMESTIC_B' Standard/Domestic household, type "B", NEMA 5-15, 3 pins
-                  * 'DOMESTIC_C' Standard/Domestic household, type "C", CEE 7/17, 2 pins
-                  * 'DOMESTIC_D' Standard/Domestic household, type "D", 3 pin
-                  * 'DOMESTIC_E' Standard/Domestic household, type "E", CEE 7/5 3 pins
-                  * 'DOMESTIC_F' Standard/Domestic household, type "F", CEE 7/4, Schuko, 3 pins
-                  * 'DOMESTIC_G' Standard/Domestic household, type "G", BS 1363, Commonwealth, 3 pins
-                  * 'DOMESTIC_H' Standard/Domestic household, type "H", SI-32, 3 pins
-                  * 'DOMESTIC_I' Standard/Domestic household, type "I", AS 3112, 3 pins
-                  * 'DOMESTIC_J'  Standard/Domestic household, type "J", SEV 1011, 3 pins
-                  * 'DOMESTIC_K' Standard/Domestic household, type "K", DS 60884-2-D1, 3 pins
-                  * 'DOMESTIC_L'  Standard/Domestic household, type "L", CEI 23-16-VII, 3 pins
-                  * 'TESLA_R' Tesla Connector "Roadster"-type (round, 4 pin)
-                  * 'TESLA_S' Tesla Connector "Model-S"-type (oval, 5 pin)
-                  * 'IEC_60309_2_single_16'IEC 60309-2 Industrial Connector single phase 16 Amperes (usually blue)
-                  * 'IEC_60309_2_three_16'   IEC 60309-2 Industrial Connector three phase 16 Amperes (usually red)
-                  * 'IEC_60309_2_three_32' IEC 60309-2 Industrial Connector three phase 32 Amperes (usually red)
-                  * 'IEC_60309_2_three_64' IEC 60309-2 Industrial Connector three phase 64 Amperes (usually red)
-                  * 'LPG  ' ACME, DISH, Bajonett, Euronozzle
-                  * 'LNG' Universal
-                  * 'CNG' NGV1, NGV2
-                  * 'H2' SAE J2601
-                  * 'SUPER_95' Universal
-                  * 'SUPER_PLUS' Universal
-                  * 'SUPER_E10' Universal  
-                  * 'DIESEL'  Universal
-                  * 'ETHANOL'  Universal
-                  * 'ADBLUE' Universal
-      enum: 
-        -  Chademo  
-        -  IEC_62196_T1  
-        -  IEC_62196_T1_COMBO  
-        -  IEC_62196_T2  
-        -  IEC_62196_T2_COMBO  
-        -  IEC_62196_T3A  
-        -  IEC_62196_T3C  
-        -  DOMESTIC_A  
-        -  DOMESTIC_B  
-        -  DOMESTIC_C  
-        -  DOMESTIC_D  
-        -  DOMESTIC_E  
-        -  DOMESTIC_F  
-        -  DOMESTIC_G  
-        -  DOMESTIC_H  
-        -  DOMESTIC_I  
-        -  DOMESTIC_J  
-        -  DOMESTIC_K  
-        -  DOMESTIC_L  
-        -  TESLA_R  
-        -  TESLA_S  
-        -  IEC_60309_2_single_16  
-        -  IEC_60309_2_three_16  
-        -  IEC_60309_2_three_32
-        -  IEC_60309_2_three_64
-        -  LPG  
-        -  LNG  
-        -  CNG
-        -  H2  
-        -  SUPER_95  
-        -  SUPER_PLUS  
-        -  SUPER_E10  
-        -  DIESEL  
-        -  ETHANOL  
-        -  ADBLUE
-        
-    ConnectorFormatType:
-      type: string
-      description: The format of the connector, whether it is a socket or a plug.
-                    * 'Socket' - The connector is a socket; the EV user needs to bring a fitting plug/cable.
-                    * 'Cable'- The connector is an attached cable; the EV users car needs to have a corresponding   inlet.
-                    * 'Nozzle'- The connector is a nozzle; used normally at conventional fuel stations.
-                    * 'Other'- The connector is of another type, like a nozzle with an attached hose.
-                   
-      enum: 
-          - Socket
-          - Cable
-          - Nozzle
-          - Other
-         
-          
-    TariffId:
-      type: string
-      description: The tariff-ID follows a similar syntax to that of contract- and EVSE-IDs. The The Operator-ID is followed by a 'T' that signifies a tariff and a unique instance of up to 30 characters. The max. length allowed it string(36). Alphanumeric. Identifies a tariff. Unique within one EVSE Operator. Must begin with the Operator-ID, without separators.
-      # More patterns are possible. The pattern '^[A-Z]{2}[A-Za-z0-9]{3}[Tt][A-Za-z0-9][A-Za-z0-9\*]{0,29}$' is also possible.
-      pattern: '^[A-Z]{2}\*[A-Za-z0-9]{3}\*[Tt][A-Za-z0-9][A-Za-z0-9\*]{0,29}$'
-      example: YYABCT01
-
-
-    BillingItemType:
-      type: string
-      description: The billing items for charging periods and tariffs.
-        * 'parkingtime'-  Price for the time of parking. The billingValue represents the time in hours.
-        * 'usagetime'-  Price for the time of EVSE usage. The billingValue represents the time in hours.
-        * 'energy'-  Price for the consumed energy. The billingValue represents the energy in kilowatt-hours.
-        * 'power'-  Price for the used power level. The billingValue represents the maximum power in kilowatts.
-        * 'serviceFee'  General service fee per charging process. The billingValue represents a multiplier and thus has to be set to "1.0".
-        * 'reservation'-  One time fee for a reservation of the EVSE. The billingValue represents a multiplier and thus has to be set to "1.0".
-        * 'reservationtime'-  Price for the duration of a reservation. The billingValue represents the time in hours.
-        * 'volume' - Price for the quantity used in liter.
-        * 'mass' - Price for the quantity used in kilogram (kg).
-        
-      enum:
-      - parkingtime
-      - usagetime
-      - energy
-      - power
-      - serviceFee
-      - reservation
-      - reservationtime
-      - volume
-      - mass
       
     UpdateStatus:
     # Used for the purpose of the exchange of live status information in addition to the charge point information or POI data from an EVSE Operator to an NSP.
@@ -1653,99 +1318,21 @@ components:
           # This contains one EVSE id with the current status represented in a major part and a minor part.
           type: array
           items:
-          
-            $ref: '#/components/schemas/EvseStatusType'
+
+            $ref: 'schemas/evseStatus.yaml#/EvseStatusType'
           
         parkingspot:
           # This contains one parking spot ID with the current status.
           type: array
           items:
-          
-            $ref: '#/components/schemas/ParkingStatusType'
+
+            $ref: 'schemas/evseStatus.yaml#/ParkingStatusType'
           
         ttl:
          # The time to live is set as the deadline till the status values are to be considered valid, where not otherwise specified.
-             $ref: '#/components/schemas/DateTimeType'
+             $ref: 'schemas/generic.yaml#/DateTimeType'
           
-    EvseStatusType:
-      type: object
-      description: Specifies the major and minor status of a EVSE. 
-      required: 
-         - evseId
-         - major
 
-      properties:
-        evseId:
-          # The EVSE the status is set for.
-          $ref: 'schemas/cdr.yaml#/EvseId'
-          
-        major:
-          # The major status value for the EVSE
-          $ref: '#/components/schemas/MajorType'
-          
-        minor:
-          # The minor status value for the EVSE.
-          $ref: '#/components/schemas/MinorType'
-        
-        ttl:
-          # The time to live is set as the deadline until which the status value is to be considered valid. Should be set to the expected status change.
-          $ref: '#/components/schemas/DateTimeType'
-          
-    ParkingStatusType:
-      type: object
-      description: Specifies the live status of a parking spot.
-      required:
-        - parkingId
-        - status
-        
-      properties:
-        parkingId:
-          # The parking spot the status is set for.  
-          $ref: '#/components/schemas/ParkingId'
-          
-        status:
-          # The status value of the parking spot.
-          $ref: '#/components/schemas/MajorType'
-          
-        ttl:
-        # The time to live is set as the deadline until which the status value is to be considered valid. Should be set to the expected status change.
-          $ref: '#/components/schemas/DateTimeType'
-          
-    MajorType:
-      type: string
-      description: The major status type reflects the overall status of the EVSE.
-                  * 'available' -  the EVSE is able to start a new charging process
-                  * 'not-available' -  at the moment no new charging process may be started
-                  * 'unknown' -  the current status of the EVSE is not known
-      enum:
-        - available
-        - not-available
-        - unknown
-        
-    MinorType:
-      type: string
-      description: The optional minor status type reflects the detailed status of the EVSE in addition to the major status. For each minor status value a proposed ttl value is given. However, the ttl should only be set to a value other than default if the expected status change is known or can be predicted.
-            * 'available' -  the EVSE is able to start a new charging process
-            * 'reserved' -   the EVSE is able to start a new charging process for limited duration as a future reservation is   present. ttl to be set on the start of the reservation when in future or to the end of the reservation else
-            * 'charging' - the EVSE is in use. ttl to be set on the expected end of the charging process
-            * 'blocked' -  the EVSE not accessible because of a physical barrier, i.e. a car
-            * 'outoforder' - the EVSE is currently out of order. ttl to be set to the expected re-enabling
-      enum:
-        - available
-        - reserved
-        - charging
-        - blocked
-        - outoforder
-      
-    statusType:
-      type: string
-      description: When the statusType is defined as combined, the CHS will return values for all EVSEs of all EVSE Operators there is a valid roaming connection to, regardless of whether there is additional parking status information for all of them.
-      # if not set default is evse
-      default: evse
-      enum:
-        - evse
-        - parking
-        - combined
     
     StatusConfirmation:
         type: object
@@ -1756,178 +1343,22 @@ components:
             type: array
             description: This contains one EVSE ID with the current status represented in a major part and a minor part.Status values for all EVSE as sent to the eCHS by the EVSE operator.
             items:
-              $ref: '#/components/schemas/EvseStatusType'
+              $ref: 'schemas/evseStatus.yaml#/EvseStatusType'
               
           parking:
             type: array
             description: This contains one parking spot ID with the current status. Status values for all parking spots as sent to the eCHS by the parking spot operator.
             items:
-                $ref: '#/components/schemas/ParkingStatusType'
+              $ref: 'schemas/evseStatus.yaml#/ParkingStatusType'
           
           combined:
             type: array
             description: This contains one EVSE ID status including the parking spot status (if applicable). Status values for all EVSE that have been combined with parking status values according to static POI data.
             items:
-    
-                $ref: '#/components/schemas/EvseStatusType'
-                
-    IndividualTariffType:
-      # Tariffs are referenced on connector level by their tariff-ID only. Every EVSE Operator is advised to define one default individual tariff for each tariffId as a fallback in addition to the individual tariffs defined for certain recipients. A provider will only receive tariffs that they are recipient for.
-        type: object
-        description: Contains multiple individual tariffs dependant on intended recipient. Element describing an individual tariff for a specific recipient. One default tariff without recipients must be provided. When there are more than 1 element, the first tariff element to match the condition is used.
-        required:
-          - currency
-          - tariffElement
-          
-        properties:
-          currency:
-            $ref: 'schemas/generic.yaml#/Currency'
-            
-          tariffElement:
-            type: array
-            description: List of tariff elements. Contains information about the pricing structure of the tariff element.
-            items:
-            
-              $ref: '#/components/schemas/TariffElementType'
-            
-          recipient:
-            type: array
-            description: Provider-IDs of the intended recipients for this tariff. If no recipient is provided, this individual tariff is considered the default tariff.
-            items:
-              $ref: '#/components/schemas/recipient'
-    
-    TariffElementType:
-        type: object
-        description: List of tariff elements
-        required:
-          - priceComponent
-          - tariffRestriction
-        
-        properties:
-          priceComponent: 
-            # Contains information about the pricing structure of the tariff element.
-              $ref: '#/components/schemas/PriceComponentType'
-            
-          tariffRestriction:
-            # Contains information about when to apply the defined priceComponent / tariffElement.
-              $ref: '#/components/schemas/TariffRestrictionType'
-    
-              
-    recipient:
-          type: string 
-          minLength: 1
-          maxLength: 5
-          description: Alphanumeric. Identifies a recipient EMSP according to EMSP-ID without separators. If not provided, tariff element is considered the default tariff for this tariffId. Should never be returned by the CHS (i.e. only part of upload, not download).
-          pattern: '^[A-Z0-9]{1,5}$'  
-          
-    PriceComponentType:   
-      type: object
-      description: Price component defining this TariffElement.
-      required: 
-        - billingItem
-        - itemPrice
-        - stepSize
-        
-      properties:
-      
-        billingItem:
-            # What dimension is part of this tariff element.
-              $ref: '#/components/schemas/BillingItemType'
-          
-        itemPrice:
-          # Price per unit of the billingItem in the given currency.
-            type: number
-            format: float
-            description: price per unit for this tariff dimension (unit according to dimension)
-        
-        stepSize:
-            type: number
-            format: float
-            description: Minimum amount to be billed. This unit will be billed in this stepSize blocks. For example:- if billingItem is usagetime and stepSize is 0.1, then time will be billed in blocks of 6 minutes, so if 8 minutes is used, 12 minutes (2 blocks of stepSize) will be billed. In case of one-time payments, this is to be set to 1.0.
-        
-    TariffRestrictionType:
-       # Contains information about when to apply the defined priceComponent / tariffElement.
-          type: object
-          description: List of tariff restrictions applicable for this TariffElement / PriceComponent.
-          properties:
-          
-              regularHours:
-                  type: array
-                  description: Regular hours that this tariff element should be valid for (maximum of 14 entries). If always valid (24/7), don't set (as this is a tariff restriction).
-                  items:
-                        $ref: '#/components/schemas/RegularHoursType'
-                        
-              startDate:
-                  # Begin of a scheduled period. Valid from this date/time.
-                  $ref: '#/components/schemas/DateTimeType'
-                
-              endDate:
-                  # End of scheduled period, if known. Valid until this date/time.
-                  $ref: '#/components/schemas/DateTimeType'
-                  
-              minEnergy:
-                  type: number
-                  format: float
-                  description: Minimum used energy in kWh, for example 20.0, valid from this amount of energy is used
-                  example: 20.0
-                  
-              maxEnergy:
-                  type: number
-                  format: float
-                  description: Maximum used energy in kWh, for example 50.0, valid until this amount of energy is used
-                  example: 50.0
-                  
-              minPower:
-                  type: number
-                  format: float
-                  description: Minimum power in kW, for example 0.0, valid from this charging speed
-                  example: 0.0
-                  
-              maxPower:
-                  type: number
-                  format: float
-                  description: Maximum power in kW, for example 20.0, valid up to this charging speed
-                  example: 20.0
-                  
-              minDuration:
-                   type: integer
-                   description: Minimum duration in seconds, valid for a duration from x seconds
-                   example: 10
-                   
-              maxDuration:
-                   type: integer
-                   description: Maximum duration in seconds, valid for a duration from x seconds
-                   example: 600
-                   
-    RegularHoursType:
-        type: object
-        description: Regular recurring operation or access hours. Consecutive days can be combined using weekdayTo, single days can be defined using only weekdayFrom.
-        required:
-          - weekday
-          - periodBegin
-          - periodEnd
-        properties:
-        
-          weekday:
-             type: integer
-             minimum: 1
-             maximum: 7
-             description: Number of day in the week, beginning with Monday (1), ending with Sunday (7).
-             
-          periodBegin:
-            type: string
-            maxLength: 5
-            description: begin of the regular period given in hours:minutes. Must be in 24h format with leading zeros. Example:- '18:15'. Hour/Minute separator:- ":" Regex:- $[$0-2$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$
-            pattern: '^[0-2][0-9]\:[0-5][0-9]$'
-            example: 18:15
-            
-          periodEnd:
-            type: string
-            maxLength: 5
-            description: End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
-            pattern: '^[0-2][0-9]:[0-5][0-9]$'
-            example: 20:15
-            
+
+              $ref: 'schemas/evseStatus.yaml#/EvseStatusType'
+
+
     chargePointRequestModel:
         type: object
         description: The request send by CPO to upload Charge Point Information records.
@@ -1937,7 +1368,7 @@ components:
             chargePointInfoArray:
               type: array
               items:
-                $ref: '#/components/schemas/ChargePointInfo'
+                $ref: 'schemas/chargePoint.yaml#/ChargePointInfo'
     
     refusedChargePointInfoResponse:
         type: object
@@ -1954,7 +1385,7 @@ components:
             # Contains the charge point information records that could not be set in CHS.
             type: array
             items:
-                $ref: '#/components/schemas/ChargePointInfo'
+              $ref: 'schemas/chargePoint.yaml#/ChargePointInfo'
     
     chargePointResponseModel:
        type: object
@@ -1975,550 +1406,13 @@ components:
             # Contains the charge point information records 
             type: array
             items:
-                $ref: '#/components/schemas/ChargePointInfo'
+                $ref: 'schemas/chargePoint.yaml#/ChargePointInfo'
         
-    ChargePointInfo:
-      type: object
-      description: Contains information about the charge points. Static POI data regarding a charge point / EVSE.
-      required:
-        - evseId
-        - evseDescription
-        - locationId
-        - locationName
-        - locationNameLang
-        - chargePointAddress
-        - chargePointLocation
-        - openingTimes
-        - location
-        - authMethods
-        - connectors
-        - chargePointType
-      properties:
-        evseId:
-          # Globally unique identifier
-          $ref: 'schemas/cdr.yaml#/EvseId'
-          
-        evseDescription:
-            type: string
-            maxLength: 100
-            description: Human readable description of an EVSE
-        
-        locationId:
-            type: string
-            minLength: 1
-            maxLength: 15
-            description: Alphanumeric. Identifies a location/pool of EVSEs. Unique within one EVSE Operator. All EVSEs of one locationId have to have the same address and Geocoordinates. Characters:- [A-Z], [0-9]
-            pattern: '^[A-Z0-9 ]{1,15}$'
-            
-        timeStamp:
-          # Recommended. Date and time of the latest data update for this ChargePointInfo. When set it must be updated if one of the values changed.
-             $ref: '#/components/schemas/DateTimeType'
-             
-        locationName:
-            type: string
-            minLength: 1
-            maxLength: 100
-            description: Official name; should be unique in the geographical area.
-            
-        locationNameLang:
-            type: string
-            maxLength: 3
-            description: Alpha, three characters. ISO-639-3 language code defining the language of the location name.
-            pattern: '^[A-Z]{3}$'
-            
-        images:
-            type: array
-            description: Links to images related to the EVSE such as photos or logos.
-            items: 
-                $ref: '#/components/schemas/evseImageUrlType'
-                
-        relatedResource: 
-            type: array
-            description: Links to be visited by the user, related to the charge point or charging station.
-            items: 
-                $ref: '#/components/schemas/RelatedResourceType'
-                
-        chargePointAddress:
-            # Contains the address of the charging station.
-            $ref: 'schemas/generic.yaml#/AddressType'
 
-        chargePointLocation:
-            # Geographical location of the charge point itself (power outlet).
-            $ref: '#/components/schemas/GeoPointType'
-          
-        relatedLocation:
-            # Geographical location of related points relevant to the user.
-            $ref: '#/components/schemas/AdditionalGeoPointType'
-                
-        timeZone:
-            type: string
-            maxLength: 255
-            description: One of IANA tzdata's TZ-values representing the time zone of the location.
-            example: Europe/Zurich
-            
-        openingTimes:
-            # The times the EVSE is operating and can be used for charging. Can be set to unknown.
-             $ref: '#/components/schemas/HoursType'
-             
-        status:
-            # The current status of the charge point (static, not live-status!)
-            $ref: '#/components/schemas/ChargePointStatusType'
-            
-        statusSchedule:
-            type: array
-            description: Planned status changes in the future. If a time span matches with the current or displayed date, the corresponding value overwrites status
-            items: 
-                   $ref: '#/components/schemas/ChargePointScheduleType'
         
-        telephoneNumber:
-            type: string
-            maxLength: 20
-            description: Numeric. Service hotline for charging station to be displayed to the EV user. Separators recommended. Recommended to be in international format including leading + and country code. (e.g. +49).
-            pattern: '^[\+]{0,1}[1-9]{0,1}[0-9 \-]{1,17}$'
-        
-        location: 
-            # The general type of the charge point location.
-            $ref: '#/components/schemas/GeneralLocationType'
-            
-        parkingSpot:
-            type: array
-            description: Information about one or more parking spots associated with the EVSE.
-            items:
-                $ref: '#/components/schemas/ParkingSpotInfo'
-            
-        restriction: 
-            type: array
-            description: Restrictions applying to the usage of the charging station.
-            items:
-                $ref: '#/components/schemas/RestrictionType'
-                
-        authMethods:
-            type: array
-            description: List of available payment or access methods on site.
-            items:
-                $ref: '#/components/schemas/AuthMethodType'
-                
-        connectors:
-            type: array
-            description: Which receptacle type is/are present for a power outlet.
-            items:
-                 $ref: '#/components/schemas/ConnectorType'
-                 
-        chargePointType:
-            # The type of the charge point.
-            $ref: '#/components/schemas/chargePointType'
-            
-        ratings:
-            # Defines the ratings for the charge point.
-          $ref: 'schemas/cdr.yaml#/RatingsType'
-            
-        userInterfaceLang:
-            type: array
-            description: Alpha, three characters. Language(s) of the user interface or printed on-site instructions. ISO-639-3 language code
-            items:
-              $ref: '#/components/schemas/userInterfaceLang'
-              
-        maxReservation:
-            type: number
-            format: float
-            minimum: 0
-            exclusiveMinimum: true
-            maximum: 1000
-            description: If a reservation of this charge point is possible, this is the maximum duration the CPO will allow a reservation for (in minutes). Recommendation:- 30 minutes.
-            
-        meteringInfo:
-            # Array type mainly to serve the German Eichrecht.
-          $ref: 'schemas/cdr.yaml#/MeteringInfoType'
-            
-        truckParking:
-            # If trucks can be parked at this location.
-             $ref:  '#/components/schemas/TruckParkingType'
-          
-    evseImageUrlType:
-      # This class references images related to a EVSE in terms of a file name or uri. According to the roaming connection between one EVSE Operator and one or more Navigation Service Providers the hosting or file exchange of image payload data has to be defined. 
-      type: object
-      description: This class references images related to a EVSE in terms of a file name or uri.
-      required: 
-          - uri
-          - class
-          - type
-          
-      properties:
-          uri: 
-            type: string
-            maxLength: 255
-            description: uri from where the image data can be fetched. Must begin with a protocol of the list:- http, https, file,ftp. 
-            pattern: '^(http|https|ftp|file):\/\/.+$'
-            
-          thumbUri:
-            type: string
-            maxLength: 255
-            description: uri from where a thumbnail of the image can be fetched. Must begin with a protocol of the list:- http, https, file, ftp.
-            pattern: '^(http|https|ftp|file):\/\/.+$'
-            
-          class:
-            # Image class for usage categorization
-            $ref: '#/components/schemas/ImageClass'
-            
-          type: 
-            type: string
-            minLength: 1
-            maxLength: 4
-            description: Image type like:- gif, jpeg, png, svg
-            
-          width:
-            type: integer
-            minimum: 0
-            exclusiveMinimum: true
-            maximum: 99999
-            exclusiveMaximum: false
-            description: Width of the full scale image
-            
-          height:
-            type: integer
-            minimum: 0
-            exclusiveMinimum: true
-            maximum: 99999
-            exclusiveMaximum: false
-            description: Height of the full scale image
-    
-    TruckParkingType:
-        type: object
-        description: If trucks can be parked at this location. This value if provided can be used to inform which category of trucks and how many trucks can be parked at this location.
-        required:
-          - lightTruck
-          - mediumTruck
-          - heavyTruck
-        properties:
-          lightTruck:
-            type: integer
-            description: Number of light-duty trucks parking spots.
-            
-          mediumTruck:
-            type: integer
-            description: Number of medium-duty trucks parking spots
-            
-          heavyTruck:
-            type: integer
-            description: Number of heavy-duty trucks parking spots.
-        
-    RelatedResourceType:
-        type: object
-        description: This class defines a resource related to the charge point or charging station.A resource can have multiple classes to indicate a combination of resources on one web site.
-        required:
-          - uri
-          - class
-        properties:
-            uri:
-              type: string
-              maxLength: 255
-              description: Referencing uri to the resource. Must begin with a protocol of the list:- http, https.
-              pattern: '^(http|https):\/\/.+$'
-       
-            class:
-                # Class(es) of the related url to indicate the referenced content and/or functionality.
-                  $ref: '#/components/schemas/RelatedResourceClass'
-        
-    ImageClass:
-      type: string
-      description: The class of a EVSE image to obtain the correct usage in a user presentation. Has to be set accordingly to the image content in order to guaranty the right usage.
-              * 'networkLogo' -  logo of an associated roaming network to be displayed with the EVSE for example in lists, maps and detailed information view
-              * 'operatorLogo'-  logo of the charge points operator, for example a municipal, to be displayed with the EVSEs detailed information view or in lists and maps, if no networkLogo is present
-              * 'ownerLogo' -  logo of the charge points owner, for example a local store, to be displayed with the EVSEs detailed information view
-              * 'stationPhoto' -  full view photo of the station in field. Should show the station only
-              * 'locationPhoto' -  location overview photo. Should indicate the location of the station on the site or street.
-              * 'entrancePhoto' -  location entrance photo. Should show the car entrance to the location from street side
-              * 'otherPhoto' -  other related photo to be displayed with the stations detailed information view
-              * 'otherLogo' -  other related logo to be displayed with the stations detailed information view
-              * 'otherGraphic' -  other related graphic to be displayed with the stations detailed information view
-      enum: 
-        - networkLogo
-        - operatorLogo
-        - ownerLogo
-        - stationPhoto
-        - locationPhoto
-        - entrancePhoto
-        - otherPhoto
-        - otherLogo
-        - otherGraphic
-        
-      
-    RelatedResourceClass:
-        type: string
-        description: The class of referenced related resource.
-                * 'operatorMap' -  direct link to this charge point on a map of the operator
-                * 'operatorPayment' -  link to a payment page of the operator for contractless direct payment
-                * 'stationInfo' -  further information on the charging station
-                * 'surroundingInfo' -  further information on the surroundings of the charging station e.g. further POIs
-                * 'ownerHomepage' -   website of the station owner (not operator) in case of hotels, restaurants, etc.
-                * 'feedbackForm'-  form for user feedback on the charging station service
-                * 'openingTimes' -  link to a calendar or info page containing opening times (only if no other way of defining these is possible).
-        enum: 
-          - operatorMap
-          - operatorPayment
-          - stationInfo
-          - surroundingInfo
-          - ownerHomepage
-          - feedbackForm
-          - openingTimes
-          
-    GeoPointType:
-        type: object
-        description: Defines a geo location. The geodetic system to be used is WGS 84.
-        required:
-            - lat
-            - lon
-        properties:
-            lat: 
-               # Latitude of the point in decimal degree.
-              $ref: '#/components/schemas/latitude'
-              
-            lon: 
-              # Longitude of the point in decimal degree.
-              $ref: '#/components/schemas/longitude' 
-              
-    
-    AdditionalGeoPointType:
-        type: object
-        description: Class defines a geo location. The geodetic system to be used is WGS 84.
-        required:
-            - lat
-            - lon
-            - type
-        properties:
-            lat: 
-              # Latitude of the point in decimal degree.
-              $ref: '#/components/schemas/latitude'
-              
-            lon: 
-              # Longitude of the point in decimal degree.
-              $ref: '#/components/schemas/longitude'
-              
-            name:
-              type: string
-              maxLength: 255
-              description: Name of the point in local language or as written at the location. For example the street name of a parking lot entrance or it's number.
-              
-            type:  
-              # The class of this geo point for categorization and right usage.
-              $ref: '#/components/schemas/GeoClass'
-              
-    latitude:
-        type: string
-        maxLength: 10
-        description: Latitude of the point in decimal degree.  Decimal separator:- "." 
-        pattern: '^-?[0-9]{1,2}\.[0-9]{6}$'
-        example: 50.770774.
-        
-    longitude:
-        type: string
-        maxLength: 10
-        description: Longitude of the point in decimal degree.  Decimal separator:- "." 
-        pattern: '^-?[0-9]{1,2}\.[0-9]{6}$'
-        example: -126.104965.
-    
-    GeoClass:
-        type: string
-        description: The class of this geo point for categorization and right usage.
-                * 'entrance' -  For larger sites entrances may be specified for navigation.
-                * 'exit' -  For larger sites exits may be specified for navigation purpose.
-                * 'access'-  Two directional entrance and exit.
-                * 'ui' -  Geographical location of the user interface for authorisation and payment means. If not specified the user interface is assumed to be at the location of the charge point.
-                * 'other' -   Other relevant point. Name recommended.
-        enum: 
-          - entrance
-          - exit
-          - access
-          - ui
-          - other
-          
-    HoursType:
-      type: object
-      description: Opening hours for the charge point.
-      required:
-          - twentyfourseven
-          - closedCharging
-      properties:
-        # You have a CHOICE of the next 2 items at this level. 1 to 7 repetitions:
-        regularHours:
-            type: array
-            description: Regular hours, weekday based. Should not be set for representing 24/7 as this is the most common case.
-            items:
-                $ref: '#/components/schemas/RegularHoursType'
-        
-        twentyfourseven:
-            type: boolean
-            description: True to represent 24 hours per day and 7 days per week, except the given exceptions. May be set to false if opening hours are defined only by exceptionalOpenings.
-            
-        closedCharging:
-            type: boolean
-            description: hould be set to true in case an EV can be charged when plugged in during off-times (i.e. when the location is closed according to the specified hours).
-        
-        exceptionalOpenings:
-              type: array
-              description: Exceptions for specified calendar dates, time-range based. Periods the station is operating/accessible. For irregular hours or as addition to regular hours. May overlap regular rules.
-              items: 
-                   $ref: '#/components/schemas/ExceptionalPeriodType'
-                   
-        exceptionalClosings:
-              type: array
-              description: Exceptions for specified calendar dates, time-range based. Periods the station is not operating/accessible. Overwriting regularHours and twentyfourseven. Should not overlap exceptionalOpenings.
-              items: 
-                   $ref: '#/components/schemas/ExceptionalPeriodType'
-                   
-    ExceptionalPeriodType:
-        type: object
-        description: Specifies one exceptional period for opening or access hours.
-        required:
-            - periodBegin
-            - periodEnd
-        properties:
-            periodBegin:
-              # Begin of the exception.
-              $ref: '#/components/schemas/DateTimeType'
-              
-            peridoEnd:
-              # End of the exception.
-              $ref: '#/components/schemas/DateTimeType'
-    
-    ChargePointStatusType:
-        type: string
-        description: This value represents the overall status of a charging point. Not to be confused with a live status (available, reserved, occupied, ... ) This overall status should reflect situations which are valid over several days. The live status indicates shorter valid status.
-                  * 'Unknown' -  No status information available
-                  * 'Operative' -  charge point is in operation and can be used
-                  * 'Inoperative' -  charge point cannot be used due to maintenance, greater downtime, blocking construction works or other access restrictions (temporarily, will be operative in the future).
-                  * 'Planned' -  planned charge point, will be operating soon
-                  * 'Closed' -  discontinued charge point, will be deleted soon
-        enum: 
-            - Unknown  
-            - Operative  
-            - Inoperative  
-            - Planned  
-            - Closed  
-   
-    ChargePointScheduleType:
-        type: object
-        description: This type is used to schedule status periods in the future. The NSP can provide this information to the EV user for trip planning purpose. A period MAY have no end. 
-        required:
-            - startDate
-            - status
-        properties:
-            startDate:
-                # Begin of the scheduled period.
-                $ref: '#/components/schemas/DateTimeType'
-            
-            endDate: 
-                # End of the scheduled period, if known.
-                $ref: '#/components/schemas/DateTimeType'
-                
-            status:
-                # Status value during the scheduled period.
-                $ref: '#/components/schemas/ChargePointStatusType'
-                
-    GeneralLocationType:
-        type: string
-        description: Reflects the general type of the charge points location. May be used for user information.
-                * 'on-street' - parking in public space
-                * 'parking-garage' - multistorey car park
-                * 'underground-garage' - multistorey car park, mainly underground
-                * 'parking-lot' - a cleared area that is intended for parking vehicles, i.e. at super markets, bars, etc.
-                * 'private' - located in private or corporate grounds, may not be accessible to the public
-                * 'other' - none of the given possibilities
-                * 'unknown' - parking location type is not known by the operator
-        enum:
-            - on-street
-            - parking-garage 
-            - underground-garage
-            - parking-lot
-            - private 
-            - other
-            - unknown
-            
-    ParkingSpotInfo:
-        type: object
-        description: Contains all parking related information. If a parkingId is given, this ID can be used to associate parking spot live information from a PSO with this EVSE. Static POI data regarding a parking spot.
-        required:
-            - parkingId
-        properties:
-            parkingId:  
-                # Globally unique identifier for this parking spot.
-                $ref: '#/components/schemas/ParkingId'
-            
-            restriction:
-                type: array
-                description: Restrictions applying to the usage of the parking spot. If set, should include the restrictions to EVSE-usage as well.
-                items: 
-                    $ref: '#/components/schemas/RestrictionType'  
-                
-            floorlevel:
-                type: string
-                maxLength: 4
-                description: Alphanumeric. Level on which the charge station is located (in garage buildings) in the locally displayed numbering scheme. 
-                pattern: '^[A-Z0-9\-\+/]{1,4}$'
-                example: -2
-                
-            parkingSpotNumber:
-                type: string
-                maxLength: 5
-                description: Alphanumeric. Locally displayed parking slot number. 
-                pattern: '^[A-Z0-9\-\+/]{1,5}$'
-                example: 10
-                
-                
-    ParkingId:
-          type: string
-          maxLength: 36
-          description: The parking-ID follows a similar syntax to that of contract- and EVSE-IDs. The PSO-ID is followed by a 'P' that signifies a tariff and a unique instance of up to 30 characters.
-            # More patterns exist. For eg: '[A-Z]{2}\*[A-Za-z0-9]{3}\*[Pp][A-Za-z0-9][A-Za-z0-9\*]{0,29}' is also an accepted pattern.
-          pattern: '^[A-Z]{2}[A-Za-z0-9]{3}[Pp][A-Za-z0-9][A-Za-z0-9\*]{0,29}$'
-          example: DELNDP12
 
-    RestrictionType:
-        type: string
-        description: This value, if provided, represents the restrictions to the usage of the charging station or parking spot for different purposes.
-                      * 'evonly' - reserved parking spot for electric vehicles
-                      * 'plugged' - parking allowed only while plugged in (and charging)
-                      * 'disabled' - reserved parking spot for disabled people with valid ID
-                      * 'customers' - parking or charging for costumer/guests only, for example in case of a hotel or shop
-                      * 'motorcycles' - parking spot only suitable for (electric) motorcycles, scooters or bicycles
-                      * 'carsharing'- charging / parking only for carsharing vehicles
-        enum:
-          - evonly
-          - plugged
-          - disabled
-          - customers
-          - motorcycles
-          - carsharing
+          
+
+
     
-    AuthMethodType:
-        type: string
-        description: The authorisation and payment methods available at an EVSE for the EV user.
-                      * 'Public' - Public accessible, no authorisation required
-                      * 'LocalKey'- A key or token can be received at the location.(i.e. at the hotel reception or in the restaurant)
-                      * 'DirectCash' - The EVSE can be accessed through direct payment in cash.
-                      * 'DirectCreditcard' - The Evse can be accessed through direct payment with credit card
-                      * 'RfidMifareCls' - Personal RFID token with roaming relation. (Mifare Classic)
-                      * 'RfidMifareDes' - Personal token with roaming relation. (Mifare Desfire)
-                      * 'RfidCalypso' - Personal RFID token with roaming relation. (Calypso)
-                      * 'Iec15118' - In-car access token as specified in IEC-15118
-                      * 'OchpDirectAuth' - The EVSE can be accessed through a OCHP-direct capable provider app.
-                      * 'OperatorAuth' - The EVSE can be accessed through a direct online payment to the operator.
-                      
-        enum: 
-            - Public
-            - LocalKey
-            - DirectCash
-            - DirectCreditcard
-            - DirectDebitcard
-            - RfidMifareCls
-            - RfidMifareDes
-            - RfidCalypso
-            - Iec15118
-            - OchpDirectAuth
-            - OperatorAuth
-  
-    userInterfaceLang:    
-        type: string
-        maxLength: 3
-        description: Alpha, three characters. Language(s) of the user interface or printed on-site instructions. ISO-639-3 language code
-        pattern: '^[A-Z]{3}$'
+

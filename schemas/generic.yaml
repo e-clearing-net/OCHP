@@ -57,7 +57,6 @@ AddressType:
 Currency:
   type: string
   minLength: 2
-  exclusiveMinimum: true
   maxLength: 3
   description: Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
   example: EUR
@@ -69,3 +68,206 @@ Uuid:
   # however, some tools might require explicit settings:
   minLength: 36
   maxLength: 36
+
+EvseId:
+  type: string
+  # The EVSEID must follow the specification of ISO/IEC 15118-2 - Annex H "Specification of Identifiers
+  description: Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it.Each EVSEID has a variable length with at least seven characters (two characters Country Code, three characters EVSE Operator ID, one character ID Type, one character Power Outlet ID) and at most thirty-seven characters (two characters Country Code, three characters EVSE Operator ID, one character ID Type, thirty-one characters Power Outlet ID). While the EVSE Operator ID shall be assigned by a central issuing authority, each operator with an assigned EVSE Operator ID can choose the Power Outlet ID within the above mentioned rules freely.
+  # More patterns exist. For eg: '[A-Z]{2}[A-Za-z0-9]{3}[E][A-Za-z0-9][A-Za-z0-9\*]{0,30}' is also an accepted pattern.
+  pattern: '^[A-Z]{2}\*[A-Za-z0-9]{3}\*[E][A-Za-z0-9][A-Za-z0-9\*]{0,30}$'
+  example: DE823E12345678
+
+ContractId:
+  type: string
+  description: the ContractId must follow the specification for EMAID in ISO/IEC 15118-2 structure.
+  # More accepted patterns exist. For eg: '[A-Za-z]{2}-[A-Za-z0-9]{3}-[A-Za-z0-9]{9}-[A-Za-z0-9]', '[A-Za-z]{2}[A-Za-z0-9]{3}[A-Za-z0-9]{9}[A-Za-z0-9]', '[A-Za-z]{2}-[A-Za-z0-9]{3}-[A-Za-z0-9]{9}', '[A-Za-z]{2}[A-Za-z0-9]{3}[A-Za-z0-9]{9}', '[A-Z]{2}[A-Za-z0-9]{3}[Cc][A-Za-z0-9]{8}-[A-Za-z0-9]'
+  pattern: '^[A-Z]{2}-[A-Za-z0-9]{3}-[Cc]-[A-Za-z0-9]{8}-[A-Za-z0-9]$'
+  example: YYCBA43A13F320
+
+TariffId:
+  type: string
+  description: The tariff-ID follows a similar syntax to that of contract- and EVSE-IDs. The The Operator-ID is followed by a 'T' that signifies a tariff and a unique instance of up to 30 characters. The max. length allowed it string(36). Alphanumeric. Identifies a tariff. Unique within one EVSE Operator. Must begin with the Operator-ID, without separators.
+  # More patterns are possible. The pattern '^[A-Z]{2}[A-Za-z0-9]{3}[Tt][A-Za-z0-9][A-Za-z0-9\*]{0,29}$' is also possible.
+  pattern: '^[A-Z]{2}\*[A-Za-z0-9]{3}\*[Tt][A-Za-z0-9][A-Za-z0-9\*]{0,29}$'
+  example: YYABCT01
+
+
+DateTimeType:
+  type: string
+  #  format: date-time
+  maxLength: 20
+  pattern: '^([0-9]{4})-(?:[0-9]{2})-([0-9]{2})T(?:[0-9]{2}):([0-9]{2}):([0-9]{2})Z$'
+  # pattern: '^(\d{4}-\d{1,2}-\d{1,2}Td{1,2}:\d{1,2}:\d{1,2}Z)$'
+  # pattern: '(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)Z'
+  description: Format is according to ISO8601 UTC. The field takes 20 alphanumeric characters.
+  example: '2025-01-01T00:00:00Z'
+
+RegularHoursType:
+  type: object
+  description: Regular recurring operation or access hours. Consecutive days can be combined using weekdayTo, single days can be defined using only weekdayFrom.
+  required:
+    - weekday
+    - periodBegin
+    - periodEnd
+  properties:
+
+    weekday:
+      type: integer
+      minimum: 1
+      maximum: 7
+      description: Number of day in the week, beginning with Monday (1), ending with Sunday (7).
+
+    periodBegin:
+      type: string
+      maxLength: 5
+      description: begin of the regular period given in hours:minutes. Must be in 24h format with leading zeros. Example:- '18:15'. Hour/Minute separator:- ":" Regex:- $[$0-2$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$
+      pattern: '^[0-2][0-9]\:[0-5][0-9]$'
+      example: 18:15
+
+    periodEnd:
+      type: string
+      maxLength: 5
+      description: End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
+      pattern: '^[0-2][0-9]:[0-5][0-9]$'
+      example: 20:15
+
+RatingsType:
+  type: object
+  description: Defines the ratings of a charge point. The values can be displayed to the user or used to calculate charge time forecasts. Depending on the used plug type the effective available power might be lower.
+  required:
+    - maximumPower
+
+  properties:
+    maximumPower:
+      type: number
+      format: float
+      description: The maximum available power at this charge point at nominal voltage over all available phases of the line.
+    guaranteedPower:
+      type: number
+      format: float
+      description: The minimum guaranteed mean power in case of load management. Should be set to maximum when no load management applied.
+    nominalVoltage:
+      type: integer
+      exclusiveMinimum: 0
+      maximum: 1000
+      description: The Nominal voltage for the charge point
+
+ChargePointType:
+  type: string
+  exclusiveMinimum: 1
+  maxLength: 10
+  description: The chargePointType is extended from AC and DC to the options mentioned below. The enhancement enables the CPOs to define the CPTs more precisely and offer diversified services.
+    * 'AC' - Alternating current
+    * 'DC' - Direct current
+    * 'Super_95' - Premium unleaded petrol having octance rating of 95
+    * 'Super_Plus' - High octane rating fuel containing 5-10% of ethanol
+    * 'Super_E10' - Petrol fuel with an ethanol content of up to 10 percent and an octane rating of at least 95
+    * 'Diesel' - Liquid fuel used in diesel engines, whose ignition takes place without any spark
+    * 'LPG' - Liquefied petroleum gas
+    * 'CNG' - Compressed natural gas
+    * 'LNG' - Liquified natural gas
+    * 'H2' - Hydrogen fuel
+    * 'Ethanol' - Ethyl alcohol as fuel
+    * 'AdBlue' - Diesel exhaust fluid used in vehicles with Selective Catalytic Reduction (SCR)
+    * 'Other' - Other chargepoint types
+
+  enum:
+    - AC
+    - DC
+    - Super_95
+    - Super_Plus
+    - Super_E10
+    - Diesel
+    - LPG
+    - CNG
+    - LNG
+    - H2
+    - Ethanol
+    - AdBlue
+    - Other
+
+UserInterfaceLang:
+  type: string
+  maxLength: 3
+  description: Alpha, three characters. Language(s) of the user interface or printed on-site instructions. ISO-639-3 language code
+  pattern: '^[A-Z]{3}$'
+
+MeteringInfoSupportType:
+  type: string
+  enum:
+    - none
+    - local
+    - software
+    - other
+  description: "type of calibration law support"
+  example: software
+
+GeoPointType:
+  type: object
+  description: Defines a geo location. The geodetic system to be used is WGS 84.
+  required:
+    - lat
+    - lon
+  properties:
+    lat:
+      # Latitude of the point in decimal degree.
+      $ref: '#/Latitude'
+
+    lon:
+      # Longitude of the point in decimal degree.
+      $ref: '#/Longitude'
+
+
+AdditionalGeoPointType:
+  type: object
+  description: Class defines a geo location. The geodetic system to be used is WGS 84.
+  required:
+    - lat
+    - lon
+    - type
+  properties:
+    lat:
+      # Latitude of the point in decimal degree.
+      $ref: '#/Latitude'
+
+    lon:
+      # Longitude of the point in decimal degree.
+      $ref: '#/Longitude'
+
+    name:
+      type: string
+      maxLength: 255
+      description: Name of the point in local language or as written at the location. For example the street name of a parking lot entrance or it's number.
+
+    type:
+      # The class of this geo point for categorization and right usage.
+      $ref: '#/GeoClass'
+
+Latitude:
+  type: string
+  maxLength: 10
+  description: Latitude of the point in decimal degree.  Decimal separator:- "."
+  pattern: '^-?[0-9]{1,2}\.[0-9]{6}$'
+  example: 50.770774.
+
+Longitude:
+  type: string
+  maxLength: 10
+  description: Longitude of the point in decimal degree.  Decimal separator:- "."
+  pattern: '^-?[0-9]{1,2}\.[0-9]{6}$'
+  example: -126.104965.
+
+GeoClass:
+  type: string
+  description: The class of this geo point for categorization and right usage.
+    * 'entrance' -  For larger sites entrances may be specified for navigation.
+    * 'exit' -  For larger sites exits may be specified for navigation purpose.
+    * 'access'-  Two directional entrance and exit.
+    * 'ui' -  Geographical location of the user interface for authorisation and payment means. If not specified the user interface is assumed to be at the location of the charge point.
+    * 'other' -   Other relevant point. Name recommended.
+  enum:
+    - entrance
+    - exit
+    - access
+    - ui
+    - other
