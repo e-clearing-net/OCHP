@@ -35,6 +35,13 @@ CDRInfo:
       # Identifies a customer in the electric mobility charging context.
       $ref: 'generic.yaml#/ContractId'
 
+    sessionId:
+      type: string
+      minLength: 0
+      maxLength: 42
+      description: 'an external Session Id, e.g. the directId in case of ochp-direct.'
+      example: 'DA5347F3-DF2F-4BA6-905D-21E2FFAAA937'
+
     status:
 
       # Current status of the CDR.
