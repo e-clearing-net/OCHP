@@ -108,7 +108,7 @@ TariffRestrictionType:
       type: array
       description: Regular hours that this tariff element should be valid for (maximum of 14 entries). If always valid (24/7), don't set (as this is a tariff restriction).
       items:
-        $ref: 'generic.yaml#/RegularHoursType'
+        $ref: 'regularHours.yaml#/RegularHoursType'
 
     startDate:
       # Begin of a scheduled period. Valid from this date/time.

@@ -65,11 +65,11 @@ ChargePointInfo:
 
     chargePointLocation:
       # Geographical location of the charge point itself (power outlet).
-      $ref: 'generic.yaml#/GeoPointType'
+      $ref: 'geoPoint.yaml#/GeoPointType'
 
     relatedLocation:
       # Geographical location of related points relevant to the user.
-      $ref: 'generic.yaml#/AdditionalGeoPointType'
+      $ref: 'geoPoint.yaml#/AdditionalGeoPointType'
 
     timeZone:
       type: string
@@ -406,7 +406,7 @@ HoursType:
       type: array
       description: Regular hours, weekday based. Should not be set for representing 24/7 as this is the most common case.
       items:
-        $ref: 'generic.yaml#/RegularHoursType'
+        $ref: 'regularHours.yaml#/RegularHoursType'
 
     twentyfourseven:
       type: boolean
