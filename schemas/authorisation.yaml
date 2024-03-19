@@ -1,0 +1,57 @@
+AuthorisationInfo:
+  type: object
+  description: Contains information about a roaming authorisation card/token.
+  required:
+    - emtId
+    - contractId
+    - expiryDate
+    - permissions
+
+  properties:
+    emtId:
+      # Electrical Vehicle Contract Identifier
+      $ref: 'emtId.yaml#/EmtId'
+
+    contractId:
+      # EMA-ID the token belongs to.
+      $ref: 'generic.yaml#/ContractId'
+
+    permissions:
+      # Permissions for various energy sources and authorization services
+      $ref: '#/PermissionsType'
+
+    printedNumber:
+      type: string
+      minLength: 1
+      maxLength: 150
+      description: Might be used for manual authorisation
+      example: 4424
+
+    expiryDate:
+
+      # Tokens may be used until the date of expiry is reached. To be handled by the partners systems. Expired roaming authorisations may be erased locally by each partner's systems.
+
+      $ref: 'generic.yaml#/DateTimeType'
+
+PermissionsType:
+  type: string
+  description: RoamingAuthorisationInfo class is extended by the attribute permissions. The PermissionsType (enum) can be set to multiple options. Feature will help EMPs to have better structured and organized customer portfolio.
+    * 'AC' - Alternating current
+    * 'DC' - Direct current
+    * 'CNG' -  Compressed natural gas
+    * 'LNG' - Liquified natural gas
+    * 'Fuel' - Fuel
+    * 'H2' - Hydrogen
+    * 'Ethanol' - Ethyl alcohol as fuel
+    * 'Other' - Other fuel types
+
+  enum:
+    - AC
+    - DC
+    - CNG
+    - LNG
+    - Fuel
+    - H2
+    - Ethanol
+    - Other
+

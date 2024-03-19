@@ -1,0 +1,28 @@
+RegularHoursType:
+  type: object
+  description: Regular recurring operation or access hours. Consecutive days can be combined using weekdayTo, single days can be defined using only weekdayFrom.
+  required:
+    - weekday
+    - periodBegin
+    - periodEnd
+  properties:
+
+    weekday:
+      type: integer
+      minimum: 1
+      maximum: 7
+      description: Number of day in the week, beginning with Monday (1), ending with Sunday (7).
+
+    periodBegin:
+      type: string
+      maxLength: 5
+      description: begin of the regular period given in hours:minutes. Must be in 24h format with leading zeros. Example:- '18:15'. Hour/Minute separator:- ":" Regex:- $[$0-2$]$$[$0-9$]$:$[$0-5$]$$[$0-9$]$
+      pattern: '^[0-2][0-9]\:[0-5][0-9]$'
+      example: 18:15
+
+    periodEnd:
+      type: string
+      maxLength: 5
+      description: End of the regular period, syntax as for periodBegin. Must be later than periodBegin.
+      pattern: '^[0-2][0-9]:[0-5][0-9]$'
+      example: 20:15

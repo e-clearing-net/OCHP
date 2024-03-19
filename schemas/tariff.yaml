@@ -1,0 +1,175 @@
+TariffInfo:
+  type: object
+  # A Tariff Object consists of a list of one or more individual tariffs for individual recipients. One default individual tariff should always be defined without a specific recipient. Each individual tariff consists of tariff elements. These elements can be used to create complex Tariff structures.Changes to a tariff can always only be made to the entire tariff object. That way it is ensured that there cannot be multiple conflicting tariffs referenced at the same connector.
+  description: The information on tariff that needs to be added or updated.
+  required:
+    - tariffId
+    - individualtariff
+
+  properties:
+    tariffId:
+      # Uniquely identifies the tariff.
+      $ref: 'generic.yaml#/TariffId'
+
+    individualTariff:
+      # Contains multiple individual tariffs dependant on intended recipient.
+      type: array
+      items:
+        $ref: '#/IndividualTariffType'
+
+
+
+IndividualTariffType:
+  # Tariffs are referenced on connector level by their tariff-ID only. Every EVSE Operator is advised to define one default individual tariff for each tariffId as a fallback in addition to the individual tariffs defined for certain recipients. A provider will only receive tariffs that they are recipient for.
+  type: object
+  description: Contains multiple individual tariffs dependant on intended recipient. Element describing an individual tariff for a specific recipient. One default tariff without recipients must be provided. When there are more than 1 element, the first tariff element to match the condition is used.
+  required:
+    - currency
+    - tariffElement
+
+  properties:
+    currency:
+      $ref: 'generic.yaml#/Currency'
+
+    tariffElement:
+      type: array
+      description: List of tariff elements. Contains information about the pricing structure of the tariff element.
+      items:
+
+        $ref: '#/TariffElementType'
+
+    recipient:
+      type: array
+      description: Provider-IDs of the intended recipients for this tariff. If no recipient is provided, this individual tariff is considered the default tariff.
+      items:
+        $ref: '#/Recipient'
+
+TariffElementType:
+  type: object
+  description: List of tariff elements
+  required:
+    - priceComponent
+    - tariffRestriction
+
+  properties:
+    priceComponent:
+      # Contains information about the pricing structure of the tariff element.
+      $ref: '#/PriceComponentType'
+
+    tariffRestriction:
+      # Contains information about when to apply the defined priceComponent / tariffElement.
+      $ref: '#/TariffRestrictionType'
+
+Recipient:
+  type: string
+  minLength: 1
+  maxLength: 5
+  description: Alphanumeric. Identifies a recipient EMSP according to EMSP-ID without separators. If not provided, tariff element is considered the default tariff for this tariffId. Should never be returned by the CHS (i.e. only part of upload, not download).
+  pattern: '^[A-Z0-9]{1,5}$'
+
+PriceComponentType:
+  type: object
+  description: Price component defining this TariffElement.
+  required:
+    - billingItem
+    - itemPrice
+    - stepSize
+
+  properties:
+
+    billingItem:
+      # What dimension is part of this tariff element.
+      $ref: '#/BillingItemType'
+
+    itemPrice:
+      # Price per unit of the billingItem in the given currency.
+      type: number
+      format: float
+      description: price per unit for this tariff dimension (unit according to dimension) excl. VAT
+
+    taxRate:
+      $ref: 'generic.yaml#/TaxRate'
+      description: Applicable VAT percentage for this tariff dimension. If omitted, no VAT is applicable. Not providing a VAT is different from 0% VAT, which would be a value of 0.0 here.
+
+    stepSize:
+      type: number
+      format: float
+      description: Minimum amount to be billed. This unit will be billed in this stepSize blocks. For example:- if billingItem is usagetime and stepSize is 0.1, then time will be billed in blocks of 6 minutes, so if 8 minutes is used, 12 minutes (2 blocks of stepSize) will be billed. In case of one-time payments, this is to be set to 1.0.
+
+TariffRestrictionType:
+  # Contains information about when to apply the defined priceComponent / tariffElement.
+  type: object
+  description: List of tariff restrictions applicable for this TariffElement / PriceComponent.
+  properties:
+
+    regularHours:
+      type: array
+      description: Regular hours that this tariff element should be valid for (maximum of 14 entries). If always valid (24/7), don't set (as this is a tariff restriction).
+      items:
+        $ref: 'regularHours.yaml#/RegularHoursType'
+
+    startDate:
+      # Begin of a scheduled period. Valid from this date/time.
+      $ref: 'generic.yaml#/DateTimeType'
+
+    endDate:
+      # End of scheduled period, if known. Valid until this date/time.
+      $ref: 'generic.yaml#/DateTimeType'
+
+    minEnergy:
+      type: number
+      format: float
+      description: Minimum used energy in kWh, for example 20.0, valid from this amount of energy is used
+      example: 20.0
+
+    maxEnergy:
+      type: number
+      format: float
+      description: Maximum used energy in kWh, for example 50.0, valid until this amount of energy is used
+      example: 50.0
+
+    minPower:
+      type: number
+      format: float
+      description: Minimum power in kW, for example 0.0, valid from this charging speed
+      example: 0.0
+
+    maxPower:
+      type: number
+      format: float
+      description: Maximum power in kW, for example 20.0, valid up to this charging speed
+      example: 20.0
+
+    minDuration:
+      type: integer
+      description: Minimum duration in seconds, valid for a duration from x seconds
+      example: 10
+
+    maxDuration:
+      type: integer
+      description: Maximum duration in seconds, valid for a duration from x seconds
+      example: 600
+
+BillingItemType:
+  type: string
+  description: The billing items for charging periods and tariffs.
+    * 'parkingtime'-  Price for the time of parking. The billingValue represents the time in hours.
+    * 'usagetime'-  Price for the time of EVSE usage. The billingValue represents the time in hours.
+    * 'energy'-  Price for the consumed energy. The billingValue represents the energy in kilowatt-hours.
+    * 'power'-  Price for the used power level. The billingValue represents the maximum power in kilowatts.
+    * 'serviceFee'  General service fee per charging process. The billingValue represents a multiplier and thus has to be set to "1.0".
+    * 'reservation'-  One time fee for a reservation of the EVSE. The billingValue represents a multiplier and thus has to be set to "1.0".
+    * 'reservationtime'-  Price for the duration of a reservation. The billingValue represents the time in hours.
+    * 'volume' - Price for the quantity used in liter.
+    * 'mass' - Price for the quantity used in kilogram (kg).
+
+  enum:
+    - parkingtime
+    - usagetime
+    - energy
+    - power
+    - serviceFee
+    - reservation
+    - reservationtime
+    - volume
+    - mass

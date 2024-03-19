@@ -1,0 +1,69 @@
+GeoPointType:
+  type: object
+  description: Defines a geo location. The geodetic system to be used is WGS 84.
+  required:
+    - lat
+    - lon
+  properties:
+    lat:
+      # Latitude of the point in decimal degree.
+      $ref: '#/Latitude'
+
+    lon:
+      # Longitude of the point in decimal degree.
+      $ref: '#/Longitude'
+
+
+AdditionalGeoPointType:
+  type: object
+  description: Class defines a geo location. The geodetic system to be used is WGS 84.
+  required:
+    - lat
+    - lon
+    - type
+  properties:
+    lat:
+      # Latitude of the point in decimal degree.
+      $ref: '#/Latitude'
+
+    lon:
+      # Longitude of the point in decimal degree.
+      $ref: '#/Longitude'
+
+    name:
+      type: string
+      maxLength: 255
+      description: Name of the point in local language or as written at the location. For example the street name of a parking lot entrance or it's number.
+
+    type:
+      # The class of this geo point for categorization and right usage.
+      $ref: '#/GeoClass'
+
+Latitude:
+  type: string
+  maxLength: 10
+  description: Latitude of the point in decimal degree.  Decimal separator:- "."
+  pattern: '^-?[0-9]{1,2}\.[0-9]{6}$'
+  example: 50.770774.
+
+Longitude:
+  type: string
+  maxLength: 10
+  description: Longitude of the point in decimal degree.  Decimal separator:- "."
+  pattern: '^-?[0-9]{1,2}\.[0-9]{6}$'
+  example: -126.104965.
+
+GeoClass:
+  type: string
+  description: The class of this geo point for categorization and right usage.
+    * 'entrance' -  For larger sites entrances may be specified for navigation.
+    * 'exit' -  For larger sites exits may be specified for navigation purpose.
+    * 'access'-  Two directional entrance and exit.
+    * 'ui' -  Geographical location of the user interface for authorisation and payment means. If not specified the user interface is assumed to be at the location of the charge point.
+    * 'other' -   Other relevant point. Name recommended.
+  enum:
+    - entrance
+    - exit
+    - access
+    - ui
+    - other

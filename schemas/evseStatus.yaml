@@ -1,0 +1,79 @@
+EvseStatusType:
+  type: object
+  description: Specifies the major and minor status of a EVSE.
+  required:
+    - evseId
+    - major
+
+  properties:
+    evseId:
+      # The EVSE the status is set for.
+      $ref: 'generic.yaml#/EvseId'
+
+    major:
+      # The major status value for the EVSE
+      $ref: '#/MajorType'
+
+    minor:
+      # The minor status value for the EVSE.
+      $ref: '#/MinorType'
+
+    ttl:
+      # The time to live is set as the deadline until which the status value is to be considered valid. Should be set to the expected status change.
+      $ref: 'generic.yaml#/DateTimeType'
+
+ParkingStatusType:
+  type: object
+  description: Specifies the live status of a parking spot.
+  required:
+    - parkingId
+    - status
+
+  properties:
+    parkingId:
+      # The parking spot the status is set for.
+      $ref: 'chargePoint.yaml#/ParkingId'
+
+    status:
+      # The status value of the parking spot.
+      $ref: '#/MajorType'
+
+    ttl:
+      # The time to live is set as the deadline until which the status value is to be considered valid. Should be set to the expected status change.
+      $ref: 'generic.yaml#/DateTimeType'
+
+MajorType:
+  type: string
+  description: The major status type reflects the overall status of the EVSE.
+    * 'available' -  the EVSE is able to start a new charging process
+    * 'not-available' -  at the moment no new charging process may be started
+    * 'unknown' -  the current status of the EVSE is not known
+  enum:
+    - available
+    - not-available
+    - unknown
+
+MinorType:
+  type: string
+  description: The optional minor status type reflects the detailed status of the EVSE in addition to the major status. For each minor status value a proposed ttl value is given. However, the ttl should only be set to a value other than default if the expected status change is known or can be predicted.
+    * 'available' -  the EVSE is able to start a new charging process
+    * 'reserved' -   the EVSE is able to start a new charging process for limited duration as a future reservation is   present. ttl to be set on the start of the reservation when in future or to the end of the reservation else
+    * 'charging' - the EVSE is in use. ttl to be set on the expected end of the charging process
+    * 'blocked' -  the EVSE not accessible because of a physical barrier, i.e. a car
+    * 'outoforder' - the EVSE is currently out of order. ttl to be set to the expected re-enabling
+  enum:
+    - available
+    - reserved
+    - charging
+    - blocked
+    - outoforder
+
+StatusType:
+  type: string
+  description: When the statusType is defined as combined, the CHS will return values for all EVSEs of all EVSE Operators there is a valid roaming connection to, regardless of whether there is additional parking status information for all of them.
+  # if not set default is evse
+  default: evse
+  enum:
+    - evse
+    - parking
+    - combined
