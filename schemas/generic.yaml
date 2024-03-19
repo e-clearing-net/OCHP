@@ -53,6 +53,29 @@ Currency:
   description: Alphabetic. The displayed and charged currency. Defined in ISO 4217 - Table A.1, alphabetic list.
   example: EUR
 
+TaxRate:
+  type: number
+  format: float
+  description: Tax rate/VAT rate in percentage. If omitted, no VAT is applicable. Not providing a VAT is different from 0% VAT, which would be a value of 0.0 here.
+  example: 19.0
+
+Price:
+  type: object
+  description: This class defines a price.
+  required:
+    - exclVat
+  properties:
+    exclTax:
+      $ref: '#/PricePart'
+    inclTax:
+      $ref: '#/PricePart'
+
+PricePart:
+  type: number
+  multipleOf: 0.01
+  description:  A single Price
+  example: 120.23
+
 Uuid:
   type: string
   pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
@@ -67,14 +90,14 @@ EvseId:
   description: Unique identifier for every EVSE following a common scheme with a major id-unit reflecting the country and the market partner issuing it.Each EVSEID has a variable length with at least seven characters (two characters Country Code, three characters EVSE Operator ID, one character ID Type, one character Power Outlet ID) and at most thirty-seven characters (two characters Country Code, three characters EVSE Operator ID, one character ID Type, thirty-one characters Power Outlet ID). While the EVSE Operator ID shall be assigned by a central issuing authority, each operator with an assigned EVSE Operator ID can choose the Power Outlet ID within the above mentioned rules freely.
   # More patterns exist. For eg: '[A-Z]{2}[A-Za-z0-9]{3}[E][A-Za-z0-9][A-Za-z0-9\*]{0,30}' is also an accepted pattern.
   pattern: '^[A-Z]{2}\*[A-Za-z0-9]{3}\*[E][A-Za-z0-9][A-Za-z0-9\*]{0,30}$'
-  example: DE823E12345678
+  example: DELNDE12345678
 
 ContractId:
   type: string
   description: the ContractId must follow the specification for EMAID in ISO/IEC 15118-2 structure.
   # More accepted patterns exist. For eg: '[A-Za-z]{2}-[A-Za-z0-9]{3}-[A-Za-z0-9]{9}-[A-Za-z0-9]', '[A-Za-z]{2}[A-Za-z0-9]{3}[A-Za-z0-9]{9}[A-Za-z0-9]', '[A-Za-z]{2}-[A-Za-z0-9]{3}-[A-Za-z0-9]{9}', '[A-Za-z]{2}[A-Za-z0-9]{3}[A-Za-z0-9]{9}', '[A-Z]{2}[A-Za-z0-9]{3}[Cc][A-Za-z0-9]{8}-[A-Za-z0-9]'
   pattern: '^[A-Z]{2}-[A-Za-z0-9]{3}-[Cc]-[A-Za-z0-9]{8}-[A-Za-z0-9]$'
-  example: YYCBA43A13F320
+  example: DELNDC099F0001
 
 TariffId:
   type: string

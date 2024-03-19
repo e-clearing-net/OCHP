@@ -14,7 +14,7 @@ EmtId:
       minLength: 1
       maxLength: 36
       description: Specification according to the token type
-      example: 43
+      example: 948d19d2953c99
 
     representation:
       $ref: '#/TokenRepresentation'

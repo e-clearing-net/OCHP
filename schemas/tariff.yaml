@@ -87,11 +87,9 @@ PriceComponentType:
       format: float
       description: price per unit for this tariff dimension (unit according to dimension) excl. VAT
 
-    vat:
-      type: number
-      format: float
+    taxRate:
+      $ref: 'generic.yaml#/TaxRate'
       description: Applicable VAT percentage for this tariff dimension. If omitted, no VAT is applicable. Not providing a VAT is different from 0% VAT, which would be a value of 0.0 here.
-      example: 19.0
 
     stepSize:
       type: number

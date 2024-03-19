@@ -58,10 +58,10 @@ CDRInfo:
       $ref: 'generic.yaml#/LocalDateTimeType'
 
 
-    durationInSeconds:
-          type: integer
-          example: 120
-          description: duration of the whole charingSession in seconds
+    duration:
+      type: integer
+      example: 120
+      description: duration of the whole charingSession in seconds
 
     chargePointAddress:
 
@@ -101,10 +101,8 @@ CDRInfo:
         $ref:  '#/CdrPeriodType'
 
     totalCost:
-      type: number
-      format: float
-      example: 13.44
-      description: Total cost (nett price, without VAT) for the entire charging process. Should always equal the sum of the individual periodCosts.
+      $ref: 'generic.yaml#/Price'
+      description: Total cost for the entire charging process. Should always equal the sum of the individual periodCosts.
 
     currency:
       $ref: 'generic.yaml#/Currency'
@@ -116,7 +114,7 @@ CdrId:
   maxLength: 48
   description: The CDR-ID is a unique identifier for charge data records. EvseId is incorporated into the CDR-ID to make it explicit who the CPO is.  It is composed of the CPO-ID followed by an alphanumeric instance of up to 43 characters. The length of the string is extended from “36” to “48”.
   pattern: '^[0-9A-Z]{6,48}$'
-  example: DESWU27429470131590851591774794405
+  example: DELND27429470131590851591774794405
 
 SessionId:
   type: string
@@ -228,20 +226,19 @@ CdrPeriodType:
       type: number
       format: float
       description: The value the EMSP is charged for. The unit of this value depends on the billingItem.
+      example: 12.81
 
     itemPrice:
-      type: number
-      format: float
+      $ref: 'generic.yaml#/Price'
       description: Price per unit of the billingItem in the given currency.
 
     periodCost:
-      type: number
-      format: float
-      description: Total cost of the period in the given currency.
+      $ref: 'generic.yaml#/Price'
+      description: Total cost of the period in the given currency.s
 
-    taxrate:
-      type: integer
-      description: Tax rate in percent to be paid for the charging process in the EVSE operator's country.
+    taxRate:
+      $ref: 'generic.yaml#/TaxRate'
+      description: VAT rate in percent to be paid for the charging process in the EVSE operator's country.
 
 BillingItemType:
   type: string
@@ -266,3 +263,6 @@ BillingItemType:
     - reservationtime
     - volume
     - mass
+
+  example: energy
+
